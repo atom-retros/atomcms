@@ -49,3 +49,6 @@ npm install && npm run dev [theme-name] (eg. npm run dev noname)
 php artisan key:generate
 php artisan migrate --seed
 ```
+
+## Change theme
+To change the CMS theme, simply head to website_settings and change the value of the "theme" to the name you gave your new theme upon initialising it.
