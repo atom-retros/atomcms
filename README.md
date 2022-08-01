@@ -10,8 +10,8 @@ No Name CMS is a Habbo retro CMS, aiming to provide an easy and solid experience
   [Laravel docs](https://laravel.com/docs/9.x).
   
   *Depending on the theme used*
-- TailwindCSS
-  [https://tailwindcss.com/).
+  - TailwindCSS
+  [Tailwind docs](https://tailwindcss.com/docs/installation).
   - Bootstrap
   [Bootstrap docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
   - Vanilla CMS or something else
