@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('key')->unique();
             $table->string('value');
-            $table->string('comment')->comment('Add an explaination of the setting does');
+            $table->string('comment')->comment('Add an explanation of the setting does');
         });
     }
 
