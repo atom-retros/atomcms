@@ -30,7 +30,7 @@ After all of the above has been installed you've to do the following:
 #### Windows
 ```
 git clone https://github.com/ObjectRetros/nonamecms.git
-cd GoldFish
+cd nonamecms
 copy .env.example .env
 composer install 
 npm install && npm run dev [theme-name] (eg. npm run dev noname)
@@ -41,7 +41,7 @@ php artisan migrate --seed
 #### Linux
 ```
 git clone https://github.com/ObjectRetros/nonamecms.git
-cd GoldFish
+cd nonamecms
 For Linux: cp .env.example .env
 composer install
 npm install && npm run dev [theme-name] (eg. npm run dev noname)
