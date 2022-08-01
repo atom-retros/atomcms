@@ -16,15 +16,8 @@
         <div id="app" class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
             <!-- Page Content -->
-            <main>
+            <main class="grid grid-cols-12 gap-3 mt-12 mx-auto max-w-7xl overflow-hidden bg-white shadow-sm sm:rounded-lg p-2">
                 {{ $slot }}
             </main>
         </div>
