@@ -22,7 +22,7 @@
             <!-- Settings -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
-                    <div>{{ Auth::user()->name }}</div>
+                    <div>{{ Auth::user()->username }}</div>
 
                     <a href="{{ route('logout') }}"
                         class="h-16 ml-4 border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none"

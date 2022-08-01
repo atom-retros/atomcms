@@ -17,13 +17,13 @@
                  <!-- Name -->
                  <div>
                     <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Name') }}
+                        {{ __('Username') }}
                     </label>
 
-                    <input id="name" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    <input id="username" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
+                            name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                    @error('name')
+                    @error('username')
                         <p class="mt-1 text-xs italic text-red-500">
                             {{ $message }}
                         </p>
@@ -36,11 +36,11 @@
                         {{ __('Email') }}
                     </label>
 
-                    <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+                    <input id="mail" type="email"
+                            class="form-input w-full @error('mail') border-red-500 @enderror" name="mail"
+                            value="{{ old('mail') }}" required autocomplete="email">
 
-                    @error('email')
+                    @error('mail')
                         <p class="mt-1 text-xs italic text-red-500">
                             {{ $message }}
                         </p>
@@ -56,7 +56,7 @@
 
                     <input id="password" type="password"
                             class="form-input w-full @error('password') border-red-500 @enderror" name="password"
-                            required autocomplete="new-password">
+                            required autocomplete="password">
 
                     @error('password')
                         <p class="mt-1 text-xs italic text-red-500">

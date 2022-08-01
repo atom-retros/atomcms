@@ -20,14 +20,14 @@
                 <!-- Email Address -->
                 <div class="mt-4">
                     <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Email') }}
+                        {{ __('Username') }}
                     </label>
 
-                    <input id="email" type="email"
-                            class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                            value="{{ old('email') }}" required autocomplete="email">
+                    <input id="username" type="text"
+                            class="form-input w-full @error('username') border-red-500 @enderror" name="username"
+                            value="{{ old('username') }}" required autocomplete="username">
 
-                    @error('email')
+                    @error('username')
                         <p class="mt-1 text-xs italic text-red-500">
                             {{ $message }}
                         </p>
@@ -60,12 +60,6 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
-                    @if (Route::has('password.request'))
-                        <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
-                        </a>
-                    @endif
-
                     <button type="submit" class="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25">
                         {{ __('Log in') }}
                     </button>
