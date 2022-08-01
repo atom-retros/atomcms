@@ -8,7 +8,8 @@ No Name CMS is a Habbo retro CMS, aiming to provide an easy and solid experience
 **What technologies is being used?**
 - Laravel 9.x (Latest as of August 2022)
   [Laravel docs](https://laravel.com/docs/9.x).
-  
+- Vite [Vite docs](https://vitejs.dev/).
+    
   *Depending on the theme used*
   - TailwindCSS
   [Tailwind docs](https://tailwindcss.com/docs/installation).
