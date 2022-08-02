@@ -17,6 +17,9 @@ No Name CMS is a Habbo retro CMS, aiming to provide an easy and solid experience
   [Bootstrap docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
   - Vanilla CMS or something else
 
+If you are new to Laravel, then theres luckily tons of resources online to help you learn it. One of the best options is those two video courses. 
+- https://laracasts.com/series/laravel-8-from-scratch
+- https://laracasts.com/series/whats-new-in-laravel-9
 
 ## Setup guide
 To install No Name CMS you'll need to do the following:
