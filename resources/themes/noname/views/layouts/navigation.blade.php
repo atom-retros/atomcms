@@ -1,20 +1,38 @@
 <nav class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 text-gray-500 hover:text-gray-700 text-sm font-medium leading-5">
+        <div class="flex justify-between h-16 text-gray-700 hover:text-gray-900 text-sm font-medium leading-5  uppercase font-bold text-[14px]">
             <div class="flex">
-                <!-- Logo -->
-                <div class="flex items-center flex-shrink-0">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block w-auto h-10 text-gray-600 fill-current" />
-                    </a>
-                </div>
-
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:flex">
+                    <a href="{{ route('home') }}"
+                       class="{{ request()->routeIs('welcome') ? 'border-yellow-500 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-4 focus:outline-none">
+                        {{ __('Home') }}
+                    </a>
+
                     <a href="{{ route('home') }}"
                        class="{{ request()->routeIs('home') ? 'border-indigo-400 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none">
-                        {{ __('Dashboard') }}
+                        {{ __('Community') }}
+                    </a>
+
+                    <a href="{{ route('home') }}"
+                       class="{{ request()->routeIs('home') ? 'border-indigo-400 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none">
+                        {{ __('Highscores') }}
+                    </a>
+
+                    <a href="{{ route('home') }}"
+                       class="{{ request()->routeIs('home') ? 'border-indigo-400 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none">
+                        {{ __('Shop') }}
+                    </a>
+
+                    <a href="{{ route('home') }}"
+                       class="{{ request()->routeIs('home') ? 'border-indigo-400 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none">
+                        {{ __('Rules') }}
+                    </a>
+
+                    <a href="{{ route('home') }}"
+                       class="{{ request()->routeIs('home') ? 'border-indigo-400 text-gray-900 focus:border-indigo-700' : 'border-transparent hover:border-gray-300 focus:text-gray-700 focus:border-gray-300' }} inline-flex items-center px-1 pt-1 border-b-2 focus:outline-none">
+                        {{ __('Discord') }}
                     </a>
                 </div>
             </div>

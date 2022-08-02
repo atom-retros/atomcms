@@ -12,20 +12,33 @@
 
         @vite(['resources/themes/noname/css/app.css', 'resources/themes/noname/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div id="app" class="min-h-screen bg-gray-100">
+    <body>
+        <div id="app" class="bg-gray-100">
+            {{-- Header --}}
+            <div class="w-full h-52 bg-blue-400 relative flex items-center justify-center header-bg">
+                <div class="w-full h-full bg-black absolute bg-opacity-50"></div>
+
+                <div class="text-white relative font-bold flex-col w-[600px]">
+                    <p class="text-center text-xl">
+                        Online virtual community where you can create your own avatar, make friends, chat, create rooms and much more!
+                    </p>
+
+                    <div class="uppercase flex justify-center items-center gap-x-6 mt-6">
+                        <button class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">Login</button>
+                        <p class="text-opacity-80 text-sm uppercase">Or</p>
+                        <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">Create account</button>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Navigation --}}
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
+            {{-- Content --}}
+            <main class="mt-12 overflow-hidden bg-white">
+                <div class="max-w-7xl mx-auto p-6 space-y-14">
+                    {{ $slot }}
                 </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
             </main>
         </div>
     </body>
