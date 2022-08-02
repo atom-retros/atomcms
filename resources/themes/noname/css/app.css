@@ -34,6 +34,21 @@
     background: #f68b08 url('/public/assets/images/icons/feeds.png') no-repeat center;
 }
 
+.nav-credit-icon {
+    background: #e9b124 url('/public/assets/images/icons/currency/credits.png') no-repeat center;
+    outline: 1px solid #b26d18;
+}
+
+.nav-ducket-icon {
+    background: #c44aac url('/public/assets/images/icons/currency/duckets.png') no-repeat center;
+    outline: 1px solid #812378;
+}
+
+.nav-diamond-icon {
+    background: #caf1f3 url('/public/assets/images/icons/currency/diamonds.png') no-repeat center;
+    outline: 1px solid #6caff4;
+}
+
 .header-bg {
     background: url('/public/assets/images/default-background.png') center -1000px;
 }

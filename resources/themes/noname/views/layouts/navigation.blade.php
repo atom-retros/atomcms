@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-100">
+<nav class="bg-white border-b border-gray-100 relative">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 text-gray-700 hover:text-gray-900 text-sm font-medium leading-5  uppercase font-bold text-[14px]">
