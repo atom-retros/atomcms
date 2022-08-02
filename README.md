@@ -46,7 +46,7 @@ php artisan migrate --seed
 ```
 git clone https://github.com/ObjectRetros/nonamecms.git
 cd nonamecms
-For Linux: cp .env.example .env
+cp .env.example .env
 composer install
 npm install && npm run dev [theme-name] (eg. npm run dev noname)
 php artisan key:generate
