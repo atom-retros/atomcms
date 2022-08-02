@@ -1,5 +1,29 @@
 @import 'tailwindcss/base';
-
 @import 'tailwindcss/components';
-
 @import 'tailwindcss/utilities';
+
+.article-image {
+    display: block;
+    width: 100%;
+    height: 100px;
+    border-radius: 8px 8px 0 0;
+    background-position: 300px 220px !important;
+    margin: 0 0 20px;
+    transition: .3s;
+}
+
+.article-image:hover {
+    background-position: 350px 220px !important;
+}
+
+.camera-icon {
+    background: #242c31 url('/public/assets/images/icons/camera.png') no-repeat center;
+}
+
+.hotel-icon {
+    background: #f68b08 url('/public/assets/images/icons/feeds.png') no-repeat center;
+}
+
+.header-bg {
+    background: url('/public/assets/images/default-background.png') center -1000px;
+}
