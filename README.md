@@ -42,10 +42,12 @@ git clone https://github.com/ObjectRetros/nonamecms.git
 cd nonamecms
 copy .env.example .env
 composer install 
-npm install && npm run dev [theme-name] (eg. npm run dev noname)
+npm install && npm run dev [theme-name] (eg. npm run dev:noname)
 php artisan key:generate
 php artisan migrate --seed
 ```
+
+For IIS - You must link your site to the public folder of the CMS
 
 #### Linux
 ```
@@ -53,10 +55,12 @@ git clone https://github.com/ObjectRetros/nonamecms.git
 cd nonamecms
 cp .env.example .env
 composer install
-npm install && npm run dev [theme-name] (eg. npm run dev noname)
+npm install && npm run dev [theme-name] (eg. npm run dev:noname)
 php artisan key:generate
 php artisan migrate --seed
 ```
+
+For NGINX you can copy & paste the config from here: [Deploy a site on nginx](https://laravel.com/docs/9.x/deployment#nginx)
 
 ## Change theme
 To change the CMS theme, simply head to website_settings and change the value of the "theme" to the name you gave your new theme upon initialising it.
