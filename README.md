@@ -60,3 +60,16 @@ php artisan migrate --seed
 
 ## Change theme
 To change the CMS theme, simply head to website_settings and change the value of the "theme" to the name you gave your new theme upon initialising it.
+
+## Create a theme
+It's super easy to create a new theme, all you have to do is to enter the command below, in your terminal.
+```
+php artisan make:theme
+```
+
+Once the command has been executed, you'll be promted with easy to follow scaffolding steps.
+
+![image](https://user-images.githubusercontent.com/87041394/182718267-f409f5f6-d69c-4226-b6d6-9b7f8d0b2aac.png)
+
+
+*All credits for the theme system goes to [qirolab](https://github.com/qirolab/laravel-themer)*
