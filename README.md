@@ -21,6 +21,11 @@ If you are new to Laravel, then theres luckily tons of resources online to help 
 - https://laracasts.com/series/laravel-8-from-scratch
 - https://laracasts.com/series/whats-new-in-laravel-9
 
+## Why was No Name CMS made?
+No Name CMS was made to bring the retro community a variation to the CMS options out there. With its built in theme system, it becomes a brezee to brew up a new layout in no time, leaving room to either customise your hotel further, or simply contribute to the community by bringing new and exciting theme.
+
+Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with No Name CMS!
+
 ## Setup guide
 To install No Name CMS you'll need to do the following:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
