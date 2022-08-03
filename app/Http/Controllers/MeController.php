@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends Controller
+class MeController extends Controller
 {
-    public function index()
+    public function show()
     {
-        return view('home', [
+        return view('user.me', [
             'user' => Auth::user()->load('permission:id,rank_name'),
         ]);
     }

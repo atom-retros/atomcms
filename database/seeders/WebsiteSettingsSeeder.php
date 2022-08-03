@@ -17,7 +17,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'hotel_name',
-                'value' => 'No Name',
+                'value' => 'Habbo',
                 'comment' => 'Specifies the name of the hotel',
             ],
             [
@@ -54,6 +54,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'key' => 'start_points',
                 'value' => '0',
                 'comment' => 'Specifies the amount of start points upon registration',
+            ],
+            [
+                'key' => 'avatar_imager',
+                'value' => 'https://www.habbo.com/habbo-imaging/avatarimage?figure=',
+                'comment' => 'The base url for the imager used to render avatars on the CMS',
             ],
             [
                 'key' => 'start_look',

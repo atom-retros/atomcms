@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name('welcome');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [MeController::class, 'show'])->name('me.show');
+    Route::get('/community', [MeController::class, 'index'])->name('community.index');
 });
 
 
