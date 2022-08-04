@@ -2,6 +2,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.drop-shadow {
+    -webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff)
+    drop-shadow(0 -2px 0 #fff);
+}
+
+.drop-shadow-thin {
+    -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 1px 0 #fff)
+    drop-shadow(0 -1px 0 #fff);
+}
+
 .article-image {
     display: block;
     width: 100%;
@@ -24,6 +34,27 @@
     background: #f68b08 url('/public/assets/images/icons/feeds.png') no-repeat center;
 }
 
+.nav-credit-icon {
+    background: #e9b124 url('/public/assets/images/icons/currency/credits.png') no-repeat center;
+    outline: 1px solid #b26d18;
+}
+
+.nav-ducket-icon {
+    background: #c44aac url('/public/assets/images/icons/currency/duckets.png') no-repeat center;
+    outline: 1px solid #812378;
+}
+
+.nav-diamond-icon {
+    background: #caf1f3 url('/public/assets/images/icons/currency/diamonds.png') no-repeat center;
+    outline: 1px solid #6caff4;
+}
+
 .header-bg {
     background: url('/public/assets/images/default-background.png') center -1000px;
+}
+
+.me-backdrop {
+    height: 150px;
+    background: rgba(0, 0, 0, 0.3) url('/public/assets/images/default-background.png') 1850px -1000px;
+    background-blend-mode: multiply;
 }

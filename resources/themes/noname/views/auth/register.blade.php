@@ -75,8 +75,8 @@
                             name="password_confirmation" required autocomplete="new-password">
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
-                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
+                <div class="flex items-center justify-between mt-4">
+                    <a class="text-sm text-gray-600 hover:underline hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
                     </a>
 
