@@ -1,5 +1,5 @@
 <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
-    <div class="flex flex-col items-center md:flex-row md:items-start gap-x-8 uppercase font-bold text-[14px] mt-5">
+    <div class="relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-bold text-[14px] mt-5">
         <x-navigation.navigation-item route-name="me.show">
             {{ __('Home') }}
         </x-navigation.navigation-item>

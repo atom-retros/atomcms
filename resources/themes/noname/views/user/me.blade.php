@@ -62,11 +62,11 @@
     <div class="col-span-12 md:col-span-9">
         <x-content-section icon="hotel-icon">
             <x-slot:title>
-                User Referrals
+                {{ __('User Referrals') }}
             </x-slot:title>
 
             <x-slot:under-title>
-                Referral new users and be rewarded by in-game goods
+                {{ __('Referral new users and be rewarded by in-game goods') }}
             </x-slot:under-title>
 
             {{-- Content --}}

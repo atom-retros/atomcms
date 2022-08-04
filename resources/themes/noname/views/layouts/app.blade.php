@@ -28,12 +28,16 @@
 
             {{-- Navigation --}}
             <div class="bg-white border-b border-gray-100 relative">
-                <nav class="px-4 mx-auto max-w-7xl flex justify-between min-h-[60px]">
-                    <div class="container flex flex-wrap  justify-end md:justify-start">
+                <nav class="px-4 mx-auto max-w-7xl flex justify-between items-center md:h-[60px]">
+                    <div class="container flex flex-wrap justify-end md:justify-start">
                         <x-navigation.mobile-menu />
 
                         <x-navigation.navigation-menu />
                     </div>
+
+                    <x-navigation.language-selector>
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">
+                    </x-navigation.language-selector>
                 </nav>
             </div>
 
