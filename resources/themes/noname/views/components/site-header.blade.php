@@ -8,7 +8,7 @@
             </a>
 
             <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
-                Go to Hotel
+                {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
             </button>
         </div>
     @endauth
@@ -16,17 +16,21 @@
     @guest
         <div class="text-white relative font-bold flex-col w-[600px]">
             <p class="text-center text-xl">
-                Online virtual community where you can create your own avatar, make friends, chat, create rooms and much more!
+                {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
             </p>
 
             {{-- TODO: Figure something out in regards to login & reg --}}
             <div class="uppercase flex justify-center items-center gap-x-6 mt-6">
                 <a href="{{ route('login') }}">
-                    <button class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">Login</button>
+                    <button class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
+                        {{ __('Login') }}
+                    </button>
                 </a>
-                <p class="text-opacity-80 text-sm uppercase">Or</p>
+                <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
                 <a href="{{ route('register') }}">
-                    <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">Create account</button>
+                    <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
+                        {{ __('Create account') }}
+                    </button>
                 </a>
             </div>
         </div>
