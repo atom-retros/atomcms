@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 })->name('welcome');
+
+Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
 
 Route::middleware('auth')->group(function () {
