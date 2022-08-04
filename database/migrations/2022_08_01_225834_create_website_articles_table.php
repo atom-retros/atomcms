@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('slug')->unique();
             $table->string('title');
             $table->string('short_story');
-            $table->string('full_story');
+            $table->longText('full_story');
             $table->string('user_id');
             $table->string('image');
             $table->timestamps();
