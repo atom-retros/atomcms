@@ -27,19 +27,18 @@
             <x-site-header />
 
             {{-- Navigation --}}
-            <div class="bg-white border-b border-gray-100 relative">
-                <nav class="px-4 mx-auto max-w-7xl flex justify-between items-center md:h-[60px]">
-                    <div class="container flex flex-wrap justify-end md:justify-start">
-                        <x-navigation.mobile-menu />
+            <nav class="relative bg-white">
+                {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-bold text-[14px] mt-5 --}}
+                <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px]">
+                    <x-navigation.mobile-menu />
 
-                        <x-navigation.navigation-menu />
-                    </div>
+                    <x-navigation.navigation-menu />
 
-                    <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">
-                    </x-navigation.language-selector>
-                </nav>
-            </div>
+{{--                    <x-navigation.language-selector>--}}
+{{--                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">--}}
+{{--                    </x-navigation.language-selector>--}}
+                </div>
+            </nav>
 
             {{-- Content --}}
             <main class="mt-12 overflow-hidden bg-white">

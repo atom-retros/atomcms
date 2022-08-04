@@ -1,7 +1,7 @@
 <button
     data-collapse-toggle="mobile-menu"
     type="button"
-    class="absolute top-4 md:hidden hover:text-gray-900" aria-controls="mobile-menu-2"
+    class="absolute right-6 top-3 md:hidden hover:text-gray-900 z-10" aria-controls="mobile-menu-2"
     aria-expanded="false">
 
     <span class="sr-only">Open main menu</span>

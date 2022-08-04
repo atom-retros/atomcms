@@ -1,10 +1,12 @@
-@props(['routeName'])
-
 <button
-        id="dropdownNavbarLink"
-        data-dropdown-toggle="dropdownNavbarUser"
-        class="ml-4 flex items-center">
-    {{ $slot }}
+    id="dropdownNavbarLink"
+    data-dropdown-toggle="dropdownNavbarUser"
+    class="ml-4 flex items-center">
+    <span class="h-10">
+        <img class="w-8 h-12 mt-1" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
+    </span>
+
+    <span>{{ auth()->user()->username }}</span>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none"
          viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -14,9 +16,9 @@
 
 <!-- Dropdown menu -->
 <div id="dropdownNavbarUser" class="py-2 hidden z-10 w-44 bg-white shadow block">
-    <x-navigation.dropdown-item route-name="me.show">
+    <a href="{{ route('me.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-bold">
         {{ __('User settings') }}
-    </x-navigation.dropdown-item>
+    </a>
 
     @auth
         <a
