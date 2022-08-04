@@ -1,3 +1,31 @@
 {
-    "Password": "Adgangskode"
+    "Home": "Hjem",
+    "Community": "Fællesskab",
+    "Shop": "Butik",
+    "Rules": "Regler",
+    "Articles": "Artikler",
+    "Staff": "Ansatte",
+    "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!": "En online virtuel verden, hvor du kan oprette din egen avatar, få nye venner, lave rum og meget mere!",
+    "Login": "Log ind",
+    "Register": "Oprettelse",
+    "Create account": "Opret bruger",
+    "Or": "Eller",
+    "Latest news": "Seneste nyheder",
+    "Keep up to date with the latest hotel gossip.": "Hold dig opdateret med det seneste sladder.",
+    "Latest Photos": "Seneste billeder",
+    "Have a look at some of the great moments captured by users around the hotel.": "Tag et kig på nogle af de tidspunkter, taget af forskellige brugere på hotellet",
+    "Username": "Brugernavn",
+    "Password": "Adgangskode",
+    "Confirm Password": "Bekræft adgangskode",
+    "Email": "Email",
+    "Remember me": "Husk mig",
+    "Go to :hotel": "Gå til :hotel",
+    "User Referrals": "Brugerhenvisninger",
+    "Referral new users and be rewarded by in-game goods": "Henvis nye brugere, og bliv belønnet i form af ting i spillet",
+    "Credits": "Mønter",
+    "Duckets": "Ænder",
+    "Diamonds": "Diamanter",
+    "Logout": "Log ud",
+    "User settings": "Brugerindstillinger"
+
 }
