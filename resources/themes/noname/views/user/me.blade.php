@@ -56,7 +56,7 @@
     </div>
 
     <div class="col-span-12 md:col-span-3 shadow-lg rounded-lg transition ease-in-out duration-300 hover:scale-[102%]">
-        <x-article-card />
+        <x-article-card :article="$article"/>
     </div>
 
     <div class="col-span-12 md:col-span-9">

@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Permission::class, 'id', 'rank');
     }
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(WebsiteArticle::class);
+    }
 }

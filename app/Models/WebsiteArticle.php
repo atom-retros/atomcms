@@ -9,7 +9,7 @@ class WebsiteArticle extends Model
 {
     protected $guarded = ['id'];
 
-    protected function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -10,7 +10,7 @@
                     {{ __('Keep up to date with the latest hotel gossip.') }}
                 </x-slot:under-title>
 
-                <x-article-card />
+                <x-article-card :article="$article" />
             </x-content-section>
         </div>
 
