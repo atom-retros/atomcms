@@ -2,6 +2,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@layer components {
+    .nav-item {
+        @apply h-full flex items-center uppercase text-[14px] transition duration-200 ease-in-out font-bold md:border-b-4 md:border-transparent md:hover:border-b-[#eeb425];
+    }
+
+    .dropdown-item {
+        @apply block py-2 px-4 hover:bg-gray-100 font-bold;
+    }
+}
+
 .drop-shadow {
     -webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff)
     drop-shadow(0 -2px 0 #fff);
