@@ -2,7 +2,7 @@
 <button
         id="dropdownNavbarLink"
         data-dropdown-toggle="dropdownNavbarLanguage"
-        class="ml-5 md:ml-0 transition ease-in-out duration-200 flex uppercase font-bold">
+        class="ml-5 md:ml-0 transition ease-in-out duration-200 hidden md:flex uppercase font-bold">
     {{ $slot }}
 </button>
 
