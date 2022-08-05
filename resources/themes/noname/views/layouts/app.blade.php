@@ -27,7 +27,7 @@
             <x-site-header />
 
             {{-- Navigation --}}
-            <nav class="relative bg-white">
+            <nav class="relative bg-white shadow">
                 {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-bold text-[14px] mt-5 --}}
                 <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
                     <div class="h-full w-full">
@@ -43,7 +43,7 @@
             </nav>
 
             {{-- Content --}}
-            <main class="mt-12 overflow-hidden bg-white">
+            <main class="overflow-hidden bg-white">
                 <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8">
                     {{ $slot }}
                 </div>

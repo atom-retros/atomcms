@@ -1,6 +1,6 @@
 @props(['article'])
 
-<a href="{{ route('article.show', $article->slug) }}" class="rounded-lg h-[215px] w-[300px] bg-white shadow-lg relative overflow-hidden transition ease-in-out duration-300 hover:scale-[102%]">
+<a href="{{ route('article.show', $article->slug) }}" class="rounded-lg h-[215px] w-[300px] bg-white shadow relative overflow-hidden transition ease-in-out duration-300 hover:scale-[102%]">
     <div style="background: url('{{ $article->image }}');" class="article-image h-[100px]"></div>
 
     <div class="px-4">
