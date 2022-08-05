@@ -1,6 +1,8 @@
 <x-app-layout>
-    <div class="col-span-12 md:col-span-3 rounded-md">
-        <div class="bg-white shadow p-4">
+    <div class="col-span-12 md:col-span-3 rounded- space-y-3">
+        <x-community.staff-card :article="$article" />
+
+        <div class="bg-white border p-4 rounded-lg">
             <div class="text-xl font-bold">
                 {{ __('Other articles') }}
                 <hr>
@@ -26,22 +28,15 @@
         </div>
     </div>
 
-    <div class="col-span-12 md:col-span-9 rounded shadow p-4 flex flex-col gap-y-8 relative overflow-hidden">
-        <div class="text-xl font-bold">
-            {{ $article->title }}
-            <hr>
+    <div class="col-span-12 md:col-span-9 rounded-lg border p-3 flex flex-col gap-y-8 relative overflow-hidden">
+        <div class="relative rounded-lg h-24 flex items-center justify-center overflow-hidden" style="background: url({{ $article->image }}) center; background-size: cover;">
+            <div class="bg-black bg-opacity-50 w-full h-full absolute"></div>
+
+            <span class="text-white font-bold text-3xl relative">{{ $article->title }}</span>
         </div>
 
-        <div>
+        <div class="px-2">
             {!! $article->full_story  !!}
-        </div>
-
-        <div class="flex gap-x-3 relative mt-4">
-            <div class="absolute -bottom-14">
-                <img src="{{ setting('avatar_imager') }}{{ $article->user->look }}&action=std&direction=2&head_direction=3&gesture=sml&size=b" alt="">
-            </div>
-
-            <p class="ml-16 font-bold">{{ $article->user->username }}</p>
         </div>
     </div>
 </x-app-layout>

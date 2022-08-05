@@ -68,3 +68,8 @@
     background: rgba(0, 0, 0, 0.3) url('/public/assets/images/default-background.png') 1850px -1000px;
     background-blend-mode: multiply;
 }
+
+.staff-bg {
+    background: rgba(0, 0, 0, 0.3) url('https://beeimg.com/images/y39253331242.png');
+    background-blend-mode: multiply;
+}
