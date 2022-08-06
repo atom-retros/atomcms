@@ -75,6 +75,8 @@
                             name="password_confirmation" required autocomplete="new-password">
                 </div>
 
+                <input type="hidden" name="referral_code" value="{{ $referral_code }}">
+
                 <div class="flex items-center justify-between mt-4">
                     <a class="text-sm text-gray-600 hover:underline hover:text-gray-900" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
