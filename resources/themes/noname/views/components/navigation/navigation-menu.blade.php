@@ -15,10 +15,6 @@
         </button>
 
         <div id="community-dropdown" class="py-2 hidden z-10 w-44 font-normal bg-white shadow block">
-            <a href="#" class="dropdown-item">
-                {{ __('Community') }}
-            </a>
-
             <a href="{{ route('article.index') }}" class="dropdown-item">
                 {{ __('Articles') }}
             </a>
