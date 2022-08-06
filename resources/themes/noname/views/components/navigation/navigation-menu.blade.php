@@ -8,7 +8,7 @@
         <button
                 id="dropdownNavbarLink"
                 data-dropdown-toggle="community-dropdown"
-                class="{{ request()->routeIs('community.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
+                class="{{ request()->is('community*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
                 {{ __('Community') }}
 
                 <x-icons.chevron-down />
@@ -19,7 +19,7 @@
                 {{ __('Community') }}
             </a>
 
-            <a href="#" class="dropdown-item">
+            <a href="{{ route('article.index') }}" class="dropdown-item">
                 {{ __('Articles') }}
             </a>
 
