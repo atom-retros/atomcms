@@ -29,7 +29,7 @@
                 {{ __('Shop') }}
         </a>
 
-        <a href="#"
+        <a href="{{ route('rules.index') }}"
            class="nav-item {{ request()->routeIs('community.index') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
                 {{ __('Rules') }}
         </a>
