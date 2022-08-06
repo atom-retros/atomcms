@@ -76,6 +76,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'Specifies the reward amount when a user claims a reward',
             ],
             [
+                'key' => 'discord_invitation_link',
+                'value' => 'https://discord.gg/BAxAtaYVR3', // Krews Discord
+                'comment' => 'The link used to invite people to your Discord server',
+            ],
+            [
                 'key' => 'discord_widget_id',
                 'value' => '557240155040251905',
                 'comment' => 'The Discord widget ID you want to show on the CMS',

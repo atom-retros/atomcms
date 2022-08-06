@@ -34,8 +34,7 @@
                 {{ __('Rules') }}
         </a>
 
-        <a href="#"
-           class="nav-item {{ request()->routeIs('community.index') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-                {{ __('Discord') }}
+        <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item">
+            {{ __('Discord') }}
         </a>
 </div>
