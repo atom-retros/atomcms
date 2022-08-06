@@ -6,7 +6,7 @@
     <div class="px-4">
         <p class="font-semibold text-lg">{{ $article->title }}</p>
 
-        <div class="flex gap-x-1 mt-3 items-center">
+        <div class="flex gap-x-1 mt-3 items-center pb-3">
             <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
                 <img class="-mt-1" src="{{ setting('avatar_imager') }}{{ $article->user->look }}&headonly=1" alt="">
             </div>
