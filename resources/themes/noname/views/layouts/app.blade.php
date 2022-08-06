@@ -50,7 +50,7 @@
             </main>
         </div>
 
-        <footer class="w-full h-14 bg-gray-800 mt-auto flex justify-between text-gray-400 items-center px-8">
+        <footer class="w-full h-14 bg-gray-100 mt-auto flex justify-between text-gray-400 items-center px-8">
             <div class="font-bold">&copy {{ date('Y') }} - {{ __(':hotel is a not for profit educational project', ['hotel' => setting('hotel_name')]) }}</div>
             <div></div>
             <div class="flex gap-x-1">
