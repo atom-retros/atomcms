@@ -21,11 +21,9 @@
 
             {{-- TODO: Figure something out in regards to login & reg --}}
             <div class="uppercase flex justify-center items-center gap-x-6 mt-6">
-                <a href="{{ route('login') }}">
-                    <button class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
-                        {{ __('Login') }}
-                    </button>
-                </a>
+                <button type="button" data-modal-toggle="authentication-modal" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
+                    {{ __('Login') }}
+                </button>
                 <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
                 <a href="{{ route('register') }}">
                     <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
@@ -34,5 +32,7 @@
                 </a>
             </div>
         </div>
+
+        <x-auth.login-modal />
     @endguest
 </div>

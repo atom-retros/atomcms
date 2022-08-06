@@ -60,12 +60,12 @@
 }
 
 .header-bg {
-    background: url('/public/assets/images/default-background.png') center -1000px;
+    background: url('/public/assets/images/kasja_mepage_header.png');
 }
 
 .me-backdrop {
     height: 150px;
-    background: rgba(0, 0, 0, 0.3) url('/public/assets/images/default-background.png') 1850px -1000px;
+    background: rgba(0, 0, 0, 0.3) url('/public/assets/images/kasja_mepage_image.png');
     background-blend-mode: multiply;
 }
 
