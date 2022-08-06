@@ -23,6 +23,12 @@
                     <small>Your username is what you and others will see in-game.</small>
                 </div>
 
+                <div class="flex flex-col gap-y-1">
+                    <label for="motto">{{ __('Motto') }}</label>
+                    <input id="motto" name="motto" type="text" value="{{ $user->motto }}" class="w-full rounded border border-gray-300" required autofocus>
+                    <small>Spice up your profile with a nice motto.</small>
+                </div>
+
                 <div class="w-full flex justify-start md:justify-end">
                     <button type="submit" class="w-full lg:w-1/6 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white">
                         {{ __('Update settings') }}
