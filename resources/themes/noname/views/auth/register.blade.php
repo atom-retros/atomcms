@@ -1,92 +1,119 @@
-<x-guest-layout>
-    <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
-        <div>
-            <a href="/">
-                <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-            </a>
-        </div>
+<x-app-layout>
+    <div class="col-span-12">
+        <div class="w-full flex justify-between lg:px-[150px]">
+            <div class="w-full lg:w-[420px] flex flex-col gap-y-8">
+                <!-- Validation Errors -->
+                <x-messages.flash-messages />
 
-        <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
+                <h2 class="text-2xl font-bold uppercase">
+                    {{ __('Create a free account today!') }}
+                </h2>
 
-            <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
 
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
+                    <!-- Name -->
+                    <div>
+                        <div class="flex flex-col gap-y-2 mb-4">
+                            <label class="block font-bold text-gray-700">
+                                {{ __('Username') }}
+                            </label>
 
-                 <!-- Name -->
-                 <div>
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Username') }}
-                    </label>
+                            <p class="text-gray-700">
+                                {{ __('Your username is what you will have to use, when logging into :hotel. It is also what other users will know you as, so make sure you select a username that you like!', ['hotel' => setting('hotel_name')]) }}
+                            </p>
+                        </div>
 
-                    <input id="username" type="text" class="form-input w-full @error('name')  border-red-500 @enderror"
-                            name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                        <input id="username" type="text" class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full @error('name')  border-red-500 @enderror"
+                               name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                    @error('username')
+                        @error('username')
                         <p class="mt-1 text-xs italic text-red-500">
                             {{ $message }}
                         </p>
-                    @enderror
-                </div>
+                        @enderror
+                    </div>
 
-                <!-- Email Address -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Email') }}
-                    </label>
+                    <!-- Email Address -->
+                    <div class="mt-4">
+                        <div class="flex flex-col gap-y-2 mb-4">
+                            <label class="block font-bold text-gray-700">
+                                {{ __('Email') }}
+                            </label>
 
-                    <input id="mail" type="email"
-                            class="form-input w-full @error('mail') border-red-500 @enderror" name="mail"
-                            value="{{ old('mail') }}" required autocomplete="email">
+                            <p class="text-gray-700">
+                                {{ __('You will need your email if you were to ever forget your password, so make sure it is something that you remember.') }}
+                            </p>
+                        </div>
 
-                    @error('mail')
+                        <input id="mail" type="email"
+                               class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full @error('mail') border-red-500 @enderror" name="mail"
+                               value="{{ old('mail') }}" required autocomplete="email">
+
+
+
+                        @error('mail')
                         <p class="mt-1 text-xs italic text-red-500">
                             {{ $message }}
                         </p>
-                    @enderror
-                </div>
+                        @enderror
+                    </div>
 
 
-                <!-- Password -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Password') }}
-                    </label>
+                    <!-- Password -->
+                    <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-6">
+                        <div>
+                            <label class="block font-bold">
+                                {{ __('Password') }}
+                            </label>
 
-                    <input id="password" type="password"
-                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
-                            required autocomplete="password">
+                            <p class="my-2 text-gray-700">
+                                {{ __('Your password must contain atleast 8 characters. Make sure to use a unique & secure password.') }}
+                            </p>
 
-                    @error('password')
-                        <p class="mt-1 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
+                            <input id="password" type="password"
+                                   class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full @error('password') border-red-500 @enderror" name="password"
+                                   required autocomplete="password">
 
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Confirm Password') }}
-                    </label>
+                            @error('password')
+                            <p class="mt-1 text-xs italic text-red-500">
+                                {{ $message }}
+                            </p>
+                            @enderror
+                        </div>
+                        <hr>
 
-                    <input id="password-confirm" type="password" class="w-full form-input"
-                            name="password_confirmation" required autocomplete="new-password">
-                </div>
+                        <!-- Confirm Password -->
+                        <div>
+                            <label class="block font-bold mb-5">
+                                {{ __('Repeat Password') }}
+                            </label>
 
-                <input type="hidden" name="referral_code" value="{{ $referral_code }}">
+                            <input id="password-confirm" type="password" class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full "
+                                   name="password_confirmation" required autocomplete="new-password">
+                        </div>
+                    </div>
 
-                <div class="flex items-center justify-between mt-4">
-                    <a class="text-sm text-gray-600 hover:underline hover:text-gray-900" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
+                    <div class="mt-4 bg-[#efefef] rounded-md p-3 flex gap-x-3">
+                        <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">
 
-                    <button type="submit" class="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25">
-                        {{ __('Register') }}
-                    </button>
-                </div>
-            </form>
+                        <label for="terms" class="font-semibold text-gray-700">
+                            {{ __('I accept the terms of service, privacy policy and cookie policy.') }}
+                        </label>
+                    </div>
+
+                    <input type="hidden" name="referral_code" value="{{ $referral_code }}">
+
+
+                   <button class="mt-4 w-full rounded-md bg-[#eeb425] text-white p-2 transition ease-in-out duration-200 hover:scale-[102%] font-bold">
+                       {{ __('Create account') }}
+                   </button>
+                </form>
+            </div>
+
+            <div class="hidden lg:block">
+                <img src="https://forcehotel.co.uk/templates/mezz/assets/images/registration/background.png" alt="">
+            </div>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>
