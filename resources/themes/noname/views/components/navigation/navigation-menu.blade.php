@@ -23,7 +23,7 @@
                 {{ __('Articles') }}
             </a>
 
-            <a href="#" class="dropdown-item">
+            <a href="{{ route('staff.index') }}" class="dropdown-item">
                 {{ __('Staff') }}
             </a>
         </div>

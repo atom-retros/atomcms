@@ -80,6 +80,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '557240155040251905',
                 'comment' => 'The Discord widget ID you want to show on the CMS',
             ],
+            [
+                'key' => 'min_staff_rank',
+                'value' => '4',
+                'comment' => 'The minimum rank before being considered a staff member',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);

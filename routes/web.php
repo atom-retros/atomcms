@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\StaffController;
 use App\Models\WebsiteArticle;
 use Illuminate\Support\Facades\Route;
 
@@ -27,8 +28,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [MeController::class, 'index'])->name('community.index');
         Route::get('/claim/referral-reward', ReferralController::class)->name('claim.referral-reward');
 
-        Route::get('/articles', [ArticleController::class, 'index'])->name('article.index')->withoutMiddleware('auth');
-        Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show')->withoutMiddleware('auth');
+        Route::withoutMiddleware('auth')->group(function () {
+            Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+            Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+            Route::get('/staff', StaffController::class)->name('staff.index');
+        });
+
     });
 });
 
