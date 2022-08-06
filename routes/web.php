@@ -25,6 +25,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::prefix('user')->group(function () {
+        // User routes
         Route::get('/me', [MeController::class, 'show'])->name('me.show');
 
         Route::prefix('settings')->group(function () {
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+    // Community routes
     Route::prefix('community')->group(function () {
         Route::get('/', [MeController::class, 'index'])->name('community.index');
         Route::get('/claim/referral-reward', ReferralController::class)->name('claim.referral-reward');
@@ -44,8 +46,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
             Route::get('/staff', StaffController::class)->name('staff.index');
         });
-
     });
+
+    // Rules routes
+    Route::view('/rules', 'rules')->name('rules.index');
 });
 
 // TODO: Replace auth with Laravel Fortify
