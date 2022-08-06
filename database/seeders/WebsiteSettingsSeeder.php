@@ -75,6 +75,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '30',
                 'comment' => 'Specifies the reward amount when a user claims a reward',
             ],
+            [
+                'key' => 'discord_widget_id',
+                'value' => '557240155040251905',
+                'comment' => 'The Discord widget ID you want to show on the CMS',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);

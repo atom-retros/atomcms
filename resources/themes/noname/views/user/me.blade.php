@@ -53,13 +53,7 @@
                 {{ $user->permission->rank_name }}
             </x-currency-box>
         </div>
-    </div>
 
-    <div class="col-span-12 md:col-span-3 shadow-lg rounded-lg transition ease-in-out duration-300 hover:scale-[102%]">
-        <x-article-card :article="$article"/>
-    </div>
-
-    <div class="col-span-12 md:col-span-9 -mt-4">
         <div class="shadow p-3 rounded-lg">
             <x-content-section icon="hotel-icon">
                 <x-slot:title>
@@ -90,10 +84,17 @@
                     @else
                         <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">{{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}</button>
                     @endif
-
                 </div>
             </x-content-section>
         </div>
+    </div>
+
+    <div class="col-span-12 md:col-span-3 space-y-4">
+        <div class="shadow-lg rounded-lg transition ease-in-out duration-300 hover:scale-[102%]">
+            <x-article-card :article="$article"/>
+        </div>
+
+        <iframe src="https://discordapp.com/widget?id={{ setting('discord_widget_id') }}&theme=dark" title="Discord Widget" height="255px" allowtransparency="true" frameborder="0"></iframe>
     </div>
 
     <script>
