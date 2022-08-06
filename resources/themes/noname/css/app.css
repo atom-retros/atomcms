@@ -73,3 +73,8 @@
     background: rgba(0, 0, 0, 0.5) url('https://beeimg.com/images/y39253331242.png');
     background-blend-mode: multiply;
 }
+
+.profile-bg {
+    background: rgba(0, 0, 0, 0.5) url('/public/assets/images/profile/profile-bg.png');
+    background-blend-mode: multiply;
+}

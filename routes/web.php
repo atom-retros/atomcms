@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\PasswordSettingsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\StaffController;
 use App\Models\WebsiteArticle;
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('user')->group(function () {
         // User routes
         Route::get('/me', [MeController::class, 'show'])->name('me.show');
+        Route::get('/{user:username}', ProfileController::class)->name('profile.show');
 
         Route::prefix('settings')->group(function () {
             Route::get('/account', [AccountSettingsController::class, 'edit'])->name('settings.account.show');
