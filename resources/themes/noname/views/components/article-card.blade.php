@@ -3,7 +3,7 @@
 <a href="{{ route('article.show', $article->slug) }}" class="rounded-lg h-[215px] w-[300px] bg-white shadow relative overflow-hidden transition ease-in-out duration-300 hover:scale-[102%]">
     <div style="background: url('{{ $article->image }}');" class="article-image h-[100px]"></div>
 
-    <div class="px-4">
+    <div class="px-4 -mt-1">
         <p class="font-semibold text-lg">{{ $article->title }}</p>
 
         <div class="flex gap-x-1 mt-3 items-center pb-3">

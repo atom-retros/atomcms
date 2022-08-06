@@ -94,7 +94,7 @@
             <x-article-card :article="$article"/>
         </div>
 
-        <iframe src="https://discordapp.com/widget?id={{ setting('discord_widget_id') }}&theme=dark" title="Discord Widget" height="244px" allowtransparency="true" frameborder="0"></iframe>
+        <iframe src="https://discordapp.com/widget?id={{ setting('discord_widget_id') }}&theme=dark" title="Discord Widget" height="248px" allowtransparency="true" frameborder="0"></iframe>
     </div>
 
     <script>
