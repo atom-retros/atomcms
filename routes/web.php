@@ -13,7 +13,7 @@ Route::get('/language/{locale}', LocaleController::class)->name('language.select
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('index', [
-            'article' => WebsiteArticle::query()->latest()->with('user:id,username,look')->first()
+            'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get()
         ]);
     })->name('welcome');
 
@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [MeController::class, 'index'])->name('community.index');
         Route::get('/claim/referral-reward', ReferralController::class)->name('claim.referral-reward');
 
+        Route::get('/articles', [ArticleController::class, 'index'])->name('article.index')->withoutMiddleware('auth');
         Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show')->withoutMiddleware('auth');
     });
 });
