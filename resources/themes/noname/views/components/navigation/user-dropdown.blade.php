@@ -16,7 +16,7 @@
 
 <!-- Dropdown menu -->
 <div id="dropdownNavbarUser" class="py-2 hidden z-10 w-44 bg-white shadow block">
-    <a href="{{ route('me.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-bold">
+    <a href="{{ route('settings.account.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-bold">
         {{ __('User settings') }}
     </a>
 

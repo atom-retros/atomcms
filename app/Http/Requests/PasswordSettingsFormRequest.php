@@ -2,16 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CurrentPasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class RegisterFormRequest extends FormRequest
+class PasswordSettingsFormRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'max:25', Rule::unique('users')],
-            'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
+            'current_password' => ['required', 'string', new CurrentPasswordRule],
             'password' => ['required', 'string', 'confirmed', 'min:8'],
         ];
     }
