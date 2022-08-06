@@ -12,6 +12,7 @@ class AccountSettingsFormRequest extends FormRequest
         return [
             'mail' => ['required', 'email', Rule::unique('users')->ignore($this->user()->id)],
             'username' => ['required', 'string', 'max:25', Rule::unique('users')->ignore($this->user()->id)],
+            'motto' => ['nullable', 'string', 'max:127'],
         ];
     }
 
