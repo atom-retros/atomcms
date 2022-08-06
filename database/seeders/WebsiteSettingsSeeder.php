@@ -65,6 +65,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'fa-201407-1324.hr-828-1035.ch-3001-1261-1408.sh-3068-92-1408.cp-9032-1308.lg-270-1281.hd-209-3',
                 'comment' => 'Specifies the amount of start outfit upon registration',
             ],
+            [
+                'key' => 'referrals_needed',
+                'value' => '5',
+                'comment' => 'Specifies the amount of referrals needed before being able to claim the reward',
+            ],
+            [
+                'key' => 'referral_reward_amount',
+                'value' => '30',
+                'comment' => 'Specifies the reward amount when a user claims a reward',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);

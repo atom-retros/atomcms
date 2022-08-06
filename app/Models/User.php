@@ -49,4 +49,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(WebsiteArticle::class);
     }
+
+    public function referrals(): HasOne
+    {
+        return $this->hasOne(UserReferral::class);
+    }
+
+    public function userReferrals(): HasMany
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function claimedReferralLog(): HasMany
+    {
+        return $this->hasMany(ClaimedReferralLog::class);
+    }
+
+    public function referralsNeeded()
+    {
+        $referrals = 0;
+
+        if (!is_null($this->referrals)) {
+            $referrals = $this->referrals->referrals_total;
+        }
+
+        return setting('referrals_needed') - $referrals;
+    }
 }

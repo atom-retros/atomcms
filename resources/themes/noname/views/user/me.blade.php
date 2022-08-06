@@ -59,17 +59,48 @@
         <x-article-card :article="$article"/>
     </div>
 
-    <div class="col-span-12 md:col-span-9">
-        <x-content-section icon="hotel-icon">
-            <x-slot:title>
-                {{ __('User Referrals') }}
-            </x-slot:title>
+    <div class="col-span-12 md:col-span-9 -mt-4">
+        <div class="shadow p-3 rounded-lg">
+            <x-content-section icon="hotel-icon">
+                <x-slot:title>
+                    {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
+                </x-slot:title>
 
-            <x-slot:under-title>
-                {{ __('Referral new users and be rewarded by in-game goods') }}
-            </x-slot:under-title>
+                <x-slot:under-title>
+                    {{ __('Referral new users and be rewarded by in-game goods') }}
+                </x-slot:under-title>
 
-            {{-- Content --}}
-        </x-content-section>
+                <div class="px-2 rounded-lg">
+                    {{ __('Here at :hotel we have added a referral system, allowing you to obtain a bonus for every :needed users that registers through your referral link will allow you to claim a reward of :amount diamonds!', ['hotel' => setting('hotel_name'), 'needed' => setting('referrals_needed'), 'amount' => setting('referral_reward_amount')]) }}
+                    <br>
+
+                    <small style="color: gray;">
+                        {{ __('Boosting referrals by making own accounts will lead to removal of all progress, currency, inventory and a potential ban') }}
+                    </small>
+
+                    <div class="grid grid-cols-12 gap-x-2">
+                        <input type="text" id="referral" class="col-span-12 md:col-span-10 border border-gray-300 rounded-md" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" readonly="readonly">
+                        <button class="col-span-12 md:col-span-2 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white" onclick="copyCode()">{{ __('Copy code') }}</button>
+                    </div>
+
+                    @if(auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
+                        <a href="{{ route('claim.referral-reward') }}" class="text-decoration-none">
+                            <button class="mt-2 w-full rounded-md bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
+                        </a>
+                    @else
+                        <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">{{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}</button>
+                    @endif
+
+                </div>
+            </x-content-section>
+        </div>
     </div>
+
+    <script>
+        function copyCode() {
+            let copyText = document.querySelector('#referral');
+            copyText.select();
+            document.execCommand("copy");
+        }
+    </script>
 </x-app-layout>
