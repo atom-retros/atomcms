@@ -17,7 +17,7 @@
 
                 <div class="col-span-2 grid grid-cols-3 w-full">
                     <div class="rounded-l-lg bg-[#f8ef2b] flex flex-col gap-y-2 items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/profile/credits.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/credits.png') }}" alt="">
 
                         <h4 class="text-[#b16d18] font-bold text-2xl">
                             {{ $user->credits }}
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="bg-[#e99bdc] flex flex-col gap-y-2 items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/profile/duckets.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/duckets.png') }}" alt="">
 
                         <h4 class="text-[#812378] font-bold text-2xl">
                             {{ $user->currency('duckets') }}
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="rounded-r-lg bg-[#82d6db] flex flex-col gap-y-2 items-center justify-center">
-                        <img src="{{ asset('/assets/images/icons/profile/diamonds.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/diamonds.png') }}" alt="">
 
                         <h4 class="text-[#146867] font-bold text-2xl">
                             {{ $user->currency('diamonds') }}
