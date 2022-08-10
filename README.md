@@ -73,6 +73,8 @@ php artisan make:theme
 
 Once the command has been executed, you'll be promted with easy to follow scaffolding steps.
 
+**It's recommended to not replacing the existing controllers during the theme scaffolding process, unless you are confident thats what you want**
+
 ![image](https://user-images.githubusercontent.com/87041394/182718267-f409f5f6-d69c-4226-b6d6-9b7f8d0b2aac.png)
 
 
