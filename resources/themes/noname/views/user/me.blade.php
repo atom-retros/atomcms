@@ -72,8 +72,9 @@
                         {{ __('Boosting referrals by making own accounts will lead to removal of all progress, currency, inventory and a potential ban') }}
                     </small>
 
-                    <div class="grid grid-cols-12 gap-x-2">
-                        <input type="text" id="referral" class="col-span-12 md:col-span-10 border border-gray-300 rounded-md" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" readonly="readonly">
+                    <div class="grid grid-cols-12 gap-2">
+                        <x-form.input classes="col-span-12 md:col-span-10" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
+
                         <button class="col-span-12 md:col-span-2 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white" onclick="copyCode()">{{ __('Copy code') }}</button>
                     </div>
 

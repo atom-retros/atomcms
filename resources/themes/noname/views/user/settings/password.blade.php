@@ -12,27 +12,45 @@
                 @csrf
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="current_password">{{ __('Current password') }}</label>
-                    <input id="current_password" name="current_password" type="password" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>{{ __('Enter your current password') }}</small>
+                    <x-form.label for="current_password">
+                        {{ __('Current password') }}
+
+                        <x-slot:info>
+                            {{ __('Enter your current password.') }}
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="current_password" type="password" :autofocus="true"/>
                 </div>
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="password">{{ __('New password') }}</label>
-                    <input id="password" name="password" type="password" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>{{ __('Enter a new secure password. Do not forget to save it somewhere safe') }}</small>
+                    <x-form.label for="password">
+                        {{ __('New password') }}
+
+                        <x-slot:info>
+                            {{ __('Enter a new secure password. Do not forget to save it somewhere safe.') }}
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="password" type="password"/>
                 </div>
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="password-confirm">{{ __('Confirm new password') }}</label>
-                    <input id="password-confirm" name="password_confirmation" type="password" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>{{ __('Please confirm your new password') }}</small>
+                    <x-form.label for="password_confirmation">
+                        {{ __('Confirm new password') }}
+
+                        <x-slot:info>
+                            {{ __('Please confirm your new password.') }}
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="password_confirmation" type="password"/>
                 </div>
 
                 <div class="w-full flex justify-start md:justify-end">
-                    <button type="submit" class="w-full lg:w-1/6 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white">
+                    <x-form.primary-button classes="lg:w-1/6">
                         {{ __('Update password') }}
-                    </button>
+                    </x-form.primary-button>
                 </div>
             </form>
         </div>

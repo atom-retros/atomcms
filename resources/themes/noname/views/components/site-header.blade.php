@@ -4,7 +4,7 @@
     @auth
         <div class="max-w-7xl relative h-full w-full flex items-center justify-center md:justify-between pr-10">
             <a href="{{ route('me.show') }}" class="ml-7">
-                <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src="https://habbofont.net/font/habbo_new_big/{{ setting('hotel_name') }}.gif" alt="Hotel logo">
+                <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
             </a>
 
             <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">

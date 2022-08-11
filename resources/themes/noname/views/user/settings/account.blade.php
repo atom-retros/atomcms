@@ -12,27 +12,45 @@
                 @csrf
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="email">{{ __('E-mail') }}</label>
-                    <input id="email" name="mail" type="email" value="{{ $user->mail }}" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>Make sure to use an email that you remember, if you ever lose your password, your email will be required.</small>
+                    <x-form.label for="mail">
+                        {{ __('E-mail') }}
+
+                        <x-slot:info>
+                            Make sure to use an email that you remember, if you ever lose your password, your email will be required.
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="mail" type="email" value="{{ $user->mail }}" :autofocus="true" />
                 </div>
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="username">{{ __('Username') }}</label>
-                    <input id="username" name="username" type="text" value="{{ $user->username }}" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>Your username is what you and others will see in-game.</small>
+                    <x-form.label for="username">
+                        {{ __('Username') }}
+
+                        <x-slot:info>
+                            {{ __('Your username is what you and others will see in-game.') }}
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="username" value="{{ $user->username }}" />
                 </div>
 
                 <div class="flex flex-col gap-y-1">
-                    <label for="motto">{{ __('Motto') }}</label>
-                    <input id="motto" name="motto" type="text" value="{{ $user->motto }}" class="w-full rounded border border-gray-300" required autofocus>
-                    <small>Spice up your profile with a nice motto.</small>
+                    <x-form.label for="motto">
+                        {{ __('Motto') }}
+
+                        <x-slot:info>
+                            {{ __('Spice up your profile with a nice motto.') }}
+                        </x-slot:info>
+                    </x-form.label>
+
+                    <x-form.input name="motto" value="{{ $user->motto }}" />
                 </div>
 
                 <div class="w-full flex justify-start md:justify-end">
-                    <button type="submit" class="w-full lg:w-1/6 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white">
+                    <x-form.primary-button classes="lg:w-1/6">
                         {{ __('Update settings') }}
-                    </button>
+                    </x-form.primary-button>
                 </div>
             </form>
         </div>

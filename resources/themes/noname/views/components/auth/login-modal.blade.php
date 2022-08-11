@@ -19,26 +19,24 @@
                     @csrf
 
                     <div>
-                        <label class="block font-bold text-gray-700">
+                        <x-form.label for="username">
                             {{ __('Username') }}
-                        </label>
+                        </x-form.label>
 
-                        <input id="username" type="text" class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full @error('name')  border-red-500 @enderror"
-                               name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                        <x-form.input name="username" :autofocus="true" />
                     </div>
 
                     <div>
-                        <label for="password" class="block font-bold text-gray-700">
+                        <x-form.label for="password">
                             {{ __('Password') }}
-                        </label>
+                        </x-form.label>
 
-                        <input id="password" type="password" class="focus:ring-0 border-4 border-gray-200 rounded-md focus:border-[#eeb425] w-full @error('name')  border-red-500 @enderror"
-                               name="password" required>
+                        <x-form.input name="password" type="password" />
                     </div>
 
-                    <button type="submit" class="mt-2 w-full rounded-md bg-[#eeb425] text-white p-2 transition ease-in-out duration-200 hover:scale-[102%] font-bold">
+                    <x-form.primary-button>
                         {{ __('Login') }}
-                    </button>
+                    </x-form.primary-button>
 
                     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                         Not registered? <a href="{{ route('register') }}" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
