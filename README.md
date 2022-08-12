@@ -1,9 +1,9 @@
 <div align="center">
-<img src="https://habbofont.net/font/habbo_new_big/no+name+cms.gif" alt="No name cms"/>
+<img src="https://i.imgur.com/9ePNdJ4.png" alt="Atom CMS"/>
 </div>
 
-## What is No Name CMS?
-No Name CMS is a Habbo retro CMS, aiming to provide an easy and solid experience for you and your users. It offers an easy development experience and includes a theming system, making it a breeze to create your own [themes](https://github.com/qirolab/laravel-themer).
+## What is Atom CMS?
+Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience for you and your users. It offers an easy development experience and includes a theming system, making it a breeze to create your own [themes](https://github.com/qirolab/laravel-themer).
 
 **What technologies is being used?**
 - Laravel 9.x (Latest as of August 2022)
@@ -21,13 +21,13 @@ If you are new to Laravel, then theres luckily tons of resources online to help 
 - https://laracasts.com/series/laravel-8-from-scratch
 - https://laracasts.com/series/whats-new-in-laravel-9
 
-## Why was No Name CMS made?
-No Name CMS was made to bring the retro community a variation to the CMS options out there. With its built in theme system, it becomes a brezee to brew up a new layout in no time, leaving room to either customise your hotel further, or simply contribute to the community by bringing new and exciting theme.
+## Why was Atom CMS made?
+Atom CMS was made to bring the retro community a variation to the CMS options out there. With its built in theme system, it becomes a brezee to brew up a new layout in no time, leaving room to either customise your hotel further, or simply contribute to the community by bringing new and exciting theme.
 
-Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with No Name CMS!
+Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
 
 ## Setup guide
-To install No Name CMS you'll need to do the following:
+To install Atom CMS you'll need to do the following:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
@@ -38,11 +38,12 @@ After all of the above has been installed you've to do the following:
 
 #### Windows
 ```
-git clone https://github.com/ObjectRetros/nonamecms.git
-cd nonamecms
+[Https] git clone https://github.com/ObjectRetros/atomcms.git
+[SSH - Recommended] git clone git@github.com:ObjectRetros/atomcms.git
+cd atomcms
 copy .env.example .env
 composer install 
-npm install && npm run dev [theme-name] (eg. npm run dev:noname)
+npm install && npm run dev [theme-name] (eg. npm run dev:atom)
 php artisan key:generate
 php artisan migrate --seed
 ```
@@ -51,16 +52,17 @@ For IIS - You must link your site to the public folder of the CMS
 
 #### Linux
 ```
-git clone https://github.com/ObjectRetros/nonamecms.git
-cd nonamecms
+[Https] git clone https://github.com/ObjectRetros/atomcms.git
+[SSH - Recommended] git clone git@github.com:ObjectRetros/atomcms.git
+cd atomcms
 cp .env.example .env
 composer install
-npm install && npm run dev [theme-name] (eg. npm run dev:noname)
+npm install && npm run dev [theme-name] (eg. npm run dev:atom)
 php artisan key:generate
 php artisan migrate --seed
 ```
 
-For NGINX you can copy & paste the config from here: [Deploy a site on nginx](https://laravel.com/docs/9.x/deployment#nginx)
+For NGINX you can copy the config from here: [Deploy a site on nginx](https://laravel.com/docs/9.x/deployment#nginx)
 
 ## Change theme
 To change the CMS theme, simply head to website_settings and change the value of the "theme" to the name you gave your new theme upon initialising it.
