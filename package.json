@@ -3,10 +3,10 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "dev:noname": "vite --config resources/themes/noname/vite.config.js",
-        "build:noname": "vite build --config resources/themes/noname/vite.config.js",
-        "dev:noname-bootstrap": "vite --config resources/themes/noname-bootstrap/vite.config.js",
-        "build:noname-bootstrap": "vite build --config resources/themes/noname-bootstrap/vite.config.js"
+        "dev:atom": "vite --config resources/themes/atom/vite.config.js",
+        "build:atom": "vite build --config resources/themes/atom/vite.config.js",
+        "dev:atom-bs": "vite --config resources/themes/atom-bs/vite.config.js",
+        "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

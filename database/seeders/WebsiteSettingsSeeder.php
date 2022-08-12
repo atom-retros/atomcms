@@ -12,7 +12,7 @@ class WebsiteSettingsSeeder extends Seeder
         $settings = [
             [
                 'key' => 'theme',
-                'value' => 'noname',
+                'value' => 'atom',
                 'comment' => 'Specifies the theme of the CMS',
             ],
             [
