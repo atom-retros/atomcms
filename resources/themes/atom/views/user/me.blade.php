@@ -13,11 +13,11 @@
                 </a>
             </div>
 
-            <div>
+            <a href="{{ route('nitro-client') }}">
                 <button class="text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
                     {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
                 </button>
-            </div>
+            </a>
         </div>
 
         <div class="grid grid-cols-4 gap-3">

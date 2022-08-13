@@ -7,9 +7,11 @@
                 <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
             </a>
 
-            <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
-                {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
-            </button>
+            <a href="{{ route('nitro-client') }}">
+                <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
+                    {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
+                </button>
+            </a>
         </div>
     @endauth
 
