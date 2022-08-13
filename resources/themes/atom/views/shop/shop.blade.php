@@ -24,7 +24,7 @@
 
 
                 <p>
-                    <span class="font-bold">{{ __('Why are donations important?') }}</span><br>
+                    <span class="font-semibold">{{ __('Why are donations important?') }}</span><br>
                     {{ __('Donations are important, as it will help to pay our monthly bills needed to keep the hotel up & running, as well as adding new and exciting features for you and others to enjoy!') }}
                 </p>
 

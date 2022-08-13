@@ -14,7 +14,7 @@
             </div>
 
             <a href="{{ route('nitro-client') }}">
-                <button class="text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
+                <button class="text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                     {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
                 </button>
             </a>
@@ -64,7 +64,7 @@
                     {{ __('Referral new users and be rewarded by in-game goods') }}
                 </x-slot:under-title>
 
-                <div class="px-2 rounded-lg">
+                <div class="px-2 text-sm">
                     {{ __('Here at :hotel we have added a referral system, allowing you to obtain a bonus for every :needed users that registers through your referral link will allow you to claim a reward of :amount diamonds!', ['hotel' => setting('hotel_name'), 'needed' => setting('referrals_needed'), 'amount' => setting('referral_reward_amount')]) }}
                     <br>
 

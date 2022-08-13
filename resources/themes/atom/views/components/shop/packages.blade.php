@@ -9,7 +9,7 @@
         </x-slot:under-title>
 
         <div class="flex flex-col">
-            <p class="font-bold">{{ __('You will receive:') }}</p>
+            <p class="font-semibold">{{ __('You will receive:') }}</p>
 
             <ul class="pl-4 list-disc">
                 <li class="ml-3">Bronze VIP badge</li>
@@ -34,7 +34,7 @@
         </x-slot:under-title>
 
         <div class="flex flex-col">
-            <p class="font-bold">{{ __('You will receive:') }}</p>
+            <p class="font-semibold">{{ __('You will receive:') }}</p>
 
             <ul class="pl-4 list-disc">
                 <li class="ml-3">Everything from Bronze VIP</li>
@@ -60,7 +60,7 @@
         </x-slot:under-title>
 
         <div class="flex flex-col">
-            <p class="font-bold">{{ __('You will receive:') }}</p>
+            <p class="font-semibold">{{ __('You will receive:') }}</p>
 
             <ul class="pl-4 list-disc">
                 <li class="ml-3">Everything from Silver VIP</li>

@@ -1,7 +1,7 @@
 @props(['user'])
 
 <div class="rounded-lg h-24 bg-white border w-full overflow-hidden relative md:mt-0">
-    <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-bold">
+    <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold">
         {{ $user->permission->rank_name }}
     </div>
 
@@ -13,12 +13,12 @@
         </a>
     </div>
 
-    <p class="text-2xl font-bold ml-[70px] text-white -mt-[35px]">
+    <p class="text-2xl font-semibold ml-[70px] text-white -mt-[35px]">
         {{ $user->username }}
     </p>
 
     <div class="w-full flex justify-between px-4 items-center">
-        <p class="ml-[57px] text-sm mt-[10px] font-bold text-gray-500">
+        <p class="ml-[57px] text-sm mt-[10px] font-semibold text-gray-500">
             {{ $user->motto }}
         </p>
 

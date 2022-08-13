@@ -1,5 +1,5 @@
 <div class="hidden relative w-full h-full flex flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
-    {{-- md:justify-between gap-x-8 uppercase font-bold text-[14px] mt-5 --}}
+    {{-- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
         <a href="{{ auth()->check() ? route('me.show') : route('welcome') }}"
            class="nav-item {{ request()->is('user*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
                 {{ __('Home') }}
@@ -14,7 +14,7 @@
                 <x-icons.chevron-down />
         </button>
 
-        <div id="community-dropdown" class="py-2 hidden z-10 w-44 font-normal bg-white shadow block">
+        <div id="community-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white shadow block">
             <a href="{{ route('article.index') }}" class="dropdown-item">
                 {{ __('Articles') }}
             </a>

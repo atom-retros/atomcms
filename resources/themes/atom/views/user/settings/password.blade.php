@@ -16,7 +16,7 @@
                         {{ __('Current password') }}
 
                         <x-slot:info>
-                            {{ __('Enter your current password.') }}
+                            {{ __('Enter your current password') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -28,7 +28,7 @@
                         {{ __('New password') }}
 
                         <x-slot:info>
-                            {{ __('Enter a new secure password. Do not forget to save it somewhere safe.') }}
+                            {{ __('Enter a new secure password. Do not forget to save it somewhere safe') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -40,7 +40,7 @@
                         {{ __('Confirm new password') }}
 
                         <x-slot:info>
-                            {{ __('Please confirm your new password.') }}
+                            {{ __('Please confirm your new password') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="w-full flex justify-start md:justify-end">
-                    <x-form.secondary-button classes="lg:w-1/6">
+                    <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update password') }}
                     </x-form.secondary-button>
                 </div>

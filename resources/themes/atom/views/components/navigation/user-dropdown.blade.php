@@ -16,14 +16,14 @@
 
 <!-- Dropdown menu -->
 <div id="dropdownNavbarUser" class="py-2 hidden z-10 w-44 bg-white shadow block">
-    <a href="{{ route('settings.account.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-bold">
+    <a href="{{ route('settings.account.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-semibold">
         {{ __('User settings') }}
     </a>
 
     @auth
         <a
             href="{{ route('logout') }}"
-            class="block py-2 px-4 hover:bg-gray-100 font-bold"
+            class="block py-2 px-4 hover:bg-gray-100 font-semibold"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             {{ __('Logout') }}

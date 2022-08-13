@@ -8,7 +8,7 @@
             </a>
 
             <a href="{{ route('nitro-client') }}">
-                <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-bold">
+                <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                     {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
                 </button>
             </a>
@@ -16,7 +16,7 @@
     @endauth
 
     @guest
-        <div class="text-white relative font-bold flex-col w-[600px]">
+        <div class="text-white relative font-semibold flex-col w-[600px]">
             <p class="text-center text-xl">
                 {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
             </p>

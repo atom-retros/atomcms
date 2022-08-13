@@ -7,7 +7,7 @@
 
                     <div class="flex flex-col">
                         <h3 class="text-xl font-semibold">{{ __('My name is,') }}</h3>
-                        <h2 class="text-4xl font-bold">
+                        <h2 class="text-4xl">
                             {{ $user->username }}
                         </h2>
 
@@ -19,7 +19,7 @@
                     <div class="rounded-lg md:rounded-none md:rounded-l-lg bg-[#f8ef2b] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
                         <img src="{{ asset('/assets/images/profile/credits.png') }}" alt="">
 
-                        <h4 class="text-[#b16d18] font-bold text-2xl">
+                        <h4 class="text-[#b16d18] font-semibold text-2xl">
                             {{ $user->credits }}
                         </h4>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="rounded-lg md:rounded-none bg-[#e99bdc] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
                         <img src="{{ asset('/assets/images/profile/duckets.png') }}" alt="">
 
-                        <h4 class="text-[#812378] font-bold text-2xl">
+                        <h4 class="text-[#812378] font-semibold text-2xl">
                             {{ $user->currency('duckets') }}
                         </h4>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="rounded-lg md:rounded-none md:rounded-r-lg bg-[#82d6db] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
                         <img src="{{ asset('/assets/images/profile/diamonds.png') }}" alt="">
 
-                        <h4 class="text-[#146867] font-bold text-2xl">
+                        <h4 class="text-[#146867] font-semibold text-2xl">
                             {{ $user->currency('diamonds') }}
                         </h4>
                     </div>
@@ -50,7 +50,7 @@
                         </x-slot:image>
 
                         <x-slot:title>
-                            Badges
+                            {{ __('Badges') }}
                         </x-slot:title>
 
                        <div class="flex justify-between">
@@ -60,7 +60,7 @@
                                </div>
                            @empty
                                <div class="col-span-4">
-                                   It seems like {{ $user->username }} has no badges.
+                                   {{ __('It seems like :user has no badges.', ['user' => $user->username]) }}
                                </div>
                            @endforelse
                        </div>
@@ -84,7 +84,8 @@
                                 </div>
                             @empty
                                 <div class="w-full">
-                                    It seems like {{ $user->username }} is not a member of any groups.
+                                    {{ __('It seems like :user is not a member of any groups.', ['user' => $user->username]) }}
+
                                 </div>
                             @endforelse
                         </div>
@@ -109,7 +110,7 @@
                                     <div class="h-full  bg-[#C3C3C3] rounded-md border border-gray-500 relative flex items-center justify-center flex-col">
                                         <img src="{{ config('habbo.site.swf_path') }}/c_images/camera/thumbnail/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
 
-                                        <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-bold rounded flex gap-x-[3px] text-white items-center text-xs">
+                                        <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-semibold rounded flex gap-x-[3px] text-white items-center text-xs">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                             </svg>
@@ -128,7 +129,7 @@
                                 </div>
                             @empty
                                 <div class="col-span-4">
-                                    It seems like {{ $user->username }} got no rooms.
+                                    {{ __('It seems like :user got no rooms.', ['user' => $user->username]) }}
                                 </div>
                             @endforelse
                         </div>
@@ -142,7 +143,7 @@
                         </x-slot:image>
 
                         <x-slot:title>
-                            Friends
+                            {{ __('Friends') }}
                         </x-slot:title>
 
                         <div class="grid grid-cols-4 xl:grid-cols-6 gap-2 xl:pl-3">
@@ -152,7 +153,7 @@
                                 </a>
                             @empty
                                 <div class="col-span-6">
-                                    It seems like {{ $user->username }} has no friends.
+                                    {{ __('It seems like :user has no friends.', ['user' => $user->username]) }}
                                 </div>
                             @endforelse
                         </div>

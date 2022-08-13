@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // Rules routes
-    Route::view('/rules', 'rules')->name('rules.index');
+    Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
 
     //Shop routes
     Route::get('/shop', ShopController::class)->name('shop.index');

@@ -16,7 +16,7 @@
                         {{ __('E-mail') }}
 
                         <x-slot:info>
-                            Make sure to use an email that you remember, if you ever lose your password, your email will be required.
+                            {{ __('Make sure to use an email that you remember, if you ever lose your password, your email will be required.') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -28,7 +28,7 @@
                         {{ __('Username') }}
 
                         <x-slot:info>
-                            {{ __('Your username is what you and others will see in-game.') }}
+                            {{ __('Your username is what you and others will see in-game') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -40,7 +40,7 @@
                         {{ __('Motto') }}
 
                         <x-slot:info>
-                            {{ __('Spice up your profile with a nice motto.') }}
+                            {{ __('Spice up your profile with a nice motto') }}
                         </x-slot:info>
                     </x-form.label>
 
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="w-full flex justify-start md:justify-end">
-                    <x-form.secondary-button classes="lg:w-1/6">
+                    <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update settings') }}
                     </x-form.secondary-button>
                 </div>

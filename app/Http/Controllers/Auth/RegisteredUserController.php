@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
             'credits' => setting('start_credits'),
             'ip_register' => $request->ip(),
             'ip_current' => $request->ip(),
+            'auth_ticket' => '',
         ]));
 
         $user->update([

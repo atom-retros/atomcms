@@ -2,7 +2,7 @@
     <div class="col-span-12">
         <div class="flex flex-col gap-y-4">
             @foreach($employees as $employee)
-                <h2 class="font-bold text-xl border-b mt-2">
+                <h2 class="font-semibold text-xl border-b mt-2">
                     {{ $employee->rank_name }}
                 </h2>
 
@@ -13,7 +13,7 @@
                 </div>
 
                 @if(count($employee->users) === 0)
-                    <span class="font-bold text-center">We currently have no staff in this position</span>
+                    <span class="font-semibold text-center">{{ __('We currently have no staff in this position') }}</span>
                 @endif
             @endforeach
         </div>

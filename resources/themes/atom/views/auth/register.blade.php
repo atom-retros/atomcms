@@ -2,7 +2,7 @@
     <div class="col-span-12">
         <div class="w-full flex justify-between lg:px-[150px]">
             <div class="w-full lg:w-[420px] flex flex-col gap-y-8">
-                <h2 class="text-2xl font-bold uppercase">
+                <h2 class="text-2xl font-semibold uppercase">
                     {{ __('Create a free account today!') }}
                 </h2>
 
@@ -57,32 +57,42 @@
                         <!-- Confirm Password -->
                         <div>
                             <x-form.label for="password_confirmation">
-                                {{ __('Repeat Passwords') }}
+                                {{ __('Repeat Password') }}
                             </x-form.label>
 
                             <x-form.input name="password_confirmation" type="password" />
                         </div>
                     </div>
 
-                    <div class="mt-4 bg-[#efefef] rounded-md p-3 flex gap-x-3">
-                        <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">
+                    <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-1">
+                        <div class="flex gap-x-3 items-center">
+                            <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">
 
-                        <label for="terms" class="font-semibold text-gray-700">
-                            {{ __('I accept the terms of service, privacy policy and cookie policy.') }}
-                        </label>
+                            <a href="{{ route('rules.index') }}" target="_blank" class="text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline">
+                                {{ __('I accept the :hotel terms & rules.', ['hotel' => setting('hotel_name')]) }}
+                            </a>
+                        </div>
+
+                        @error('terms')
+                        <p class="mt-1 text-xs italic text-red-500">
+                            {{ $message }}
+                        </p>
+                        @enderror
                     </div>
 
                     {{-- Used to determine the refer --}}
                     <input type="hidden" name="referral_code" value="{{ $referral_code }}">
 
-                    <x-form.primary-button>
-                        {{ __('Create account') }}
-                    </x-form.primary-button>
+                    <div class="mt-4">
+                        <x-form.primary-button>
+                            {{ __('Create account') }}
+                        </x-form.primary-button>
+                    </div>
                 </form>
             </div>
 
             <div class="hidden lg:block">
-                <img src="https://forcehotel.co.uk/templates/mezz/assets/images/registration/background.png" alt="">
+                <img src="{{ asset('/assets/images/background.png') }}" alt="">
             </div>
         </div>
     </div>

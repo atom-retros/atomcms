@@ -1,7 +1,7 @@
 @props(['for', 'info' => ''])
 
 <div class="mb-2">
-    <label class="block font-bold text-gray-700" for="{{ $for }}">
+    <label class="block font-semibold text-gray-700" for="{{ $for }}">
         {{ $slot }}
     </label>
 

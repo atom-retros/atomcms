@@ -8,9 +8,12 @@
             </button>
 
             <div class="py-6 px-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                    {{ __('Login to :hotel', ['hotel' => setting('hotel_name')]) }}
-                </h3>
+                <div class="flex flex-col items-center mb-2">
+                    <h2 class="font-semibold text-2xl">{{ __('Hello!') }}</h2>
+                    <p>
+                        {{ __('There is currently :online users online', ['online' => DB::table('users')->where('online', '1')->count()]) }}
+                    </p>
+                </div>
 
                 <!-- Validation Errors -->
                 <x-messages.flash-messages />
@@ -38,8 +41,10 @@
                         {{ __('Login') }}
                     </x-form.primary-button>
 
-                    <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                        Not registered? <a href="{{ route('register') }}" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+                    <div class="text-center font-semibold text-gray-700 text-sm">
+                        <a href="{{ route('register') }}" class="hover:underline">
+                            {{ __('Dont have an account? Join now!') }}
+                        </a>
                     </div>
                 </form>
             </div>

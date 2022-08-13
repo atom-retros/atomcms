@@ -4,7 +4,7 @@
             @forelse($articles as $article)
                 <x-article-card :article="$article"/>
             @empty
-                <h2 class="text-2xl font-bold">{{ __('There is currently no articles') }}</h2>
+                <h2 class="text-2xl font-semibold">{{ __('There is currently no articles') }}</h2>
             @endforelse
         </div>
 

@@ -5,7 +5,7 @@
         {{ $icon }}
     </div>
 
-    <div class="p-2 rounded-lg rounded-l-none {{ $primaryColor }} w-2/3 font-bold flex justify-center items-center">
+    <div class="p-2 rounded-lg rounded-l-none {{ $primaryColor }} w-2/3 font-semibold flex justify-center items-center">
         {{ $slot }}
     </div>
 </div>
