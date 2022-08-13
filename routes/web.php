@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\ProfileController;
@@ -11,19 +12,12 @@ use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
-use App\Models\CameraWeb;
-use App\Models\WebsiteArticle;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', function () {
-        return view('index', [
-            'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get(),
-            'photos' => CameraWeb::query()->latest('id')->take(8)->with('user:id,username,look')->get(),
-        ]);
-    })->name('welcome');
+    Route::get('/', HomeController::class)->name('welcome');
 
     Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');
 });
