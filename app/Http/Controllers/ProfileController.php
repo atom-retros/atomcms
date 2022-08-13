@@ -27,7 +27,6 @@ class ProfileController extends Controller
                 ->get();
         }]);
 
-
         $friends = MessengerFriendship::query()
             ->select('user_two_id')
             ->where('user_one_id', '=', $user->id)

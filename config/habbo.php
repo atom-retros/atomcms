@@ -17,6 +17,6 @@ return [
     ],
 
     'site' => [
-        'swf_folder' => 'https://open.habstar.net/client/flash',
+        'swf_folder' => '/client/flash/swfs',
     ]
 ];
