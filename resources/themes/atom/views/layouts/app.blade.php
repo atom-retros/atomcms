@@ -56,9 +56,8 @@
             </main>
         </div>
 
-        <footer class="w-full h-14 bg-gray-100 mt-auto flex justify-between text-gray-400 items-center px-8 text-sm">
-            <div class="font-semibold">&copy {{ date('Y') }} - {{ __(':hotel is a not for profit educational project', ['hotel' => setting('hotel_name')]) }}</div>
-            <div></div>
+        <footer class="w-full h-14 bg-gray-100 mt-auto flex flex-col justify-center md:flex-row md:justify-between text-gray-400 items-center md:px-8 text-sm">
+            <div class="md:font-semibold text-[12px] md:text-[14px]">&copy {{ date('Y') }} - {{ __(':hotel is a not for profit educational project', ['hotel' => setting('hotel_name')]) }}</div>
             <div class="flex gap-x-1">
                 {{ __('Made with') }}
 
