@@ -5,6 +5,9 @@
 ## What is Atom CMS?
 Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience for you and your users. It offers an easy development experience and includes a theming system, making it a breeze to create your own [themes](https://github.com/qirolab/laravel-themer).
 
+**Official Discord server**
+[https://discord.gg/rX3aShUHdg](https://discord.gg/rX3aShUHdg)
+
 **What technologies is being used?**
 - Laravel 9.x (Latest as of August 2022)
   [Laravel docs](https://laravel.com/docs/9.x).
