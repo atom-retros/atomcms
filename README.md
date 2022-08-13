@@ -81,3 +81,8 @@ Once the command has been executed, you'll be promted with easy to follow scaffo
 
 
 *All credits for the theme system goes to [qirolab](https://github.com/qirolab/laravel-themer)*
+
+### Link nitro
+To link your nitro client to the CMS is super easy. All you have to do is to edit the ``nitro_path`` in the ``habbo.php`` file which can be found inside the ``config`` folder.
+
+Eg. Let's say your index.html is located in the public/client folder then your nitro_path must be /client as the CMS will automatically look inside the public folder for it.
