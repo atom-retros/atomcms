@@ -66,6 +66,21 @@ class User extends Authenticatable
         return $this->hasMany(ClaimedReferralLog::class);
     }
 
+    public function badge(): HasMany
+    {
+        return $this->hasMany(UserBadge::class);
+    }
+
+    public function room(): HasMany
+    {
+        return $this->hasMany(Room::class);
+    }
+
+    public function friends(): HasMany
+    {
+        return $this->hasMany(UserFriend::class);
+    }
+
     public function referralsNeeded()
     {
         $referrals = 0;

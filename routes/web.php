@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
@@ -36,6 +37,9 @@ Route::middleware('auth')->group(function () {
             Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
         });
     });
+
+    // Profiles
+    Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
 
     // Community routes
     Route::prefix('community')->group(function () {
