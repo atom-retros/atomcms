@@ -100,11 +100,6 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/ms-swf/c_images/Badgeparts/generated',
                 'comment' => 'The path that contains all the generated group badges',
             ],
-            [
-                'key' => 'camera_picture_path',
-                'value' => '/ms-swf/camera',
-                'comment' => 'The path that contains all the published photos',
-            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);
