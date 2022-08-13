@@ -1,4 +1,9 @@
 <x-app-layout>
+    @push('title', __('Create account'))
+
+    <!-- Validation Errors -->
+    <x-messages.flash-messages />
+
     <div class="col-span-12">
         <div class="w-full flex justify-between lg:px-[150px]">
             <div class="w-full lg:w-[420px] flex flex-col gap-y-8">

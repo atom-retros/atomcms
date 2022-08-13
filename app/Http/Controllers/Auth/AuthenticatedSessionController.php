@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\CameraWeb;
 use App\Models\WebsiteArticle;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('index', [
             'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get(),
+            'photos' => CameraWeb::query()->latest('id')->take(8)->with('user:id,username,look')->get(),
         ]);
     }
 

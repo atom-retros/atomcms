@@ -1,6 +1,9 @@
 <x-app-layout>
     @push('title', __('Welcome to the best hotel on the web!'))
-    
+
+    <!-- Validation Errors -->
+    <x-messages.flash-messages />
+
     <div class="space-y-14 col-span-12">
         <div class="col-span-12">
             <x-content-section icon="hotel-icon">

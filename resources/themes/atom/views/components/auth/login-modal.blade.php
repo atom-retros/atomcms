@@ -15,9 +15,6 @@
                     </p>
                 </div>
 
-                <!-- Validation Errors -->
-                <x-messages.flash-messages />
-
                 <form class="flex flex-col gap-y-3" action="{{ route('login') }}" method="POST">
                     @csrf
 

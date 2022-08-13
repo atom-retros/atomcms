@@ -1,19 +1,44 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+</script>
+
 @if(session()->has('message'))
-    <div class="w-full p-2 text-center bg-red-600 text-white rounded mb-3">
-        {{ session()->get('message') }}
-    </div>
+    <script>
+        Toast.fire({
+            icon: 'error',
+            title: '{{ session()->get('message') }}'
+        })
+    </script>
 @endif
 
 @if ($errors->any())
-    <div class="w-full p-2 bg-red-600 text-white rounded mb-3 text-center">
-        @foreach ($errors->all() as $error)
-            {{ $error }}<br>
-        @endforeach
-    </div>
+    @foreach ($errors->all() as $error)
+        <script>
+            Toast.fire({
+                icon: 'error',
+                title: '{{ $error }}'
+            })
+        </script>
+    @endforeach
 @endif
 
 @if(session()->has('success'))
-    <div class="w-full p-2 text-center bg-green-600 text-white rounded mb-3">
-        {{ session()->get('success') }}
-    </div>
+    <script>
+        Toast.fire({
+            icon: 'success',
+            title: '{{ session()->get('success') }}'
+        })
+    </script>
 @endif
