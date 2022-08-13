@@ -15,4 +15,8 @@ return [
     'client' => [
         'nitro_path' => '/client/html5/nitro-client' // Path where the index.html is
     ],
+
+    'site' => [
+        'swf_folder' => 'https://open.habstar.net/client/flash',
+    ]
 ];

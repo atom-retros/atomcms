@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserFriend extends Model
+class MessengerFriendship extends Model
 {
-    protected $table = 'messenger_friendships';
-    protected $primaryKey = 'user_two_id';
-
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'user_two_id', 'id');
     }
 }

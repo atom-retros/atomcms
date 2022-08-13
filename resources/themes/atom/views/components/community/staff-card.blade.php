@@ -8,8 +8,8 @@
     <div class="h-[65%] w-full staff-bg"></div>
 
     <div class="absolute top-4 drop-shadow left-1">
-        <a href="#">
-            <img class="transition ease-in-out duration-300 hover:scale-110" src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav" alt="">
+        <a href="{{ route('profile.show', $user->username) }}">
+            <img style="image-rendering: pixelated;" class="transition ease-in-out duration-300 hover:scale-105" src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav" alt="">
         </a>
     </div>
 

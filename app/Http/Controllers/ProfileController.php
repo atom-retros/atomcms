@@ -2,24 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guild;
+use App\Models\GuildMember;
 use App\Models\User;
 use App\Models\UserBadge;
-use App\Models\UserFriend;
+use App\Models\MessengerFriendship;
 use App\Models\Room;
 
 class ProfileController extends Controller
 {
     public function __invoke(User $user)
     {
-        $badges = UserBadge::select('badge_code')->where('user_id', $user->id)->where('slot_id', '>', '0')->orderBy('slot_id')->limit(5)->get();
-        $rooms = Room::select('id', 'name', 'users')->where('owner_id', $user->id)->orderByDesc('users')->orderBy('id')->limit(4)->get();
-        $friends = UserFriend::select('username', 'look')->join('users', 'messenger_friendships.user_two_id', '=', 'users.id')->where('user_two_id', $user->id)->orderByDesc('relation')->limit(8)->get();
+        $user = $user->load(['badges' => function ($badges) {
+            $badges->where('slot_id', '>', '0')
+                ->orderBy('slot_id')
+                ->take(5)
+                ->get();
+        },
+        'rooms' => function ($rooms) {
+            $rooms->select('id', 'owner_id', 'name', 'users')
+                ->orderByDesc('users')
+                ->orderBy('id')
+                ->take(4)
+                ->get();
+        }]);
+
+
+        $friends = MessengerFriendship::query()
+            ->select('user_two_id')
+            ->where('user_one_id', '=', $user->id)
+            ->whereHas('user')
+            ->take(12)
+            ->inRandomOrder()
+            ->with('user:id,username,look')
+            ->get();
+
+        $groups = GuildMember::query()
+            ->select(['guilds_members.id', 'guilds_members.guild_id', 'guilds_members.user_id', 'guilds.name', 'guilds.badge'])
+            ->where('guilds_members.user_id', '=', $user->id)
+            ->join('guilds', 'guilds_members.guild_id', '=', 'guilds.id')
+            ->take(6)
+            ->inRandomOrder()
+            ->get();
 
         return view('user.profile', [
             'user' => $user,
-            'badges' => $badges,
-            'rooms' => $rooms,
             'friends' => $friends,
+            'groups' => $groups,
         ]);
     }
 }
