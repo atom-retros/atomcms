@@ -13,10 +13,10 @@ return [
     ],
 
     'client' => [
-        'nitro_path' => '/client/html5/nitro-client' // Path where the index.html is
+        'nitro_path' => env('NITRO_CLIENT_PATH', '/client/html5/nitro-client') // Path where the index.html is
     ],
 
     'site' => [
-        'swf_folder' => '/client/flash/swfs',
+        'swf_path' => env('SWF_PATH', '/client/flash/swfs'),
     ]
 ];

@@ -50,7 +50,7 @@
 
             {{-- Content --}}
             <main class="overflow-hidden bg-white">
-                <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8">
+                <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8 mt-10 md:mt-0">
                     {{ $slot }}
                 </div>
             </main>

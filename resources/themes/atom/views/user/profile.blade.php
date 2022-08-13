@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="col-span-12">
         <div class="grid grid-cols-1 gap-y-14">
-            <div class="grid grid-cols-3 gap-x-8 mt-10 lg:mt-0">
+            <div class="grid grid-cols-3 gap-x-8">
                 <div class="col-span-3 md:col-span-1 h-[150px] lg:h-[220px] profile-bg rounded-lg relative flex gap-x-2 items-center text-white overflow-hidden">
                     <img class="drop-shadow mt-14 lg:mt-0" style="image-rendering: pixelated;" src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="">
 
@@ -56,7 +56,7 @@
                        <div class="flex justify-between">
                            @forelse($user->badges as $badge)
                                <div data-tippy-content="{{ $badge->badge_code }}" class="user-badge h-[70px] w-[70px] border-2 rounded-full flex items-center justify-center cursor-pointer">
-                                   <img  src="{{ config('habbo.site.swf_folder') }}/c_images/album1584/{{ $badge->badge_code }}.gif" class="max-h-[55px] max-w-[55px]" alt="">
+                                   <img  src="{{ config('habbo.site.swf_path') }}/c_images/album1584/{{ $badge->badge_code }}.gif" class="max-h-[55px] max-w-[55px]" alt="">
                                </div>
                            @empty
                                <div class="col-span-4">
@@ -107,7 +107,7 @@
                             @forelse($user->rooms as $room)
                                 <div class="flex h-[150px] w-[120px] flex-col gap-y-1 rounded-md bg-gray-200 p-1 overflow-hidden">
                                     <div class="h-full  bg-[#C3C3C3] rounded-md border border-gray-500 relative flex items-center justify-center flex-col">
-                                        <img src="{{ config('habbo.site.swf_folder') }}/c_images/camera/thumbnail/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
+                                        <img src="{{ config('habbo.site.swf_path') }}/c_images/camera/thumbnail/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
 
                                         <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-bold rounded flex gap-x-[3px] text-white items-center text-xs">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20" fill="currentColor">

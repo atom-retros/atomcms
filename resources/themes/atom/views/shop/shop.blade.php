@@ -1,5 +1,6 @@
 <x-app-layout>
     @push('title', __('Shop'))
+
     <div class="col-span-12 md:col-span-9">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
             <x-shop.packages />
@@ -39,4 +40,18 @@
             </x-content-section>
         </div>
     </div>
+
+    <style>
+        .bronze-vip {
+            background: #c5630f url({{ sprintf('%s/c_images/album1584/BVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+        }
+
+        .silver-vip {
+            background: #dddddd url({{ sprintf('%s/c_images/album1584/SVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+        }
+
+        .gold-vip {
+            background: #E4A317FF url({{ sprintf('%s/c_images/album1584/GVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+        }
+    </style>
 </x-app-layout>
