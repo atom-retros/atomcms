@@ -11,6 +11,7 @@ use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
+use App\Models\CameraWeb;
 use App\Models\WebsiteArticle;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,8 @@ Route::get('/language/{locale}', LocaleController::class)->name('language.select
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('index', [
-            'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get()
+            'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get(),
+            'photos' => CameraWeb::query()->latest('id')->take(8)->with('user:id,username,look')->get(),
         ]);
     })->name('welcome');
 
