@@ -8,6 +8,7 @@ use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
 use App\Models\WebsiteArticle;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,10 @@ Route::middleware('auth')->group(function () {
     // Rules routes
     Route::view('/rules', 'rules')->name('rules.index');
 
+    //Shop routes
+    Route::get('/shop', ShopController::class)->name('shop.index');
+
+    // Game route
     Route::prefix('client')->group(function () {
         Route::get('/nitro', NitroController::class)->name('nitro-client');
     });

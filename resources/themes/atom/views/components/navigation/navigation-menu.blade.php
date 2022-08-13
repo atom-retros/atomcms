@@ -24,8 +24,8 @@
             </a>
         </div>
 
-        <a href="#"
-           class="nav-item {{ request()->routeIs('community.index') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+        <a href="{{ route('shop.index') }}"
+           class="nav-item {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
                 {{ __('Shop') }}
         </a>
 
