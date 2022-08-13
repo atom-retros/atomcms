@@ -1,4 +1,6 @@
 <x-app-layout>
+    @push('title', $article->title)
+
     <div class="col-span-12 md:col-span-3 rounded- space-y-3">
         <div class="rounded-lg h-24 bg-white border w-full overflow-hidden relative mt-6 md:mt-0">
             <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold">

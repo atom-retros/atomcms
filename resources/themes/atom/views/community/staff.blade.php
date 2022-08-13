@@ -1,4 +1,6 @@
 <x-app-layout>
+    @push('title', __('Staff'))
+
     <div class="col-span-12">
         <div class="flex flex-col gap-y-4">
             @foreach($employees as $employee)

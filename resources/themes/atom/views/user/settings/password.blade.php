@@ -1,4 +1,6 @@
 <x-app-layout>
+    @push('title', __('Password settings'))
+
     <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
         <x-user.settings.settings-navigation />
     </div>
