@@ -86,3 +86,12 @@ Once the command has been executed, you'll be promted with easy to follow scaffo
 To link your nitro client to the CMS is super easy. All you have to do is to edit the ``nitro_path`` in the ``habbo.php`` file which can be found inside the ``config`` folder.
 
 Eg. Let's say your index.html is located in the public/client folder then your nitro_path must be /client as the CMS will automatically look inside the public folder for it.
+
+### Add a new language for translations
+To add a new language is fairly straight forward. All you have to do is to copy the ``en.json`` inside the ``lang`` folder and name is your language country code eg. "se.json" for Swedish.
+
+Once you've your file prepared, you translate the "values" inside the JSON file. For example:
+
+``"Home": "Home",`` becomes ``"Home": "Hem",``
+
+To add your language to the language selector, all you have to do is to add it inside the ``website_languages`` database table. It will then automatically be appended to the select options.
