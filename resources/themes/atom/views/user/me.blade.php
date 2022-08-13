@@ -8,7 +8,7 @@
     <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
         <div class="rounded-lg me-backdrop relative overflow-hidden flex justify-between px-10 items-center">
             <div>
-                <a href="#" class="absolute left-0 drop-shadow -bottom-12 transition ease-in-out duration-300 hover:scale-105">
+                <a href="{{ route('profile.show', $user) }}" class="absolute left-0 drop-shadow -bottom-12 transition ease-in-out duration-300 hover:scale-105">
                     <img style="image-rendering: pixelated;" src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="">
                 </a>
             </div>

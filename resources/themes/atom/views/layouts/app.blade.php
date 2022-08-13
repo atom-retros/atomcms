@@ -12,6 +12,12 @@
 
         <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
         <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <link
+                rel="stylesheet"
+                href="https://unpkg.com/tippy.js@6/animations/scale.css"
+        />
 
         @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
     </head>
@@ -62,5 +68,7 @@
 
                 By <a href="https://devbest.com/members/object.78351/" target="_blank" class="font-bold underline transition ease-in-out duration-150 hover:scale-105">Object</a></div>
         </footer>
+
+        @stack('javascript')
     </body>
 </html>

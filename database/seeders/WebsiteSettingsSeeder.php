@@ -90,6 +90,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '4',
                 'comment' => 'The minimum rank before being considered a staff member',
             ],
+            [
+                'key' => 'swf_folder',
+                'value' => '/client/flash/swfs',
+                'comment' => 'The path to the SWF folder',
+            ],
+            [
+                'key' => 'group_badge_path',
+                'value' => '/ms-swf/c_images/Badgeparts/generated',
+                'comment' => 'The path that contains all the generated group badges',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);
