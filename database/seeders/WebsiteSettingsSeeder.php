@@ -91,7 +91,7 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'The minimum rank before being considered a staff member',
             ],
             [
-                'key' => 'swf_folder',
+                'key' => 'swf_path',
                 'value' => '/client/flash/swfs',
                 'comment' => 'The path to the SWF folder',
             ],

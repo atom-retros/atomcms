@@ -28,7 +28,7 @@
 
     <x-navigation.user-dropdown>
         <span class="h-10">
-            <img class="w-8 h-12 mt-1" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
+            <img class="w-8 mt-1" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
         </span>
 
         <span>{{ auth()->user()->username }}</span>
