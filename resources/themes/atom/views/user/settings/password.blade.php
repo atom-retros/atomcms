@@ -48,9 +48,9 @@
                 </div>
 
                 <div class="w-full flex justify-start md:justify-end">
-                    <x-form.primary-button classes="lg:w-1/6">
+                    <x-form.secondary-button classes="lg:w-1/6">
                         {{ __('Update password') }}
-                    </x-form.primary-button>
+                    </x-form.secondary-button>
                 </div>
             </form>
         </div>

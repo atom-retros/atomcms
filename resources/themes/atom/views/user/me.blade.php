@@ -75,7 +75,12 @@
                     <div class="grid grid-cols-12 gap-2">
                         <x-form.input classes="col-span-12 md:col-span-10" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
 
-                        <button class="col-span-12 md:col-span-2 bg-green-600 hover:bg-green-700 transition duration-200 ease-in-out py-2 px-2 rounded-md w-full text-white" onclick="copyCode()">{{ __('Copy code') }}</button>
+                        <div class="col-span-12 md:col-span-2 flex" onclick="copyCode()">
+                            <x-form.secondary-button>
+                                {{ __('Copy code') }}
+                            </x-form.secondary-button>
+                        </div>
+
                     </div>
 
                     @if(auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
@@ -83,7 +88,9 @@
                             <button class="mt-2 w-full rounded-md bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
                         </a>
                     @else
-                        <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">{{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}</button>
+                        <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">
+                            {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}
+                        </button>
                     @endif
                 </div>
             </x-content-section>
