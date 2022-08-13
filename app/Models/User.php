@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -74,5 +75,21 @@ class User extends Authenticatable
         }
 
         return setting('referrals_needed') - $referrals;
+    }
+
+    public function ssoTicket(): string
+    {
+        $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
+
+        // Recursive function - Call itself again if the auth ticket already exists
+        if (User::query()->where('auth_ticket', $sso)->exists()) {
+            return $this->ssoTicket();
+        }
+
+        $this->update([
+            'auth_ticket' => $sso
+        ]);
+
+        return $sso;
     }
 }

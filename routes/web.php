@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\StaffController;
@@ -50,6 +51,10 @@ Route::middleware('auth')->group(function () {
 
     // Rules routes
     Route::view('/rules', 'rules')->name('rules.index');
+
+    Route::prefix('client')->group(function () {
+        Route::get('/nitro', NitroController::class)->name('nitro-client');
+    });
 });
 
 // TODO: Replace auth with Laravel Fortify

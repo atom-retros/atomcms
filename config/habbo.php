@@ -11,4 +11,8 @@ return [
         'type' => SOCK_STREAM,
         'protocol' => SOL_TCP,
     ],
+
+    'client' => [
+        'nitro_path' => '/client/html5/nitro-client' // Path where the index.html is
+    ],
 ];

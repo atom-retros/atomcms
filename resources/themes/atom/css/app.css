@@ -73,3 +73,47 @@
     background: rgba(0, 0, 0, 0.5) url('https://beeimg.com/images/y39253331242.png');
     background-blend-mode: multiply;
 }
+
+/* Nitro disconnect overlay */
+#disconnected {
+    display: none;
+}
+
+.disconnect-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    overflow: hidden;
+    z-index: 100;
+}
+
+.disconnect-message {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    z-index: 200;
+    font-family: Ubuntu Condensed, serif;
+}
+
+.reload-button {
+    padding: 10px 20px;
+    background: #50a8d5;
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.reload-button:hover {
+    background: #2f8ebf;
+}
