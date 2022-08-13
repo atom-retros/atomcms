@@ -12,8 +12,8 @@ export default defineConfig({
                 "resources/themes/noname/js/app.js"
             ],
         }),
-        
-        
+
+
         {
             name: "blade",
             handleHotUpdate({ file, server }) {
@@ -29,7 +29,6 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': '/resources/themes/noname/js',
-            
         }
     },
     css: {
