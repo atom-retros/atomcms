@@ -96,7 +96,7 @@
                 </form>
             </div>
 
-            <div class="hidden lg:block">
+            <div class="hidden md:block">
                 <img src="{{ asset('/assets/images/background.png') }}" alt="">
             </div>
         </div>
