@@ -13,6 +13,7 @@ class WebsiteLanguageSeeder extends Seeder
             ['country_code' => 'en', 'language' => 'English'],
             ['country_code' => 'da', 'language' => 'Danish'],
             ['country_code' => 'fi', 'language' => 'Finnish'],
+            ['country_code' => 'de', 'language' => 'German'],
         ];
 
         WebsiteLanguage::query()->upsert($languages, ['country_code', 'language']);
