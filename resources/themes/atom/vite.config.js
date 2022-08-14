@@ -8,8 +8,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/themes/noname/css/app.css",
-                "resources/themes/noname/js/app.js"
+                "resources/themes/atom/css/app.css",
+                "resources/themes/atom/js/app.js"
             ],
         }),
 

@@ -8,8 +8,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/themes/noname-bootstrap/sass/app.scss",
-                "resources/themes/noname-bootstrap/js/app.js"
+                "resources/themes/atom-bs/sass/app.scss",
+                "resources/themes/atom-bs/js/app.js"
             ],
         }),
         
@@ -28,7 +28,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/themes/noname-bootstrap/js',
+            '@': '/resources/themes/atom-bs/js',
             '~bootstrap': path.resolve('node_modules/bootstrap'),
         }
     },
