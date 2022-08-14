@@ -98,3 +98,9 @@ Once you've your file prepared, you translate the "values" inside the JSON file.
 ``"Home": "Home",`` becomes ``"Home": "Hem",``
 
 To add your language to the language selector, all you have to do is to add it inside the ``website_languages`` database table. It will then automatically be appended to the select options.
+
+## Credits
+- **Kasja** - Helping with design, ideas & GFX
+- **Oliver** - Doing the profile page
+- **Kani** - Rcon System
+- **Damue** - German translations
