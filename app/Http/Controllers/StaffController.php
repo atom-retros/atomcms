@@ -12,8 +12,11 @@ class StaffController extends Controller
             'employees' => Permission::query()
                 ->select('id', 'rank_name')
                 ->where('id', '>=', setting('min_staff_rank'))
+                ->where('hidden_rank', false)
                 ->orderByDesc('id')
-                ->with('users')
+                ->with(['users' => function ($query) {
+                    $query->where('hidden_staff', false);
+                }])
                 ->get(),
         ]);
     }
