@@ -104,7 +104,7 @@ html {
 }
 
 .staff-bg {
-    background: rgba(0, 0, 0, 0.5) url('https://beeimg.com/images/y39253331242.png');
+    background: rgba(0, 0, 0, 0.5) url('/public/assets/images/staff-bg.png');
     background-blend-mode: multiply;
 }
 
