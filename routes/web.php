@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NitroController;
@@ -16,49 +17,54 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
-Route::middleware('guest')->group(function () {
-    Route::get('/', HomeController::class)->name('welcome');
+Route::middleware('maintenance')->group(function () {
+    // Maintenance route
+    Route::get('/maintenance', MaintenanceController::class)->name('maintenance.show');
 
-    Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');
-});
+    Route::middleware('guest')->group(function () {
+        Route::get('/', HomeController::class)->name('welcome');
 
-Route::middleware('auth')->group(function () {
-    Route::prefix('user')->group(function () {
-        // User routes
-        Route::get('/me', [MeController::class, 'show'])->name('me.show');
-
-        Route::prefix('settings')->group(function () {
-            Route::get('/account', [AccountSettingsController::class, 'edit'])->name('settings.account.show');
-            Route::put('/account', [AccountSettingsController::class, 'update'])->name('settings.account.update');
-            Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
-            Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
-        });
+        Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');
     });
 
-    // Profiles
-    Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
+    Route::middleware('auth')->group(function () {
+        Route::prefix('user')->group(function () {
+            // User routes
+            Route::get('/me', [MeController::class, 'show'])->name('me.show');
 
-    // Community routes
-    Route::prefix('community')->group(function () {
-        Route::get('/', [MeController::class, 'index'])->name('community.index');
-        Route::get('/claim/referral-reward', ReferralController::class)->name('claim.referral-reward');
-
-        Route::withoutMiddleware('auth')->group(function () {
-            Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
-            Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
-            Route::get('/staff', StaffController::class)->name('staff.index');
+            Route::prefix('settings')->group(function () {
+                Route::get('/account', [AccountSettingsController::class, 'edit'])->name('settings.account.show');
+                Route::put('/account', [AccountSettingsController::class, 'update'])->name('settings.account.update');
+                Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
+                Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
+            });
         });
-    });
 
-    // Rules routes
-    Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
+        // Profiles
+        Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
 
-    //Shop routes
-    Route::get('/shop', ShopController::class)->name('shop.index');
+        // Community routes
+        Route::prefix('community')->group(function () {
+            Route::get('/', [MeController::class, 'index'])->name('community.index');
+            Route::get('/claim/referral-reward', ReferralController::class)->name('claim.referral-reward');
 
-    // Game route
-    Route::prefix('client')->group(function () {
-        Route::get('/nitro', NitroController::class)->name('nitro-client');
+            Route::withoutMiddleware('auth')->group(function () {
+                Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+                Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+                Route::get('/staff', StaffController::class)->name('staff.index');
+            });
+        });
+
+        // Rules routes
+        Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
+
+        //Shop routes
+        Route::get('/shop', ShopController::class)->name('shop.index');
+
+        // Game route
+        Route::prefix('client')->group(function () {
+            Route::get('/nitro', NitroController::class)->name('nitro-client');
+        });
     });
 });
 
