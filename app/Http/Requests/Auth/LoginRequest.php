@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,14 @@ class LoginRequest extends FormRequest
                 'username' => __('auth.failed'),
             ]);
         }
+
+        $user = User::query()->select('rank')->where('username', '=', $this->input('username'))->first();
+        if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
+            throw ValidationException::withMessages([
+                'username' => __('Only staff can login during maintenance!'),
+            ]);
+        }
+
 
         Auth::user()->update([
             'ip_current' => $this->ip(),

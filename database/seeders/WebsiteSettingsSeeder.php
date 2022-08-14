@@ -100,6 +100,21 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/ms-swf/c_images/Badgeparts/generated',
                 'comment' => 'The path that contains all the generated group badges',
             ],
+            [
+                'key' => 'maintenance_enabled',
+                'value' => '0',
+                'comment' => 'Determines if maintenance is enabled or not',
+            ],
+            [
+                'key' => 'min_maintenance_login_rank',
+                'value' => '5',
+                'comment' => 'Determines the minimum rank before being able to login while maintenance is activated',
+            ],
+            [
+                'key' => 'maintenance_message',
+                'value' => 'Atom is currently undergoing maintenance. We will be back shortly!',
+                'comment' => 'The maintenance message displayed to users while maintenance is activated',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);

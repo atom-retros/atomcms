@@ -28,7 +28,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/themes/noname/js',
+            '@': '/resources/themes/atom/js',
         }
     },
     css: {
