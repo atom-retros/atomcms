@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
@@ -54,6 +55,9 @@ Route::middleware('maintenance')->group(function () {
                 Route::get('/staff', StaffController::class)->name('staff.index');
             });
         });
+
+        // Create a leaderboard route with leaderboard controller
+        Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Rules routes
         Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');

@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserCurrency extends Model
+class UserSetting extends Model
 {
-    protected $table = 'users_currency';
-    protected $primaryKey = 'user_id';
+    protected $table = 'users_settings';
     public $timestamps = false;
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 }
