@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Permission;
 use App\Models\User;
 
+/*Credits to Kani for this*/
 class RconService
 {
     protected $socket;
