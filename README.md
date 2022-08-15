@@ -104,4 +104,5 @@ To add your language to the language selector, all you have to do is to add it i
 - **Oliver** - Doing the profile page
 - **Kani** - Rcon System
 - **Damue** - German translations
+- **Live** - French translations
 - **Raizer** - Circinus
