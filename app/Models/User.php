@@ -92,6 +92,11 @@ class User extends Authenticatable
         return setting('referrals_needed') - $referrals;
     }
 
+    public function ban(): HasOne
+    {
+        return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time());
+    }
+
     public function ssoTicket(): string
     {
         $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
