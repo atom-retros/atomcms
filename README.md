@@ -102,7 +102,7 @@ To add your language to the language selector, all you have to do is to add it i
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
 - **Oliver** - Doing the profile page
-- **Kani** - Rcon System
+- **Kani** - Rcon System & Findretros API
 - **Damue** - German translations
 - **Live** - French translations
 - **Raizer** - Circinus
