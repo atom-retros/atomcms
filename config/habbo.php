@@ -18,5 +18,11 @@ return [
 
     'site' => [
         'swf_path' => env('SWF_PATH', '/client/flash/swfs'),
-    ]
+    ],
+
+    'findretros' => [
+        'enabled' => env('FINDRETROS_ENABLED', false),
+        'name' => env('FINDRETROS_NAME', 'Example'),
+        'api' => 'https://findretros.com',
+    ],
 ];

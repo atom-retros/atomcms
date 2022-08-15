@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\BannedMiddleware;
+use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
 use App\Http\Middleware\SetThemeMiddleware;
@@ -71,5 +72,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'maintenance' => MaintenanceMiddleware::class,
         'check-ban' => BannedMiddleware::class,
+        'findretros.redirect' => FindRetrosMiddleware::class,
     ];
 }
