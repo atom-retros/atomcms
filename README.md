@@ -51,7 +51,10 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
-For IIS - You must link your site to the public folder of the CMS
+**For IIS**
+- You must link your site to the public folder of the CMS
+
+If you're receiving a cURL 60 error due to eg. setting up find retro, then make sure you download the latest cacert.pem from [https://curl.se/docs/caextract.html](https://curl.se/docs/caextract.html). Once downloaded place it in eg. C:/ then open your php.ini file, find ``curl.cainfo`` uncomment it and put the absolute path + file name to your certificate (Eg. "C:/cacert-2022-07-19.pem"). Save the file and your problem should now be solved
 
 #### Linux
 ```
@@ -105,4 +108,5 @@ To add your language to the language selector, all you have to do is to add it i
 - **Kani** - Rcon System & Findretros API
 - **Damue** - German translations
 - **Live** - French translations
+- **Talion** - Turkish translations
 - **Raizer** - Circinus
