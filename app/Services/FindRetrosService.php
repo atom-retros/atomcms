@@ -32,7 +32,7 @@ class FindRetrosService
      */
     public function __construct()
     {
-        $this->client = new Client;
+        $this->client = new Client(['verify' => false]);
     }
 
     /**
@@ -42,6 +42,10 @@ class FindRetrosService
      */
     public function checkHasVoted(): bool
     {
+        if(!config('habbo.findretros.enabled')) {
+            return true;
+        }
+
         $cacheKey = sprintf(self::FIND_RETROS_CACHE_KEY, request()->ip());
         if (request()->ip() === '127.0.0.1') {
             return true;
@@ -50,6 +54,7 @@ class FindRetrosService
         if (request()->has('novote')) {
             return true;
         }
+
         if (Cache::has($cacheKey)) {
             return true;
         }
@@ -58,8 +63,8 @@ class FindRetrosService
         $request = $this->client->get($uri);
         $response = $request->getBody()->getContents();
 
-        if (in_array($response, [1, 2])) {
-            Cache::put($cacheKey, true, 86400);
+        if (in_array($response, ["1", "2"])) {
+            Cache::put($cacheKey, true, now()->addMinutes(30));
             return true;
         }
 
