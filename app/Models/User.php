@@ -97,6 +97,11 @@ class User extends Authenticatable
         return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time());
     }
 
+    public function settings(): HasOne
+    {
+        return $this->hasOne(UserSetting::class);
+    }
+
     public function ssoTicket(): string
     {
         $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
