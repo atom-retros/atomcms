@@ -10,7 +10,7 @@ class RegisterFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'regex:/^[a-zA-Z0-9_.-]+$/u', 'max:25', Rule::unique('users')],
+            'username' => ['required', 'string', sprintf('regex:%s', setting('username_regex')), 'max:25', Rule::unique('users')],
             'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => ['required', 'string', 'confirmed', 'min:8'],
             'terms' => ['required', 'accepted'],

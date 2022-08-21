@@ -115,6 +115,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'Atom is currently undergoing maintenance. We will be back shortly!',
                 'comment' => 'The maintenance message displayed to users while maintenance is activated',
             ],
+            [
+                'key' => 'username_regex',
+                'value' => '/^[a-zA-Z0-9_.-]+$/u',
+                'comment' => 'The regex used to validate username input fields',
+            ],
         ];
 
         WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);
