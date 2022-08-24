@@ -42,4 +42,10 @@
         <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item">
             {{ __('Discord') }}
         </a>
+
+        @if(auth()->check() && auth()->user()->rank >= setting('min_housekeeping_rank'))
+            <a href="{{ setting('housekeeping_url') }}" target="_blank" class="nav-item">
+                {{ __('Housekeeping') }}
+            </a>
+        @endif
 </div>
