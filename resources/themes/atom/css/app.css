@@ -157,3 +157,18 @@ html {
     background: rgba(0, 0, 0, 0.5) url('/public/assets/images/profile/profile-bg.png');
     background-blend-mode: multiply;
 }
+
+.leaderboard-first {
+    background: #f9d83e url('/public/assets/images/leaderboards/trophy-gold.png') no-repeat center;
+    color: transparent;
+}
+
+.leaderboard-second {
+    background: #b8c4d4 url('/public/assets/images/leaderboards/trophy-silver.png') no-repeat center;
+    color: transparent;
+}
+
+.leaderboard-third {
+    background: #f1851b url('/public/assets/images/leaderboards/trophy-bronze.png') no-repeat center;
+    color: transparent;
+}
