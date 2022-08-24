@@ -1,4 +1,4 @@
-<div class="shadow p-3 rounded-lg">
+<div class="border p-3 rounded-lg">
     <x-content-section icon="bronze-vip">
         <x-slot:title>
             {{ __('Bronze VIP') }}
@@ -8,22 +8,24 @@
             {{ __('Our lowest VIP rank') }}
         </x-slot:under-title>
 
-        <div class="flex flex-col">
-            <p class="font-semibold">{{ __('You will receive:') }}</p>
+        <div class="relative flex items-center">
+            <div class="flex flex-col">
+                <p class="font-semibold">{{ __('You will receive:') }}</p>
 
-            <ul class="pl-4 list-disc">
-                <li class="ml-3">Bronze VIP badge</li>
-                <li class="ml-3">Bronze VIP catalogue</li>
-                <li class="ml-3">Bronze VIP commands</li>
-                <li class="ml-3">350 credits every 15 minutes</li>
-                <li class="ml-3">350 duckets every 15 minutes</li>
-                <li class="ml-3">1 diamond every hour</li>
-            </ul>
+                <ul class="pl-4 list-disc">
+                    <li class="ml-3">Bronze VIP badge</li>
+                    <li class="ml-3">Bronze VIP catalogue</li>
+                    <li class="ml-3">Bronze VIP commands</li>
+                    <li class="ml-3">350 credits every 15 minutes</li>
+                    <li class="ml-3">350 duckets every 15 minutes</li>
+                    <li class="ml-3">1 diamond every hour</li>
+                </ul>
+            </div>
         </div>
     </x-content-section>
 </div>
 
-<div class="shadow p-3 rounded-lg">
+<div class="border p-3 rounded-lg">
     <x-content-section icon="silver-vip">
         <x-slot:title>
             {{ __('Silver VIP') }}
@@ -49,7 +51,7 @@
     </x-content-section>
 </div>
 
-<div class="shadow p-3 rounded-lg">
+<div class="border p-3 rounded-lg">
     <x-content-section icon="gold-vip">
         <x-slot:title>
             {{ __('Gold VIP') }}

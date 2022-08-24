@@ -7,7 +7,7 @@
         </div>
 
         <div class="flex flex-col gap-y-6">
-            <x-content-section icon="hotel-icon">
+            <x-content-section icon="hotel-icon" classes="border">
                 <x-slot:title>
                     {{ __('General Rules') }}
                 </x-slot:title>
@@ -30,7 +30,7 @@
                 </ul>
             </x-content-section>
 
-            <x-content-section icon="hotel-icon">
+            <x-content-section icon="hotel-icon" classes="border">
                 <x-slot:title>
                     {{ __('Account Rules') }}
                 </x-slot:title>
@@ -56,7 +56,7 @@
                 </ul>
             </x-content-section>
 
-            <x-content-section icon="hotel-icon">
+            <x-content-section icon="hotel-icon" classes="border">
                 <x-slot:title>
                     {{ setting('hotel_name') }}
                 </x-slot:title>

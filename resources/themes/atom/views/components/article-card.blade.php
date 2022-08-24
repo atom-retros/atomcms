@@ -1,19 +1,23 @@
 @props(['article'])
 
-<a href="{{ route('article.show', $article->slug) }}" class="rounded-lg h-[215px] w-full bg-white shadow relative overflow-hidden transition ease-in-out duration-300 hover:scale-[102%]">
-    <div style="background: url('{{ $article->image }}');" class="article-image h-[100px]"></div>
+<div class="h-[210px] rounded-lg  w-full bg-white border relative overflow-hidden transition ease-in-out duration-300 hover:scale-[102%]">
+    <a href="{{ route('article.show', $article->slug) }}">
+        <div style="background: url('{{ $article->image }}');" class="article-image"></div>
 
-    <div class="px-4 -mt-1">
-        <p class="font-semibold text-lg">{{ $article->title }}</p>
-
-        <div class="flex gap-x-1 mt-3 items-center pb-3">
-            <div class="h-10 w-10 rounded-full bg-gray-200 overflow-hidden">
-                <img class="-mt-1" src="{{ setting('avatar_imager') }}{{ $article->user->look }}&headonly=1" alt="">
-            </div>
-
-            <p class="font-semibold">
-               {{ $article->user->username }}
+        <div class="mt-4 px-4">
+            <p class="font-bold text-lg">
+                {{ $article->title }}
             </p>
+
+            <div class="flex items-center gap-x-2">
+                <div class="h-10 w-10 bg-gray-100 rounded-full mt-3 flex items-center justify-center overflow-hidden">
+                    <img src="{{ setting('avatar_imager') }}{{ $article->user->look }}&headonly=1" alt="">
+                </div>
+
+                <p class="font-semibold mt-4">
+                    {{ $article->user->username }}
+                </p>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
+</div>
