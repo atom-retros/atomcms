@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class UserSetting extends Model
 {
     protected $table = 'users_settings';
+
+    protected $guarded = ['id'];
+
     public $timestamps = false;
 
     public function user(): BelongsTo

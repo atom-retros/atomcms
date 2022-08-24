@@ -25,17 +25,19 @@
                     <x-form.input name="mail" type="email" value="{{ $user->mail }}" :autofocus="true" />
                 </div>
 
-                <div class="flex flex-col gap-y-1">
-                    <x-form.label for="username">
-                        {{ __('Username') }}
+                @if($user->settings->allow_name_change)
+                    <div class="flex flex-col gap-y-1">
+                        <x-form.label for="username">
+                            {{ __('Username') }}
 
-                        <x-slot:info>
-                            {{ __('Your username is what you and others will see in-game') }}
-                        </x-slot:info>
-                    </x-form.label>
+                            <x-slot:info>
+                                {{ __('Your username is what you and others will see in-game') }}
+                            </x-slot:info>
+                        </x-form.label>
 
-                    <x-form.input name="username" value="{{ $user->username }}" />
-                </div>
+                        <x-form.input name="username" value="{{ $user->username }}" />
+                    </div>
+                @endif
 
                 <div class="flex flex-col gap-y-1">
                     <x-form.label for="motto">

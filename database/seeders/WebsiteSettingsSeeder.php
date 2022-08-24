@@ -115,8 +115,24 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'Atom is currently undergoing maintenance. We will be back shortly!',
                 'comment' => 'The maintenance message displayed to users while maintenance is activated',
             ],
+            [
+                'key' => 'username_regex',
+                'value' => '/^[a-zA-Z0-9_.-]+$/u',
+                'comment' => 'The regex used to validate username input fields',
+            ],
+            [
+                'key' => 'min_housekeeping_rank',
+                'value' => '6',
+                'comment' => 'The minimum rank required to see the housekeeping button',
+            ],
         ];
 
-        WebsiteSetting::query()->upsert($settings, ['key'], ['key', 'value']);
+        foreach ($settings as $setting) {
+            WebsiteSetting::query()->firstOrCreate(['key' => $setting['key']], [
+                'key' => $setting['key'],
+                'value' => $setting['value'],
+                'comment' => $setting['comment'],
+            ]);
+        }
     }
 }

@@ -18,12 +18,10 @@
     </p>
 
     <div class="w-full flex justify-between px-4 items-center">
-        <p class="ml-[57px] text-sm mt-[10px] font-semibold text-gray-500">
-            {{ $user->motto }}
+        <p class="ml-[57px] text-sm mt-[10px] font-semibold text-gray-500 truncate">
+            {{ Str::limit($user->motto, 20) }}
         </p>
 
-        <div class="w-4 h-4 rounded-full mt-2 {{ $user->online ? 'bg-green-600' : 'bg-red-600' }}">
-
-        </div>
+        <div class="min-w-[15px] max-w-[15px] min-h-[15px] max-h-[15px] rounded-full mt-2 flex items-start {{ $user->online ? 'bg-green-600' : 'bg-red-600' }}"></div>
     </div>
 </div>

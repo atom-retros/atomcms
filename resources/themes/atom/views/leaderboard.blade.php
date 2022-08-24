@@ -2,7 +2,7 @@
     @push('title', __('Leaderboard'))
 
     <div class="col-span-12">
-        <div class="grid grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="p-2 shadow rounded-md">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     <div class="flex items-center">

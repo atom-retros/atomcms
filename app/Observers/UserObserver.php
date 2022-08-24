@@ -4,11 +4,14 @@ namespace App\Observers;
 
 use App\Models\User;
 use App\Models\UserCurrency;
+use App\Models\UserSetting;
 
 class UserObserver
 {
     public function created(User $user)
     {
+        $user->settings()->create();
+
         UserCurrency::query()->insert([
             [
                 'user_id' => $user->id,

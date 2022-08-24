@@ -17,12 +17,11 @@
 
     @guest
         <div class="text-white relative font-semibold flex-col w-[600px]">
-            <p class="text-center text-xl">
+            <p class="text-center text-xl hidden md:block">
                 {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
             </p>
 
-            {{-- TODO: Figure something out in regards to login & reg --}}
-            <div class="uppercase flex justify-center items-center gap-x-6 mt-6">
+            <div class="uppercase flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 gap-x-6 md:mt-6">
                 <button type="button" data-modal-toggle="authentication-modal" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
                     {{ __('Login') }}
                 </button>
