@@ -125,6 +125,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '6',
                 'comment' => 'The minimum rank required to see the housekeeping button',
             ],
+            [
+                'key' => 'housekeeping_url',
+                'value' => 'https://hk.example.com',
+                'comment' => 'The subdomain which the HK is hosted on',
+            ],
         ];
 
         foreach ($settings as $setting) {
