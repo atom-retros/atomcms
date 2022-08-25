@@ -1,9 +1,11 @@
 <?php
 
 return [
-    /**
-     * Rcon configuration.
-     */
+    'migrations' => [
+        // Only set this to true in the .env file if your CERTAIN that you want to rename coliding table names
+        'rename_tables' => env('RENAME_COLLIDING_TABLES', false)
+    ],
+
     'rcon' => [
         'host' => env('RCON_HOST', '127.0.0.1'),
         'port' => env('RCON_PORT', 3001),

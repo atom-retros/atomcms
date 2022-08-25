@@ -8,6 +8,10 @@ class CreateActivityLogTable extends Migration
 {
     public function up()
     {
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable(config('activitylog.table_name'))) {
+            Schema::rename(config('activitylog.table_name'), sprintf('%s_%s', config('activitylog.table_name'), time()));
+        }
+
         Schema::connection(config('activitylog.database_connection'))->create(config('activitylog.table_name'), function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('log_name')->nullable();

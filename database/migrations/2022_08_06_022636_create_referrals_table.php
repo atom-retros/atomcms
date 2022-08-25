@@ -7,7 +7,26 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
-        Schema::create('referrals', function (Blueprint $table) {
+        $storedKeys = [];
+
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('referrals')) {
+
+            $keys = DB::select(DB::raw('SHOW KEYS from referrals'));
+
+            foreach ($keys as $key) {
+                $storedKeys[] = $key->Key_name;
+            }
+
+            if (in_array('referrals_user_id_index', $storedKeys)) {
+                Schema::table('referrals', function (Blueprint $table) {
+                    $table->dropConstrainedForeignId('user_id');
+                });
+            }
+
+            Schema::rename('referrals', sprintf('referrals_%s', time()));
+        }
+
+        Schema::create('referrals', function (Blueprint $table) use ($storedKeys) {
             $table->id();
             $table->integer('user_id')->index();
             $table->unsignedBigInteger('referred_user_id');
