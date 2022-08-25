@@ -29,6 +29,11 @@ Atom CMS was made to bring the retro community a variation to the CMS options ou
 
 Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
 
+## Coming from another cms?
+Atom CMS has a built in option to rename colliding table names and drop matching foreign keys.
+
+For example if you're changing from Cosmic CMS and you know beforehand that your database contains similar table names, all you have to do is changing the ``RENAME_COLLIDING_TABLES=false`` to ``RENAME_COLLIDING_TABLES=true`` inside of the ``.env`` file.
+
 ## Setup guide
 To install Atom CMS you'll need to do the following:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
