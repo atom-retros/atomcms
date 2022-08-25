@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up()
     {
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_articles')) {
+            Schema::rename('website_articles', sprintf('website_articles_%s', time()));
+        }
+
         Schema::create('website_articles', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
