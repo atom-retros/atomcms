@@ -24,7 +24,16 @@ class RegisteredUserController extends Controller
 
     public function store(RegisterFormRequest $request)
     {
-        $request->validated();
+        $registeredAccounts = User::query()
+            ->where('ip_current', '=', $request->ip())
+            ->orWhere('ip_register', '=', $request->ip())
+            ->count();
+
+        if ($registeredAccounts >= (int)setting('max_accounts_per_ip')) {
+            return redirect()->back()->withErrors([
+                'message' => __('You have reached the limit of maximum allowed accounts'),
+            ]);
+        }
 
         // Create the user & login
         Auth::login($user = User::query()->create([
