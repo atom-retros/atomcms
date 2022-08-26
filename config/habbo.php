@@ -20,6 +20,8 @@ return [
 
     'site' => [
         'swf_path' => env('SWF_PATH', '/client/flash/swfs'),
+        'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
+        'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
     ],
 
     'findretros' => [

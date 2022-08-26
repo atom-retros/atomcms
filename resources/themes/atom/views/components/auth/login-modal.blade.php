@@ -34,6 +34,10 @@
                         <x-form.input name="password" type="password" />
                     </div>
 
+                    @if(setting('google_recaptcha_enabled'))
+                        <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                    @endif
+
                     <x-form.primary-button>
                         {{ __('Login') }}
                     </x-form.primary-button>
@@ -48,3 +52,7 @@
         </div>
     </div>
 </div>
+
+@if(setting('google_recaptcha_enabled'))
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endif

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use App\Models\User;
+use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class LoginRequest extends FormRequest
         return [
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],
+            'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()]
         ];
     }
 
@@ -102,5 +104,13 @@ class LoginRequest extends FormRequest
     public function throttleKey()
     {
         return Str::lower($this->input('username')).'|'.$this->ip();
+    }
+
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),
+            'g-recaptcha-response.string' => __('The google recaptcha was submitted with an invalid type'),
+        ];
     }
 }
