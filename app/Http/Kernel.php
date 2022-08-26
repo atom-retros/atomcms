@@ -7,6 +7,7 @@ use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
 use App\Http\Middleware\SetThemeMiddleware;
+use App\Http\Middleware\VPNCheckerMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -73,5 +74,6 @@ class Kernel extends HttpKernel
         'maintenance' => MaintenanceMiddleware::class,
         'check-ban' => BannedMiddleware::class,
         'findretros.redirect' => FindRetrosMiddleware::class,
+        'vpn.checker' => VPNCheckerMiddleware::class,
     ];
 }

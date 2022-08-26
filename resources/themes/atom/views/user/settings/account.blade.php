@@ -7,8 +7,6 @@
 
     <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
         <div class="rounded-lg bg-white shadow p-4">
-            <x-messages.flash-messages />
-
             <form action="{{ route('settings.account.update') }}" method="POST" class="flex flex-col gap-y-4">
                 @method('PUT')
                 @csrf
