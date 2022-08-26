@@ -140,6 +140,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'Toggles whether google recaptcha is enabled or not',
             ],
+            [
+                'key' => 'vpn_block_enabled',
+                'value' => '0',
+                'comment' => 'Toggles whether the VPN blocker is enabled or not',
+            ],
+            [
+                'key' => 'ipdata_api_key',
+                'value' => 'ADD-API-KEY-HERE',
+                'comment' => 'The API key needed from ipdata.co to block VPNs',
+            ],
         ];
 
         foreach ($settings as $setting) {

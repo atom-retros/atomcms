@@ -25,6 +25,8 @@
     </head>
 
     <body class="flex flex-col min-h-screen">
+        <x-messages.flash-messages />
+
         <div id="app" class="bg-gray-100">
             {{-- Top header --}}
             @auth

@@ -8,11 +8,14 @@
         "php": "^8.0.2",
         "doctrine/dbal": "^3.3",
         "guzzlehttp/guzzle": "^7.2",
+        "ipdata/api-client": "^0.1.1",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "nyholm/psr7": "^1.5",
         "qirolab/laravel-themer": "^2.0",
-        "spatie/laravel-activitylog": "^4.5"
+        "spatie/laravel-activitylog": "^4.5",
+        "symfony/http-client": "^6.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

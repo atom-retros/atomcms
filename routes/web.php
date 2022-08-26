@@ -70,7 +70,7 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
         Route::get('/shop', ShopController::class)->name('shop.index');
 
         // Game route
-        Route::prefix('game')->middleware('findretros.redirect')->group(function () {
+        Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {
             Route::get('/nitro', NitroController::class)->name('nitro-client');
         });
     });
