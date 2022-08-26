@@ -44,7 +44,7 @@ class VPNCheckerMiddleware
             ->toArray();
 
         // Skip check if the ASN is in the whitelist table & if "whitelist_asn" is true
-        if (array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnWhitelist)) {
+        if ((array_key_exists('asn', $data) && array_key_exists('asn', $data['asn'])) && in_array($data['asn']['asn'], $asnWhitelist)) {
             return $next($request);
         }
 
@@ -77,7 +77,7 @@ class VPNCheckerMiddleware
             ->toArray();
 
         // Skip check if the IP is in the whitelist table
-        if ((array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnBlacklist)) || in_array($request->ip(), $ipBlacklist)) {
+        if ((array_key_exists('asn', $data) && array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnBlacklist)) || in_array($request->ip(), $ipBlacklist)) {
             return to_route('me.show')->withErrors([
                 'message' => __('We do not allow the usage of VPNs - If you think this is a mistake, you can contact the owner on our Discord.'),
             ]);
