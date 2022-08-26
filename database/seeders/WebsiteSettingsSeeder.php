@@ -135,6 +135,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '2',
                 'comment' => 'The maximum allowed accounts registered per IP address',
             ],
+            [
+                'key' => 'google_recaptcha_enabled',
+                'value' => '0',
+                'comment' => 'Toggles whether google recaptcha is enabled or not',
+            ],
         ];
 
         foreach ($settings as $setting) {

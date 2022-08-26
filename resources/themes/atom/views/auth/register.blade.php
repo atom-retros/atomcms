@@ -88,6 +88,10 @@
                     {{-- Used to determine the refer --}}
                     <input type="hidden" name="referral_code" value="{{ $referral_code }}">
 
+                    @if(setting('google_recaptcha_enabled'))
+                        <div class="g-recaptcha mt-4" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                    @endif
+
                     <div class="mt-4">
                         <x-form.primary-button>
                             {{ __('Create account') }}
@@ -101,4 +105,10 @@
             </div>
         </div>
     </div>
+
+    @if(setting('google_recaptcha_enabled'))
+        @push('javascript')
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        @endpush
+    @endif
 </x-app-layout>
