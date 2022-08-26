@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             WebsiteSettingsSeeder::class,
             WebsiteArticleSeeder::class,
             WebsiteLanguageSeeder::class,
+            WebsitePermissionSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
