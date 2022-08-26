@@ -20,7 +20,7 @@ class VPNCheckerMiddleware
         $ipdata = new Ipdata(setting('ipdata_api_key'), $httpClient, $psr17Factory);
 
         $data = $ipdata->lookup($request->ip());
-        
+
         if (array_key_exists('status', $data) && ($data['status'] === 400 || $data['status'] === 401)) {
             return $next($request);
         }
