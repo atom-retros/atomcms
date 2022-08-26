@@ -130,6 +130,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'https://hk.example.com',
                 'comment' => 'The subdomain which the HK is hosted on',
             ],
+            [
+                'key' => 'max_accounts_per_ip',
+                'value' => '2',
+                'comment' => 'The maximum allowed accounts registered per IP address',
+            ],
         ];
 
         foreach ($settings as $setting) {
