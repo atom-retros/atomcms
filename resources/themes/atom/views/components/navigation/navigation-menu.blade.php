@@ -22,6 +22,10 @@
             <a href="{{ route('staff.index') }}" class="dropdown-item">
                 {{ __('Staff') }}
             </a>
+
+            <a href="{{ route('photos.index') }}" class="dropdown-item">
+                {{ __('Photos') }}
+            </a>
         </div>
 
         <a href="{{ route('leaderboard.index') }}"
