@@ -3,9 +3,21 @@
 
     @auth
         <div class="max-w-7xl relative h-full w-full flex items-center justify-center md:justify-between pr-10">
-            <a href="{{ route('me.show') }}" class="ml-7">
-                <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
-            </a>
+            <div class="flex gap-x-4 items-center">
+                <a href="{{ route('me.show') }}" class="ml-7">
+                    <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
+                </a>
+
+                <div class="hidden md:flex items-center bg-white px-4 rounded-md relative h-[50px]">
+                    <div class="absolute bg-white w-6 h-6 -left-1 rotate-45"></div>
+
+                    <span class="relative">
+                        {{ __(':online :hotel online', ['online' => DB::table('users')->where('online', '1')->count(), 'hotel' => setting('hotel_name')]) }}
+                    </span>
+                </div>
+            </div>
+
+
 
             <a href="{{ route('nitro-client') }}">
                 <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
