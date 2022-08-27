@@ -42,7 +42,7 @@
             "flash.dynamic.avatar.download.configuration":"{{ sprintf('%s/%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuremap')) }}",
             "external.override.texts.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_texts')) }}",
             "external.override.variables.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_variables')) }}",
-            "flash.client.url":"{{ config('habbo.site.site_url') }}{{ config('habbo.flash.swf_base_path') }}",
+            "flash.client.url":"{{ sprintf('%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path')) }}",
         };
 
         window.FlashExternalInterface.disconnect = function() {
