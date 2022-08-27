@@ -172,7 +172,7 @@ To add your language to the language selector, all you have to do is to add it i
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
 - **Oliver** - Doing the profile page
-- **Kani** - Rcon System, Findretros API & Flash client
+- **Kani** - Rcon System, Findretros API
 - **Beny** - Findretros API fixes & CF Fixes
 - **Damue** - German translations
 - **Live** - French translations
