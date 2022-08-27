@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BannedController;
+use App\Http\Controllers\FlashController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
@@ -74,6 +75,7 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
         // Game route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {
             Route::get('/nitro', NitroController::class)->name('nitro-client');
+            Route::get('/flash', FlashController::class)->name('flash-client');
         });
     });
 

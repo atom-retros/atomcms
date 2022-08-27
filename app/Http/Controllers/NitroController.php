@@ -8,7 +8,7 @@ class NitroController extends Controller
 {
     public function __invoke()
     {
-        return view('nitro', [
+        return view('client.nitro', [
             'sso' => Auth::user()->ssoTicket(),
         ]);
     }

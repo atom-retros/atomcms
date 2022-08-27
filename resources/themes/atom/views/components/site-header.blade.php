@@ -19,11 +19,21 @@
 
 
 
-            <a href="{{ route('nitro-client') }}">
-                <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
-                    {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
-                </button>
-            </a>
+            <flex class="flex gap-x-4">
+                <a href="{{ route('nitro-client') }}">
+                    <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
+                        {{ __('Nitro client') }}
+                    </button>
+                </a>
+
+                @if(config('habbo.client.flash_enabled'))
+                    <a href="{{ route('flash-client') }}">
+                        <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
+                            {{ __('Flash client') }}
+                        </button>
+                    </a>
+                @endif
+            </flex>
         </div>
     @endauth
 
