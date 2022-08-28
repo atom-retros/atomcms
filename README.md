@@ -145,9 +145,20 @@ Atom makes it possible for you to manually whitelist & blacklist IPs & ASNs too,
 
 You can also allow users above a specified rank to bypass all IP & ASN checks - simply head to the ``website_permissions`` table and adjust the value of the ``min_rank_to_bypass_vpn_check`` to the minimum rank required for bypassing all checks.
 
-By default Atom will only apply the IP & ASN check when users are trying to visit your client, if you with to apply it to other places, simply copy the ``vpn.checker`` middleware and apply it to other routes within the ``web.php`` file.
+By default, Atom will only apply the IP & ASN check when users are trying to visit your client, if you with to apply it to other places, simply copy the ``vpn.checker`` middleware and apply it to other routes within the ``web.php`` file.
 
 *Any whitelisted IP or ASN will overrule any blacklisted IP or ANS.*
+
+## Setup flash client
+With Atom CMS you have the option to enable the good old flash client.
+
+By default, the flash client is disabled so there's a few steps you must take in order to enable it and get it up and running.
+
+To enable the flash client, head to your .env file and find and change the ``FLASH_CLIENT_ENABLED=false`` to ``FLASH_CLIENT_ENABLED=true``. Next up you'll see a few settings, related to the flash client just below the ``FLASH_CLIENT_ENABLED`` you must adjust those, to match your folder structure, so everything links correctly. Sadly I can't provide you with a guide on how to link those correctly, as every hotel uses a different folder structure.
+
+Once all the settings within the .env has been adjusted correctly, you and your users should be able to use the flash client.
+
+*To use the flash client, you must either provide your users with your own application, or they must use a browser supporting flash, as no regular browser supports flash after the end of 2021.*
 
 ## Change theme
 To change the CMS theme, simply head to website_settings and change the value of the "theme" to the name you gave your new theme upon initialising it.

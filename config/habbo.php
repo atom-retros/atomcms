@@ -22,8 +22,8 @@ return [
     'flash' => [
         'host' => env('EMULATOR_IP', '127.0.0.1'),
         'port' => env('EMULATOR_PORT', 3000),
-        'production_folder' => env('PRODUCTION_FOLDER'),
         'swf_base_path' => env('SWF_BASE_PATH'),
+        'production_folder' => env('PRODUCTION_FOLDER'),
         'habbo_swf' => env('HABBO_SWF', 'Habbo.swf'),
         'external_texts' => env('EXTERNAL_TEXTS'),
         'external_variables' => env('EXTERNAL_VARIABLES'),

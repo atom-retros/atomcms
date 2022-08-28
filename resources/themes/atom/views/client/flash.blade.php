@@ -19,30 +19,30 @@
 
     <script type="text/javascript">
         var flashvars = {
-            "connection.info.host":"{{ config('habbo.flash.host') }}",
-            "connection.info.port":"{{ config('habbo.flash.port') }}",
-            "site.url" : "{{ config('habbo.site.site_url') }}",
-            "url.prefix" : "{{ config('habbo.site.site_url') }}",
-            "client.reload.url": "{{ route('me.show') }}",
-            "client.fatal.error.url": "{{ route('me.show') }}",
-            "client.connection.failed.url": "{{ route('me.show') }}",
+            "connection.info.host": "{{ config('habbo.flash.host') }}",
+            "connection.info.port": "{{ config('habbo.flash.port') }}",
+            "site.url": "",
+            "url.prefix": "",
+            "client.reload.url": "",
+            "client.fatal.error.url": "",
+            "client.connection.failed.url": "",
             "logout.url": "",
-            "client.starting":"Please wait! Habbo is starting up.",
-            "client.starting.revolving":"For science, you monster\/Loading funny message\u2026please wait.\/Would you like fries with that?\/Follow the yellow duck.\/Time is just an illusion.\/Are we there yet?!\/I like your t-shirt.\/Look left. Look right. Blink twice. Ta da!\/It\'s not you, it\'s me.\/Shhh! I\'m trying to think here.\/Loading pixel universe.",
-            "client.notify.cross.domain":"1",
-            "client.allow.cross.domain":"1",
-            "flash.client.origin":"popup",
-            "processlog.enabled":"0",
-            "sso.ticket":"{{ auth()->user()->ssoTicket() }}",
-            "productdata.load.url":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_productdata')) }}",
-            "furnidata.load.url":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_furnidata')) }}",
-            "external.texts.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_texts')) }}",
-            "external.variables.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_variables')) }}",
-            "external.figurepartlist.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuredata')) }}",
-            "flash.dynamic.avatar.download.configuration":"{{ sprintf('%s/%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuremap')) }}",
-            "external.override.texts.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_texts')) }}",
-            "external.override.variables.txt":"{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_variables')) }}",
-            "flash.client.url":"{{ sprintf('%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path')) }}",
+            "client.starting": "Please wait! Habbo is starting up.",
+            "client.starting.revolving": "For science, you monster\/Loading funny message\u2026please wait.\/Would you like fries with that?\/Follow the yellow duck.\/Time is just an illusion.\/Are we there yet?!\/I like your t-shirt.\/Look left. Look right. Blink twice. Ta da!\/It\'s not you, it\'s me.\/Shhh! I\'m trying to think here.\/Loading pixel universe.",
+            "client.notify.cross.domain": "1",
+            "client.allow.cross.domain": "1",
+            "flash.client.origin": "popup",
+            "processlog.enabled": "0",
+            "sso.ticket": "{{ $sso }}",
+            "productdata.load.url": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_productdata')) }}",
+            "furnidata.load.url": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_furnidata')) }}",
+            "external.texts.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_texts')) }}",
+            "external.variables.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_variables')) }}",
+            "external.figurepartlist.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuredata')) }}",
+            "flash.dynamic.avatar.download.configuration": "{{ sprintf('%s/%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuremap')) }}",
+            "external.override.texts.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_texts')) }}",
+            "external.override.variables.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_variables')) }}",
+            "flash.client.url": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.production_folder')) }}/",
         };
 
         window.FlashExternalInterface.disconnect = function() {
@@ -50,9 +50,9 @@
         };
 
         var params = {
-            "base" : "{{ sprintf('%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path')) }}",
-            "allowScriptAccess" : "always",
-            "menu" : "false",
+            "base": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.production_folder')) }}/",
+            "allowScriptAccess": "always",
+            "menu": "false",
             "wmode": "opaque"
         };
 
