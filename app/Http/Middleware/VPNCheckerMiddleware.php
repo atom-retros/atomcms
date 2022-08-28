@@ -47,7 +47,7 @@ class VPNCheckerMiddleware
         // Restrict user if IP is blacklisted
         if (in_array($request->ip(), $ipBlacklist)) {
             return to_route('me.show')->withErrors([
-                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.'),
             ]);
         }
 
@@ -86,7 +86,7 @@ class VPNCheckerMiddleware
         // Restrict the user if their ASN is within the blacklist table
         if ((array_key_exists('asn', $data) && array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnBlacklist))) {
             return to_route('me.show')->withErrors([
-                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.'),
             ]);
         }
 
@@ -123,7 +123,7 @@ class VPNCheckerMiddleware
             ]);
 
             return to_route('me.show')->withErrors([
-                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.'),
             ]);
         }
 
