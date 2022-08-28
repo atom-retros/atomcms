@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 
-class NitroController extends Controller
+class FlashController extends Controller
 {
     public function __invoke()
     {
-        return view('client.nitro', [
-            'sso' => Auth::user()->ssoTicket(),
+        return view('client.flash', [
+            'sso' => Auth::user()->ssoTicket()
         ]);
     }
 }
