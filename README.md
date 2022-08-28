@@ -190,5 +190,5 @@ To add your language to the language selector, all you have to do is to add it i
 - **Live** - French translations
 - **Talion** - Turkish translations
 - **CentralCee** - Swedish translations
-- - **CentralCee** - Netherland translations
+- **Yannick** - Netherland translations
 - **Raizer** - Circinus
