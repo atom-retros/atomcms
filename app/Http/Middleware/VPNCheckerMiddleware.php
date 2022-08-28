@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\WebsiteIpBlacklist;
 use App\Models\WebsiteIpWhitelist;
+use App\Services\IpLookupService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,11 +53,8 @@ class VPNCheckerMiddleware
         }
 
         // Instantiate the necessary things to look up the visitor IP
-        $httpClient = new Psr18Client();
-        $psr17Factory = new Psr17Factory();
-        $ipdata = new Ipdata(setting('ipdata_api_key'), $httpClient, $psr17Factory);
-
-        $data = $ipdata->lookup($request->ip());
+        $ipService = new IpLookupService(setting('ipdata_api_key'));
+        $data = $ipService->ipLookup($request->ip());
 
         if (array_key_exists('status', $data) && ($data['status'] === 400 || $data['status'] === 401)) {
             return $next($request);
