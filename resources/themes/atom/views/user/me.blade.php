@@ -34,7 +34,7 @@
                     <img style="image-rendering: pixelated;" src="https://habstar.net/assets/images/icons/rank.png" alt="Rank" class="w-5 drop-shadow">
                 </x-slot:icon>
 
-                {{ $user->permission->rank_name }}
+                {{ $user->permission->rank_name ?? 'Unknown' }}
             </x-currency-box>
         </div>
 
@@ -81,7 +81,9 @@
     </div>
 
     <div class="col-span-12 md:col-span-3 space-y-4">
-        <x-article-card :article="$article"/>
+        @if(!is_null($article))
+            <x-article-card :article="$article"/>
+        @endif
 
         <iframe src="https://discordapp.com/widget?id={{ setting('discord_widget_id') }}&theme=dark" title="Discord Widget" height="248px" allowtransparency="true" frameborder="0"></iframe>
     </div>
