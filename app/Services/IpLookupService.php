@@ -34,8 +34,10 @@ class IpLookupService
         $response = Http::acceptJson()->get(sprintf('%s/%s?api-key=%s&fields=%s', $this->baseUrl, $ip, $this->apiKey, $searchFields));
 
         if (!$response->ok())  {
+            $message = array_key_exists('message', $response->json()) ? $response->json()['message'] : 'Unknown error';
+
             return [
-                'message' => $response->json()['message'],
+                'message' => $message,
                 'status' => $response->status(),
             ];
         }
