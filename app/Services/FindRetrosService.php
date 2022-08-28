@@ -42,8 +42,6 @@ class FindRetrosService
      */
     public function checkHasVoted(): bool
     {
-
-
         if(!config('habbo.findretros.enabled')) {
             return true;
         }

@@ -8,9 +8,6 @@ use App\Services\IpLookupService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Ipdata\ApiClient\Ipdata;
-use Nyholm\Psr7\Factory\Psr17Factory;
-use Symfony\Component\HttpClient\Psr18Client;
 
 class VPNCheckerMiddleware
 {
