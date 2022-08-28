@@ -2,13 +2,16 @@
 <img src="https://i.imgur.com/9ePNdJ4.png" alt="Atom CMS"/>
 </div>
 
+<div align="center">
+    <a href="https://discord.gg/rX3aShUHdg" target="_blank">
+        Join the official Atom CMS Discord server
+    </a>
+</div>
+
 ## What is Atom CMS?
 Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience for you and your users. It offers an easy development experience and includes a theming system, making it a breeze to create your own [themes](https://github.com/qirolab/laravel-themer).
 
-**Official Discord server**
-[https://discord.gg/rX3aShUHdg](https://discord.gg/rX3aShUHdg)
-
-**What technologies is being used?**
+**What technologies does Atom CMS use?**
 - Laravel 9.x (Latest as of August 2022)
   [Laravel docs](https://laravel.com/docs/9.x).
 - Vite [Vite docs](https://vitejs.dev/).
@@ -20,22 +23,26 @@ Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience fo
   [Bootstrap docs](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
   - Vanilla CMS or something else
 
-If you are new to Laravel, then there's luckily tons of resources online to help you learn it. One of the best options is those two video courses. 
+Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
+
+If you are new to Laravel, then there's luckily tons of resources online to help you learn it. One of the best options (if you ask me) is those two video courses. 
 - https://laracasts.com/series/laravel-8-from-scratch
 - https://laracasts.com/series/whats-new-in-laravel-9
 
-## Why was Atom CMS made?
-Atom CMS was made to bring the retro community a variation to the CMS options out there. With its built in theme system, it becomes a breeze to brew up a new layout in no time, leaving room to either customise your hotel further, or simply contribute to the community by bringing new and exciting themes.
+Laracasts is an official learning platform for Laravel, so do not worry if you take the time to watch the courses, you'll be taught some of the best practises by some of the best people to get taught by.
 
-Laravel was chosen as its backend, due to it being robust and battle tested "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
+## Why was Atom CMS made?
+Atom CMS was made to bring the retro community a modern and robust CMS, using industry approved technologies which is easy to understand and to work with. Atom CMS was also made to bring a variation to the CMS options available to the retro community. With Atoms built in theme system, it becomes a breeze to brew up a new layout in no time, leaving room to either customise your hotel further, or simply contribute to the community by bringing new and exciting themes.
 
 ## Coming from another cms?
-Atom CMS has a built in option to rename colliding table names and drop matching foreign keys.
+Are you coming from another CMS, but want to switch to Atom, then fear no more. Atom CMS has a built in option to rename colliding table names and drop matching foreign keys.
 
-For example if you're changing from Cosmic CMS and you know beforehand that your database contains similar table names, all you have to do is changing the ``RENAME_COLLIDING_TABLES=false`` to ``RENAME_COLLIDING_TABLES=true`` inside of the ``.env`` file.
+*It's however recommended to do a proper cleanup yourself by removing old and unused tables yourself, rather than letting the CMS handle it. As otherwise it can lead to unexpected errors or behaviour.*
+
+For example if you're changing from eg.Cosmic CMS and you know beforehand that your database contains similar table names, you can have Atom automatically solve colliding table names, which would otherwise give errors, by changing the following: ``RENAME_COLLIDING_TABLES=false`` to ``RENAME_COLLIDING_TABLES=true`` inside of the ``.env`` file.
 
 ## Setup guide
-To install Atom CMS you'll need to do the following:
+To install Atom CMS you'll need install and do the following:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
@@ -44,7 +51,7 @@ To install Atom CMS you'll need to do the following:
 After all of the above has been installed you've to do the following:
 Open CMD and navigate into the path you want the CMS to be located at, and run the commands listed below
 
-#### Windows
+#### Windows Setup
 ```
 [Https] git clone https://github.com/ObjectRetros/atomcms.git
 [SSH - Recommended] git clone git@github.com:ObjectRetros/atomcms.git
@@ -80,9 +87,16 @@ extension=sockets
 ```
 
 #### cURL error
-If you're receiving a cURL 60 error due to eg. setting up findretros, then make sure you download the latest cacert.pem from [https://curl.se/docs/caextract.html](https://curl.se/docs/caextract.html). Once downloaded place it in eg. "C:/" then open your php.ini file, find ``curl.cainfo`` uncomment it and put the absolute path + file name to your certificate (Eg. "C:/cacert-2022-07-19.pem"). Save the file and your problem should now be solved
+If you're receiving a cURL 60 error due to eg. setting up findretros, then make sure you download the latest cacert.pem from [https://curl.se/docs/caextract.html](https://curl.se/docs/caextract.html). Once downloaded place it in eg. "C:/" then open your php.ini file, find ``curl.cainfo`` uncomment it and put the absolute path + file name to your certificate (Eg. "C:/cacert-2022-07-19.pem"). Save the file and your problem should now be solved.
 
-#### Linux
+#### Windows Tutorial
+Have you always wanted to setup your own hotel from scratch, but are unsure how? Then  you can follow my **three** parts series on DevBest which will take you through any step necessary to get everything up and running.
+
+Part 1: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-1.92532/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-1.92532/)
+Part 2: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-2.92533/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-2.92533/)
+Part 3: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/)
+
+#### Linux Setup
 ```
 [Https] git clone https://github.com/ObjectRetros/atomcms.git
 [SSH - Recommended] git clone git@github.com:ObjectRetros/atomcms.git
@@ -116,9 +130,7 @@ Next up in your ``.env`` file you'll find ``GOOGLE_RECAPTCHA_SITE_KEY=`` and ``G
 
 If you don't have any recaptcha keys yet, head to [https://www.google.com/recaptcha/admin/](https://www.google.com/recaptcha/admin/) and fill out the necessary fields to receive them.
 
-**You must select ``reCaptcha v2`` and the "I'm not a robot" Checkbox, when selecting your recaptcha settings within google.
-
-https://www.google.com/recaptcha/admin/
+*You must select ``reCaptcha v2`` and the "I'm not a robot" Checkbox, when selecting your recaptcha settings within google.*
 
 ## Setup VPN blockage
 In Atom CMS you can restrict users from entering your hotel, by enabling & setting up VPN blockage.
@@ -171,11 +183,12 @@ To add your language to the language selector, all you have to do is to add it i
 
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
-- **Oliver** - Doing the profile page
+- **Oliver** - Profile page & Finnish translations
 - **Kani** - Rcon System & Findretros API
 - **Beny** - Findretros API fixes & CF Fixes
 - **Damue** - German translations
 - **Live** - French translations
 - **Talion** - Turkish translations
 - **CentralCee** - Swedish translations
+- - **CentralCee** - Netherland translations
 - **Raizer** - Circinus
