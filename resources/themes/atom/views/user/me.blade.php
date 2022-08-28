@@ -34,7 +34,7 @@
                     <img style="image-rendering: pixelated;" src="https://habstar.net/assets/images/icons/rank.png" alt="Rank" class="w-5 drop-shadow">
                 </x-slot:icon>
 
-                {{ $user->permission->rank_name }}
+                {{ $user->permission->rank_name ?? 'Unknown' }}
             </x-currency-box>
         </div>
 
