@@ -15,16 +15,6 @@ class VPNCheckerMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        $httpClient = new Psr18Client();
-        $psr17Factory = new Psr17Factory();
-        $ipdata = new Ipdata(setting('ipdata_api_key'), $httpClient, $psr17Factory);
-
-        $data = $ipdata->lookup($request->ip());
-
-        if (array_key_exists('status', $data) && ($data['status'] === 400 || $data['status'] === 401)) {
-            return $next($request);
-        }
-
         // Skip check if vpn checker is disabled
         if (!(int)setting('vpn_block_enabled')) {
             return $next($request);
@@ -32,6 +22,43 @@ class VPNCheckerMiddleware
 
         // Skip check if the rank is allowed to bypass the checker
         if (Auth::check() && Auth::user()->rank >= permission('min_rank_to_bypass_vpn_check')) {
+            return $next($request);
+        }
+
+        // Fetch all whitelisted IP addresses
+        $ipWhitelist = WebsiteIpWhitelist::query()
+            ->select('ip_address')
+            ->get()
+            ->pluck('ip_address')
+            ->toArray();
+
+        // Skip check if the IP is in the whitelist table
+        if (in_array($request->ip(), $ipWhitelist)) {
+            return $next($request);
+        }
+
+        // Fetch all blacklisted IP addresses
+        $ipBlacklist = WebsiteIpBlacklist::query()
+            ->select('ip_address')
+            ->get()
+            ->pluck('ip_address')
+            ->toArray();
+
+        // Restrict user if IP is blacklisted
+        if (in_array($request->ip(), $ipBlacklist)) {
+            return to_route('me.show')->withErrors([
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
+            ]);
+        }
+
+        // Instantiate the necessary things to look up the visitor IP
+        $httpClient = new Psr18Client();
+        $psr17Factory = new Psr17Factory();
+        $ipdata = new Ipdata(setting('ipdata_api_key'), $httpClient, $psr17Factory);
+
+        $data = $ipdata->lookup($request->ip());
+
+        if (array_key_exists('status', $data) && ($data['status'] === 400 || $data['status'] === 401)) {
             return $next($request);
         }
 
@@ -48,19 +75,6 @@ class VPNCheckerMiddleware
             return $next($request);
         }
 
-        // Fetch all whitelisted IP addresses
-        $ipWhitelist = WebsiteIpWhitelist::query()
-            ->select('ip_address')
-            ->get()
-            ->pluck('ip_address')
-            ->toArray();
-
-        // Skip check if the IP is in the whitelist table
-        if (in_array($request->ip(), $ipWhitelist)) {
-            return $next($request);
-        }
-
-        // Check on the below + blacklist
         // Fetch all blacklisted ASNs
         $asnBlacklist =  WebsiteIpBlacklist::query()
             ->select('asn')
@@ -69,17 +83,10 @@ class VPNCheckerMiddleware
             ->pluck('asn')
             ->toArray();
 
-        // Fetch all blacklisted IP addresses
-        $ipBlacklist = WebsiteIpBlacklist::query()
-            ->select('ip_address')
-            ->get()
-            ->pluck('ip_address')
-            ->toArray();
-
-        // Skip check if the IP is in the whitelist table
-        if ((array_key_exists('asn', $data) && array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnBlacklist)) || in_array($request->ip(), $ipBlacklist)) {
+        // Restrict the user if their ASN is within the blacklist table
+        if ((array_key_exists('asn', $data) && array_key_exists('asn', $data['asn']) && in_array($data['asn']['asn'], $asnBlacklist))) {
             return to_route('me.show')->withErrors([
-                'message' => __('We do not allow the usage of VPNs - If you think this is a mistake, you can contact the owner on our Discord.'),
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
             ]);
         }
 
@@ -116,7 +123,7 @@ class VPNCheckerMiddleware
             ]);
 
             return to_route('me.show')->withErrors([
-                'message' => __('We do not allow the usage of VPNs - If you think this is a mistake, you can contact the owner on our Discord.'),
+                'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact the us on our Discord.'),
             ]);
         }
 
