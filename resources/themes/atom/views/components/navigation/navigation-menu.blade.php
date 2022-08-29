@@ -29,7 +29,7 @@
         </div>
 
         <a href="{{ route('leaderboard.index') }}"
-           class="nav-item {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+           class="nav-item {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
             {{ __('Leaderboards') }}
         </a>
 
