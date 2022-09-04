@@ -22,6 +22,11 @@
             {{ Str::limit($user->motto, 20) }}
         </p>
 
+        <p style="float:right; margin-top:-30px; margin-right:5px; {{ $user->online ? 'color: darkgreen' : 'color: darkred' }}">
+            <b>{{ $user->online ? __('Online') : __('Offline') }}</b>
+        </p>
+
+
         <div class="min-w-[15px] max-w-[15px] min-h-[15px] max-h-[15px] rounded-full mt-2 flex items-start {{ $user->online ? 'bg-green-600' : 'bg-red-600' }}"></div>
     </div>
 </div>
