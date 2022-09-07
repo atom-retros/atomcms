@@ -7,7 +7,7 @@
         <div class="grid grid-cols-4 gap-3">
             <x-currency-box primary-color="bg-yellow-300" secondary-color="bg-yellow-400">
                 <x-slot:icon>
-                    <img style="image-rendering: pixelated;" src="https://habstar.net/assets/images/icons/credits.png" alt="credits" class="w-5 drop-shadow">
+                    <img style="image-rendering: pixelated;" src="{{ asset('/assets/images/icons/credits.png') }}" alt="credits" class="w-5 drop-shadow">
                 </x-slot:icon>
 
                 {{ $user->credits }}
@@ -15,7 +15,7 @@
 
             <x-currency-box primary-color="bg-purple-300" secondary-color="bg-purple-400">
                 <x-slot:icon>
-                    <img style="image-rendering: pixelated;" src="https://habstar.net/assets/images/icons/duckets.png" alt="duckets" class="w-5 drop-shadow">
+                    <img style="image-rendering: pixelated;" src="{{ asset('/assets/images/icons/duckets.png') }}" alt="duckets" class="w-5 drop-shadow">
                 </x-slot:icon>
 
                 {{ $user->currency('duckets') }}
@@ -23,7 +23,7 @@
 
             <x-currency-box primary-color="bg-blue-300" secondary-color="bg-blue-400">
                 <x-slot:icon>
-                    <img src="https://habstar.net/assets/images/icons/diamond.png" alt="Diamonds" class="w-5 drop-shadow">
+                    <img src="{{ asset('/assets/images/icons/diamond.png') }}" alt="Diamonds" class="w-5 drop-shadow">
                 </x-slot:icon>
 
                 {{ $user->currency('diamonds') }}
@@ -31,7 +31,7 @@
 
             <x-currency-box primary-color="bg-gray-400" secondary-color="bg-gray-600">
                 <x-slot:icon>
-                    <img style="image-rendering: pixelated;" src="https://habstar.net/assets/images/icons/rank.png" alt="Rank" class="w-5 drop-shadow">
+                    <img style="image-rendering: pixelated;" src="{{ asset('/assets/images/icons/rank.png') }}" alt="Rank" class="w-5 drop-shadow">
                 </x-slot:icon>
 
                 {{ $user->permission->rank_name ?? 'Unknown' }}
