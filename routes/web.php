@@ -19,6 +19,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
+// Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
 Route::middleware(['maintenance', 'check-ban'])->group(function () {
@@ -36,9 +37,9 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
 
     Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function () {
-            // User routes
             Route::get('/me', [MeController::class, 'show'])->name('me.show');
 
+            // User settings routes
             Route::prefix('settings')->group(function () {
                 Route::get('/account', [AccountSettingsController::class, 'edit'])->name('settings.account.show');
                 Route::put('/account', [AccountSettingsController::class, 'update'])->name('settings.account.update');
@@ -63,22 +64,26 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             });
         });
 
-        // Create a leaderboard route with leaderboard controller
+        // Leaderboard routes
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Rules routes
         Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
 
-        //Shop routes
+        // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
 
-        // Game route
+        // Paypal routes
+
+
+        // Client route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {
             Route::get('/nitro', NitroController::class)->name('nitro-client');
             Route::get('/flash', FlashController::class)->name('flash-client');
         });
     });
 
+    // Auth routes
     require __DIR__.'/auth.php';
 });
 
