@@ -73,9 +73,6 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
 
-        // Paypal routes
-
-
         // Client route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {
             Route::get('/nitro', NitroController::class)->name('nitro-client');

@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        // Create the user & login
+        // Create the user & authenticate the new user
         Auth::login($user = User::query()->create([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
@@ -48,6 +48,7 @@ class RegisteredUserController extends Controller
             'ip_register' => $request->ip(),
             'ip_current' => $request->ip(),
             'auth_ticket' => '',
+            'paypal_api_token' => Str::uuid(),
         ]));
 
         $user->update([

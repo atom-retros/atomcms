@@ -102,6 +102,11 @@ class User extends Authenticatable
         return $this->hasOne(UserSetting::class);
     }
 
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(WebsiteShopTransaction::class);
+    }
+
     public function ssoTicket(): string
     {
         $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
