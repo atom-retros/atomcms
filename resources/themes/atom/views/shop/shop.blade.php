@@ -67,6 +67,38 @@
 {{--                </x-form.secondary-button>--}}
 {{--            </a>--}}
         </x-content-section>
+
+        @auth
+            <x-content-section icon="hotel-icon" classes="border">
+                <x-slot:title>
+                    {{ __('Redeem voucher') }}
+                </x-slot:title>
+
+                <x-slot:under-title>
+                    {{ __('Redeem your voucher') }}
+                </x-slot:under-title>
+
+                <small>
+                    {{ __('Enter a shop voucher to fill up your store balance', ['hotel' => setting('hotel_name')]) }}
+                </small>
+
+                <form action="{{ route('shop.redeem-voucher') }}" method="POST" class="flex flex-col gap-y-3">
+                    @csrf
+
+                   <div class="w-full flex flex-col">
+                       <x-form.label for="code">
+                           {{ __('Voucher') }}
+                       </x-form.label>
+
+                       <x-form.input name="code" placeholder="{{ __('Enter your shop voucher') }}" />
+                   </div>
+
+                    <x-form.primary-button>
+                        {{ __('Redeem') }}
+                    </x-form.primary-button>
+                </form>
+            </x-content-section>
+        @endauth
     </div>
 
     <style>
