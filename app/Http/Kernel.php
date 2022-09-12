@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\BannedMiddleware;
 use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
+use App\Http\Middleware\LogViewerMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
 use App\Http\Middleware\SetThemeMiddleware;
 use App\Http\Middleware\VPNCheckerMiddleware;
@@ -75,5 +76,6 @@ class Kernel extends HttpKernel
         'check-ban' => BannedMiddleware::class,
         'findretros.redirect' => FindRetrosMiddleware::class,
         'vpn.checker' => VPNCheckerMiddleware::class,
+        'log.viewer' => LogViewerMiddleware::class,
     ];
 }

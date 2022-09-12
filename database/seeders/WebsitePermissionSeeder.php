@@ -15,6 +15,11 @@ class WebsitePermissionSeeder extends Seeder
                 'value' => '6',
                 'comment' => 'Min rank to bypass vpn blocker check'
             ],
+            [
+                'key' => 'min_rank_to_view_logs',
+                'value' => '7',
+                'comment' => 'Minimum required rank to access the log viewer'
+            ],
         ];
 
         foreach ($permissions as $permission) {
