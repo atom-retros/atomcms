@@ -12,7 +12,7 @@ function setting(string $setting): string
     return WebsiteSetting::query()->where('key', '=', $setting)->first()->value ?? '';
 }
 
-function permission(string $permission): string|bool
+function permission(string $permission): string|int
 {
     $permission = WebsitePermission::query()->where('key', '=', $permission)->first();
 
