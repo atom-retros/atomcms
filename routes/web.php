@@ -82,9 +82,6 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             Route::get('/flash', FlashController::class)->name('flash-client');
         });
     });
-
-    // Auth routes
-    require __DIR__.'/auth.php';
 });
 
 
