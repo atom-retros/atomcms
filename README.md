@@ -44,6 +44,7 @@ For example if you're changing from eg. Cosmic CMS and you know beforehand that 
 ## Setup guide
 The following requirements is needed to setup Atom CMS:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
+- MySQL 8.x or MariaDB 10.x or newer
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
 - An Arcturus Morningstar database [Database repository](https://git.krews.org/morningstar/arcturus-morningstar-base-database)
