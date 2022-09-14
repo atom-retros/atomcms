@@ -25,7 +25,9 @@ Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience fo
 
 Laravel was chosen as its backend, due to it being very robust and battle tested within "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' (& frameworks) normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
 
-If you are new to Laravel and want to build your own features, then I highly recommend the following two (free) series. 
+If you are new to Laravel and want to build your own features, then I highly recommend the following free bootcamp and two (free) series. 
+[https://bootcamp.laravel.com/](https://bootcamp.laravel.com/) - **very recommended**
+
 - https://laracasts.com/series/laravel-8-from-scratch
 - https://laracasts.com/series/whats-new-in-laravel-9
 
