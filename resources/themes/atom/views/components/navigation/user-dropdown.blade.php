@@ -2,9 +2,9 @@
     id="dropdownNavbarLink"
     data-dropdown-toggle="dropdownNavbarUser"
     class="ml-4 flex items-center">
-    <span class="h-10">
-        <img class="w-8 h-12 mt-1" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
-    </span>
+    <div class="h-10">
+        <img class="w-10" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
+    </div>
 
     <span>{{ auth()->user()->username }}</span>
 
