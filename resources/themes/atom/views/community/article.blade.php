@@ -1,8 +1,8 @@
 <x-app-layout>
     @push('title', $article->title)
 
-    <div class="col-span-12 md:col-span-3 rounded- space-y-3">
-        <div class="rounded-lg h-24 bg-white border w-full overflow-hidden relative mt-6 md:mt-0">
+    <div class="col-span-12 md:col-span-3 rounded space-y-3">
+        <div class="rounded h-24 bg-white border w-full overflow-hidden relative mt-6 md:mt-0 shadow">
             <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold">
                 {{ $article->user->permission->rank_name }}
             </div>
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="bg-white border p-4 rounded-lg">
+        <div class="bg-white border p-4 rounded shadow">
             <div class="text-xl font-semibold">
                 {{ __('Other articles') }}
                 <hr>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="col-span-12 md:col-span-9 rounded-lg border p-3 flex flex-col gap-y-8 relative overflow-hidden">
+    <div class="col-span-12 md:col-span-9 rounded bg-white shadow p-3 flex flex-col gap-y-8 relative overflow-hidden">
         <div class="relative rounded-lg h-24 flex items-center justify-center overflow-hidden" style="background: url({{ $article->image }}) center; background-size: cover;">
             <div class="bg-black bg-opacity-50 w-full h-full absolute"></div>
 

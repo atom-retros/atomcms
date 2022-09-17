@@ -1,6 +1,6 @@
 @props(['user'])
 
-<div class="rounded-lg h-24 bg-white border w-full overflow-hidden relative md:mt-0">
+<div class="rounded h-24 bg-white border w-full overflow-hidden relative md:mt-0">
     <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold">
         {{ $user->permission->rank_name }}
     </div>
@@ -21,11 +21,6 @@
         <p class="ml-[57px] text-sm mt-[10px] font-semibold text-gray-500 truncate">
             {{ Str::limit($user->motto, 20) }}
         </p>
-
-        <p style="float:right; margin-top:-30px; margin-right:5px; {{ $user->online ? 'color: darkgreen' : 'color: darkred' }}">
-            <b>{{ $user->online ? __('Online') : __('Offline') }}</b>
-        </p>
-
 
         <div class="min-w-[15px] max-w-[15px] min-h-[15px] max-h-[15px] rounded-full mt-2 flex items-start {{ $user->online ? 'bg-green-600' : 'bg-red-600' }}"></div>
     </div>

@@ -3,7 +3,7 @@
 
     <div class="col-span-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     <div class="flex items-center">
                         <img src="https://habstar.net/assets/images/icons/credits.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
@@ -14,7 +14,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($credits as $index => $user)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1 == 1,
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     <div class="flex items-center">
                         <img src="https://habstar.net/assets/images/icons/duckets.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
@@ -56,7 +56,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($duckets as $index => $currency)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1 == 1,
@@ -88,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     <div class="flex items-center">
                         <img src="https://habstar.net/assets/images/icons/diamond.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
@@ -99,7 +99,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($diamonds as $index => $currency)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1  == 1,
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     {{ __('Hours online') }}
                 </div>
@@ -139,7 +139,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($mostOnline as $index => $onlineTime)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1  == 1,
@@ -171,7 +171,7 @@
                 </div>
             </div>
 
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     {{ __('Respects received') }}
                 </div>
@@ -179,7 +179,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($respectsReceived as $index => $respect)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1  == 1,
@@ -211,7 +211,7 @@
                 </div>
             </div>
 
-            <div class="p-2 shadow rounded-md">
+            <div class="p-2 shadow rounded bg-white">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1">
                     {{ __('Achievement score') }}
                 </div>
@@ -219,7 +219,7 @@
 
                 <div class="flex flex-col gap-y-3 mt-4">
                     @foreach($achievementScores as $index => $achievement)
-                        <div class="p-3 rounded-md bg-gray-200 flex gap-x-2 items-center h-[70px] overflow-hidden">
+                        <div class="p-3 rounded bg-gray-100 flex gap-x-2 items-center h-[70px] overflow-hidden">
                             <div @class([
                                         'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center',
                                         'leaderboard-first' => $index + 1  == 1,
