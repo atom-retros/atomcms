@@ -92,10 +92,6 @@ html {
     outline: 1px solid #6caff4;
 }
 
-.header-bg {
-    background: url('/public/assets/images/kasja_mepage_header.png');
-}
-
 .me-backdrop {
     height: 150px;
     background-blend-mode: multiply;

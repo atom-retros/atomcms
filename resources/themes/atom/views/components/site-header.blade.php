@@ -1,4 +1,4 @@
-<div class="w-full h-52 bg-blue-400 relative flex items-center justify-center header-bg">
+<div class="w-full h-52 bg-blue-400 relative flex items-center justify-center" style="background: url({{ setting('cms_header') }});">
     <div class="w-full h-full bg-black absolute bg-opacity-50"></div>
 
     @auth
