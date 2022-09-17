@@ -155,6 +155,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/assets/images/kasja_atomlogo.png',
                 'comment' => 'Default logo for the cms',
             ],
+            [
+                'key' => 'cms_header',
+                'value' => '/assets/images/kasja_mepage_header.png',
+                'comment' => 'Default header for the me page',
+            ],
+            [
+                'key' => 'cms_me_backdrop',
+                'value' => '/assets/images/kasja_mepage_header.png',
+                'comment' => 'Default backdrop header for the me page',
+            ],
         ];
 
         foreach ($settings as $setting) {
