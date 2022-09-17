@@ -1,5 +1,6 @@
 @props(['user'])
 
+
 <div class="rounded me-backdrop relative overflow-hidden flex justify-between px-10 items-center" style="background: rgba(0, 0, 0, 0.3) url({{ setting('cms_me_backdrop') }});">
     <div>
         <a href="{{ route('profile.show', $user) }}"

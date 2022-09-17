@@ -1,1 +1,0 @@
-<img src="https://habbofont.net/font/habbo_new/{{ setting('hotel_name') }}.gif" alt="Hotel logo">

@@ -39,7 +39,7 @@
         </div>
 
 
-        <x-content-section icon="hotel-icon" classes="border">
+        <x-content.content-section icon="hotel-icon" classes="border">
             <x-slot:title>
                 {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>
@@ -57,7 +57,7 @@
                 </small>
 
                 <div class="grid grid-cols-12 gap-2">
-                    <x-form.input classes="col-span-12 md:col-span-10" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
+                    <x-form.input classes="col-span-12 md:col-span-10 text-sm" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
 
                     <div class="col-span-12 md:col-span-2 flex" onclick="copyCode()">
                         <x-form.secondary-button>
@@ -69,15 +69,15 @@
 
                 @if(auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
                     <a href="{{ route('claim.referral-reward') }}" class="text-decoration-none">
-                        <button class="mt-2 w-full rounded-md bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
+                        <button class="mt-2 w-full rounded bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
                     </a>
                 @else
-                    <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">
+                    <button disabled class="mt-2 w-full rounded bg-gray-400 text-white p-2">
                         {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}
                     </button>
                 @endif
             </div>
-        </x-content-section>
+        </x-content.content-section>
     </div>
 
     <div class="col-span-12 md:col-span-3 space-y-4">

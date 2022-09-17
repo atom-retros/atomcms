@@ -6,7 +6,7 @@
 
     <div class="space-y-14 col-span-12">
         <div class="col-span-12">
-            <x-content-section icon="hotel-icon">
+            <x-content.auth-content-section icon="hotel-icon">
                 <x-slot:title>
                     {{ __('Latest news') }}
                 </x-slot:title>
@@ -22,11 +22,11 @@
                         <h2 class="text-2xl font-semibold">{{ __('There is currently no articles') }}</h2>
                     @endforelse
                 </div>
-            </x-content-section>
+            </x-content.auth-content-section>
         </div>
 
         <div class="col-span-12">
-            <x-content-section icon="camera-icon">
+            <x-content.auth-content-section icon="camera-icon">
                 <x-slot:title>
                     {{ __('Latest Photos') }}
                 </x-slot:title>
@@ -56,7 +56,7 @@
                         </a>
                     @endforeach
                 </grid>
-            </x-content-section>
+            </x-content.auth-content-section>
         </div>
     </div>
 
