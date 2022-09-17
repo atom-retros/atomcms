@@ -162,7 +162,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'cms_me_backdrop',
-                'value' => '/assets/images/kasja_mepage_header.png',
+                'value' => '/assets/images/kasja_mepage_image.png',
                 'comment' => 'Default backdrop header for the me page',
             ],
         ];
