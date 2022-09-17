@@ -92,13 +92,8 @@ html {
     outline: 1px solid #6caff4;
 }
 
-.header-bg {
-    background: url('/public/assets/images/kasja_mepage_header.png');
-}
-
 .me-backdrop {
     height: 150px;
-    background: rgba(0, 0, 0, 0.3) url('/public/assets/images/kasja_mepage_image.png');
     background-blend-mode: multiply;
 }
 
@@ -175,3 +170,4 @@ html {
 .site-bg {
     background: url('https://habbo.ng/assets/background.61bf633e.png') no-repeat fixed right bottom;
 }
+

@@ -150,6 +150,21 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'ADD-API-KEY-HERE',
                 'comment' => 'The API key needed from ipdata.co to block VPNs',
             ],
+            [
+                'key' => 'cms_logo',
+                'value' => '/assets/images/kasja_atomlogo.png',
+                'comment' => 'Default logo for the cms',
+            ],
+            [
+                'key' => 'cms_header',
+                'value' => '/assets/images/kasja_mepage_header.png',
+                'comment' => 'Default header for the me page',
+            ],
+            [
+                'key' => 'cms_me_backdrop',
+                'value' => '/assets/images/kasja_mepage_image.png',
+                'comment' => 'Default backdrop header for the me page',
+            ],
         ];
 
         foreach ($settings as $setting) {
