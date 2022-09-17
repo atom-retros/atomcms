@@ -3,9 +3,13 @@
 <div class="col-span-2 lg:col-span-{{ $colSpan }}">
     {{ $image }}
 
-    <div class="border py-2 px-4 rounded-md flex flex-col gap-y-4">
-        <h2 class="font-semibold text-xl">{{ $title }}</h2>
+    <div class="shadow">
+        <div class="flex gap-x-2 border-b p-3 bg-gray-50 rounded-t">
+            <p class="text-black font-semibold">{{ $title }}</p>
+        </div>
 
-        {{ $slot }}
+        <section class="p-3 bg-white rounded-b">
+            {{ $slot }}
+        </section>
     </div>
 </div>

@@ -24,7 +24,7 @@
         @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
     </head>
 
-    <body class="flex flex-col min-h-screen">
+    <body class="flex flex-col min-h-screen site-bg">
         <x-messages.flash-messages />
 
         <div id="app" class="bg-gray-100">
@@ -53,7 +53,7 @@
             </nav>
 
             {{-- Content --}}
-            <main class="overflow-hidden bg-white">
+            <main class="overflow-hidden site-bg">
                 <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8 mt-10 md:mt-0">
                     {{ $slot }}
                 </div>
@@ -71,7 +71,6 @@
 
                 {{ __('By') }} <a href="https://devbest.com/members/object.78351/" target="_blank" class="font-semibold underline transition ease-in-out duration-150 hover:scale-105">Object</a></div>
         </footer>
-
         @stack('javascript')
     </body>
 </html>

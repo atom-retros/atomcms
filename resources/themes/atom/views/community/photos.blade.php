@@ -2,7 +2,7 @@
     @push('title', __('Photos'))
 
     <div class="col-span-12">
-        <x-content-section icon="camera-icon">
+        <x-content.content-section icon="camera-icon">
             <x-slot:title>
                 {{ __('Latest Photos') }}
             </x-slot:title>
@@ -32,7 +32,7 @@
                     </a>
                 @endforeach
             </grid>
-        </x-content-section>
+        </x-content.content-section>
 
         {{ $photos->links() }}
     </div>

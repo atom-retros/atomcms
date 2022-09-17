@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
-        <x-content-section icon="hotel-icon" classes="border">
+        <x-content.content-section icon="hotel-icon" classes="border">
             <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -36,7 +36,7 @@
                     {{ __('Take me to the :hotel Discord', ['hotel' => setting('hotel_name')]) }}
                 </x-form.secondary-button>
             </a>
-        </x-content-section>
+        </x-content.content-section>
     </div>
 
     <style>

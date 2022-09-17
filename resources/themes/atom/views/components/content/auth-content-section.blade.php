@@ -1,4 +1,4 @@
- @props(['icon', 'classes' => ''])
+@props(['icon', 'classes' => ''])
 
 <div class="w-full flex flex-col gap-y-4 p-3 rounded-lg overflow-hidden {{ $classes }}">
     <div class="flex gap-x-2">
