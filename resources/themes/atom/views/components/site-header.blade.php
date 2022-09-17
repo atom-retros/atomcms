@@ -5,7 +5,7 @@
         <div class="max-w-7xl relative h-full w-full flex items-center justify-center md:justify-between pr-10">
             <div class="flex gap-x-4 items-center">
                 <a href="{{ route('me.show') }}" class="ml-7">
-                    <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
+                    <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ setting('cms_logo') }} alt="Hotel logo">
                 </a>
 
                 <div class="hidden md:flex items-center bg-white px-4 rounded-md relative h-[50px]">
@@ -39,6 +39,7 @@
 
     @guest
         <div class="text-white relative font-semibold flex-col w-[600px]">
+            <img class="center "src="{{ setting('cms_logo') }}">
             <p class="text-center text-xl hidden md:block">
                 {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
             </p>
