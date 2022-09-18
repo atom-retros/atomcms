@@ -1,6 +1,6 @@
 @props(['article'])
 
-<div class="h-[210px] rounded w-full bg-white shadow relative overflow-hidden" onmouseover="slideImage()" onmouseleave="unslideImage()">
+<div class="h-[210px] rounded w-full bg-white shadow relative overflow-hidden transition ease-in-out duration-200 hover:scale-[101%]" onmouseover="slideImage({{$article->id}})" onmouseleave="unslideImage({{$article->id}})">
     <a href="{{ route('article.show', $article->slug) }}">
         <div id="article-{{ $article->id }}" style="background: url('{{ $article->image }}');" class="article-image"></div>
 
@@ -23,11 +23,11 @@
 </div>
 
 <script>
-    function slideImage() {
-        document.getElementById('article-{{ $article->id }}').classList.add('article-image-slide');
+    function slideImage(articleId) {
+        document.getElementById('article-' + articleId).classList.add('article-image-slide');
     }
 
-    function unslideImage() {
-        document.getElementById('article-{{ $article->id }}').classList.remove('article-image-slide');
+    function unslideImage(articleId) {
+        document.getElementById('article-' + articleId).classList.remove('article-image-slide');
     }
 </script>

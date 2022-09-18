@@ -1,4 +1,4 @@
-<div class="w-full h-52 bg-blue-400 relative flex items-center justify-center" style="background: url({{ setting('cms_header') }});">
+<div class="w-full h-52 relative flex items-center justify-center header-bg" style="background: url({{ setting('cms_header') }});">
     <div class="w-full h-full bg-black absolute bg-opacity-50"></div>
 
     @auth
@@ -39,7 +39,6 @@
 
     @guest
         <div class="text-white relative font-semibold flex-col w-[600px]">
-            <img class="center "src="{{ setting('cms_logo') }}">
             <p class="text-center text-xl hidden md:block">
                 {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
             </p>
