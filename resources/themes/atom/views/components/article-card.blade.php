@@ -5,7 +5,7 @@
         <div id="article-{{ $article->id }}" style="background: url('{{ $article->image }}');" class="article-image"></div>
 
         <div class="mt-4 px-4">
-            <p class="font-bold text-lg">
+            <p class="font-semibold text-lg truncate">
                 {{ $article->title }}
             </p>
 

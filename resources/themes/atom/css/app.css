@@ -69,6 +69,10 @@ html {
     background-position: 350px 220px !important;
 }
 
+.recent-articles {
+   background-blend-mode: multiply;
+}
+
 .camera-icon {
     background: #242c31 url('/public/assets/images/icons/camera.png') no-repeat center;
 }
