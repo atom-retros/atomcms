@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="turbolinks-cache-control" content="no-cache">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ setting('hotel_name') }} - @stack('title')</title>
@@ -13,7 +14,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-        <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <link

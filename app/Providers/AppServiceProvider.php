@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            \Illuminate\Foundation\Vite::class,
+            \App\Services\ViteService::class
+        );
     }
 
     /**
