@@ -171,6 +171,9 @@ html {
 }
 
 .site-bg {
-    background: url('/public/assets/images/background-white.png') no-repeat fixed right bottom;
+    background: url('/public/assets/images/background-light.jpg') no-repeat fixed right bottom;
 }
 
+html.dark .site-bg {
+    background: url('/public/assets/images/background-dark.jpg') no-repeat fixed right bottom;
+}

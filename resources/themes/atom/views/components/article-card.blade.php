@@ -1,11 +1,11 @@
 @props(['article'])
 
-<div class="h-[210px] rounded w-full bg-white shadow relative overflow-hidden transition ease-in-out duration-200 hover:scale-[101%]" onmouseover="slideImage({{$article->id}})" onmouseleave="unslideImage({{$article->id}})">
+<div class="h-[210px] dark:bg-gray-900 rounded w-full bg-white shadow relative overflow-hidden transition ease-in-out duration-200 hover:scale-[101%]" onmouseover="slideImage({{$article->id}})" onmouseleave="unslideImage({{$article->id}})">
     <a href="{{ route('article.show', $article->slug) }}">
         <div id="article-{{ $article->id }}" style="background: url('{{ $article->image }}');" class="article-image"></div>
 
         <div class="mt-4 px-4">
-            <p class="font-semibold text-lg truncate">
+            <p class="font-semibold text-lg truncate dark:text-gray-200">
                 {{ $article->title }}
             </p>
 
@@ -14,7 +14,7 @@
                     <img src="{{ setting('avatar_imager') }}{{ $article->user->look }}&headonly=1" alt="">
                 </div>
 
-                <p class="font-semibold mt-4">
+                <p class="font-semibold mt-4 dark:text-gray-400">
                     {{ $article->user->username }}
                 </p>
             </div>

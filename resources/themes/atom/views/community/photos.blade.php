@@ -19,12 +19,12 @@
                             class="cursor-pointer"
                     >
                         <div class="rounded-lg w-[300px] h-[300px] relative" style="background: url({{ $photo->url }}) no-repeat;">
-                            <div class="absolute bg-white rounded-full bottom-3 left-4 pr-3 flex items-center gap-x-3">
-                                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                            <div class="absolute bg-white rounded-full dark:bg-gray-800 bottom-3 left-4 pr-3 flex items-center gap-x-3">
+                                <div class="w-10 h-10 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
                                     <img src="{{ setting('avatar_imager') }}{{ $photo->user->look ?? '' }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
                                 </div>
 
-                                <p>
+                                <p class="dark:text-white">
                                     {{ $photo->user->username ?? 'Unknown' }}
                                 </p>
                             </div>

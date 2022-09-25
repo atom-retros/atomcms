@@ -7,7 +7,7 @@
         </div>
 
         <div class="flex flex-col gap-y-6">
-            <x-content.content-section icon="hotel-icon" classes="border">
+            <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
                 <x-slot:title>
                     {{ __('General Rules') }}
                 </x-slot:title>
@@ -16,7 +16,7 @@
                     {{ __('The general rules of :hotel', ['hotel' => setting('hotel_name')]) }}
                 </x-slot:under-title>
 
-                <ul class="p-2 bg-gray-100 rounded">
+                <ul class="p-2 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300">
                     <li><strong>1.1.</strong> {{ __('Do not abuse the Call for Help (CFH) system; it should be used during emergency purposes only.') }}</li>
                     <li><strong>1.2.</strong> {{ __('Do not advertise other Habbo Retros; hotel links or purposely mentioning the name of another hotel with the intentions of advertising is not permitted.') }}</li>
                     <li><strong>1.3.</strong> {{ __('Do not attempt to or scam credits or furniture from other users through betting, gaming, or trading.') }}</li>
@@ -30,7 +30,7 @@
                 </ul>
             </x-content.content-section>
 
-            <x-content.content-section icon="hotel-icon" classes="border">
+            <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
                 <x-slot:title>
                     {{ __('Account Rules') }}
                 </x-slot:title>
@@ -39,7 +39,7 @@
                     {{ __('The general account rules on :hotel', ['hotel' => setting('hotel_name')]) }}
                 </x-slot:under-title>
 
-                <ul class="p-2 bg-gray-100 rounded">
+                <ul class="p-2 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300">
                     <li>
                         <strong>2.1</strong> {{ __('Do not attempt to or give away, buy, sell, or trade your') }} <strong>{{ setting('hotel_name') }}</strong>
                         {{ __('account and/or') }}
@@ -56,7 +56,7 @@
                 </ul>
             </x-content.content-section>
 
-            <x-content.content-section icon="hotel-icon" classes="border">
+            <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
                 <x-slot:title>
                     {{ setting('hotel_name') }}
                 </x-slot:title>
@@ -65,7 +65,7 @@
                     {{ __(':hotel rules & guidelines', ['hotel' => setting('hotel_name')]) }}
                 </x-slot:under-title>
 
-                <ul class="p-2 bg-gray-100 rounded">
+                <ul class="p-2 bg-gray-100 rounded dark:bg-gray-700 dark:text-gray-300">
                     <li><strong>3.1</strong> {{ __('Do not attempt to or exploit errors of') }} <strong>{{ setting('hotel_name') }}</strong>; {{ __('report it to the Administration immediately.') }}</li>
                     <li><strong>3.2</strong> {{ __('Do not attempt to or refund your VIP Membership or donation to') }} <strong>{{ setting('hotel_name') }}</strong> {{ __('at any given time; all payments are final.') }}</li>
                     <li><strong>3.3</strong> {{ __('Do not intentionally give wrong or misleading information to staff members in reports about rule violations, complaints, bug reports, or support requests.') }}</li>

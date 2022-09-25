@@ -5,3 +5,7 @@
  */
 
 import "./bootstrap";
+import ThemeSwitcher from "./components/ThemeSwitcher.js";
+
+ThemeSwitcher.init();
+
