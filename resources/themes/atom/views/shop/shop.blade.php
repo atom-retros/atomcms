@@ -39,24 +39,20 @@
                     </a>
                </div>
             </div>
-
-
-
-
         </x-content.content-section>
     </div>
 
     <style>
         .bronze-vip {
-            background: #c5630f url({{ sprintf('%s/c_images/album1584/VipParties2.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #c5630f url({{ sprintf('%s/VipParties2.gif', setting('badges_path')) }}) no-repeat center;
         }
 
         .silver-vip {
-            background: #dddddd url({{ sprintf('%s/c_images/album1584/VipParties2_Top100.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #dddddd url({{ sprintf('%s/VipParties2_Top100.gif', setting('badges_path')) }}) no-repeat center;
         }
 
         .gold-vip {
-            background: #E4A317FF url({{ sprintf('%s/c_images/album1584/VipParties2_Top10.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #E4A317FF url({{ sprintf('%s/VipParties2_Top10.gif', setting('badges_path')) }}) no-repeat center;
         }
     </style>
 </x-app-layout>
