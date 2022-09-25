@@ -5,7 +5,7 @@
         {{ $user->permission->rank_name }}
     </div>
 
-    <div class="h-[65%] w-full staff-bg"></div>
+    <div class="h-[65%] w-full staff-bg" style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $user->permission->staff_background)) }});"></div>
 
     <div class="absolute top-4 drop-shadow left-1">
         <a href="{{ route('profile.show', $user->username) }}">
