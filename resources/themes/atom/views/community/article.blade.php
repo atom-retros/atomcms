@@ -7,7 +7,7 @@
                 {{ $article->user->permission->rank_name }}
             </div>
 
-            <div class="h-[65%] w-full staff-bg"></div>
+            <div class="h-[65%] w-full staff-bg" style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $article->user->permission->staff_background)) }});"></div>
 
             <a href="{{ route('profile.show', $article->user->username) }}" class="absolute top-4 drop-shadow left-1 ">
                 <img style="image-rendering: pixelated;" class="transition ease-in-out duration-300 hover:scale-105" src="{{ setting('avatar_imager') }}{{ $article->user->look }}&direction=2&head_direction=3&gesture=sml&action=wav" alt="">
