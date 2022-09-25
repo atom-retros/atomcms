@@ -102,7 +102,6 @@ html {
 }
 
 .staff-bg {
-    background: rgba(0, 0, 0, 0.5) url('/public/assets/images/staff-bg.png');
     background-blend-mode: multiply;
 }
 
