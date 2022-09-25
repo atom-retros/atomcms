@@ -1,7 +1,7 @@
 @props(['user'])
 
-<div class="rounded h-24 bg-white border w-full overflow-hidden relative md:mt-0">
-    <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold">
+<div class="rounded h-24 bg-white border w-full overflow-hidden relative md:mt-0 dark:bg-gray-700 dark:border-gray-900">
+    <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold dark:bg-gray-900 dark:text-gray-300">
         {{ $user->permission->rank_name }}
     </div>
 

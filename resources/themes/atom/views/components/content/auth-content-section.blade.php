@@ -5,8 +5,8 @@
         <div class="max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] rounded-full {{ $icon }} relative flex items-center justify-center"></div>
 
         <div class="flex flex-col">
-            <p class="text-black font-semibold">{{ $title }}</p>
-            <p>{{ $underTitle }}</p>
+            <p class="text-black font-semibold dark:text-gray-200">{{ $title }}</p>
+            <p class="dark:text-gray-400">{{ $underTitle }}</p>
         </div>
     </div>
 

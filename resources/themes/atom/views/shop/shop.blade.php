@@ -2,13 +2,13 @@
     @push('title', __('Shop'))
 
     <div class="col-span-12 md:col-span-9">
-        <div class="flex flex-col gap-y-3">
+        <div class="flex flex-col gap-y-3 dark:text-gray-300">
             <x-shop.packages />
         </div>
     </div>
 
     <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
-        <x-content.content-section icon="hotel-icon" classes="border">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -17,7 +17,7 @@
                 {{ __('Purchase :hotel items', ['hotel' => setting('hotel_name')]) }}
             </x-slot:under-title>
 
-            <div class="space-y-4 text-[14px]">
+            <div class="space-y-4 text-[14px] dark:text-gray-300">
                 <p>
                     {{ __('Here at :hotel Hotel we are accepting donations to keep the hotel up & running and as a thank you, you will in return receive in-game goods.', ['hotel' => setting('hotel_name')]) }}
                 </p>

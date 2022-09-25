@@ -20,7 +20,7 @@
                     </div>
 
                     @if(count($employee->users) === 0)
-                        <div class="text-center">
+                        <div class="text-center dark:text-gray-400">
                             {{ __('We currently have no staff in this position') }}
                         </div>
                     @endif
