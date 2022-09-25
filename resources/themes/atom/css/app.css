@@ -77,6 +77,10 @@ html {
     background: #242c31 url('/public/assets/images/icons/camera.png') no-repeat center;
 }
 
+html.dark .camera-icon {
+    background: #25658d url('/public/assets/images/icons/camera.png') no-repeat center;
+}
+
 .hotel-icon {
     background: #f68b08 url('/public/assets/images/icons/feeds.png') no-repeat center;
 }
@@ -176,4 +180,9 @@ html {
 
 html.dark .site-bg {
     background: url('/public/assets/images/background-dark.jpg') no-repeat fixed right bottom;
+}
+
+html.dark .swal2-popup {
+    background: rgb(17 24 39);
+    color: white;
 }

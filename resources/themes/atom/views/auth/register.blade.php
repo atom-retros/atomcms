@@ -14,7 +14,7 @@
                 <x-slot:under-title>
                     {{ __('Create a free account, and be a part of a fun online world!') }}
                 </x-slot:under-title>
-                <div class="w-full flex justify-between pr-14">
+                <div class="w-full flex justify-between pr-0 lg:pr-14">
                     <div class="w-full lg:w-[420px]">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -50,7 +50,7 @@
                             </div>
 
                             <!-- Password -->
-                            <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-6">
+                            <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-6 dark:bg-gray-900">
                                 <div>
                                     <x-form.label for="password">
                                         {{ __('Password') }}
@@ -62,7 +62,7 @@
 
                                     <x-form.input name="password" type="password" />
                                 </div>
-                                <hr>
+                                <hr class="dark:border-gray-700">
 
                                 <!-- Confirm Password -->
                                 <div>
@@ -74,11 +74,11 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-1">
+                            <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-1 dark:bg-gray-900">
                                 <div class="flex gap-x-3 items-center">
                                     <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">
 
-                                    <a href="{{ route('rules.index') }}" target="_blank" class="text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline">
+                                    <a href="{{ route('rules.index') }}" target="_blank" class="text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline dark:text-gray-500 dark:hover:text-gray-300">
                                         {{ __('I accept the :hotel terms & rules.', ['hotel' => setting('hotel_name')]) }}
                                     </a>
                                 </div>
