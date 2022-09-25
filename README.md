@@ -202,6 +202,7 @@ Once the command has been executed, you'll be prompted with easy to follow scaff
 
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
+- **Nicollas** - Dark mode & pt-br translations
 - **Oliver** - Profile page & Finnish translations
 - **Kani** - Rcon System & Findretros API
 - **Beny** - Findretros API fixes & CF Fixes
