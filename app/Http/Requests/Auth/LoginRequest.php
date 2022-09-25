@@ -7,6 +7,7 @@ use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -48,6 +49,16 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $user = User::query()
+            ->select('id', 'password', 'rank')
+            ->where('username', '=', $this->input('username'))
+            ->first();
+
+        // Update the users password to bcrypt, if they previously used md5
+        if ($user) {
+            $this->convertUserPassword($user);
+        }
+
         if (! Auth::attempt($this->only('username', 'password'), $this->filled('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
@@ -56,13 +67,11 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        $user = User::query()->select('rank')->where('username', '=', $this->input('username'))->first();
         if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
             throw ValidationException::withMessages([
                 'username' => __('Only staff can login during maintenance!'),
             ]);
         }
-
 
         Auth::user()->update([
             'ip_current' => $this->ip(),
@@ -94,6 +103,15 @@ class LoginRequest extends FormRequest
                 'minutes' => ceil($seconds / 60),
             ]),
         ]);
+    }
+
+    private function convertUserPassword(User $user)
+    {
+        if(config('habbo.site.convert_passwords') && ($user && $user->password == md5($this->input('password')))) {
+            $user->update([
+                'password' => Hash::make($this->input('password')),
+            ]);
+        }
     }
 
     /**
