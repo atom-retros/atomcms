@@ -9,7 +9,7 @@ const ThemeSwitcher = {
             this.changeTheme()
         }
 
-        this.initButton()
+        document.addEventListener('turbolinks:load', () => this.initButton())
     },
 
     initButton() {

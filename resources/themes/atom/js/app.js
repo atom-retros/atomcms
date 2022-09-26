@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import './external/flowbite';
 import "./bootstrap";
 import ThemeSwitcher from "./components/ThemeSwitcher.js";
 
