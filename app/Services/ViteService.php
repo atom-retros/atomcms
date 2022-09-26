@@ -14,6 +14,6 @@ class ViteService extends Vite
      */
     protected function makeScriptTag($url)
     {
-        return sprintf('<script src="%s" data-turbolinks-eval="false"></script>', $url);
+        return sprintf('<script type="module" src="%s" data-turbolinks-eval="false"></script>', $url);
     }
 }
