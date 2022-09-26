@@ -22,6 +22,7 @@
         />
 
         @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
+        @stack('scripts')
     </head>
 
     <body class="flex flex-col min-h-screen site-bg dark:bg-gray-800">

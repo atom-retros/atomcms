@@ -60,6 +60,8 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             Route::withoutMiddleware('auth')->group(function () {
                 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
                 Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+                Route::post('/article/{article:slug}/add-reaction', [ArticleController::class, 'addReaction'])->name('article.reaction.add');
+
                 Route::get('/staff', StaffController::class)->name('staff.index');
             });
         });

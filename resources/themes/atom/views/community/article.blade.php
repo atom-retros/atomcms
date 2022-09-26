@@ -64,5 +64,7 @@
         <div class="px-2">
             {!! $article->full_story  !!}
         </div>
+
+        <x-articles.reactions-modal :article="$article" />
     </div>
 </x-app-layout>
