@@ -3734,4 +3734,3 @@ document.addEventListener('turbolinks:load', () => {
 });
 /******/ })()
 ;
-//# sourceMappingURL=flowbite.js.map
