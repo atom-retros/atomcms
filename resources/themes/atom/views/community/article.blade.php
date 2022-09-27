@@ -65,6 +65,6 @@
             {!! $article->full_story  !!}
         </div>
 
-        <x-articles.reactions-modal :article="$article" />
+        @include('community.partials.article-reactions')
     </div>
 </x-app-layout>

@@ -5,7 +5,10 @@
     "Shop": "Loja",
     "Rules": "Regras",
     "Articles": "Notícias",
-    "Staff": "Staff",
+    "Staff": "Equipe",
+    "Photos": "Fotos",
+    "Error logs": "Logs de Erro",
+    "Housekeeping": "Administração",
     "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!": "Um mundo virtual online onde você pode criar seu próprio avatar, fazer amigos, conversar, criar salas e muito mais!",
     "Create your account!": "Crie sua conta!",
     "Create a free account, and be a part of a fun online world!": "Crie uma conta grátis, e faça parte de um mundo online divertido!",
@@ -91,5 +94,7 @@
     ":online hours": ":online horas",
     ":respect respects received": ":respect respeitos",
     ":achievement achievement score": ":achievement pontos de conquistas",
-    "Nitro client": "Jogar (HTML)"
+    "Nitro client": "Jogar (HTML)",
+    "Insert Reaction": "Adicionar Reação",
+    "Add": "Adicionar"
 }
