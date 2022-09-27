@@ -4,12 +4,29 @@
             {{ __('Add') }}
         </div>
         <template x-for="articleReaction in articleReactions">
-            <div class="w-12 h-8 border-2 border-gray-300 dark:border-gray-800 rounded-lg flex gap-2 font-bold text-sm justify-center items-center"
-                :class="{ 'bg-gray-300 dark:bg-gray-800 dark:border-gray-700': userHasReaction(articleReaction), 'cursor-pointer hover:bg-gray-200 hover:scale-110 transition-all dark:hover:bg-gray-700': isAuthenticated }"
-                @click="toggleReaction(articleReaction.name)"
-            >
-                <img :src="'/assets/images/icons/reactions/' + articleReaction.name + '.png'" :alt="articleReaction.name">
-                <span x-text="articleReaction.count"></span>
+            <div>
+                <div class="w-12 h-8 border-2 border-gray-300 dark:border-gray-800 rounded-lg flex gap-2 font-bold text-sm justify-center items-center"
+                    :class="{ 'bg-gray-300 dark:bg-gray-800 dark:border-gray-700': userHasReaction(articleReaction), 'cursor-pointer hover:bg-gray-200 hover:scale-110 transition-all dark:hover:bg-gray-700': isAuthenticated }"
+                    @click="toggleReaction(articleReaction.name)"
+                    :data-popover-target="'reaction-' + articleReaction.name"
+                >
+                    <img :src="'/assets/images/icons/reactions/' + articleReaction.name + '.png'" :alt="articleReaction.name">
+                    <span x-text="articleReaction.count"></span>
+                </div>
+
+                <div data-popover :id="'reaction-' + articleReaction.name" role="tooltip" class="inline-block absolute invisible z-10 w-64 text-sm font-light text-gray-500 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 transition-opacity duration-300 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                    <div class="py-2 px-3 bg-gray-100 rounded-t-lg border-b border-gray-200 dark:border-gray-600 dark:bg-gray-700">
+                        <div class="font-semibold text-gray-900 dark:text-white flex justify-center items-center w-full">
+                            {{ __('Reactions with') }} <img :src="'/assets/images/icons/reactions/' + articleReaction.name + '.png'" class="ml-1" :alt="articleReaction.name">
+                        </div>
+                    </div>
+                    <div class="py-2 px-3">
+                        <template x-for="user in articleReaction.users">
+                            <p class="w-full text-center" x-text="user"></p>
+                        </template>
+                    </div>
+                    <div data-popper-arrow></div>
+                </div>
             </div>
         </template>
     </div>

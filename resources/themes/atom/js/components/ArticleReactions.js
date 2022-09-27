@@ -25,9 +25,12 @@ const ArticleReactions = {
                 this.articleReactions = []
 
                 Object.entries(articleReactions).forEach(reactionData => {
+                    let reactions = Object.values(reactionData[1])
+
                     this.articleReactions.push({
                         name: reactionData[0],
-                        count: Object.keys(reactionData[1]).length
+                        count: reactions.length,
+                        users: reactions.map(reaction => reaction.user?.username ?? '')
                     })
                 })
             },
