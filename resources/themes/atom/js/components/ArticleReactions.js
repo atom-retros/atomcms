@@ -6,7 +6,7 @@ const ArticleReactions = {
     },
 
     startComponent() {
-        Alpine.data('reactions', (myReactions = [], articleReactions = [], url ='') => ({
+        Alpine.data('reactions', (myReactions = [], articleReactions = [], url = '') => ({
             url,
             myReactions,
             articleReactions,
@@ -17,6 +17,10 @@ const ArticleReactions = {
                 this.treatArticleReactions()
                 this.allReactions = window.App.defaultReactions
                 this.isAuthenticated = window.App.isAuthenticated
+
+                this.$nextTick(() => {
+                    document.dispatchEvent(new CustomEvent('reactions:loaded'))
+                })
             },
 
             treatArticleReactions() {
@@ -25,10 +29,12 @@ const ArticleReactions = {
                 this.articleReactions = []
 
                 Object.entries(articleReactions).forEach(reactionData => {
-                    let reactions = Object.values(reactionData[1])
+                    let reactionName = reactionData[0],
+                        reactions = Object.values(reactionData[1])
 
                     this.articleReactions.push({
-                        name: reactionData[0],
+                        id: reactionName + Math.floor(Math.random() * 1000),
+                        name: reactionName,
                         count: reactions.length,
                         users: reactions.map(reaction => reaction.user?.username ?? '')
                     })

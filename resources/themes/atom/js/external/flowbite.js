@@ -3887,23 +3887,14 @@ function initPopover() {
 ;// CONCATENATED MODULE: ./src/flowbite.js
  // core components
 
-
-
-
- document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', () => {
     initDropdown()
-    initAccordion()
-    initCarousel()
-    initCollapse()
-    initDrawer()
     initModal()
-    initDismiss()
-    initTooltip()
-    initTabs()
-    setTimeout(() => initPopover(), 500)
 })
 
-
+document.addEventListener('reactions:loaded', () => {
+    initPopover()
+})
 
 
 
