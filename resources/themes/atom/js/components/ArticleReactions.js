@@ -18,9 +18,7 @@ const ArticleReactions = {
                 this.allReactions = window.App.defaultReactions
                 this.isAuthenticated = window.App.isAuthenticated
 
-                this.$nextTick(() => {
-                    document.dispatchEvent(new CustomEvent('reactions:loaded'))
-                })
+                this.dispatchFlowbiteEvent()
             },
 
             treatArticleReactions() {
@@ -33,7 +31,7 @@ const ArticleReactions = {
                         reactions = Object.values(reactionData[1])
 
                     this.articleReactions.push({
-                        id: reactionName + Math.floor(Math.random() * 1000),
+                        id: this.generateVirtualReactionId(reactionName),
                         name: reactionName,
                         count: reactions.length,
                         users: reactions.map(reaction => reaction.user?.username ?? '')
@@ -67,7 +65,14 @@ const ArticleReactions = {
                     return
                 }
 
-                this.articleReactions.push({ name, count: 1 })
+                this.articleReactions.push({
+                    id: this.generateVirtualReactionId(name),
+                    name,
+                    count: 1,
+                    users: [username]
+                })
+
+                this.dispatchFlowbiteEvent()
             },
 
             removeReaction(name, username) {
@@ -86,12 +91,16 @@ const ArticleReactions = {
                 })
             },
 
-            userHasReaction(reaction) {
-                return this.myReactions.includes(reaction.name)
+            generateVirtualReactionId(name) {
+                return name + Math.floor(Math.random() * 1000)
             },
 
             canAddReactionFromModal(name) {
                 return !this.userHasReaction(name) && !this.articleHasReaction(name)
+            },
+
+            userHasReaction(reaction) {
+                return this.myReactions.includes(reaction.name)
             },
 
             articleHasReaction(name) {
@@ -100,6 +109,10 @@ const ArticleReactions = {
 
             getReactionDataFromName(name) {
                 return this.articleReactions.find(reaction => reaction.name === name)
+            },
+
+            dispatchFlowbiteEvent() {
+                this.$nextTick(() => document.dispatchEvent(new CustomEvent('reactions:loaded')))
             }
         }))
     }
