@@ -20,7 +20,7 @@
                             {{ __('Reactions with') }} <img :src="'/assets/images/icons/reactions/' + articleReaction.name + '.png'" class="ml-1" :alt="articleReaction.name">
                         </div>
                     </div>
-                    <div class="py-2 px-3">
+                    <div class="py-2 px-3 overflow-y-auto" style="max-height: 200px">
                         <template x-for="user in articleReaction.users">
                             <p class="w-full text-center" x-text="user"></p>
                         </template>
