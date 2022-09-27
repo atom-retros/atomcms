@@ -1,24 +1,28 @@
 <?php
 
 use App\Models\WebsitePermission;
-use App\Models\WebsiteSetting;
+use App\Services\SettingsService;
 
 if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
     $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
 }
 
-function setting(string $setting): string
-{
-    return WebsiteSetting::query()->where('key', '=', $setting)->first()->value ?? '';
+if (!function_exists('setting')) {
+    function setting(string $setting): string
+    {
+        return SettingsService::getInstance()->getOrDefault($setting);
+    }
 }
 
-function permission(string $permission): string|int
-{
-    $permission = WebsitePermission::query()->where('key', '=', $permission)->first();
+if (!function_exists('permission')) {
+    function permission(string $permission): string|int
+    {
+        $permission = WebsitePermission::query()->where('key', '=', $permission)->first();
 
-    if (is_null($permission)) {
-        return 999;
+        if (is_null($permission)) {
+            return 999;
+        }
+
+        return $permission->value;
     }
-
-    return $permission->value;
 }
