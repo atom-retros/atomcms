@@ -48,13 +48,13 @@
 
     @auth()
         @if(auth()->user()->rank >= permission('min_rank_to_view_logs'))
-            <a href="/log-viewer" target="_blank" class="nav-item dark:text-gray-200">
+            <a data-turbolinks="false" href="/log-viewer" target="_blank" class="nav-item dark:text-gray-200">
                 {{ __('Error logs') }}
             </a>
         @endif
 
         @if(auth()->user()->rank >= setting('min_housekeeping_rank'))
-            <a href="{{ setting('housekeeping_url') }}" target="_blank" class="nav-item dark:text-gray-200">
+            <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank" class="nav-item dark:text-gray-200">
                 {{ __('Housekeeping') }}
             </a>
         @endif
