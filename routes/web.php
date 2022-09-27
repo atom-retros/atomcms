@@ -64,8 +64,8 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
                 Route::get('/staff', StaffController::class)->name('staff.index');
             });
 
-            Route::post('/article/{article:slug}/add-reaction', [ArticleController::class, 'addReaction'])
-                ->name('article.reaction.add')
+            Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])
+                ->name('article.toggle-reaction')
                 ->middleware('throttle:30,1');
         });
 

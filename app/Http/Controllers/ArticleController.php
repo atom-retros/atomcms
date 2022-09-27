@@ -35,7 +35,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function addReaction(WebsiteArticle $article, Request $request)
+    public function toggleReaction(WebsiteArticle $article, Request $request)
     {
         $reaction = $request->get('reaction');
 

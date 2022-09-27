@@ -1,4 +1,4 @@
-<div class="select-none" x-data='reactions(@json($myReactions), @json($articleReactions), "{{ route('article.reaction.add', $article->slug) }}")'>
+<div class="select-none" x-data='reactions(@json($myReactions), @json($articleReactions), "{{ route('article.toggle-reaction', $article->slug) }}")'>
     <div class="flex w-full flex-wrap gap-2 mt-4 bg-gray-100 dark:bg-gray-900 rounded-lg p-2">
         <div x-show="isAuthenticated" class="px-2 hover:scale-110 transition-all font-semibold h-8 flex items-center justify-center border-2 text-xs border-yellow-400 cursor-pointer bg-[#eeb425] text-white rounded-lg" data-modal-toggle="article-reactions-modal">
             {{ __('Add') }}
