@@ -24,7 +24,7 @@ class ArticleController extends Controller
         $articleData = $article->load(['user.permission:id,rank_name,staff_background', 'reactions:article_id,user_id,reaction', 'reactions.user:id,username']);
 
         if (Auth::check()) {
-            $myReactions = $articleData->reactions->where('user_id', auth()->id())->pluck('reaction');
+            $myReactions = $articleData->reactions->where('user_id', Auth::id())->pluck('reaction');
         }
 
         return view('community.article', [
@@ -43,7 +43,7 @@ class ArticleController extends Controller
             return response()->json(['success' => false]);
         }
 
-        $existingReaction = WebsiteArticleReaction::getReaction($article->id, auth()->id(), $reaction);
+        $existingReaction = WebsiteArticleReaction::getReaction($article->id, Auth::id(), $reaction);
 
         if ($existingReaction) {
             $existingReaction->update(['active' => !$existingReaction->active]);
@@ -55,7 +55,8 @@ class ArticleController extends Controller
 
         return response()->json([
             'success' => true,
-            'added' => $existingReaction?->active ?? true
+            'added' => $existingReaction?->active ?? true,
+            'username' => Auth::user()->username,
         ]);
     }
 }

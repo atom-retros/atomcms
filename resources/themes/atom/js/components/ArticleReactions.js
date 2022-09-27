@@ -42,34 +42,36 @@ const ArticleReactions = {
                     if(!response.data.success) return
 
                     if(!response.data.added) {
-                        this.removeReaction(reaction)
+                        this.removeReaction(reaction, response.data.username)
                         return
                     }
 
-                    this.addReaction(reaction)
+                    this.addReaction(reaction, response.data.username)
                 })
             },
 
-            addReaction(name) {
+            addReaction(name, username) {
                 this.myReactions.push(name)
 
                 let existingReaction = this.getReactionDataFromName(name)
 
                 if(existingReaction) {
                     existingReaction.count++
+                    existingReaction.users.push(username)
                     return
                 }
 
                 this.articleReactions.push({ name, count: 1 })
             },
 
-            removeReaction(name) {
+            removeReaction(name, username) {
                 this.myReactions.splice(this.myReactions.indexOf(name), 1)
 
                 let reactionData = this.getReactionDataFromName(name)
 
                 if(reactionData.count > 1) {
                     reactionData.count--
+                    reactionData.users.splice(reactionData.users.indexOf(username), 1)
                     return
                 }
 
