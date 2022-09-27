@@ -186,3 +186,9 @@ html.dark .swal2-popup {
     background: rgb(17 24 39);
     color: white;
 }
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: #e9b124;
+    border-radius: 5px;
+}

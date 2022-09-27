@@ -6,7 +6,9 @@
 
 import axios from "axios";
 window.axios = axios;
+import Turbolinks from "turbolinks";
 
+Turbolinks.start();
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
