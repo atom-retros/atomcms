@@ -6,6 +6,9 @@
     "Rules": "Rules",
     "Articles": "Articles",
     "Staff": "Staff",
+    "Photos": "Photos",
+    "Error logs": "Error logs",
+    "Housekeeping": "Housekeeping",
     "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!": "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!",
     "Create your account!": "Create your account!",
     "Create a free account, and be a part of a fun online world!": "Create a free account, and be a part of a fun online world!",
@@ -91,5 +94,7 @@
     ":online hours": ":online hours",
     ":respect respects received": ":respect respects received",
     ":achievement achievement score": ":achievement achievement score",
-    "Nitro client": "Nitro client"
+    "Nitro client": "Nitro client",
+    "Insert Reaction": "Insert Reaction",
+    "Add": "Add"
 }

@@ -3696,25 +3696,205 @@ function initTooltip() {
   });
 }
 
-document.addEventListener('turbolinks:load', () => {
-    initDropdown()
-    initAccordion()
-    initCarousel()
-    initCollapse()
-    initDrawer()
-    initModal()
-    initDismiss()
-    initTooltip()
-    initTabs()
-})
-
 /* harmony default export */ const tooltip = (Tooltip);
+;// CONCATENATED MODULE: ./src/components/popover.js
+function popover_toConsumableArray(arr) { return popover_arrayWithoutHoles(arr) || popover_iterableToArray(arr) || popover_unsupportedIterableToArray(arr) || popover_nonIterableSpread(); }
+
+function popover_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function popover_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return popover_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return popover_arrayLikeToArray(o, minLen); }
+
+function popover_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function popover_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return popover_arrayLikeToArray(arr); }
+
+function popover_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function popover_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function popover_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? popover_ownKeys(Object(source), !0).forEach(function (key) { popover_defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : popover_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function popover_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function popover_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function popover_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function popover_createClass(Constructor, protoProps, staticProps) { if (protoProps) popover_defineProperties(Constructor.prototype, protoProps); if (staticProps) popover_defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+
+var popover_Default = {
+  placement: 'top',
+  offset: 10,
+  triggerType: 'hover',
+  onShow: function onShow() {},
+  onHide: function onHide() {}
+};
+
+var Popover = /*#__PURE__*/function () {
+  function Popover() {
+    var targetEl = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var triggerEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    popover_classCallCheck(this, Popover);
+
+    this._targetEl = targetEl;
+    this._triggerEl = triggerEl;
+    this._options = popover_objectSpread(popover_objectSpread({}, popover_Default), options);
+    this._popperInstance = this._createPopperInstace();
+
+    this._init();
+  }
+
+  popover_createClass(Popover, [{
+    key: "_init",
+    value: function _init() {
+      var _this = this;
+
+      if (this._triggerEl) {
+        var triggerEvents = this._getTriggerEvents();
+
+        triggerEvents.showEvents.forEach(function (ev) {
+          _this._triggerEl.addEventListener(ev, function () {
+            _this.show();
+          });
+
+          _this._targetEl.addEventListener(ev, function () {
+            _this.show();
+          });
+        });
+        triggerEvents.hideEvents.forEach(function (ev) {
+          _this._triggerEl.addEventListener(ev, function () {
+            setTimeout(function () {
+              if (!_this._targetEl.matches(':hover')) {
+                _this.hide();
+              }
+            }, 100);
+          });
+
+          _this._targetEl.addEventListener(ev, function () {
+            setTimeout(function () {
+              if (!_this._triggerEl.matches(':hover')) {
+                _this.hide();
+              }
+            }, 100);
+          });
+        });
+      }
+    }
+  }, {
+    key: "_createPopperInstace",
+    value: function _createPopperInstace() {
+      return popper_createPopper(this._triggerEl, this._targetEl, {
+        placement: this._options.placement,
+        modifiers: [{
+          name: 'offset',
+          options: {
+            offset: [0, this._options.offset]
+          }
+        }]
+      });
+    }
+  }, {
+    key: "_getTriggerEvents",
+    value: function _getTriggerEvents() {
+      switch (this._options.triggerType) {
+        case 'hover':
+          return {
+            showEvents: ['mouseenter', 'focus'],
+            hideEvents: ['mouseleave', 'blur']
+          };
+
+        case 'click':
+          return {
+            showEvents: ['click', 'focus'],
+            hideEvents: ['focusout', 'blur']
+          };
+
+        default:
+          return {
+            showEvents: ['mouseenter', 'focus'],
+            hideEvents: ['mouseleave', 'blur']
+          };
+      }
+    }
+  }, {
+    key: "show",
+    value: function show() {
+      this._targetEl.classList.remove('opacity-0', 'invisible');
+
+      this._targetEl.classList.add('opacity-100', 'visible'); // Enable the event listeners
+
+
+      this._popperInstance.setOptions(function (options) {
+        return popover_objectSpread(popover_objectSpread({}, options), {}, {
+          modifiers: [].concat(popover_toConsumableArray(options.modifiers), [{
+            name: 'eventListeners',
+            enabled: true
+          }])
+        });
+      }); // Update its position
+
+
+      this._popperInstance.update(); // callback function
+
+
+      this._options.onShow(this);
+    }
+  }, {
+    key: "hide",
+    value: function hide() {
+      this._targetEl.classList.remove('opacity-100', 'visible');
+
+      this._targetEl.classList.add('opacity-0', 'invisible'); // Disable the event listeners
+
+
+      this._popperInstance.setOptions(function (options) {
+        return popover_objectSpread(popover_objectSpread({}, options), {}, {
+          modifiers: [].concat(popover_toConsumableArray(options.modifiers), [{
+            name: 'eventListeners',
+            enabled: false
+          }])
+        });
+      }); // callback function
+
+
+      this._options.onHide(this);
+    }
+  }]);
+
+  return Popover;
+}();
+
+window.Popover = Popover;
+
+function initPopover() {
+  document.querySelectorAll('[data-popover-target]').forEach(function (triggerEl) {
+    var targetEl = document.getElementById(triggerEl.getAttribute('data-popover-target'));
+    var triggerType = triggerEl.getAttribute('data-popover-trigger');
+    var placement = triggerEl.getAttribute('data-popover-placement');
+    var offset = triggerEl.getAttribute('data-popover-offset');
+    new Popover(targetEl, triggerEl, {
+      placement: placement ? placement : popover_Default.placement,
+      offset: offset ? parseInt(offset) : popover_Default.offset,
+      triggerType: triggerType ? triggerType : popover_Default.triggerType
+    });
+  });
+}
+
+/* harmony default export */ const popover = (Popover);
 ;// CONCATENATED MODULE: ./src/flowbite.js
  // core components
 
+document.addEventListener('turbolinks:load', () => {
+    initDropdown()
+    initModal()
+})
 
-
-
+document.addEventListener('reactions:loaded', () => {
+    initPopover()
+})
 
 
 
@@ -3730,7 +3910,7 @@ document.addEventListener('turbolinks:load', () => {
   Modal: modal,
   Drawer: drawer,
   Tabs: tabs,
-  Tooltip: tooltip
+  Tooltip: tooltip,
+  Popover: popover
 });
-/******/ })()
-;
+/******/ })();

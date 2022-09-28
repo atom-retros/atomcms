@@ -60,8 +60,13 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             Route::withoutMiddleware('auth')->group(function () {
                 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
                 Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+
                 Route::get('/staff', StaffController::class)->name('staff.index');
             });
+
+            Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])
+                ->name('article.toggle-reaction')
+                ->middleware('throttle:30,1');
         });
 
         // Leaderboard routes

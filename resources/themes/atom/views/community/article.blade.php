@@ -64,5 +64,7 @@
         <div class="px-2">
             {!! $article->full_story  !!}
         </div>
+
+        @include('community.partials.article-reactions')
     </div>
 </x-app-layout>
