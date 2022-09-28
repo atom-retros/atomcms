@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('website_article_reactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('article_id');
+            $table->unsignedBigInteger('article_id');
             $table->string('reaction', 50);
             $table->boolean('active')->default(true);
             $table->foreign('article_id')->references('id')->on('website_articles')->cascadeOnDelete();
