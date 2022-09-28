@@ -10,7 +10,6 @@ class WebsiteArticleReaction extends Model
 {
     use HasFactory;
 
-    protected $table = 'website_article_reactions';
 
     protected $guarded = [];
 
