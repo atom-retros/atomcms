@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('article_id');
             $table->string('reaction', 50);
             $table->boolean('active')->default(true);
+            $table->foreign('article_id')->references('id')->on('website_articles')->cascadeOnDelete();
         });
     }
 
