@@ -10,6 +10,7 @@ class ArticleController extends Controller
     {
         return view('community.articles', [
             'articles' => WebsiteArticle::query()
+                ->with('user:id,username,look')
                 ->latest('id')
                 ->paginate(8),
         ]);
