@@ -46,6 +46,7 @@ return [
         'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
         'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
         'convert_passwords' => env('CONVERT_PASSWORDS'),
+        'force_https' => env('FORCE_HTTPS'),
     ],
 
     'findretros' => [
