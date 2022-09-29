@@ -110,11 +110,11 @@
                             </div>
 
                             <img
-                                @class([
-                                    'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
-                                ])
-                                src="{{ setting('avatar_imager') }}{{ $currency->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                    @class([
+                                        'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
+                                    ])
+                                    src="{{ setting('avatar_imager') }}{{ $currency->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
+                                    alt="" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -133,6 +133,9 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                    <div class="flex items-center">
+                        <img src="{{ asset('/assets/images/icons/clock.gif') }}" alt="clock" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Hours online') }}
                 </div>
                 <hr class="dark:border-gray-500">
@@ -150,11 +153,11 @@
                             </div>
 
                             <img
-                                @class([
-                                    'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
-                                ])
-                                src="{{ setting('avatar_imager') }}{{ $onlineTime->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                    @class([
+                                        'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
+                                    ])
+                                    src="{{ setting('avatar_imager') }}{{ $onlineTime->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
+                                    alt="" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -173,6 +176,9 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                    <div class="flex items-center">
+                        <img src="{{ asset('/assets/images/icons/heart.gif') }}" alt="heart" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Respects received') }}
                 </div>
                 <hr class="dark:border-gray-500">
@@ -190,11 +196,11 @@
                             </div>
 
                             <img
-                                @class([
-                                    'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
-                                ])
-                                src="{{ setting('avatar_imager') }}{{ $respect->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                    @class([
+                                        'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
+                                    ])
+                                    src="{{ setting('avatar_imager') }}{{ $respect->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
+                                    alt="" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -213,6 +219,9 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                    <div class="flex items-center">
+                        <img src="{{ asset('/assets/images/icons/star.gif') }}" alt="star" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Achievement score') }}
                 </div>
                 <hr class="dark:border-gray-500">
@@ -230,11 +239,11 @@
                             </div>
 
                             <img
-                                @class([
-                                    'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
-                                ])
-                                src="{{ setting('avatar_imager') }}{{ $achievement->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                    @class([
+                                        'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
+                                    ])
+                                    src="{{ setting('avatar_imager') }}{{ $achievement->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
+                                    alt="" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
