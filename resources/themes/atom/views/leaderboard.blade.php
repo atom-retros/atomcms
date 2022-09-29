@@ -133,6 +133,8 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                <img src="{{ asset('/assets/images/icons/clock.gif') }}" alt="clock" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Hours online') }}
                 </div>
                 <hr class="dark:border-gray-500">
@@ -173,6 +175,8 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                <img src="{{ asset('/assets/images/icons/heart.gif') }}" alt="heart" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Respects received') }}
                 </div>
                 <hr class="dark:border-gray-500">
@@ -213,6 +217,8 @@
 
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
+                <img src="{{ asset('/assets/images/icons/star.gif') }}" alt="star" class="w-4" style="image-rendering: pixelated;">
+                    </div>
                     {{ __('Achievement score') }}
                 </div>
                 <hr class="dark:border-gray-500">
