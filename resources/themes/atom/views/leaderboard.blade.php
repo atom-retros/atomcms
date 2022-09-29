@@ -6,7 +6,7 @@
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
                     <div class="flex items-center">
-                        <img src="https://habstar.net/assets/images/icons/credits.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
+                        <img src="{{ asset('/assets/images/icons/credits.png') }}" alt="credits" class="w-4" style="image-rendering: pixelated;">
                     </div>
                     {{ __('Top credits') }}
                 </div>
@@ -48,7 +48,7 @@
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
                     <div class="flex items-center">
-                        <img src="https://habstar.net/assets/images/icons/duckets.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
+                        <img src="{{ asset('/assets/images/icons/duckets.png') }}" alt="credits" class="w-4" style="image-rendering: pixelated;">
                     </div>
                     {{ __('Top duckets') }}
                 </div>
@@ -91,7 +91,7 @@
             <div class="p-2 shadow rounded bg-white dark:bg-gray-900">
                 <div class="text-center font-semibold text-gray-700 flex justify-center gap-x-1 dark:text-gray-300">
                     <div class="flex items-center">
-                        <img src="https://habstar.net/assets/images/icons/diamond.png" alt="credits" class="w-4" style="image-rendering: pixelated;">
+                        <img src="{{ asset('/assets/images/icons/diamond.png') }}" alt="credits" class="w-4" style="image-rendering: pixelated;">
                     </div>
                     {{ __('Top diamonds') }}
                 </div>
