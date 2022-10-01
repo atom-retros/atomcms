@@ -31,6 +31,12 @@ class User extends Authenticatable
         return $this->hasMany(UserCurrency::class, 'user_id');
     }
 
+    public function sessionLogs()
+    {
+        return $this->hasMany(UserSessionLog::class)
+            ->latest();
+    }
+
     public function currency(string $currency)
     {
         if (!$this->relationLoaded('currencies')) {

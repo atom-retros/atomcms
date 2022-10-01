@@ -26,4 +26,11 @@ class PasswordSettingsController extends Controller
 
         return redirect()->back()->with('success', __('Your password has been changed!'));
     }
+
+    public function sessionLogs()
+    {
+        return view('user.settings.session-logs', [
+            'logs' => Auth::user()->sessionLogs,
+        ]);
+    }
 }
