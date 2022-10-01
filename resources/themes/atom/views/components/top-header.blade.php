@@ -25,5 +25,33 @@
         </x-top-header-currency>
     </div>
 
-    <x-navigation.user-dropdown />
+    <div class="flex w-full justify-between md:w-auto">
+        @auth
+            @if(auth()->user()->rank >= permission('min_rank_to_view_logs') || auth()->user()->rank >= setting('min_housekeeping_rank'))
+            <button
+                    id="administrationDropdown"
+                    data-dropdown-toggle="administration-dropdown"
+                    class="h-10 text-sm font-semibold text-red-700 flex items-center gap-x-1 ml-5 md:ml-0">
+                    {{ __('Administration') }}
+
+                    <x-icons.chevron-down />
+            </button>
+
+            <div id="administration-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
+                @if(auth()->user()->rank >= permission('min_rank_to_view_logs'))
+                <a data-turbolinks="false" href="/log-viewer" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                    {{ __('Error logs') }}
+                </a>
+                @endif
+
+                @if(auth()->user()->rank >= setting('min_housekeeping_rank'))
+                <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                    {{ __('Housekeeping') }}
+                </a>
+                @endif
+            </div>
+            @endif
+        @endauth
+        <x-navigation.user-dropdown />
+    </div>
 </div>
