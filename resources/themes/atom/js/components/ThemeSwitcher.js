@@ -2,11 +2,8 @@ const ThemeSwitcher = {
     currentTheme: 'light',
 
     init() {
-        if (localStorage.theme === "dark" ||
-            (!("theme" in localStorage) &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            this.changeTheme()
+        if (localStorage.theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            this.toggleTheme()
         }
 
         document.addEventListener('turbolinks:load', () => this.initButton())
@@ -14,10 +11,10 @@ const ThemeSwitcher = {
 
     initButton() {
         document.getElementById("theme-switcher")
-            .addEventListener("click", () => this.changeTheme());
+            .addEventListener("click", () => this.toggleTheme());
     },
 
-    changeTheme() {
+    toggleTheme() {
         if(this.currentTheme === 'light') {
             this.currentTheme = 'dark'
             document.documentElement.classList.add("dark");
