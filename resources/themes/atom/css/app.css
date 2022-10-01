@@ -60,18 +60,25 @@ html {
     display: block;
     width: 100%;
     height: 100px;
-    border-radius: 8px 8px 0 0;
     background-position: 300px 220px !important;
     margin: 0 0 20px;
     transition: .3s;
 }
 
-.article-image:hover {
+.article-image-slide {
     background-position: 350px 220px !important;
+}
+
+.recent-articles {
+   background-blend-mode: multiply;
 }
 
 .camera-icon {
     background: #242c31 url('/public/assets/images/icons/camera.png') no-repeat center;
+}
+
+html.dark .camera-icon {
+    background: #25658d url('/public/assets/images/icons/camera.png') no-repeat center;
 }
 
 .hotel-icon {
@@ -93,18 +100,12 @@ html {
     outline: 1px solid #6caff4;
 }
 
-.header-bg {
-    background: url('/public/assets/images/kasja_mepage_header.png');
-}
-
 .me-backdrop {
     height: 150px;
-    background: rgba(0, 0, 0, 0.3) url('/public/assets/images/kasja_mepage_image.png');
     background-blend-mode: multiply;
 }
 
 .staff-bg {
-    background: rgba(0, 0, 0, 0.5) url('/public/assets/images/staff-bg.png');
     background-blend-mode: multiply;
 }
 
@@ -171,4 +172,23 @@ html {
 .leaderboard-third {
     background: #f1851b url('/public/assets/images/leaderboards/trophy-bronze.png') no-repeat center;
     color: transparent;
+}
+
+.site-bg {
+    background: url('/public/assets/images/background-light.jpg') no-repeat fixed right bottom;
+}
+
+html.dark .site-bg {
+    background: url('/public/assets/images/background-dark.jpg') no-repeat fixed right bottom;
+}
+
+html.dark .swal2-popup {
+    background: rgb(17 24 39);
+    color: white;
+}
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: #e9b124;
+    border-radius: 5px;
 }

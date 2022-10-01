@@ -9,13 +9,13 @@
     </div>
 
     <div class="col-span-12 md:col-span-9">
-        <div class="flex flex-col gap-y-3">
+        <div class="flex flex-col gap-y-3 dark:text-gray-300">
             <x-shop.packages />
         </div>
     </div>
 
-    <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
-        <x-content-section icon="hotel-icon" classes="border">
+    <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3 dark:text-gray-100">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -28,48 +28,22 @@
                 {{ __('Please read our shop terms before making a purchase here at :hotel. We consider all purchases a donation, and we will in no circumstances issue a refund.', ['hotel' => setting('hotel_name')]) }}
             </small>
 
-            <div>
+            <div class="mt-4">
                 Current balance:
                 <strong> $<span id="balance">{{ auth()->user()->website_store_balance }}</span></strong>
             </div>
 
-            <div class="flex flex-col">
-                <x-form.label for="fillupAmount">
-                    {{ __('Top up') }}
-                </x-form.label>
-
+            <div class="flex flex-col my-4">
                 <x-form.input name="fillupAmount" placeholder="Enter top up amount" :autofocus="true" />
             </div>
 
             @if (Auth::check())
-                <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
                 <div id="paypal-button-container"></div>
             @endif
-
-
-{{--            <p>--}}
-{{--                {{ __('Here at :hotel Hotel we are accepting donations to keep the hotel up & running and as a thank you, you will in return receive in-game goods.', ['hotel' => setting('hotel_name')]) }}--}}
-{{--            </p>--}}
-
-
-{{--            <p>--}}
-{{--                <span class="font-semibold">{{ __('Why are donations important?') }}</span><br>--}}
-{{--                {{ __('Donations are important, as it will help to pay our monthly bills needed to keep the hotel up & running, as well as adding new and exciting features for you and others to enjoy!') }}--}}
-{{--            </p>--}}
-
-{{--            <p class="font-semibold italic">--}}
-{{--                {{ __('To purchase items from the :hotel shop, please visit our Discord and contact the owner of :hotel Hotel to make your purchase', ['hotel' => setting('hotel_name')]) }}--}}
-{{--            </p>--}}
-
-{{--            <a href="{{ setting('discord_invitation_link') }}" target="_blank">--}}
-{{--                <x-form.secondary-button>--}}
-{{--                    {{ __('Take me to the :hotel Discord', ['hotel' => setting('hotel_name')]) }}--}}
-{{--                </x-form.secondary-button>--}}
-{{--            </a>--}}
-        </x-content-section>
+        </x-content.content-section>
 
         @auth
-            <x-content-section icon="hotel-icon" classes="border">
+            <x-content.content-section icon="hotel-icon">
                 <x-slot:title>
                     {{ __('Redeem voucher') }}
                 </x-slot:title>
@@ -85,11 +59,7 @@
                 <form action="{{ route('shop.redeem-voucher') }}" method="POST" class="flex flex-col gap-y-3">
                     @csrf
 
-                   <div class="w-full flex flex-col">
-                       <x-form.label for="code">
-                           {{ __('Voucher') }}
-                       </x-form.label>
-
+                   <div class="w-full flex flex-col mt-4">
                        <x-form.input name="code" placeholder="{{ __('Enter your shop voucher') }}" />
                    </div>
 
@@ -97,23 +67,24 @@
                         {{ __('Redeem') }}
                     </x-form.primary-button>
                 </form>
-            </x-content-section>
+            </x-content.content-section>
         @endauth
     </div>
 
     <style>
         .bronze-vip {
-            background: #c5630f url({{ sprintf('%s/c_images/album1584/BVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #c5630f url({{ sprintf('%s/VipParties2.gif', setting('badges_path')) }}) no-repeat center;
         }
 
         .silver-vip {
-            background: #dddddd url({{ sprintf('%s/c_images/album1584/SVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #dddddd url({{ sprintf('%s/VipParties2_Top100.gif', setting('badges_path')) }}) no-repeat center;
         }
 
         .gold-vip {
-            background: #E4A317FF url({{ sprintf('%s/c_images/album1584/GVIP.gif', config('habbo.site.swf_path')) }}) no-repeat center;
+            background: #E4A317FF url({{ sprintf('%s/VipParties2_Top10.gif', setting('badges_path')) }}) no-repeat center;
         }
     </style>
+
     @push('javascript')
         <script>
             window.addEventListener('load', () => {

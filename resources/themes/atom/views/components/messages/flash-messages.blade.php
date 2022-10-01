@@ -1,5 +1,5 @@
 <script>
-    const Toast = Swal.mixin({
+    var Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,

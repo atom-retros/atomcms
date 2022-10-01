@@ -21,6 +21,7 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
+        'id',
         'password',
         'remember_token',
     ];
@@ -32,13 +33,17 @@ class User extends Authenticatable
 
     public function currency(string $currency)
     {
+        if (!$this->relationLoaded('currencies')) {
+            $this->load('currencies');
+        }
+
         $type = match ($currency) {
             'duckets' => 0,
             'diamonds' => 5,
             'points' => 101,
         };
 
-        return $this->currencies()->where('type', '=', $type)->first()->amount ?? 0;
+        return $this->currencies->where('type', $type)->first()->amount ?? 0;
     }
 
     public function permission(): HasOne

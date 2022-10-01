@@ -56,7 +56,7 @@
                        <div class="flex justify-between">
                            @forelse($user->badges as $badge)
                                <div data-tippy-content="{{ $badge->badge_code }}" class="user-badge h-[70px] w-[70px] border-2 rounded-full flex items-center justify-center cursor-pointer">
-                                   <img  src="{{ config('habbo.site.swf_path') }}/c_images/album1584/{{ $badge->badge_code }}.gif" class="max-h-[55px] max-w-[55px]" alt="">
+                                   <img  src="{{ setting('badges_path') }}/{{ $badge->badge_code }}.gif" class="max-h-[55px] max-w-[55px]" alt="">
                                </div>
                            @empty
                                <div class="col-span-4">

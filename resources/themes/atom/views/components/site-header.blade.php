@@ -1,15 +1,15 @@
-<div class="w-full h-52 bg-blue-400 relative flex items-center justify-center header-bg">
+<div class="w-full h-52 relative flex items-center justify-center header-bg" style="background: url({{ setting('cms_header') }});">
     <div class="w-full h-full bg-black absolute bg-opacity-50"></div>
 
     @auth
         <div class="max-w-7xl relative h-full w-full flex items-center justify-center md:justify-between pr-10">
             <div class="flex gap-x-4 items-center">
                 <a href="{{ route('me.show') }}" class="ml-7">
-                    <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ asset('assets/images/kasja_atomlogo.png') }} alt="Hotel logo">
+                    <img class="drop-shadow transition ease-in-out duration-300 hover:scale-105" src={{ setting('cms_logo') }} alt="Hotel logo">
                 </a>
 
-                <div class="hidden md:flex items-center bg-white px-4 rounded-md relative h-[50px]">
-                    <div class="absolute bg-white w-6 h-6 -left-1 rotate-45"></div>
+                <div class="hidden md:flex items-center bg-white dark:bg-gray-900 dark:text-white px-4 rounded-md relative h-[50px]">
+                    <div class="absolute bg-white w-6 h-6 -left-1 rotate-45 dark:bg-gray-900"></div>
 
                     <span class="relative">
                         {{ __(':online :hotel online', ['online' => DB::table('users')->where('online', '1')->count(), 'hotel' => setting('hotel_name')]) }}
@@ -21,7 +21,7 @@
 
             <flex class="flex gap-x-4">
                 <a href="{{ route('nitro-client') }}">
-                    <button class="hidden md:block text-lg relative rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
+                    <button class="hidden md:block text-lg relative dark:bg-gray-900 dark:text-white rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                         {{ __('Nitro client') }}
                     </button>
                 </a>

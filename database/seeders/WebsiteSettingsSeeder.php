@@ -91,9 +91,9 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'The minimum rank before being considered a staff member',
             ],
             [
-                'key' => 'swf_path',
-                'value' => '/client/flash/swfs',
-                'comment' => 'The path to the SWF folder',
+                'key' => 'badges_path',
+                'value' => '/client/flash/swfs/c_images/album1584',
+                'comment' => 'The path to the badges folder',
             ],
             [
                 'key' => 'group_badge_path',
@@ -149,6 +149,21 @@ class WebsiteSettingsSeeder extends Seeder
                 'key' => 'ipdata_api_key',
                 'value' => 'ADD-API-KEY-HERE',
                 'comment' => 'The API key needed from ipdata.co to block VPNs',
+            ],
+            [
+                'key' => 'cms_logo',
+                'value' => '/assets/images/kasja_atomlogo.png',
+                'comment' => 'Default logo for the cms',
+            ],
+            [
+                'key' => 'cms_header',
+                'value' => '/assets/images/kasja_mepage_header.png',
+                'comment' => 'Default header for the me page',
+            ],
+            [
+                'key' => 'cms_me_backdrop',
+                'value' => '/assets/images/kasja_mepage_image.png',
+                'comment' => 'Default backdrop header for the me page',
             ],
         ];
 

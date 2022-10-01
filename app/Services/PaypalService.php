@@ -27,14 +27,14 @@ class PaypalService
     private function environment()
     {
         if (config('paypal.mode') === 'sandbox') {
-            $clientId = config("paypal.sandbox.client_id") ?: "<<PAYPAL-CLIENT-ID>>";
-            $clientSecret = config('paypal.sandbox.client_secret') ?: "<<PAYPAL-CLIENT-ID>>";
+            $clientId = config("paypal.sandbox.client_id");
+            $clientSecret = config('paypal.sandbox.client_secret');
 
             return new SandboxEnvironment($clientId, $clientSecret);
         }
 
-        $clientId = config('paypal.live.client_id') ?: "<<PAYPAL-CLIENT-ID>>";
-        $clientSecret = config('paypal.live.client_secret') ?: "<<PAYPAL-CLIENT-ID>>";
+        $clientId = config('paypal.live.client_id');
+        $clientSecret = config('paypal.live.client_secret');
 
         return new ProductionEnvironment($clientId, $clientSecret);
     }

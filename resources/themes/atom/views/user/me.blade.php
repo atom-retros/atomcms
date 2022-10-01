@@ -39,7 +39,7 @@
         </div>
 
 
-        <x-content-section icon="hotel-icon" classes="border">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>
@@ -48,16 +48,16 @@
                 {{ __('Referral new users and be rewarded by in-game goods') }}
             </x-slot:under-title>
 
-            <div class="px-2 text-sm">
+            <div class="px-2 text-sm dark:text-gray-200">
                 {{ __('Here at :hotel we have added a referral system, allowing you to obtain a bonus for every :needed users that registers through your referral link will allow you to claim a reward of :amount diamonds!', ['hotel' => setting('hotel_name'), 'needed' => setting('referrals_needed'), 'amount' => setting('referral_reward_amount')]) }}
                 <br>
 
-                <small style="color: gray;">
+                <small class="text-gray-400">
                     {{ __('Boosting referrals by making own accounts will lead to removal of all progress, currency, inventory and a potential ban') }}
                 </small>
 
                 <div class="grid grid-cols-12 gap-2">
-                    <x-form.input classes="col-span-12 md:col-span-10" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
+                    <x-form.input classes="col-span-12 md:col-span-10 text-sm" name="referral" value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}" :autofocus="false" :readonly="true" />
 
                     <div class="col-span-12 md:col-span-2 flex" onclick="copyCode()">
                         <x-form.secondary-button>
@@ -69,15 +69,15 @@
 
                 @if(auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
                     <a href="{{ route('claim.referral-reward') }}" class="text-decoration-none">
-                        <button class="mt-2 w-full rounded-md bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
+                        <button class="mt-2 w-full rounded bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
                     </a>
                 @else
-                    <button disabled class="mt-2 w-full rounded-md bg-gray-400 text-white p-2">
+                    <button disabled class="mt-2 w-full rounded bg-gray-400 dark:bg-gray-900 text-white p-2">
                         {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' => auth()->user()->referralsNeeded() ?? 0]), auth()->user()->referrals->referrals_total ?? 0) }}
                     </button>
                 @endif
             </div>
-        </x-content-section>
+        </x-content.content-section>
     </div>
 
     <div class="col-span-12 md:col-span-3 space-y-4">

@@ -25,7 +25,9 @@ Atom CMS is a Habbo retro CMS, aiming to provide an easy and solid experience fo
 
 Laravel was chosen as its backend, due to it being very robust and battle tested within "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' (& frameworks) normally lack. Combine those things together and you'll be able to build anything you want even as a beginner, you dont need to be a PHP expert or a frontend master to work with Atom CMS!
 
-If you are new to Laravel and want to build your own features, then I highly recommend the following two (free) series. 
+If you are new to Laravel and want to build your own features, then I highly recommend the following free bootcamp and two (free) series. 
+[https://bootcamp.laravel.com/](https://bootcamp.laravel.com/) - **very recommended**
+
 - https://laracasts.com/series/laravel-8-from-scratch
 - https://laracasts.com/series/whats-new-in-laravel-9
 
@@ -44,6 +46,7 @@ For example if you're changing from eg. Cosmic CMS and you know beforehand that 
 ## Setup guide
 The following requirements is needed to setup Atom CMS:
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
+- MySQL 8.x or MariaDB 10.x or newer
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
 - An Arcturus Morningstar database [Database repository](https://git.krews.org/morningstar/arcturus-morningstar-base-database)
@@ -199,6 +202,7 @@ Once the command has been executed, you'll be prompted with easy to follow scaff
 
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
+- **Nicollas** - Dark mode & pt-br translations
 - **Oliver** - Profile page & Finnish translations
 - **Kani** - Rcon System & Findretros API
 - **Beny** - Findretros API fixes & CF Fixes

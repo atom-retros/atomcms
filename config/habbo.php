@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'reactions' => [
+        'bad', 'crying', 'good', 'happy', 'taut', 'impatient', 'inlove', 'laugh', 'proud', 'wow',
+        'shameful', 'shameless', 'sleeping', 'smile', 'tongue', 'wink', 'disgusted', 'angry', 'lgbt', 'heart2', 'bobba', 'poop',
+        'like', 'unlike', 'fire', 'eyes', 'crown', 'star', 'heart'
+    ],
+
     'migrations' => [
         // Only set this to true in the .env file if your CERTAIN that you want to rename coliding table names
         'rename_tables' => env('RENAME_COLLIDING_TABLES', false)
@@ -37,9 +43,10 @@ return [
 
     'site' => [
         'site_url' => env('APP_URL', 'http://localhost'),
-        'swf_path' => env('SWF_PATH', '/client/flash/swfs'),
         'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
         'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
+        'convert_passwords' => env('CONVERT_PASSWORDS'),
+        'force_https' => env('FORCE_HTTPS', false),
     ],
 
     'findretros' => [

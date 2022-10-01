@@ -1,10 +1,10 @@
 <button
     id="dropdownNavbarLink"
     data-dropdown-toggle="dropdownNavbarUser"
-    class="ml-4 flex items-center">
-    <span class="h-10">
-        <img class="w-8 h-12 mt-1" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
-    </span>
+    class="ml-4 flex items-center dark:text-gray-200">
+    <div class="h-10">
+        <img class="w-10" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="">
+    </div>
 
     <span>{{ auth()->user()->username }}</span>
 
@@ -15,15 +15,15 @@
 </button>
 
 <!-- Dropdown menu -->
-<div id="dropdownNavbarUser" class="py-2 hidden z-10 w-44 bg-white shadow block">
-    <a href="{{ route('settings.account.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-semibold">
+<div id="dropdownNavbarUser" class="py-2 hidden z-10 w-44 bg-white shadow block dark:bg-gray-800">
+    <a href="{{ route('settings.account.show') }}" class="block py-2 px-4 hover:bg-gray-100 font-semibold dark:text-gray-200 dark:hover:bg-gray-700">
         {{ __('User settings') }}
     </a>
 
     @auth
         <a
             href="{{ route('logout') }}"
-            class="block py-2 px-4 hover:bg-gray-100 font-semibold"
+            class="block py-2 px-4 hover:bg-gray-100 font-semibold dark:text-gray-200 dark:hover:bg-gray-700"
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             {{ __('Logout') }}

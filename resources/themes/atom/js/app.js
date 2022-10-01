@@ -4,4 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import './external/flowbite';
 import "./bootstrap";
+
+import Alpine from "alpinejs";
+import ThemeSwitcher from "./components/ThemeSwitcher.js";
+import ArticleReactions from './components/ArticleReactions.js';
+
+ThemeSwitcher.init();
+ArticleReactions.init();
+
+Alpine.start();
+
