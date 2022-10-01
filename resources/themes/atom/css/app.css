@@ -192,3 +192,30 @@ html.dark .swal2-popup {
     background-color: #e9b124;
     border-radius: 5px;
 }
+
+.navigation-icon {
+    width: 20px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navigation-icon.shop {
+    background-image: url('/public/assets/images/icons/navigation/shop.png');
+}
+
+.navigation-icon.leaderboards {
+    background-image: url('/public/assets/images/icons/navigation/leaderboards.png');
+}
+
+.navigation-icon.rules {
+    background-image: url('/public/assets/images/icons/navigation/rules.gif');
+}
+
+.navigation-icon.home {
+    background-image: url('/public/assets/images/icons/navigation/home.png');
+}
+
+.navigation-icon.community {
+    background-image: url('/public/assets/images/icons/navigation/community.png');
+}

@@ -1,6 +1,7 @@
 <div class="hidden relative w-full h-full flex flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
         <a href="{{ auth()->check() ? route('me.show') : route('welcome') }}"
            class="nav-item dark:text-gray-200 {{ request()->is('user*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+            <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
                 {{ __('Home') }}
         </a>
 
@@ -8,6 +9,7 @@
                 id="dropdownNavbarLink"
                 data-dropdown-toggle="community-dropdown"
                 class="dark:text-gray-200 {{ request()->is('community*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
+                <i class="navigation-icon community mr-1 hidden lg:inline-flex"></i>
                 {{ __('Community') }}
 
                 <x-icons.chevron-down />
@@ -29,16 +31,19 @@
 
         <a href="{{ route('leaderboard.index') }}"
            class="nav-item dark:text-gray-200 {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+           <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
             {{ __('Leaderboards') }}
         </a>
 
         <a href="{{ route('shop.index') }}"
            class="nav-item dark:text-gray-200 {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+                <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
                 {{ __('Shop') }}
         </a>
 
         <a href="{{ route('rules.index') }}"
            class="nav-item dark:text-gray-200 {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+            <i class="navigation-icon rules mr-1 hidden lg:inline-flex"></i>
                 {{ __('Rules') }}
         </a>
 
