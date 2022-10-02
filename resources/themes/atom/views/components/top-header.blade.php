@@ -1,3 +1,8 @@
+@php
+    $canViewLogsButton = auth()->user()->rank >= permission('min_rank_to_view_logs');
+    $canViewHousekeepingButton = auth()->user()->rank >= setting('min_housekeeping_rank');
+@endphp
+
 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 items-center flex justify-between py-2 dark:bg-gray-900">
     <div class="flex gap-x-6">
         <x-top-header-currency icon="nav-credit-icon">
@@ -27,7 +32,7 @@
 
     <div class="flex w-full justify-between md:w-auto">
         @auth
-            @if(auth()->user()->rank >= permission('min_rank_to_view_logs') || auth()->user()->rank >= setting('min_housekeeping_rank'))
+            @if($canViewLogsButton || $canViewHousekeepingButton)
             <button
                     id="administrationDropdown"
                     data-dropdown-toggle="administration-dropdown"
@@ -38,13 +43,13 @@
             </button>
 
             <div id="administration-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
-                @if(auth()->user()->rank >= permission('min_rank_to_view_logs'))
+                @if($canViewLogsButton)
                 <a data-turbolinks="false" href="/log-viewer" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
                     {{ __('Error logs') }}
                 </a>
                 @endif
 
-                @if(auth()->user()->rank >= setting('min_housekeeping_rank'))
+                @if($canViewHousekeepingButton)
                 <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
                     {{ __('Housekeeping') }}
                 </a>
