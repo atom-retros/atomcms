@@ -78,6 +78,7 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
         Route::post('/shop/redeem-voucher', [ShopController::class, 'redeemVoucher'])->name('shop.redeem-voucher');
+        Route::post('/shop/{product}/purchase', [ShopController::class, 'purchase'])->name('shop.purchase');
 
         // Client route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {

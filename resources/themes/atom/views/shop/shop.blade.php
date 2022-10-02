@@ -10,7 +10,9 @@
 
     <div class="col-span-12 md:col-span-9">
         <div class="flex flex-col gap-y-3 dark:text-gray-300">
-            <x-shop.packages />
+            @foreach($vipPackages as $package)
+                <x-shop.packages :package-id="$package->id" :package="json_decode($package->data)" />
+            @endforeach
         </div>
     </div>
 

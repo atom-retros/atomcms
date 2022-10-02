@@ -22,6 +22,6 @@ Route::get('/online-count', [HotelApiController::class, 'onlineUserCount'])->nam
 
 // Paypal routes
 Route::prefix('paypal')->group(function() {
-    Route::post('/order/create',[PaypalController::class, 'create'])->name('paypal.create');
-    Route::post('/order/capture/',[PaypalController::class, 'execute'])->name('paypal.capture');
+    Route::post('/order/create', [PaypalController::class, 'create'])->name('paypal.create');
+    Route::post('/order/capture/', [PaypalController::class, 'execute'])->name('paypal.capture');
 });

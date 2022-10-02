@@ -9,7 +9,8 @@ return new class extends Migration {
     {
         Schema::create('website_shop_products', function (Blueprint $table) {
             $table->id();
-
+            $table->longText('data');
+            $table->string('type')->default('vip');
             $table->timestamps();
         });
     }

@@ -21,7 +21,6 @@ class PaypalController extends Controller
                 'message' => __('An unknown error occurred. Please contact the owners in-game or on our Discord server for help.')
             ]);
         }
-
         (int)$amount = $request->input('value');
 
         if ($amount < 1) {
