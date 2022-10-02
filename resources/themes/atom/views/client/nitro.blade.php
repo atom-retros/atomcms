@@ -7,8 +7,8 @@
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
 </head>
-<body class="overflow-hidden relative" id="nitro-client">
-    <div class="absolute top-4 left-4 flex gap-x-2">
+<body class="overflow-hidden" id="nitro-client">
+    <div class="absolute top-4 left-4 flex gap-x-2 z-[9999]">
         <a href="{{ route('me.show') }}" class="min-w-[40px] text-center bg-[#eeb425] hover:bg-[#e3aa1e] rounded py-1 px-2 text-sm text-white border-2 border-[#cf9d15]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                 <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
