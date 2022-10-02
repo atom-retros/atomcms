@@ -7,8 +7,10 @@
     "Articles": "Notícias",
     "Staff": "Equipe",
     "Photos": "Fotos",
+    "My Profile": "Meu Perfil",
+    "Administration": "Administração",
     "Error logs": "Logs de Erro",
-    "Housekeeping": "Administração",
+    "Housekeeping": "Painel de Controle",
     "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!": "Um mundo virtual online onde você pode criar seu próprio avatar, fazer amigos, conversar, criar salas e muito mais!",
     "Create your account!": "Crie sua conta!",
     "Create a free account, and be a part of a fun online world!": "Crie uma conta grátis, e faça parte de um mundo online divertido!",
@@ -172,5 +174,8 @@
     "Woah! You have successfully claimed your reward - Keep up the good work!": "Woah! You have successfully claimed your reward - Keep up the good work!",
     "Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.": "Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.",
     "It seems like your current password is wrong.": "It seems like your current password is wrong.",
-    "The Google recaptcha was not successful.": "The Google recaptcha was not successful."
+    "The Google recaptcha was not successful.": "The Google recaptcha was not successful.",
+    "Online Friends": "Amigos Online",
+    "Mission": "Missão",
+    "Online Since": "Entrou em"
 }
