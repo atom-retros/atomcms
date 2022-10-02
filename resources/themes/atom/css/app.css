@@ -101,7 +101,7 @@ html.dark .camera-icon {
 }
 
 .me-backdrop {
-    height: 150px;
+    height: 180px;
     background-blend-mode: multiply;
 }
 
@@ -229,4 +229,17 @@ html.dark .swal2-popup {
 
 .navigation-icon.community {
     background-image: url('/public/assets/images/icons/navigation/community.png');
+}
+
+.swiper-slide {
+    height: 215px !important;
+}
+
+.swiper-pagination-bullet-active,
+html.dark .swiper-pagination-bullet-active {
+    background: #e9b124 !important;
+}
+
+html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    background: white !important;
 }

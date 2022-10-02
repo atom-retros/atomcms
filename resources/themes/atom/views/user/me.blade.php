@@ -81,9 +81,18 @@
     </div>
 
     <div class="col-span-12 md:col-span-3 space-y-4">
-        @if(!is_null($article))
-            <x-article-card :article="$article"/>
-        @endif
+        <div class="relative w-full" style="height: 235px">
+            @if(!$articles->isEmpty())
+            <div class="swiper articles-slider relative">
+                <div class="swiper-wrapper">
+                    @foreach ($articles as $article)
+                        <x-article-card :for-slider="true" :article="$article"/>
+                    @endforeach
+                </div>
+            </div>
+            <div class="swiper-pagination" style="bottom: -9px !important"></div>
+            @endif
+        </div>
 
         <iframe src="https://discordapp.com/widget?id={{ setting('discord_widget_id') }}&theme=dark" title="Discord Widget" height="248px" allowtransparency="true" frameborder="0"></iframe>
     </div>

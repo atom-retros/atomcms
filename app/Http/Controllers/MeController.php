@@ -11,7 +11,7 @@ class MeController extends Controller
     {
         return view('user.me', [
             'user' => Auth::user()->load('permission:id,rank_name'),
-            'article' => WebsiteArticle::query()->latest()->with('user:id,username,look')->first(),
+            'articles' => WebsiteArticle::query()->latest()->with('user:id,username,look')->take(5)->get(),
         ]);
     }
 }
