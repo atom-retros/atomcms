@@ -193,6 +193,17 @@ html.dark .swal2-popup {
     border-radius: 5px;
 }
 
+.client-buttons {
+    z-index: 9999;
+    min-width: 40px;
+    background-color: #eeb425;
+    border: solid 2px #cf9d15;
+}
+
+.client-buttons:hover {
+    background-color: #e3aa1e;
+}
+
 .navigation-icon {
     width: 20px;
     height: 25px;

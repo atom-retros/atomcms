@@ -10,7 +10,7 @@
             </p>
 
             <div class="flex items-center gap-x-2">
-                <div class="h-10 w-10 bg-gray-100 rounded-full mt-3 flex items-center justify-center overflow-hidden">
+                <div class="h-10 w-10 bg-gray-100 dark:bg-gray-800 rounded-full mt-3 flex items-center justify-center overflow-hidden">
                     <img src="{{ setting('avatar_imager') }}{{ $article->user->look }}&headonly=1" alt="">
                 </div>
 

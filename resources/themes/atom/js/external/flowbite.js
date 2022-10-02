@@ -3889,6 +3889,7 @@ function initPopover() {
 
 document.addEventListener('turbolinks:load', () => {
     initDropdown()
+    initCollapse()
     initModal()
 })
 
