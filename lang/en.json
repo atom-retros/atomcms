@@ -7,6 +7,8 @@
     "Articles": "Articles",
     "Staff": "Staff",
     "Photos": "Photos",
+    "My Profile": "My Profile",
+    "Administration": "Administration",
     "Error logs": "Error logs",
     "Housekeeping": "Housekeeping",
     "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!": "A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!",
@@ -172,5 +174,8 @@
     "Woah! You have successfully claimed your reward - Keep up the good work!": "Woah! You have successfully claimed your reward - Keep up the good work!",
     "Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.": "Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.",
     "It seems like your current password is wrong.": "It seems like your current password is wrong.",
-    "The Google recaptcha was not successful.": "The Google recaptcha was not successful."
+    "The Google recaptcha was not successful.": "The Google recaptcha was not successful.",
+    "Online Friends": "Online Friends",
+    "Mission": "Mission",
+    "Online Since": "Online Since"
 }
