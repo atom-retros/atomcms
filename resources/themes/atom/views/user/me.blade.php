@@ -7,7 +7,7 @@
         <div class="flex justify-between flex-col p-1 lg:flex-row gap-3 bg-white dark:bg-gray-800 border dark:border-gray-900 rounded shadow">
             <div class="py-2 px-2 relative flex justify-center items-center rounded text-sm font-semibold dark:text-gray-300 bg-[#e9b124] dark:border-gray-700">
                 <div class="absolute bg-[#e9b124] w-6 h-6 -right-1 rotate-45 invisible lg:visible"></div>
-                <img src="{{ asset('/assets/images/icons/online-friends.png') }}" alt="Online Friends" class="inline-flex mr-2 mb-1" style="max-width: 24px; max-height: 24px">
+                <img src="{{ asset('/assets/images/icons/online-friends.png') }}" alt="{{ __('Online Friends') }}" class="inline-flex mr-2 mb-1" style="max-width: 24px; max-height: 24px">
                 <span class="relative text-white h-100">{{ __('Online Friends') }}</span>
             </div>
             <div class="flex-1 pl-2 h-100 flex relative justify-center sm:justify-start items-center gap-2">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="py-2 px-3 overflow-y-auto" style="max-height: 200px">
                             <b class="mr-1 font-bold">{{ __('Mission') }}:</b>{{ $friend->motto }}<br>
-                            <b class="mr-1 font-bold">{{ __('Online Since') }}:</b>{{ date('d-m-Y H:i:s', $friend->last_online) }}
+                            <b class="mr-1 font-bold">{{ __('Online Since') }}:</b>{{ date(config('habbo.site.date_format'), $friend->last_online) }}
                         </div>
                         <div data-popper-arrow></div>
                     </div>
@@ -82,7 +82,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="swiper-pagination" style="bottom: 0px !important"></div>
+            <div class="swiper-pagination" style="bottom: 0px !important; z-index: 0;"></div>
             @endif
         </div>
 
