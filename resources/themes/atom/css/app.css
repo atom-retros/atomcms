@@ -231,6 +231,10 @@ html.dark .swal2-popup {
     background-image: url('/public/assets/images/icons/navigation/community.png');
 }
 
+.navigation-icon.events {
+    background-image: url('/public/assets/images/icons/navigation/events.png');
+}
+
 .swiper-slide {
     height: 215px !important;
 }

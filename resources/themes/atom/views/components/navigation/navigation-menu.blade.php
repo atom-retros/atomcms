@@ -1,33 +1,31 @@
 <div class="hidden relative w-full h-full flex flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
-        @if (auth()->check())
-        <button
-            id="homeDropdown"
-            data-dropdown-toggle="home-dropdown"
-            class="dark:text-gray-200 {{ request()->is('user*') || request()->is('profile*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
-            <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
-            {{ auth()->user()->username }}
+        @auth
+            <button
+                id="homeDropdown"
+                data-dropdown-toggle="home-dropdown"
+                class="dark:text-gray-200 {{ request()->is('user*') || request()->is('profile*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
+                <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
+                {{ auth()->user()->username }}
 
                 <x-icons.chevron-down />
-        </button>
+            </button>
 
-        <div id="home-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
-            <a href="{{ auth()->check() ? route('me.show') : route('welcome') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <div id="home-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
+                <a href="{{ auth()->check() ? route('me.show') : route('welcome') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                    {{ __('Home') }}
+                </a>
+
+                <a href="{{ route('profile.show', auth()->user()->username) }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                    {{ __('My Profile') }}
+                </a>
+            </div>
+        @else
+            <a href="{{ route('welcome') }}"
+               class="nav-item dark:text-gray-200 {{ request()->routeIs('welcome') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+               <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
                 {{ __('Home') }}
             </a>
-
-            @auth
-            <a href="{{ route('profile.show', auth()->user()->username) }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
-                {{ __('My Profile') }}
-            </a>
-            @endauth
-        </div>
-        @else
-        <a href="{{ route('welcome') }}"
-           class="nav-item dark:text-gray-200 {{ request()->routeIs('welcome') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-           <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
-            {{ __('Home') }}
-        </a>
-        @endif
+        @endauth
 
         <button
                 id="communityDropdown"
@@ -64,6 +62,30 @@
                 <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
                 {{ __('Shop') }}
         </a>
+
+        <button
+            id="eventsDropdown"
+            data-dropdown-toggle="events-dropdown"
+            class="dark:text-gray-200 {{ request()->is('event*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
+            <i class="navigation-icon events mr-1 hidden lg:inline-flex"></i>
+            {{ __('Events') }}
+
+            <x-icons.chevron-down />
+        </button>
+
+        <div id="events-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
+            <a href="{{ route('event.index', 'rotw') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                {{ __('ROTW') }}
+            </a>
+
+            <a href="#" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                {{ __('COTW') }}
+            </a>
+
+            <a href="#" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                {{ __('OOTW') }}
+            </a>
+        </div>
 
         <a href="{{ route('rules.index') }}"
            class="nav-item dark:text-gray-200 {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">

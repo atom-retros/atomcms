@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\EventEntry;
 use App\Models\EventWinner;
 use App\Models\Room;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -16,14 +16,14 @@ class EventController extends Controller
         $entries = EventEntry::query()->where('type', '=', $eventType)->get()->load('room');
         $currentWinners = EventWinner::query()
             ->with(['user:id,username,rank,look', 'room'])
-            ->select('id', 'user_id', 'room_id')
-            ->whereType($eventType)
+            ->select('id', 'user_id')
+            ->where('type', '=', $eventType)
             ->take(3)
             ->get();
 
         $rooms = Room::query()
             ->select('id', 'name', 'description', 'state')
-            ->where('owner_id', '=', auth()->id())
+            ->where('owner_id', '=', Auth::id())
             ->get();
 
         $view = match ($eventType) {
@@ -33,23 +33,22 @@ class EventController extends Controller
             default => 'rotw'
         };
 
-        return view('cms.events.' . $view, [
-            'group' => 'events',
+        return view('events.' . $view, [
             'rooms' => $rooms,
             'entries' => $entries,
             'currentWinners' => $currentWinners
         ]);
     }
 
-    public function store(Request $request, $eventType): \Illuminate\Http\RedirectResponse
+    public function store(Request $request, $eventType): RedirectResponse
     {
-        if ($eventType === 'rotw' && auth()->user()->rotwEntry()->exists()) {
+        if ($eventType === 'rotw' && Auth::user()->rotwEntry()->exists()) {
             return redirect()->back()->withErrors(__('You can only submit one ROTW room per week.'));
-        } elseif ($eventType === 'cotw' && auth()->user()->cotwEntry()->exists()) {
+        } elseif ($eventType === 'cotw' && Auth::user()->cotwEntry()->exists()) {
             return redirect()->back()->withErrors(__('You can only submit one COTW room per week.'));
         }
 
-        $isRoomOwner = auth()->user()
+        $isRoomOwner = Auth::user()
             ->rooms()
             ->where('id', '=', $request->input('room_id'))
             ->exists();
@@ -58,7 +57,7 @@ class EventController extends Controller
             return redirect()->back()->withErrors(__('The room you tried to submit does not belong to you'));
         }
 
-        auth()->user()->eventEntry()->create([
+        Auth::user()->eventEntry()->create([
             'room_id' => $request['room_id'],
             'type' => $eventType
         ]);
@@ -68,9 +67,9 @@ class EventController extends Controller
             ->with('success', __('You have successfully submitted your room to this weeks :TYPE', ['type' => $eventType]));
     }
 
-    public function deleteSubmissions($eventType): string|\Illuminate\Http\RedirectResponse
+    public function deleteSubmissions($eventType): string|RedirectResponse
     {
-        if (auth()->user()->rank < CMS::settings('min_event_management_rank')) {
+        if (Auth::user()->rank < 6) {
             return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
         }
 
@@ -83,9 +82,9 @@ class EventController extends Controller
             ->with('success', __('All :TYPE submissions has been deleted', ['type' => $eventType]));
     }
 
-    public function submitWinners(Request $request, $eventType): \Illuminate\Http\RedirectResponse
+    public function submitWinners(Request $request, $eventType): RedirectResponse
     {
-        if (auth()->user()->rank < CMS::settings('min_event_management_rank')) {
+        if (Auth::user()->rank < CMS::settings('min_event_management_rank')) {
             return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
         }
 
@@ -123,9 +122,9 @@ class EventController extends Controller
         return redirect()->back()->with('success', __('The :TYPE winners has been submitted!', ['type' => $eventType]));
     }
 
-    public function resetWinners($eventType): \Illuminate\Http\RedirectResponse
+    public function resetWinners($eventType): RedirectResponse
     {
-        if (auth()->user()->rank < CMS::settings('min_event_management_rank')) {
+        if (Auth::user()->rank < CMS::settings('min_event_management_rank')) {
             return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
         }
 
@@ -139,13 +138,13 @@ class EventController extends Controller
             ->with('success', __('The current :TYPE winners has been reset', ['type' => $eventType]));
     }
 
-    public function deleteSubmission($eventType): \Illuminate\Http\RedirectResponse
+    public function deleteSubmission($eventType): RedirectResponse
     {
-        if (auth()->user()->rank < CMS::settings('min_event_management_rank') && auth()->user()->eventEntry()->whereType($eventType)->where('user_id', '!=', auth()->id())->latest()->first()) {
+        if (Auth::user()->rank < 6 && Auth::user()->eventEntry()->whereType($eventType)->where('user_id', '!=', Auth::id())->latest()->first()) {
             return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
         }
 
-        auth()->user()->eventEntry()->whereType($eventType)->delete();
+        Auth::user()->eventEntry()->whereType($eventType)->delete();
 
         return redirect()
             ->back()

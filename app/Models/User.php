@@ -113,6 +113,21 @@ class User extends Authenticatable
         return $this->hasOne(UserSetting::class);
     }
 
+    public function eventEntry(): HasMany
+    {
+        return $this->hasMany(EventEntry::class, 'user_id', 'id');
+    }
+
+    public function rotwEntry(): HasOne
+    {
+        return $this->hasOne(EventEntry::class, 'user_id', 'id')->where('type', '=', 'rotw');
+    }
+
+    public function cotwEntry(): HasOne
+    {
+        return $this->hasOne(EventEntry::class, 'user_id', 'id')->where('type', '=', 'cotw');
+    }
+
     public function ssoTicket(): string
     {
         $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());

@@ -9,8 +9,8 @@ return new class extends Migration {
     {
         Schema::create('event_entries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('room_id');
+            $table->integer('user_id');
+            $table->integer('room_id');
             $table->enum('type', ['rotw', 'cotw'])->default('rotw');
             $table->boolean('is_active')->default(true);
             $table->timestamps();

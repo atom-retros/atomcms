@@ -73,7 +73,10 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
 
         // Event routes
         Route::prefix('events')->group(function () {
-            Route::get('/{eventType}', [EventController::class, 'index']);
+            Route::get('/{eventType}', [EventController::class, 'index'])->name('event.index');
+            Route::post('/{eventType}/submit', [EventController::class, 'store'])->name('event.store');
+            Route::delete('/{eventType}/delete', [EventController::class, 'index'])->name('event.destroy');
+            Route::delete('/{eventType}/submission/delete', [EventController::class, 'deleteSubmission'])->name('event.destroy.submission');
         });
 
         // Leaderboard routes
