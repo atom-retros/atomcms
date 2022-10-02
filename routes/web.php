@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BannedController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\FlashController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeaderboardController;
@@ -68,6 +69,11 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])
                 ->name('article.toggle-reaction')
                 ->middleware('throttle:30,1');
+        });
+
+        // Event routes
+        Route::prefix('events')->group(function () {
+            Route::get('/{eventType}', [EventController::class, 'index']);
         });
 
         // Leaderboard routes
