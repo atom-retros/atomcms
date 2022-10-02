@@ -99,7 +99,7 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             getOnlineUserCount();
 
-            const interval = setInterval(function() {
+            setInterval(function() {
                 getOnlineUserCount();
             }, 30000); //30000 = 30 seconds
         });
