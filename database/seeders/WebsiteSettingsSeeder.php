@@ -165,6 +165,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/assets/images/kasja_mepage_image.png',
                 'comment' => 'Default backdrop header for the me page',
             ],
+            [
+                'key' => 'room_thumbnail_path',
+                'value' => '/ms-swf/c_images/rooms',
+                'comment' => 'Path to room thumbnails',
+            ],
         ];
 
         foreach ($settings as $setting) {

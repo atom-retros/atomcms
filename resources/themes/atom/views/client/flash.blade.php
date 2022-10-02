@@ -66,11 +66,12 @@
         <div class="client-error__background-frank">
             <div class="client-error__text-contents">
                 <h1 class="client-error__title">{{ __('You are nearly in Habbo!') }}</h1>
-                <p>{{ __('Click the yellow Hotel button below, then click "run flash" when prompted to. See you in the Hotel!') }}</p>
+                <p>{{ __('Click the yellow Hotel button below, then click on run flash` when prompted to. See you in the Hotel!') }}</p>
             </div>
             <div class="client-error__hotel-button-div">
                 <a href="https://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer" class="hotel-button">
                     <span class="hotel-button__text">{{ __('Get flash') }}</span>
+                </a>
             </div>
         </div>
     </habbo-client-error>

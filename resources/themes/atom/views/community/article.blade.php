@@ -22,9 +22,7 @@
                     {{ $article->user->motto }}
                 </p>
 
-                <div class="w-4 h-4 rounded-full mt-2 {{ $article->user->online ? 'bg-green-600' : 'bg-red-600' }}">
-
-                </div>
+                <div class="w-4 h-4 rounded-full mt-2 {{ $article->user->online ? 'bg-green-600' : 'bg-red-600' }}"></div>
             </div>
         </div>
 

@@ -11,15 +11,15 @@
                     <div class="flex flex-col px-1">
                         <div class="max-w-[380px]">
                             <p>
-                                <strong>Ban type:</strong> {{ $ban->type }}
+                                <strong>{{ __('Ban type:') }}</strong> {{ $ban->type }}
                             </p>
 
                             <p>
-                                <strong>Ban reason:</strong> {{ $ban->ban_reason }}
+                                <strong>{{ __('Ban reason:') }}</strong> {{ $ban->ban_reason }}
                             </p>
 
                             <p>
-                                <strong>Ban type:</strong> {{ date('Y/m/d', $ban->ban_expire) }}
+                                <strong>Ban expiration:</strong> {{ date('Y/m/d', $ban->ban_expire) }}
                             </p>
                         </div>
 
@@ -30,7 +30,7 @@
 
                             <a href="{{ setting('discord_invitation_link') }}" target="_blank">
                                 <x-form.primary-button>
-                                    Join discord
+                                    {{ __('Join discord') }}
                                 </x-form.primary-button>
                             </a>
                         </div>
