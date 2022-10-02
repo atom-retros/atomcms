@@ -8,11 +8,12 @@
     <title>{{ setting('hotel_name') }} - {{ __('Maintenance') }}</title>
 
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
 </head>
-<body class="h-screen overflow-hidden" style="background: url({{ asset('assets/images/maintenance/background.png') }})">
+<body class="h-screen overflow-hidden" style="background: url({{ asset('assets/images/background-light.png') }})">
     <x-messages.flash-messages />
 
     <div class="flex flex-col justify-center items-center h-full relative">
@@ -22,7 +23,7 @@
             </button>
         </div>
 
-        <img src="{{ asset('assets/images/maintenance/pictures.png') }}" alt="{{ setting('hotel_name') }}">
+        <img src="{{ setting('cms_logo') }}" alt="{{ setting('hotel_name') }}">
 
         <div class="text-white">
             <h1 class="text-3xl font-semibold text-center">{{ __('Maintenance') }}</h1>
