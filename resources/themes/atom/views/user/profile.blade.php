@@ -108,7 +108,7 @@
                             @forelse($user->rooms as $room)
                                 <div class="flex h-[150px] w-[120px] flex-col gap-y-1 rounded-md dark:bg-gray-900 bg-gray-200 p-1 overflow-hidden">
                                     <div class="h-full bg-[#C3C3C3] dark:bg-gray-800 rounded-md border border-gray-500 dark:border-gray-700 relative flex items-center justify-center flex-col">
-                                        <img src="{{ config('habbo.site.swf_path') }}/c_images/camera/thumbnail/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
+                                        <img src="{{ setting('room_thumbnail_path') }}/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
 
                                         <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-semibold rounded flex gap-x-[3px] text-white items-center text-xs">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20" fill="currentColor">
