@@ -15,6 +15,13 @@ class AccountSettingsController extends Controller
         ]);
     }
 
+    public function sessionLogs()
+    {
+        return view('user.settings.session-logs', [
+            'logs' => Auth::user()->sessionLogs()->take(25)->get(),
+        ]);
+    }
+
     public function update(RconService $rcon, AccountSettingsFormRequest $request)
     {
         $user = Auth::user();
