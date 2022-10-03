@@ -210,8 +210,8 @@ Once the command has been executed, you'll be prompted with easy to follow scaff
 - **Danbo** - Minor bugfixes
 - **Damue** - German translations
 - **Talion** - Turkish translations
-- **CentralCee** - Swedish translations
-- **Yannick** - Netherland translations,
-- **Gedomi** - Spanish translations,
-- **Lorenzune** - Italian translations,
+- **Rille & CentralCee** - Swedish translations
+- **Yannick** - Netherland translations
+- **Gedomi** - Spanish translations
+- **Lorenzune** - Italian translations
 - **Raizer** - Circinus
