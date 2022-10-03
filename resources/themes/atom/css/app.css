@@ -192,8 +192,6 @@ html.dark .swal2-popup {
     background-color: #e9b124;
     border-radius: 5px;
 }
-<<<<<<< HEAD
-=======
 
 .client-buttons {
     z-index: 9999;
@@ -245,4 +243,3 @@ html.dark .swiper-pagination-bullet-active {
 html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
     background: white !important;
 }
->>>>>>> main
