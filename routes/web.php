@@ -45,6 +45,7 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
                 Route::put('/account', [AccountSettingsController::class, 'update'])->name('settings.account.update');
                 Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
                 Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
+                Route::get('/session-logs', [AccountSettingsController::class, 'sessionLogs'])->name('settings.session-logs');
             });
         });
 

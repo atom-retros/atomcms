@@ -55,7 +55,7 @@
 
                        <div class="flex justify-between">
                            @forelse($user->badges as $badge)
-                               <div data-tippy-content="{{ $badge->badge_code }}" class="user-badge h-[70px] w-[70px] border-2 rounded-full flex items-center justify-center cursor-pointer">
+                               <div data-tippy-content="{{ $badge->badge_code }}" class="user-badge h-[70px] w-[70px] border-2 dark:border-gray-700 rounded-full flex items-center justify-center cursor-pointer">
                                    <img  src="{{ setting('badges_path') }}/{{ $badge->badge_code }}.gif" class="max-h-[55px] max-w-[55px]" alt="">
                                </div>
                            @empty
@@ -79,7 +79,7 @@
 
                         <div class="flex justify-between">
                             @forelse($groups as $group)
-                                <div class="h-[70px] w-[70px] rounded-full border-2 overflow-hidden flex items-center justify-center p-1 rounded-md cursor-pointer friend" data-tippy-content="{{ $group->name ?? 'Unknown' }}">
+                                <div class="h-[70px] w-[70px] rounded-full border-2 dark:border-gray-700 overflow-hidden flex items-center justify-center p-1 rounded-md cursor-pointer friend" data-tippy-content="{{ $group->name ?? 'Unknown' }}">
                                     <img src="{{ setting('group_badge_path') }}/{{ $group->badge }}.png" alt="">
                                 </div>
                             @empty
@@ -106,9 +106,9 @@
 
                         <div class="flex justify-between">
                             @forelse($user->rooms as $room)
-                                <div class="flex h-[150px] w-[120px] flex-col gap-y-1 rounded-md bg-gray-200 p-1 overflow-hidden">
-                                    <div class="h-full  bg-[#C3C3C3] rounded-md border border-gray-500 relative flex items-center justify-center flex-col">
-                                        <img src="{{ config('habbo.site.swf_path') }}/c_images/camera/thumbnail/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
+                                <div class="flex h-[150px] w-[120px] flex-col gap-y-1 rounded-md dark:bg-gray-900 bg-gray-200 p-1 overflow-hidden">
+                                    <div class="h-full bg-[#C3C3C3] dark:bg-gray-800 rounded-md border border-gray-500 dark:border-gray-700 relative flex items-center justify-center flex-col">
+                                        <img src="{{ setting('room_thumbnail_path') }}/{{ $room->id }}.png" alt="{{ $room->name }}" onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
 
                                         <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-semibold rounded flex gap-x-[3px] text-white items-center text-xs">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20" fill="currentColor">
@@ -148,7 +148,7 @@
 
                         <div class="grid grid-cols-4 xl:grid-cols-6 gap-2 xl:pl-3">
                             @forelse($friends as $friend)
-                                <a href="{{ route('profile.show', $friend->user->username ?? 'SystemAccount') }}" class="h-[70px] w-[70px] rounded-full border-2 overflow-hidden flex items-center p-1 rounded-md cursor-pointer friend" data-tippy-content="{{ $friend->user->username ?? 'Unknown' }}">
+                                <a href="{{ route('profile.show', $friend->user->username ?? 'SystemAccount') }}" class="h-[70px] w-[70px] rounded-full border-2 dark:border-gray-700 overflow-hidden flex items-center p-1 rounded-md cursor-pointer friend" data-tippy-content="{{ $friend->user->username ?? 'Unknown' }}">
                                     <img class="mt-6 transition ease-in-out duration-200 hover:scale-110" src="{{ setting('avatar_imager') }}?figure={{ $friend->user?->look }}" alt="">
                                 </a>
                             @empty

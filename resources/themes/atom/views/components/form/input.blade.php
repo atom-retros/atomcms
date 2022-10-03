@@ -9,6 +9,7 @@
         placeholder="{{ $placeholder }}"
         required="{{ $required }}"
         autocomplete="{{ $name }}"
+        placeholder="{{ $placeholder }}"
         @if($autofocus) autofocus="{{ $name }}" @endif
         @if($readonly) readonly @endif>
 

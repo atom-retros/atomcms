@@ -9,9 +9,12 @@ class MeController extends Controller
 {
     public function show()
     {
+        $user = Auth::user();
+
         return view('user.me', [
-            'user' => Auth::user()->load('permission:id,rank_name'),
-            'article' => WebsiteArticle::query()->latest()->with('user:id,username,look')->first(),
+            'onlineFriends' => $user->getOnlineFriends(),
+            'user' => $user->load('permission:id,rank_name'),
+            'articles' => WebsiteArticle::query()->latest()->with('user:id,username,look')->take(5)->get(),
         ]);
     }
 }
