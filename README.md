@@ -202,14 +202,16 @@ Once the command has been executed, you'll be prompted with easy to follow scaff
 
 ## Credits
 - **Kasja** - Helping with design, ideas & GFX
-- **Nicollas** - Dark mode & pt-br translations
+- **Nicollas** - Dark mode, Turbolinks, Performance improvements, Article reactions, Layout improvements & PT-BR translations
 - **Oliver** - Profile page & Finnish translations
 - **Kani** - Rcon System & Findretros API
 - **Beny** - Findretros API fixes & CF Fixes
+- **Live** - French translations & minor tweaks
 - **Danbo** - Minor bugfixes
 - **Damue** - German translations
-- **Live** - French translations
 - **Talion** - Turkish translations
 - **CentralCee** - Swedish translations
-- **Yannick** - Netherland translations
+- **Yannick** - Netherland translations,
+- **Gedomi** - Spanish translations,
+- **Lorenzune** - Italian translations,
 - **Raizer** - Circinus

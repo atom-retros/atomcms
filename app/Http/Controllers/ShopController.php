@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RedeemVoucherRequest;
+use App\Models\User;
 use App\Models\WebsiteShopUsedVoucher;
 use App\Models\WebsiteShopVoucher;
 use App\Models\WebsiteShopProduct;
@@ -16,8 +17,6 @@ class ShopController extends Controller
         $vipPackages = WebsiteShopProduct::query()
             ->where('type', '=', 'vip')
             ->get();
-
-//        dd(json_decode($vipPackages[0]->data));
 
         return view('shop.shop', [
             'vipPackages' => $vipPackages,
@@ -58,13 +57,45 @@ class ShopController extends Controller
         );
     }
 
-    public function purchase(WebsiteShopProduct $product, RconService $rcon)
+    public function purchase(WebsiteShopProduct $product)
     {
+        // Furniture pack example (just for testing)
+//        $furniturePackData = [
+//            'data' => json_encode([
+//                'content' => [
+//                    [
+//                        'item_id' => 202,
+//                        'quantity' => 15,
+//                    ],
+//                    [
+//                        'item_id' => 250,
+//                        'quantity' => 20,
+//                    ],
+//                ],
+//                'price' => 15,
+//            ]),
+//            'type' => 'furniture',
+//        ];
+//        $package = json_decode($furniturePackData['data'], true);
+//
+//        $count = 0;
+//
+//        foreach ($package['content'] as $item) {
+//            for ($i = 0; $i < $item['quantity']; $i++) {
+//                $count++;
+//
+//                // Send sendGift RCON here
+//            }
+//
+//            dd($count, $item['item_id']);
+//        }
+
+
         $productData = json_decode($product->data);
         $package = $productData->content;
         $user = Auth::user();
 
-        if ($user->rank >= $package->rank) {
+        if ($product->type === 'vip' && ($user->rank >= $package->rank)) {
             return redirect()->back()->withErrors([
                 'message' => __('It seems like you already have this or a higher rank, please select another package if possible.')
             ]);
@@ -76,10 +107,34 @@ class ShopController extends Controller
             ]);
         }
 
-        $user->decrement('website_store_balance', $productData->price);
+        match ($product->type) {
+            'vip' => $this->giftVipPackage($user, $package),
+            'furniture' => $this->giftFurniturePackage($user, $package),
+        };
 
-        $rcon->setRank($user, $package->rank);
+        $user->decrement('website_store_balance', (int)$productData->price);
 
         return redirect()->back()->with('success', __('Thank you for purchasing :package', ['package' => $productData->name]));
+    }
+
+    private function giftVipPackage(User $user, $package)
+    {
+        $rcon = new RconService();
+
+        $rcon->setRank($user, $package->rank);
+        $rcon->giveCredits($user, $package->currencies->credits);
+
+        foreach ($package->currencies->types as $type => $amount) {
+            $rcon->givePoints($user, (int)$type, (int)$amount);
+        }
+
+        foreach ($package->badges as $badge) {
+            $rcon->giveBadge($user, $badge);
+        }
+    }
+
+    private function giftFurniturePackage(User $user, $package)
+    {
+        // TODO: Add logic
     }
 }

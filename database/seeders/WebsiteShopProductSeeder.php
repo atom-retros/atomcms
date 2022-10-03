@@ -72,13 +72,15 @@ class WebsiteShopProductSeeder extends Seeder
             ],
             [
                 'data' => json_encode([
-                    [
-                        'item_id' => 202,
-                        'quantity' => 5,
-                    ],
-                    [
-                        'item_id' => 250,
-                        'quantity' => 10,
+                    'content' => [
+                        [
+                            'item_id' => 202,
+                            'quantity' => 5,
+                        ],
+                        [
+                            'item_id' => 250,
+                            'quantity' => 10,
+                        ],
                     ],
                     'price' => 10,
                 ]),
@@ -86,13 +88,15 @@ class WebsiteShopProductSeeder extends Seeder
             ],
             [
                 'data' => json_encode([
-                    [
-                        'item_id' => 202,
-                        'quantity' => 15,
-                    ],
-                    [
-                        'item_id' => 250,
-                        'quantity' => 20,
+                    'content' => [
+                        [
+                            'item_id' => 202,
+                            'quantity' => 15,
+                        ],
+                        [
+                            'item_id' => 250,
+                            'quantity' => 20,
+                        ],
                     ],
                     'price' => 15,
                 ]),
