@@ -210,6 +210,6 @@ Once the command has been executed, you'll be prompted with easy to follow scaff
 - **Damue** - German translations
 - **Live** - French translations
 - **Talion** - Turkish translations
-- **CentralCee** - Swedish translations
+- **Rille & CentralCee** - Swedish translations
 - **Yannick** - Netherland translations
 - **Raizer** - Circinus
