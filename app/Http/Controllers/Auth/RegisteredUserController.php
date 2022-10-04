@@ -48,6 +48,7 @@ class RegisteredUserController extends Controller
             'ip_register' => $request->ip(),
             'ip_current' => $request->ip(),
             'auth_ticket' => '',
+            'home_room' => (int)setting('hotel_home_room'),
         ]));
 
         $user->update([
