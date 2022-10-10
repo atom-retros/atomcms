@@ -9,9 +9,9 @@
     </div>
 
     <div class="col-span-12 md:col-span-9">
-        <div class="flex flex-col gap-y-3 dark:text-gray-300">
-            @foreach($vipPackages as $package)
-                <x-shop.packages :package-id="$package->id" :package="json_decode($package->data)" />
+        <div class="grid grid-cols-3 gap-3 dark:text-gray-300">
+            @foreach($packages as $package)
+                <x-shop.packages :package="$package" :package-content="json_decode($package->data)" />
             @endforeach
         </div>
     </div>
@@ -65,9 +65,9 @@
                        <x-form.input name="code" placeholder="{{ __('Enter your shop voucher') }}" />
                    </div>
 
-                    <x-form.primary-button>
+                    <x-form.secondary-button>
                         {{ __('Redeem') }}
-                    </x-form.primary-button>
+                    </x-form.secondary-button>
                 </form>
             </x-content.content-section>
         @endauth

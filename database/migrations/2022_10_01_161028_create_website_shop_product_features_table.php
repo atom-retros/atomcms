@@ -11,7 +11,6 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('shop_product_id');
             $table->longText('content');
-            $table->timestamps();
 
             $table->foreign('shop_product_id')->references('id')->on('website_shop_products')->cascadeOnDelete();
         });

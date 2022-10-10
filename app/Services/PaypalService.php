@@ -14,28 +14,20 @@ class PaypalService
      * credentials context. This can be used invoke PayPal API's provided the
      * credentials have the access to do so.
      */
-    public function client()
+    public function client(): PayPalHttpClient
     {
         return new PayPalHttpClient(self::environment());
     }
 
     /**
      * Setting up and Returns PayPal SDK environment with PayPal Access credentials.
-     * For demo purpose, we are using SandboxEnvironment. In production this will be
-     * ProductionEnvironment.
      */
-    private function environment()
+    private function environment(): ProductionEnvironment|SandboxEnvironment
     {
         if (config('paypal.mode') === 'sandbox') {
-            $clientId = config("paypal.sandbox.client_id");
-            $clientSecret = config('paypal.sandbox.client_secret');
-
-            return new SandboxEnvironment($clientId, $clientSecret);
+            return new SandboxEnvironment(config("paypal.sandbox.client_id"), config('paypal.sandbox.client_secret'));
         }
 
-        $clientId = config('paypal.live.client_id');
-        $clientSecret = config('paypal.live.client_secret');
-
-        return new ProductionEnvironment($clientId, $clientSecret);
+        return new ProductionEnvironment(config('paypal.live.client_id'), config('paypal.live.client_secret'));
     }
 }

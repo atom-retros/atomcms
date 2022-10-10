@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\ConnectionRefusedException;
 use App\Models\Permission;
 use App\Models\User;
 
@@ -11,7 +12,7 @@ class RconService
     protected $socket;
     protected $connected;
 
-    protected function connect(): void
+    protected function connect()
     {
         if (!function_exists('socket_create')) {
             abort(500, 'Please enable sockets in your php.ini!');
@@ -27,11 +28,10 @@ class RconService
             abort(500, sprintf('socket_create() failed: reason: %s', socket_strerror(socket_last_error())));
         }
 
-        $this->connected = socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'));
 
-        if (!$this->connected) {
-            abort(500, sprintf('socket_connect() failed: reason: %s', socket_strerror(socket_last_error())));
-        }
+        if (!@socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'))) {
+            die(__('It seems like our system is having some issues, please try again later or contact a staff member - Thank you!'));
+        };
     }
 
     public function sendPacket(string $key, $data = null)

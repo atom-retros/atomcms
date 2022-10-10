@@ -1,36 +1,37 @@
-@props(['packageId','package', 'price'])
+@props(['package','packageContent'])
 
 <x-content.content-section icon="bronze-vip">
     <x-slot:title>
-        {{ $package->name }} (${{ $package->price }})
+        {{ $packageContent->name }} -
+        @if($package->isOnSale())
+            <span class="text-gray-400 line-through">(${{ $package->price }})</span>
+            <span> ${{ $package->price() }}</span>
+        @else
+            ${{ $package->price() }}
+        @endif
     </x-slot:title>
 
     <x-slot:under-title>
-        {{ $package->description }}
+        {{ $packageContent->description }}
     </x-slot:under-title>
 
-    <div class="relative flex items-center">
-        <div class="flex justify-between w-full">
-            <div class="flex flex-col">
+        @if($package->features)
+            <div class="flex flex-col mb-4">
                 <p class="font-semibold">{{ __('You will receive:') }}</p>
 
                 <ul class="pl-4 list-disc">
-                    <li class="ml-3">Bronze VIP badge</li>
-                    <li class="ml-3">Bronze VIP catalogue</li>
-                    <li class="ml-3">Bronze VIP commands</li>
-                    <li class="ml-3">350 credits every 15 minutes</li>
-                    <li class="ml-3">350 duckets every 15 minutes</li>
-                    <li class="ml-3">1 diamond every hour</li>
+                    @foreach(json_decode($package->features?->content)->features as $feature)
+                        <li class="ml-3">{{ $feature }}</li>
+                    @endforeach
                 </ul>
             </div>
+       @endif
 
-            <form action="{{ route('shop.purchase', $packageId) }}" method="POST">
-                @csrf
+        <form action="{{ route('shop.purchase', $package->id) }}" method="POST">
+            @csrf
 
-                <x-form.primary-button>
-                    {{ __('Purchase') }}
-                </x-form.primary-button>
-            </form>
-        </div>
-    </div>
+            <x-form.secondary-button>
+                {{ __('Purchase') }}
+            </x-form.secondary-button>
+        </form>
 </x-content.content-section>

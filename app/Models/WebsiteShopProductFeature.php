@@ -9,6 +9,8 @@ class WebsiteShopProductFeature extends Model
 {
     protected $guarded = ['id'];
 
+    public $timestamps = false;
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(WebsiteShopProduct::class, 'id', 'shop_product_id');

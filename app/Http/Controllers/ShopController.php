@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ConnectionRefusedException;
 use App\Http\Requests\RedeemVoucherRequest;
 use App\Models\User;
 use App\Models\WebsiteShopUsedVoucher;
@@ -14,12 +15,11 @@ class ShopController extends Controller
 {
     public function __invoke()
     {
-        $vipPackages = WebsiteShopProduct::query()
-            ->where('type', '=', 'vip')
-            ->get();
-
         return view('shop.shop', [
-            'vipPackages' => $vipPackages,
+            'packages' => WebsiteShopProduct::query()
+                ->orderBy('order')
+                ->with('features')
+                ->get(),
         ]);
     }
 
@@ -101,7 +101,7 @@ class ShopController extends Controller
             ]);
         }
 
-        if ($user->website_store_balance < $productData->price) {
+        if ($user->website_store_balance < $product->price()) {
             return redirect()->back()->withErrors([
                 'message' => __('You do not have enough balance, to purchase this package. Please add another $:amount before having enough', ['amount' => $productData->price - $user->website_store_balance])
             ]);
@@ -112,14 +112,20 @@ class ShopController extends Controller
             'furniture' => $this->giftFurniturePackage($user, $package),
         };
 
-        $user->decrement('website_store_balance', (int)$productData->price);
+        $user->decrement('website_store_balance', $product->price());
 
         return redirect()->back()->with('success', __('Thank you for purchasing :package', ['package' => $productData->name]));
-    }
+   }
 
     private function giftVipPackage(User $user, $package)
     {
-        $rcon = new RconService();
+        try {
+            $rcon = new RconService();
+        } catch (ConnectionRefusedException $e) {
+            return redirect()->back()->withErrors([
+                'message' => __('It seems like our system is having a bit of issues, please try again later or contact a staff member - Thank you!')
+            ]);
+        }
 
         $rcon->setRank($user, $package->rank);
         $rcon->giveCredits($user, $package->currencies->credits);

@@ -26,7 +26,6 @@ class WebsiteShopProductSeeder extends Seeder
                             ],
                         ],
                     ],
-                    'price' => 5,
                 ]),
                 'type' => 'vip',
             ],
@@ -46,7 +45,6 @@ class WebsiteShopProductSeeder extends Seeder
                             ],
                         ],
                     ],
-                    'price' => 10,
                 ]),
                 'type' => 'vip',
             ],
@@ -66,12 +64,13 @@ class WebsiteShopProductSeeder extends Seeder
                             ],
                         ],
                     ],
-                    'price' => 15,
                 ]),
                 'type' => 'vip',
             ],
             [
                 'data' => json_encode([
+                    'name' => 'Item package #1',
+                    'description' => 'Our first item package',
                     'content' => [
                         [
                             'item_id' => 202,
@@ -82,12 +81,15 @@ class WebsiteShopProductSeeder extends Seeder
                             'quantity' => 10,
                         ],
                     ],
-                    'price' => 10,
                 ]),
+                'price' => 999,
                 'type' => 'furniture',
+                'order' => 1,
             ],
             [
                 'data' => json_encode([
+                    'name' => 'Item package #2',
+                    'description' => 'Our second item package',
                     'content' => [
                         [
                             'item_id' => 202,
@@ -98,17 +100,31 @@ class WebsiteShopProductSeeder extends Seeder
                             'quantity' => 20,
                         ],
                     ],
-                    'price' => 15,
                 ]),
+                'price' => 999,
                 'type' => 'furniture',
+                'order' => 2,
             ],
         ];
 
         foreach ($products as $product) {
-            WebsiteShopProduct::query()->create([
+            $package = WebsiteShopProduct::query()->create([
                 'data' => $product['data'],
                 'type' => $product['type'],
             ]);
+
+            if ($product['type'] === 'vip') {
+                $package->features()->create([
+                    'content' => json_encode([
+                        'features' => [
+                            'VIP catalog',
+                            'VIP Badges',
+                            'VIP Commands',
+                            'More currency every x minutes',
+                        ],
+                    ]),
+                ]);
+            }
         }
     }
 }
