@@ -38,26 +38,29 @@
     @endauth
 
     @guest
-        <div class="text-white relative font-semibold flex-col w-[600px]">
-            <p class="text-center text-xl hidden md:block">
-                {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
-            </p>
+        <div x-data="{ open: false }">
+            <div class="text-white relative font-semibold flex-col w-[600px]">
+                <p class="text-center text-xl hidden md:block">
+                    {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
+                </p>
 
-            <div x-data="{ open: false }" class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 gap-x-6 md:mt-6">
-                <button type="button" @click="open = !open" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
-                    {{ __('Login') }}
-                </button>
-
-                <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
-
-                <a href="{{ route('register') }}">
-                    <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
-                        {{ __('Create account') }}
+                <div class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 gap-x-6 md:mt-6">
+                    <button type="button" @click="open = !open" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
+                        {{ __('Login') }}
                     </button>
-                </a>
 
-                    <x-auth.login-modal />
+                    <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
+
+                    <a href="{{ route('register') }}">
+                        <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
+                            {{ __('Create account') }}
+                        </button>
+                    </a>
                 </div>
             </div>
+
+            <x-auth.login-modal />
+        </div>
+
     @endguest
 </div>
