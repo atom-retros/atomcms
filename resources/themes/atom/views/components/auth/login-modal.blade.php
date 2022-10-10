@@ -20,7 +20,7 @@
                     {{ __('Username') }}
                 </x-form.label>
 
-                <x-form.input name="username" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true" />
+                <x-form.input error-bag="login" name="username" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true" />
             </div>
 
             <div>
@@ -28,7 +28,7 @@
                     {{ __('Password') }}
                 </x-form.label>
 
-                <x-form.input name="password" placeholder="{{ __('Password') }}" type="password" />
+                <x-form.input error-bag="login" name="password" placeholder="{{ __('Password') }}" type="password" />
             </div>
 
             @if(setting('google_recaptcha_enabled'))
