@@ -49,6 +49,7 @@ class RegisteredUserController extends Controller
             'ip_current' => $request->ip(),
             'auth_ticket' => '',
             'paypal_api_token' => Str::uuid(),
+            'home_room' => (int)setting('hotel_home_room'),
         ]));
 
         $user->update([

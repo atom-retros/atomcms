@@ -123,6 +123,9 @@ APP_ENV=local to APP_ENV=production
 APP_DEBUG=true to APP_DEBUG=false
 ```
 
+## Using HTTPS
+In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, then we recommend to set `FORCE_HTTPS=` to `true` to make sure everything is properly using HTTPs. This is necessary for the article reactions & online counter within the client, to work properly when you're letting cloudflare handle the HTTPs redirects.
+
 ## Setup Google Recaptcha
 Atom CMS comes with built-in support for Google recaptcha. However there's a few steps we have to apply, before it being enabled on your hotel.
 

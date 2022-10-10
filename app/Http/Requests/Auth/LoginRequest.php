@@ -64,7 +64,7 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'username' => __('auth.failed'),
-            ]);
+            ])->errorBag('login');
         }
 
         if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {

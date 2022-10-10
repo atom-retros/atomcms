@@ -31,7 +31,7 @@
                                     </x-form.label>
                                 </div>
 
-                                <x-form.input name="username" type="text" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true"/>
+                                <x-form.input error-bag="register" name="username" type="text" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true"/>
                             </div>
 
                             <!-- Email Address -->
@@ -46,7 +46,7 @@
                                     </x-form.label>
                                 </div>
 
-                                <x-form.input name="mail" type="email" value="{{ old('mail') }}" placeholder="{{ __('Enter your email') }}" />
+                                <x-form.input error-bag="register" name="mail" type="email" value="{{ old('mail') }}" placeholder="{{ __('Enter your email') }}" />
                             </div>
 
                             <!-- Password -->
@@ -60,7 +60,7 @@
                                         </x-slot:info>
                                     </x-form.label>
 
-                                    <x-form.input name="password" type="password" placeholder="{{ __('Choose a secure password') }}" />
+                                    <x-form.input error-bag="register" name="password" type="password" placeholder="{{ __('Choose a secure password') }}" />
                                 </div>
                                 <hr class="dark:border-gray-700">
 
@@ -70,7 +70,7 @@
                                         {{ __('Repeat Password') }}
                                     </x-form.label>
 
-                                    <x-form.input name="password_confirmation" type="password" placeholder="{{ __('Repeat your chosen password') }}" />
+                                    <x-form.input error-bag="register" name="password_confirmation" type="password" placeholder="{{ __('Repeat your chosen password') }}" />
                                 </div>
                             </div>
 
