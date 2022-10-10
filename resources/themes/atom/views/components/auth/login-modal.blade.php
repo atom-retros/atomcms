@@ -19,19 +19,19 @@
                     @csrf
 
                     <div>
-                        <x-form.label for="username">
+                        <x-form.label for="popup_username">
                             {{ __('Username') }}
                         </x-form.label>
 
-                        <x-form.input name="username" placeholder="{{ __('Username') }}" :autofocus="true" />
+                        <x-form.input name="popup_username" placeholder="{{ __('Username') }}" :autofocus="true" />
                     </div>
 
                     <div>
-                        <x-form.label for="password">
+                        <x-form.label for="popup_password">
                             {{ __('Password') }}
                         </x-form.label>
 
-                        <x-form.input name="password" placeholder="{{ __('Password') }}" type="password" />
+                        <x-form.input name="popup_password" placeholder="{{ __('Password') }}" type="password" />
                     </div>
 
                     @if(setting('google_recaptcha_enabled'))

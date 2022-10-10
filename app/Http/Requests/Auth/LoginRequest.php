@@ -33,8 +33,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => ['required', 'string'],
-            'password' => ['required', 'string'],
+            'popup_username' => ['required', 'string'],
+            'popup_password' => ['required', 'string'],
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()]
         ];
     }
@@ -52,7 +52,7 @@ class LoginRequest extends FormRequest
 
         $user = User::query()
             ->select('id', 'password', 'rank')
-            ->where('username', '=', $this->input('username'))
+            ->where('username', '=', $this->input('popup_username'))
             ->first();
 
         // Update the users password to bcrypt, if they previously used md5
@@ -60,17 +60,22 @@ class LoginRequest extends FormRequest
             $this->convertUserPassword($user);
         }
 
-        if (! Auth::attempt($this->only('username', 'password'), $this->filled('remember'))) {
+        $credentials = [
+            'username' => $this->input('popup_username'), 
+            'password' => $this->input('popup_password'),
+        ];
+
+        if (! Auth::attempt($credentials, $this->filled('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'username' => __('auth.failed'),
+                'popup_username' => __('auth.failed'),
             ]);
         }
 
         if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
             throw ValidationException::withMessages([
-                'username' => __('Only staff can login during maintenance!'),
+                'popup_username' => __('Only staff can login during maintenance!'),
             ]);
         }
 
@@ -115,7 +120,7 @@ class LoginRequest extends FormRequest
     {
         if(config('habbo.site.convert_passwords') && ($user && $user->password == md5($this->input('password')))) {
             $user->update([
-                'password' => Hash::make($this->input('password')),
+                'password' => Hash::make($this->input('popup_password')),
             ]);
         }
     }
@@ -127,7 +132,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::lower($this->input('username')).'|'.$this->ip();
+        return Str::lower($this->input('popup_username')).'|'.$this->ip();
     }
 
     public function messages()
