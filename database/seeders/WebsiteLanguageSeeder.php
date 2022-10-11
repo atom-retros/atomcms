@@ -23,6 +23,6 @@ class WebsiteLanguageSeeder extends Seeder
             ['country_code' => 'es', 'language' => 'Spain'],
         ];
 
-        WebsiteLanguage::query()->upsert($languages, ['country_code', 'language']);
+        WebsiteLanguage::upsert($languages, ['country_code', 'language']);
     }
 }

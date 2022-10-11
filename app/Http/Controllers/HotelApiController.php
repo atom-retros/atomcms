@@ -11,23 +11,20 @@ class HotelApiController extends Controller
 {
     public function fetchUser($username, $columns = ['username', 'motto', 'look'])
     {
-        return new UserResource(User::query()
-            ->select($columns)
+        return new UserResource(User::select($columns)
             ->where('username', '=', $username));
     }
 
     public function onlineUsers($columns = ['username', 'motto', 'look'])
     {
-        return new OnlineUsersResource(User::query()
-            ->select($columns)
+        return new OnlineUsersResource(User::select($columns)
             ->where('online', '=', '1')
             ->inRandomOrder());
     }
 
     public function onlineUserCount($columns = ['username', 'motto', 'look'])
     {
-        return new OnlineUserCountResource(User::query()
-            ->select($columns)
+        return new OnlineUserCountResource(User::select($columns)
             ->where('online', '=', '1'));
     }
 }
