@@ -4,7 +4,6 @@ namespace App\Http\Requests\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Str;
-use App\Models\UserSessionLog;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
