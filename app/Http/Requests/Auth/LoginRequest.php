@@ -78,11 +78,6 @@ class LoginRequest extends FormRequest
             'ip_current' => $this->ip(),
         ]);
 
-        Auth::user()->sessionLogs()->create([
-            'ip' => $this->ip(),
-            'browser' => $this->userAgent()
-        ]);
-
         RateLimiter::clear($this->throttleKey());
     }
 
