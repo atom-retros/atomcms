@@ -54,11 +54,6 @@ class RegisteredUserController extends Controller
             'referral_code' => sprintf('%s%s', $user->id, Str::random(5))
         ]);
 
-        $user->sessionLogs()->create([
-            'ip' => $request->ip(),
-            'browser' => $request->userAgent()
-        ]);
-
         // Referral
         if ($request->has('referral_code')) {
             $referralUser = User::where('referral_code', '=', $request->get('referral_code'))

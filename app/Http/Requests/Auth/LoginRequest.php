@@ -4,7 +4,6 @@ namespace App\Http\Requests\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Str;
-use App\Models\UserSessionLog;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
@@ -75,11 +74,6 @@ class LoginRequest extends FormRequest
 
         Auth::user()->update([
             'ip_current' => $this->ip(),
-        ]);
-
-        Auth::user()->sessionLogs()->create([
-            'ip' => $this->ip(),
-            'browser' => $this->userAgent()
         ]);
 
         RateLimiter::clear($this->throttleKey());
