@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 class SettingsService
 {
     public ?Collection $settings;
-    public static SettingsService $instance;
 
     public function __construct()
     {
