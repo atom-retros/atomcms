@@ -28,7 +28,7 @@ class ReferralController extends Controller
         $user->referrals->decrement('referrals_total', setting('referrals_needed'));
 
         // Reward the user x diamonds
-        UserCurrency::query()->where('user_id', $user->id)->where('type', '=', 5)->increment('amount', setting('referral_reward_amount'));
+        UserCurrency::where('user_id', $user->id)->where('type', '=', 5)->increment('amount', setting('referral_reward_amount'));
 
         // Log the claim
         $user->claimedReferralLog()->create([

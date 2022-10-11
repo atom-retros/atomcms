@@ -12,7 +12,7 @@ class UserObserver
     {
         $user->settings()->create();
 
-        UserCurrency::query()->insert([
+        UserCurrency::insert([
             [
                 'user_id' => $user->id,
                 'type' => 0,

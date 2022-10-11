@@ -24,8 +24,7 @@ class RegisteredUserController extends Controller
 
     public function store(RegisterFormRequest $request)
     {
-        $registeredAccounts = User::query()
-            ->where('ip_current', '=', $request->ip())
+        $registeredAccounts = User::where('ip_current', '=', $request->ip())
             ->orWhere('ip_register', '=', $request->ip())
             ->count();
 
@@ -36,7 +35,7 @@ class RegisteredUserController extends Controller
         }
 
         // Create the user & login
-        Auth::login($user = User::query()->create([
+        Auth::login($user = User::create([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
             'password' => Hash::make($request->input('password')),
@@ -62,8 +61,7 @@ class RegisteredUserController extends Controller
 
         // Referral
         if ($request->has('referral_code')) {
-            $referralUser = User::query()
-                ->where('referral_code', '=', $request->get('referral_code'))
+            $referralUser = User::where('referral_code', '=', $request->get('referral_code'))
                 ->first();
 
             if (is_null($referralUser)) {

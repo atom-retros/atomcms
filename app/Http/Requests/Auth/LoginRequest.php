@@ -50,8 +50,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $user = User::query()
-            ->select('id', 'password', 'rank')
+        $user = User::select('id', 'password', 'rank')
             ->where('username', '=', $this->input('username'))
             ->first();
 

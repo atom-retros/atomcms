@@ -17,7 +17,7 @@ if (!function_exists('setting')) {
 if (!function_exists('permission')) {
     function permission(string $permission): string|int
     {
-        $permission = WebsitePermission::query()->where('key', '=', $permission)->first();
+        $permission = WebsitePermission::where('key', '=', $permission)->first();
 
         if (is_null($permission)) {
             return 999;

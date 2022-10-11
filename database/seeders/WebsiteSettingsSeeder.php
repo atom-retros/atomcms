@@ -178,7 +178,7 @@ class WebsiteSettingsSeeder extends Seeder
         ];
 
         foreach ($settings as $setting) {
-            WebsiteSetting::query()->firstOrCreate(['key' => $setting['key']], [
+            WebsiteSetting::firstOrCreate(['key' => $setting['key']], [
                 'key' => $setting['key'],
                 'value' => $setting['value'],
                 'comment' => $setting['comment'],

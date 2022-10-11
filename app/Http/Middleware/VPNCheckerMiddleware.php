@@ -24,8 +24,7 @@ class VPNCheckerMiddleware
         }
 
         // Fetch all whitelisted IP addresses
-        $ipWhitelist = WebsiteIpWhitelist::query()
-            ->select('ip_address')
+        $ipWhitelist = WebsiteIpWhitelist::select('ip_address')
             ->get()
             ->pluck('ip_address')
             ->toArray();
@@ -36,8 +35,7 @@ class VPNCheckerMiddleware
         }
 
         // Fetch all blacklisted IP addresses
-        $ipBlacklist = WebsiteIpBlacklist::query()
-            ->select('ip_address')
+        $ipBlacklist = WebsiteIpBlacklist::select('ip_address')
             ->get()
             ->pluck('ip_address')
             ->toArray();
@@ -58,8 +56,7 @@ class VPNCheckerMiddleware
         }
 
         // Fetch all whitelisted ASNs
-        $asnWhitelist =  WebsiteIpWhitelist::query()
-            ->select('asn')
+        $asnWhitelist =  WebsiteIpWhitelist::select('asn')
             ->where('whitelist_asn', '=', '1')
             ->get()
             ->pluck('asn')
@@ -71,8 +68,7 @@ class VPNCheckerMiddleware
         }
 
         // Fetch all blacklisted ASNs
-        $asnBlacklist =  WebsiteIpBlacklist::query()
-            ->select('asn')
+        $asnBlacklist =  WebsiteIpBlacklist::select('asn')
             ->where('blacklist_asn', '=', '1')
             ->get()
             ->pluck('asn')
@@ -112,7 +108,7 @@ class VPNCheckerMiddleware
         // If any of the above is true for the users IP, restrict and block their ip within the database
         if (array_key_exists('threat', $data) && in_array(true, array_values($data['threat']))) {
             // Add the ip & asn to the blacklist table
-            WebsiteIpBlacklist::query()->create([
+            WebsiteIpBlacklist::create([
                 'ip_address' => $request->ip(),
                 'asn' => array_key_exists('asn', $data['asn']) ? $data['asn']['asn'] : null,
             ]);
