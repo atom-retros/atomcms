@@ -27,7 +27,7 @@ class RconService
             abort(500, sprintf('socket_create() failed: reason: %s', socket_strerror(socket_last_error())));
         }
 
-        $this->connected = socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'));
+        $this->connected = socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'));
 
         if (!$this->connected) {
             abort(500, sprintf('socket_connect() failed: reason: %s', socket_strerror(socket_last_error())));
