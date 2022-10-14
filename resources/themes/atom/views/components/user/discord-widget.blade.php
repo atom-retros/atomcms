@@ -28,18 +28,22 @@
                     mode: 'cors',
                     cache: 'reload'
                 }
-
+                //gets discord widget json from url with in settings specifed id
                 fetch("https://discordapp.com/api/guilds/{{ setting('discord_widget_id') }}/widget.json", init).then(
                     function(res) {
+                        //if there is a problem with discord or id sends an error message in console
                         if (res.status != 200) {
-                            console.log("ERROR" + res.status);
+                            console.error("Discord widget cant connect to discord (" + res.status + ")");
                             return;
                         }
+
                         res.json().then(function(data) {
                             let users = data.members;
                             let guildName = data.name;
+                            //sets the subtitle of the card to the guild name
                             document.getElementById('guildName').innerText = guildName;
 
+                            //loops over every user in json array and display them in the widget
                             for (let i = 0; i < data.members.length; i++) {
                                 let container = document.createElement('div')
                                 let leftContainer = document.createElement('div')
@@ -101,6 +105,8 @@
 
                                 document.getElementById('guildUsers').appendChild(container)
                             }
+                            //gives the "Join server" button an href to the default selected chennel in the server
+                            //link is recived from widget json
                             document.getElementById('guildInvite').setAttribute('href', data.instant_invite)
 
                         })
