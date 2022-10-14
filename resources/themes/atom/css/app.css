@@ -77,6 +77,10 @@ html {
     background: #242c31 url('/public/assets/images/icons/camera.png') no-repeat center;
 }
 
+.discord-icon {
+    background: #25658d url('/public/assets/images/icons/discord.png') no-repeat center;
+}
+
 html.dark .camera-icon {
     background: #25658d url('/public/assets/images/icons/camera.png') no-repeat center;
 }
