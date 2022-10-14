@@ -1,4 +1,6 @@
 <x-app-layout>
+    @push('title', $user->username)
+
     <div class="col-span-12">
         <div class="grid grid-cols-1 gap-y-14">
             <div class="grid grid-cols-3 gap-x-8">
