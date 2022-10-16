@@ -4,7 +4,6 @@ namespace App\Http\Requests\Auth;
 
 use App\Models\User;
 use Illuminate\Support\Str;
-use App\Models\UserSessionLog;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
@@ -50,8 +49,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $user = User::query()
-            ->select('id', 'password', 'rank')
+        $user = User::select('id', 'password', 'rank')
             ->where('username', '=', $this->input('username'))
             ->first();
 
@@ -65,7 +63,7 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'username' => __('auth.failed'),
-            ]);
+            ])->errorBag('login');
         }
 
         if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
@@ -76,11 +74,6 @@ class LoginRequest extends FormRequest
 
         Auth::user()->update([
             'ip_current' => $this->ip(),
-        ]);
-
-        Auth::user()->sessionLogs()->create([
-            'ip' => $this->ip(),
-            'browser' => $this->userAgent()
         ]);
 
         RateLimiter::clear($this->throttleKey());

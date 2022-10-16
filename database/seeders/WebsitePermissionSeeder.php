@@ -23,7 +23,7 @@ class WebsitePermissionSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            WebsitePermission::query()->firstOrCreate(['key' => $permission['key']], [
+            WebsitePermission::firstOrCreate(['key' => $permission['key']], [
                 'key' => $permission['key'],
                 'value' => $permission['value'],
                 'comment' => $permission['comment'],

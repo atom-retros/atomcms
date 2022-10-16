@@ -18,7 +18,7 @@ class WebsiteArticleSeeder extends Seeder
         $title = 'Atom CMS has been installed';
         $slug = Str::slug($title);
 
-        WebsiteArticle::query()->firstOrCreate(['slug' => $slug], [
+        WebsiteArticle::firstOrCreate(['slug' => $slug], [
             'slug' => $slug,
             'title' => $title,
             'short_story' => 'Welcome to your new hotel, we are super happy that you chose to use Atom CMS!',

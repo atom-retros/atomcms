@@ -20,8 +20,8 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         return view('index', [
-            'articles' => WebsiteArticle::query()->latest('id')->take(4)->with('user:id,username,look')->get(),
-            'photos' => CameraWeb::query()->latest('id')->take(8)->with('user:id,username,look')->get(),
+            'articles' => WebsiteArticle::latest('id')->take(4)->with('user:id,username,look')->get(),
+            'photos' => CameraWeb::latest('id')->take(8)->with('user:id,username,look')->get(),
         ]);
     }
 

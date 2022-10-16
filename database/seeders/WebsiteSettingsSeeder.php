@@ -170,10 +170,15 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/ms-swf/c_images/rooms',
                 'comment' => 'Path to room thumbnails',
             ],
+            [
+                'key' => 'hotel_home_room',
+                'value' => '0',
+                'comment' => 'The homeroom every new users will be assigned to',
+            ],
         ];
 
         foreach ($settings as $setting) {
-            WebsiteSetting::query()->firstOrCreate(['key' => $setting['key']], [
+            WebsiteSetting::firstOrCreate(['key' => $setting['key']], [
                 'key' => $setting['key'],
                 'value' => $setting['value'],
                 'comment' => $setting['comment'],

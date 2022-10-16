@@ -8,6 +8,8 @@ use Illuminate\Validation\Rule;
 
 class RegisterFormRequest extends FormRequest
 {
+    protected $errorBag = 'register';
+
     public function rules(): array
     {
         return [

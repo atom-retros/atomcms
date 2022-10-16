@@ -31,10 +31,9 @@ class User extends Authenticatable
         return $this->hasMany(UserCurrency::class, 'user_id');
     }
 
-    public function sessionLogs()
+    public function sessions()
     {
-        return $this->hasMany(UserSessionLog::class)
-            ->latest();
+        return $this->hasMany(Session::class);
     }
 
     public function currency(string $currency)
@@ -133,7 +132,7 @@ class User extends Authenticatable
         $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
 
         // Recursive function - Call itself again if the auth ticket already exists
-        if (User::query()->where('auth_ticket', $sso)->exists()) {
+        if (User::where('auth_ticket', $sso)->exists()) {
             return $this->ssoTicket();
         }
 

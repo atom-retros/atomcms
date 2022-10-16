@@ -12,8 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('community.articles', [
-            'articles' => WebsiteArticle::query()
-                ->with('user:id,username,look')
+            'articles' => WebsiteArticle::with('user:id,username,look')
                 ->latest('id')
                 ->paginate(8),
         ]);
@@ -30,7 +29,7 @@ class ArticleController extends Controller
 
         return view('community.article', [
             'article' => $articleData,
-            'otherArticles' => WebsiteArticle::query()->whereNot('slug', $article->slug)->latest('id')->take(15)->get(),
+            'otherArticles' => WebsiteArticle::whereNot('slug', $article->slug)->latest('id')->take(15)->get(),
             'myReactions' => $myReactions,
             'articleReactions' => collect($article->reactions)->groupBy('reaction', true),
         ]);

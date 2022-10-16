@@ -27,8 +27,7 @@ class ProfileController extends Controller
                 ->get();
         }]);
 
-        $friends = MessengerFriendship::query()
-            ->select('user_two_id')
+        $friends = MessengerFriendship::select('user_two_id')
             ->where('user_one_id', '=', $user->id)
             ->whereHas('user')
             ->take(12)
@@ -36,8 +35,7 @@ class ProfileController extends Controller
             ->with('user:id,username,look')
             ->get();
 
-        $groups = GuildMember::query()
-            ->select(['guilds_members.id', 'guilds_members.guild_id', 'guilds_members.user_id', 'guilds.name', 'guilds.badge'])
+        $groups = GuildMember::select(['guilds_members.id', 'guilds_members.guild_id', 'guilds_members.user_id', 'guilds.name', 'guilds.badge'])
             ->where('guilds_members.user_id', '=', $user->id)
             ->join('guilds', 'guilds_members.guild_id', '=', 'guilds.id')
             ->take(6)

@@ -13,15 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_session_logs', function (Blueprint $table) {
-            $table->id();
-
-            $table->unsignedInteger('user_id');
-            $table->string('ip', 100)->default('0');
-            $table->text('browser')->nullable();
-
-            $table->timestamps();
-        });
+        Schema::dropIfExists('users_session_logs');
     }
 
     /**
@@ -31,6 +23,14 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_session_logs');
+        Schema::create('users_session_logs', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedInteger('user_id');
+            $table->string('ip', 100)->default('0');
+            $table->text('browser')->nullable();
+
+            $table->timestamps();
+        });
     }
 };
