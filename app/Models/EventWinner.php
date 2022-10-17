@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class EventWinner extends Model
 {
@@ -16,8 +17,8 @@ class EventWinner extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function room(): BelongsTo
+    public function entry(): BelongsTo
     {
-        return $this->belongsTo(Room::class, 'room_id');
+        return $this->belongsTo(EventEntry::class, 'entry_id');
     }
 }

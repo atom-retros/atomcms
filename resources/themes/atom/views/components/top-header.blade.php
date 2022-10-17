@@ -1,6 +1,6 @@
 @php
-    $canViewLogsButton = auth()->user()->rank >= permission('min_rank_to_view_logs');
-    $canViewHousekeepingButton = auth()->user()->rank >= setting('min_housekeeping_rank');
+    $canViewLogsButton = permission('min_rank_to_view_logs');
+    $canViewHousekeepingButton = permission('min_housekeeping_rank');
 @endphp
 
 <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 items-center flex justify-between py-2 dark:bg-gray-900">

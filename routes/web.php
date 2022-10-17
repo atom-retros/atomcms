@@ -75,8 +75,11 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
         Route::prefix('events')->group(function () {
             Route::get('/{eventType}', [EventController::class, 'index'])->name('event.index');
             Route::post('/{eventType}/submit', [EventController::class, 'store'])->name('event.store');
+            Route::post('/{eventType}/submit/winners', [EventController::class, 'submitWinners'])->name('event.submit-winners');
             Route::delete('/{eventType}/delete', [EventController::class, 'index'])->name('event.destroy');
-            Route::delete('/{eventType}/submission/delete', [EventController::class, 'deleteSubmission'])->name('event.destroy.submission');
+            Route::delete('/{entry}/submission/delete', [EventController::class, 'deleteSubmission'])->name('event.destroy.submission');
+            Route::delete('/{eventType}/submissions/delete', [EventController::class, 'deleteSubmissions'])->name('event.submissions.destroy');
+            Route::delete('/{eventType}/winners/delete', [EventController::class, 'resetWinners'])->name('event.winners.destroy');
         });
 
         // Leaderboard routes

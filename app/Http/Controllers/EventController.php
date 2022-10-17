@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\RoomEventTypes;
 use App\Models\EventEntry;
 use App\Models\EventWinner;
 use App\Models\Room;
@@ -11,13 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
-    public function index($eventType)
+    public function index(RoomEventTypes $eventType)
     {
-        $entries = EventEntry::query()->where('type', '=', $eventType)->get()->load('room');
-        $currentWinners = EventWinner::query()
-            ->with(['user:id,username,rank,look', 'room'])
-            ->select('id', 'user_id')
+        $entries = EventEntry::where('type', '=', $eventType)->with('room')->get();
+        $currentWinners = EventWinner::select('id', 'user_id', 'entry_id')
             ->where('type', '=', $eventType)
+            ->with(['user:id,username,rank,look', 'entry.room'])
             ->take(3)
             ->get();
 
@@ -40,7 +40,7 @@ class EventController extends Controller
         ]);
     }
 
-    public function store(Request $request, $eventType): RedirectResponse
+    public function store(Request $request, RoomEventTypes $eventType): RedirectResponse
     {
         if ($eventType === 'rotw' && Auth::user()->rotwEntry()->exists()) {
             return redirect()->back()->withErrors(__('You can only submit one ROTW room per week.'));
@@ -59,18 +59,18 @@ class EventController extends Controller
 
         Auth::user()->eventEntry()->create([
             'room_id' => $request['room_id'],
-            'type' => $eventType
+            'type' => $eventType->value
         ]);
 
         return redirect()
             ->back()
-            ->with('success', __('You have successfully submitted your room to this weeks :TYPE', ['type' => $eventType]));
+            ->with('success', __('You have successfully submitted your room to this weeks :TYPE', ['type' => $eventType->value]));
     }
 
-    public function deleteSubmissions($eventType): string|RedirectResponse
+    public function deleteSubmissions(RoomEventTypes $eventType): string|RedirectResponse
     {
-        if (Auth::user()->rank < 6) {
-            return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
+        if (!permission('min_rank_to_delete_event_submissions')) {
+            return redirect()->back()->withErrors(__('You do not have permission to delete event submissions'));
         }
 
         EventEntry::query()
@@ -79,23 +79,24 @@ class EventController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('All :TYPE submissions has been deleted', ['type' => $eventType]));
+            ->with('success', __('All :TYPE submissions has been deleted', ['type' => $eventType->value]));
     }
 
-    public function submitWinners(Request $request, $eventType): RedirectResponse
+    public function submitWinners(Request $request, RoomEventTypes $eventType): RedirectResponse
     {
-        if (Auth::user()->rank < CMS::settings('min_event_management_rank')) {
-            return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
+
+        if (!permission('min_rank_to_submit_event_winners')) {
+            return redirect()->back()->withErrors(__('You do not have permissions submit winners.'));
         }
 
         $winners = explode(',', $request->input('winners'));
 
         $rooms = [];
 
-        foreach ($winners as $winner) {
+        foreach ($winners as $roomId) {
             $room = Room::query()
                 ->select('id', 'owner_id')
-                ->where('id', $winner)
+                ->where('id', $roomId)
                 ->first();
 
             $rooms[] = $room?->toArray();
@@ -107,25 +108,29 @@ class EventController extends Controller
                 ->withErrors(__('The submitted rooms does not exist.'));
         }
 
+        EventWinner::where('type', $eventType)->delete();
+
         foreach ($rooms as $room) {
             if (empty($room)) {
                 continue;
             }
 
+            $entry = EventEntry::select('id')->where('type', $eventType)->where('user_id', $room['owner_id'])->where('is_active', true)->first();
+
             EventWinner::create([
                 'user_id' => $room['owner_id'],
-                'room_id' => $room['id'],
-                'type' => $eventType
+                'entry_id' => $entry->id,
+                'type' => $eventType->value
             ]);
         }
 
-        return redirect()->back()->with('success', __('The :TYPE winners has been submitted!', ['type' => $eventType]));
+        return redirect()->back()->with('success', __('The :TYPE winners has been submitted!', ['type' => $eventType->value]));
     }
 
-    public function resetWinners($eventType): RedirectResponse
+    public function resetWinners(RoomEventTypes $eventType): RedirectResponse
     {
-        if (Auth::user()->rank < CMS::settings('min_event_management_rank')) {
-            return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
+        if (!permission('min_rank_to_reset_event_entries')) {
+            return redirect()->back()->withErrors(__('You do not have permissions to reset the winners.'));
         }
 
         EventWinner::query()
@@ -135,19 +140,19 @@ class EventController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', __('The current :TYPE winners has been reset', ['type' => $eventType]));
+            ->with('success', __('The current :TYPE winners has been reset', ['type' => $eventType->value]));
     }
 
-    public function deleteSubmission($eventType): RedirectResponse
+    public function deleteSubmission(EventEntry $entry): RedirectResponse
     {
-        if (Auth::user()->rank < 6 && Auth::user()->eventEntry()->whereType($eventType)->where('user_id', '!=', Auth::id())->latest()->first()) {
-            return redirect()->back()->withErrors(__('You do not have permissions to do this.'));
+        if (Auth::id() !== $entry->user_id) {
+            return redirect()->back()->withErrors(__('You can only delete your own submissions.'));
         }
 
-        Auth::user()->eventEntry()->whereType($eventType)->delete();
+        $entry->delete();
 
         return redirect()
             ->back()
-            ->with('success', __('You have deleted your submission for this weeks :TYPE', ['type' => $eventType]));
+            ->with('success', __('You have deleted this weeks submission'));
     }
 }

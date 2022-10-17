@@ -181,5 +181,7 @@
     "Events": "Events",
     "ROTW": "ROTW",
     "COTW": "COTW",
-    "OOTW": "OOTW"
+    "OOTW": "OOTW",
+    "You have deleted this weeks submission": "You have deleted this weeks submission",
+    "You can only delete your own submissions.": "You can only delete your own submissions."
 }

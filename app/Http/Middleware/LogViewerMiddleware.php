@@ -14,7 +14,7 @@ class LogViewerMiddleware
             return to_route('login');
         }
 
-        if (Auth::check() && Auth::user()->rank < permission('min_rank_to_view_logs')) {
+        if (Auth::check() && !permission('min_rank_to_view_logs')) {
             return to_route('me.show');
         }
 

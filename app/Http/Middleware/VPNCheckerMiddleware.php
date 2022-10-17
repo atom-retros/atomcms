@@ -19,7 +19,7 @@ class VPNCheckerMiddleware
         }
 
         // Skip check if the rank is allowed to bypass the checker
-        if (Auth::check() && Auth::user()->rank >= permission('min_rank_to_bypass_vpn_check')) {
+        if (Auth::check() && permission('min_rank_to_bypass_vpn_check')) {
             return $next($request);
         }
 

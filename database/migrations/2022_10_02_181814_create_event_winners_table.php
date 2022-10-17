@@ -10,11 +10,12 @@ return new class extends Migration {
         Schema::create('event_winners', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->unsignedBigInteger('entry_id');
+            $table->integer('room_id');
             $table->enum('type', ['rotw', 'cotw'])->default('rotw');
+            $table->boolean('is_active')->default(true);
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('entry_id')->references('id')->on('event_entries')->cascadeOnDelete();
+            $table->foreign('room_id')->references('id')->on('rooms')->cascadeOnDelete();
         });
     }
 

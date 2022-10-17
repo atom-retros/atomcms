@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\PermissionsService;
 use App\Services\SettingsService;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(SettingsService::class, function() {
             return new SettingsService();
+        });
+
+        $this->app->bind(PermissionsService::class, function() {
+            return new PermissionsService();
         });
     }
 

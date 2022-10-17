@@ -137,7 +137,8 @@ class User extends Authenticatable
         }
 
         $this->update([
-            'auth_ticket' => $sso
+            'auth_ticket' => $sso,
+            'ip_current' => request()->ip(),
         ]);
 
         return $sso;
