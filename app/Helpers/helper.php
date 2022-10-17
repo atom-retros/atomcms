@@ -10,7 +10,7 @@ if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
 if (!function_exists('setting')) {
     function setting(string $setting): string
     {
-        return app(SettingsService::class)->getOrDefault($setting);
+        return SettingsService::getInstance()->getOrDefault($setting);
     }
 }
 
