@@ -152,6 +152,7 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 - **DamienJolly** - Bugfixes
 - **Danbo** - Bugfixes
 - **Diddy/Josh** - Code readability improvements
+- **MisterDeen** - Custom Discord widget
 - **Damue** - German translations
 - **Talion** - Turkish translations
 - **CentralCee & Rille** - Swedish translations
