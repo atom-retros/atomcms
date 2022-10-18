@@ -8,6 +8,8 @@ module.exports = {
         "./resources/**/*.js",
     ],
 
+    darkMode: 'class',
+
     theme: {
         extend: {
             fontFamily: {
