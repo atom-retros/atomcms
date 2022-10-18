@@ -104,10 +104,15 @@
 
                             document.getElementById('guildUsers').appendChild(container)
                         }
-                        //gives the "Join server" button an href to the default selected chennel in the server
-                        //link is recived from widget json
-                        document.getElementById('guildInvite').setAttribute('href', data.instant_invite)
 
+                        //Checks if join server link is null and removes btn form webpage
+                        if (data.instant_invite === null) {
+                            document.getElementById('guildInvite').remove()
+                        } else {
+                            //Gives the "Join server" button an href to the default selected chennel in the server
+                            //link is recived from widget json
+                            document.getElementById('guildInvite').setAttribute('href', data.instant_invite)
+                        }
                     })
                 });
         }
