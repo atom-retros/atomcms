@@ -8,7 +8,7 @@
     </x-slot:under-title>
 
     <div class=" text-sm dark:text-gray-200">
-        <div id="guildUsers" class="min-h-[120px] max-h-[130px] overflow-auto"> </div>
+        <div id="guildUsers" class="h-[129px] overflow-auto"> </div>
         <a id="guildInvite" target="blank">
             <x-form.secondary-button classes="mt-3">
                 {{ __('Join server') }}
@@ -108,6 +108,7 @@
                         //Checks if join server link is null and removes btn form webpage
                         if (data.instant_invite === null) {
                             document.getElementById('guildInvite').remove()
+                            document.getElementById('guildUsers').style.height = "176px"
                         } else {
                             //Gives the "Join server" button an href to the default selected chennel in the server
                             //link is recived from widget json
