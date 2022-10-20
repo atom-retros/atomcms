@@ -72,8 +72,9 @@
 
                 @if (auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
                     <a href="{{ route('claim.referral-reward') }}" class="text-decoration-none">
-                        <button
-                            class="mt-2 w-full rounded bg-green-600 text-white p-2">{{ __('Claim your referrals reward!') }}</button>
+                        <x-form.secondary-button classes="mt-2">
+                            {{ __('Claim your referrals reward!') }}
+                        </x-form.secondary-button>
                     </a>
                 @else
                     <button disabled class="mt-2 w-full rounded bg-gray-400 dark:bg-gray-900 text-white p-2">
