@@ -104,10 +104,27 @@
 
     @push('javascript')
         <script>
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
             function copyCode() {
                 let copyText = document.querySelector('#referral');
                 copyText.select();
                 document.execCommand("copy");
+
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ __('Your referral code has been copied to your clipbord!') }}'
+                })
             }
         </script>
     @endpush
