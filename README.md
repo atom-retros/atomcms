@@ -146,17 +146,18 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 - **Nicollas** - Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations
 - **Dominic** - Performance improvements & User sessions
 - **Oliver** - Profile page & Finnish translations
-- **Kani** - Rcon System & Findretros API
 - **Beny** - Findretros API fixes & CF Fixes
 - **Live** - French translations, bugfixes & tweaks
+- **MisterDeen** - Custom Discord widget, bugfixes & tweaks
 - **DamienJolly** - Bugfixes
 - **Danbo** - Bugfixes
 - **Diddy/Josh** - Code readability improvements
-- **MisterDeen** - Custom Discord widget
 - **Damue** - German translations
 - **Talion** - Turkish translations
 - **CentralCee & Rille** - Swedish translations
 - **Yannick** - Netherland translations
 - **Gedomi** - Spanish translations
 - **Lorenzune** - Italian translations
+- **Kani** - Rcon System & Findretros API
+- **Sonay** - Material theme
 - **Raizer** - Circinus
