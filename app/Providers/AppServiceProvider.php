@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
             \Illuminate\Foundation\Vite::class,
             \App\Services\ViteService::class
         );
+
+        $this->app->singleton(
+            SettingsService::class,
+            fn () => new SettingsService()
+        );
     }
 
     /**
