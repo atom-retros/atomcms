@@ -114,7 +114,7 @@ class User extends Authenticatable
 
     public function ssoTicket(): string
     {
-        $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
+        $sso = sprintf("%s-%s", Str::replace(' ', '', setting('hotel_name')), Str::uuid());
 
         // Recursive function - Call itself again if the auth ticket already exists
         if (User::where('auth_ticket', $sso)->exists()) {
