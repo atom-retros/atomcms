@@ -2,16 +2,19 @@
 
 namespace App\Http\Requests;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use App\Rules\CurrentPasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordSettingsFormRequest extends FormRequest
 {
+    use PasswordValidationRules;
+
     public function rules(): array
     {
         return [
             'current_password' => ['required', 'string', new CurrentPasswordRule],
-            'password' => ['required', 'string', 'confirmed', 'min:8'],
+            'password' => $this->passwordRules(),
         ];
     }
 
