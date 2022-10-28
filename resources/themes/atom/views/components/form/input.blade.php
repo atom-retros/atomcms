@@ -6,9 +6,9 @@
         type="{{ $type }}"
         name="{{ $name }}"
         value="{{ $value }}"
-        required="{{ $required }}"
         autocomplete="{{ $name }}"
         placeholder="{{ $placeholder }}"
+        @if($readonly) required @endif
         @if($autofocus) autofocus="{{ $name }}" @endif
         @if($readonly) readonly @endif>
 

@@ -75,4 +75,9 @@ class AccountSettingsController extends Controller
 
         return redirect()->back()->with('success', __('Your account settings has been updated'));
     }
+
+    public function twoFactor()
+    {
+        return view('user.settings.two-factor');
+    }
 }

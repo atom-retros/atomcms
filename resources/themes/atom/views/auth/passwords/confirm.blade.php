@@ -1,45 +1,49 @@
-<x-guest-layout>
-    <div class="flex flex-col items-center min-h-screen pt-6 bg-gray-100 sm:justify-center sm:pt-0">
-        <div>
-            <a href="/">
-                <x-application-logo class="w-20 h-20 text-gray-500 fill-current" />
-            </a>
-        </div>
+<x-app-layout>
+    @push('title', __('Two factor'))
 
-        <div class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
-            <div class="mb-4 text-sm text-gray-600">
-                {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
-            </div>
+    <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
+        <x-user.settings.settings-navigation />
+    </div>
 
-            <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-            <form method="POST" action="{{ route('password.confirm') }}">
+    <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
+        <div class="rounded bg-white shadow dark:bg-gray-900 p-4">
+            <form method="POST" action="/user/confirm-password">
                 @csrf
 
                 <!-- Password -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Password') }}
-                    </label>
+                <div class="flex flex-col gap-y-2">
+                    <div>
+                        <x-form.label for="password">
+                            {{ __('Password') }}
 
-                    <input id="password" type="password"
-                            class="form-input w-full @error('password') border-red-500 @enderror" name="password"
-                            required autocomplete="new-password">
+                            <x-slot:info>
+                                {{ __('You must confirm your current password before being able to enable 2FA.') }}
+                            </x-slot:info>
+                        </x-form.label>
 
-                    @error('password')
-                        <p class="mt-1 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                    @enderror
+                        <x-form.input error-bag="register" name="password" type="password" placeholder="{{ __('Enter your current password') }}" />
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <x-form.label for="password_confirmation">
+                            {{ __('Repeat Password') }}
+                        </x-form.label>
+
+                        <x-form.input error-bag="register" name="password_confirmation" type="password" placeholder="{{ __('Repeat your current password') }}" />
+                    </div>
                 </div>
 
-                <div class="flex justify-end mt-4">
-                    <button type="submit" class="inline-flex items-center px-4 py-2 ml-4 text-xs font-semibold tracking-widest text-white uppercase transition duration-150 ease-in-out bg-gray-800 border border-transparent rounded-md hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25">
-                        {{ __('Confirm') }}
-                    </button>
+                @if(setting('google_recaptcha_enabled'))
+                    <div class="g-recaptcha mt-4" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                @endif
+
+                <div class="mt-4">
+                    <x-form.primary-button>
+                        {{ __('Confirm password') }}
+                    </x-form.primary-button>
                 </div>
             </form>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>

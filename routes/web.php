@@ -17,6 +17,7 @@ use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TwoFactorAuthenticationController;
 use Illuminate\Support\Facades\Route;
 
 // Language route
@@ -46,6 +47,8 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
                 Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
                 Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
                 Route::get('/session-logs', [AccountSettingsController::class, 'sessionLogs'])->name('settings.session-logs');
+                Route::get('/two-factor', [TwoFactorAuthenticationController::class, 'index'])->name('settings.two-factor');
+                Route::post('/2fa-verify', [TwoFactorAuthenticationController::class, 'verify'])->name('two-factor.verify');
             });
         });
 
