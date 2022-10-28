@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Requests\LoginFormRequest;
+use App\Models\CameraWeb;
 use App\Models\User;
+use App\Models\WebsiteArticle;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -44,6 +46,21 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        Fortify::loginView(function () {
+            return view('auth.login', [
+                'articles' => WebsiteArticle::latest('id')
+                    ->take(4)
+                    ->has('user')
+                    ->with('user:id,username,look')
+                    ->get(),
+                'photos' => CameraWeb::latest('id')
+                    ->take(8)
+                    ->has('user')
+                    ->with('user:id,username,look')
+                    ->get(),
+            ]);
         });
 
         Fortify::registerView(function (Request $request) {
