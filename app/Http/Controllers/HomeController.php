@@ -10,8 +10,16 @@ class HomeController extends Controller
     public function __invoke()
     {
         return view('index', [
-            'articles' => WebsiteArticle::latest('id')->take(4)->with('user:id,username,look')->get(),
-            'photos' => CameraWeb::latest('id')->take(8)->with('user:id,username,look')->get(),
+            'articles' => WebsiteArticle::latest('id')
+                ->take(4)
+                ->has('user')
+                ->with('user:id,username,look')
+                ->get(),
+            'photos' => CameraWeb::latest('id')
+                ->take(8)
+                ->has('user')
+                ->with('user:id,username,look')
+                ->get(),
         ]);
     }
 }
