@@ -6,8 +6,16 @@
     </div>
 
     <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
-        <div class="rounded bg-white shadow p-4 dark:bg-gray-900">
-            <div class="overflow-hidden overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+            <x-slot:title>
+                {{ __('Session logs') }}
+            </x-slot:title>
+
+            <x-slot:under-title>
+                {{ __('Keep an eye on all your active sessions') }}
+            </x-slot:under-title>
+
+            <div class="overflow-hidden overflow-x-auto rounded border border-gray-200 dark:border-gray-700">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
                     <thead class="bg-gray-100 dark:bg-gray-800">
                         <tr>
@@ -54,9 +62,6 @@
                     </tbody>
                 </table>
             </div>
-
-
-
-        </div>
+        </x-content.content-section>
     </div>
 </x-app-layout>

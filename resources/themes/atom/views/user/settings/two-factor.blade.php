@@ -6,7 +6,15 @@
     </div>
 
     <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
-        <div class="rounded bg-white shadow dark:bg-gray-900 p-4">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+            <x-slot:title>
+                {{ __('Two factor authentication') }}
+            </x-slot:title>
+
+            <x-slot:under-title>
+                {{ __('Add an extra layer of security to your account by enabling two-factor authentication') }}
+            </x-slot:under-title>
+
             <!-- 2FA enabled, we display the QR code : -->
             @if(auth()->user()->two_factor_confirmed)
                 <form action="/user/two-factor-authentication" method="post">
@@ -86,6 +94,6 @@
                     </form>
                 </div>
             @endif
-        </div>
+        </x-content.content-section>
     </div>
 </x-app-layout>
