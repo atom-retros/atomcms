@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\CreateNewUser;
 use App\Models\CameraWeb;
 use App\Actions\Fortify\RedirectIfTwoFactorConfirmed;
@@ -10,7 +11,6 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Laravel\Fortify\Features;
@@ -82,13 +82,11 @@ class FortifyServiceProvider extends ServiceProvider
 
     private function authenticate()
     {
-        Fortify::authenticateThrough(function(Request $request) {
+        Fortify::authenticateThrough(function() {
             return array_filter([
                 config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
 
                 Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorConfirmed::class : null,
-                AttemptToAuthenticate::class,
-                PrepareAuthenticatedSession::class,
             ]);
         });
     }

@@ -14,7 +14,7 @@
                         {{ __('Code') }}
                     </x-form.label>
 
-                    <x-form.input name="code" placeholder="{{ __('Code') }}" />
+                    <x-form.input name="code" placeholder="{{ __('Code') }}" :autofocus="true" />
 
                     <div class="mt-4">
                         <x-form.label for="recovery_code">

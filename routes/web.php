@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Fortify\Controllers\TwoFactorAuthenticatedSessionController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Features;
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
@@ -93,4 +95,14 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
     });
 });
 
+if (Features::enabled(Features::twoFactorAuthentication())) {
+    $twoFactorLimiter = config('fortify.limiters.two-factor');
 
+    Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
+        ->middleware(
+            array_filter([
+                'guest:' . config('fortify.guard'),
+                $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+            ])
+        );
+}

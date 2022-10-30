@@ -2,7 +2,6 @@
 
 namespace App\Actions\Fortify;
 
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class RedirectIfTwoFactorConfirmed extends RedirectIfTwoFactorAuthenticatable
