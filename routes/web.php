@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Fortify\Controllers\TwoFactorAuthenticatedSessionController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -17,7 +18,9 @@ use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TwoFactorAuthenticationController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Features;
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
@@ -46,6 +49,8 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
                 Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
                 Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
                 Route::get('/session-logs', [AccountSettingsController::class, 'sessionLogs'])->name('settings.session-logs');
+                Route::get('/two-factor', [TwoFactorAuthenticationController::class, 'index'])->name('settings.two-factor');
+                Route::post('/2fa-verify', [TwoFactorAuthenticationController::class, 'verify'])->name('two-factor.verify');
             });
         });
 
@@ -90,4 +95,14 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
     });
 });
 
+if (Features::enabled(Features::twoFactorAuthentication())) {
+    $twoFactorLimiter = config('fortify.limiters.two-factor');
 
+    Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
+        ->middleware(
+            array_filter([
+                'guest:' . config('fortify.guard'),
+                $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+            ])
+        );
+}
