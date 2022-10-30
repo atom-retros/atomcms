@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Actions\Fortify\PasswordValidationRules;
+use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Rules\CurrentPasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
