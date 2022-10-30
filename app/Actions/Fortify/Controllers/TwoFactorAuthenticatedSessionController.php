@@ -47,7 +47,7 @@ class TwoFactorAuthenticatedSessionController extends Controller
             event(new RecoveryCodeReplaced($user, $code));
         } elseif (! $request->hasValidCode()) {
             throw ValidationException::withMessages([
-                'code' => __('The 2FA code was invalid'),
+                'code' => __('Invalid Two Factor Authentication code'),
             ]);
         }
 
