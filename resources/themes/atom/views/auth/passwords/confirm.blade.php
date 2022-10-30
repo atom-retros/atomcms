@@ -25,20 +25,11 @@
                             {{ __('Password') }}
 
                             <x-slot:info>
-                                {{ __('You must confirm your current password before being able to enable 2FA.') }}
+                                {{ __('You must confirm your current password before being able to toggle 2FA.') }}
                             </x-slot:info>
                         </x-form.label>
 
-                        <x-form.input error-bag="register" name="password" type="password" placeholder="{{ __('Enter your current password') }}" />
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div>
-                        <x-form.label for="password_confirmation">
-                            {{ __('Repeat Password') }}
-                        </x-form.label>
-
-                        <x-form.input error-bag="register" name="password_confirmation" type="password" placeholder="{{ __('Repeat your current password') }}" />
+                        <x-form.input name="password" type="password" placeholder="{{ __('Enter your current password') }}" />
                     </div>
                 </div>
 
