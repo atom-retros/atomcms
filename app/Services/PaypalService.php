@@ -5,7 +5,6 @@ namespace App\Services;
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\ProductionEnvironment;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
-use phpDocumentor\Reflection\Types\This;
 
 class PaypalService
 {
@@ -25,9 +24,9 @@ class PaypalService
     private function environment(): ProductionEnvironment|SandboxEnvironment
     {
         if (config('paypal.mode') === 'sandbox') {
-            return new SandboxEnvironment(config("paypal.sandbox.client_id"), config('paypal.sandbox.client_secret'));
+            return new SandboxEnvironment(setting('paypal_sandbox_client_id'), setting('paypal_sandbox_client_secret'));
         }
 
-        return new ProductionEnvironment(config('paypal.live.client_id'), config('paypal.live.client_secret'));
+        return new ProductionEnvironment(setting('paypal_live_client_id'), setting('paypal_live_client_secret'));
     }
 }

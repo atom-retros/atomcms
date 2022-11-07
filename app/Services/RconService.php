@@ -2,14 +2,17 @@
 
 namespace App\Services;
 
-use App\Exceptions\ConnectionRefusedException;
-use App\Models\Permission;
 use App\Models\User;
 
 class RconService
 {
     protected $socket;
     protected $connected;
+
+    public function __construct()
+    {
+        $this->connect();
+    }
 
     protected function connect()
     {
@@ -28,23 +31,21 @@ class RconService
         }
 
         if (!@socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'))) {
-            die(__('It seems like our system is having some issues, please try again later or contact a staff member - Thank you!'));
-        };
+            die('It seems like the hotel is currently offline, please wait and try again later.');
+        }
     }
 
     public function sendPacket(string $key, $data = null)
     {
-        $this->connect();
-
         $data = json_encode(['key' => $key, 'data' => $data]);
 
-        $request = socket_write($this->socket, $data, strlen($data));
-
-        if ($request === false) {
-            abort(500, sprintf(socket_strerror(socket_last_error($this->socket))));
+        if (!@socket_write($this->socket, $data, strlen($data))) {
+            die(sprintf(socket_strerror(socket_last_error($this->socket))));
         }
 
-        $response = socket_read($this->socket, 2048);
+        if (!$response = @socket_read($this->socket, 2048)) {
+            die('It seems like the hotel is experiencing some issues at the moment, please contact one of the owners.');
+        }
 
         return json_decode($response);
     }

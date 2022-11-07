@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+    private RconService $rcon;
+
+    public function __construct(/*RconService $rconService*/)
+    {
+        // $this->rcon = $rconService;
+    }
+
     public function __invoke()
     {
         return view('shop.shop', [
@@ -29,16 +36,13 @@ class ShopController extends Controller
             'usedVouchers'
         )->first();
 
-        if (!is_null($voucher->expire_at) && (now()->greaterThan(
-                $voucher->expire_at
-            )) || $voucher->used_vouchers_count >= $voucher->max_uses) {
+        if (!is_null($voucher->expire_at) && (now()->greaterThan($voucher->expire_at)) || $voucher->used_vouchers_count >= $voucher->max_uses) {
             return redirect()->back()->withErrors([
                 'message' => __('It seems like the voucher is no longer valid'),
             ]);
         }
 
-        if ($request->user()->vouchersRedeemed()->where('code_id', '=', $voucher->id)->exists(
-            ) || $voucher->usedVouchers()->where('ip_address', '=', $request->ip())->exists()) {
+        if ($request->user()->vouchersRedeemed()->where('code_id', '=', $voucher->id)->exists() || $voucher->usedVouchers()->where('ip_address', '=', $request->ip())->exists()) {
             return redirect()->back()->withErrors([
                 'message' => __('It seems like you have already redeemed this voucher once'),
             ]);
@@ -59,6 +63,49 @@ class ShopController extends Controller
 
     public function purchase(WebsiteShopProduct $product)
     {
+        $productData = json_decode($product->data);
+        $package = $productData->content;
+        $user = Auth::user();
+
+        if ($product->type === 'vip' && $user->rank >= $package->rank) {
+            return redirect()->back()->withErrors([
+                'message' => __('It seems like you already have this or a higher rank, please select another package if possible.')
+            ]);
+        }
+
+        if ($user->website_store_balance < $product->price()) {
+            return redirect()->back()->withErrors([
+                'message' => __('You do not have enough balance, to purchase this package. Please add another $:amount before having enough', ['amount' => $productData->price - $user->website_store_balance])
+            ]);
+        }
+
+        match ($product->type) {
+            'vip' => $this->giftVipPackage($user, $package),
+            'furniture' => $this->giftFurniturePackage($user, $package),
+        };
+
+        $user->decrement('website_store_balance', $product->price());
+
+        return redirect()->back()->with('success', __('Thank you for purchasing :package', ['package' => $productData->name]));
+   }
+
+    private function giftVipPackage(User $user, $package)
+    {
+        $this->rcon->setRank($user, $package->rank);
+        $this->rcon->giveCredits($user, $package->currencies->credits);
+
+        foreach ($package->currencies->types as $type => $amount) {
+            $this->rcon->givePoints($user, (int)$type, (int)$amount);
+        }
+
+        foreach ($package->badges as $badge) {
+            $this->rcon->giveBadge($user, $badge);
+        }
+    }
+
+    private function giftFurniturePackage(User $user, $package)
+    {
+        // TODO: Add logic
         // Furniture pack example (just for testing)
 //        $furniturePackData = [
 //            'data' => json_encode([
@@ -89,58 +136,5 @@ class ShopController extends Controller
 //
 //            dd($count, $item['item_id']);
 //        }
-
-
-        $productData = json_decode($product->data);
-        $package = $productData->content;
-        $user = Auth::user();
-
-        if ($product->type === 'vip' && ($user->rank >= $package->rank)) {
-            return redirect()->back()->withErrors([
-                'message' => __('It seems like you already have this or a higher rank, please select another package if possible.')
-            ]);
-        }
-
-        if ($user->website_store_balance < $product->price()) {
-            return redirect()->back()->withErrors([
-                'message' => __('You do not have enough balance, to purchase this package. Please add another $:amount before having enough', ['amount' => $productData->price - $user->website_store_balance])
-            ]);
-        }
-
-        match ($product->type) {
-            'vip' => $this->giftVipPackage($user, $package),
-            'furniture' => $this->giftFurniturePackage($user, $package),
-        };
-
-        $user->decrement('website_store_balance', $product->price());
-
-        return redirect()->back()->with('success', __('Thank you for purchasing :package', ['package' => $productData->name]));
-   }
-
-    private function giftVipPackage(User $user, $package)
-    {
-        try {
-            $rcon = new RconService();
-        } catch (ConnectionRefusedException $e) {
-            return redirect()->back()->withErrors([
-                'message' => __('It seems like our system is having a bit of issues, please try again later or contact a staff member - Thank you!')
-            ]);
-        }
-
-        $rcon->setRank($user, $package->rank);
-        $rcon->giveCredits($user, $package->currencies->credits);
-
-        foreach ($package->currencies->types as $type => $amount) {
-            $rcon->givePoints($user, (int)$type, (int)$amount);
-        }
-
-        foreach ($package->badges as $badge) {
-            $rcon->giveBadge($user, $badge);
-        }
-    }
-
-    private function giftFurniturePackage(User $user, $package)
-    {
-        // TODO: Add logic
     }
 }

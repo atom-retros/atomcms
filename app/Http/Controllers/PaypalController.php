@@ -13,22 +13,33 @@ use PayPalHttp\HttpException;
 
 class PaypalController extends Controller
 {
-    public function create(Request $request, PaypalService $paypalService)
+    private OrdersCreateRequest $paypalRequest;
+
+    public function __construct()
     {
+        $this->paypalRequest = new OrdersCreateRequest();
+    }
+
+    public function create(Request $request, RconService $rcon, PaypalService $paypalService)
+    {
+        if (!$rcon->giveCredits($request->user(), 0)) {
+            return redirect()->back()->withErrors([
+                'message' => __('It seems like the hotel is offline, you can only buy from the store while it is online!')
+            ]);
+        }
 
         if (!$request->has('value') || !$request->has('api_token')) {
             return redirect()->back()->withErrors([
                 'message' => __('An unknown error occurred. Please contact the owners in-game or on our Discord server for help.')
             ]);
         }
-        (int)$amount = $request->input('value');
 
-        if ($amount < 1) {
+        (int)$topUpAmount = $request->input('value');
+        if ($topUpAmount < 1) {
             return redirect()->back()->withErrors([
                 'message' => __('The minimum top up value is 1$'),
             ]);
         }
-
 
         // Fetch the user purchasing
         $user = User::query()
@@ -36,42 +47,49 @@ class PaypalController extends Controller
             ->first();
 
         if (is_null($user)) {
-            return "No user found";
+            return redirect()->back()->withErrors([
+                'message' => __('It seems like we the user does not exist'),
+            ]);
         }
 
-        $requestBody = array(
+        if ($request->user()->id !== $user->id) {
+            return redirect()->back()->withErrors([
+                'message' => __('You can only top up your own account'),
+            ]);
+        }
+
+        $requestBody = [
             'intent' => 'CAPTURE',
-            'application_context' => array(
-                'locale' => 'en-US',
+            'application_context' => [
+                'locale' => setting('paypal_locale'),
                 'shipping_preference' => 'NO_SHIPPING',
                 'brand_name' => setting('hotel_name'),
                 'return_url' => route('shop.index'),
-                'cancel_url' => route('shop.index')
-            ),
-            'purchase_units' => array(
-                0 => array(
+                'cancel_url' => route('shop.index'),
+            ],
+            'purchase_units' => [
+                0 => [
                     'description' => sprintf('%s top up', setting('hotel_name')),
-                    'amount' => array(
-                        'currency_code' => 'USD',
-                        'value' => $amount,
-                    )
-                )
-            )
-        );
+                    'amount' => [
+                        'currency_code' => setting('paypal_currency'),
+                        'value' => $topUpAmount,
+                    ],
+                ],
+            ] ,
+        ];
 
-        $paypalRequest = new OrdersCreateRequest();
-        $paypalRequest->headers["prefer"] = "return=representation";
-        $paypalRequest->body = $requestBody;
+        $this->paypalRequest->headers["prefer"] = "return=representation";
+        $this->paypalRequest->body = $requestBody;
 
         $client = $paypalService->client();
 
         try {
-            $response = $client->execute($paypalRequest);
+            $response = $client->execute($this->paypalRequest);
 
             // Save transaction in database
             $user->transactions()->create([
                 'payment_id' => $response->result->id,
-                'amount' => $amount,
+                'amount' => $topUpAmount,
             ]);
 
             // Return creation response to client
@@ -92,7 +110,6 @@ class PaypalController extends Controller
             ->where('payment_id', '=', $orderId)
             ->first();
 
-
         if (is_null($transaction)) {
             return "Transaction not found";
         }
@@ -112,9 +129,9 @@ class PaypalController extends Controller
             }
 
             $user = $transaction->user;
-//            if ($user->online) {
-//                $rcon->alertUser($user, __('Thank you for your purchase. We have booked your currency onto your account'));
-//            }
+            if ($user->online) {
+                $rcon->alertUser($user, __('Thank you for your purchase. We have booked your currency onto your account'));
+            }
 
             $user->increment('website_store_balance', $transaction->amount);
 

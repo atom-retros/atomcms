@@ -1,6 +1,6 @@
 @props(['package','packageContent'])
 
-<x-content.content-section icon="bronze-vip">
+<x-shop.content-section icon="bronze-vip">
     <x-slot:title>
         {{ $packageContent->name }} -
         @if($package->isOnSale())
@@ -34,4 +34,4 @@
                 {{ __('Purchase') }}
             </x-form.secondary-button>
         </form>
-</x-content.content-section>
+</x-shop.content-section>

@@ -175,6 +175,36 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'The homeroom every new users will be assigned to',
             ],
+            [
+                'key' => 'paypal_sandbox_client_id',
+                'value' => '',
+                'comment' => 'The sandbox client ID provided by paypal (Only use this if your paypal is in sandbox)',
+            ],
+            [
+                'key' => 'paypal_client_secret',
+                'value' => '',
+                'comment' => 'The sandbox secret client ID provided by paypal (Only use this if your paypal is in sandbox)',
+            ],
+            [
+                'key' => 'paypal_live_client_id',
+                'value' => '',
+                'comment' => 'The live client ID provided by paypal (Use this if your paypal account is set to live)',
+            ],
+            [
+                'key' => 'paypal_live_client_secret',
+                'value' => '',
+                'comment' => 'The live secret client ID provided by paypal (Use this if your paypal account is set to live)',
+            ],
+            [
+                'key' => 'paypal_locale',
+                'value' => 'en-US',
+                'comment' => 'The locale used for Paypal (Only change this if you are absolutely certain on what you are doing',
+            ],
+            [
+                'key' => 'paypal_currency',
+                'value' => 'USD',
+                'comment' => 'The currency type used to charge the user (Only change this if you are absolutely certain on what you are doing',
+            ],
         ];
 
         foreach ($settings as $setting) {
