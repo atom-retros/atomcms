@@ -20,14 +20,8 @@ class PaypalController extends Controller
         $this->paypalRequest = new OrdersCreateRequest();
     }
 
-    public function create(Request $request, RconService $rcon, PaypalService $paypalService)
+    public function create(Request $request, PaypalService $paypalService)
     {
-        if (!$rcon->giveCredits($request->user(), 0)) {
-            return redirect()->back()->withErrors([
-                'message' => __('It seems like the hotel is offline, you can only buy from the store while it is online!')
-            ]);
-        }
-
         if (!$request->has('value') || !$request->has('api_token')) {
             return redirect()->back()->withErrors([
                 'message' => __('An unknown error occurred. Please contact the owners in-game or on our Discord server for help.')
