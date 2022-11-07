@@ -14,6 +14,7 @@
                 <x-slot:under-title>
                     {{ __('Create a free account, and be a part of a fun online world!') }}
                 </x-slot:under-title>
+
                 <div class="w-full flex justify-between pr-0 lg:pr-14">
                     <div class="w-full lg:w-[420px]">
                         <form method="POST" action="{{ route('register') }}">

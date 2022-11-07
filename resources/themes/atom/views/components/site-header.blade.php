@@ -39,7 +39,7 @@
 
     @guest
         <div x-data="{ open: false }">
-            <div class="text-white relative font-semibold flex-col w-[600px]">
+            <div class="text-white relative font-semibold flex-col md:w-[600px]">
                 <p class="text-center text-xl hidden md:block">
                     {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
                 </p>

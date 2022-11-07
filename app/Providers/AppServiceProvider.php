@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\SettingsService;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \Illuminate\Foundation\Vite::class,
             \App\Services\ViteService::class
+        );
+
+        $this->app->singleton(
+            SettingsService::class,
+            fn () => new SettingsService()
         );
     }
 

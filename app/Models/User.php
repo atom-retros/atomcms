@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
     public $timestamps = false;
 
@@ -31,10 +33,9 @@ class User extends Authenticatable
         return $this->hasMany(UserCurrency::class, 'user_id');
     }
 
-    public function sessionLogs()
+    public function sessions()
     {
-        return $this->hasMany(UserSessionLog::class)
-            ->latest();
+        return $this->hasMany(Session::class);
     }
 
     public function currency(string $currency)
@@ -125,10 +126,10 @@ class User extends Authenticatable
 
     public function ssoTicket(): string
     {
-        $sso = sprintf("%s-%s", setting('hotel_name'), Str::uuid());
+        $sso = sprintf("%s-%s", Str::replace(' ', '', setting('hotel_name')), Str::uuid());
 
         // Recursive function - Call itself again if the auth ticket already exists
-        if (User::query()->where('auth_ticket', $sso)->exists()) {
+        if (User::where('auth_ticket', $sso)->exists()) {
             return $this->ssoTicket();
         }
 
@@ -148,5 +149,21 @@ class User extends Authenticatable
             ->inRandomOrder()
             ->limit($total)
             ->get();
+    }
+
+    public function confirmTwoFactorAuthentication($code)
+    {
+        $codeIsValid = app(TwoFactorAuthenticationProvider::class)
+            ->verify(decrypt($this->two_factor_secret), $code);
+
+        if (!$codeIsValid) {
+            return false;
+        }
+
+        $this->update([
+            'two_factor_confirmed' => true,
+        ]);
+
+        return true;
     }
 }

@@ -6,7 +6,6 @@ use App\Exceptions\ConnectionRefusedException;
 use App\Models\Permission;
 use App\Models\User;
 
-/*Credits to Kani for this*/
 class RconService
 {
     protected $socket;
@@ -28,8 +27,7 @@ class RconService
             abort(500, sprintf('socket_create() failed: reason: %s', socket_strerror(socket_last_error())));
         }
 
-
-        if (!@socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'))) {
+        if (!@socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'))) {
             die(__('It seems like our system is having some issues, please try again later or contact a staff member - Thank you!'));
         };
     }

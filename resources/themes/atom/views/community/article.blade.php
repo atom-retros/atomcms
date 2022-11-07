@@ -3,7 +3,7 @@
 
     <div class="col-span-12 md:col-span-3 rounded space-y-3">
         <div class="rounded h-24 bg-white border w-full overflow-hidden relative mt-6 md:mt-0 shadow dark:bg-gray-800 dark:border-gray-900">
-            <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold dark:bg-gray-700 dark:text-gray-400">
+            <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold dark:bg-gray-700 dark:text-gray-100">
                 {{ $article->user->permission->rank_name }}
             </div>
 
@@ -52,11 +52,11 @@
     </div>
 
     <div class="col-span-12 md:col-span-9 rounded bg-white shadow p-3 flex flex-col gap-y-8 relative overflow-hidden dark:bg-gray-800 dark:text-gray-300">
-        <div class="relative rounded h-24 flex items-center justify-center overflow-hidden flex flex-col gap-y-1 text-white" style="background: url({{ $article->image }}) center; background-size: cover;">
+        <div class="relative rounded h-24 flex items-center justify-center overflow-hidden flex-col gap-y-1 text-white px-2" style="background: url({{ $article->image }}) center; background-size: cover;">
             <div class="bg-black bg-opacity-50 w-full h-full absolute"></div>
 
-            <p class="font-semibold text-3xl relative">{{ $article->title }}</p>
-            <p class="relative">{{ $article->short_story }}</p>
+            <p class="font-semibold text-center text-xl lg:text-2xl xl:text-3xl relative truncate w-full">{{ $article->title }}</p>
+            <p class="relative truncate w-full text-center">{{ $article->short_story }}</p>
         </div>
 
         <div class="px-2">

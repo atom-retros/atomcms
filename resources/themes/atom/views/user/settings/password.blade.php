@@ -6,7 +6,15 @@
     </div>
 
     <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
-        <div class="rounded bg-white shadow p-4 dark:bg-gray-900">
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+            <x-slot:title>
+                {{ __('Password settings') }}
+            </x-slot:title>
+
+            <x-slot:under-title>
+                {{ __('Change your password by filling out the fields below') }}
+            </x-slot:under-title>
+
             <form action="{{ route('settings.password.update') }}" method="POST" class="flex flex-col gap-y-4">
                 @method('PUT')
                 @csrf
@@ -53,6 +61,6 @@
                     </x-form.secondary-button>
                 </div>
             </form>
-        </div>
+        </x-content.content-section>
     </div>
 </x-app-layout>
