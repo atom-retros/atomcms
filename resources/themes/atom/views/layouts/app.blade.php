@@ -63,6 +63,16 @@
         </div>
 
         <x-footer />
+
+        @if(setting('cms_color_mode') === 'dark')
+            <script>
+                if(localStorage.getItem("theme") === null) {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("theme", 'dark');
+                }
+            </script>
+        @endif
+
         @stack('javascript')
     </body>
 </html>
