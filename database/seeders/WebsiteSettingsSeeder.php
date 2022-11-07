@@ -175,6 +175,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'The homeroom every new users will be assigned to',
             ],
+            [
+                'key' => 'cms_color_mode',
+                'value' => 'light',
+                'comment' => 'Determines the color mode of the CMS (light = normal, dark = dark mode)',
+            ],
         ];
 
         foreach ($settings as $setting) {
