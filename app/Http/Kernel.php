@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\BannedMiddleware;
 use App\Http\Middleware\FindRetrosMiddleware;
+use App\Http\Middleware\ForceStaffTwoFactorMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\LogViewerMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
@@ -77,5 +78,6 @@ class Kernel extends HttpKernel
         'findretros.redirect' => FindRetrosMiddleware::class,
         'vpn.checker' => VPNCheckerMiddleware::class,
         'log.viewer' => LogViewerMiddleware::class,
+        'force.staff.2fa' => ForceStaffTwoFactorMiddleware::class,
     ];
 }
