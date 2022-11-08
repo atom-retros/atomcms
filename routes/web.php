@@ -25,14 +25,14 @@ use Laravel\Fortify\Features;
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
-Route::middleware(['maintenance', 'check-ban'])->group(function () {
+Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(function () {
     // Maintenance route
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.show');
 
     // Banned route
     Route::get('/banned', BannedController::class)->name('banned.show');
 
-    Route::middleware('guest')->group(function () {
+    Route::middleware('guest')->withoutMiddleware('force.staff.2fa')->group(function () {
         Route::get('/', HomeController::class)->name('welcome');
 
         Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');

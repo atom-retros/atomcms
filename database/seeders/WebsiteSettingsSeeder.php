@@ -180,6 +180,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => 'light',
                 'comment' => 'Determines the color mode of the CMS (light = normal, dark = dark mode)',
             ],
+            [
+                'key' => 'force_staff_2fa',
+                'value' => '0',
+                'comment' => 'If set to 1 every staff will be forced to apply 2FA before being able to visit any other page',
+            ],
         ];
 
         foreach ($settings as $setting) {

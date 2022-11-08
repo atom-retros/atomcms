@@ -75,7 +75,7 @@
                 </form>
             @else
                 <div class="flex flex-col items-end">
-                    <div class="w-full flex flex-col gap-y-3">
+                    <div class="w-full flex flex-col gap-y-3 dark:text-gray-100">
                         <p>
                             {{ __('Here at :hotel we take security very serious and therefore we offer you as a user a way to secure your beloved account even further, by allowing you to enable Googles 2-factor authentication!', ['hotel' => setting('hotel_name')]) }}
                         </p>
