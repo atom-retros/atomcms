@@ -185,6 +185,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'If set to 1 every staff will be forced to apply 2FA before being able to visit any other page',
             ],
+            [
+                'key' => 'website_wordfilter_enabled',
+                'value' => '1',
+                'comment' => 'Determines whether the wordfilter for CMS will be enabled or not',
+            ],
         ];
 
         foreach ($settings as $setting) {

@@ -5,6 +5,7 @@ namespace App\Actions\Fortify;
 use App\Models\User;
 use App\Rules\GoogleRecaptchaRule;
 use App\Actions\Fortify\Rules\PasswordValidationRules;
+use App\Rules\WebsiteWordfilterRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -40,7 +41,7 @@ class CreateNewUser implements CreatesNewUsers
     private function validate(array $inputs): array
     {
         $rules = [
-            'username' => ['required', 'string', sprintf('regex:%s', setting('username_regex')), 'max:25', Rule::unique('users')],
+            'username' => ['required', 'string', sprintf('regex:%s', setting('username_regex')), 'max:25', Rule::unique('users'), new WebsiteWordfilterRule],
             'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => $this->passwordRules(),
             'terms' => ['required', 'accepted'],

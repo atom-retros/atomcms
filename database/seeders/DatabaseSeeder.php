@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             WebsiteArticleSeeder::class,
             WebsiteLanguageSeeder::class,
             WebsitePermissionSeeder::class,
+            WebsiteWordfilterSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();
