@@ -10,8 +10,7 @@ class WebsiteWordfilterRule implements InvokableRule
 {
     public function __invoke($attribute, $value, $fail)
     {
-        $words = WebsiteWordfilter::where('word', 'nigga')
-            ->get()
+        $words = WebsiteWordfilter::get()
             ->pluck('word')
             ->toArray();
 
