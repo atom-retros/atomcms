@@ -19,6 +19,7 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -35,7 +36,13 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
     Route::middleware('guest')->withoutMiddleware('force.staff.2fa')->group(function () {
         Route::get('/', HomeController::class)->name('welcome');
 
-        Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');
+        Route::get('/register/{username}/{referral_code}', function (string $username, string $referral_code) {
+            User::where('referral_code', '=', $referral_code)->firstOrFail();
+
+            return view('auth.register', [
+                'referral_code' =>  $referral_code,
+            ]);
+        })->name('register.referral');
     });
 
     Route::middleware('auth')->group(function () {

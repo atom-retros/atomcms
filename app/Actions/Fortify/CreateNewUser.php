@@ -3,11 +3,13 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use App\Rules\GoogleRecaptchaRule;
 use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Rules\WebsiteWordfilterRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
@@ -18,11 +20,11 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Validate and create a newly registered user.
      */
-    public function create(array $input): User
+    public function create(array $input)
     {
         $this->validate($input);
 
-        return User::create([
+        $user = User::create([
             'username' => $input['username'],
             'mail' => $input['mail'],
             'password' => Hash::make($input['password']),
@@ -36,6 +38,37 @@ class CreateNewUser implements CreatesNewUsers
             'auth_ticket' => '',
             'home_room' => (int)setting('hotel_home_room'),
         ]);
+
+        $user->update([
+            'referral_code' => sprintf('%s%s', $user->id, Str::random(5))
+        ]);
+
+        // Referral
+        if ($input['referral_code']) {
+            $referralUser = User::query()
+                ->where('referral_code', '=', $input['referral_code'])
+                ->first();
+
+            if (is_null($referralUser)) {
+                return redirect(RouteServiceProvider::HOME);
+            }
+
+            // If same IP skip referral incrementation
+            if ($referralUser->ip_current == $user->ip_current || $referralUser->ip_register == $user->ip_register) {
+                return redirect(RouteServiceProvider::HOME);
+            }
+
+            $referralUser->referrals()->updateOrCreate(['user_id' => $referralUser->id], [
+                'referrals_total' => $referralUser->referrals != null ? $referralUser->referrals->referrals_total += 1 : 1,
+            ]);
+
+            $referralUser->userReferrals()->create([
+                'referred_user_id' => $user->id,
+                'referred_user_ip' => request()->ip(),
+            ]);
+        }
+
+        return $user;
     }
 
     private function validate(array $inputs): array
