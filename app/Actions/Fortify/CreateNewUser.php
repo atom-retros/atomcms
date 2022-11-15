@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -24,6 +25,13 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        // if registration is disabled, throw an exception
+        if (setting('disable_register')) {
+            throw ValidationException::withMessages([
+                'registration' => __('Registration is disabled.'),
+            ]);
+        }
+
         $this->validate($input);
 
         $user = User::create([

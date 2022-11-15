@@ -195,6 +195,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'Determines whether users need a beta code to register or not',
             ],
+            [
+                'key' => 'disable_register',
+                'value' => '0',
+                'comment' => 'Determines whether registration is enabled or not',
+            ],
         ];
 
         foreach ($settings as $setting) {
