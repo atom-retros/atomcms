@@ -196,7 +196,7 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'Determines whether users need a beta code to register or not',
             ],
             [
-                'key' => 'disable_register',
+                'key' => 'disable_registration',
                 'value' => '0',
                 'comment' => 'Determines whether registration is enabled or not',
             ],
