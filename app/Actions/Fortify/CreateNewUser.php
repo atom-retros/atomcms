@@ -3,7 +3,9 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\WebsiteBetaCode;
 use App\Providers\RouteServiceProvider;
+use App\Rules\BetaCodeRule;
 use App\Rules\GoogleRecaptchaRule;
 use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Rules\WebsiteWordfilterRule;
@@ -43,6 +45,12 @@ class CreateNewUser implements CreatesNewUsers
             'referral_code' => sprintf('%s%s', $user->id, Str::random(5))
         ]);
 
+        if (setting('requires_beta_code')) {
+            WebsiteBetaCode::where('code', '=', $input['beta_code'])->update([
+                'user_id' => $user->id
+            ]);
+        }
+
         // Referral
         if ($input['referral_code']) {
             $referralUser = User::query()
@@ -77,6 +85,7 @@ class CreateNewUser implements CreatesNewUsers
             'username' => ['required', 'string', sprintf('regex:%s', setting('username_regex')), 'max:25', Rule::unique('users'), new WebsiteWordfilterRule],
             'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => $this->passwordRules(),
+            'beta_code' => ['sometimes', 'string', new BetaCodeRule],
             'terms' => ['required', 'accepted'],
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
         ];

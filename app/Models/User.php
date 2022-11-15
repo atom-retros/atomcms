@@ -130,6 +130,11 @@ class User extends Authenticatable
         return $sso;
     }
 
+    public function betaCode(): HasOne
+    {
+        return $this->hasOne(WebsiteBetaCode::class);
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
