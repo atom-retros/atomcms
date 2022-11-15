@@ -190,6 +190,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '1',
                 'comment' => 'Determines whether the wordfilter for CMS will be enabled or not',
             ],
+            [
+                'key' => 'requires_beta_code',
+                'value' => '0',
+                'comment' => 'Determines whether users need a beta code to register or not',
+            ],
         ];
 
         foreach ($settings as $setting) {
