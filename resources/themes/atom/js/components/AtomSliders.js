@@ -1,13 +1,15 @@
-import Swiper, { Autoplay, Pagination } from "swiper";
+import Swiper, { Autoplay, Pagination } from "swiper"
 
 const AtomSliders = {
     init() {
         document.addEventListener('turbolinks:load', () => {
-            this.initArticleSlider();
+            this.initArticleSlider()
         })
     },
 
     initArticleSlider() {
+        if(!document.querySelector(".article-slider")) return
+
         new Swiper('.articles-slider', {
             modules: [Autoplay, Pagination],
             slidesPerView: 1,
@@ -25,4 +27,4 @@ const AtomSliders = {
     }
 }
 
-export { AtomSliders as default };
+export { AtomSliders as default }
