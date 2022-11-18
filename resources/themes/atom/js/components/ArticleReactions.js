@@ -1,4 +1,4 @@
-import Alpine from 'alpinejs';
+import Alpine from 'alpinejs'
 
 const ArticleReactions = {
     init() {
@@ -118,4 +118,4 @@ const ArticleReactions = {
     }
 }
 
-export { ArticleReactions as default };
+export { ArticleReactions as default }

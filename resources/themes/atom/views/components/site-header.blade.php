@@ -20,14 +20,14 @@
 
 
             <flex class="flex gap-x-4">
-                <a href="{{ route('nitro-client') }}">
+                <a data-turbolinks="false" href="{{ route('nitro-client') }}">
                     <button class="hidden md:block text-lg relative dark:bg-gray-900 dark:text-white rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                         {{ __('Nitro client') }}
                     </button>
                 </a>
 
                 @if(config('habbo.client.flash_enabled'))
-                    <a href="{{ route('flash-client') }}">
+                    <a data-turbolinks="false" href="{{ route('flash-client') }}">
                         <button class="hidden md:block text-lg relative dark:bg-gray-900 dark:text-white rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                             {{ __('Flash client') }}
                         </button>
