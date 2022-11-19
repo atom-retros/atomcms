@@ -49,7 +49,7 @@
 
                     <x-navigation.theme-mode-switcher />
                     <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png" alt="">
                     </x-navigation.language-selector>
                 </div>
             </nav>

@@ -1,6 +1,16 @@
 <?php
 
 return [
+    'site' => [
+        'site_url' => env('APP_URL', 'http://localhost'),
+        'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
+        'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
+        'convert_passwords' => env('CONVERT_PASSWORDS'),
+        'force_https' => env('FORCE_HTTPS', false),
+        'date_format' => env('DATE_FORMAT', 'Y-m-d - h:m:s'),
+        'default_language' => env('APP_LOCALE', 'en'),
+    ],
+
     'reactions' => [
         'bad', 'crying', 'good', 'happy', 'taut', 'impatient', 'inlove', 'laugh', 'proud', 'wow',
         'shameful', 'shameless', 'sleeping', 'smile', 'tongue', 'wink', 'disgusted', 'angry', 'lgbt', 'heart2', 'bobba', 'poop',
@@ -39,15 +49,6 @@ return [
         'external_figuredata' => env('EXTERNAL_FIGUREDATA'),
         'external_override_variables' => env('EXTERNAL_OVERRIDE_VARIABLES'),
         'external_override_texts' => env('EXTERNAL_OVERRIDE_TEXTS'),
-    ],
-
-    'site' => [
-        'site_url' => env('APP_URL', 'http://localhost'),
-        'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
-        'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
-        'convert_passwords' => env('CONVERT_PASSWORDS'),
-        'force_https' => env('FORCE_HTTPS', false),
-        'date_format' => env('DATE_FORMAT', 'Y-m-d - h:m:s'),
     ],
 
     'findretros' => [
