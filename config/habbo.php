@@ -12,6 +12,12 @@ return [
         'filament_enabled' => env('FILAMENT_ENABLED', false),
     ],
 
+    'currencies' => [
+        0 => 'duckets',
+        5 => 'diamonds',
+        101 => 'points',
+    ],
+
     'reactions' => [
         'bad', 'crying', 'good', 'happy', 'taut', 'impatient', 'inlove', 'laugh', 'proud', 'wow',
         'shameful', 'shameless', 'sleeping', 'smile', 'tongue', 'wink', 'disgusted', 'angry', 'lgbt', 'heart2', 'bobba', 'poop',

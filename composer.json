@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "doctrine/dbal": "^3.3",
         "filament/filament": "^2.0",
+        "filament/forms": "^2.0",
         "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "jenssegers/agent": "^2.6",

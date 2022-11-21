@@ -55,6 +55,11 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this->currencies->where('type', $type)->first()->amount ?? 0;
     }
 
+    public function duckets(): HasOne
+    {
+        return $this->hasOne(UserCurrency::class, 'user_id')->where('type', 0);
+    }
+
     public function permission(): HasOne
     {
         return $this->hasOne(Permission::class, 'id', 'rank');
