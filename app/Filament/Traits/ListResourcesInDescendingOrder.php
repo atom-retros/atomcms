@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait ListResourcesInDescendingOrder
 {
-    public static function getEloquentQuery(): Builder
+    protected function getTableQuery(): Builder
     {
-        return parent::getEloquentQuery()->latest('id');
+        return static::getModel()::query()->latest();
     }
 }
