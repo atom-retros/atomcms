@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Services\SettingsService;
-use Filament\Facades\Filament;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
@@ -34,10 +33,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Filament::registerNavigationGroups([
-            'Content'
-        ]);
-
         if (config('habbo.site.force_https')) {
             URL::forceScheme('https');
         }
