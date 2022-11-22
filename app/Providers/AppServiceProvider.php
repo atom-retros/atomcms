@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\RconService;
 use App\Services\SettingsService;
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
