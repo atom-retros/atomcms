@@ -19,15 +19,13 @@ if (!function_exists('setting')) {
     }
 }
 
-if (!function_exists('permission')) {
-    function permission(string $permission): string|int
-    {
-        $permission = WebsitePermission::where('key', '=', $permission)->first();
+function hasPermission($permission): Bool
+{
+    $permission = WebsitePermission::where('permission', '=', $permission)->first();
 
-        if (is_null($permission)) {
-            return 999;
-        }
-
-        return $permission->value;
+    if (!auth()->check() || auth()->user()->rank < $permission->min_rank) {
+        return false;
     }
+
+    return true;
 }

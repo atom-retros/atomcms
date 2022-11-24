@@ -11,22 +11,27 @@ class WebsitePermissionSeeder extends Seeder
     {
         $permissions = [
             [
-                'key' => 'min_rank_to_bypass_vpn_check',
-                'value' => '6',
-                'comment' => 'Min rank to bypass vpn blocker check'
+                'permission' => 'bypass_vpn',
+                'min_rank' => '6',
+                'description' => 'Min rank to bypass vpn blocker check'
             ],
             [
-                'key' => 'min_rank_to_view_logs',
-                'value' => '7',
-                'comment' => 'Minimum required rank to access the log viewer'
+                'permission' => 'view_server_logs',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to access the log viewer'
+            ],
+            [
+                'permission' => 'housekeeping_access',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to access the log viewer'
             ],
         ];
 
         foreach ($permissions as $permission) {
-            WebsitePermission::firstOrCreate(['key' => $permission['key']], [
-                'key' => $permission['key'],
-                'value' => $permission['value'],
-                'comment' => $permission['comment'],
+            WebsitePermission::firstOrCreate(['permission' => $permission['permission']], [
+                'permission' => $permission['permission'],
+                'min_rank' => $permission['min_rank'],
+                'description' => $permission['description'],
             ]);
         }
 

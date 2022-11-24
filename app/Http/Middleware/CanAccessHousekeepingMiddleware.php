@@ -6,15 +6,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LogViewerMiddleware
+class CanAccessHousekeepingMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
-            return to_route('login');
-        }
-
-        if (!hasPermission('view_server_logs')) {
+        if (!hasPermission('housekeeping_access')) {
             return to_route('me.show');
         }
 

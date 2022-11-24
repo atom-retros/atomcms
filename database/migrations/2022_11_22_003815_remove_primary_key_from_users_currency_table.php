@@ -8,13 +8,13 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('users_currency', function (Blueprint $table) {
-          $table->id();
+            $table->dropPrimary();
         });
     }
 
     public function down()
     {
-        Schema::table('user_currencies', function (Blueprint $table) {
+        Schema::table('users_currency', function (Blueprint $table) {
             //
         });
     }
