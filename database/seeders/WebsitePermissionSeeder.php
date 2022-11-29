@@ -34,6 +34,5 @@ class WebsitePermissionSeeder extends Seeder
                 'description' => $permission['description'],
             ]);
         }
-
     }
 }

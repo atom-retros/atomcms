@@ -2,15 +2,13 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
-use App\Enums\Currencies;
+use App\Services\RconService;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CurrenciesRelationManager extends RelationManager
 {
@@ -24,7 +22,8 @@ class CurrenciesRelationManager extends RelationManager
             ->schema([
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->minValue(0),
             ]);
     }
 
@@ -39,11 +38,27 @@ class CurrenciesRelationManager extends RelationManager
                     }),
                 Tables\Columns\TextColumn::make('amount'),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->using(function (Model $record, array $data): Model {
+                    $rconService = new RconService();
+
+                    if ($record->type === 0 && $record->amount != $data['amount']) {
+                        $total = (0 - $record->user->currency('duckets')) + $data['amount'];
+                        $rconService->giveDuckets($record->user, $total);
+                    }
+
+                    if ($record->type === 5 && $record->amount != $data['amount']) {
+                        $total = (0 - $record->user->currency('diamonds')) + $data['amount'];
+                        $rconService->giveDiamonds($record->user, $total);
+                    }
+
+                    if ($record->type === 101 && $record->amount != $data['amount']) {
+                        $total = (0 - $record->user->currency('points')) + $data['amount'];
+                        $rconService->givePoints($record->user, 101, $total);
+                    }
+
+                    return $record;
+                }),
             ]);
     }
 }

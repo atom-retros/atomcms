@@ -14,9 +14,10 @@ class VPNCheckerMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Skip check if vpn checker is disabled
-        if (!(int)setting('vpn_block_enabled')) {
+        if (!(int)setting('vpn_block_enabled') || setting('ipdata_api_key') === 'ADD-API-KEY-HERE') {
             return $next($request);
         }
+
 
         // Skip check if the rank is allowed to bypass the checker
         if (hasPermission('bypass_vpn')) {

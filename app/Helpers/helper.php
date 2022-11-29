@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\WebsitePermission;
+use App\Services\PermissionsService;
 use App\Services\SettingsService;
 
 if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
@@ -19,13 +19,9 @@ if (!function_exists('setting')) {
     }
 }
 
-function hasPermission($permission): Bool
-{
-    $permission = WebsitePermission::where('permission', '=', $permission)->first();
-
-    if (!auth()->check() || auth()->user()->rank < $permission->min_rank) {
-        return false;
+if (!function_exists('hasPermission')) {
+    function hasPermission(string $permission): string
+    {
+        return app(PermissionsService::class)->getOrDefault($permission);
     }
-
-    return true;
 }
