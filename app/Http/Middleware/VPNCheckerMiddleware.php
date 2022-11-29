@@ -14,12 +14,13 @@ class VPNCheckerMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Skip check if vpn checker is disabled
-        if (!(int)setting('vpn_block_enabled')) {
+        if (!(int)setting('vpn_block_enabled') || setting('ipdata_api_key') === 'ADD-API-KEY-HERE') {
             return $next($request);
         }
 
+
         // Skip check if the rank is allowed to bypass the checker
-        if (Auth::check() && Auth::user()->rank >= permission('min_rank_to_bypass_vpn_check')) {
+        if (hasPermission('bypass_vpn')) {
             return $next($request);
         }
 
