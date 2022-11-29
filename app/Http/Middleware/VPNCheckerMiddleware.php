@@ -14,12 +14,13 @@ class VPNCheckerMiddleware
     public function handle(Request $request, Closure $next)
     {
         // Skip check if vpn checker is disabled
-        if (!(int)setting('vpn_block_enabled')) {
+        if (!(int)setting('vpn_block_enabled') || setting('ipdata_api_key') === 'ADD-API-KEY-HERE') {
             return $next($request);
         }
 
+
         // Skip check if the rank is allowed to bypass the checker
-        if (Auth::check() && Auth::user()->rank >= permission('min_rank_to_bypass_vpn_check')) {
+        if (hasPermission('bypass_vpn')) {
             return $next($request);
         }
 
@@ -46,7 +47,7 @@ class VPNCheckerMiddleware
                 'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.'),
             ]);
         }
-
+        dd($request->ip());
         // Instantiate the necessary things to look up the visitor IP
         $ipService = new IpLookupService(setting('ipdata_api_key'));
         $data = $ipService->ipLookup($request->ip());
