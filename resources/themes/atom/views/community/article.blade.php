@@ -4,7 +4,7 @@
     <div class="col-span-12 md:col-span-3 rounded space-y-3">
         <div class="rounded h-24 bg-white border w-full overflow-hidden relative mt-6 md:mt-0 shadow dark:bg-gray-800 dark:border-gray-900">
             <div class="absolute right-1 top-1 bg-white rounded px-2 text-sm font-semibold dark:bg-gray-700 dark:text-gray-100">
-                {{ $article->user->permission->rank_name }}
+                {{ !$article->user->hidden_staff ? $article->user->permission->rank_name : 'Member' }}
             </div>
 
             <div class="h-[65%] w-full staff-bg" style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $article->user->permission->staff_background)) }});"></div>
