@@ -54,7 +54,7 @@ class WebsiteArticleResource extends Resource
 
                         TextInput::make('slug')
                             ->required()
-                            ->unique()
+                            ->unique(ignoreRecord: true)
                             ->placeholder('Enter a slug for the article'),
 
                         TextInput::make('short_story')
