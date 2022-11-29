@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\FilamentAccessMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -88,7 +87,7 @@ return [
     'auth' => [
         'guard' => env('FILAMENT_AUTH_GUARD', 'web'),
         'pages' => [
-            'login' => \App\Filament\Pages\Auth\Login::class,
+            'login' => \Filament\Http\Livewire\Auth\Login::class,
         ],
     ],
 
@@ -302,7 +301,7 @@ return [
     |
     */
 
-    'google_fonts' => 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap',
+    'google_fonts' => 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap',
 
     /*
     |--------------------------------------------------------------------------
@@ -317,7 +316,6 @@ return [
     'middleware' => [
         'auth' => [
             Authenticate::class,
-            FilamentAccessMiddleware::class,
         ],
         'base' => [
             EncryptCookies::class,

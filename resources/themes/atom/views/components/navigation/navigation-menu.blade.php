@@ -48,6 +48,10 @@
                 {{ __('Staff') }}
             </a>
 
+            <a href="{{ route('teams.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+                {{ __('Teams') }}
+            </a>
+
             <a href="{{ route('photos.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
                 {{ __('Photos') }}
             </a>

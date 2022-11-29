@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\RconService;
+use App\Services\PermissionsService;
 use App\Services\SettingsService;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\URL;
@@ -25,6 +27,16 @@ class AppServiceProvider extends ServiceProvider
             SettingsService::class,
             fn () => new SettingsService()
         );
+
+        $this->app->singleton(
+            RconService::class,
+            fn () => new RconService()
+        );
+
+        $this->app->singleton(
+            PermissionsService::class,
+            fn () => new PermissionsService()
+        );
     }
 
     /**
@@ -35,6 +47,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Filament::registerNavigationGroups([
+            'Users',
             'Content'
         ]);
 

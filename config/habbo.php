@@ -9,7 +9,12 @@ return [
         'force_https' => env('FORCE_HTTPS', false),
         'date_format' => env('DATE_FORMAT', 'Y-m-d - h:m:s'),
         'default_language' => env('APP_LOCALE', 'en'),
-        'filament_enabled' => env('FILAMENT_ENABLED', false),
+    ],
+
+    'currencies' => [
+        0 => 'duckets',
+        5 => 'diamonds',
+        101 => 'points',
     ],
 
     'reactions' => [

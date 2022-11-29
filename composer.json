@@ -9,6 +9,7 @@
         "awcodes/filament-tiptap-editor": "^2.0",
         "doctrine/dbal": "^3.3",
         "filament/filament": "^2.0",
+        "filament/forms": "^2.0",
         "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "jenssegers/agent": "^2.6",
@@ -52,8 +53,7 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan filament:upgrade"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""

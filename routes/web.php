@@ -19,6 +19,7 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Http\Controllers\WebsiteTeamsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
@@ -75,6 +76,7 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
                 Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
 
                 Route::get('/staff', StaffController::class)->name('staff.index');
+                Route::get('/teams', WebsiteTeamsController::class)->name('teams.index');
             });
 
             Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])

@@ -5,6 +5,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +15,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements FilamentUser, HasName
+class User extends Authenticatable  implements FilamentUser, HasName
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
@@ -53,6 +54,11 @@ class User extends Authenticatable implements FilamentUser, HasName
         };
 
         return $this->currencies->where('type', $type)->first()->amount ?? 0;
+    }
+
+    public function duckets(): HasOne
+    {
+        return $this->hasOne(UserCurrency::class, 'user_id')->where('type', 0);
     }
 
     public function permission(): HasOne
@@ -135,6 +141,11 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function betaCode(): HasOne
     {
         return $this->hasOne(WebsiteBetaCode::class);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(WebsiteTeam::class, 'team_id');
     }
 
     public function getOnlineFriends(int $total = 10)

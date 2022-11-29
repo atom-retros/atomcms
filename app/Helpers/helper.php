@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\WebsitePermission;
+use App\Services\PermissionsService;
 use App\Services\SettingsService;
 
 if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
@@ -19,15 +19,9 @@ if (!function_exists('setting')) {
     }
 }
 
-if (!function_exists('permission')) {
-    function permission(string $permission): string|int
+if (!function_exists('hasPermission')) {
+    function hasPermission(string $permission): string
     {
-        $permission = WebsitePermission::where('key', '=', $permission)->first();
-
-        if (is_null($permission)) {
-            return 999;
-        }
-
-        return $permission->value;
+        return app(PermissionsService::class)->getOrDefault($permission);
     }
 }
