@@ -30,6 +30,10 @@ class EditUser extends EditRecord
             return $record;
         }
 
+        if (empty($data['motto'])) {
+            $data['motto'] = '';
+        }
+
         $record->update($data);
 
         return $record;

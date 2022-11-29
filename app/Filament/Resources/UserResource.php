@@ -42,21 +42,25 @@ class UserResource extends Resource
                 TextInput::make('username')
                     ->required()
                     ->autofocus()
+                    ->minValue(2)
+                    ->string()
                     ->placeholder('Enter a username...'),
 
                 TextInput::make('mail')
                     ->label('Email')
                     ->required()
+                    ->string()
                     ->placeholder('Enter an email...'),
 
                 TextInput::make('motto')
-                    ->required()
+                    ->string()
                     ->placeholder('Enter a motto...'),
 
                 Forms\Components\Select::make('rank')
                     ->options(Permission::all()->pluck('rank_name', 'id'))
                     ->required()
-                    ->placeholder('Enter a username...'),
+                    ->exists(Permission::class, 'id')
+                    ->placeholder('Select rank'),
 
                 TextInput::make('credits')
                     ->numeric()
