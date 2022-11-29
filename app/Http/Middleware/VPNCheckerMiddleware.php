@@ -47,7 +47,7 @@ class VPNCheckerMiddleware
                 'message' => __('Your IP have been restricted - If you think this is a mistake, you can contact us on our Discord.'),
             ]);
         }
-        dd($request->ip());
+
         // Instantiate the necessary things to look up the visitor IP
         $ipService = new IpLookupService(setting('ipdata_api_key'));
         $data = $ipService->ipLookup($request->ip());
