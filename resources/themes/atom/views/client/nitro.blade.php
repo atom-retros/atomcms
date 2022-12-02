@@ -9,7 +9,7 @@
 </head>
 <body class="overflow-hidden" id="nitro-client">
 <div class="absolute top-4 left-4 flex gap-x-2 z-10">
-    <a href="{{ route('me.show') }}">
+    <a data-turbolinks="false" href="{{ route('me.show') }}">
         <x-client.client-button>
             <x-icons.home/>
         </x-client.client-button>
