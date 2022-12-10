@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->integer('permission_id');
             $table->string('description');
-            $table->timestamp('apply_from');
-            $table->timestamp('apply_to');
+            $table->timestamp('apply_from')->nullable();
+            $table->timestamp('apply_to')->nullable();
             $table->timestamps();
         });
     }
