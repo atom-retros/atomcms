@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -141,6 +142,11 @@ class User extends Authenticatable
         return $this->belongsTo(WebsiteTeam::class, 'team_id');
     }
 
+    public function applications(): HasMany
+    {
+        return $this->hasMany(WebsiteStaffApplications::class, 'user_id');
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
@@ -166,5 +172,10 @@ class User extends Authenticatable
         ]);
 
         return true;
+    }
+
+    public function hasAppliedForPosition(int $rankId)
+    {
+        return $this->applications()->where('rank_id', '=', $rankId)->exists();
     }
 }
