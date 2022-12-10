@@ -78,10 +78,11 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
 
                 Route::get('/staff', StaffController::class)->name('staff.index');
                 Route::get('/teams', WebsiteTeamsController::class)->name('teams.index');
-                Route::get('/staff-applications', [StaffApplicationsController::class, 'index'])->name('staff-applications.index');
-                Route::get('/staff-applications/{position}', [StaffApplicationsController::class, 'show'])->name('staff-applications.show');
-                Route::post('/staff-applications/{position}', [StaffApplicationsController::class, 'store'])->name('staff-applications.store');
             });
+
+            Route::get('/staff-applications', [StaffApplicationsController::class, 'index'])->name('staff-applications.index');
+            Route::get('/staff-applications/{position}', [StaffApplicationsController::class, 'show'])->name('staff-applications.show');
+            Route::post('/staff-applications/{position}', [StaffApplicationsController::class, 'store'])->name('staff-applications.store');
 
             Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])
                 ->name('article.toggle-reaction')
