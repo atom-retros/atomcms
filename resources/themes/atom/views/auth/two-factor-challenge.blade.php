@@ -24,7 +24,7 @@
                         </x-form.label>
 
                         <x-form.input name="code" placeholder="{{ __('Code') }}" :autofocus="true" />
-                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">Lost access to your 2FA codes? Click here to use a recovery code</small>
+                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">{{ __('Lost access to your 2FA codes? Click here to use a recovery code') }}</small>
                     </div>
 
                     <div id="recoveryCode">
@@ -37,7 +37,7 @@
                         </x-form.label>
 
                         <x-form.input name="recovery_code" :required="false" placeholder="{{ __('Recovery code') }}" />
-                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">{{ __('Regained access to your 2FA codes? Click here to use your authentication app ') }}</small>
+                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">{{ __('Regained access to your 2FA codes? Click here to use your authentication app') }}</small>
                     </div>
 
                     <div class="flex justify-end">
