@@ -21,6 +21,7 @@ class WebsiteLanguageSeeder extends Seeder
             ['country_code' => 'br', 'language' => 'Portuguese (Brazil)'],
             ['country_code' => 'it', 'language' => 'Italy'],
             ['country_code' => 'es', 'language' => 'Spain'],
+            ['country_code' => 'no', 'language' => 'Norwegian'],
         ];
 
         WebsiteLanguage::upsert($languages, ['country_code', 'language']);
