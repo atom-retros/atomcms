@@ -208,7 +208,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'hc_on_register_duration',
                 'value' => '315569260',
-                'comment' => 'Specified the amount of time a user receives their HC subscription for (The default amount is 10 years)',
+                'comment' => 'Specifies the amount of time a user receives their HC subscription for (The default amount is 10 years)',
             ],
         ];
 

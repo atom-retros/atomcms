@@ -19,7 +19,7 @@ class UserObserver
                 'user_id' => $user->id,
                 'subscription_type' => 'HABBO_CLUB',
                 'timestamp_start' => now()->unix(),
-                'duration' => (int)setting('hc_on_register_duration'), // 10 years
+                'duration' => (int)setting('hc_on_register_duration'),
                 'active' => 1,
             ]);
         }
