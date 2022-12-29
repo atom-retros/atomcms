@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -145,6 +144,11 @@ class User extends Authenticatable
     public function applications(): HasMany
     {
         return $this->hasMany(WebsiteStaffApplications::class, 'user_id');
+    }
+
+    public function hcSubscription(): HasOne
+    {
+        return $this->hasOne(UserSubscription::class);
     }
 
     public function getOnlineFriends(int $total = 10)

@@ -200,6 +200,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '0',
                 'comment' => 'Determines whether registration is enabled or not',
             ],
+            [
+                'key' => 'give_hc_on_register',
+                'value' => '0',
+                'comment' => 'Determines whether the registered user will receive a HC on registration',
+            ],
+            [
+                'key' => 'hc_on_register_duration',
+                'value' => '315569260',
+                'comment' => 'Specifies the amount of time a user receives their HC subscription for (The default amount is 10 years)',
+            ],
         ];
 
         foreach ($settings as $setting) {
