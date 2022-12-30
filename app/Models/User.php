@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -187,5 +189,15 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function hasAppliedForPosition(int $rankId): bool
     {
         return $this->applications()->where('rank_id', '=', $rankId)->exists();
+    }
+
+    public function canAccessFilament(): bool
+    {
+        return true;
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->username;
     }
 }

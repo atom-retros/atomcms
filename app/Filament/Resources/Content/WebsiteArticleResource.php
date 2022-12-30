@@ -138,7 +138,6 @@ class WebsiteArticleResource extends Resource
             'index' => Pages\ListWebsiteArticles::route('/'),
             'create' => Pages\CreateWebsiteArticle::route('/create'),
             'view' => Pages\ViewWebsiteArticle::route('/{record}'),
-            'edit' => Pages\EditWebsiteArticle::route('/{record}/edit'),
         ];
     }
 }
