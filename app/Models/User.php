@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasName;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +14,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable  implements FilamentUser, HasName
+class User extends Authenticatable implements FilamentUser, HasName
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
@@ -148,7 +147,17 @@ class User extends Authenticatable  implements FilamentUser, HasName
         return $this->belongsTo(WebsiteTeam::class, 'team_id');
     }
 
-    public function getOnlineFriends(int $total = 10)
+    public function applications(): HasMany
+    {
+        return $this->hasMany(WebsiteStaffApplications::class, 'user_id');
+    }
+
+    public function hcSubscription(): HasOne
+    {
+        return $this->hasOne(UserSubscription::class);
+    }
+
+    public function getOnlineFriends(int $total = 10): Collection
     {
         return $this->friends()
             ->select(['user_two_id', 'users.id', 'users.username', 'users.look', 'users.motto', 'users.last_online'])
@@ -159,7 +168,7 @@ class User extends Authenticatable  implements FilamentUser, HasName
             ->get();
     }
 
-    public function confirmTwoFactorAuthentication($code)
+    public function confirmTwoFactorAuthentication($code): bool
     {
         $codeIsValid = app(TwoFactorAuthenticationProvider::class)
             ->verify(decrypt($this->two_factor_secret), $code);
@@ -175,14 +184,8 @@ class User extends Authenticatable  implements FilamentUser, HasName
         return true;
     }
 
-    public function canAccessFilament(): bool
+    public function hasAppliedForPosition(int $rankId): bool
     {
-        // TODO: Create permission system that checks if the user has the permission
-        return true;
-    }
-
-    public function getFilamentName(): string
-    {
-        return $this->username;
+        return $this->applications()->where('rank_id', '=', $rankId)->exists();
     }
 }

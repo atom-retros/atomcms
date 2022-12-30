@@ -113,49 +113,9 @@ html.dark .camera-icon {
     background-blend-mode: multiply;
 }
 
-
 /* Nitro disconnect overlay */
 #disconnected {
     display: none;
-}
-
-.disconnect-layer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    overflow: hidden;
-    z-index: 100;
-}
-
-.disconnect-message {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    color: white;
-    z-index: 200;
-    font-family: Ubuntu Condensed, serif;
-}
-
-.reload-button {
-    padding: 10px 20px;
-    background: #50a8d5;
-    color: #FFF;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.reload-button:hover {
-    background: #2f8ebf;
 }
 
 .profile-bg {
@@ -195,17 +155,6 @@ html.dark .swal2-popup {
     height: 5px;
     background-color: #e9b124;
     border-radius: 5px;
-}
-
-.client-buttons {
-    z-index: 9999;
-    min-width: 40px;
-    background-color: #eeb425;
-    border: solid 2px #cf9d15;
-}
-
-.client-buttons:hover {
-    background-color: #e3aa1e;
 }
 
 .navigation-icon {

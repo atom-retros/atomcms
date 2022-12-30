@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
-        <link
-                rel="stylesheet"
-                href="https://unpkg.com/tippy.js@6/animations/scale.css"
-        />
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
+
+        <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
 
         @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
         @stack('scripts')
