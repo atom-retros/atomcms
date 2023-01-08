@@ -32,6 +32,18 @@ class CreateNewUser implements CreatesNewUsers
             ]);
         }
 
+        $ip = request()->ip();
+        $matchingIpCount = User::query()
+            ->where('ip_current', '=', $ip)
+            ->orWhere('ip_register', '=', $ip)
+            ->count();
+
+        if ($matchingIpCount >= (int)setting('max_accounts_per_ip')) {
+            throw ValidationException::withMessages([
+                'registration' => __('You have reached the max amount of allowed account'),
+            ]);
+        }
+
         $this->validate($input);
 
         $user = User::create([
