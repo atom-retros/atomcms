@@ -210,6 +210,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '315569260',
                 'comment' => 'Specifies the amount of time a user receives their HC subscription for (The default amount is 10 years)',
             ],
+            [
+                'key' => 'max_comment_per_article',
+                'value' => '2',
+                'comment' => 'Specifies the amount of times a user can comment per article',
+            ],
         ];
 
         foreach ($settings as $setting) {

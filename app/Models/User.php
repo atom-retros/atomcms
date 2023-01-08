@@ -151,6 +151,11 @@ class User extends Authenticatable
         return $this->hasOne(UserSubscription::class);
     }
 
+    public function articleComments(): HasMany
+    {
+        return $this->hasMany(WebsiteArticleComment::class);
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()

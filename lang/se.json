@@ -223,5 +223,15 @@
     "Please come back at a later time to check if we have any positions open by then! Thank you for your interest.": "Vi söker för närvarande ingen personal men håll gärna utkik!",
     "Apply for :hotel staff": "Ansök till personal",
     "Select position to get started": "Välj en tjänst för att ansöka",
-    "Here at :hotel we open up for staff applications every now and then. Sometimes you will find this page empty other times it might be filled with positions, if you ever come across a position you feel you would fit perfectly into, then do not hesitate to apply for it.": ":hotel är en fantastisk värld, även tack vare personalen. Skoj och säkerhet är mycket viktigt för oss. Vill du vara med och bidra till en ännu mer skojsam och säkrare miljö här på :hotel? Ta steget och ansök."
+    "Here at :hotel we open up for staff applications every now and then. Sometimes you will find this page empty other times it might be filled with positions, if you ever come across a position you feel you would fit perfectly into, then do not hesitate to apply for it.": ":hotel är en fantastisk värld, även tack vare personalen. Skoj och säkerhet är mycket viktigt för oss. Vill du vara med och bidra till en ännu mer skojsam och säkrare miljö här på :hotel? Ta steget och ansök.",
+    "You entered something that is not allowed on :hotel": "You entered something that is not allowed on :hotel",
+    "Post a comment": "Post a comment",
+    "Post a comment on the article, to let us know what you think about it": "Post a comment on the article, to let us know what you think about it",
+    "Post comment": "Post comment",
+    "Comments": "Comments",
+    "Below you will see all the comments, written on this article": "Below you will see all the comments, written on this article",
+    "You can only comment :amount times per article": "You can only comment :amount times per article",
+    "You comment has been posted!": "You comment has been posted!",
+    "You can only delete your own comments": "You can only delete your own comments",
+    "You comment has been deleted!": "You comment has been deleted!"
 }
