@@ -20,6 +20,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteTeamsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,8 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
             Route::withoutMiddleware('auth')->group(function () {
                 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
                 Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+                Route::post('/article/{article:slug}/comment', [WebsiteArticleCommentsController::class, 'store'])->name('article.comment.store');
+                Route::delete('/article/{comment}/comment', [WebsiteArticleCommentsController::class, 'destroy'])->name('article.comment.destroy');
 
                 Route::get('/staff', StaffController::class)->name('staff.index');
                 Route::get('/teams', WebsiteTeamsController::class)->name('teams.index');
