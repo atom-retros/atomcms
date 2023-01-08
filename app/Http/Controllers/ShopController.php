@@ -114,9 +114,8 @@ class ShopController extends Controller
             $this->rcon->giveCredits($user, $package['currencies']['credits']);
         }
 
-        if (!array_key_exists('types', $package['currencies']) && !empty($package['currencies']['types'])) {
+        if (array_key_exists('types', $package['currencies']) && !empty($package['currencies']['types'])) {
             foreach ($package['currencies']['types'] as $type => $amount) {
-                dd($type, $amount);
                 $this->rcon->givePoints($user, (int)$type, (int)$amount);
             }
         }
