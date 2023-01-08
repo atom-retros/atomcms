@@ -116,6 +116,11 @@ class ShopController extends Controller
 
         if (array_key_exists('types', $package['currencies']) && !empty($package['currencies']['types'])) {
             foreach ($package['currencies']['types'] as $type => $amount) {
+                // Skip rcon call in-case the currency is equal to 0
+                if (!$amount > 0) {
+                    continue;
+                }
+
                 $this->rcon->givePoints($user, (int)$type, (int)$amount);
             }
         }
