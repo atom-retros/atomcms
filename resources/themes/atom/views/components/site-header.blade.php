@@ -20,14 +20,14 @@
 
 
             <flex class="flex gap-x-4">
-                <a href="{{ route('nitro-client') }}">
+                <a data-turbolinks="false" href="{{ route('nitro-client') }}">
                     <button class="hidden md:block text-lg relative dark:bg-gray-900 dark:text-white rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                         {{ __('Nitro client') }}
                     </button>
                 </a>
 
                 @if(config('habbo.client.flash_enabled'))
-                    <a href="{{ route('flash-client') }}">
+                    <a data-turbolinks="false" href="{{ route('flash-client') }}">
                         <button class="hidden md:block text-lg relative dark:bg-gray-900 dark:text-white rounded-full py-2 px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
                             {{ __('Flash client') }}
                         </button>
@@ -38,29 +38,33 @@
     @endauth
 
     @guest
-        <div x-data="{ open: false }">
-            <div class="text-white relative font-semibold flex-col md:w-[600px]">
-                <p class="text-center text-xl hidden md:block">
-                    {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
-                </p>
+       <x-modals.modal-wrapper>
+           <div class="flex justify-center">
+               <div class="text-white font-semibold flex-col md:w-[600px]">
+                   <p class="text-center text-xl hidden md:block">
+                       {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
+                   </p>
 
-                <div class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 gap-x-6 md:mt-6">
-                    <button type="button" @click="open = !open" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
-                        {{ __('Login') }}
-                    </button>
+                   <div class="flex flex-col md:flex-row justify-center items-center gap-y-4 md:gap-y-0 gap-x-6 md:mt-6">
+                       <button type="button" x-on:click="open = true" class="uppercase border-2 border-white px-8 py-2 rounded-full transition ease-in-out duration-200 hover:bg-white hover:text-black">
+                           {{ __('Login') }}
+                       </button>
 
-                    <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
+                       <p class="text-opacity-80 text-sm uppercase">{{ __('Or') }}</p>
 
-                    <a href="{{ route('register') }}">
-                        <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
-                            {{ __('Create account') }}
-                        </button>
-                    </a>
-                </div>
-            </div>
-
-            <x-auth.login-modal />
-        </div>
+                       <a href="{{ route('register') }}">
+                           <button class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
+                               {{ __('Create account') }}
+                           </button>
+                       </a>
+                   </div>
+               </div>
+           </div>
+           {{ session()->get('wrong-auth') }}
+           <x-modals.regular-modal x-model="show {{ session()->get('wrong-auth') }}">
+               <x-auth.login-form />
+           </x-modals.regular-modal>
+       </x-modals.modal-wrapper>
 
     @endguest
 </div>

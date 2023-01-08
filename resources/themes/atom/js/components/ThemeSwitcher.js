@@ -2,7 +2,7 @@ const ThemeSwitcher = {
     currentTheme: 'light',
 
     init() {
-        if (localStorage.theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        if (localStorage.theme === "dark") {
             this.toggleTheme()
         }
 
@@ -10,21 +10,22 @@ const ThemeSwitcher = {
     },
 
     initButton() {
-        document.getElementById("theme-switcher")
-            .addEventListener("click", () => this.toggleTheme());
+        let themeSwitcher = document.getElementById("theme-switcher")
+
+        themeSwitcher?.addEventListener("click", () => this.toggleTheme())
     },
 
     toggleTheme() {
         if(this.currentTheme === 'light') {
             this.currentTheme = 'dark'
-            document.documentElement.classList.add("dark");
+            document.documentElement.classList.add("dark")
         } else {
             this.currentTheme = 'light'
-            document.documentElement.classList.remove("dark");
+            document.documentElement.classList.remove("dark")
         }
 
-        localStorage.setItem("theme", this.currentTheme);
+        localStorage.setItem("theme", this.currentTheme)
     }
 }
 
-export { ThemeSwitcher as default };
+export { ThemeSwitcher as default }

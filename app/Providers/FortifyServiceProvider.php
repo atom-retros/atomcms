@@ -64,6 +64,12 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function (Request $request) {
+            if (setting('disable_register')) {
+                return to_route('welcome')->withErrors([
+                    'register' => __('Registration is currently disabled.')
+                ]);
+            }
+
             return view('auth.register', [
                 'referral_code' => $request->route('referral_code'),
             ]);

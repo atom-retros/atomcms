@@ -176,6 +176,7 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'The homeroom every new users will be assigned to',
             ],
             [
+<<<<<<< HEAD
                 'key' => 'paypal_sandbox_client_id',
                 'value' => '',
                 'comment' => 'The sandbox client ID provided by paypal (Only use this if your paypal is in sandbox)',
@@ -204,6 +205,46 @@ class WebsiteSettingsSeeder extends Seeder
                 'key' => 'paypal_currency',
                 'value' => 'USD',
                 'comment' => 'The currency type used to charge the user (Only change this if you are absolutely certain on what you are doing',
+=======
+                'key' => 'cms_color_mode',
+                'value' => 'light',
+                'comment' => 'Determines the color mode of the CMS (light = normal, dark = dark mode)',
+            ],
+            [
+                'key' => 'force_staff_2fa',
+                'value' => '0',
+                'comment' => 'If set to 1 every staff will be forced to apply 2FA before being able to visit any other page',
+            ],
+            [
+                'key' => 'website_wordfilter_enabled',
+                'value' => '1',
+                'comment' => 'Determines whether the wordfilter for CMS will be enabled or not',
+            ],
+            [
+                'key' => 'requires_beta_code',
+                'value' => '0',
+                'comment' => 'Determines whether users need a beta code to register or not',
+            ],
+            [
+                'key' => 'disable_registration',
+                'value' => '0',
+                'comment' => 'Determines whether registration is enabled or not',
+            ],
+            [
+                'key' => 'give_hc_on_register',
+                'value' => '0',
+                'comment' => 'Determines whether the registered user will receive a HC on registration',
+            ],
+            [
+                'key' => 'hc_on_register_duration',
+                'value' => '315569260',
+                'comment' => 'Specifies the amount of time a user receives their HC subscription for (The default amount is 10 years)',
+            ],
+            [
+                'key' => 'max_comment_per_article',
+                'value' => '2',
+                'comment' => 'Specifies the amount of times a user can comment per article',
+>>>>>>> main
             ],
         ];
 

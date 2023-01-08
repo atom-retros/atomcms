@@ -17,16 +17,14 @@ class WebsiteShopProduct extends Model
 
     public function price(): int
     {
-        $salePercentage = $this->percentage_off;
-        $price = $this->price;
-
         if (!$this->isOnSale()) {
-            return $price;
+            return $this->price;
         }
 
-        $total = $this->price - ceil(($price * $salePercentage) / 100);
+        $total = $this->price - ceil(($this->price * $this->percentage_off) / 100);
 
-        return $total > 0 ? $total : 1; // Return the sales price
+        // Round up 1 in-case the price is below 0 when on sale
+        return $total > 0 ? $total : 1;
     }
 
     public function isOnSale(): bool

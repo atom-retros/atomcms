@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -140,6 +141,31 @@ class User extends Authenticatable
         return $sso;
     }
 
+    public function betaCode(): HasOne
+    {
+        return $this->hasOne(WebsiteBetaCode::class);
+    }
+
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(WebsiteTeam::class, 'team_id');
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(WebsiteStaffApplications::class, 'user_id');
+    }
+
+    public function hcSubscription(): HasOne
+    {
+        return $this->hasOne(UserSubscription::class);
+    }
+
+    public function articleComments(): HasMany
+    {
+        return $this->hasMany(WebsiteArticleComment::class);
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
@@ -165,5 +191,10 @@ class User extends Authenticatable
         ]);
 
         return true;
+    }
+
+    public function hasAppliedForPosition(int $rankId)
+    {
+        return $this->applications()->where('rank_id', '=', $rankId)->exists();
     }
 }

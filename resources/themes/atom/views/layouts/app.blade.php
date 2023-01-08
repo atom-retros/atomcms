@@ -18,8 +18,14 @@
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
+
+        <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
 
         @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
         @stack('scripts')
@@ -49,7 +55,7 @@
 
                     <x-navigation.theme-mode-switcher />
                     <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : 'en' }}.png" alt="">
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png" alt="">
                     </x-navigation.language-selector>
                 </div>
             </nav>
@@ -63,6 +69,16 @@
         </div>
 
         <x-footer />
+
+        @if(setting('cms_color_mode') === 'dark')
+            <script>
+                if(localStorage.getItem("theme") === null) {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("theme", 'dark');
+                }
+            </script>
+        @endif
+
         @stack('javascript')
     </body>
 </html>

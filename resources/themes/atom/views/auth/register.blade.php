@@ -75,6 +75,22 @@
                                 </div>
                             </div>
 
+                            @if(setting('requires_beta_code'))
+                                <div class="mt-4">
+                                    <div class="flex flex-col gap-y-2">
+                                        <x-form.label for="mail">
+                                            {{ __('Beta code') }}
+
+                                            <x-slot:info>
+                                                {{ __('Enter the beta code you have been provided with') }}
+                                            </x-slot:info>
+                                        </x-form.label>
+                                    </div>
+
+                                    <x-form.input error-bag="register" name="beta_code" type="text" value="{{ old('beta_code') }}" placeholder="{{ __('Enter your beta code') }}" />
+                                </div>
+                            @endif
+
                             <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-1 dark:bg-gray-900">
                                 <div class="flex gap-x-3 items-center">
                                     <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">

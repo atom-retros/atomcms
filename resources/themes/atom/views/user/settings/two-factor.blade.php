@@ -28,7 +28,7 @@
 
             {{-- 2FA enabled but not yet confirmed, we show the QRcode and ask for confirmation --}}
             @elseif(auth()->user()->two_factor_secret)
-                <p>Validate your two-factor enabling by scanning the following QR-code and enter your auto-generated 2-factor code from your phone.</p>
+                <p>{{ __('Validate your two-factor enabling by scanning the following QR-code and enter your auto-generated 2-factor code from your phone.') }}</p>
 
                 <div class="flex flex-col items-center md:flex-row md:items-start md:justify-center mt-4">
                     <div class="rounded bg-gray-100 py-2 px-4 flex gap-x-8">
@@ -38,7 +38,7 @@
 
                         <div>
                             <strong>
-                                Recovery codes:
+                            {{ __('Recovery codes:') }}
                             </strong>
 
                             <ul>
@@ -75,7 +75,7 @@
                 </form>
             @else
                 <div class="flex flex-col items-end">
-                    <div class="w-full flex flex-col gap-y-3">
+                    <div class="w-full flex flex-col gap-y-3 dark:text-gray-100">
                         <p>
                             {{ __('Here at :hotel we take security very serious and therefore we offer you as a user a way to secure your beloved account even further, by allowing you to enable Googles 2-factor authentication!', ['hotel' => setting('hotel_name')]) }}
                         </p>

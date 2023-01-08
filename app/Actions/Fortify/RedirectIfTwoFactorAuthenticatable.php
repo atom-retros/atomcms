@@ -95,6 +95,11 @@ class RedirectIfTwoFactorAuthenticatable
         $model = $this->guard->getProvider()->getModel();
 
         return tap($model::where(Fortify::username(), $request->{Fortify::username()})->first(), function ($user) use ($request) {
+            // Update the users password to bcrypt, if they previously used md5
+            if ($user && config('habbo.site.convert_passwords')) {
+                $this->convertUserPassword($user, $request->input('password'));
+            }
+
             if (! $user || ! $this->guard->getProvider()->validateCredentials($user, ['password' => $request->password])) {
                 $this->fireFailedEvent($request, $user);
 
@@ -107,10 +112,6 @@ class RedirectIfTwoFactorAuthenticatable
                 ->where('username', '=', $request->input('username'))
                 ->first();
 
-            // Update the users password to bcrypt, if they previously used md5
-            if ($user && config('habbo.site.convert_passwords')) {
-                $this->convertUserPassword($user, $request->input('password'));
-            }
 
             if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
                 throw ValidationException::withMessages([
@@ -175,7 +176,7 @@ class RedirectIfTwoFactorAuthenticatable
 
     private function convertUserPassword(User $user, string $password)
     {
-        if(config('habbo.site.convert_passwords') && ($user && $user->password == md5($password))) {
+        if($user->password == md5($password)) {
             $user->update([
                 'password' => Hash::make($password),
             ]);

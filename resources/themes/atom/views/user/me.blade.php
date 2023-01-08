@@ -13,6 +13,7 @@
                     class="inline-flex mr-2 mb-1" style="max-width: 24px; max-height: 24px">
                 <span class="relative text-white h-100">{{ __('Online Friends') }}</span>
             </div>
+
             <div class="flex-1 pl-2 h-100 flex relative justify-center sm:justify-start items-center gap-2">
                 @foreach ($onlineFriends as $friend)
                     <div data-popover-target="friend-{{ $friend->username }}"

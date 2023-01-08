@@ -134,6 +134,11 @@ APP_DEBUG=true to APP_DEBUG=false
 ## Using HTTPS
 In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, you should set `FORCE_HTTPS=` within your `.env` file to `true` this it to make sure everything is properly using HTTPs. This is necessary for some features in Atom CMS to work properly when you're letting cloudflare handle the HTTPs redirects without a dedicated SSL certificate.
 
+## Disable rocket loader
+Atom CMS uses Javascript in certain areas, which unfortunately conflicts with Cloudflares Rocket Loader feature. So in-case you have Rocket Loader enabled on Cloudflare, you will have to disable it, otherwise you **will** run into various annoying issues when using Atom CMS.
+
+To disable or check if Rocket Loader is enabled on Cloudflare, all you have to do is, head to your Cloudflare dashboard and find "Speed" -> "Optimization" in the navigation menu, once you've clicked on the "Optimization" menu point, scroll about halfway down until you find "Rocket Loader™" and then un-toggle it in-case it's enabled. That's it! Rocket loader is now disabled, and you're all good to go.
+
 ## Feature-addons
 Atom comes with its own dedicated documentation site - this makes it a lot easier for you to read about **exactly** what you want, rather than having to read through a giant README file!
 
@@ -158,6 +163,7 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 - **Yannick** - Netherland translations
 - **Gedomi** - Spanish translations
 - **Lorenzune** - Italian translations
+- **Twana** - Norwegian translations
 - **Kani** - Rcon System & Findretros API
 - **Sonay** - Material theme
 - **Raizer** - Circinus

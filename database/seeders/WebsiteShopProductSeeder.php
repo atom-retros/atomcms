@@ -28,6 +28,7 @@ class WebsiteShopProductSeeder extends Seeder
                     ],
                 ]),
                 'type' => 'vip',
+                'price' => 5,
             ],
             [
                 'data' => json_encode([
@@ -47,6 +48,7 @@ class WebsiteShopProductSeeder extends Seeder
                     ],
                 ]),
                 'type' => 'vip',
+                'price' => 10,
             ],
             [
                 'data' => json_encode([
@@ -66,6 +68,7 @@ class WebsiteShopProductSeeder extends Seeder
                     ],
                 ]),
                 'type' => 'vip',
+                'price' => 15,
             ],
             [
                 'data' => json_encode([
@@ -82,7 +85,7 @@ class WebsiteShopProductSeeder extends Seeder
                         ],
                     ],
                 ]),
-                'price' => 999,
+                'price' => 999999,
                 'type' => 'furniture',
                 'order' => 1,
             ],
@@ -101,29 +104,32 @@ class WebsiteShopProductSeeder extends Seeder
                         ],
                     ],
                 ]),
-                'price' => 999,
+                'price' => 999999,
                 'type' => 'furniture',
                 'order' => 2,
             ],
         ];
 
-        foreach ($products as $product) {
-            $package = WebsiteShopProduct::query()->create([
-                'data' => $product['data'],
-                'type' => $product['type'],
-            ]);
-
-            if ($product['type'] === 'vip') {
-                $package->features()->create([
-                    'content' => json_encode([
-                        'features' => [
-                            'VIP catalog',
-                            'VIP Badges',
-                            'VIP Commands',
-                            'More currency every x minutes',
-                        ],
-                    ]),
+        if (!WebsiteShopProduct::exists()) {
+            foreach ($products as $product) {
+                $package = WebsiteShopProduct::query()->create([
+                    'data' => $product['data'],
+                    'type' => $product['type'],
+                    'price' => $product['price'] ?? 999999,
                 ]);
+
+                if ($product['type'] === 'vip') {
+                    $package->features()->create([
+                        'content' => json_encode([
+                            'features' => [
+                                'VIP catalog',
+                                'VIP Badges',
+                                'VIP Commands',
+                                'More currency every x minutes',
+                            ],
+                        ]),
+                    ]);
+                }
             }
         }
     }

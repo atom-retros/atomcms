@@ -17,25 +17,35 @@ use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Http\Controllers\WebsiteArticleCommentsController;
+use App\Http\Controllers\WebsiteTeamsController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
-Route::middleware(['maintenance', 'check-ban'])->group(function () {
+Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(function () {
     // Maintenance route
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.show');
 
     // Banned route
     Route::get('/banned', BannedController::class)->name('banned.show');
 
-    Route::middleware('guest')->group(function () {
+    Route::middleware('guest')->withoutMiddleware('force.staff.2fa')->group(function () {
         Route::get('/', HomeController::class)->name('welcome');
 
-        Route::get('/register/{username}/{referral_code}', [RegisteredUserController::class, 'create'])->name('register.referral');
+        Route::get('/register/{username}/{referral_code}', function (string $username, string $referral_code) {
+            User::where('referral_code', '=', $referral_code)->firstOrFail();
+
+            return view('auth.register', [
+                'referral_code' =>  $referral_code,
+            ]);
+        })->name('register.referral');
     });
 
     Route::middleware('auth')->group(function () {
@@ -66,9 +76,16 @@ Route::middleware(['maintenance', 'check-ban'])->group(function () {
             Route::withoutMiddleware('auth')->group(function () {
                 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
                 Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+                Route::post('/article/{article:slug}/comment', [WebsiteArticleCommentsController::class, 'store'])->name('article.comment.store');
+                Route::delete('/article/{comment}/comment', [WebsiteArticleCommentsController::class, 'destroy'])->name('article.comment.destroy');
 
                 Route::get('/staff', StaffController::class)->name('staff.index');
+                Route::get('/teams', WebsiteTeamsController::class)->name('teams.index');
             });
+
+            Route::get('/staff-applications', [StaffApplicationsController::class, 'index'])->name('staff-applications.index');
+            Route::get('/staff-applications/{position}', [StaffApplicationsController::class, 'show'])->name('staff-applications.show');
+            Route::post('/staff-applications/{position}', [StaffApplicationsController::class, 'store'])->name('staff-applications.store');
 
             Route::post('/article/{article:slug}/toggle-reaction', [ArticleController::class, 'toggleReaction'])
                 ->name('article.toggle-reaction')

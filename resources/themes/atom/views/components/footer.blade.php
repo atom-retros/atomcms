@@ -32,7 +32,8 @@
             '<strong>CentralCee & Rille</strong> Swedish translations <br/>',
             '<strong>Yannick</strong> Netherlands translations <br/>',
             '<strong>Gedomi</strong> Spanish translations <br/>',
-            '<strong>Lorenzune</strong> Italian translations <br/>'
+            '<strong>Lorenzune</strong> Italian translations <br/>',
+            '<strong>Twana</strong> Norwegian translations <br/>'
         ];
         const content = '{{ __('Thank you for playing :hotel. We have put a lot of effort into making the hotel what it is, and we truly appreciate you being here❤️', ['hotel' => setting('hotel_name')]) }}';
         const drivenBy = '{{ __(':hotel is driven by Atom CMS made by:', ['hotel' => setting('hotel_name')]) }}';
