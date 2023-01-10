@@ -63,6 +63,7 @@
         </div>
 
         <x-footer />
+        <x-banner />
 
         @if(setting('cms_color_mode') === 'dark')
             <script>

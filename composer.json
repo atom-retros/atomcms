@@ -20,6 +20,7 @@
         "opcodesio/log-viewer": "^1.4",
         "qirolab/laravel-themer": "^2.0",
         "spatie/laravel-activitylog": "^4.5",
+        "stechstudio/filament-impersonate": "^2.11",
         "z3d0x/filament-logger": "^0.4.2"
     },
     "require-dev": {
