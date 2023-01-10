@@ -60,7 +60,7 @@
                    </div>
                </div>
            </div>
-           {{ session()->get('wrong-auth') }}
+
            <x-modals.regular-modal x-model="show {{ session()->get('wrong-auth') }}">
                <x-auth.login-form />
            </x-modals.regular-modal>

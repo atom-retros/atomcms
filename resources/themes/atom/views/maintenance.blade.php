@@ -15,21 +15,26 @@
 <body class="h-screen overflow-hidden" style="background: url({{ asset('assets/images/maintenance/background.png') }})">
     <x-messages.flash-messages />
 
-    <div x-data="{ open: false }" class="flex flex-col justify-center items-center h-full relative">
-        <div class="absolute top-6 right-6">
-            <button @click="open = !open" class="text-black bg-white bg-opacity-70 transition ease-in-out duration-200 hover:bg-opacity-100 py-2 px-4 rounded-full font-semibold">
-                {{ __('Staff login') }}
-            </button>
-        </div>
 
-        <img src="{{ asset('assets/images/maintenance/pictures.png') }}" alt="{{ setting('hotel_name') }}">
+    @guest
+        <x-modals.modal-wrapper classes="flex flex-col justify-center items-center h-full relative">
+            <div class="absolute top-6 right-6">
+                <button @click="open = !open" class="text-black bg-white bg-opacity-70 transition ease-in-out duration-200 hover:bg-opacity-100 py-2 px-4 rounded-full font-semibold">
+                    {{ __('Staff login') }}
+                </button>
+            </div>
 
-        <div class="text-white">
-            <h1 class="text-3xl font-semibold text-center">{{ __('Maintenance') }}</h1>
-            <p class="text-center">{{ setting('maintenance_message') }}</p>
-        </div>
+            <img src="{{ asset('assets/images/maintenance/pictures.png') }}" alt="{{ setting('hotel_name') }}">
 
-        <x-auth.login-modal />
-    </div>
+            <div class="text-white">
+                <h1 class="text-3xl font-semibold text-center">{{ __('Maintenance') }}</h1>
+                <p class="text-center">{{ setting('maintenance_message') }}</p>
+            </div>
+
+            <x-modals.regular-modal x-model="show {{ session()->get('wrong-auth') }}">
+                <x-auth.login-form />
+            </x-modals.regular-modal>
+        </x-modals.modal-wrapper>
+    @endguest
 </body>
 </html>

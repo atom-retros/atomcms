@@ -1,3 +1,5 @@
-<div x-data="{ open: false }" class="relative">
+@props(['classes' => ''])
+
+<div x-data="{ open: false }" class="relative {{ $classes }}">
     {{ $slot }}
 </div>
