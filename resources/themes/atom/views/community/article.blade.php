@@ -68,7 +68,7 @@
         </div>
 
 
-        @if(!$article->userHasReachedArticleCommentLimit())
+        @if(auth()->check() && !$article->userHasReachedArticleCommentLimit())
             <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
                 <x-slot:title>
                     {{ __('Post a comment') }}
@@ -103,24 +103,24 @@
 
             <div class="px-1 dark:text-gray-200 space-y-[13px]">
                 @foreach($article->comments->sortByDesc('created_at') as $comment)
-                    <div class="relative w-full rounded bg-[#f5f5f5] p-4 h-[90px] overflow-hidden flex items-center shadow">
+                    <div class="relative w-full rounded bg-[#f5f5f5] dark:bg-gray-700 p-4 h-[90px] overflow-hidden flex items-center shadow">
                         <a href="{{ route('profile.show', $comment->user) }}" class="absolute top-2 drop-shadow left-1 ">
                             <img style="image-rendering: pixelated;" class="transition ease-in-out duration-300 hover:scale-105" src="{{ setting('avatar_imager') }}{{ $comment->user->look }}&direction=2&head_direction=3&gesture=sml&action=wav" alt="">
                         </a>
 
                         <div class="flex justify-between ml-[60px] w-full">
                             <div class="text-sm">
-                                <a href="{{ route('profile.show', $comment->user) }}" class="font-semibold text-[#89cdf0] hover:underline">
+                                <a href="{{ route('profile.show', $comment->user) }}" class="font-semibold text-[#89cdf0] dark:text-blue-300 hover:underline">
                                     {{ $comment->user->username }}
                                 </a>
 
-                                <p class="block text-gray-600">
+                                <p class="block dark:text-gray-200">
                                     {{ $comment->comment }}
                                 </p>
                             </div>
 
                             <div class="flex gap-x-2">
-                                <p class="text-gray-600 text-xs">
+                                <p class="dark:text-gray-200 text-xs">
                                     {{ $comment->created_at->diffForHumans() }}
                                 </p>
 
