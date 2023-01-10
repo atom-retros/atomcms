@@ -16,6 +16,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use STS\FilamentImpersonate\Impersonate;
 
 class UserResource extends Resource
 {
@@ -82,6 +83,7 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
+                Impersonate::make('impersonate'),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
