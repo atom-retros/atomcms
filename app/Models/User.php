@@ -159,7 +159,12 @@ class User extends Authenticatable implements FilamentUser, HasName
         return $this->hasOne(UserSubscription::class);
     }
 
-    public function getOnlineFriends(int $total = 10): Collection
+    public function articleComments(): HasMany
+    {
+        return $this->hasMany(WebsiteArticleComment::class);
+    }
+
+    public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
             ->select(['user_two_id', 'users.id', 'users.username', 'users.look', 'users.motto', 'users.last_online'])

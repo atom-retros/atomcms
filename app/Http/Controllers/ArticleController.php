@@ -12,7 +12,7 @@ class ArticleController extends Controller
     public function index()
     {
         return view('community.articles', [
-            'articles' => WebsiteArticle::with('user:id,username,look')
+            'articles' => WebsiteArticle::with(['user:id,username,look', 'comment.user:id,username,look'])
                 ->latest('id')
                 ->paginate(8),
         ]);
