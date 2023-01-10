@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.7",
         "opcodesio/log-viewer": "^1.4",
         "qirolab/laravel-themer": "^2.0",
-        "spatie/laravel-activitylog": "^4.5"
+        "spatie/laravel-activitylog": "^4.5",
+        "z3d0x/filament-logger": "^0.4.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
