@@ -21,6 +21,7 @@ use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\WebsiteArticleCommentsController;
+use App\Http\Controllers\WebsiteRulesController;
 use App\Http\Controllers\WebsiteTeamsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -96,8 +97,7 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Rules routes
-        // Route::get()->name('rules.index');
-        Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
+        Route::get('/rules', WebsiteRulesController::class)->name('rules.index');
 
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
