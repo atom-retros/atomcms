@@ -96,6 +96,7 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Rules routes
+        // Route::get()->name('rules.index');
         Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
 
         // Shop routes
