@@ -135,6 +135,8 @@ class AtomSetupCommand extends Command
             'WebsitePermissionSeeder',
             'WebsiteWordfilterSeeder',
             'WebsiteTeamSeeder',
+            'WebsiteRuleCategorySeeder',
+            'WebsiteRuleSeeder',
         ];
 
         foreach ($seeders as $seeder) {
