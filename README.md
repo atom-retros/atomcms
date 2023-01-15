@@ -78,7 +78,8 @@ copy .env.example .env (Don't forget to edit the database credentials inside the
 composer install 
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 php artisan key:generate
-php artisan migrate --seed
+php artisan migrate
+php artisan atom:setup (Or php artisan atom:setup --auto if you don't want to manually fill in settings) 
 ```
 
 *Don't forget to link your IIS site to the "public" folder inside for "atomcms"*
@@ -111,8 +112,8 @@ cd atomcms
 cp .env.example .env (Don't forget to edit the database credentials inside the .env)
 composer install
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] (eg. npm run dev:atom))
-php artisan key:generate
-php artisan migrate --seed
+php artisan migrate
+php artisan atom:setup (Or php artisan atom:setup --auto if you don't want to manually fill in settings) 
 ```
 
 **Grant necessary permissions to used folders. Within your atomcms directory, enter the 4 commands below:**

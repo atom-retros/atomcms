@@ -14,15 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            WebsiteSettingsSeeder::class,
-            WebsiteArticleSeeder::class,
-            WebsiteLanguageSeeder::class,
-            WebsitePermissionSeeder::class,
-            WebsiteWordfilterSeeder::class,
-            WebsiteTeamSeeder::class,
-        ]);
-
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
