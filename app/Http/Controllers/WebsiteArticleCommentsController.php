@@ -18,6 +18,12 @@ class WebsiteArticleCommentsController extends Controller
             ]);
         }
 
+        if (!$article->can_comment) {
+            return redirect()->back()->withErrors([
+                'message' => __('This article has been locked from receiving comments'),
+            ]);
+        }
+
         $article->comments()->create([
             'user_id' => $user->id,
             'comment' => $request->input('comment'),
