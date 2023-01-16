@@ -16,15 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            WebsiteSettingsSeeder::class,
-            WebsiteArticleSeeder::class,
-            WebsiteLanguageSeeder::class,
-            WebsitePermissionSeeder::class,
-            WebsiteWordfilterSeeder::class,
-            WebsiteTeamSeeder::class,
-        ]);
-
         if (app()->environment('local')) {
             WebsiteRareValueCategory::factory(4)->create();
             WebsiteRareValue::factory(20)->create();

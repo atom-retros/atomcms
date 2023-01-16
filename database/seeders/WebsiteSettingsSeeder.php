@@ -112,7 +112,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'maintenance_message',
-                'value' => 'Atom is currently undergoing maintenance. We will be back shortly!',
+                'value' => sprintf('%s is currently undergoing maintenance. We will be back shortly!', setting('hotel_name')),
                 'comment' => 'The maintenance message displayed to users while maintenance is activated',
             ],
             [
