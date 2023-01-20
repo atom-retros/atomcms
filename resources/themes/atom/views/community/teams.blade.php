@@ -1,5 +1,5 @@
 <x-app-layout>
-    @push('title', __('Staff'))
+    @push('title', __('Teams'))
 
     <div class="col-span-12">
         <div class="flex flex-col gap-y-4">
