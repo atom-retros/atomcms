@@ -10,8 +10,10 @@ return new class extends Migration {
         Schema::create('website_rare_values', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
+            $table->integer('item_id')->nullable()->index();
             $table->string('name')->index();
             $table->string('rare_type', 32);
+            $table->boolean('is_ltd')->default(false);
             $table->string('credit_value')->nullable();
             $table->string('currency_value')->nullable();
             $table->string('currency_value_type')->default('diamonds');
