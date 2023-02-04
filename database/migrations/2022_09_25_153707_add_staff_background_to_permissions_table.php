@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
             $table->string('staff_background')->default('staff-bg.png')->after('staff_color');
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
         });

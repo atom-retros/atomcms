@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use App\Models\WebsiteIpBlacklist;
 use App\Models\WebsiteIpWhitelist;
 use App\Services\IpLookupService;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 
 class VPNCheckerMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         // Skip check if vpn checker is disabled
         if (! (int) setting('vpn_block_enabled') || setting('ipdata_api_key') === 'ADD-API-KEY-HERE') {

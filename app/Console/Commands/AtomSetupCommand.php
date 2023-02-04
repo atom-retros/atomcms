@@ -18,7 +18,7 @@ class AtomSetupCommand extends Command
         $this->newLine();
     }
 
-    public function handle()
+    public function handle(): void
     {
         Artisan::call('db:seed --class=WebsiteSettingsSeeder');
 

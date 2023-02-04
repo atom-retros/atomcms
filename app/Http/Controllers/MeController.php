@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Models\WebsiteArticle;
 use Illuminate\Support\Facades\Auth;
 
 class MeController extends Controller
 {
-    public function show()
+    public function show(): Response
     {
         $user = Auth::user();
 

@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('password_resets')) {
             Schema::rename('password_resets', sprintf('password_resets_%s', time()));
@@ -29,7 +29,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('password_resets');
     }

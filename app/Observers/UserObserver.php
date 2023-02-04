@@ -7,7 +7,7 @@ use App\Models\UserCurrency;
 
 class UserObserver
 {
-    public function created(User $user)
+    public function created(User $user): void
     {
         $user->settings()->create([
             'last_hc_payday' => setting('give_hc_on_register') == '1' ? now()->addYears(10)->unix() : 0,

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
@@ -35,7 +36,7 @@ class TwoFactorAuthenticatedSessionController extends Controller
      * @param  \Laravel\Fortify\Http\Requests\TwoFactorLoginRequest  $request
      * @return mixed
      */
-    public function store(TwoFactorLoginRequest $request)
+    public function store(TwoFactorLoginRequest $request): RedirectResponse
     {
         $user = $request->challengedUser();
 

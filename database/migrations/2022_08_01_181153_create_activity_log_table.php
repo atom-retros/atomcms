@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         if (config('habbo.migrations.rename_tables') && Schema::hasTable(config('activitylog.table_name'))) {
             Schema::rename(config('activitylog.table_name'), sprintf('%s_%s', config('activitylog.table_name'), time()));
@@ -24,7 +24,7 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::connection(config('activitylog.database_connection'))->dropIfExists(config('activitylog.table_name'));
     }

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ArticleCommentFormRequest;
 use App\Models\WebsiteArticle;
 use App\Models\WebsiteArticleComment;
 
 class WebsiteArticleCommentsController extends Controller
 {
-    public function store(WebsiteArticle $article, ArticleCommentFormRequest $request)
+    public function store(WebsiteArticle $article, ArticleCommentFormRequest $request): RedirectResponse
     {
         $user = $request->user();
         if ($article->userHasReachedArticleCommentLimit()) {
@@ -31,7 +32,7 @@ class WebsiteArticleCommentsController extends Controller
         return redirect()->back()->with('success', __('You comment has been posted!'));
     }
 
-    public function destroy(WebsiteArticleComment $comment)
+    public function destroy(WebsiteArticleComment $comment): RedirectResponse
     {
         if (! $comment->userCanDeleteComment()) {
             return redirect()->back()->withErrors([

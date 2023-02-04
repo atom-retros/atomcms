@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_ip_whitelist')) {
             Schema::rename('website_ip_whitelist', sprintf('website_ip_whitelist_%s', time()));
@@ -21,7 +21,7 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('website_ip_whitelist');
     }

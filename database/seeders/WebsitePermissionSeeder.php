@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class WebsitePermissionSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $permissions = [
             [

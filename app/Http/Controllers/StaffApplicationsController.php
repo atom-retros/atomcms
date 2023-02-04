@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use App\Http\Requests\StaffApplicationFormRequest;
 use App\Models\WebsiteOpenPosition;
 
 class StaffApplicationsController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
         return view('community.staff-applications', [
             'positions' => WebsiteOpenPosition::canApply()->with('permission')->get(),
         ]);
     }
 
-    public function show(WebsiteOpenPosition $position)
+    public function show(WebsiteOpenPosition $position): Response
     {
         return view('community.staff-applications-apply', [
             'position' => $position->load('permission'),
         ]);
     }
 
-    public function store(WebsiteOpenPosition $position, StaffApplicationFormRequest $request)
+    public function store(WebsiteOpenPosition $position, StaffApplicationFormRequest $request): RedirectResponse
     {
         if ($request->user()->applications()->where('rank_id', $position->permission->id)->exists()) {
             return redirect()->back()->withErrors([

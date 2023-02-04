@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use App\Http\Requests\PasswordSettingsFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordSettingsController extends Controller
 {
-    public function edit()
+    public function edit(): Response
     {
         return view('user.settings.password', [
             'user' => Auth::user(),
         ]);
     }
 
-    public function update(PasswordSettingsFormRequest $request)
+    public function update(PasswordSettingsFormRequest $request): RedirectResponse
     {
         $request->validated();
 

@@ -26,7 +26,7 @@ class RegisterFormRequest extends FormRequest
         return true;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),

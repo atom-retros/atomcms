@@ -2,13 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MaintenanceMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         // If not authenticated, always redirect to maintenance if enabled
         if ((! $request->is('maintenance') && $request->method() !== 'POST') && (! Auth::check() && setting('maintenance_enabled') === '1')) {

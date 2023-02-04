@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('users', 'referral_code')) {
@@ -23,7 +23,7 @@ return new class extends Migration
         }
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             Schema::table('users', function (Blueprint $table) {

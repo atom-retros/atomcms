@@ -23,7 +23,7 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(
             \Laravel\Fortify\Actions\DisableTwoFactorAuthentication::class,
@@ -36,7 +36,7 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         Fortify::createUsersUsing(CreateNewUser::class);
 
