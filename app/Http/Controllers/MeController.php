@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\WebsiteArticle;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class MeController extends Controller
 {
-    public function show(): Response
+    public function __invoke(): View
     {
         $user = Auth::user();
 

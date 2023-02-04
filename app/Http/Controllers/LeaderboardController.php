@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserCurrency;
 use App\Models\UserSetting;
+use Illuminate\View\View;
 
 class LeaderboardController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
         $staffUsers = User::select('id')->where('rank', '>=', setting('min_staff_rank'))->get()->pluck('id');
 

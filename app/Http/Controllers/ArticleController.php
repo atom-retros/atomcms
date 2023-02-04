@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\WebsiteArticle;
 use App\Models\WebsiteArticleReaction;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
         return view('community.articles', [
             'articles' => WebsiteArticle::with(['user:id,username,look'])
@@ -19,7 +20,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function show(WebsiteArticle $article): Response
+    public function show(WebsiteArticle $article): View
     {
         $myReactions = [];
         $articleData = $article->load(['user.permission:id,rank_name,staff_background', 'reactions:article_id,user_id,reaction', 'reactions.user:id,username', 'comments.user:id,username,look']);
@@ -36,7 +37,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function toggleReaction(WebsiteArticle $article, Request $request): Response
+    public function toggleReaction(WebsiteArticle $article, Request $request): JsonResponse
     {
         $reaction = $request->get('reaction');
 

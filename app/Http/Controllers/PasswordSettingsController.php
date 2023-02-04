@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PasswordSettingsFormRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class PasswordSettingsController extends Controller
 {
-    public function edit(): Response
+    public function edit(): View
     {
         return view('user.settings.password', [
             'user' => Auth::user(),

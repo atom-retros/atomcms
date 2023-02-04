@@ -7,20 +7,20 @@ use App\Services\RconService;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
 
 class AccountSettingsController extends Controller
 {
-    public function edit(): Response
+    public function edit(): View
     {
         return view('user.settings.account', [
             'user' => Auth::user()->load('settings'),
         ]);
     }
 
-    public function sessionLogs(Request $request): Response
+    public function sessionLogs(Request $request): View
     {
         $sessions = collect(
             auth()->user()->sessions
@@ -44,7 +44,7 @@ class AccountSettingsController extends Controller
         ]);
     }
 
-    protected function createAgent($session): Response
+    protected function createAgent($session): Agent
     {
         return tap(new Agent, function ($agent) use ($session) {
             $agent->setUserAgent($session->user_agent);
@@ -78,7 +78,7 @@ class AccountSettingsController extends Controller
         return redirect()->back()->with('success', __('Your account settings has been updated'));
     }
 
-    public function twoFactor(): Response
+    public function twoFactor(): View
     {
         return view('user.settings.two-factor');
     }

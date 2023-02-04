@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\GuildMember;
 use App\Models\MessengerFriendship;
 use App\Models\User;
+use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function __invoke(User $user)
+    public function __invoke(User $user): View
     {
         $user = $user->load(['badges' => function ($badges) {
             $badges->where('slot_id', '>', '0')

@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StaffApplicationFormRequest;
 use App\Models\WebsiteOpenPosition;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class StaffApplicationsController extends Controller
 {
-    public function index(): Response
+    public function index(): View
     {
         return view('community.staff-applications', [
             'positions' => WebsiteOpenPosition::canApply()->with('permission')->get(),
         ]);
     }
 
-    public function show(WebsiteOpenPosition $position): Response
+    public function show(WebsiteOpenPosition $position): View
     {
         return view('community.staff-applications-apply', [
             'position' => $position->load('permission'),

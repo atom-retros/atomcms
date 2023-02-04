@@ -50,7 +50,7 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
 
     Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function () {
-            Route::get('/me', [MeController::class, 'show'])->name('me.show');
+            Route::get('/me', MeController::class)->name('me.show');
 
             // User settings routes
             Route::prefix('settings')->group(function () {
