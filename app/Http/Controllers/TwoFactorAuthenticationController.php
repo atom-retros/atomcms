@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
 class TwoFactorAuthenticationController extends Controller
@@ -14,7 +15,7 @@ class TwoFactorAuthenticationController extends Controller
     {
         $confirmed = $request->user()->confirmTwoFactorAuthentication($request->input('code'));
 
-        if (!$confirmed) {
+        if (! $confirmed) {
             return back()->withErrors('Invalid Two Factor Authentication code');
         }
 

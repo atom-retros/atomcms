@@ -15,7 +15,7 @@ class OnlineUserCountResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'onlineCount' => $this->count()
+            'onlineCount' => $this->count(),
         ];
     }
 }

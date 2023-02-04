@@ -13,22 +13,22 @@ class WebsitePermissionSeeder extends Seeder
             [
                 'permission' => 'bypass_vpn',
                 'min_rank' => '6',
-                'description' => 'Min rank to bypass vpn blocker check'
+                'description' => 'Min rank to bypass vpn blocker check',
             ],
             [
                 'permission' => 'view_server_logs',
                 'min_rank' => '7',
-                'description' => 'Minimum required rank to access the log viewer'
+                'description' => 'Minimum required rank to access the log viewer',
             ],
             [
                 'permission' => 'housekeeping_access',
                 'min_rank' => '7',
-                'description' => 'Minimum required rank to access the log viewer'
+                'description' => 'Minimum required rank to access the log viewer',
             ],
             [
                 'permission' => 'delete_article_comments',
                 'min_rank' => '7',
-                'description' => 'Minimum required rank to delete article comments without being the author'
+                'description' => 'Minimum required rank to delete article comments without being the author',
             ],
         ];
 

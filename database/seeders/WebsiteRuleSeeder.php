@@ -198,6 +198,5 @@ class WebsiteRuleSeeder extends Seeder
         if (WebsiteRule::doesntExist()) {
             WebsiteRule::insert($rules);
         }
-
     }
 }

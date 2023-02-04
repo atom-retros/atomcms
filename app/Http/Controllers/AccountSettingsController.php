@@ -22,7 +22,7 @@ class AccountSettingsController extends Controller
     {
         $sessions = collect(
             auth()->user()->sessions
-        )->map(function($session) use ($request) {
+        )->map(function ($session) use ($request) {
             $agent = $this->createAgent($session);
 
             return (object) [

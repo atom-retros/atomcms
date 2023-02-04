@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\WebsiteArticle;
-use Illuminate\Support\Facades\Auth;
 use App\Models\WebsiteArticleReaction;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -39,17 +39,17 @@ class ArticleController extends Controller
     {
         $reaction = $request->get('reaction');
 
-        if (!is_string($reaction) || !in_array($reaction, config('habbo.reactions'))) {
+        if (! is_string($reaction) || ! in_array($reaction, config('habbo.reactions'))) {
             return response()->json(['success' => false]);
         }
 
         $existingReaction = WebsiteArticleReaction::getReaction($article->id, Auth::id(), $reaction);
 
         if ($existingReaction) {
-            $existingReaction->update(['active' => !$existingReaction->active]);
+            $existingReaction->update(['active' => ! $existingReaction->active]);
         } else {
             $article->reactions()->create([
-                'reaction' => $reaction
+                'reaction' => $reaction,
             ]);
         }
 

@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WebsiteRule;
 use App\Models\WebsiteRuleCategory;
-use Illuminate\Http\Request;
 
 class WebsiteRulesController extends Controller
 {

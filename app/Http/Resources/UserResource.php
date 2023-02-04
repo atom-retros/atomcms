@@ -17,7 +17,7 @@ class UserResource extends JsonResource
         $user = $this->first();
 
         return [
-            'data' => !is_null($user) ? $user : 'No user found',
+            'data' => ! is_null($user) ? $user : 'No user found',
         ];
     }
 }

@@ -2,11 +2,9 @@
 
 namespace App\Actions\Fortify\Controllers;
 
-
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
-use Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse;
 use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
 use Laravel\Fortify\Events\RecoveryCodeReplaced;
 use Laravel\Fortify\Http\Requests\TwoFactorLoginRequest;

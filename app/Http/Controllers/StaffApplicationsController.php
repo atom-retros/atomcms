@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StaffApplicationFormRequest;
 use App\Models\WebsiteOpenPosition;
-use Illuminate\Support\Facades\Auth;
 
 class StaffApplicationsController extends Controller
 {
@@ -26,13 +25,13 @@ class StaffApplicationsController extends Controller
     {
         if ($request->user()->applications()->where('rank_id', $position->permission->id)->exists()) {
             return redirect()->back()->withErrors([
-                'message' => __('You have already applied for this position.')
+                'message' => __('You have already applied for this position.'),
             ]);
         }
 
         if ($position->apply_from > now() || $position->apply_to < now()) {
             return redirect()->back()->withErrors([
-                'message' => __('You cannot apply for this position.')
+                'message' => __('You cannot apply for this position.'),
             ]);
         }
 

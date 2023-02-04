@@ -9,7 +9,7 @@ class FlashController extends Controller
     public function __invoke()
     {
         return view('client.flash', [
-            'sso' => Auth::user()->ssoTicket()
+            'sso' => Auth::user()->ssoTicket(),
         ]);
     }
 }

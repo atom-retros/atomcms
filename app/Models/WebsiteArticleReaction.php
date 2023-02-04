@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class WebsiteArticleReaction extends Model
 {
@@ -16,7 +16,7 @@ class WebsiteArticleReaction extends Model
 
     protected $hidden = [
         'user_id',
-        'article_id'
+        'article_id',
     ];
 
     public static function getReaction(int $articleId, int $userId, string $reaction): ?self

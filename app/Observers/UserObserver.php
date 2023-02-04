@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\User;
 use App\Models\UserCurrency;
-use App\Models\UserSetting;
 
 class UserObserver
 {
@@ -19,11 +18,10 @@ class UserObserver
                 'user_id' => $user->id,
                 'subscription_type' => 'HABBO_CLUB',
                 'timestamp_start' => now()->unix(),
-                'duration' => (int)setting('hc_on_register_duration'),
+                'duration' => (int) setting('hc_on_register_duration'),
                 'active' => 1,
             ]);
         }
-
 
         UserCurrency::insert([
             [

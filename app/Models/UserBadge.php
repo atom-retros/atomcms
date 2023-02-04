@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class UserBadge extends Model
 {
     protected $table = 'users_badges';
+
     protected $primaryKey = 'user_id';
+
     public $timestamps = false;
 
     public function user(): BelongsTo

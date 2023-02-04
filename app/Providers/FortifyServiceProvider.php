@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
-use App\Models\CameraWeb;
 use App\Actions\Fortify\RedirectIfTwoFactorConfirmed;
+use App\Models\CameraWeb;
 use App\Models\WebsiteArticle;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -66,7 +66,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(function (Request $request) {
             if (setting('disable_register')) {
                 return to_route('welcome')->withErrors([
-                    'register' => __('Registration is currently disabled.')
+                    'register' => __('Registration is currently disabled.'),
                 ]);
             }
 
@@ -88,7 +88,7 @@ class FortifyServiceProvider extends ServiceProvider
 
     private function authenticate()
     {
-        Fortify::authenticateThrough(function() {
+        Fortify::authenticateThrough(function () {
             return array_filter([
                 config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
 

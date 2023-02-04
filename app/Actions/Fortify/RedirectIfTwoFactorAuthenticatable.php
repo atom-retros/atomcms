@@ -2,7 +2,6 @@
 
 namespace App\Actions\Fortify;
 
-
 use App\Models\User;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Failed;
@@ -112,7 +111,6 @@ class RedirectIfTwoFactorAuthenticatable
                 ->where('username', '=', $request->input('username'))
                 ->first();
 
-
             if (setting('maintenance_enabled') === '1' && setting('min_maintenance_login_rank') > $user->rank) {
                 throw ValidationException::withMessages([
                     'username' => __('Only staff can login during maintenance!'),
@@ -176,7 +174,7 @@ class RedirectIfTwoFactorAuthenticatable
 
     private function convertUserPassword(User $user, string $password)
     {
-        if($user->password == md5($password)) {
+        if ($user->password == md5($password)) {
             $user->update([
                 'password' => Hash::make($password),
             ]);
@@ -189,7 +187,7 @@ class RedirectIfTwoFactorAuthenticatable
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
         ];
 
-        $messages =  [
+        $messages = [
             'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),
             'g-recaptcha-response.string' => __('The google recaptcha was submitted with an invalid type'),
         ];

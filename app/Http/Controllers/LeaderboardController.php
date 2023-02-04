@@ -26,7 +26,6 @@ class LeaderboardController extends Controller
             ->with(['user:id,username,look'])
             ->get();
 
-
         $mostOnline = UserSetting::whereNotIn('user_id', $staffUsers)
             ->select('user_id', 'online_time')
             ->orderByDesc('online_time')

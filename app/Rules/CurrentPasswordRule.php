@@ -18,7 +18,7 @@ class CurrentPasswordRule implements InvokableRule
      */
     public function __invoke($attribute, $value, $fail)
     {
-        if (!Hash::check($value, Auth::user()->password)) {
+        if (! Hash::check($value, Auth::user()->password)) {
             $fail('It seems like your current password is wrong.');
         }
     }

@@ -13,7 +13,7 @@ class FindRetrosMiddleware
     {
         $findRetrosService = new FindRetrosService;
 
-        if (config('habbo.findretros.enabled') && !$findRetrosService->checkHasVoted()) {
+        if (config('habbo.findretros.enabled') && ! $findRetrosService->checkHasVoted()) {
             return redirect($findRetrosService->getRedirectUri());
         }
 

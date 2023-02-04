@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guild;
 use App\Models\GuildMember;
-use App\Models\User;
-use App\Models\UserBadge;
 use App\Models\MessengerFriendship;
-use App\Models\Room;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -19,13 +16,13 @@ class ProfileController extends Controller
                 ->take(5)
                 ->get();
         },
-        'rooms' => function ($rooms) {
-            $rooms->select('id', 'owner_id', 'name', 'users')
-                ->orderByDesc('users')
-                ->orderBy('id')
-                ->take(4)
-                ->get();
-        }]);
+            'rooms' => function ($rooms) {
+                $rooms->select('id', 'owner_id', 'name', 'users')
+                    ->orderByDesc('users')
+                    ->orderBy('id')
+                    ->take(4)
+                    ->get();
+            }, ]);
 
         $friends = MessengerFriendship::select('user_two_id')
             ->where('user_one_id', '=', $user->id)
