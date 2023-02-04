@@ -2,6 +2,8 @@
 
 namespace App\Actions\Fortify;
 
+use Illuminate\Contracts\Auth\Authenticatable;
+use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Auth\Events\Failed;
@@ -51,7 +53,7 @@ class RedirectIfTwoFactorAuthenticatable
      * @param  callable  $next
      * @return mixed
      */
-    public function handle($request, $next)
+    public function handle(Request $request, callable $next)
     {
         $user = $this->validateCredentials($request);
 
@@ -79,7 +81,7 @@ class RedirectIfTwoFactorAuthenticatable
      * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
-    protected function validateCredentials($request)
+    protected function validateCredentials(Request $request)
     {
         if (Fortify::$authenticateUsingCallback) {
             return tap(call_user_func(Fortify::$authenticateUsingCallback, $request), function ($user) use ($request) {
@@ -127,7 +129,7 @@ class RedirectIfTwoFactorAuthenticatable
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function throwFailedAuthenticationException($request)
+    protected function throwFailedAuthenticationException(Request $request): void
     {
         $this->limiter->increment($request);
 
@@ -143,7 +145,7 @@ class RedirectIfTwoFactorAuthenticatable
      * @param  \Illuminate\Contracts\Auth\Authenticatable|null  $user
      * @return void
      */
-    protected function fireFailedEvent($request, $user = null)
+    protected function fireFailedEvent(Request $request, Authenticatable $user = null): void
     {
         event(new Failed(config('fortify.guard'), $user, [
             Fortify::username() => $request->{Fortify::username()},
@@ -158,7 +160,7 @@ class RedirectIfTwoFactorAuthenticatable
      * @param  mixed  $user
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    protected function twoFactorChallengeResponse($request, $user)
+    protected function twoFactorChallengeResponse(Request $request, $user): Response
     {
         $request->session()->put([
             'login.id' => $user->getKey(),

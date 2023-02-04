@@ -12,7 +12,7 @@ class ViteService extends Vite
      * @param  string  $url
      * @return string
      */
-    protected function makeScriptTag($url)
+    protected function makeScriptTag(string $url): string
     {
         return sprintf('<script type="module" src="%s" data-turbolinks-eval="false"></script>', $url);
     }
