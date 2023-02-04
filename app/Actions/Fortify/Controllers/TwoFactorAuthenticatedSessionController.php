@@ -2,8 +2,8 @@
 
 namespace App\Actions\Fortify\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\TwoFactorLoginResponse;

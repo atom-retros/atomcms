@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ArticleCommentFormRequest;
 use App\Models\WebsiteArticle;
 use App\Models\WebsiteArticleComment;
+use Illuminate\Http\RedirectResponse;
 
 class WebsiteArticleCommentsController extends Controller
 {

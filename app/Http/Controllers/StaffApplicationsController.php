@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use App\Http\Requests\StaffApplicationFormRequest;
 use App\Models\WebsiteOpenPosition;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class StaffApplicationsController extends Controller
 {

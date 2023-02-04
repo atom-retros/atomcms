@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Closure;
 use App\Models\WebsiteBetaCode;
+use Closure;
 use Illuminate\Contracts\Validation\InvokableRule;
 
 class BetaCodeRule implements InvokableRule

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use App\Http\Resources\OnlineUserCountResource;
 use App\Http\Resources\OnlineUsersResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Http\Response;
 
 class HotelApiController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Response;
 use App\Models\WebsiteArticle;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class MeController extends Controller

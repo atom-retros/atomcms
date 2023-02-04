@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Closure;
 use App\Models\WebsiteWordfilter;
+use Closure;
 use Illuminate\Contracts\Validation\InvokableRule;
 use Illuminate\Support\Str;
 
