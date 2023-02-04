@@ -108,7 +108,8 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
         // Rare values routes
         Route::get('/values', [WebsiteRareValuesController::class, 'index'])->name('values.index');
         Route::post('/values/search', [WebsiteRareValuesController::class, 'search'])->name('values.search');
-        Route::get('/values/{category}', [WebsiteRareValuesController::class, 'category'])->name('values.category');
+        Route::get('/values/category/{category}', [WebsiteRareValuesController::class, 'category'])->name('values.category');
+        Route::get('/values/{value}', [WebsiteRareValuesController::class, 'value'])->name('values.value');
 
         // Client route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {

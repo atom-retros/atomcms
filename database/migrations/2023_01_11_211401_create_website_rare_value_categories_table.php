@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('website_rare_value_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('badge');
             $table->timestamps();
         });
     }

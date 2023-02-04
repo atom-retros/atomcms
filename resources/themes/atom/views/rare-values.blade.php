@@ -4,7 +4,7 @@
     <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
         <div class="flex flex-col gap-y-4">
             @foreach($categories as $category)
-                <x-content.content-section icon="camera-icon">
+                <x-content.content-section :icon="$category->badge">
                     <x-slot:title>
                         {{ $category->name }}
                     </x-slot:title>
@@ -24,7 +24,13 @@
                                 </div>
                                 <div class="flex flex-col w-full">
                                     <div class="font-bold text-gray-700 dark:text-gray-200 truncate flex items-center gap-x-[5px]">
-                                        {{ $rare->name }}
+                                        @if($rare->item_id)
+                                            <a href="{{ route('values.value', $rare) }}" class="underline">
+                                                {{ $rare->name }}
+                                            </a>
+                                        @else
+                                            {{ $rare->name }}
+                                        @endif
 
                                         @if($rare->is_ltd)
                                             <img class="w-4 h-4" src="{{ asset('/assets/images/icons/ltd.png') }}" alt="">
@@ -34,7 +40,7 @@
 
                                     <div class="w-full bg-yellow-400 rounded h-[35px] flex items-center mt-2">
                                         <div class="bg-yellow-500 rounded-l w-1/3 px-4 h-full flex items-center justify-center">
-                                            <img src="https://habbias.no/assets/images/icons/credits.png" alt="">
+                                            <img src="{{ asset('assets/images/icons/currency/credits.png') }}" alt="">
                                         </div>
 
                                         <p class="w-full text-center truncate">

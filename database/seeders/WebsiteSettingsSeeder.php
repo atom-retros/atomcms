@@ -220,6 +220,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/ms-swf/dcr/icons',
                 'comment' => 'The path to the rare values icons',
             ],
+            [
+                'key' => 'enable_caching',
+                'value' => '0',
+                'comment' => 'Determines whether the cache is enabled or not',
+            ],
+            [
+                'key' => 'cache_timer',
+                'value' => '30',
+                'comment' => 'Determines how long a cache will last before being refreshed',
+            ],
         ];
 
         foreach ($settings as $setting) {
