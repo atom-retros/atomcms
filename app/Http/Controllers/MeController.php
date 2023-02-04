@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\WebsiteArticle;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 

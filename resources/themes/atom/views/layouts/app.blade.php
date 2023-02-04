@@ -1,78 +1,81 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="turbolinks-cache-control" content="no-cache">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ setting('hotel_name') }} - @stack('title')</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" type="image/gif" sizes="18x17" href="{{ asset('assets/images/home_icon.gif') }}">
+    <title>{{ setting('hotel_name') }} - @stack('title')</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="icon" type="image/gif" sizes="18x17" href="{{ asset('assets/images/home_icon.gif') }}">
 
-        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="https://unpkg.com/tippy.js@6"></script>
-        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
-        <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
 
-        @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
-        @stack('scripts')
-    </head>
+    <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
 
-    <body class="flex flex-col min-h-screen site-bg dark:bg-gray-800">
-        <x-messages.flash-messages />
+    @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
+    @stack('scripts')
+</head>
 
-        <div id="app" class="bg-gray-100 dark:bg-gray-900">
-            {{-- Top header --}}
-            @auth
-                <x-top-header />
-            @endauth
+<body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">
+    <x-messages.flash-messages />
 
-            {{-- Site Header --}}
-            <x-site-header />
+    <div id="app" class="bg-gray-100 dark:bg-gray-900">
+        {{-- Top header --}}
+        @auth
+            <x-top-header />
+        @endauth
 
-            {{-- Navigation --}}
-            <nav class="relative bg-white shadow dark:bg-gray-900">
-                {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
-                <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
-                    <div class="h-full w-full">
-                        <x-navigation.mobile-menu />
+        {{-- Site Header --}}
+        <x-site-header />
 
-                        <x-navigation.navigation-menu />
-                    </div>
+        {{-- Navigation --}}
+        <nav class="relative bg-white shadow dark:bg-gray-900">
+            {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
+            <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
+                <div class="h-full w-full">
+                    <x-navigation.mobile-menu />
 
-                    <x-navigation.theme-mode-switcher />
-                    <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png" alt="">
-                    </x-navigation.language-selector>
+                    <x-navigation.navigation-menu />
                 </div>
-            </nav>
 
-            {{-- Content --}}
-            <main class="overflow-hidden site-bg">
-                <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8 mt-10 md:mt-0">
-                    {{ $slot }}
-                </div>
-            </main>
-        </div>
+                <x-navigation.theme-mode-switcher />
+                <x-navigation.language-selector>
+                    <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
+                        alt="">
+                </x-navigation.language-selector>
+            </div>
+        </nav>
 
-        <x-footer />
+        {{-- Content --}}
+        <main class="overflow-hidden site-bg">
+            <div class="mx-auto mt-10 grid max-w-7xl grid-cols-12 gap-x-3 gap-y-8 p-6 md:mt-0">
+                {{ $slot }}
+            </div>
+        </main>
+    </div>
 
-        @if(setting('cms_color_mode') === 'dark')
-            <script>
-                if(localStorage.getItem("theme") === null) {
-                    document.documentElement.classList.add("dark");
-                    localStorage.setItem("theme", 'dark');
-                }
-            </script>
-        @endif
+    <x-footer />
 
-        @stack('javascript')
-    </body>
+    @if (setting('cms_color_mode') === 'dark')
+        <script>
+            if (localStorage.getItem("theme") === null) {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", 'dark');
+            }
+        </script>
+    @endif
+
+    @stack('javascript')
+</body>
+
 </html>

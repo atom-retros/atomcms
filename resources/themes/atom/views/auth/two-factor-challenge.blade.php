@@ -11,41 +11,43 @@
                 {{ __('Enter your 2-factor authentication code provided on your by the authentication app on your mobile phone.') }}
             </x-slot:under-title>
 
-                <form action="/two-factor-challenge" method="POST">
-                    @csrf
+            <form action="/two-factor-challenge" method="POST">
+                @csrf
 
-                    <div id="twoFactorCode">
-                        <x-form.label for="code">
-                            {{ __('Code') }}
+                <div id="twoFactorCode">
+                    <x-form.label for="code">
+                        {{ __('Code') }}
 
-                            <x-slot:info>
-                                {{ __('Enter the code from your authentication app') }}
-                            </x-slot:info>
-                        </x-form.label>
+                        <x-slot:info>
+                            {{ __('Enter the code from your authentication app') }}
+                        </x-slot:info>
+                    </x-form.label>
 
-                        <x-form.input name="code" placeholder="{{ __('Code') }}" :autofocus="true" />
-                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">{{ __('Lost access to your 2FA codes? Click here to use a recovery code') }}</small>
-                    </div>
+                    <x-form.input name="code" placeholder="{{ __('Code') }}" :autofocus="true" />
+                    <small onclick="toggleRecoveryCodeField()"
+                        class="italic text-gray-600 hover:cursor-pointer hover:underline">{{ __('Lost access to your 2FA codes? Click here to use a recovery code') }}</small>
+                </div>
 
-                    <div id="recoveryCode">
-                        <x-form.label for="recovery_code">
-                            {{ __('Recovery code') }}
+                <div id="recoveryCode">
+                    <x-form.label for="recovery_code">
+                        {{ __('Recovery code') }}
 
-                            <x-slot:info>
-                                {{ __('In case you dont have access to your two-factor authentication code, you can use one of your recovery codes.') }}
-                            </x-slot:info>
-                        </x-form.label>
+                        <x-slot:info>
+                            {{ __('In case you dont have access to your two-factor authentication code, you can use one of your recovery codes.') }}
+                        </x-slot:info>
+                    </x-form.label>
 
-                        <x-form.input name="recovery_code" :required="false" placeholder="{{ __('Recovery code') }}" />
-                        <small onclick="toggleRecoveryCodeField()" class="italic text-gray-600 hover:underline hover:cursor-pointer">{{ __('Regained access to your 2FA codes? Click here to use your authentication app') }}</small>
-                    </div>
+                    <x-form.input name="recovery_code" :required="false" placeholder="{{ __('Recovery code') }}" />
+                    <small onclick="toggleRecoveryCodeField()"
+                        class="italic text-gray-600 hover:cursor-pointer hover:underline">{{ __('Regained access to your 2FA codes? Click here to use your authentication app') }}</small>
+                </div>
 
-                    <div class="flex justify-end">
-                        <x-form.secondary-button classes="md:w-1/4 mt-4">
-                            {{ __('Confirm 2FA') }}
-                        </x-form.secondary-button>
-                    </div>
-                </form>
+                <div class="flex justify-end">
+                    <x-form.secondary-button classes="md:w-1/4 mt-4">
+                        {{ __('Confirm 2FA') }}
+                    </x-form.secondary-button>
+                </div>
+            </form>
         </x-content.content-section>
     </div>
 
@@ -55,7 +57,7 @@
             let showRecoveryCodeField = false;
 
             function toggleRecoveryCodeField() {
-                if(!showRecoveryCodeField) {
+                if (!showRecoveryCodeField) {
                     document.querySelector('#twoFactorCode').style.display = 'none';
                     document.querySelector('#recoveryCode').style.display = 'block';
 

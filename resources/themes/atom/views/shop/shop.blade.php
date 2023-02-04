@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
+    <div class="col-span-12 flex flex-col gap-y-3 md:col-span-3">
         <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
@@ -31,13 +31,13 @@
                     {{ __('To purchase items from the :hotel shop, please visit our Discord and contact the owner of :hotel Hotel to make your purchase', ['hotel' => setting('hotel_name')]) }}
                 </p>
 
-               <div class="mt-4">
+                <div class="mt-4">
                     <a href="{{ setting('discord_invitation_link') }}" target="_blank">
                         <x-form.secondary-button>
                             {{ __('Take me to the :hotel Discord', ['hotel' => setting('hotel_name')]) }}
                         </x-form.secondary-button>
                     </a>
-               </div>
+                </div>
             </div>
         </x-content.content-section>
     </div>

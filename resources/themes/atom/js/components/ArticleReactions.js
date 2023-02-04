@@ -1,121 +1,147 @@
-import Alpine from 'alpinejs'
+import Alpine from "alpinejs";
 
 const ArticleReactions = {
     init() {
-        document.addEventListener('alpine:init', () => this.startComponent())
+        document.addEventListener("alpine:init", () => this.startComponent());
     },
 
     startComponent() {
-        Alpine.data('reactions', (myReactions = [], articleReactions = [], url = '') => ({
-            url,
-            myReactions,
-            articleReactions,
-            allReactions: [],
-            isAuthenticated: false,
+        Alpine.data(
+            "reactions",
+            (myReactions = [], articleReactions = [], url = "") => ({
+                url,
+                myReactions,
+                articleReactions,
+                allReactions: [],
+                isAuthenticated: false,
 
-            init() {
-                this.treatArticleReactions()
-                this.allReactions = window.App.defaultReactions
-                this.isAuthenticated = window.App.isAuthenticated
+                init() {
+                    this.treatArticleReactions();
+                    this.allReactions = window.App.defaultReactions;
+                    this.isAuthenticated = window.App.isAuthenticated;
 
-                this.dispatchFlowbiteEvent()
-            },
+                    this.dispatchFlowbiteEvent();
+                },
 
-            treatArticleReactions() {
-                let articleReactions = this.articleReactions
+                treatArticleReactions() {
+                    let articleReactions = this.articleReactions;
 
-                this.articleReactions = []
+                    this.articleReactions = [];
 
-                Object.entries(articleReactions).forEach(reactionData => {
-                    let reactionName = reactionData[0],
-                        reactions = Object.values(reactionData[1])
+                    Object.entries(articleReactions).forEach((reactionData) => {
+                        let reactionName = reactionData[0],
+                            reactions = Object.values(reactionData[1]);
 
-                    this.articleReactions.push({
-                        id: this.generateVirtualReactionId(reactionName),
-                        name: reactionName,
-                        count: reactions.length,
-                        users: reactions.map(reaction => reaction.user?.username ?? '')
-                    })
-                })
-            },
+                        this.articleReactions.push({
+                            id: this.generateVirtualReactionId(reactionName),
+                            name: reactionName,
+                            count: reactions.length,
+                            users: reactions.map(
+                                (reaction) => reaction.user?.username ?? ""
+                            ),
+                        });
+                    });
+                },
 
-            toggleReaction(reaction) {
-                if(!this.url.length || !this.isAuthenticated) return
+                toggleReaction(reaction) {
+                    if (!this.url.length || !this.isAuthenticated) return;
 
-                axios.post(this.url, { reaction }).then(response => {
-                    if(!response.data.success) return
+                    axios.post(this.url, { reaction }).then((response) => {
+                        if (!response.data.success) return;
 
-                    if(!response.data.added) {
-                        this.removeReaction(reaction, response.data.username)
-                        return
+                        if (!response.data.added) {
+                            this.removeReaction(
+                                reaction,
+                                response.data.username
+                            );
+                            return;
+                        }
+
+                        this.addReaction(reaction, response.data.username);
+                    });
+                },
+
+                addReaction(name, username) {
+                    this.myReactions.push(name);
+
+                    let existingReaction = this.getReactionDataFromName(name);
+
+                    if (existingReaction) {
+                        existingReaction.count++;
+                        existingReaction.users.push(username);
+                        return;
                     }
 
-                    this.addReaction(reaction, response.data.username)
-                })
-            },
+                    this.articleReactions.push({
+                        id: this.generateVirtualReactionId(name),
+                        name,
+                        count: 1,
+                        users: [username],
+                    });
 
-            addReaction(name, username) {
-                this.myReactions.push(name)
+                    this.dispatchFlowbiteEvent();
+                },
 
-                let existingReaction = this.getReactionDataFromName(name)
+                removeReaction(name, username) {
+                    this.myReactions.splice(this.myReactions.indexOf(name), 1);
 
-                if(existingReaction) {
-                    existingReaction.count++
-                    existingReaction.users.push(username)
-                    return
-                }
+                    let reactionData = this.getReactionDataFromName(name);
 
-                this.articleReactions.push({
-                    id: this.generateVirtualReactionId(name),
-                    name,
-                    count: 1,
-                    users: [username]
-                })
+                    if (reactionData.count > 1) {
+                        reactionData.count--;
+                        reactionData.users.splice(
+                            reactionData.users.indexOf(username),
+                            1
+                        );
+                        return;
+                    }
 
-                this.dispatchFlowbiteEvent()
-            },
+                    this.$nextTick(() => {
+                        this.articleReactions.splice(
+                            this.articleReactions.indexOf(reactionData),
+                            1
+                        );
+                    });
+                },
 
-            removeReaction(name, username) {
-                this.myReactions.splice(this.myReactions.indexOf(name), 1)
+                generateVirtualReactionId(name) {
+                    return name + Math.floor(Math.random() * 1000);
+                },
 
-                let reactionData = this.getReactionDataFromName(name)
+                canAddReactionFromModal(name) {
+                    return (
+                        !this.userHasReaction(name) &&
+                        !this.articleHasReaction(name)
+                    );
+                },
 
-                if(reactionData.count > 1) {
-                    reactionData.count--
-                    reactionData.users.splice(reactionData.users.indexOf(username), 1)
-                    return
-                }
+                userHasReaction(reaction) {
+                    return this.myReactions.includes(reaction.name);
+                },
 
-                this.$nextTick(() => {
-                    this.articleReactions.splice(this.articleReactions.indexOf(reactionData), 1)
-                })
-            },
+                articleHasReaction(name) {
+                    return (
+                        typeof this.getReactionDataFromName(name) !==
+                        "undefined"
+                    );
+                },
 
-            generateVirtualReactionId(name) {
-                return name + Math.floor(Math.random() * 1000)
-            },
+                getReactionDataFromName(name) {
+                    return this.articleReactions.find(
+                        (reaction) => reaction.name === name
+                    );
+                },
 
-            canAddReactionFromModal(name) {
-                return !this.userHasReaction(name) && !this.articleHasReaction(name)
-            },
+                dispatchFlowbiteEvent() {
+                    this.$nextTick(() =>
+                        document.dispatchEvent(
+                            new CustomEvent("reactions:loaded")
+                        )
+                    );
+                },
+            })
+        );
+    },
+};
 
-            userHasReaction(reaction) {
-                return this.myReactions.includes(reaction.name)
-            },
-
-            articleHasReaction(name) {
-                return typeof this.getReactionDataFromName(name) !== 'undefined'
-            },
-
-            getReactionDataFromName(name) {
-                return this.articleReactions.find(reaction => reaction.name === name)
-            },
-
-            dispatchFlowbiteEvent() {
-                this.$nextTick(() => document.dispatchEvent(new CustomEvent('reactions:loaded')))
-            }
-        }))
-    }
-}
-
-export { ArticleReactions as default }
+export { ArticleReactions as default };
