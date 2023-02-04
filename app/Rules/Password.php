@@ -39,7 +39,7 @@ class Password implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes(string $attribute, $value): bool
+    public function passes($attribute, $value): bool
     {
         $value = is_scalar($value) ? (string) $value : '';
 
@@ -138,7 +138,7 @@ class Password implements Rule
      * @param  int  $length
      * @return $this
      */
-    public function length(int $length): $this
+    public function length(int $length)
     {
         $this->length = $length;
 
@@ -150,7 +150,7 @@ class Password implements Rule
      *
      * @return $this
      */
-    public function requireUppercase(): $this
+    public function requireUppercase()
     {
         $this->requireUppercase = true;
 
@@ -162,7 +162,7 @@ class Password implements Rule
      *
      * @return $this
      */
-    public function requireNumeric(): $this
+    public function requireNumeric()
     {
         $this->requireNumeric = true;
 
@@ -174,7 +174,7 @@ class Password implements Rule
      *
      * @return $this
      */
-    public function requireSpecialCharacter(): $this
+    public function requireSpecialCharacter()
     {
         $this->requireSpecialCharacter = true;
 
@@ -187,7 +187,7 @@ class Password implements Rule
      * @param  string  $message
      * @return $this
      */
-    public function withMessage(string $message): $this
+    public function withMessage(string $message)
     {
         $this->message = $message;
 
