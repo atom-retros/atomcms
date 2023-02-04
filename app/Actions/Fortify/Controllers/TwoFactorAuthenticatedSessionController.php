@@ -22,7 +22,6 @@ class TwoFactorAuthenticatedSessionController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
      * @return void
      */
     public function __construct(StatefulGuard $guard)
@@ -32,9 +31,6 @@ class TwoFactorAuthenticatedSessionController extends Controller
 
     /**
      * Attempt to authenticate a new session using the two factor authentication code.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\TwoFactorLoginRequest  $request
-     * @return mixed
      */
     public function store(TwoFactorLoginRequest $request): RedirectResponse
     {

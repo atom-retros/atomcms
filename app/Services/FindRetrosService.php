@@ -37,8 +37,6 @@ class FindRetrosService
 
     /**
      * Check the user has voted.
-     *
-     * @return bool
      */
     public function checkHasVoted(): bool
     {
@@ -74,8 +72,6 @@ class FindRetrosService
 
     /**
      * Retrieve the find retros redirect url.
-     *
-     * @return string
      */
     public function getRedirectUri(): string
     {
