@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class WebsiteArticleSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         if (User::count() === 0) {
             User::factory()->create();

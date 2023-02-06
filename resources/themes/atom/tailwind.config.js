@@ -8,7 +8,7 @@ module.exports = {
         "./resources/**/*.js",
     ],
 
-    darkMode: 'class',
+    darkMode: "class",
 
     theme: {
         extend: {

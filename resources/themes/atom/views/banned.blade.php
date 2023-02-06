@@ -2,11 +2,11 @@
     @push('title', __('Banned'))
     <div class="col-span-12 flex justify-center">
         <div class="space-y-4 lg:w-1/2">
-            <div class="w-full rounded-md bg-red-500 text-white text-center p-2">
+            <div class="w-full rounded-md bg-red-500 p-2 text-center text-white">
                 {{ __('It seems like you are banned off :hotel', ['hotel' => setting('hotel_name')]) }}
             </div>
 
-            <div class="shadow rounded-md p-2">
+            <div class="rounded-md p-2 shadow">
                 <div class="flex justify-between">
                     <div class="flex flex-col px-1">
                         <div class="max-w-[380px]">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="hidden mr-8 lg:flex items-center">
+                    <div class="mr-8 hidden items-center lg:flex">
                         <img src="{{ asset('assets/images/angry_frank.png') }}" alt="">
                     </div>
                 </div>

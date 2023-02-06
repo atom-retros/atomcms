@@ -71,24 +71,24 @@ class Password implements Rule
 
         return match (true) {
             $this->requireUppercase
-            && !$this->requireNumeric
-            && !$this->requireSpecialCharacter => __(
+            && ! $this->requireNumeric
+            && ! $this->requireSpecialCharacter => __(
                 'The :attribute must be at least :length characters and contain at least one uppercase character.',
                 [
                     'length' => $this->length,
                 ]
             ),
             $this->requireNumeric
-            && !$this->requireUppercase
-            && !$this->requireSpecialCharacter => __(
+            && ! $this->requireUppercase
+            && ! $this->requireSpecialCharacter => __(
                 'The :attribute must be at least :length characters and contain at least one number.',
                 [
                     'length' => $this->length,
                 ]
             ),
             $this->requireSpecialCharacter
-            && !$this->requireUppercase
-            && !$this->requireNumeric => __(
+            && ! $this->requireUppercase
+            && ! $this->requireNumeric => __(
                 'The :attribute must be at least :length characters and contain at least one special character.',
                 [
                     'length' => $this->length,
@@ -96,7 +96,7 @@ class Password implements Rule
             ),
             $this->requireUppercase
             && $this->requireNumeric
-            && !$this->requireSpecialCharacter => __(
+            && ! $this->requireSpecialCharacter => __(
                 'The :attribute must be at least :length characters and contain at least one uppercase character and one number.',
                 [
                     'length' => $this->length,
@@ -104,7 +104,7 @@ class Password implements Rule
             ),
             $this->requireUppercase
             && $this->requireSpecialCharacter
-            && !$this->requireNumeric => __(
+            && ! $this->requireNumeric => __(
                 'The :attribute must be at least :length characters and contain at least one uppercase character and one special character.',
                 [
                     'length' => $this->length,
@@ -120,7 +120,7 @@ class Password implements Rule
             ),
             $this->requireNumeric
             && $this->requireSpecialCharacter
-            && !$this->requireUppercase => __(
+            && ! $this->requireUppercase => __(
                 'The :attribute must be at least :length characters and contain at least one special character and one number.',
                 [
                     'length' => $this->length,

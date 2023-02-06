@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-    public function up()
+return new class extends Migration
+{
+    public function up(): void
     {
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_permissions')) {
             Schema::rename('website_permissions', sprintf('website_permissions_%s', time()));
@@ -20,7 +21,7 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('website_permissions');
     }

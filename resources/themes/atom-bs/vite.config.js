@@ -2,18 +2,15 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import path from "path";
 
-
-
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 "resources/themes/atom-bs/sass/app.scss",
-                "resources/themes/atom-bs/js/app.js"
+                "resources/themes/atom-bs/js/app.js",
             ],
         }),
-        
-        
+
         {
             name: "blade",
             handleHotUpdate({ file, server }) {
@@ -28,9 +25,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/themes/atom-bs/js',
-            '~bootstrap': path.resolve('node_modules/bootstrap'),
-        }
+            "@": "/resources/themes/atom-bs/js",
+            "~bootstrap": path.resolve("node_modules/bootstrap"),
+        },
     },
-    
 });

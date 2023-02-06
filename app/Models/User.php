@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function currency(string $currency)
     {
-        if (!$this->relationLoaded('currencies')) {
+        if (! $this->relationLoaded('currencies')) {
             $this->load('currencies');
         }
 
@@ -98,7 +98,7 @@ class User extends Authenticatable
     {
         $referrals = 0;
 
-        if (!is_null($this->referrals)) {
+        if (! is_null($this->referrals)) {
             $referrals = $this->referrals->referrals_total;
         }
 
@@ -117,7 +117,7 @@ class User extends Authenticatable
 
     public function ssoTicket(): string
     {
-        $sso = sprintf("%s-%s", Str::replace(' ', '', setting('hotel_name')), Str::uuid());
+        $sso = sprintf('%s-%s', Str::replace(' ', '', setting('hotel_name')), Str::uuid());
 
         // Recursive function - Call itself again if the auth ticket already exists
         if (User::where('auth_ticket', $sso)->exists()) {
@@ -125,7 +125,7 @@ class User extends Authenticatable
         }
 
         $this->update([
-            'auth_ticket' => $sso
+            'auth_ticket' => $sso,
         ]);
 
         return $sso;
@@ -172,7 +172,7 @@ class User extends Authenticatable
         $codeIsValid = app(TwoFactorAuthenticationProvider::class)
             ->verify(decrypt($this->two_factor_secret), $code);
 
-        if (!$codeIsValid) {
+        if (! $codeIsValid) {
             return false;
         }
 

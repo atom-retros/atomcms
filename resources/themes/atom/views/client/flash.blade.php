@@ -1,8 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -39,7 +41,7 @@
             "external.texts.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_texts')) }}",
             "external.variables.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_variables')) }}",
             "external.figurepartlist.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuredata')) }}",
-            "flash.dynamic.avatar.download.configuration": "{{ sprintf('%s/%s/%s',config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuremap')) }}",
+            "flash.dynamic.avatar.download.configuration": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_figuremap')) }}",
             "external.override.texts.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_texts')) }}",
             "external.override.variables.txt": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.external_override_variables')) }}",
             "flash.client.url": "{{ sprintf('%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.production_folder')) }}/",
@@ -56,25 +58,31 @@
             "wmode": "opaque"
         };
 
-        swfobject.embedSWF('{{ sprintf('%s/%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.production_folder'), config('habbo.flash.habbo_swf')) }}', 'client', '100%', '100%', '11.1.0', '{{ asset('assets/js/expressInstall.swf') }}', flashvars, params, null, null);
+        swfobject.embedSWF(
+            '{{ sprintf('%s/%s/%s/%s', config('habbo.site.site_url'), config('habbo.flash.swf_base_path'), config('habbo.flash.production_folder'), config('habbo.flash.habbo_swf')) }}',
+            'client', '100%', '100%', '11.1.0', '{{ asset('assets/js/expressInstall.swf') }}', flashvars, params, null,
+            null);
     </script>
 </head>
 
 <body>
-<div id="client">
-    <habbo-client-error>
-        <div class="client-error__background-frank">
-            <div class="client-error__text-contents">
-                <h1 class="client-error__title">{{ __('You are nearly in Habbo!') }}</h1>
-                <p>{{ __('Click the yellow Hotel button below, then click on run flash` when prompted to. See you in the Hotel!') }}</p>
+    <div id="client">
+        <habbo-client-error>
+            <div class="client-error__background-frank">
+                <div class="client-error__text-contents">
+                    <h1 class="client-error__title">{{ __('You are nearly in Habbo!') }}</h1>
+                    <p>{{ __('Click the yellow Hotel button below, then click on run flash` when prompted to. See you in the Hotel!') }}
+                    </p>
+                </div>
+                <div class="client-error__hotel-button-div">
+                    <a href="https://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer"
+                        class="hotel-button">
+                        <span class="hotel-button__text">{{ __('Get flash') }}</span>
+                    </a>
+                </div>
             </div>
-            <div class="client-error__hotel-button-div">
-                <a href="https://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer" class="hotel-button">
-                    <span class="hotel-button__text">{{ __('Get flash') }}</span>
-                </a>
-            </div>
-        </div>
-    </habbo-client-error>
-</div>
+        </habbo-client-error>
+    </div>
 </body>
+
 </html>

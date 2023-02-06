@@ -1,30 +1,30 @@
-import Swiper, { Autoplay, Pagination } from "swiper"
+import Swiper, { Autoplay, Pagination } from "swiper";
 
 const AtomSliders = {
     init() {
-        document.addEventListener('turbolinks:load', () => {
-            this.initArticleSlider()
-        })
+        document.addEventListener("turbolinks:load", () => {
+            this.initArticleSlider();
+        });
     },
 
     initArticleSlider() {
-        if(!document.querySelector(".article-slider")) return
+        if (!document.querySelector(".article-slider")) return;
 
-        new Swiper('.articles-slider', {
+        new Swiper(".articles-slider", {
             modules: [Autoplay, Pagination],
             slidesPerView: 1,
             loop: true,
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true
+                pauseOnMouseEnter: true,
             },
             pagination: {
-                el: '.swiper-pagination',
+                el: ".swiper-pagination",
                 clickable: true,
-            }
-        })
-    }
-}
+            },
+        });
+    },
+};
 
-export { AtomSliders as default }
+export { AtomSliders as default };
