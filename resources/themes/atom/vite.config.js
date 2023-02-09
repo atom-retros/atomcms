@@ -2,17 +2,14 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import path from "path";
 
-
-
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 "resources/themes/atom/css/app.css",
-                "resources/themes/atom/js/app.js"
+                "resources/themes/atom/js/app.js",
             ],
         }),
-
 
         {
             name: "blade",
@@ -28,8 +25,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/themes/atom/js',
-        }
+            "@": "/resources/themes/atom/js",
+        },
     },
     css: {
         postcss: {

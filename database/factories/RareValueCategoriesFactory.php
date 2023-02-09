@@ -13,6 +13,7 @@ class RareValueCategoriesFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'badge' => $this->faker->title,
         ];
     }
 }

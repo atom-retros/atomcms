@@ -3,7 +3,6 @@
 use App\Actions\Fortify\Controllers\TwoFactorAuthenticatedSessionController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
 use App\Http\Controllers\HomeController;
@@ -11,10 +10,10 @@ use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\PhotosController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
+use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
@@ -45,14 +44,14 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
             User::where('referral_code', '=', $referral_code)->firstOrFail();
 
             return view('auth.register', [
-                'referral_code' =>  $referral_code,
+                'referral_code' => $referral_code,
             ]);
         })->name('register.referral');
     });
 
     Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function () {
-            Route::get('/me', [MeController::class, 'show'])->name('me.show');
+            Route::get('/me', MeController::class)->name('me.show');
 
             // User settings routes
             Route::prefix('settings')->group(function () {
@@ -125,8 +124,8 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
     Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
         ->middleware(
             array_filter([
-                'guest:' . config('fortify.guard'),
-                $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+                'guest:'.config('fortify.guard'),
+                $twoFactorLimiter ? 'throttle:'.$twoFactorLimiter : null,
             ])
         );
 }

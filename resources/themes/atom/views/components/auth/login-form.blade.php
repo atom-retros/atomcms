@@ -1,5 +1,5 @@
 <x-slot name="title">
-    <h2 class="font-semibold text-2xl">{{ __('Hello!') }}</h2>
+    <h2 class="text-2xl font-semibold">{{ __('Hello!') }}</h2>
     <p class="dark:text-gray-400">
         {{ __('There is currently :online users online', ['online' => DB::table('users')->where('online', '1')->count()]) }}
     </p>
@@ -13,8 +13,8 @@
             {{ __('Username') }}
         </x-form.label>
 
-        <x-form.input error-bag="login" name="username" value="{{ old('username') }}"
-                      placeholder="{{ __('Username') }}" :autofocus="true"/>
+        <x-form.input error-bag="login" name="username" value="{{ old('username') }}" placeholder="{{ __('Username') }}"
+            :autofocus="true" />
     </div>
 
     <div>
@@ -22,10 +22,10 @@
             {{ __('Password') }}
         </x-form.label>
 
-        <x-form.input error-bag="login" name="password" placeholder="{{ __('Password') }}" type="password"/>
+        <x-form.input error-bag="login" name="password" placeholder="{{ __('Password') }}" type="password" />
     </div>
 
-    @if(setting('google_recaptcha_enabled'))
+    @if (setting('google_recaptcha_enabled'))
         <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
     @endif
 
@@ -33,7 +33,7 @@
         {{ __('Login') }}
     </x-form.primary-button>
 
-    <div class="text-center font-semibold text-gray-700 text-sm dark:text-gray-400">
+    <div class="text-center text-sm font-semibold text-gray-700 dark:text-gray-400">
         <a href="{{ route('register') }}" class="hover:underline" x-on:click="open = false">
             {{ __('Dont have an account? Join now!') }}
         </a>

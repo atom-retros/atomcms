@@ -2,18 +2,18 @@
 
 namespace App\Services;
 
-use App\Models\Permission;
 use App\Models\User;
 
 /*Credits to Kani for this*/
 class RconService
 {
     protected $socket;
+
     protected $connected;
 
     protected function connect(): void
     {
-        if (!function_exists('socket_create')) {
+        if (! function_exists('socket_create')) {
             abort(500, 'Please enable sockets in your php.ini!');
         }
 
@@ -23,13 +23,13 @@ class RconService
             config('habbo.rcon.protocol')
         );
 
-        if (!$this->socket) {
+        if (! $this->socket) {
             abort(500, sprintf('socket_create() failed: reason: %s', socket_strerror(socket_last_error())));
         }
 
         $this->connected = socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'));
 
-        if (!$this->connected) {
+        if (! $this->connected) {
             abort(500, sprintf('socket_connect() failed: reason: %s', socket_strerror(socket_last_error())));
         }
     }

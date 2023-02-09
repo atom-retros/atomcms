@@ -11,10 +11,8 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         if (app()->environment('local')) {
             WebsiteRareValueCategory::factory(4)->create();

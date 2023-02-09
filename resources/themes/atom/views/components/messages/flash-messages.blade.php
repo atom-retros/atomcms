@@ -14,7 +14,7 @@
     })
 </script>
 
-@if(session()->has('message'))
+@if (session()->has('message'))
     <script>
         Toast.fire({
             icon: 'error',
@@ -45,7 +45,7 @@
     @endforeach
 @endif
 
-@if(session()->has('success'))
+@if (session()->has('success'))
     <script>
         Toast.fire({
             icon: 'success',

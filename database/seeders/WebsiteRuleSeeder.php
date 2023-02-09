@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class WebsiteRuleSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $categories = WebsiteRuleCategory::all()->pluck('id');
 
@@ -198,6 +198,5 @@ class WebsiteRuleSeeder extends Seeder
         if (WebsiteRule::doesntExist()) {
             WebsiteRule::insert($rules);
         }
-
     }
 }

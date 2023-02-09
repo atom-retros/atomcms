@@ -12,14 +12,14 @@ class AtomSetupCommand extends Command
 
     protected $description = 'Takes you through a basic setup, allowing you to define general settings';
 
-    private function progressInfo(int $step) {
+    private function progressInfo(int $step)
+    {
         $this->info(sprintf('Step %s/13', $step));
         $this->newLine();
     }
 
-    public function handle()
+    public function handle(): void
     {
-
         Artisan::call('db:seed --class=WebsiteSettingsSeeder');
 
         if ($this->option('auto') === 'false') {

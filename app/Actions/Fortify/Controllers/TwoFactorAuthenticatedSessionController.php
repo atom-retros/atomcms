@@ -2,14 +2,12 @@
 
 namespace App\Actions\Fortify\Controllers;
 
-
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
-use Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse;
-use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
 use Laravel\Fortify\Events\RecoveryCodeReplaced;
 use Laravel\Fortify\Http\Requests\TwoFactorLoginRequest;
+use Laravel\Fortify\Http\Responses\TwoFactorLoginResponse;
 
 class TwoFactorAuthenticatedSessionController extends Controller
 {
@@ -23,7 +21,6 @@ class TwoFactorAuthenticatedSessionController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
      * @return void
      */
     public function __construct(StatefulGuard $guard)
@@ -33,11 +30,8 @@ class TwoFactorAuthenticatedSessionController extends Controller
 
     /**
      * Attempt to authenticate a new session using the two factor authentication code.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\TwoFactorLoginRequest  $request
-     * @return mixed
      */
-    public function store(TwoFactorLoginRequest $request)
+    public function store(TwoFactorLoginRequest $request): TwoFactorLoginResponse
     {
         $user = $request->challengedUser();
 
