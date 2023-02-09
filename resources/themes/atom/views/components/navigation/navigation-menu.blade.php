@@ -77,7 +77,7 @@
             <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
             {{ __('Shop') }}
     </a>
-        
+
     <a href="{{ route('rules.index') }}"
         class="nav-item dark:text-gray-200 {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
         <i class="mr-1 hidden navigation-icon rules lg:inline-flex"></i>

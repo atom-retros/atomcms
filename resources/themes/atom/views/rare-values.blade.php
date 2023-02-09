@@ -26,10 +26,10 @@
                                     <div class="font-bold text-gray-700 dark:text-gray-200 truncate flex items-center gap-x-[5px]">
                                         @if($rare->item_id)
                                             <a href="{{ route('values.value', $rare) }}" class="underline">
-                                                {{ $rare->name }}
+                                                {{ strLimit($rare->name, 15) }}
                                             </a>
                                         @else
-                                            {{ $rare->name }}
+                                            {{ strLimit($rare->name, 20) }}
                                         @endif
 
                                         @if($rare->is_ltd)

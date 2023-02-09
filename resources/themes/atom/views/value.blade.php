@@ -23,11 +23,11 @@
                     @foreach($items as $item)
                         <div class="px-3 h-[100px] rounded bg-gray-200 dark:bg-gray-700 flex gap-4 items-center overflow-hidden">
                             <div class="w-12 h-12 overflow-hidden rounded-full flex items-center justify-center bg-gray-300 dark:bg-gray-800">
-                                <img src="{{ sprintf('%s/%s', setting('avatar_imager'), $item->user->look) }}&headonly=1" alt="">
+                                <img src="{{ sprintf('%s/%s', setting('avatar_imager'), $item['user']->look) }}&headonly=1" alt="">
                             </div>
 
                             <div class="flex flex-col gap-y-2">
-                                <p class="dark:text-gray-100">{{ $item->user->username }}</p>
+                                <p class="dark:text-gray-100">{{ $item['user']->username }}</p>
 
                                 <div class="w-full bg-yellow-400 rounded h-[35px] flex items-center">
                                     <div class="bg-yellow-500 rounded-l px-2 h-full flex items-center justify-center">
@@ -35,7 +35,7 @@
                                     </div>
 
                                     <p class="w-full text-center truncate text-sm">
-                                        {{ $item->count() ?? 0 }} {{ __('owned') }}
+                                        {{ $item['item_count'] ?? 0 }} {{ __('owned') }}
                                     </p>
                                 </div>
                             </div>

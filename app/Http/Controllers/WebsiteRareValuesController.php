@@ -6,8 +6,10 @@ use App\Http\Requests\RareSearchFormRequest;
 use App\Models\Item;
 use App\Models\WebsiteRareValue;
 use App\Models\WebsiteRareValueCategory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
 
 class WebsiteRareValuesController extends Controller
 {
@@ -19,7 +21,7 @@ class WebsiteRareValuesController extends Controller
         ]);
     }
 
-    public function category(int $id)
+    public function category(int $id): View|RedirectResponse
     {
         if (WebsiteRareValueCategory::where('id', '=', $id)->doesntExist()) {
             return redirect()->back()->withErrors([
@@ -33,7 +35,7 @@ class WebsiteRareValuesController extends Controller
         ]);
     }
 
-    public function search(RareSearchFormRequest $request)
+    public function search(RareSearchFormRequest $request): View|RedirectResponse
     {
         if (WebsiteRareValue::where('name', 'like', '%' . $request->input('search') . '%')->doesntExist()) {
             return redirect()->back()->withErrors([
@@ -52,24 +54,35 @@ class WebsiteRareValuesController extends Controller
         ]);
     }
 
-    public function value(WebsiteRareValue $value)
+    public function value(WebsiteRareValue $value): View
     {
-        if ((bool)setting('enable_caching')) {
-            Cache::add('allItems', Item::all(), now()->addMinutes(setting('cache_timer')));
+        $query = Item::query()->select(['id', 'user_id', 'item_id']);
+        $query->with(['user' => function($query) {
+            $query->select(['id', 'username', 'look']);
+        }]);
 
-            $items = Cache::get('allItems')->filter(function($item) use ($value) {
-                return $item->item_id === $value->item_id;
+        if ((bool)setting('enable_caching')) {
+            $items = Cache::remember('allItems_' . $value->id, setting('cache_timer'), function() use ($query, $value) {
+                return $query->get()->filter(function($item) use ($value) {
+                    return $item->item_id === $value->item_id;
+                });
             });
         } else {
-            $items = Item::all()->filter(function($item) use ($value) {
+            $items = $query->get()->filter(function($item) use ($value) {
                 return $item->item_id === $value->item_id;
             });
         }
 
+        $itemsPerUser = $items->groupBy('user_id')->map(function($group) {
+            return [
+                'user' => $group->first()->user,
+                'item_count' => $group->count(),
+            ];
+        });
 
         return view('value', [
             'value' => $value,
-            'items' => $items,
+            'items' => $itemsPerUser,
         ]);
     }
 }
