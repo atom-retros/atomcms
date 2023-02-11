@@ -10,6 +10,7 @@ import "./bootstrap";
 import "swiper/css";
 import "swiper/css/pagination";
 import Alpine from "alpinejs";
+import Focus from '@alpinejs/focus';
 import ThemeSwitcher from "./components/ThemeSwitcher.js";
 import ArticleReactions from "./components/ArticleReactions.js";
 import AtomSliders from "./components/AtomSliders.js";
@@ -17,5 +18,5 @@ import AtomSliders from "./components/AtomSliders.js";
 ThemeSwitcher.init();
 ArticleReactions.init();
 AtomSliders.init();
-
+Alpine.plugin(Focus);
 Alpine.start();
