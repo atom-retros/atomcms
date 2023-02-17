@@ -14,4 +14,18 @@ class WebsiteRareValue extends Model
     {
         return $this->belongsTo(WebsiteRareValueCategory::class, 'category_id');
     }
+
+    public function item(): BelongsTo
+    {
+        return $this->belongsTo(CatalogItem::class, 'item_id', 'item_ids');
+    }
+
+    public function isLimitedEdition(): bool
+    {
+        if (is_null($this->item)) {
+            return false;
+        }
+
+        return $this->item->limited_stack > 0;
+    }
 }

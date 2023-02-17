@@ -15,7 +15,8 @@
             @else
                 {{ strLimit($rare->name, 20) }}
             @endif
-            @if($rare->is_ltd)
+
+            @if($rare->isLimitedEdition())
                 <img class="w-4 h-4" src="{{ asset('/assets/images/icons/ltd.png') }}" alt="">
             @endif
         </div>
