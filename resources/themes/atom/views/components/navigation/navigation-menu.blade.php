@@ -38,39 +38,44 @@
         <x-icons.chevron-down />
     </button>
 
-    <div id="community-dropdown" class="z-10 block hidden w-44 bg-white py-2 text-sm shadow dark:bg-gray-800">
-        <a href="{{ route('article.index') }}" class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+    <div id="community-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
+        <a href="{{ route('article.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
             {{ __('Articles') }}
         </a>
 
-        <a href="{{ route('staff.index') }}" class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+        <a href="{{ route('staff.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
             {{ __('Staff') }}
         </a>
 
-        <a href="{{ route('teams.index') }}" class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+        <a href="{{ route('teams.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
             {{ __('Teams') }}
         </a>
 
-        <a href="{{ route('staff-applications.index') }}"
-            class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+        <a href="{{ route('staff-applications.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
             {{ __('Staff applications') }}
         </a>
 
-        <a href="{{ route('photos.index') }}" class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+        <a href="{{ route('photos.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
             {{ __('Photos') }}
         </a>
     </div>
 
     <a href="{{ route('leaderboard.index') }}"
-        class="nav-item dark:text-gray-200 {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-        <i class="mr-1 hidden navigation-icon leaderboards lg:inline-flex"></i>
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+        <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
         {{ __('Leaderboards') }}
     </a>
 
+    <a href="{{ route('values.index') }}"
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('values.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+        <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
+        {{ __('Rare values') }}
+    </a>
+
     <a href="{{ route('shop.index') }}"
-        class="nav-item dark:text-gray-200 {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-        <i class="mr-1 hidden navigation-icon shop lg:inline-flex"></i>
-        {{ __('Shop') }}
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+            <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
+            {{ __('Shop') }}
     </a>
 
     <a href="{{ route('rules.index') }}"
