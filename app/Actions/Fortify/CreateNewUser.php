@@ -2,12 +2,12 @@
 
 namespace App\Actions\Fortify;
 
+use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Models\User;
 use App\Models\WebsiteBetaCode;
 use App\Providers\RouteServiceProvider;
 use App\Rules\BetaCodeRule;
 use App\Rules\GoogleRecaptchaRule;
-use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Rules\WebsiteWordfilterRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers
             ->orWhere('ip_register', '=', $ip)
             ->count();
 
-        if ($matchingIpCount >= (int)setting('max_accounts_per_ip')) {
+        if ($matchingIpCount >= (int) setting('max_accounts_per_ip')) {
             throw ValidationException::withMessages([
                 'registration' => __('You have reached the max amount of allowed account'),
             ]);
@@ -58,16 +58,16 @@ class CreateNewUser implements CreatesNewUsers
             'ip_register' => request()->ip(),
             'ip_current' => request()->ip(),
             'auth_ticket' => '',
-            'home_room' => (int)setting('hotel_home_room'),
+            'home_room' => (int) setting('hotel_home_room'),
         ]);
 
         $user->update([
-            'referral_code' => sprintf('%s%s', $user->id, Str::random(5))
+            'referral_code' => sprintf('%s%s', $user->id, Str::random(5)),
         ]);
 
         if (setting('requires_beta_code')) {
             WebsiteBetaCode::where('code', '=', $input['beta_code'])->update([
-                'user_id' => $user->id
+                'user_id' => $user->id,
             ]);
         }
 
@@ -110,7 +110,7 @@ class CreateNewUser implements CreatesNewUsers
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
         ];
 
-        $messages =  [
+        $messages = [
             'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),
             'g-recaptcha-response.string' => __('The google recaptcha was submitted with an invalid type'),
         ];

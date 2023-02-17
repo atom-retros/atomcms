@@ -7,7 +7,7 @@
         <span id="guildName"></span>
     </x-slot:under-title>
 
-    <div class=" text-sm dark:text-gray-200">
+    <div class="text-sm dark:text-gray-200">
         <div id="guildUsers" class="h-[129px] overflow-auto"> </div>
         <a id="guildInvite" target="blank">
             <x-form.secondary-button classes="mt-3">

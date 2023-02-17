@@ -1,4 +1,4 @@
-<div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 items-center flex justify-between py-2 dark:bg-gray-900">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 dark:bg-gray-900 sm:px-6 lg:px-8">
     <div class="flex gap-x-6">
         <x-top-header-currency icon="nav-credit-icon">
             <x-slot:currency>
@@ -27,29 +27,30 @@
 
     <div class="flex w-full justify-between md:w-auto">
         @auth
-            @if(hasPermission('view_server_logs') || hasPermission('housekeeping_access'))
-            <button
-                id="administrationDropdown"
-                data-dropdown-toggle="administration-dropdown"
-                class="h-10 text-sm font-semibold text-red-700 flex items-center gap-x-1 ml-5 md:ml-0">
-                {{ __('Administration') }}
+            @if (hasPermission('view_server_logs') || hasPermission('housekeeping_access'))
+                <button id="administrationDropdown" data-dropdown-toggle="administration-dropdown"
+                    class="ml-5 flex h-10 items-center gap-x-1 text-sm font-semibold text-red-700 md:ml-0">
+                    {{ __('Administration') }}
 
-                <x-icons.chevron-down />
-            </button>
+                    <x-icons.chevron-down />
+                </button>
 
-            <div id="administration-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
-                @if(hasPermission('view_server_logs'))
-                    <a data-turbolinks="false" href="/log-viewer" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
-                        {{ __('Error logs') }}
-                    </a>
-                @endif
+                <div id="administration-dropdown"
+                    class="z-10 block hidden w-44 bg-white py-2 text-sm shadow dark:bg-gray-800">
+                    @if (hasPermission('view_server_logs'))
+                        <a data-turbolinks="false" href="/log-viewer" target="_blank"
+                            class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                            {{ __('Error logs') }}
+                        </a>
+                    @endif
 
-                @if(hasPermission('housekeeping_access'))
-                    <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
-                        {{ __('Housekeeping') }}
-                    </a>
-                @endif
-            </div>
+                    @if (hasPermission('housekeeping_access'))
+                        <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank"
+                            class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                            {{ __('Housekeeping') }}
+                        </a>
+                    @endif
+                </div>
             @endif
         @endauth
 

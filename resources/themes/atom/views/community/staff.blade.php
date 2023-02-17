@@ -3,7 +3,7 @@
 
     <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
         <div class="flex flex-col gap-y-4">
-            @foreach($employees as $employee)
+            @foreach ($employees as $employee)
                 <x-content.staff-content-section :badge="$employee->badge" :color="$employee->staff_color">
                     <x-slot:title>
                         {{ $employee->rank_name }}
@@ -13,13 +13,13 @@
                         {{ $employee->job_description }}
                     </x-slot:under-title>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @foreach($employee->users as $staff)
-                            <x-community.staff-card :user="$staff"/>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        @foreach ($employee->users as $staff)
+                            <x-community.staff-card :user="$staff" />
                         @endforeach
                     </div>
 
-                    @if(count($employee->users) === 0)
+                    @if (count($employee->users) === 0)
                         <div class="text-center dark:text-gray-400">
                             {{ __('We currently have no staff in this position') }}
                         </div>
@@ -39,7 +39,7 @@
                 {{ __('About the :hotel staff', ['hotel' => setting('hotel_name')]) }}
             </x-slot:under-title>
 
-            <div class="px-2 text-sm dark:text-gray-200 space-y-4">
+            <div class="px-2 text-sm space-y-4 dark:text-gray-200">
                 <p>
                     {{ __('The :hotel staff team is one big happy family, each staff member has a different role and duties to fulfill.', ['hotel' => setting('hotel_name')]) }}
                 </p>
@@ -59,13 +59,16 @@
                 {{ __('How to join the staff team', ['hotel' => setting('hotel_name')]) }}
             </x-slot:under-title>
 
-            <div class="px-2 text-sm dark:text-gray-200 space-y-4">
+            <div class="px-2 text-sm space-y-4 dark:text-gray-200">
                 <p>
                     {{ __('Every now and then staff applications may open up. Once they do we always make sure to post a news article explaining the process - So make sure you keep an eye out for those in you are interested in joining the :hotel staff team.', ['hotel' => setting('hotel_name')]) }}
                 </p>
 
                 <p>
-                    {!! __('You can occasionally also look at the :startTag Staff application page :endTag which will show you all of our current open positions.', ['startTag' => '<a href="/community/staff-applications" class="underline">', 'endTag' => "</a>"]) !!}
+                    {!! __(
+                        'You can occasionally also look at the :startTag Staff application page :endTag which will show you all of our current open positions.',
+                        ['startTag' => '<a href="/community/staff-applications" class="underline">', 'endTag' => '</a>'],
+                    ) !!}
                 </p>
             </div>
         </x-content.content-section>

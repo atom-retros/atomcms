@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class WebsiteTeamSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $teams = [
             ['rank_name' => 'DJ'],

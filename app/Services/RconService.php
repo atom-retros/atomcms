@@ -9,24 +9,6 @@ class RconService
     protected $socket;
     protected bool $connected = false;
 
-
-    public function sendPacket(string $key, $data = null)
-    {
-        if (!$this->connect()) {
-            return false;
-        }
-
-        $data = json_encode(['key' => $key, 'data' => $data]);
-
-        if (!@socket_write($this->socket, $data, strlen($data))) {
-            abort(500, sprintf(socket_strerror(socket_last_error($this->socket))));
-        }
-
-        $response = socket_read($this->socket, 2048);
-
-        return json_decode($response);
-    }
-
     public function sendGift(User $user, int $item_id, string $message = 'Here is a gift.')
     {
         return $this->sendPacket('sendgift', [
@@ -157,5 +139,22 @@ class RconService
         }
 
         return $this->connected = true;
+    }
+
+    public function sendPacket(string $key, $data = null)
+    {
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $data = json_encode(['key' => $key, 'data' => $data]);
+
+        if (!@socket_write($this->socket, $data, strlen($data))) {
+            abort(500, sprintf(socket_strerror(socket_last_error($this->socket))));
+        }
+
+        $response = socket_read($this->socket, 2048);
+
+        return json_decode($response);
     }
 }

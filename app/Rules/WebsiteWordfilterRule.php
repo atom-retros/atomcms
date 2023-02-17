@@ -3,12 +3,13 @@
 namespace App\Rules;
 
 use App\Models\WebsiteWordfilter;
+use Closure;
 use Illuminate\Contracts\Validation\InvokableRule;
 use Illuminate\Support\Str;
 
 class WebsiteWordfilterRule implements InvokableRule
 {
-    public function __invoke($attribute, $value, $fail)
+    public function __invoke(string $attribute, mixed $value, Closure $fail)
     {
         $words = WebsiteWordfilter::get()
             ->pluck('word')
