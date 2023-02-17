@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsitePermission;
 use App\Models\WebsiteRareValueCategory;
 use Illuminate\Database\Seeder;
 
