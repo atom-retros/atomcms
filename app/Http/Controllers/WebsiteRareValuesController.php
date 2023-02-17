@@ -16,7 +16,7 @@ class WebsiteRareValuesController extends Controller
     public function index()
     {
         return view('rare-values', [
-            'categories' => WebsiteRareValueCategory::with('furniture')->get(),
+            'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture')->get(),
             'categoriesNav' => WebsiteRareValueCategory::all(),
         ]);
     }
@@ -30,7 +30,7 @@ class WebsiteRareValuesController extends Controller
         }
 
         return view('rare-values', [
-            'categories' => WebsiteRareValueCategory::whereId($id)->with('furniture')->get(),
+            'categories' => WebsiteRareValueCategory::orderBy('priority')->whereId($id)->with('furniture')->get(),
             'categoriesNav' => WebsiteRareValueCategory::all(),
         ]);
     }
@@ -39,7 +39,7 @@ class WebsiteRareValuesController extends Controller
     {
         $searchTerm = $request->input('search');
 
-        $categories = WebsiteRareValueCategory::whereHas('furniture', function($query) use ($searchTerm) {
+        $categories = WebsiteRareValueCategory::orderBy('priority')->whereHas('furniture', function($query) use ($searchTerm) {
             $query->where('name', 'like', '%' . $searchTerm . '%');
         })
             ->with(['furniture' => function($query) use ($searchTerm) {

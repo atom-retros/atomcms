@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name')->unique();
             $table->string('badge');
+            $table->unsignedInteger('priority')->default(1);
             $table->timestamps();
         });
     }
