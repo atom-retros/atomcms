@@ -12,11 +12,10 @@ return new class extends Migration {
             $table->unsignedBigInteger('category_id');
             $table->integer('item_id')->nullable()->index();
             $table->string('name')->index();
-            $table->string('rare_type', 32);
             $table->boolean('is_ltd')->default(false);
             $table->string('credit_value')->nullable();
             $table->string('currency_value')->nullable();
-            $table->string('currency_value_type')->default('diamonds');
+            $table->string('currency_type')->default('diamonds');
             $table->string('furniture_icon');
             $table->timestamps();
 

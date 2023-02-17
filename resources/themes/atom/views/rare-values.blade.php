@@ -54,7 +54,7 @@
                                         </div>
 
                                         <p class="w-full text-center truncate">
-                                            {{ $rare->currency_value ?? 0 }} {{ $rare->currency_value_type }}
+                                            {{ $rare->currency_value ?? 0 }} {{ $rare->currency_type }}
                                         </p>
                                     </div>
                                 </div>

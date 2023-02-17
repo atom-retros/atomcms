@@ -13,19 +13,14 @@ class RareValuesFactory extends Factory
 
     public function definition(): array
     {
-        $types = collect(RareValueTypes::cases())->map(function ($item) {
-            return $item->value;
-        })->flatten()->toArray();
-
         $randNumber = rand(0, 10000);
 
         return [
             'category_id' => WebsiteRareValueCategory::inRandomOrder()->first()->id,
             'name' => $this->faker->name,
-            'rare_type' => $this->faker->randomElement($types),
             'credit_value' => $randNumber > 0 ? $randNumber : null,
             'currency_value' => $randNumber > 0 ? $randNumber : null,
-            'currency_value_type' => $this->faker->randomElement(['duckets', 'diamonds', 'points']),
+            'currency_type' => $this->faker->randomElement(['duckets', 'diamonds', 'points']),
             'furniture_icon' => 'throne_icon.png',
         ];
     }
