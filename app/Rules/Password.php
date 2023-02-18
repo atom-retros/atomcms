@@ -37,7 +37,7 @@ class Password implements Rule
      *
      * @param  mixed  $value
      */
-    public function passes(string $attribute, $value): bool
+    public function passes($attribute, $value): bool
     {
         $value = is_scalar($value) ? (string) $value : '';
 
@@ -131,7 +131,7 @@ class Password implements Rule
     /**
      * Set the minimum length of the password.
      */
-    public function length(int $length): static
+    public function length(int $length)
     {
         $this->length = $length;
 
