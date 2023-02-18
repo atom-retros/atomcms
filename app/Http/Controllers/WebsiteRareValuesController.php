@@ -7,13 +7,12 @@ use App\Models\Item;
 use App\Models\WebsiteRareValue;
 use App\Models\WebsiteRareValueCategory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class WebsiteRareValuesController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('rare-values', [
             'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture')->get(),
@@ -39,11 +38,11 @@ class WebsiteRareValuesController extends Controller
     {
         $searchTerm = $request->input('search');
 
-        $categories = WebsiteRareValueCategory::orderBy('priority')->whereHas('furniture', function($query) use ($searchTerm) {
-            $query->where('name', 'like', '%' . $searchTerm . '%');
+        $categories = WebsiteRareValueCategory::orderBy('priority')->whereHas('furniture', function ($query) use ($searchTerm) {
+            $query->where('name', 'like', '%'.$searchTerm.'%');
         })
-            ->with(['furniture' => function($query) use ($searchTerm) {
-                $query->where('name', 'like', '%' . $searchTerm . '%');
+            ->with(['furniture' => function ($query) use ($searchTerm) {
+                $query->where('name', 'like', '%'.$searchTerm.'%');
             }])
             ->get();
 
@@ -65,15 +64,15 @@ class WebsiteRareValuesController extends Controller
             ->where('item_id', $value->item_id)
             ->get();
 
-        $itemsPerUser = $items->groupBy('user_id')->map(function($group) {
+        $itemsPerUser = $items->groupBy('user_id')->map(function ($group) {
             return [
                 'user' => $group->first()->user,
                 'item_count' => $group->count(),
             ];
         });
 
-        if ((bool)setting('enable_caching')) {
-            Cache::remember('allItems_' . $value->id, setting('cache_timer'), function() use ($items) {
+        if ((bool) setting('enable_caching')) {
+            Cache::remember('allItems_'.$value->id, setting('cache_timer'), function () use ($items) {
                 return $items;
             });
         }

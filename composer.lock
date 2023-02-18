@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83782c04339599f8410595a4f33e29df",
+    "content-hash": "a0dc2241f13d7f5698be45d07d249aac",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1674,16 +1674,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "10.x-dev",
+            "version": "v10.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "15f419f751474262f3ced85ea4ccce18cbcdae8e"
+                "reference": "0bd303853444de33f4fcb16d13bd7574030aa3d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/15f419f751474262f3ced85ea4ccce18cbcdae8e",
-                "reference": "15f419f751474262f3ced85ea4ccce18cbcdae8e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0bd303853444de33f4fcb16d13bd7574030aa3d4",
+                "reference": "0bd303853444de33f4fcb16d13bd7574030aa3d4",
                 "shasum": ""
             },
             "require": {
@@ -1828,7 +1828,6 @@
                 "symfony/postmark-mailer": "Required to enable support for the Postmark mail transport (^6.2).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1871,7 +1870,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-02-17T18:00:51+00:00"
+            "time": "2023-02-16T22:03:27+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -3880,29 +3879,28 @@
         },
         {
             "name": "qirolab/laravel-themer",
-            "version": "dev-master",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ObjectRetros/laravel-themer.git",
-                "reference": "5a01faa09da4cea282560a6c70ffdbe555683f69"
+                "url": "https://github.com/qirolab/laravel-themer.git",
+                "reference": "f643b371411e063fb0d42bffb1586df6ec70972b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ObjectRetros/laravel-themer/zipball/5a01faa09da4cea282560a6c70ffdbe555683f69",
-                "reference": "5a01faa09da4cea282560a6c70ffdbe555683f69",
+                "url": "https://api.github.com/repos/qirolab/laravel-themer/zipball/f643b371411e063fb0d42bffb1586df6ec70972b",
+                "reference": "f643b371411e063fb0d42bffb1586df6ec70972b",
                 "shasum": ""
             },
             "require": {
                 "facade/ignition-contracts": "^1.0",
-                "illuminate/support": "10.x-dev",
+                "illuminate/support": "^9.19|^10.0",
                 "php": ">=7.1.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^7.0",
+                "orchestra/testbench": "^7.0|^8.0",
                 "phpunit/phpunit": "^8.3|^9.0",
                 "vimeo/psalm": "^4.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -3917,25 +3915,7 @@
                     "Qirolab\\Theme\\Database\\Factories\\": "database/factories"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Qirolab\\Theme\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "psalm": [
-                    "vendor/bin/psalm"
-                ],
-                "test": [
-                    "vendor/bin/phpunit --colors=always"
-                ],
-                "test-coverage": [
-                    "vendor/bin/phpunit --coverage-html coverage"
-                ],
-                "format": [
-                    "vendor/bin/php-cs-fixer fix --allow-risky=yes"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3956,15 +3936,16 @@
                 "theme"
             ],
             "support": {
-                "source": "https://github.com/ObjectRetros/laravel-themer/tree/master"
+                "issues": "https://github.com/qirolab/laravel-themer/issues",
+                "source": "https://github.com/qirolab/laravel-themer/tree/2.1.0"
             },
             "funding": [
                 {
-                    "type": "other",
-                    "url": "https://www.buymeacoffee.com/qirolab"
+                    "url": "https://www.buymeacoffee.com/qirolab",
+                    "type": "other"
                 }
             ],
-            "time": "2023-02-04T09:28:39+00:00"
+            "time": "2023-02-14T12:31:27+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -10096,11 +10077,8 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
-        "illuminate/support": 20,
-        "laravel/framework": 20,
-        "qirolab/laravel-themer": 20,
         "barryvdh/laravel-debugbar": 20
     },
     "prefer-stable": true,

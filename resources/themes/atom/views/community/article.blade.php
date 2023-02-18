@@ -95,7 +95,7 @@
                             <textarea name="comment"
                                 class="focus:ring-0 border-2 border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 focus:border-[#eeb425] w-full min-h-[100px] max-h-[100px] @error('comment') border-red-600 ring-red-500 @enderror"></textarea>
 
-                            <x-form.primary-button>
+                            <x-form.primary-button classes="mt-2">
                                 {{ __('Post comment') }}
                             </x-form.primary-button>
                         </form>

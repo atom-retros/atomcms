@@ -35,9 +35,7 @@ class Password implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
      * @param  mixed  $value
-     * @return bool
      */
     public function passes($attribute, $value): bool
     {
@@ -60,8 +58,6 @@ class Password implements Rule
 
     /**
      * Get the validation error message.
-     *
-     * @return string
      */
     public function message(): string
     {
@@ -134,9 +130,6 @@ class Password implements Rule
 
     /**
      * Set the minimum length of the password.
-     *
-     * @param  int  $length
-     * @return $this
      */
     public function length(int $length)
     {
@@ -147,10 +140,8 @@ class Password implements Rule
 
     /**
      * Indicate that at least one uppercase character is required.
-     *
-     * @return $this
      */
-    public function requireUppercase()
+    public function requireUppercase(): static
     {
         $this->requireUppercase = true;
 
@@ -159,10 +150,8 @@ class Password implements Rule
 
     /**
      * Indicate that at least one numeric digit is required.
-     *
-     * @return $this
      */
-    public function requireNumeric()
+    public function requireNumeric(): static
     {
         $this->requireNumeric = true;
 
@@ -171,10 +160,8 @@ class Password implements Rule
 
     /**
      * Indicate that at least one special character is required.
-     *
-     * @return $this
      */
-    public function requireSpecialCharacter()
+    public function requireSpecialCharacter(): static
     {
         $this->requireSpecialCharacter = true;
 
@@ -183,11 +170,8 @@ class Password implements Rule
 
     /**
      * Set the message that should be used when the rule fails.
-     *
-     * @param  string  $message
-     * @return $this
      */
-    public function withMessage(string $message)
+    public function withMessage(string $message): static
     {
         $this->message = $message;
 
