@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Database\Factories\RareValuesFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
