@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use Illuminate\View\View;
 
 class StaffController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
         return view('community.staff', [
             'employees' => Permission::select('id', 'rank_name', 'badge', 'staff_color', 'job_description')

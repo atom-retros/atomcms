@@ -4,7 +4,7 @@
     <!-- Validation Errors -->
     <x-messages.flash-messages />
 
-    <div class="col-span-12 ">
+    <div class="col-span-12">
         <div class="lg:px-[150px]">
             <x-content.content-section icon="hotel-icon" classes="flex flex-col gap-y-8">
                 <x-slot:title>
@@ -15,7 +15,7 @@
                     {{ __('Create a free account, and be a part of a fun online world!') }}
                 </x-slot:under-title>
 
-                <div class="w-full flex justify-between pr-0 lg:pr-14">
+                <div class="flex w-full justify-between pr-0 lg:pr-14">
                     <div class="w-full lg:w-[420px]">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -32,7 +32,9 @@
                                     </x-form.label>
                                 </div>
 
-                                <x-form.input error-bag="register" name="username" type="text" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true"/>
+                                <x-form.input error-bag="register" name="username" type="text"
+                                    value="{{ old('username') }}" placeholder="{{ __('Username') }}"
+                                    :autofocus="true" />
                             </div>
 
                             <!-- Email Address -->
@@ -47,7 +49,8 @@
                                     </x-form.label>
                                 </div>
 
-                                <x-form.input error-bag="register" name="mail" type="email" value="{{ old('mail') }}" placeholder="{{ __('Enter your email') }}" />
+                                <x-form.input error-bag="register" name="mail" type="email"
+                                    value="{{ old('mail') }}" placeholder="{{ __('Enter your email') }}" />
                             </div>
 
                             <!-- Password -->
@@ -61,7 +64,8 @@
                                         </x-slot:info>
                                     </x-form.label>
 
-                                    <x-form.input error-bag="register" name="password" type="password" placeholder="{{ __('Choose a secure password') }}" />
+                                    <x-form.input error-bag="register" name="password" type="password"
+                                        placeholder="{{ __('Choose a secure password') }}" />
                                 </div>
                                 <hr class="dark:border-gray-700">
 
@@ -71,11 +75,12 @@
                                         {{ __('Repeat Password') }}
                                     </x-form.label>
 
-                                    <x-form.input error-bag="register" name="password_confirmation" type="password" placeholder="{{ __('Repeat your chosen password') }}" />
+                                    <x-form.input error-bag="register" name="password_confirmation" type="password"
+                                        placeholder="{{ __('Repeat your chosen password') }}" />
                                 </div>
                             </div>
 
-                            @if(setting('requires_beta_code'))
+                            @if (setting('requires_beta_code'))
                                 <div class="mt-4">
                                     <div class="flex flex-col gap-y-2">
                                         <x-form.label for="mail">
@@ -87,31 +92,36 @@
                                         </x-form.label>
                                     </div>
 
-                                    <x-form.input error-bag="register" name="beta_code" type="text" value="{{ old('beta_code') }}" placeholder="{{ __('Enter your beta code') }}" />
+                                    <x-form.input error-bag="register" name="beta_code" type="text"
+                                        value="{{ old('beta_code') }}"
+                                        placeholder="{{ __('Enter your beta code') }}" />
                                 </div>
                             @endif
 
                             <div class="mt-4 bg-[#efefef] rounded-md p-3 flex flex-col gap-y-1 dark:bg-gray-900">
-                                <div class="flex gap-x-3 items-center">
-                                    <input id="terms" type="checkbox" name="terms" class="rounded mt-1 ring-0 focus:ring-0">
+                                <div class="flex items-center gap-x-3">
+                                    <input id="terms" type="checkbox" name="terms"
+                                        class="mt-1 rounded ring-0 focus:ring-0">
 
-                                    <a href="{{ route('rules.index') }}" target="_blank" class="mt-1 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline dark:text-gray-500 dark:hover:text-gray-300">
+                                    <a href="{{ route('rules.index') }}" target="_blank"
+                                        class="mt-1 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline dark:hover:text-gray-300 dark:text-gray-500">
                                         {{ __('I accept the :hotel terms & rules.', ['hotel' => setting('hotel_name')]) }}
                                     </a>
                                 </div>
 
                                 @error('terms')
-                                <p class="mt-1 text-xs italic text-red-500">
-                                    {{ $message }}
-                                </p>
+                                    <p class="mt-1 text-xs italic text-red-500">
+                                        {{ $message }}
+                                    </p>
                                 @enderror
                             </div>
 
                             {{-- Used to determine the refer --}}
                             <input type="hidden" name="referral_code" value="{{ $referral_code }}">
 
-                            @if(setting('google_recaptcha_enabled'))
-                                <div class="g-recaptcha mt-4" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                            @if (setting('google_recaptcha_enabled'))
+                                <div class="mt-4 g-recaptcha"
+                                    data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
                             @endif
 
                             <div class="mt-4">
@@ -130,7 +140,7 @@
         </div>
     </div>
 
-    @if(setting('google_recaptcha_enabled'))
+    @if (setting('google_recaptcha_enabled'))
         @push('javascript')
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         @endpush

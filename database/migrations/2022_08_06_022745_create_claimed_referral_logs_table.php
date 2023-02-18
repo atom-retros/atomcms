@@ -4,13 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-    public function up()
+return new class extends Migration
+{
+    public function up(): void
     {
         $storedKeys = [];
 
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('claimed_referral_logs')) {
-
             $keys = DB::select(DB::raw('SHOW KEYS from claimed_referral_logs'));
 
             foreach ($keys as $key) {
@@ -26,7 +26,7 @@ return new class extends Migration {
             Schema::rename('claimed_referral_logs', sprintf('claimed_referral_logs_%s', time()));
         }
 
-        Schema::create('claimed_referral_logs', function (Blueprint $table) use ($storedKeys) {
+        Schema::create('claimed_referral_logs', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->index();
             $table->string('ip_address');
@@ -36,7 +36,7 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('claimed_referral_logs');
     }

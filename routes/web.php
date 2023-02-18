@@ -3,7 +3,6 @@
 use App\Actions\Fortify\Controllers\TwoFactorAuthenticatedSessionController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
 use App\Http\Controllers\HomeController;
@@ -11,16 +10,18 @@ use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
-use App\Http\Controllers\PhotosController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
+use App\Http\Controllers\PhotosController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\WebsiteArticleCommentsController;
+use App\Http\Controllers\WebsiteRareValuesController;
+use App\Http\Controllers\WebsiteRulesController;
 use App\Http\Controllers\WebsiteTeamsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -43,14 +44,14 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
             User::where('referral_code', '=', $referral_code)->firstOrFail();
 
             return view('auth.register', [
-                'referral_code' =>  $referral_code,
+                'referral_code' => $referral_code,
             ]);
         })->name('register.referral');
     });
 
     Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function () {
-            Route::get('/me', [MeController::class, 'show'])->name('me.show');
+            Route::get('/me', MeController::class)->name('me.show');
 
             // User settings routes
             Route::prefix('settings')->group(function () {
@@ -96,13 +97,18 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Rules routes
-        Route::view('/rules', 'rules')->name('rules.index')->withoutMiddleware('auth');
+        Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
 
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
 
         // Paypal routes
 
+        // Rare values routes
+        Route::get('/values', [WebsiteRareValuesController::class, 'index'])->name('values.index');
+        Route::post('/values/search', [WebsiteRareValuesController::class, 'search'])->name('values.search');
+        Route::get('/values/category/{category}', [WebsiteRareValuesController::class, 'category'])->name('values.category');
+        Route::get('/values/{value}', [WebsiteRareValuesController::class, 'value'])->name('values.value');
 
         // Client route
         Route::prefix('game')->middleware(['findretros.redirect', 'vpn.checker'])->group(function () {
@@ -118,8 +124,8 @@ if (Features::enabled(Features::twoFactorAuthentication())) {
     Route::post('/two-factor-challenge', [TwoFactorAuthenticatedSessionController::class, 'store'])
         ->middleware(
             array_filter([
-                'guest:' . config('fortify.guard'),
-                $twoFactorLimiter ? 'throttle:' . $twoFactorLimiter : null,
+                'guest:'.config('fortify.guard'),
+                $twoFactorLimiter ? 'throttle:'.$twoFactorLimiter : null,
             ])
         );
 }

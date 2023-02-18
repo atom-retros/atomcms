@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('personal_access_tokens')) {
             Schema::rename('personal_access_tokens', sprintf('personal_access_tokens_%s', time()));
@@ -30,10 +28,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('personal_access_tokens');
     }

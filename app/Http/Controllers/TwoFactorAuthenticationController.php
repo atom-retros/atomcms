@@ -1,20 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class TwoFactorAuthenticationController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('user.settings.two-factor');
     }
 
-    public function verify(Request $request)
+    public function verify(Request $request): RedirectResponse
     {
         $confirmed = $request->user()->confirmTwoFactorAuthentication($request->input('code'));
 
-        if (!$confirmed) {
+        if (! $confirmed) {
             return back()->withErrors('Invalid Two Factor Authentication code');
         }
 
