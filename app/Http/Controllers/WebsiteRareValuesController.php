@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class WebsiteRareValuesController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('rare-values', [
             'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture')->get(),
