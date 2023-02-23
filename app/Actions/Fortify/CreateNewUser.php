@@ -32,6 +32,12 @@ class CreateNewUser implements CreatesNewUsers
             ]);
         }
 
+        if (!filter_var(request()->ip(), FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            throw ValidationException::withMessages([
+                'registration' => __('Your IP address seems to be invalid'),
+            ]);
+        }
+
         $ip = request()->ip();
         $matchingIpCount = User::query()
             ->where('ip_current', '=', $ip)
