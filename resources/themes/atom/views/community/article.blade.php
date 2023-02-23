@@ -6,30 +6,32 @@
             class="relative mt-6 h-24 w-full overflow-hidden rounded border bg-white shadow dark:border-gray-900 dark:bg-gray-800 md:mt-0">
             <div
                 class="absolute top-1 right-1 rounded bg-white px-2 text-sm font-semibold dark:bg-gray-700 dark:text-gray-100">
-                {{ !$article->user->hidden_staff ? $article->user->permission->rank_name : 'Member' }}
+                {{ $article->user && !$article->user->hidden_staff ? $article->user->permission->rank_name : 'Member' }}
             </div>
 
             <div class="h-[65%] w-full staff-bg"
-                style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $article->user->permission->staff_background)) }});">
+                style="background: rgba(0, 0, 0, 0.5) url({{ asset(sprintf('assets/images/%s', $article->user ? $article->user->permission->staff_background : 'staff-bg.png')) }});">
             </div>
 
-            <a href="{{ route('profile.show', $article->user->username) }}" class="absolute top-4 left-1 drop-shadow">
+            <a href="{{ route('profile.show', $article->user ?? \App\Models\User::first()) }}" class="absolute top-4 left-1 drop-shadow">
                 <img style="image-rendering: pixelated;" class="transition duration-300 ease-in-out hover:scale-105"
-                    src="{{ setting('avatar_imager') }}{{ $article->user->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
+                    src="{{ setting('avatar_imager') }}{{ $article->user?->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
                     alt="">
             </a>
 
             <p class="text-2xl font-semibold ml-[70px] text-white -mt-[35px]">
-                {{ $article->user->username }}
+                {{ $article->user->username ?? setting('hotel_name') }}
             </p>
 
             <div class="flex w-full items-center justify-between px-4">
                 <p class="ml-[57px] text-sm mt-[10px] font-semibold text-gray-500">
-                    {{ $article->user->motto }}
+                    {{ $article->user->motto ?? setting('start_motto') }}
                 </p>
 
-                <div class="w-4 h-4 rounded-full mt-2 {{ $article->user->online ? 'bg-green-600' : 'bg-red-600' }}">
-                </div>
+                @if($article->user)
+                    <div class="w-4 h-4 rounded-full mt-2 {{ $article->user->online ? 'bg-green-600' : 'bg-red-600' }}">
+                    </div>
+                @endif
             </div>
         </div>
 
