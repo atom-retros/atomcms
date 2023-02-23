@@ -133,7 +133,7 @@
                     </div>
 
                     <div class="hidden md:block">
-                        <img src="{{ asset('/assets/images/background.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/background.png') }}" alt="background image">
                     </div>
                 </div>
             </x-content.content-section>

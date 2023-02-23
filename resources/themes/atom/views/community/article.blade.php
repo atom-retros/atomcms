@@ -16,7 +16,7 @@
             <a href="{{ route('profile.show', $article->user ?? \App\Models\User::first()) }}" class="absolute top-4 left-1 drop-shadow">
                 <img style="image-rendering: pixelated;" class="transition duration-300 ease-in-out hover:scale-105"
                     src="{{ setting('avatar_imager') }}{{ $article->user?->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
-                    alt="">
+                    alt="Author look">
             </a>
 
             <p class="text-2xl font-semibold ml-[70px] text-white -mt-[35px]">
@@ -123,7 +123,7 @@
                                 <img style="image-rendering: pixelated;"
                                     class="transition duration-300 ease-in-out hover:scale-105"
                                     src="{{ setting('avatar_imager') }}{{ $comment->user->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
-                                    alt="">
+                                    alt="Comment author">
                             </a>
 
                             <div class="flex justify-between ml-[60px] w-full">

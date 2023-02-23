@@ -30,7 +30,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $user->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -73,7 +73,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $currency->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -117,7 +117,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $currency->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -161,7 +161,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $onlineTime->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -205,7 +205,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $respect->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">
@@ -249,7 +249,7 @@
                                 'mt-8' => !Str::contains(setting('avatar_imager'), 'www.habbo.com'),
                             ])
                                 src="{{ setting('avatar_imager') }}{{ $achievement->user?->look }}&size=b&head_direction=2&gesture=sml&headonly=1"
-                                alt="" />
+                                alt="User look" />
 
                             <div class="flex flex-col">
                                 <p class="font-bold text-gray-700 dark:text-gray-100">

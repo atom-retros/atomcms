@@ -23,7 +23,7 @@
                     @foreach($items as $item)
                         <div class="px-3 h-[100px] rounded bg-gray-200 dark:bg-gray-700 flex gap-4 items-center overflow-hidden">
                             <div class="w-12 h-12 overflow-hidden rounded-full flex items-center justify-center bg-gray-300 dark:bg-gray-800">
-                                <img src="{{ sprintf('%s/%s', setting('avatar_imager'), $item['user']->look) }}&headonly=1" alt="">
+                                <img src="{{ sprintf('%s/%s', setting('avatar_imager'), $item['user']->look) }}&headonly=1" alt="User look">
                             </div>
 
                             <div class="flex flex-col gap-y-2">
@@ -31,7 +31,7 @@
 
                                 <div class="w-full bg-yellow-400 rounded h-[35px] flex items-center">
                                     <div class="bg-yellow-500 rounded-l px-2 h-full flex items-center justify-center">
-                                        <img class="h-[18px] w-[28px]" src="{{ asset('assets/images/icons/amount.png') }}" alt="">
+                                        <img class="h-[18px] w-[28px]" src="{{ asset('assets/images/icons/amount.png') }}" alt="Value">
                                     </div>
 
                                     <p class="w-full text-center truncate text-sm">

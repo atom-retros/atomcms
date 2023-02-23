@@ -8,7 +8,7 @@
                     class="col-span-3 md:col-span-1 h-[150px] lg:h-[220px] profile-bg rounded-lg relative flex gap-x-2 items-center text-white overflow-hidden">
                     <img class="mt-14 drop-shadow lg:mt-0" style="image-rendering: pixelated;"
                         src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
-                        alt="">
+                        alt="User look">
 
                     <div class="flex flex-col">
                         <h3 class="text-xl font-semibold">{{ __('My name is,') }}</h3>
@@ -24,7 +24,7 @@
                     class="col-span-3 mt-4 grid w-full grid-cols-1 space-y-3 md:space-y-0 md:col-span-2 md:mt-0 md:grid-cols-3">
                     <div
                         class="rounded-lg md:rounded-none md:rounded-l-lg bg-[#f8ef2b] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
-                        <img src="{{ asset('/assets/images/profile/credits.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/credits.png') }}" alt="Credits icon">
 
                         <h4 class="text-[#b16d18] font-semibold text-2xl">
                             {{ $user->credits }}
@@ -33,7 +33,7 @@
 
                     <div
                         class="rounded-lg md:rounded-none bg-[#e99bdc] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
-                        <img src="{{ asset('/assets/images/profile/duckets.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/duckets.png') }}" alt="Duckets icon">
 
                         <h4 class="text-[#812378] font-semibold text-2xl">
                             {{ $user->currency('duckets') }}
@@ -42,7 +42,7 @@
 
                     <div
                         class="rounded-lg md:rounded-none md:rounded-r-lg bg-[#82d6db] flex flex-col gap-y-2 items-center justify-center py-3 md:py-0">
-                        <img src="{{ asset('/assets/images/profile/diamonds.png') }}" alt="">
+                        <img src="{{ asset('/assets/images/profile/diamonds.png') }}" alt="Diamonds icon">
 
                         <h4 class="text-[#146867] font-semibold text-2xl">
                             {{ $user->currency('diamonds') }}
@@ -55,7 +55,7 @@
                 <div class="col-span-1">
                     <x-user.profile-info-card col-span="1">
                         <x-slot:image>
-                            <img src="{{ asset('/assets/images/profile/badges.png') }}" alt="">
+                            <img src="{{ asset('/assets/images/profile/badges.png') }}" alt="Badges">
                         </x-slot:image>
 
                         <x-slot:title>
@@ -67,7 +67,7 @@
                                 <div data-tippy-content="{{ $badge->badge_code }}"
                                     class="user-badge h-[70px] w-[70px] border-2 dark:border-gray-700 rounded-full flex items-center justify-center cursor-pointer">
                                     <img src="{{ setting('badges_path') }}/{{ $badge->badge_code }}.gif"
-                                        class="max-h-[55px] max-w-[55px]" alt="">
+                                        class="max-h-[55px] max-w-[55px]" alt="{{ $badge->badge_code }}">
                                 </div>
                             @empty
                                 <div class="col-span-4">
@@ -81,7 +81,7 @@
                 <div class="col-span-1">
                     <x-user.profile-info-card col-span="1">
                         <x-slot:image>
-                            <img src="{{ asset('/assets/images/profile/groups.png') }}" alt="">
+                            <img src="{{ asset('/assets/images/profile/groups.png') }}" alt="Groups">
                         </x-slot:image>
 
                         <x-slot:title>
@@ -93,7 +93,7 @@
                                 <div class="h-[70px] w-[70px] rounded-full border-2 dark:border-gray-700 overflow-hidden flex items-center justify-center p-1 rounded-md cursor-pointer friend"
                                     data-tippy-content="{{ $group->name ?? 'Unknown' }}">
                                     <img src="{{ setting('group_badge_path') }}/{{ $group->badge }}.png"
-                                        alt="">
+                                        alt="{{ $group->badge }}">
                                 </div>
                             @empty
                                 <div class="w-full">
@@ -110,7 +110,7 @@
                 <div class="col-span-1">
                     <x-user.profile-info-card col-span="1">
                         <x-slot:image>
-                            <img src="{{ asset('/assets/images/profile/rooms.png') }}" alt="">
+                            <img src="{{ asset('/assets/images/profile/rooms.png') }}" alt="Rooms">
                         </x-slot:image>
 
                         <x-slot:title>
@@ -164,7 +164,7 @@
                 <div class="col-span-1">
                     <x-user.profile-info-card col-span="1">
                         <x-slot:image>
-                            <img src="{{ asset('/assets/images/profile/friends.png') }}" alt="">
+                            <img src="{{ asset('/assets/images/profile/friends.png') }}" alt="Friends">
                         </x-slot:image>
 
                         <x-slot:title>

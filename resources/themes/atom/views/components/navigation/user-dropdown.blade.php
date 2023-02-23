@@ -3,7 +3,7 @@
     <div class="h-10">
         <img class="w-10"
             src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml"
-            alt="">
+            alt="{{ auth()->user()->look }}">
     </div>
 
     <span>{{ auth()->user()->username }}</span>
