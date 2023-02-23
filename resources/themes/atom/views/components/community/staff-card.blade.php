@@ -13,7 +13,7 @@
         <a href="{{ route('profile.show', $user->username) }}">
             <img style="image-rendering: pixelated;" class="transition duration-300 ease-in-out hover:scale-105"
                 src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
-                alt="">
+                alt="Staff avatar">
         </a>
     </div>
 

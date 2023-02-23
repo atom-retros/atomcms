@@ -4,7 +4,7 @@
      <div class="flex gap-x-2 border-b bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
          <div class="max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] rounded-full relative flex items-center justify-center"
              style="background-color: {{ $color }}">
-             <img src="{{ asset(sprintf('%s/%s.gif', setting('badges_path'), $badge)) }}" alt="">
+             <img src="{{ asset(sprintf('%s/%s.gif', setting('badges_path'), $badge)) }}" alt="Staff badge">
          </div>
 
          <div class="flex flex-col justify-center text-sm">

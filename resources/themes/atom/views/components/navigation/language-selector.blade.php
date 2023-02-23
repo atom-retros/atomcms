@@ -8,7 +8,7 @@
     @foreach (DB::table('website_languages')->get() as $lang)
         <a data-turbolinks="false" href="{{ route('language.select', $lang->country_code) }}"
             class="block px-4 py-2 font-semibold hover:bg-gray-100">
-            <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="">
+            <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="Language">
         </a>
     @endforeach
 </div>

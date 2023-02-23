@@ -28,12 +28,14 @@
 
     <div id="app" class="bg-gray-100 dark:bg-gray-900">
         {{-- Top header --}}
-        @auth
-            <x-top-header />
-        @endauth
+        <header>
+            @auth
+                <x-top-header />
+            @endauth
 
-        {{-- Site Header --}}
-        <x-site-header />
+            {{-- Site Header --}}
+            <x-site-header />
+        </header>
 
         {{-- Navigation --}}
         <nav class="relative bg-white shadow dark:bg-gray-900">
@@ -48,7 +50,7 @@
                 <x-navigation.theme-mode-switcher />
                 <x-navigation.language-selector>
                     <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
-                        alt="">
+                        alt="{{ __('Language') }}">
                 </x-navigation.language-selector>
             </div>
         </nav>

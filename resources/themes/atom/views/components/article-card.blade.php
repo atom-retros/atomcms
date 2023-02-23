@@ -22,7 +22,7 @@
             <div class="flex items-center gap-x-2">
                 <div
                     class="mt-3 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-800">
-                    <img src="{{ setting('avatar_imager') }}{{ $article->user?->look }}&headonly=1" alt="">
+                    <img src="{{ setting('avatar_imager') }}{{ $article->user?->look }}&headonly=1" alt="User look">
                 </div>
 
                 <p class="mt-4 font-semibold dark:text-gray-400">
