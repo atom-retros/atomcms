@@ -20,6 +20,6 @@ class PermissionsService
             return $default;
         }
 
-        return auth()->user()->rank >= (int) $this->permissions->get($permissionName);
+        return auth()->check() && auth()->user()->rank >= (int) $this->permissions->get($permissionName);
     }
 }
