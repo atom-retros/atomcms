@@ -47,7 +47,7 @@
                 </x-navigation.dropdown>
             @endif
 
-            <x-navigation.dropdown classes="!border-none" child-classes="ml-6">
+            <x-navigation.dropdown classes="!border-none" child-classes="lg:ml-6">
                 <img class="h-12" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ auth()->user()->username }}">
 
                 <span class="-ml-2">{{ auth()->user()->username }}</span>
