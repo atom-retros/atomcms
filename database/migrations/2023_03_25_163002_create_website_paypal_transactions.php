@@ -11,9 +11,9 @@ return new class extends Migration {
             $table->id();
 
             $table->integer('user_id');
-            $table->string('payer_id')->nullable();
             $table->string('transaction_id')->nullable();
             $table->string('status');
+            $table->string('description', 512)->nullable();
             $table->float('amount')->nullable();
             $table->string('currency')->default('USD');
 
