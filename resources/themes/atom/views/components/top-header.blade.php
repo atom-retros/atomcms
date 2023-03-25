@@ -25,34 +25,47 @@
         </x-top-header-currency>
     </div>
 
-    <div class="flex w-full justify-between md:w-auto">
+    <div class="flex w-full justify-between md:w-auto h-full items-center">
         @auth
-            @if (hasPermission('view_server_logs') || hasPermission('housekeeping_access'))
-                <button id="administrationDropdown" data-dropdown-toggle="administration-dropdown"
-                    class="ml-5 flex h-10 items-center gap-x-1 text-sm font-semibold text-red-700 md:ml-0">
+            @if(hasPermission('view_server_logs') || hasPermission('housekeeping_access'))
+                <x-navigation.dropdown classes="!text-red-700 !border-none" child-classes="lg:ml-6">
                     {{ __('Administration') }}
 
-                    <x-icons.chevron-down />
-                </button>
+                    <x-slot:children>
+                        @if (hasPermission('view_server_logs'))
+                            <x-navigation.dropdown-child route="/log-viewer" :turbolink="false" target="_blank">
+                                {{ __('Error logs') }}
+                            </x-navigation.dropdown-child>
+                        @endif
 
-                <div id="administration-dropdown"
-                    class="z-10 block hidden w-44 bg-white py-2 text-sm shadow dark:bg-gray-800">
-                    @if (hasPermission('view_server_logs'))
-                        <a data-turbolinks="false" href="/log-viewer" target="_blank"
-                            class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
-                            {{ __('Error logs') }}
-                        </a>
-                    @endif
-
-                    @if (hasPermission('housekeeping_access'))
-                        <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank"
-                            class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
-                            {{ __('Housekeeping') }}
-                        </a>
-                    @endif
-                </div>
+                        @if (hasPermission('housekeeping_access'))
+                            <x-navigation.dropdown-child :route="setting('housekeeping_url')" :turbolink="false" target="_blank">
+                                {{ __('Housekeeping') }}
+                            </x-navigation.dropdown-child>
+                        @endif
+                    </x-slot:children>
+                </x-navigation.dropdown>
             @endif
+
+            <x-navigation.dropdown classes="!border-none" child-classes="lg:ml-6">
+                <img class="h-12" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ auth()->user()->username }}">
+
+                <span class="-ml-2">{{ auth()->user()->username }}</span>
+
+                <x-slot:children>
+                    <x-navigation.dropdown-child :route="route('settings.account.show')">
+                        {{ __('User settings') }}
+                    </x-navigation.dropdown-child>
+
+                    <button class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700 w-full text-left" @click.prevent="document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </button>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                        @csrf
+                    </form>
+                </x-slot:children>
+            </x-navigation.dropdown>
         @endauth
-        <x-navigation.user-dropdown />
     </div>
 </div>

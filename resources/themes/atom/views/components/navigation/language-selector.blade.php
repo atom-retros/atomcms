@@ -1,14 +1,11 @@
-<button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbarLanguage"
-    class="hidden font-semibold uppercase transition duration-200 ease-in-out md:mr-4 md:flex">
+<x-navigation.dropdown classes="!border-none -ml-4 hidden lg:block" childClasses="ml-4 min-w-[50px] mt-1">
     {{ $slot }}
-</button>
 
-<!-- Dropdown menu -->
-<div id="dropdownNavbarLanguage" class="z-10 block hidden w-14 bg-white py-2 font-normal shadow dark:bg-gray-800">
-    @foreach (DB::table('website_languages')->get() as $lang)
-        <a data-turbolinks="false" href="{{ route('language.select', $lang->country_code) }}"
-            class="block px-4 py-2 font-semibold hover:bg-gray-100">
-            <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="">
-        </a>
-    @endforeach
-</div>
+    <x-slot:children>
+        @foreach (DB::table('website_languages')->get() as $lang)
+            <x-navigation.dropdown-child :route="route('language.select', $lang->country_code)" :turbolink="false">
+                <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="{{ $lang->country_code }}">
+            </x-navigation.dropdown-child>
+        @endforeach
+    </x-slot:children>
+</x-navigation.dropdown>

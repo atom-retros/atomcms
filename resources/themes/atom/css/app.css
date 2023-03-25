@@ -6,11 +6,11 @@
 
 @layer components {
     .nav-item {
-        @apply flex h-full items-center text-[14px] font-semibold uppercase text-gray-700 transition duration-200 ease-in-out md:border-b-4 md:border-transparent md:hover:border-b-[#eeb425];
+        @apply flex h-auto md:h-[60px] items-center text-[14px] font-semibold uppercase text-gray-700 transition duration-200 ease-in-out md:border-b-4 md:border-transparent md:hover:border-b-[#eeb425];
     }
 
     .dropdown-item {
-        @apply block py-2 px-4 font-semibold hover:bg-gray-100;
+        @apply block py-2 px-4 font-semibold hover:bg-gray-100 text-gray-900;
     }
 }
 

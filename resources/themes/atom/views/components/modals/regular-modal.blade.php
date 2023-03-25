@@ -1,5 +1,5 @@
 <div x-show="open" style="display: none" x-on:keydown.escape.prevent.stop="open = false" role="dialog" aria-modal="true"
-    x-id="['modal-title']" :aria-labelledby="$id('modal-title')" class="fixed inset-0 z-10 overflow-y-auto">
+    x-id="['modal-title']" :aria-labelledby="$id('modal-title')" class="fixed inset-0 z-50 overflow-y-auto">
     {{-- Overlay --}}
     <div x-show="open" x-transition x-on:click="open = false"
         class="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
