@@ -37,19 +37,17 @@
 
         {{-- Navigation --}}
         <nav class="relative bg-white shadow dark:bg-gray-900">
-            {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
-            <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
-                <div class="h-full w-full">
-                    <x-navigation.mobile-menu />
-
-                    <x-navigation.navigation-menu />
-                </div>
+            <div class="max-w-7xl min-h-[60px] px-4 md:flex md:items-center md:justify-between md:mx-auto">
+                <x-navigation.navigation-menu />
 
                 <x-navigation.theme-mode-switcher />
+
                 <x-navigation.language-selector>
                     <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
                         alt="">
                 </x-navigation.language-selector>
+
+                <x-navigation.mobile-menu />
             </div>
         </nav>
 

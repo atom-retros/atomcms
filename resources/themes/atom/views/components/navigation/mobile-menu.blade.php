@@ -1,5 +1,5 @@
 <button data-collapse-toggle="mobile-menu" type="button"
-    class="absolute top-3 right-6 z-10 hover:text-gray-900 dark:hover:text-white dark:text-white md:hidden"
+    class="absolute right-4 top-4 z-10 hover:text-gray-900 dark:hover:text-white dark:text-white md:hidden"
     aria-controls="mobile-menu-2" aria-expanded="false">
 
     <span class="sr-only">{{ __('Open main menu') }}</span>
