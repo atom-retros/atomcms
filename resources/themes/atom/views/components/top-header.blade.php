@@ -33,39 +33,33 @@
 
                     <x-slot:children>
                         @if (hasPermission('view_server_logs'))
-                            <a data-turbolinks="false" href="/log-viewer" target="_blank"
-                               class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                            <x-navigation.dropdown-child route="/log-viewer" :turbolink="false" target="_blank">
                                 {{ __('Error logs') }}
-                            </a>
+                            </x-navigation.dropdown-child>
                         @endif
 
                         @if (hasPermission('housekeeping_access'))
-                            <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank"
-                               class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                            <x-navigation.dropdown-child :route="setting('housekeeping_url')" :turbolink="false" target="_blank">
                                 {{ __('Housekeeping') }}
-                            </a>
+                            </x-navigation.dropdown-child>
                         @endif
                     </x-slot:children>
                 </x-navigation.dropdown>
             @endif
 
-            <x-navigation.dropdown classes="!border-none">
+            <x-navigation.dropdown classes="!border-none" child-classes="ml-6">
                 <img class="h-12" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ auth()->user()->username }}">
 
                 <span class="-ml-2">{{ auth()->user()->username }}</span>
 
                 <x-slot:children>
-                    <a href="{{ route('settings.account.show') }}"
-                       class="block px-4 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200">
+                    <x-navigation.dropdown-child :route="route('settings.account.show')">
                         {{ __('User settings') }}
-                    </a>
+                    </x-navigation.dropdown-child>
 
-                    <a href="{{ route('logout') }}"
-                       class="block px-4 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-200"
-                       onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
+                    <button class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700 w-full text-left" @click.prevent="document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
-                    </a>
+                    </button>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         @csrf

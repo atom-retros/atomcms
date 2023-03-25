@@ -4,15 +4,13 @@
             {{ auth()->user()->username }}
 
             <x-slot:children>
-                <a href="{{ route('me.show') }}"
-                   class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                <x-navigation.dropdown-child :route="route('me.show')">
                     {{ __('Home') }}
-                </a>
+                </x-navigation.dropdown-child>
 
-                <a href="{{ route('profile.show', auth()->user()->username) }}"
-                   class="dropdown-item dark:hover:bg-gray-700 dark:text-gray-200">
+                <x-navigation.dropdown-child :route="route('profile.show', auth()->user()->username)">
                     {{ __('My Profile') }}
-                </a>
+                </x-navigation.dropdown-child>
             </x-slot:children>
         </x-navigation.dropdown>
     @else
@@ -27,25 +25,25 @@
         {{ __('Community') }}
 
         <x-slot:children>
-            <a href="{{ route('article.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('article.index')">
                 {{ __('Articles') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('staff.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('staff.index') ">
                 {{ __('Staff') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('teams.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('teams.index')">
                 {{ __('Teams') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('staff-applications.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('staff-applications.index')">
                 {{ __('Staff applications') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('photos.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('photos.index')">
                 {{ __('Photos') }}
-            </a>
+            </x-navigation.dropdown-child>
         </x-slot:children>
     </x-navigation.dropdown>
 

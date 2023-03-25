@@ -3,10 +3,9 @@
 
     <x-slot:children>
         @foreach (DB::table('website_languages')->get() as $lang)
-            <a data-turbolinks="false" href="{{ route('language.select', $lang->country_code) }}"
-               class="block px-4 py-2 font-semibold hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="">
-            </a>
+            <x-navigation.dropdown-child :route="route('language.select', $lang->country_code)" :turbolink="false">
+                <img src="/assets/images/icons/flags/{{ $lang->country_code }}.png" alt="{{ $lang->country_code }}">
+            </x-navigation.dropdown-child>
         @endforeach
     </x-slot:children>
 </x-navigation.dropdown>
