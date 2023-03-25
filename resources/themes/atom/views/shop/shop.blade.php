@@ -10,6 +10,24 @@
     <div class="col-span-12 flex flex-col gap-y-3 md:col-span-3">
         <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
+                {{ __('Top up account') }}
+            </x-slot:title>
+
+            <x-slot:under-title>
+                {{ __('Purchase :hotel items', ['hotel' => setting('hotel_name')]) }}
+            </x-slot:under-title>
+
+            <form action="{{ route('paypal.process-transaction') }}" method="GET">
+                @csrf
+
+                <input name="amount" class="p-2 rounded mt-2 w-full" placeholder="amount">
+
+                <button type="submit" class="p-2 rounded bg-blue-600 text-white mt-2 w-full">Pay</button>
+            </form>
+        </x-content.content-section>
+
+        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+            <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
 
