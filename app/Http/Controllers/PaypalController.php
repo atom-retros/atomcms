@@ -67,8 +67,9 @@ class PaypalController extends Controller
         ]);
 
         $response = $this->provider->capturePaymentOrder($request['token']);
+        $paymentDetails = $response['purchase_units'][0]['payments']['captures'][0];
 
-        if (!isset($response['status'], $response['purchase_units'][0]['payments']['captures'][0])) {
+        if (!isset($response['status'], $paymentDetails)) {
             Log::error('Invalid response from PayPal', ['response' => $response]);
 
             return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please try again later')]);
