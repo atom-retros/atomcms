@@ -14,10 +14,10 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/flowbite.min.css') }}" />
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/scale.min.css') }}"/>
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
     @stack('scripts')
@@ -70,10 +70,9 @@
         </script>
     @endif
 
-    <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine-focus.js') }}"></script>
 
     @stack('javascript')
-</body>
-
+    </body>
 </html>

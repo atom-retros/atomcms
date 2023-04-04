@@ -33,6 +33,12 @@ class CreateNewUser implements CreatesNewUsers
         }
 
         $ip = request()->ip();
+        if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
+            throw ValidationException::withMessages([
+                'registration' => __('Your IP address seems to be invalid'),
+            ]);
+        }
+
         $matchingIpCount = User::query()
             ->where('ip_current', '=', $ip)
             ->orWhere('ip_register', '=', $ip)
@@ -55,8 +61,8 @@ class CreateNewUser implements CreatesNewUsers
             'motto' => setting('start_motto'),
             'look' => setting('start_look'),
             'credits' => setting('start_credits'),
-            'ip_register' => request()->ip(),
-            'ip_current' => request()->ip(),
+            'ip_register' => $ip,
+            'ip_current' => $ip,
             'auth_ticket' => '',
             'home_room' => (int) setting('hotel_home_room'),
         ]);
@@ -92,7 +98,7 @@ class CreateNewUser implements CreatesNewUsers
 
             $referralUser->userReferrals()->create([
                 'referred_user_id' => $user->id,
-                'referred_user_ip' => request()->ip(),
+                'referred_user_ip' => $ip,
             ]);
         }
 
