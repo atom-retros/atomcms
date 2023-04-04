@@ -72,7 +72,7 @@
 
         <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>
         <script defer src="{{ asset('assets/js/alpine-focus.js') }}"></script>
-        
+
         @stack('javascript')
     </body>
 </html>
