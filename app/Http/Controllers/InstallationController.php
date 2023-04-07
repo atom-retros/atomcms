@@ -126,18 +126,5 @@ class InstallationController extends Controller
             ->whereIn('key', $settings)
             ->select(['key', 'value', 'comment'])
             ->get();
-
-        /*
-         * return WebsiteSetting::query()
-            ->whereIn('key', $settings)
-            ->select(['key', 'value', 'comment'])
-            ->get()
-            ->mapWithKeys(function ($setting) {
-                return [$setting->key => [
-                    'value' => $setting->value,
-                    'comment' => $setting->comment,
-                ]];
-            });
-         * */
     }
 }
