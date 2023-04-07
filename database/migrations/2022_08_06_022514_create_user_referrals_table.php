@@ -8,20 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        $storedKeys = [];
+        dropForeignKeyIfExists('user_referrals', 'user_id');
 
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('user_referrals')) {
-            $keys = DB::select(DB::raw('SHOW KEYS from user_referrals'));
-            foreach ($keys as $key) {
-                $storedKeys[] = $key->Key_name;
-            }
-
-            if (in_array('user_referrals_user_id_foreign', $storedKeys)) {
-                Schema::table('user_referrals', function (Blueprint $table) {
-                    $table->dropConstrainedForeignId('user_id');
-                });
-            }
-
             Schema::rename('user_referrals', sprintf('user_referrals_%s', time()));
         }
 

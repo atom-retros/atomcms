@@ -9,14 +9,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('website_articles', function (Blueprint $table) {
-            $table->boolean('can_comment')->default(true)->after('image');
-        });
-    }
+            if (columnExists('website_articles', 'can_comment')) {
+                Schema::dropColumns('website_articles', 'can_comment');
+            }
 
-    public function down(): void
-    {
-        Schema::table('website_articles', function (Blueprint $table) {
-            //
+            $table->boolean('can_comment')->default(true)->after('image');
         });
     }
 };

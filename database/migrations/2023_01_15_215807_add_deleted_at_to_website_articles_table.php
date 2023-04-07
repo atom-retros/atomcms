@@ -9,14 +9,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('website_articles', function (Blueprint $table) {
-            $table->softDeletes()->after('updated_at');
-        });
-    }
+            if (columnExists('website_articles', 'deleted_at')) {
+                Schema::dropColumns('website_articles', 'deleted_at');
+            }
 
-    public function down(): void
-    {
-        Schema::table('website_articles', function (Blueprint $table) {
-            //
+            $table->softDeletes()->after('updated_at');
         });
     }
 };

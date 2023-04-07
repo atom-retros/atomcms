@@ -35,6 +35,10 @@ class InstallationMiddleware
         if (!Schema::hasTable('website_installation')) {
             Artisan::call("migrate", ['--path' => "database/migrations/" . findMigration('website_installation')]);
         }
+
+        if (!Schema::hasTable('sessions')) {
+            Artisan::call("migrate", ['--path' => "database/migrations/" . findMigration('sessions')]);
+        }
     }
 
     private function getInstallation()
@@ -125,7 +129,7 @@ class InstallationMiddleware
             return to_route('installation.index');
         }
 
-        return $this->redirectToStep($installation->step);
+        return $this->redirectToStep($installation->step ?? 0);
     }
 
     private function redirectToWelcomeIfInstalled(Request $request, Closure $next)

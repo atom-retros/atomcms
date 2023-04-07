@@ -8,6 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
+        dropForeignKeyIfExists('website_staff_applications', 'user_id');
+        dropForeignKeyIfExists('website_staff_applications', 'rank_id');
+
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_staff_applications')) {
+            Schema::rename('website_staff_applications', sprintf('website_staff_applications_%s', time()));
+        }
+
         Schema::create('website_staff_applications', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');

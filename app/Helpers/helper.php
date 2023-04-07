@@ -2,6 +2,7 @@
 
 use App\Services\PermissionsService;
 use App\Services\SettingsService;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
 
 if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
@@ -15,6 +16,11 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 if (! function_exists('setting')) {
     function setting(string $setting): string
     {
+        if (!Schema::hasTable('website_settings')) {
+            return 1;
+        }
+
+
         return app(SettingsService::class)->getOrDefault($setting);
     }
 }
@@ -46,5 +52,33 @@ if (! function_exists('findMigration')) {
 
         // If no matching migration file is found, return an empty string
         return '';
+    }
+}
+
+if (! function_exists('columnExists')) {
+    function columnExists(string $table, string $column): bool
+    {
+        return Schema::hasColumn($table, $column);
+    }
+}
+
+if (!function_exists('dropForeignKeyIfExists')) {
+    function dropForeignKeyIfExists(string $table, string $column): void
+    {
+        $connection = Schema::getConnection();
+        $tableWithPrefix = $connection->getTablePrefix() . $table;
+
+        $foreignKeys = collect($connection->select("SELECT CONSTRAINT_NAME
+            FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+            WHERE TABLE_SCHEMA = DATABASE()
+            AND TABLE_NAME = ?
+            AND COLUMN_NAME = ?", [$tableWithPrefix, $column]))
+            ->pluck('CONSTRAINT_NAME');
+
+        foreach ($foreignKeys as $foreignKey) {
+            if (!empty($foreignKey)) {
+                $connection->statement("ALTER TABLE {$table} DROP FOREIGN KEY {$foreignKey}");
+            }
+        }
     }
 }

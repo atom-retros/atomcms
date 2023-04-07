@@ -2,28 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\MigrationFailedException;
 use App\Models\WebsiteInstallation;
 use App\Models\WebsiteSetting;
 use App\Rules\ValidateInstallationKeyRule;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class InstallationController extends Controller
 {
     public function index()
     {
-        foreach (config('setup.installation.tables') as $table) {
-            if (Schema::hasTable($table)) {
-                continue;
-            }
-
-            Artisan::call("migrate", ['--path' => "database/migrations/" . findMigration($table)]);
-        }
-
-        Artisan::call("db:seed");
-
         return view('installation.index');
     }
 
@@ -32,6 +24,14 @@ class InstallationController extends Controller
         $request->validate([
            'installation_key' => ['required', 'string', 'max:255', new ValidateInstallationKeyRule],
         ]);
+
+        try {
+            Artisan::call('migrate --seed');
+        } catch (MigrationFailedException $e) {
+            Log::error('Migration or seeding failed: ' . $e->getMessage());
+
+            abort(500);
+        }
 
         WebsiteInstallation::first()->update([
             'step' => 1,

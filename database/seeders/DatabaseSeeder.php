@@ -19,7 +19,16 @@ class DatabaseSeeder extends Seeder
             WebsiteRareValue::factory(20)->create();
         }
 
-        $this->call(config('setup.installation.seeders'));
+        $this->call([
+            WebsiteSettingsSeeder::class,
+            WebsiteLanguageSeeder::class,
+            WebsiteArticleSeeder::class,
+            WebsitePermissionSeeder::class,
+            WebsiteWordfilterSeeder::class,
+            WebsiteTeamSeeder::class,
+            WebsiteRuleCategorySeeder::class,
+            WebsiteRuleSeeder::class
+        ]);
 
         // \App\Models\User::factory(10)->create();
 

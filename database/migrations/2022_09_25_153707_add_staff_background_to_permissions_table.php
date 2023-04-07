@@ -9,6 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('permissions', function (Blueprint $table) {
+            if (columnExists('permissions', 'staff_background')) {
+                Schema::dropColumns('permissions', 'staff_background');
+            }
+
             $table->string('staff_background')->default('staff-bg.png')->after('staff_color');
         });
     }

@@ -8,6 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
+        dropForeignKeyIfExists('website_article_comments', 'article_id');
+        dropForeignKeyIfExists('website_article_comments', 'user_id');
+
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_article_comments')) {
+            Schema::rename('website_article_comments', sprintf('website_article_comments_%s', time()));
+        }
+
         Schema::create('website_article_comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('article_id');
