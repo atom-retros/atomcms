@@ -20,8 +20,9 @@ class InstallationController extends Controller
             }
 
             Artisan::call("migrate", ['--path' => "database/migrations/" . findMigration($table)]);
-            Artisan::call("db:seed");
         }
+
+        Artisan::call("db:seed");
 
         return view('installation.index');
     }
