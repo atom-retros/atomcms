@@ -154,15 +154,15 @@ html.dark .camera-icon {
 
 .site-bg {
     background: url("/public/assets/images/background-light.jpg") no-repeat
-        fixed right bottom;
+    fixed right bottom;
 }
 
-html.dark .site-bg {
-    background: url("/public/assets/images/background-dark.jpg") no-repeat fixed
-        right bottom;
+.app.dark .site-bg {
+    background: url("/public/assets/images/background-dark.jpg") no-repeat
+    fixed right bottom;
 }
 
-html.dark .swal2-popup {
+.app.dark .swal2-popup {
     background: rgb(17 24 39);
     color: white;
 }

@@ -32,3 +32,19 @@ if (! function_exists('strLimit')) {
         return Str::limit($string, $limit, $replacement);
     }
 }
+
+if (! function_exists('findMigration')) {
+    function findMigration(string $tableName): string
+    {
+        // Iterate through all migration files in the migrations directory
+        foreach (glob(database_path('migrations/*.php')) as $filename) {
+            // Check if the migration file has the Schema::create() line with the given table name
+            if (strpos(file_get_contents($filename), "Schema::create('$tableName'")) {
+                return basename($filename);
+            }
+        }
+
+        // If no matching migration file is found, return an empty string
+        return '';
+    }
+}

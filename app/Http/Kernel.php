@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\BannedMiddleware;
 use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\ForceStaffTwoFactorMiddleware;
+use App\Http\Middleware\InstallationMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\LogViewerMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
@@ -30,6 +31,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         SetThemeMiddleware::class,
+        InstallationMiddleware::class,
     ];
 
     /**
