@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InstallationController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
@@ -29,6 +30,18 @@ use Laravel\Fortify\Features;
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
+
+// Installation routes
+Route::prefix('installation')->group(function () {
+    Route::get('/', [InstallationController::class, 'index'])->name('installation.index');
+    Route::get('/step/{step}', [InstallationController::class, 'showStep'])->name('installation.show-step');
+    Route::post('/start-installation', [InstallationController::class, 'storeInstallationKey'])->name('installation.start-installation');
+    Route::post('/save-step', [InstallationController::class, 'saveStepSettings'])->name('installation.save-step');
+    Route::post('/previous-step', [InstallationController::class, 'previousStep'])->name('installation.previous-step');
+    Route::post('/restart-installation', [InstallationController::class, 'restartInstallation'])->name('installation.restart');
+    Route::post('/complete', [InstallationController::class, 'completeInstallation'])->name('installation.complete');
+});
+
 
 Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(function () {
     // Maintenance route

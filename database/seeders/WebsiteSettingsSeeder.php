@@ -63,7 +63,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'start_look',
                 'value' => 'fa-201407-1324.hr-828-1035.ch-3001-1261-1408.sh-3068-92-1408.cp-9032-1308.lg-270-1281.hd-209-3',
-                'comment' => 'Specifies the amount of start outfit upon registration',
+                'comment' => 'Specifies the of start outfit upon registration',
             ],
             [
                 'key' => 'referrals_needed',
@@ -148,7 +148,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'ipdata_api_key',
                 'value' => 'ADD-API-KEY-HERE',
-                'comment' => 'The API key needed from ipdata.co to block VPNs',
+                'comment' => 'The API key needed from ipdata.co to block VPNs (Only necessary if vpn block is enabled)',
             ],
             [
                 'key' => 'cms_logo',
@@ -193,17 +193,17 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'requires_beta_code',
                 'value' => '0',
-                'comment' => 'Determines whether users need a beta code to register or not',
+                'comment' => 'Determines whether users need a beta code to register or not (0 for no & 1 for yes)',
             ],
             [
                 'key' => 'disable_registration',
                 'value' => '0',
-                'comment' => 'Determines whether registration is enabled or not',
+                'comment' => 'Determines whether registration is enabled or not (0 for no & 1 for yes)',
             ],
             [
                 'key' => 'give_hc_on_register',
                 'value' => '0',
-                'comment' => 'Determines whether the registered user will receive a HC on registration',
+                'comment' => 'Determines whether the registered user will receive HC upon registration',
             ],
             [
                 'key' => 'hc_on_register_duration',
@@ -229,6 +229,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'key' => 'cache_timer',
                 'value' => '30',
                 'comment' => 'Determines how long a cache will last before being refreshed',
+            ],
+            [
+                'key' => 'installation_finished',
+                'value' => '0',
+                'comment' => 'Determines whether the installation has been completed or not. 1 for completed 0 for not completed',
+            ],
+            [
+                'key' => 'nitro_path',
+                'value' => '/client/nitro/nitro-react',
+                'comment' => 'The path in which your index.html for nitro is located',
             ],
         ];
 

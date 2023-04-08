@@ -68,7 +68,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->update([
-            'referral_code' => sprintf('%s%s', $user->id, Str::random(5)),
+            'referral_code' => sprintf('%s%s', $user->id, Str::random(8)),
         ]);
 
         if (setting('requires_beta_code')) {

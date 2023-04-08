@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('users_session_logs')) {
+            Schema::rename('users_session_logs', sprintf('users_session_logs_%s', time()));
+        }
+
         Schema::create('users_session_logs', function (Blueprint $table) {
             $table->id();
 
