@@ -8,6 +8,11 @@
     </a>
 </div>
 
+
+**Disclaimer**
+
+Atom CMS is purely an education project. I am not responsible for how or where Atom CMS is being used.
+
 ## What is Atom CMS?
 Atom CMS is a Habbo Retro CMS, aiming to provide the best experience possible for you and your users. 
 
