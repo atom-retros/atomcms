@@ -59,6 +59,8 @@ Laracasts is an official learning platform for Laravel, so you can trust the qua
 
 Atom CMS wad made with the community in mind, valuing community input and collaboration. Our goal is to provide a modern and robust CMS using industry-approved technologies, which is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system, making it simple to create or customize themes for your hotel.
 
+We also wanted to widen the options people had when it came to choosing what CMS they wanted to use for their new journey, which was a huge part of the decision of creating Atom CMS.
+
 ## Migrating from Another CMS
 
 If you're migrating from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
