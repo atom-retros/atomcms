@@ -11,7 +11,7 @@
 
 **Disclaimer**
 
-Atom CMS is purely an educational project. I am not responsible for how or where Atom CMS is being used.
+Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
 
 ## What is Atom CMS?
 Atom CMS is a Habbo Retro CMS, aiming to provide the best experience possible for you and your users. 
