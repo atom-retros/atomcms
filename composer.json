@@ -22,6 +22,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "opcodesio/log-viewer": "^1.9",
+        "pxlrbt/filament-spotlight": "^0.3.7",
         "qirolab/laravel-themer": "^2.0",
         "spatie/laravel-activitylog": "^4.7"
     },
