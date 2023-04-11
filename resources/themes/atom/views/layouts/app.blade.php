@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="app" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -14,10 +14,10 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/flowbite.min.css') }}" />
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/scale.min.css') }}"/>
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
     @stack('scripts')
@@ -37,19 +37,17 @@
 
         {{-- Navigation --}}
         <nav class="relative bg-white shadow dark:bg-gray-900">
-            {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
-            <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
-                <div class="h-full w-full">
-                    <x-navigation.mobile-menu />
-
-                    <x-navigation.navigation-menu />
-                </div>
+            <div class="max-w-7xl min-h-[60px] px-4 md:flex md:items-center md:justify-between md:mx-auto">
+                <x-navigation.navigation-menu />
 
                 <x-navigation.theme-mode-switcher />
+
                 <x-navigation.language-selector>
                     <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
                         alt="">
                 </x-navigation.language-selector>
+
+                <x-navigation.mobile-menu />
             </div>
         </nav>
 
@@ -62,7 +60,6 @@
     </div>
 
     <x-footer />
-    <x-banner />
 
     @if (setting('cms_color_mode') === 'dark')
         <script>
@@ -73,10 +70,9 @@
         </script>
     @endif
 
-    <script defer src="https://unpkg.com/@alpinejs/ui@3.10.5-beta.8/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine-focus.js') }}"></script>
 
     @stack('javascript')
-</body>
-
+    </body>
 </html>

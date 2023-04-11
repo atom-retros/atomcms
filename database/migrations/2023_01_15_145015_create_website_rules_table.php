@@ -8,6 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
+        dropForeignKeyIfExists('website_rules', 'category_id');
+
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_rules')) {
+            Schema::rename('website_rules', sprintf('website_rules_%s', time()));
+        }
+
         Schema::create('website_rules', function (Blueprint $table) {
             $table->id();
 

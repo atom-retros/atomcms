@@ -83,7 +83,6 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Impersonate::make('impersonate'),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
