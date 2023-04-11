@@ -8,64 +8,75 @@
     </a>
 </div>
 
+## Table of Contents
+- [Disclaimer](#disclaimer)
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Learning Laravel](#learning-laravel)
+- [Why Atom CMS?](#why-atom-cms)
+- [Migrating from Another CMS](#migrating-from-another-cms)
+- [Setup Guide](#setup-guide)
+    - [Requirements](#requirements)
+    - [Windows Setup](#windows-setup)
+    - [Linux Setup](#linux-setup)
+- [Using HTTPS](#using-https)
+- [Disable Rocket Loader](#disable-rocket-loader)
+- [Feature Add-ons](#feature-add-ons)
+- [Credits](#credits)
 
-**Disclaimer**
+### Disclaimer
 
 Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
 
-## What is Atom CMS?
-Atom CMS is a Habbo Retro CMS, aiming to provide the best experience possible for you and your users. 
+## Introduction
 
-**What technologies is Atom CMS built with?**
+Atom CMS is a Habbo Retro CMS, designed to provide the best possible experience for both you and your users. With a focus on community input and easy customization, Atom CMS is built using modern and robust technologies to ensure a smooth and enjoyable experience.
+
+## Technologies
+
+Atom CMS is built with the following technologies:
+
 - PHP (Laravel 9.x)
-  [Laravel docs](https://laravel.com/docs/9.x).
-- Vite [Vite docs](https://vitejs.dev/).
+    - [Laravel docs](https://laravel.com/docs/9.x)
+- Vite
+    - [Vite docs](https://vitejs.dev/)
 - TailwindCSS
-[Tailwind docs](https://tailwindcss.com/docs/installation).
+    - [Tailwind docs](https://tailwindcss.com/docs/installation)
 
-You can however use any CSS framework you'd like or if you want to go fully vanilla that possible too, due to the built-in theme system that Atom CMS comes with.
+You can also use any CSS framework you prefer or even go fully vanilla, thanks to the built-in theme system that Atom CMS offers.
 
-Laravel was chosen as its backend, due to it being very robust and battle tested within "in the real world" on top up that it has a huge community to back it, with tons of free (& paid) learning resources and its solid documentation that other CMS' (& frameworks) normally lack. Combine those things together, and you'll be able to build anything you want even as a beginner, you don't need to be a PHP expert or a frontend master to work with Atom CMS!
+## Learning Laravel
 
-**New to Laravel?**
-If you are new to Laravel and want to build your own features, then I highly recommend the free bootcamp and two (free) video courses. 
-[https://bootcamp.laravel.com/](https://bootcamp.laravel.com/)
+If you are new to Laravel and want to build your own features, we highly recommend the following free resources:
 
-- [https://laracasts.com/series/laravel-8-from-scratch](https://laracasts.com/series/laravel-8-from-scratch)
-- [https://laracasts.com/series/whats-new-in-laravel-9](https://laracasts.com/series/whats-new-in-laravel-9)
+- Laravel Bootcamp: [https://bootcamp.laravel.com/](https://bootcamp.laravel.com/)
+- Laravel 8 from Scratch: [https://laracasts.com/series/laravel-8-from-scratch](https://laracasts.com/series/laravel-8-from-scratch)
+- What's New in Laravel 9: [https://laracasts.com/series/whats-new-in-laravel-9](https://laracasts.com/series/whats-new-in-laravel-9)
 
-Laracasts is an **official** learning platform for Laravel, so do not worry if you decide to take the time to watch the courses, you'll be taught some of the best practises by some of the best teachers within the Laravel community.
+Laracasts is an official learning platform for Laravel, so you can trust the quality of the content and learn best practices from some of the best and most experienced teacher within the field.
 
-## Why was Atom CMS made?
-It's built with the community in mind, meaning we highly value community input, rather than only bringing our own ideas & vision to live & so that rather than it's for us to "show off" how good developers we're, we want everyone to be able to contribute or customise Atom CMS to their needs without having a bachelor in programming.
+## Why Atom CMS?
 
-Another reason for creating Atom CMS is to provide the community with modern & robust CMS, using **industry approved** technologies which is not only easy to understand but also "easy" to work with. Also, we wanted to bring a wider CMS variation to the scene. 
+Atom CMS wad made with the community in mind, valuing community input and collaboration. Our goal is to provide a modern and robust CMS using industry-approved technologies, which is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system, making it simple to create or customize themes for your hotel.
 
-We also included a built-in theme system in Atom CMS so that you can either contribute to the community or customise your own hotel as it becomes a breeze to brew up a new theme in no time.
+## Migrating from Another CMS
 
-## Coming from another cms?
-If you're coming from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
+If you're migrating from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
 
 Even tho we **highly recommend** to do a proper cleanup yourself, Atom CMS has a built-in option to rename colliding table names and drop matching foreign keys.
 
-All you have to do is to change `RENAME_COLLIDING_TABLES=false` to `RENAME_COLLIDING_TABLES=true` within your `.env`file (You'll get to the .env file in the next step). Once the feature is enabled, Atom CMS will **attempt** to solve any conflicts that might happen due to the use of another CMS. 
+All you have to do is to change `RENAME_COLLIDING_TABLES=false` to `RENAME_COLLIDING_TABLES=true` within your `.env`file (You'll get to the .env file in the next step). Once the feature is enabled, Atom CMS will **attempt** to solve any conflicts that might happen due to the use of another CMS.
 
-## Setup guide
-The following requirements is needed to setup Atom CMS:
+## Requirements
+
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
-- MySQL 8.x or MariaDB 10.x or newer
+- MySQL >= 8.x or  MariaDB >= 10.x 
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
 - An Arcturus Morningstar database [Database repository](https://git.krews.org/morningstar/arcturus-morningstar-base-database)
 
-Once all of the above has been installed & setup, you can continue doing the following:
-Open CMD (Command Prompt) and navigate into the path you want the CMS to be located at, and run the following commands:
-
-*If you're wondering why there is no SQL files for Atom CMS, then it's because Laravel offers something called "migrations" which will automatically create all the tables needed for Atom CMS to work*
-
-#### Required extensions
 Please verify the following extensions are enabled inside your php.ini file. If they have a ";" in front of them it means that they're commented out and not enabled. Simply remove the ";" to enable them.
-```
+```ini
 extension=curl
 extension=fileinfo
 extension=gd
@@ -76,10 +87,10 @@ extension=sockets
 ```
 
 #### Windows Setup
-```
-[Https] git clone https://github.com/ObjectRetros/atomcms.git
+```shell
+git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
-copy .env.example .env (Don't forget to edit the database credentials inside the .env)
+copy .env.example .env (Do not forget to edit the database credentials inside the .env)
 composer install 
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 php artisan key:generate
@@ -89,7 +100,7 @@ php artisan migrate --seed
 *Don't forget to link your IIS site to the "public" folder inside for "atomcms"*
 
 **If you are using Atom CMS in production, don't forget to change the following variables:**
-```
+```dotenv
 APP_ENV=local to APP_ENV=production
 APP_DEBUG=true to APP_DEBUG=false
 ```
@@ -110,18 +121,18 @@ Have you always wanted to set up your own hotel from scratch, but are unsure how
 - Part 3: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/)
 
 #### Linux Setup
-```
-[Https] git clone https://github.com/ObjectRetros/atomcms.git
+```shell
+git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
-cp .env.example .env (Don't forget to edit the database credentials inside the .env)
+cp .env.example .env (Do not forget to edit the database credentials inside the .env)
 composer install
-npm install && npm run build:atom (For development run: npm run dev:[theme-name] (eg. npm run dev:atom))
+npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 php artisan key:generate
 php artisan migrate --seed
 ```
 
 **Grant necessary permissions to used folders. Within your atomcms directory, enter the 4 commands below:**
-```
+```shell
 sudo chown -R $USER:www-data storage
 sudo chown -R $USER:www-data bootstrap/cache
 chmod -R 775 storage
@@ -131,7 +142,7 @@ chmod -R 775 bootstrap/cache
 For NGINX, you can copy the config a base configuration from here: [Deploy a site on nginx](https://laravel.com/docs/9.x/deployment#nginx)
 
 **If you are using Atom CMS in production, don't forget to change the following variables:**
-```
+```dotenv
 APP_ENV=local to APP_ENV=production
 APP_DEBUG=true to APP_DEBUG=false
 ```
@@ -152,6 +163,8 @@ As Atom CMS comes packed with **tons** of features, to improve the CMS experienc
 You can find the documentation, addons, and tips & tricks on **[https://retros.guide/docs/category/atom-cms](https://retros.guide/docs/category/atom-cms)**
 
 ## Credits
+Atom CMS is made possible by the contributions of numerous developers, designers, and community members.
+
 - **Kasja** - Helping with design, ideas & GFX
 - **Nicollas** - Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations
 - **Dominic** - Performance improvements & User sessions
@@ -172,3 +185,5 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 - **Kani** - Rcon System & Findretros API
 - **Sonay** - Material theme
 - **Raizer** - Circinus
+
+
