@@ -10,6 +10,8 @@ use App\Rules\BetaCodeRule;
 use App\Rules\GoogleRecaptchaRule;
 use App\Rules\WebsiteWordfilterRule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -102,6 +104,10 @@ class CreateNewUser implements CreatesNewUsers
             ]);
         }
 
+        if (setting('enable_discord_webhook') === '1') {
+            $this->sendDiscordWebhook($user->username, $user->ip_register, $user->mail);
+        }
+
         return $user;
     }
 
@@ -122,5 +128,30 @@ class CreateNewUser implements CreatesNewUsers
         ];
 
         return Validator::make($inputs, $rules, $messages)->validate();
+    }
+
+    private function sendDiscordWebhook(string $username, string $ip, string $email): void
+    {
+        if (setting('discord_webhook_url') === '') {
+            Log::error('Discord webhook url not provided', ['Please provide a discord webhook url before being able to send any webhook requests.']);
+
+            return;
+        }
+
+        $request = Http::asJson()->post(setting('discord_webhook_url'), [
+            'username' => sprintf('%s Bot', setting('hotel_name')),
+            'content' => "User: {$username} has just registered, with the IP: {$ip} and E-mail: {$email}",
+        ]);
+
+        // Log the error in-case webhook wasn't sent
+        if (!$request->successful()) {
+            Log::error('Failed to send Discord webhook notification', [
+                'username' => $username,
+                'ip' => $ip,
+                'email' => $email,
+                'response_status' => $request->status(),
+                'response_body' => $request->body(),
+            ]);
+        }
     }
 }

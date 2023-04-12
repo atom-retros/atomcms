@@ -240,6 +240,16 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '/client/nitro/nitro-react',
                 'comment' => 'The path in which your index.html for nitro is located',
             ],
+            [
+                'key' => 'enable_discord_webhook',
+                'value' => '0',
+                'comment' => 'Specify whether Discord webhooks will be sent or not (0 for disabled, 1 for enabled)',
+            ],
+            [
+                'key' => 'discord_webhook_url',
+                'value' => '',
+                'comment' => 'The URL provided by discord to send a webhook request',
+            ],
         ];
 
         foreach ($settings as $setting) {
