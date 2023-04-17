@@ -18,12 +18,12 @@
     </div>
 
     @push('javascript')
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+        <script src="/assets/js/fancybox.js"></script>
     @endpush
 
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+        href="/assets/css/fancybox.css"
     />
 </x-app-layout>
 

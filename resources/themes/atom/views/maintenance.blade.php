@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ setting('hotel_name') }} - {{ __('Maintenance') }}</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="/assets/css/flowbite.min.css" />
+    <script src="/assets/js/flowbite.js"></script>
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
 </head>
