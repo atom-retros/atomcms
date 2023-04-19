@@ -42,7 +42,6 @@ Route::prefix('installation')->group(function () {
     Route::post('/complete', [InstallationController::class, 'completeInstallation'])->name('installation.complete');
 });
 
-
 Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(function () {
     // Maintenance route
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.show');

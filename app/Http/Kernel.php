@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\BannedMiddleware;
 use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\ForceStaffTwoFactorMiddleware;
+use App\Http\Middleware\HasHousekeepingPermission;
 use App\Http\Middleware\InstallationMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\LogViewerMiddleware;
@@ -81,5 +82,6 @@ class Kernel extends HttpKernel
         'vpn.checker' => VPNCheckerMiddleware::class,
         'log.viewer' => LogViewerMiddleware::class,
         'force.staff.2fa' => ForceStaffTwoFactorMiddleware::class,
+        'permission' => HasHousekeepingPermission::class,
     ];
 }
