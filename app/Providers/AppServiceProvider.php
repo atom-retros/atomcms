@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\PermissionsService;
+use App\Services\RconService;
 use App\Services\SettingsService;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             PermissionsService::class,
             fn () => new PermissionsService()
+        );
+
+        $this->app->singleton(
+            RconService::class,
+            fn () => new RconService()
         );
     }
 
