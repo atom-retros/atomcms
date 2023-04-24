@@ -4,45 +4,45 @@ namespace App\Services;
 
 use App\Models\User;
 
-/*Credits to Kani for this*/
 class RconService
 {
     protected $socket;
+    protected bool $connected = false;
 
-    protected $connected;
-
-    protected function connect(): void
+    protected function connect(): bool
     {
-        if (! function_exists('socket_create')) {
-            abort(500, 'Please enable sockets in your php.ini!');
+
+        if (!function_exists('socket_create')) {
+            return false;
         }
 
-        $this->socket = socket_create(
-            config('habbo.rcon.domain'),
-            config('habbo.rcon.type'),
-            config('habbo.rcon.protocol')
-        );
-
-        if (! $this->socket) {
-            abort(500, sprintf('socket_create() failed: reason: %s', socket_strerror(socket_last_error())));
+        if (!($this->socket = @socket_create(setting('rcon_ip'), setting('rcon_port'), config('habbo.rcon.protocol')))) {
+            return false;
         }
 
-        $this->connected = socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'));
-
-        if (! $this->connected) {
-            abort(500, sprintf('socket_connect() failed: reason: %s', socket_strerror(socket_last_error())));
+        if (!@socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'))) {
+            return false;
         }
+
+        return $this->connected = true;
+    }
+
+    public function isConnected(): bool
+    {
+        $this->connect();
+
+        return $this->connected;
     }
 
     public function sendPacket(string $key, $data = null)
     {
-        $this->connect();
+        if (!$this->isConnected()) {
+            return false;
+        }
 
         $data = json_encode(['key' => $key, 'data' => $data]);
 
-        $request = socket_write($this->socket, $data, strlen($data));
-
-        if ($request === false) {
+        if (!@socket_write($this->socket, $data, strlen($data))) {
             abort(500, sprintf(socket_strerror(socket_last_error($this->socket))));
         }
 
@@ -147,6 +147,14 @@ class RconService
         return $this->sendPacket('forwarduser', [
             'user_id' => $user->id,
             'room_id' => $roomId,
+        ]);
+    }
+
+    public function updateConfig(User $user, string $command)
+    {
+        return $this->sendPacket('executecommand', [
+            'user_id' => $user->id,
+            'command' => $command,
         ]);
     }
 }
