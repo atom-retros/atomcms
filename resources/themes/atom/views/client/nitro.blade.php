@@ -73,11 +73,7 @@
             window.location.href = window.location;
         }
 
-        window.addEventListener('DOMContentLoaded', (event) => {
-            const onlineCount = setInterval(function() {
-                getOnlineUserCount();
-            }, 15000); //15000 = 15 seconds
-
+        window.addEventListener('DOMContentLoaded', () => {
             function getOnlineUserCount() {
                 fetch('{{ route('api.online-count') }}')
                     .then(function(response) {
@@ -85,15 +81,14 @@
                     })
                     .then(function(response) {
                         document.getElementById('online-count').innerHTML = response.data.onlineCount;
-                        clearInterval(onlineCount);
                     });
             }
 
-            // Fetch initial online count
-            const fetchInitOnlineCount = setTimeout(() => {
+            getOnlineUserCount();
+
+            setInterval(function() {
                 getOnlineUserCount();
-                clearTimeout(fetchInitOnlineCount)
-            }, 1500) // 150ms
+            }, 15000);
         });
     </script>
 
