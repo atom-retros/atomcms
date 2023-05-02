@@ -1,7 +1,7 @@
 <x-slot name="title">
     <h2 class="font-semibold text-2xl">{{ __('Hello!') }}</h2>
     <p class="dark:text-gray-400">
-        {{ __('There is currently :online users online', ['online' => DB::table('users')->where('online', '1')->count()]) }}
+        {{ __('There is currently :online :hotel online', ['online' => DB::table('users')->where('online', '1')->count(), 'hotel' => setting('hotel_name')]) }}
     </p>
 </x-slot>
 
@@ -35,7 +35,7 @@
 
     <div class="text-center font-semibold text-gray-700 text-sm dark:text-gray-400">
         <a href="{{ route('register') }}" class="hover:underline" x-on:click="open = false">
-            {{ __('Dont have an account? Join now!') }}
+            {{ __('Dont have an :hotel? Join now!', ['hotel' => setting('hotel_name')]) }}
         </a>
     </div>
 </form>

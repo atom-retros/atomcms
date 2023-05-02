@@ -116,7 +116,7 @@
 
                             <div class="mt-4">
                                 <x-form.primary-button>
-                                    {{ __('Create account') }}
+                                    {{ __('Create :hotel', ['hotel' => setting('hotel_name')]) }}
                                 </x-form.primary-button>
                             </div>
                         </form>
