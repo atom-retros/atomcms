@@ -19,7 +19,7 @@
                             </p>
 
                             <p>
-                                <strong>Ban expiration:</strong> {{ date('Y/m/d', $ban->ban_expire) }}
+                                <strong>{{ _('Ban expiration:') }}</strong> {{ date('Y/m/d', $ban->ban_expire) }}
                             </p>
                         </div>
 
