@@ -14,7 +14,7 @@
     "Keep up to date with the latest hotel gossip.": "Bleiben Sie auf dem Laufenden mit dem neuesten Hotelklatsch.",
     "Latest Photos": "Neueste Fotos",
     "Have a look at some of the great moments captured by users around the hotel.": "Wirf einen Blick auf einige der grossartigen Momente, die von den Nutzern rund um das Hotel eingefangen wurden.",
-    "Username": "Username",
+    "Username": "Benutzername",
     "Password": "Passwort",
     "Confirm Password": "Passwort wiederholen",
     "Email": "E-Mail",
@@ -227,5 +227,9 @@
     "Apply for :hotel staff":"Bewerbe dich als :hotel Mitarbeiter",
     "Select position to get started":"Wähle eine Position um zu beginnen",
     "Here at :hotel we open up for staff applications every now and then. Sometimes you will find this page empty other times it might be filled with positions, if you ever come across a position you feel you would fit perfectly into, then do not hesitate to apply for it.":"Hier bei Hubbo nehmen wir von Zeit zu Zeit Bewerbungen von Mitarbeitern entgegen. Manchmal werden Sie diese Seite leer vorfinden, manchmal ist sie mit Stellen gefüllt. Wenn Sie auf eine Stelle stoßen, von der Sie glauben, dass sie perfekt zu Ihnen passen würde, dann zögern Sie nicht, sich zu bewerben.",
-    "My Profile":"Mein Profil"
+    "My Profile":"Mein Profil",
+    "Repeat Password":"Wiederhole dein Passwort",
+    "Beta code":"Beta Code",
+    "Enter the beta code you have been provided with":"Gebe den beta Code ein, den du erhalten hast",
+    "Enter your beta code":"Gebe deinen beta Code ein"
 }
