@@ -21,6 +21,10 @@
                             <p>
                                 <strong>Ban expiration:</strong> {{ date('Y/m/d', $ban->ban_expire) }}
                             </p>
+
+                            <p>
+                                <strong>Banned By:</strong> {{ $ban->staffid?->username }}
+                            </p>
                         </div>
 
                         <div class="mt-4 max-w-[380px]">
