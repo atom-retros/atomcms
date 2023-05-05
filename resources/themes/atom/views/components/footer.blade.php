@@ -1,5 +1,6 @@
 <footer
-    class="w-full h-14 bg-gray-100 dark:bg-gray-900 mt-auto flex flex-col justify-center md:flex-row md:justify-center text-gray-400 items-center md:px-8 text-sm" onclick="showFooter()">
+    class="mt-auto flex h-14 w-full flex-col items-center justify-center bg-gray-100 text-sm text-gray-400 dark:bg-gray-900 md:flex-row md:justify-center md:px-8"
+    onclick="showFooter()">
     <div class="md:font-semibold text-[12px] md:text-[14px] cursor-pointer hover:underline">
         &copy {{ date('Y') }} -
         {{ __(':hotel is a not for profit educational project', ['hotel' => setting('hotel_name')]) }}
@@ -15,7 +16,8 @@
 
 <script>
     function showFooter() {
-        const creator = '<a class="text-blue-400 underline" href="https://devbest.com/threads/atom-cms-a-multi-theme-cms.93034/" target="_blank">Object</a>';
+        const creator =
+            '<a class="text-blue-400 underline" href="https://devbest.com/threads/atom-cms-a-multi-theme-cms.93034/" target="_blank">Object</a>';
         const credits = [
             '<strong>Kasja</strong> Helping with design, ideas & GFX <br/>',
             '<strong>Nicollas </strong> Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations <br/>',
@@ -35,7 +37,8 @@
             '<strong>Lorenzune</strong> Italian translations <br/>',
             '<strong>Twana</strong> Norwegian translations <br/>'
         ];
-        const content = '{{ __('Thank you for playing :hotel. We have put a lot of effort into making the hotel what it is, and we truly appreciate you being here❤️', ['hotel' => setting('hotel_name')]) }}';
+        const content =
+            '{{ __('Thank you for playing :hotel. We have put a lot of effort into making the hotel what it is, and we truly appreciate you being here❤️', ['hotel' => setting('hotel_name')]) }}';
         const drivenBy = '{{ __(':hotel is driven by Atom CMS made by:', ['hotel' => setting('hotel_name')]) }}';
 
         Swal.fire(

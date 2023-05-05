@@ -37,12 +37,10 @@ class FindRetrosService
 
     /**
      * Check the user has voted.
-     *
-     * @return boolean
      */
     public function checkHasVoted(): bool
     {
-        if(!config('habbo.findretros.enabled')) {
+        if (! config('habbo.findretros.enabled')) {
             return true;
         }
 
@@ -63,8 +61,9 @@ class FindRetrosService
         $request = $this->client->get($uri);
         $response = $request->getBody()->getContents();
 
-        if (in_array($response, ["1", "2"])) {
+        if (in_array($response, ['1', '2'])) {
             Cache::put($cacheKey, true, now()->addMinutes(30));
+
             return true;
         }
 
@@ -73,8 +72,6 @@ class FindRetrosService
 
     /**
      * Retrieve the find retros redirect url.
-     *
-     * @return string
      */
     public function getRedirectUri(): string
     {

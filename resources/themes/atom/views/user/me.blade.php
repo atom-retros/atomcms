@@ -1,36 +1,36 @@
 <x-app-layout>
     @push('title', auth()->user()->username)
 
-    <div class="col-span-12 md:col-span-9 space-y-3">
+    <div class="col-span-12 space-y-3 md:col-span-9">
         <x-user.me-backdrop :user="$user" />
 
         <div
-            class="flex justify-between flex-col p-1 lg:flex-row gap-3 bg-white dark:bg-gray-800 border dark:border-gray-900 rounded shadow">
+            class="flex flex-col justify-between gap-3 rounded border bg-white p-1 shadow dark:border-gray-900 dark:bg-gray-800 lg:flex-row">
             <div
                 class="py-2 px-2 relative flex justify-center items-center rounded text-sm font-semibold dark:text-gray-300 bg-[#e9b124] dark:border-gray-700">
                 <div class="absolute bg-[#e9b124] w-6 h-6 -right-1 rotate-45 invisible lg:visible"></div>
                 <img src="{{ asset('/assets/images/icons/online-friends.png') }}" alt="{{ __('Online Friends') }}"
-                    class="inline-flex mr-2 mb-1" style="max-width: 24px; max-height: 24px">
+                    class="mr-2 mb-1 inline-flex" style="max-width: 24px; max-height: 24px">
                 <span class="relative text-white h-100">{{ __('Online Friends') }}</span>
             </div>
 
-            <div class="flex-1 pl-2 h-100 flex relative justify-center sm:justify-start items-center gap-2">
+            <div class="relative flex flex-1 items-center justify-center gap-2 pl-2 h-100 sm:justify-start">
                 @foreach ($onlineFriends as $friend)
                     <div data-popover-target="friend-{{ $friend->username }}"
                         style="image-rendering: pixelated; background-image: url({{ setting('avatar_imager') }}{{ $friend->look }}&direction=2&head_direction=3&gesture=sml&action=wav&headonly=1&size=s)"
-                        class="inline-block w-10 h-10 bg-center bg-no-repeat rounded-full border-2 border-gray-300 dark:border-gray-900">
+                        class="inline-block h-10 w-10 rounded-full border-2 border-gray-300 bg-center bg-no-repeat dark:border-gray-900">
                     </div>
 
                     <div data-popover id="friend-{{ $friend->username }}" role="tooltip"
-                        class="inline-block absolute invisible z-10 w-64 text-sm font-light text-gray-500 bg-white rounded-lg border border-gray-200 shadow-sm opacity-0 transition-opacity duration-300 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                        class="invisible absolute z-10 inline-block w-64 rounded-lg border border-gray-200 bg-white text-sm font-light text-gray-500 opacity-0 shadow-sm transition-opacity duration-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400">
                         <div
-                            class="py-2 px-3 bg-gray-100 rounded-t-lg border-b border-gray-200 dark:border-gray-600 dark:bg-gray-700">
+                            class="rounded-t-lg border-b border-gray-200 bg-gray-100 px-3 py-2 dark:border-gray-600 dark:bg-gray-700">
                             <div
-                                class="font-semibold text-gray-900 dark:text-white flex justify-center items-center w-full">
+                                class="flex w-full items-center justify-center font-semibold text-gray-900 dark:text-white">
                                 {{ $friend->username }}
                             </div>
                         </div>
-                        <div class="py-2 px-3 overflow-y-auto" style="max-height: 200px">
+                        <div class="overflow-y-auto px-3 py-2" style="max-height: 200px">
                             <b class="mr-1 font-bold">{{ __('Mission') }}:</b>{{ $friend->motto }}<br>
                             <b
                                 class="mr-1 font-bold">{{ __('Online Since') }}:</b>{{ date(config('habbo.site.date_format'), $friend->last_online) }}
@@ -63,7 +63,7 @@
                         value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}"
                         :autofocus="false" :readonly="true" />
 
-                    <div class="col-span-12 md:col-span-2 flex" onclick="copyCode()">
+                    <div class="col-span-12 flex md:col-span-2" onclick="copyCode()">
                         <x-form.secondary-button>
                             {{ __('Copy code') }}
                         </x-form.secondary-button>
@@ -78,7 +78,7 @@
                         </x-form.secondary-button>
                     </a>
                 @else
-                    <button disabled class="mt-2 w-full rounded bg-gray-400 dark:bg-gray-900 text-white p-2">
+                    <button disabled class="mt-2 w-full rounded bg-gray-400 p-2 text-white dark:bg-gray-900">
                         {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' =>auth()->user()->referralsNeeded() ?? 0]),auth()->user()->referrals->referrals_total ?? 0) }}
                     </button>
                 @endif
@@ -86,10 +86,10 @@
         </x-content.content-section>
     </div>
 
-    <div class="col-span-12 md:col-span-3 space-y-4">
+    <div class="col-span-12 space-y-4 md:col-span-3">
         <div class="relative w-full" style="height: 213px">
             @if (!$articles->isEmpty())
-                <div class="swiper articles-slider relative">
+                <div class="relative swiper articles-slider">
                     <div class="swiper-wrapper">
                         @foreach ($articles as $article)
                             <x-article-card :for-slider="true" :article="$article" />

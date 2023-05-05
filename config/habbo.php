@@ -14,17 +14,15 @@ return [
     'reactions' => [
         'bad', 'crying', 'good', 'happy', 'taut', 'impatient', 'inlove', 'laugh', 'proud', 'wow',
         'shameful', 'shameless', 'sleeping', 'smile', 'tongue', 'wink', 'disgusted', 'angry', 'lgbt', 'heart2', 'bobba', 'poop',
-        'like', 'unlike', 'fire', 'eyes', 'crown', 'star', 'heart'
+        'like', 'unlike', 'fire', 'eyes', 'crown', 'star', 'heart',
     ],
 
     'migrations' => [
         // Only set this to true in the .env file if your CERTAIN that you want to rename coliding table names
-        'rename_tables' => env('RENAME_COLLIDING_TABLES', false)
+        'rename_tables' => env('RENAME_COLLIDING_TABLES', false),
     ],
 
     'rcon' => [
-        'host' => env('RCON_HOST', '127.0.0.1'),
-        'port' => env('RCON_PORT', 3001),
         'domain' => AF_INET,
         'type' => SOCK_STREAM,
         'protocol' => SOL_TCP,

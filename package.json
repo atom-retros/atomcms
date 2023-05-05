@@ -9,7 +9,10 @@
         "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js"
     },
     "devDependencies": {
+        "@prettier/plugin-php": "^0.19.3",
+        "@shufo/prettier-plugin-blade": "^1.8.6",
         "@tailwindcss/forms": "^0.5.2",
+        "@alpinejs/focus": "^3.10.3",
         "alpinejs": "^3.10.3",
         "autoprefixer": "^10.4.7",
         "axios": "^0.27",
@@ -20,6 +23,8 @@
         "popper.js": "^1.16",
         "postcss": "^8.4.14",
         "postcss-import": "^14.1.0",
+        "prettier": "^2.8.3",
+        "prettier-plugin-tailwindcss": "^0.2.2",
         "sass": "^1.54.0",
         "sass-loader": "^10.1.1",
         "tailwindcss": "^3.1.6",

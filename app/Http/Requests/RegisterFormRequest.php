@@ -17,7 +17,7 @@ class RegisterFormRequest extends FormRequest
             'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => ['required', 'string', 'confirmed', 'min:8'],
             'terms' => ['required', 'accepted'],
-            'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()]
+            'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
         ];
     }
 
@@ -26,7 +26,7 @@ class RegisterFormRequest extends FormRequest
         return true;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),

@@ -11,7 +11,7 @@
         <div class="flex flex-col">
             <p class="font-semibold">{{ __('You will receive:') }}</p>
 
-            <ul class="pl-4 list-disc">
+            <ul class="list-disc pl-4">
                 <li class="ml-3">Bronze VIP badge</li>
                 <li class="ml-3">Bronze VIP catalogue</li>
                 <li class="ml-3">Bronze VIP commands</li>
@@ -35,7 +35,7 @@
     <div class="flex flex-col">
         <p class="font-semibold">{{ __('You will receive:') }}</p>
 
-        <ul class="pl-4 list-disc">
+        <ul class="list-disc pl-4">
             <li class="ml-3">Everything from Bronze VIP</li>
             <li class="ml-3">Silver VIP badge</li>
             <li class="ml-3">Silver VIP catalogue</li>
@@ -59,7 +59,7 @@
     <div class="flex flex-col">
         <p class="font-semibold">{{ __('You will receive:') }}</p>
 
-        <ul class="pl-4 list-disc">
+        <ul class="list-disc pl-4">
             <li class="ml-3">Everything from Silver VIP</li>
             <li class="ml-3">Gold VIP badge</li>
             <li class="ml-3"> Gold VIP catalogue</li>
@@ -70,4 +70,3 @@
         </ul>
     </div>
 </x-content.content-section>
-

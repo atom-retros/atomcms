@@ -6,23 +6,24 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-return new class extends Migration {
-    public function up()
+return new class extends Migration
+{
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('users', 'referral_code')) {
+            if (columnExists('users', 'referral_code')) {
                 Schema::dropColumns('users', 'referral_code');
             }
 
             $table->string('referral_code')->nullable()->unique()->after('home_room');
         });
 
-        foreach (User::all() as $user) {
-            $user->update(['referral_code' => sprintf('%s%s', $user->id, Str::random(5))]);
+        foreach (User::whereNull('referral_code')->get() as $user) {
+            $user->update(['referral_code' => sprintf('%s%s', $user->id, Str::random(8))]);
         }
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             Schema::table('users', function (Blueprint $table) {
