@@ -11,50 +11,38 @@ class LeaderboardController extends Controller
 {
     public function __invoke(): View
     {
-        $staffUsers = User::select('id')->where('rank', '>=', setting('min_staff_rank'))->get()->pluck('id');
+        $staffUserIds = User::query()
+            ->select('id')
+            ->where('rank', '>=', setting('min_staff_rank'))
+            ->pluck('id');
 
-        $duckets = UserCurrency::whereNotIn('user_id', $staffUsers)
-            ->where('type', 0)
+        $getUserCurrency = fn($type) => UserCurrency::query()
+            ->whereNotIn('user_id', $staffUserIds)
+            ->where('type', $type)
             ->orderByDesc('amount')
-            ->take(9)
-            ->with(['user:id,username,look'])
-            ->get();
-
-        $diamonds = UserCurrency::whereNotIn('user_id', $staffUsers)
-            ->where('type', 5)
-            ->orderByDesc('amount')
-            ->take(9)
-            ->with(['user:id,username,look'])
-            ->get();
-
-        $mostOnline = UserSetting::whereNotIn('user_id', $staffUsers)
-            ->select('user_id', 'online_time')
-            ->orderByDesc('online_time')
             ->take(9)
             ->with('user:id,username,look')
             ->get();
 
-        $respectsReceived = UserSetting::whereNotIn('user_id', $staffUsers)
-            ->select('user_id', 'respects_received')
-            ->orderByDesc('respects_received')
-            ->take(9)
-            ->with('user:id,username,look')
-            ->get();
-
-        $achievementScores = UserSetting::whereNotIn('user_id', $staffUsers)
-            ->select('user_id', 'achievement_score')
-            ->orderByDesc('achievement_score')
+        $getUserSettings = fn($column) => UserSetting::query()
+            ->whereNotIn('user_id', $staffUserIds)
+            ->select('user_id', $column)
+            ->orderByDesc($column)
             ->take(9)
             ->with('user:id,username,look')
             ->get();
 
         return view('leaderboard', [
-            'credits' => User::whereNotIn('id', $staffUsers)->orderByDesc('credits')->take(9)->get(),
-            'duckets' => $duckets,
-            'diamonds' => $diamonds,
-            'mostOnline' => $mostOnline,
-            'respectsReceived' => $respectsReceived,
-            'achievementScores' => $achievementScores,
+            'credits' => User::query()
+                ->whereNotIn('id', $staffUserIds)
+                ->orderByDesc('credits')
+                ->take(9)
+                ->get(),
+            'duckets' => $getUserCurrency(0),
+            'diamonds' => $getUserCurrency(5),
+            'mostOnline' => $getUserSettings('online_time'),
+            'respectsReceived' => $getUserSettings('respects_received'),
+            'achievementScores' => $getUserSettings('achievement_score'),
         ]);
     }
 }

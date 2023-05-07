@@ -76,7 +76,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'maintenance' => MaintenanceMiddleware::class,
-        'check-ban' => BannedMiddleware::class,
+        'check.ban' => BannedMiddleware::class,
         'findretros.redirect' => FindRetrosMiddleware::class,
         'vpn.checker' => VPNCheckerMiddleware::class,
         'log.viewer' => LogViewerMiddleware::class,

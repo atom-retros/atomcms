@@ -16,11 +16,11 @@ class RconService
             return false;
         }
 
-        if (!($this->socket = @socket_create(setting('rcon_ip'), setting('rcon_port'), config('habbo.rcon.protocol')))) {
+        if (!($this->socket = @socket_create(config('habbo.rcon.domain'), config('habbo.rcon.type'), config('habbo.rcon.protocol')))) {
             return false;
         }
 
-        if (!@socket_connect($this->socket, config('habbo.rcon.host'), config('habbo.rcon.port'))) {
+        if (!@socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'))) {
             return false;
         }
 

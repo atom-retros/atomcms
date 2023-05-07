@@ -16,11 +16,6 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 if (! function_exists('setting')) {
     function setting(string $setting): string
     {
-        if (!Schema::hasTable('website_settings')) {
-            return 1;
-        }
-
-
         return app(SettingsService::class)->getOrDefault($setting);
     }
 }

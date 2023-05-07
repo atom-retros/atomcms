@@ -18,7 +18,7 @@ class WebsiteArticleCommentsController extends Controller
             ]);
         }
 
-        if (! $article->can_comment) {
+        if (!$article->can_comment) {
             return redirect()->back()->withErrors([
                 'message' => __('This article has been locked from receiving comments'),
             ]);

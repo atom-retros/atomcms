@@ -20,6 +20,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Http\Controllers\UserReferralController;
 use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteRareValuesController;
 use App\Http\Controllers\WebsiteRulesController;
@@ -43,7 +44,7 @@ Route::prefix('installation')->group(function () {
 });
 
 
-Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(function () {
+Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(function () {
     // Maintenance route
     Route::get('/maintenance', MaintenanceController::class)->name('maintenance.show');
 
@@ -53,13 +54,7 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
     Route::middleware('guest')->withoutMiddleware('force.staff.2fa')->group(function () {
         Route::get('/', HomeController::class)->name('welcome');
 
-        Route::get('/register/{username}/{referral_code}', function (string $username, string $referral_code) {
-            User::where('referral_code', '=', $referral_code)->firstOrFail();
-
-            return view('auth.register', [
-                'referral_code' => $referral_code,
-            ]);
-        })->name('register.referral');
+        Route::get('/register/{referral_code}', UserReferralController::class)->name('register.referral');
     });
 
     Route::middleware('auth')->group(function () {
@@ -70,9 +65,12 @@ Route::middleware(['maintenance', 'check-ban', 'force.staff.2fa'])->group(functi
             Route::prefix('settings')->group(function () {
                 Route::get('/account', [AccountSettingsController::class, 'edit'])->name('settings.account.show');
                 Route::put('/account', [AccountSettingsController::class, 'update'])->name('settings.account.update');
+
                 Route::get('/password', [PasswordSettingsController::class, 'edit'])->name('settings.password.show');
                 Route::put('/password', [PasswordSettingsController::class, 'update'])->name('settings.password.update');
+
                 Route::get('/session-logs', [AccountSettingsController::class, 'sessionLogs'])->name('settings.session-logs');
+
                 Route::get('/two-factor', [TwoFactorAuthenticationController::class, 'index'])->name('settings.two-factor');
                 Route::post('/2fa-verify', [TwoFactorAuthenticationController::class, 'verify'])->name('two-factor.verify');
             });

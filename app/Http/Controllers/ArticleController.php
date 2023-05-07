@@ -15,7 +15,7 @@ class ArticleController extends Controller
     {
         return view('community.articles', [
             'articles' => WebsiteArticle::with(['user:id,username,look'])
-                ->latest('id')
+                ->orderByDesc('id')
                 ->paginate(8),
         ]);
     }

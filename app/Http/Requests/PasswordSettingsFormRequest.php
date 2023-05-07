@@ -17,9 +17,4 @@ class PasswordSettingsFormRequest extends FormRequest
             'password' => $this->passwordRules(),
         ];
     }
-
-    public function authorize(): bool
-    {
-        return true;
-    }
 }

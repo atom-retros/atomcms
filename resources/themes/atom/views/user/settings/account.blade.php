@@ -31,7 +31,7 @@
                     <x-form.input name="mail" type="email" value="{{ $user->mail }}" :autofocus="true" />
                 </div>
 
-                @if ($user->settings->allow_name_change)
+                @if ($user->settings?->allow_name_change)
                     <div class="flex flex-col gap-y-1">
                         <x-form.label for="username">
                             {{ __('Username') }}

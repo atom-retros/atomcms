@@ -16,7 +16,7 @@ class AccountSettingsController extends Controller
     public function edit(): View
     {
         return view('user.settings.account', [
-            'user' => Auth::user()->load('settings'),
+            'user' => Auth::user()->load('settings:allow_name_change'),
         ]);
     }
 
@@ -54,25 +54,26 @@ class AccountSettingsController extends Controller
     public function update(RconService $rcon, AccountSettingsFormRequest $request): RedirectResponse
     {
         $user = Auth::user();
+        $canChangeName = $user->settings?->allow_name_change && $user->username !== $request->input('username');
 
-        if ($user->online && ($user->settings->allow_name_change && $user->username !== $request->input('username'))) {
+        if ($user->online && $canChangeName && $rcon->isConnected()) {
             $rcon->disconnectUser($user);
-            sleep(2);
+            sleep(1);
         }
 
-        if ($user->settings->allow_name_change) {
+        if ($canChangeName) {
             $user->update([
-                'mail' => $request->input('mail'),
-                'username' => $request->input('username'),
-            ]);
-        } else {
-            $user->update([
-                'mail' => $request->input('mail'),
+                'username' => $request->string('username', Auth::user()->username),
             ]);
         }
 
-        if ($user->motto !== $request->input('motto')) {
-            $rcon->setMotto($user, $request->input('motto'));
+        $user->update([
+            'mail' => $request->string('mail', Auth::user()->email),
+            'motto' => $request->string('motto', '')
+        ]);
+
+        if ($user->motto !== $request->string('motto') && $rcon->isConnected()) {
+            $rcon->setMotto($user, $request->string('motto', ''));
         }
 
         return redirect()->back()->with('success', __('Your account settings has been updated'));
