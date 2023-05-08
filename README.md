@@ -24,28 +24,26 @@
 - [Feature Add-ons](#feature-add-ons)
 - [Credits](#credits)
 
-## Disclaimer
+### 📢 Disclaimer
 
 Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
 
-## Introduction
+### 💙 A Community-Driven Habbo Retro CMS
+Atom CMS is designed to provide the best possible experience for both you and your users. Built with a focus on community input and easy customization, Atom CMS utilizes modern and robust technologies to ensure a smooth and enjoyable experience.
 
-Atom CMS is a Habbo Retro CMS, designed to provide the best possible experience for both you and your users. With a focus on community input and easy customization, Atom CMS is built using modern and robust technologies to ensure a smooth and enjoyable experience.
+The creation of Atom CMS was driven by the desire to widen the options available for people when choosing a CMS for their new journey. By valuing community input and collaboration, we aim to offer a modern and user-friendly system that is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system, making it simple to create or customize themes for your hotel, further enhancing the overall experience.
 
-## Technologies
+### 🚀 The cool tech behind Atom CMS
 
-Atom CMS is built with the following technologies:
+Atom CMS is powered by some of the industry-leading technologies that make it not only easy but also a ton of fun to work with. Check out the fantastic trio that brings it all together:
 
-- PHP (Laravel 9.x)
-    - [Laravel docs](https://laravel.com/docs/9.x)
-- Vite
-    - [Vite docs](https://vitejs.dev/)
-- TailwindCSS
-    - [Tailwind docs](https://tailwindcss.com/docs/installation)
+- **PHP (Laravel 10.x)**: At the core of Atom CMS lies Laravel 10.x, a modern and elegant PHP framework that simplifies the development process. Laravel's extensive documentation can be found [here](https://laravel.com/docs/9.x).
+- **Vite**: As a next-generation frontend build tool, Vite empowers Atom CMS with lightning-fast development and production speeds. Dive into the Vite documentation [here](https://vitejs.dev/) to explore its full potential.
+- **TailwindCSS**: To ensure a visually stunning and responsive design, Atom CMS incorporates TailwindCSS, a utility-first CSS framework. Learn more about TailwindCSS and its installation process from the official [docs](https://tailwindcss.com/docs/installation)
 
-You can also use any CSS framework you prefer or even go fully vanilla, thanks to the built-in theme system that Atom CMS offers.
+With the built-in theme system offered by Atom CMS, you have the flexibility to use any CSS framework you prefer or even opt for a fully customized vanilla approach. This enables you to tailor the platform to your specific needs and preferences, ensuring a truly unique user experience.
 
-## Learning Laravel
+### 🧙‍♂️ Learning Laravel
 
 If you are new to Laravel and want to build your own features, we highly recommend the following free resources:
 
@@ -55,13 +53,7 @@ If you are new to Laravel and want to build your own features, we highly recomme
 
 Laracasts is an official learning platform for Laravel, so you can trust the quality of the content and learn best practices from some of the best and most experienced teacher within the field.
 
-## Why Atom CMS?
-
-Atom CMS wad made with the community in mind, valuing community input and collaboration. Our goal is to provide a modern and robust CMS using industry-approved technologies, which is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system, making it simple to create or customize themes for your hotel.
-
-We also wanted to widen the options people had when it came to choosing what CMS they wanted to use for their new journey, which was a huge part of the decision of creating Atom CMS.
-
-## Migrating from Another CMS
+### 🤝 Migrating from Another CMS
 
 If you're migrating from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
 
@@ -69,10 +61,10 @@ Even tho we **highly recommend** to do a proper cleanup yourself, Atom CMS has a
 
 All you have to do is to change `RENAME_COLLIDING_TABLES=false` to `RENAME_COLLIDING_TABLES=true` within your `.env`file (You'll get to the .env file in the next step). Once the feature is enabled, Atom CMS will **attempt** to solve any conflicts that might happen due to the use of another CMS.
 
-## Requirements
+### 🚧 Requirements
 
 - PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
-- MySQL >= 8.x or  MariaDB >= 10.x 
+- MySQL >= 8.x or  MariaDB >= 10.x
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
 - An Arcturus Morningstar database [Database repository](https://git.krews.org/morningstar/arcturus-morningstar-base-database)
@@ -88,7 +80,7 @@ extension=pdo_mysql
 extension=sockets
 ```
 
-#### Windows Setup
+### 💻 Windows Setup
 ```shell
 git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
@@ -122,7 +114,7 @@ Have you always wanted to set up your own hotel from scratch, but are unsure how
 - Part 2: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-2.92533/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-2.92533/)
 - Part 3: [https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/](https://devbest.com/threads/how-to-set-up-a-retro-in-2022-iis-nitro-html5-part-3.92543/)
 
-#### Linux Setup
+### 🧙‍♂️ Linux Setup
 ```shell
 git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
@@ -149,26 +141,26 @@ APP_ENV=local to APP_ENV=production
 APP_DEBUG=true to APP_DEBUG=false
 ```
 
-## Using HTTPS
+### 🔒️ Using HTTPS
 In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, you should set `FORCE_HTTPS=` within your `.env` file to `true` this it to make sure everything is properly using HTTPs. This is necessary for some features in Atom CMS to work properly when you're letting cloudflare handle the HTTPs redirects without a dedicated SSL certificate.
 
-## Disable rocket loader
+### 🚨 Disable rocket loader
 Atom CMS uses Javascript in certain areas, which unfortunately conflicts with Cloudflares Rocket Loader feature. So in-case you have Rocket Loader enabled on Cloudflare, you will have to disable it, otherwise you **will** run into various annoying issues when using Atom CMS.
 
 To disable or check if Rocket Loader is enabled on Cloudflare, all you have to do is, head to your Cloudflare dashboard and find "Speed" -> "Optimization" in the navigation menu, once you've clicked on the "Optimization" menu point, scroll about halfway down until you find "Rocket Loader™" and then un-toggle it in-case it's enabled. That's it! Rocket loader is now disabled, and you're all good to go.
 
-## Feature-addons
+### 📝 Further documentation
 Atom comes with its own dedicated documentation site - this makes it a lot easier for you to read about **exactly** what you want, rather than having to read through a giant README file!
 
 As Atom CMS comes packed with **tons** of features, to improve the CMS experience for you and your users it only makes sense to have such a site to make the experience the best possible.
 
 You can find the documentation, addons, and tips & tricks on **[https://retros.guide/docs/category/atom-cms](https://retros.guide/docs/category/atom-cms)**
 
-## Credits
+### 🔥 Credits
 Atom CMS is made possible by the contributions of numerous developers, designers, and community members.
 
-- **Kasja** - Helping with design, ideas & GFX
-- **Nicollas** - Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations
+- **Kasja#5700** - Helping with design, ideas & GFX
+- **Nicollas#8412** - Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations
 - **Dominic** - Performance improvements & User sessions
 - **Oliver** - Profile page & Finnish translations
 - **Beny** - Findretros API fixes & CF Fixes
@@ -184,8 +176,6 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 - **Gedomi** - Spanish translations
 - **Lorenzune** - Italian translations
 - **Twana** - Norwegian translations
-- **Kani** - Rcon System & Findretros API
+- **Kani** - Base for RCON System & Findretros API
 - **Sonay** - Material theme
 - **Raizer** - Circinus
-
-
