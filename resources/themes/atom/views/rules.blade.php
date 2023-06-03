@@ -8,7 +8,7 @@
 
         <div class="flex flex-col gap-y-6">
             @foreach ($categories as $category)
-                <x-content.content-section icon="{{ $category->badge }}" classes="border dark:border-gray-900">
+                <x-content.content-card icon="{{ $category->badge }}" classes="border dark:border-gray-900">
                     <x-slot:title>
                         {{ $category->name }}
                     </x-slot:title>
@@ -22,7 +22,7 @@
                             <li><strong>{{ $rule->paragraph }}.</strong> {{ $rule->rule }}</li>
                         @endforeach
                     </ul>
-                </x-content.content-section>
+                </x-content.content-card>
             @endforeach
         </div>
     </div>

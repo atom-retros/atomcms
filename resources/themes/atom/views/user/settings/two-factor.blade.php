@@ -6,7 +6,7 @@
     </div>
 
     <div class="col-span-12 flex flex-col gap-y-3 md:col-span-9">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Two factor authentication') }}
             </x-slot:title>
@@ -95,6 +95,6 @@
                     </form>
                 </div>
             @endif
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 </x-app-layout>

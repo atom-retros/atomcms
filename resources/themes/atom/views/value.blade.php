@@ -10,7 +10,7 @@
 
                 Go back to values
             </a>
-            <x-content.content-section icon="dragon.png">
+            <x-content.content-card icon="dragon.png">
                 <x-slot:title>
                     {{ $value->name }}
                 </x-slot:title>
@@ -44,7 +44,7 @@
 
                     @endforeach
                 </div>
-            </x-content.content-section>
+            </x-content.content-card>
         </div>
     </div>
 </x-app-layout>

@@ -24,6 +24,7 @@
 </head>
 
 <body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">
+    <!-- Validation Errors -->
     <x-messages.flash-messages />
 
     <div id="app" class="bg-gray-100 dark:bg-gray-900">

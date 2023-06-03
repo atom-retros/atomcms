@@ -1,12 +1,9 @@
 <x-app-layout>
     @push('title', __('Create account'))
 
-    <!-- Validation Errors -->
-    <x-messages.flash-messages />
-
     <div class="col-span-12">
         <div class="lg:px-[150px]">
-            <x-content.content-section icon="hotel-icon" classes="flex flex-col gap-y-8">
+            <x-content.content-card icon="hotel-icon" classes="flex flex-col gap-y-8">
                 <x-slot:title>
                     {{ __('Create your account!') }}
                 </x-slot:title>
@@ -15,12 +12,11 @@
                     {{ __('Create a free account, and be a part of a fun online world!') }}
                 </x-slot:under-title>
 
-                <div class="flex w-full justify-between pr-0 lg:pr-14">
-                    <div class="w-full lg:w-[420px]">
+                <div class="flex w-full justify-between">
+                    <div class="w-full !lg:w-[420px]">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <!-- Name -->
                             <div>
                                 <div class="flex flex-col gap-y-2">
                                     <x-form.label for="username">
@@ -132,11 +128,11 @@
                         </form>
                     </div>
 
-                    <div class="hidden md:block">
-                        <img src="{{ asset('/assets/images/background.png') }}" alt="">
+                    <div class="hidden md:block relative w-full">
+                        <img  class="opacity-50 absolute -right-3 -bottom-3" src="https://habstar.net/assets/images/hotel.png" alt="">
                     </div>
                 </div>
-            </x-content.content-section>
+            </x-content.content-card>
         </div>
     </div>
 

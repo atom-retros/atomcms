@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>
@@ -84,24 +84,26 @@
                     </button>
                 @endif
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 
     <div class="col-span-12 space-y-4 md:col-span-3">
         <div class="relative w-full" style="height: 213px">
-            @if (!$articles->isEmpty())
-                <div class="relative swiper articles-slider">
-                    <div class="swiper-wrapper">
-                        @foreach ($articles as $article)
-                            <x-article-card :for-slider="true" :article="$article" />
-                        @endforeach
-                    </div>
+            <div class="relative swiper articles-slider">
+                <div class="swiper-wrapper">
+                    @forelse ($articles as $article)
+                        <x-article-card :for-slider="true" :article="$article" />
+                    @empty
+                        <x-filler-article-card />
+                    @endforelse
                 </div>
-                <div class="swiper-pagination" style="bottom: 0px !important; z-index: 0;"></div>
-            @endif
+            </div>
+            <div class="swiper-pagination" style="bottom: 0px !important; z-index: 0;"></div>
         </div>
 
-        <x-user.discord-widget />
+        <div class="!mt-3">
+            <x-user.discord-widget />
+        </div>
     </div>
 
     @push('javascript')

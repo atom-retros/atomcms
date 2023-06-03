@@ -2,7 +2,7 @@
     @push('title', __('Two factor challenge'))
 
     <div class="col-span-12 lg:px-[250px] flex flex-col gap-y-3">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Two-factor verification') }}
             </x-slot:title>
@@ -48,7 +48,7 @@
                     </x-form.secondary-button>
                 </div>
             </form>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 
     @push('javascript')

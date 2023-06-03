@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <x-content.content-section icon="hotel-icon" classes="border dark:bg-gray-800 dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:bg-gray-800 dark:border-gray-900">
             <x-slot:title>
                 {{ __('Other articles') }}
             </x-slot:title>
@@ -57,7 +57,7 @@
                     </p>
                 @endforelse
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 
     <div class="col-span-12 space-y-4 md:col-span-9">
@@ -81,7 +81,7 @@
 
         @if ($article->can_comment)
             @if (auth()->check() && !$article->userHasReachedArticleCommentLimit())
-                <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+                <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
                     <x-slot:title>
                         {{ __('Post a comment') }}
                     </x-slot:title>
@@ -102,10 +102,10 @@
                             </x-form.primary-button>
                         </form>
                     </div>
-                </x-content.content-section>
+                </x-content.content-card>
             @endif
 
-            <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+            <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
                 <x-slot:title>
                     {{ __('Comments') }}
                 </x-slot:title>
@@ -164,7 +164,7 @@
                         </div>
                     @endforeach
                 </div>
-            </x-content.content-section>
+            </x-content.content-card>
         @endif
     </div>
 </x-app-layout>

@@ -1,4 +1,4 @@
-<x-content.content-section icon="bronze-vip">
+<x-content.content-card icon="bronze-vip">
     <x-slot:title>
         {{ __('Bronze VIP') }}
     </x-slot:title>
@@ -21,9 +21,9 @@
             </ul>
         </div>
     </div>
-</x-content.content-section>
+</x-content.content-card>
 
-<x-content.content-section icon="silver-vip">
+<x-content.content-card icon="silver-vip">
     <x-slot:title>
         {{ __('Silver VIP') }}
     </x-slot:title>
@@ -45,9 +45,9 @@
             <li class="ml-3">2 diamonds every hour</li>
         </ul>
     </div>
-</x-content.content-section>
+</x-content.content-card>
 
-<x-content.content-section icon="gold-vip">
+<x-content.content-card icon="gold-vip">
     <x-slot:title>
         {{ __('Gold VIP') }}
     </x-slot:title>
@@ -69,4 +69,4 @@
             <li class="ml-3">3 diamonds every hour</li>
         </ul>
     </div>
-</x-content.content-section>
+</x-content.content-card>

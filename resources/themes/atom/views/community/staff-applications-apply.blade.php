@@ -44,7 +44,7 @@
     </div>
 
     <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Applying for :position', ['position' => $position->permission->rank_name]) }}
             </x-slot:title>
@@ -58,6 +58,6 @@
                     {{ __('Please field out all the fields to apply for :position. Remember when applying for a position here at :hotel you must be fully transparent and honest. If found out the information provided is false or incorrect you might risk losing your position if hired.', ['position' => $position->permission->rank_name, 'hotel' => setting('hotel_name')]) }}
                 </p>
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 </x-app-layout>

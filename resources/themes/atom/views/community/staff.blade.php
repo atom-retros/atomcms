@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel staff', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -48,9 +48,9 @@
                     {{ __('Most of our team usually consists of players that have been around :hotel for quite a while, but this does not mean we only recruit old & known players, we recruit those who shine out to us!', ['hotel' => setting('hotel_name')]) }}
                 </p>
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
 
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Apply for staff') }}
             </x-slot:title>
@@ -71,6 +71,6 @@
                     ) !!}
                 </p>
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 </x-app-layout>

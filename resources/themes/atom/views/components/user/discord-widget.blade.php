@@ -1,4 +1,4 @@
-<x-content.content-section icon="discord-icon" classes="border dark:border-gray-900">
+<x-content.content-card icon="discord-icon" classes="border dark:border-gray-900">
     <x-slot:title>
         {{ __('Discord') }}
     </x-slot:title>
@@ -15,7 +15,7 @@
             </x-form.secondary-button>
         </a>
     </div>
-</x-content.content-section>
+</x-content.content-card>
 
 @push('javascript')
     <script>

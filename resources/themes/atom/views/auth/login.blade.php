@@ -6,7 +6,7 @@
 
     <div class="col-span-12">
         <div class="lg:px-[250px]">
-            <x-content.content-section icon="hotel-icon" classes="flex flex-col">
+            <x-content.content-card icon="hotel-icon" classes="flex flex-col">
                 <x-slot:title>
                     {{ __('Login to :hotel', ['hotel' => setting('hotel_name')]) }}
                 </x-slot:title>
@@ -49,7 +49,7 @@
                         </x-form.primary-button>
                     </div>
                 </form>
-            </x-content.content-section>
+            </x-content.content-card>
         </div>
     </div>
 

@@ -3,8 +3,8 @@
 
     <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
         <div class="flex flex-col gap-y-4">
-            @foreach($categories as $category)
-                <x-content.content-section :icon="$category->badge">
+            @forelse($categories as $category)
+                <x-content.content-card :icon="$category->badge">
                     <x-slot:title>
                         {{ $category->name }}
                     </x-slot:title>
@@ -18,13 +18,27 @@
                             <x-rares.rare-card :rare="$rare" />
                         @endforeach
                     </div>
-                </x-content.content-section>
-            @endforeach
+                </x-content.content-card>
+            @empty
+                <x-content.content-card icon="hotel-icon">
+                    <x-slot:title>
+                        Rare values
+                    </x-slot:title>
+
+                    <x-slot:under-title>
+                        Get an overview of all of the rares on {{ setting('hotel_name') }}
+                    </x-slot:under-title>
+
+                   <p class="text-center">
+                       {{ __('We currently have no rares listed here') }}
+                   </p>
+                </x-content.content-card>
+            @endforelse
         </div>
     </div>
 
     <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Search') }}
             </x-slot:title>
@@ -42,9 +56,9 @@
                     {{ __('Search') }}
                 </x-form.secondary-button>
             </form>
-        </x-content.content-section>
+        </x-content.content-card>
 
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Rare categories') }}
             </x-slot:title>
@@ -68,6 +82,6 @@
                     </div>
                 @endforeach
             </div>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 </x-app-layout>
