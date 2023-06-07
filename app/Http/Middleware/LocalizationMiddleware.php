@@ -17,8 +17,8 @@ class LocalizationMiddleware
             App::setLocale(Session::get('locale'));
         } else {
             $country_code = strtolower(isset($_SERVER["HTTP_CF_IPCOUNTRY"]) ? $_SERVER["HTTP_CF_IPCOUNTRY"] : substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
-            $language_exist = WebsiteLanguage::where('country_code', '=', $country_code)->exists();
-            if ($language_exist === true) {
+            $language_exist = WebsiteLanguage::where('country_code', '=', $country_code)->first();
+            if ($language_exist !== null) {
                 App::setLocale($country_code);
                 Session::put('locale', $country_code);
             } else {
