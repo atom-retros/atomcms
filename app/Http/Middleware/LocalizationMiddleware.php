@@ -25,8 +25,9 @@ class LocalizationMiddleware
                 App::setLocale($country_code);
                 Session::put('locale', $country_code);
             } else {
-                App::setLocale('en');
-                Session::put('locale', 'en');
+                $default_locale = env('APP_LOCALE', 'en');
+                App::setLocale($default_locale);
+                Session::put('locale', $default_locale);
             }
         }
 
