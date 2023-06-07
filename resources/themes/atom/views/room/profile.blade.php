@@ -66,7 +66,7 @@
                         </section>
                     </div>
                     @if ($room->guild != null)
-                        <x-content.content-section icon="{{ $room->guild->badge }}-icon" classes="border dark:border-gray-900">
+                        <x-content.content-card icon="{{ $room->guild->badge }}-icon" classes="border dark:border-gray-900">
                             <x-slot:title>
                                 The room guild
                             </x-slot:title>
@@ -78,7 +78,7 @@
                             <p class="text-[14px] dark:text-gray-300">
                                 {{ $room->guild->description }}
                             </p>
-                        </x-content.content-section>
+                        </x-content.content-card>
                         <style>
                             .{{ $room->guild->badge }}-icon {
                                 background: #f68b08 url("/client/flash/c_images/Badgeparts/generated/{{ $room->guild->badge }}.png") no-repeat center;
