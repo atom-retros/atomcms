@@ -10,7 +10,7 @@ class RoomController extends Controller
     public function __invoke(Room $room): View
     {
         return view('room.index', [
-            'room' => $room
+            'room' => $room->load('owner:id,username,look'),
         ]);
     }
 }
