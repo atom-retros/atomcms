@@ -11,8 +11,7 @@ class RoomController extends Controller
     public function __invoke(Room $room): View
     {
         return view('room.index', [
-            'room' => $room,
-            'owner' => User::where('id', $room->owner_id)->first()
+            'room' => $room
         ]);
     }
 }

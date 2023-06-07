@@ -30,9 +30,9 @@
                 </div>
                 <div class="dark:text-white">
                     <h5 class="text-xl font-bold">{{ $room->name }}</h5>
-                    <a class="flex items-center" href="/profile/{{ $owner->username }}">
-                        <img class="h-12" src="{{ setting('avatar_imager') }}{{ $owner->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ $owner->username }}">
-                        <p>{{ $owner->username }}</p>
+                    <a class="flex items-center" href="/profile/{{ $room->owner->username }}">
+                        <img class="h-12" src="{{ setting('avatar_imager') }}{{ $room->owner->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ $room->owner->username }}">
+                        <p>{{ $room->owner->username }}</p>
                     </a>
                     <p class="leading-5">
                         <span class="font-semibold">Description: </span>
