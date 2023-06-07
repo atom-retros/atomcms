@@ -57,7 +57,7 @@
                                 <p>
                                     <span class="font-semibold">Tags: </span>
                                     @foreach (explode(";", $room->tags) as $tag)
-                                        @if (empty($tag) == false)
+                                        @if (empty($tag) === false)
                                             <span class="rounded bg-gray-200 dark:bg-gray-700 px-2">{{ $tag }}</span>
                                         @endif
                                     @endforeach
@@ -65,7 +65,7 @@
                             @endif
                         </section>
                     </div>
-                    @if ($room->guild != null)
+                    @if ($room->guild !== null)
                         <x-content.content-card icon="{{ $room->guild->badge }}-icon" classes="border dark:border-gray-900">
                             <x-slot:title>
                                 The room guild
