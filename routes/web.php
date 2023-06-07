@@ -15,6 +15,7 @@ use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
@@ -78,6 +79,9 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
 
         // Profiles
         Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
+
+        // Rooms
+        Route::get('/room/{room:id}', RoomController::class)->name('room.show');
 
         // Community routes
         Route::prefix('community')->group(function () {
