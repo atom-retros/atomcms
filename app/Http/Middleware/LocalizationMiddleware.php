@@ -21,7 +21,7 @@ class LocalizationMiddleware
                 ->get()
                 ->pluck('country_code')
                 ->toArray();
-            if (in_array($country_code, $languages)) {
+            if (in_array($country_code, $languages) === true) {
                 App::setLocale($country_code);
                 Session::put('locale', $country_code);
             } else {
