@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GuildMember;
-use App\Models\MessengerFriendship;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\View\View;
