@@ -117,39 +117,47 @@
                             {{ __('Rooms') }}
                         </x-slot:title>
 
-                        <div class="flex justify-between">
+                        <div class="flex space-x-1 justify-between">
                             @forelse($user->rooms as $room)
                                 <div
-                                    class="flex h-[150px] w-[120px] flex-col gap-y-1 rounded-md dark:bg-gray-900 bg-gray-200 p-1 overflow-hidden">
-                                    <div
-                                        class="h-full bg-[#C3C3C3] dark:bg-gray-800 rounded-md border border-gray-500 dark:border-gray-700 relative flex items-center justify-center flex-col">
-                                        <img src="{{ setting('room_thumbnail_path') }}/{{ $room->id }}.png"
-                                            alt="{{ $room->name }}"
-                                            onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';">
+                                    class="flex w-[120px] flex-col gap-y-1 rounded-md dark:bg-gray-900 bg-gray-200 p-1 overflow-hidden">
+                                    <div class="h-full inline-block">
+                                        <div class="h-full relative border border-gray-500 dark:border-gray-700 rounded flex items-center justify-center flex-col">
+                                            <img
+                                                class="rounded"
+                                                src="{{ setting('room_thumbnail_path') }}/{{ $room->id }}.png"
+                                                alt="{{ $room->name }}"
+                                                onerror="this.onerror=null;this.src='{{ asset('/assets/images/profile/room_placeholder.png') }}';"
+                                            >
 
-                                        <div
-                                            class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] -mt-3 font-semibold rounded flex gap-x-[3px] text-white items-center text-xs">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20"
-                                                fill="currentColor">
-                                                <path fill-rule="evenodd"
-                                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
+                                            <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2">
+                                                <div class="{{ $room->users > 0 ? 'bg-[#00800B]' : 'bg-gray-400' }} px-1 py-[1px] font-semibold rounded flex gap-x-[3px] text-white items-center text-xs">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-[12px]" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path
+                                                            fill-rule="evenodd"
+                                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                                            clip-rule="evenodd"
+                                                        />
+                                                    </svg>
 
-                                            {{ $room->users }}
+                                                    {{ $room->users }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="flex items-center justify-between px-1">
                                         <p class="truncate">{{ Str::limit($room->name, 6) }}</p>
 
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="mt-1 h-5 w-5 cursor-pointer text-cyan-300 hover:text-cyan-400"
-                                            viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
-                                                clip-rule="evenodd" />
-                                        </svg>
+                                        <a href="{{ route('room.show', $room->id ?? 0) }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="h-5 w-5 text-cyan-300 hover:text-cyan-400"
+                                                viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd"
+                                                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
                                     </div>
                                 </div>
                             @empty
