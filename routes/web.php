@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
+use App\Http\Controllers\HelpCenterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstallationController;
 use App\Http\Controllers\LeaderboardController;
@@ -111,11 +112,16 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         // Leaderboard routes
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
-        // Rules routes
-        Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
-
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
+
+        // Help center
+        Route::prefix('help-center')->as('help-center.')->withoutMiddleware('check.ban')->group(function () {
+            Route::get('/', HelpCenterController::class)->name('index');
+
+            // Rules
+            Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
+        });
 
         // Paypal routes
 
