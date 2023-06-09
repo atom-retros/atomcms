@@ -26,6 +26,8 @@
             '<strong>Oliver</strong> Profile page & Finnish translations <br/>',
             '<strong>Beny</strong> Findretros API Fixes & CF Fixes <br/>',
             '<strong>Live</strong> French translations, bugfixes & tweaks <br/>',
+            '<strong>MisterDeen</strong> Custom Discord widget, bugfixes & tweaks <br/>',
+            '<strong>EntenKoeniq#0001</strong> Automatic language registration, auto color scheme selection, rooms page & profile page fixes <br/>',
             '<strong>DamienJolly</strong> Bugfixes <br/>',
             '<strong>Danbo</strong> Bugfixes <br/>',
             '<strong>Diddy/Josh</strong> Code readability improvements <br/>',
