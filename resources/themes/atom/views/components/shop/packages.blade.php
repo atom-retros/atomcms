@@ -28,7 +28,7 @@
             <p class="font-semibdol">Badges:</p>
             <div class="flex gap-2">
                 @foreach (explode(';', $article->badges) as $badge)
-                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="https://beta.habbo.sx/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
+                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
                 @endforeach
             </div>
         </div>

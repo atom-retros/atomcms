@@ -7,23 +7,21 @@
         </div>
     </div>
 
-    <div class="col-span-12 md:col-span-9">
+    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
         <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
-                @if ($article->small == false)
-                    <x-shop.packages :article="$article" />
+                <x-shop.packages :article="$article" />
 
-                    <style>
-                        .{{ $article->icon }} {
-                            background: {{ $article->color }};
-                        }
-                    </style>
-                @endif
+                <style>
+                    .{{ $article->icon }} {
+                        background: {{ $article->color }};
+                    }
+                </style>
             @endforeach
         </div>
     </div>
 
-    <div class="col-span-12 flex flex-col gap-y-3 md:col-span-3">
+    <div class="row-start-2 md:row-auto col-span-12 flex flex-col gap-y-3 md:col-span-5 lg:col-span-4 xl:col-span-3">
         <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Top up account') }}
