@@ -12,6 +12,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
@@ -118,6 +119,11 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::get('/shop', ShopController::class)->name('shop.index');
 
         // Paypal routes
+        Route::controller(PayPalController::class)->prefix('paypal')->group(function() {
+            Route::get('/process-transaction', 'process')->name('paypal.process-transaction');
+            Route::get('/successful-transaction', 'successful')->name('paypal.successful-transaction');
+            Route::get('/cancelled-transaction', 'cancelled')->name('paypal.cancelled-transaction');
+        });
 
         // Rare values routes
         Route::get('/values', [WebsiteRareValuesController::class, 'index'])->name('values.index');
