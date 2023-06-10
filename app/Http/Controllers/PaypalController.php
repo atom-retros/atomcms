@@ -6,7 +6,6 @@ use App\Http\Requests\AccountTopupFormRequest;
 use App\Models\WebsitePaypalTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\RedirectResponse;
@@ -25,6 +24,7 @@ class PaypalController extends Controller
 
     public function process(AccountTopupFormRequest $request): Response|RedirectResponse
     {
+        $amount = $request->integer('amount');
         $orderData = [
             'intent' => 'CAPTURE',
             'application_context' => [
@@ -39,7 +39,7 @@ class PaypalController extends Controller
                 0 => [
                     'amount' => [
                         'currency_code' => config('habbo.paypal.currency'),
-                        'value' => (string)$request->integer('amount')
+                        'value' => (string)$amount
                     ],
                 ]
             ],
@@ -47,9 +47,7 @@ class PaypalController extends Controller
 
         $response = $this->provider->createOrder($orderData);
 
-        if (($response['id'] ?? null) === null) {
-            Log::error('Error creating order', ['response' => $response]);
-
+        if (isset($response['id']) === false) {
             return to_route('shop.index')->withErrors(
                 ['message' => $response['message'] ?? __('Something went wrong')]
             );
@@ -57,6 +55,11 @@ class PaypalController extends Controller
 
         foreach ($response['links'] as $links) {
             if ($links['rel'] === 'approve') {
+                $request->user()->transactions()->create([
+                    'transaction_id' => $response['id'],
+                    'amount' => 0,
+                ]);
+
                 return redirect()->away($links['href']);
             }
         }
@@ -72,34 +75,34 @@ class PaypalController extends Controller
             'token' => 'required',
         ]);
 
+        $user = $request->user();
+
+        $transaction = $user->transactions()->where('transaction_id', $request['token'])->first();
+        if ($transaction === null) {
+            return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please try again later')]);
+        }
+
         $response = $this->provider->capturePaymentOrder($request['token']);
         $paymentDetails = $response['purchase_units'][0]['payments']['captures'][0];
 
         if (!isset($response['status'], $paymentDetails)) {
-            Log::error('Invalid response from PayPal', ['response' => $response]);
-
             return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please try again later')]);
         }
 
-        $user = $request->user();
-
         if (($response['status'] ?? null) === null) {
             $details = $response['error']['details'][0];
-            $user->transactions()->create([
+            $transaction->update([
                 'status' => $response['name'],
                 'description' => sprintf('%s - %s', $details['issue'], $details['description']),
                 'amount' => 0,
             ]);
-
-            Log::error('Error capturing payment order', ['response' => $response]);
 
             return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please check your paypal account to make sure nothing was deducted and try again')]);
         }
 
         $paymentDetails = $response['purchase_units'][0]['payments']['captures'][0];
 
-        $user->transactions()->create([
-          'transaction_id' => $response['id'],
+        $transaction->update([
           'status' => $paymentDetails['status'],
           'amount' => $paymentDetails['amount']['value'],
           'currency' => $paymentDetails['amount']['currency_code'],
@@ -116,13 +119,19 @@ class PaypalController extends Controller
         return to_route('shop.index')->with('success', __('Transaction successful'));
     }
 
-    public function cancelled(): Response
+    public function cancelled(Request $request): Response
     {
-        Auth::user()->transactions()->create([
-            'status' => self::STATUS_CANCELLED,
-            'description' => 'The user cancelled the transaction',
-            'amount' => 0,
+        $request->validate([
+            'token' => 'required',
         ]);
+
+        $transaction = $request->user()->transactions()->where('transaction_id', $request['token'])->first();
+        if ($transaction !== null) {
+            $transaction->update([
+                'status' => self::STATUS_CANCELLED,
+                'description' => 'The user cancelled the transaction',
+            ]);
+        }
 
         return to_route('shop.index')->withErrors(
             ['message' => __('You have canceled the transaction')]
