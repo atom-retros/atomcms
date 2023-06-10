@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             WebsiteWordfilterSeeder::class,
             WebsiteTeamSeeder::class,
             WebsiteRuleCategorySeeder::class,
-            WebsiteRuleSeeder::class
+            WebsiteRuleSeeder::class,
+            WebsiteShopArticleSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

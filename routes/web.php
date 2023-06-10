@@ -117,6 +117,7 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
 
         // Shop routes
         Route::get('/shop', ShopController::class)->name('shop.index');
+        Route::get('/shop/buy-{id}', [ShopController::class, 'buyPackage'])->name('shop.buy');
 
         // Paypal routes
         Route::controller(PayPalController::class)->prefix('paypal')->group(function() {

@@ -1,9 +1,25 @@
 <x-app-layout>
     @push('title', __('Shop'))
 
+    <div class="col-span-12">
+        <div class="inline-block p-3 bg-white border rounded shadow dark:bg-gray-800 dark:border-gray-900">
+            <p class="dark:text-white">{{ __('Your current balance: :balance', ['balance' => auth()->user()->website_balance]) }}</p>
+        </div>
+    </div>
+
     <div class="col-span-12 md:col-span-9">
-        <div class="flex flex-col gap-y-3 dark:text-gray-300">
-            <x-shop.packages />
+        <div class="flex flex-col gap-y-2 dark:text-gray-300">
+            @foreach ($articles as $article)
+                @if ($article->small == false)
+                    <x-shop.packages :article="$article" />
+
+                    <style>
+                        .{{ $article->icon }} {
+                            background: {{ $article->color }};
+                        }
+                    </style>
+                @endif
+            @endforeach
         </div>
     </div>
 
@@ -62,17 +78,9 @@
         </x-content.content-card>
     </div>
 
-    <style>
-        .bronze-vip {
-            background: #c5630f url({{ sprintf('%s/VipParties2.gif', setting('badges_path')) }}) no-repeat center;
-        }
-
-        .silver-vip {
-            background: #dddddd url({{ sprintf('%s/VipParties2_Top100.gif', setting('badges_path')) }}) no-repeat center;
-        }
-
-        .gold-vip {
-            background: #E4A317FF url({{ sprintf('%s/VipParties2_Top10.gif', setting('badges_path')) }}) no-repeat center;
-        }
-    </style>
+    @push('javascript')
+        <script type="module">
+            tippy('.user-badge');
+        </script>
+    @endpush
 </x-app-layout>

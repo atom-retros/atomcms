@@ -1,72 +1,44 @@
-<x-content.content-card icon="bronze-vip">
+<x-content.content-card icon="{{$article->icon}}" classes="border dark:border-gray-900">
     <x-slot:title>
-        {{ __('Bronze VIP') }}
+        {{ $article->name }}
     </x-slot:title>
 
     <x-slot:under-title>
-        {{ __('Our lowest VIP rank') }}
+        {{ $article->info }}
     </x-slot:under-title>
 
-    <div class="relative flex items-center">
-        <div class="flex flex-col">
-            <p class="font-semibold">{{ __('You will receive:') }}</p>
+    <div class="flex flex-col dark:text-white">
+        <p class="font-semibold">{{ __('You will receive:') }}</p>
 
-            <ul class="list-disc pl-4">
-                <li class="ml-3">Bronze VIP badge</li>
-                <li class="ml-3">Bronze VIP catalogue</li>
-                <li class="ml-3">Bronze VIP commands</li>
-                <li class="ml-3">350 credits every 15 minutes</li>
-                <li class="ml-3">350 duckets every 15 minutes</li>
-                <li class="ml-3">1 diamond every hour</li>
-            </ul>
+        <ul class="list-disc pl-4">
+            @if ($article->credits)
+                <li class="ml-3">{{ number_format($article->credits, 0, '.', '.') }} credits</li>
+            @endif
+            @if ($article->duckets)
+                <li class="ml-3">{{ number_format($article->duckets, 0, '.', '.') }} duckets</li>
+            @endif
+            @if ($article->diamonds)
+                <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
+            @endif
+        </ul>
+    </div>
+
+    @if (empty($article->badges) === false)
+        <div class="flex flex-col dark:text-white">
+            <p class="font-semibdol">Badges:</p>
+            <div class="flex gap-2">
+                @foreach (explode(';', $article->badges) as $badge)
+                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="https://beta.habbo.sx/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
+                @endforeach
+            </div>
         </div>
-    </div>
-</x-content.content-card>
+    @endif
 
-<x-content.content-card icon="silver-vip">
-    <x-slot:title>
-        {{ __('Silver VIP') }}
-    </x-slot:title>
-
-    <x-slot:under-title>
-        {{ __('Our middle ground VIP rank') }}
-    </x-slot:under-title>
-
-    <div class="flex flex-col">
-        <p class="font-semibold">{{ __('You will receive:') }}</p>
-
-        <ul class="list-disc pl-4">
-            <li class="ml-3">Everything from Bronze VIP</li>
-            <li class="ml-3">Silver VIP badge</li>
-            <li class="ml-3">Silver VIP catalogue</li>
-            <li class="ml-3">Silver VIP commands</li>
-            <li class="ml-3">450 credits every 15 minutes</li>
-            <li class="ml-3">450 duckets every 15 minutes</li>
-            <li class="ml-3">2 diamonds every hour</li>
-        </ul>
-    </div>
-</x-content.content-card>
-
-<x-content.content-card icon="gold-vip">
-    <x-slot:title>
-        {{ __('Gold VIP') }}
-    </x-slot:title>
-
-    <x-slot:under-title>
-        {{ __('Our highest VIP rank') }}
-    </x-slot:under-title>
-
-    <div class="flex flex-col">
-        <p class="font-semibold">{{ __('You will receive:') }}</p>
-
-        <ul class="list-disc pl-4">
-            <li class="ml-3">Everything from Silver VIP</li>
-            <li class="ml-3">Gold VIP badge</li>
-            <li class="ml-3"> Gold VIP catalogue</li>
-            <li class="ml-3">Gold VIP commands</li>
-            <li class="ml-3">550 credits every 15 minutes</li>
-            <li class="ml-3">550 duckets every 15 minutes</li>
-            <li class="ml-3">3 diamonds every hour</li>
-        </ul>
+    <div class="pt-2 mt-auto">
+        <form action="{{ route('shop.buy', $article->id) }}" method="GET">
+            <button type="submit" class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
+                {{ __('Buy for :balance', ['balance' => $article->costs]) }}
+            </button>
+        </form>
     </div>
 </x-content.content-card>
