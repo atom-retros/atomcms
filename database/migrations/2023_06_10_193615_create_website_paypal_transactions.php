@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('transaction_id');
             $table->string('status')->nullable();
+            $table->string('description', 512)->nullable();
             $table->float('amount');
             $table->string('currency')->default('USD');
 
