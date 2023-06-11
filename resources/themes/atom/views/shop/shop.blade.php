@@ -1,12 +1,5 @@
 <x-app-layout>
     @push('title', __('Shop'))
-
-    <div class="col-span-12">
-        <div class="inline-block p-3 bg-white border rounded shadow dark:bg-gray-800 dark:border-gray-900">
-            <p class="dark:text-white">{{ __('Your current balance: :balance', ['balance' => auth()->user()->website_balance]) }}</p>
-        </div>
-    </div>
-
     <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
         <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
@@ -31,7 +24,11 @@
                 {{ __('Donate to :hotel', ['hotel' => setting('hotel_name')]) }}
             </x-slot:under-title>
 
-            <form action="{{ route('paypal.process-transaction') }}" method="GET">
+            <div class="text-sm text-center py-2 px-4 rounded bg-gray-100 text-black dark:text-gray-100 dark:bg-gray-700">
+                {{ __('Current balance: :balance', ['balance' => auth()->user()->website_balance]) }}
+            </div>
+
+            <form action="{{ route('paypal.process-transaction') }}" method="GET" class="mt-3">
                 @csrf
 
                 <x-form.input name="amount" type="number" value="0" placeholder="amount" />
@@ -41,7 +38,7 @@
                 </button>
             </form>
         </x-content.content-card>
-    
+
         <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel Shop', ['hotel' => setting('hotel_name')]) }}
