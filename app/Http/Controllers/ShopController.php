@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\SendCurrency;
 use App\Services\RconService;
 use App\Models\User;
 use App\Models\WebsiteShopArticles;
@@ -46,62 +47,21 @@ class ShopController extends Controller
         // TODO
     }
 
-    private function buy(RconService $rcon, int $price, int|null $credits, int|null $duckets, int|null $diamonds, string|null $badges, string|null $furnis): Response {
+    public function purchase(WebsiteShopArticles $package, RconService $rcon, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
 
-        if ($user->website_balance < $price) {
+        if ($user->website_balance < $package->costs) {
             return to_route('shop.index')->withErrors(
-                ['message' => __('You do not have enough money!')]
+                ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->costs - $user->website_balance)])]
             );
         }
 
-        if ($rcon->isConnected()) {
-            if ($credits != null) {
-                $rcon->giveCredits($user, $credits);
-            }
-            if ($duckets != null) {
-                $rcon->giveDuckets($user, $duckets);
-            }
-            if ($diamonds != null) {
-                $rcon->giveDiamonds($user, $diamonds);
-            }
-            if ($badges != null) {
-                $this->giveBadge($user, $rcon, $badges);
-            }
-            if ($furnis != null) {
-                $this->giveFurnis($user, $rcon, $furnis);
-            }
-        } else {
-            if ($credits != null) {
-                $user->increment('credits', $credits);
-            }
-            if ($duckets != null) {
-                $user->currencies()->where('type', 0)->increment('amount', $duckets); // duckets
-            }
-            if ($diamonds != null) {
-                $user->currencies()->where('type', 5)->increment('amount', $diamonds); // diamonds
-            }
-            if ($badges != null) {
-                $this->giveBadge($user, null, $badges);
-            }
-            if ($furnis != null) {
-                $this->giveFurnis($user, null, $furnis);
-            }
-        }
+        $user->decrement('website_balance', $package->costs);
 
-        $user->decrement('website_balance', $price);
+       $sendCurrency->execute($user, 'credits', $package->credits);
+       $sendCurrency->execute($user, 'duckets', $package->duckets);
+       $sendCurrency->execute($user, 'diamonds', $package->diamonds);
 
         return to_route('shop.index')->with('success', __('Successful!'));
-    }
-
-    public function buyPackage(RconService $rcon, int $articleId): Response {
-        $article = WebsiteShopArticles::where('id', $articleId)->first();
-        if ($article === null) {
-            return to_route('shop.index')->withErrors(
-                ['message' => __('Package does not exist')]
-            );
-        }
-
-        return $this->buy($rcon, $article->costs, $article->credits, $article->duckets, $article->diamonds, $article->badges, $article->furnis);
     }
 }

@@ -119,8 +119,8 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         // Shop routes
         Route::prefix('shop')->group(function () {
             Route::get('/', ShopController::class)->name('shop.index');
-            Route::get('/buy-{id}', [ShopController::class, 'buyPackage'])->name('shop.buy');
 
+            Route::post('/purchase/{package}', [ShopController::class, 'purchase'])->name('shop.buy');
             Route::post('/voucher', ShopVoucherController::class)->name('shop.use-voucher');
         });
 

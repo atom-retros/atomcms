@@ -34,7 +34,7 @@
         </div>
     @endif
 
-    @if (empty($article->furnis) === false)
+    @if (!empty($article->furnis))
         <div class="flex flex-col dark:text-white">
             <p class="font-semibdol">Furnis:</p>
             <div class="flex gap-2">
@@ -46,7 +46,9 @@
     @endif
 
     <div class="pt-2 mt-auto">
-        <form action="{{ route('shop.buy', $article->id) }}" method="GET">
+        <form action="{{ route('shop.buy', $article) }}" method="POST">
+            @csrf
+
             <button type="submit" class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
                 {{ __('Buy for $:cost', ['cost' => $article->costs]) }}
             </button>
