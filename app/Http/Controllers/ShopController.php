@@ -7,7 +7,6 @@ use App\Actions\SendFurniture;
 use App\Services\RconService;
 use App\Models\User;
 use App\Models\WebsiteShopArticles;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,16 +16,18 @@ class ShopController extends Controller
     public function __invoke()
     {
         return view('shop.shop', [
-            'articles' => WebsiteShopArticles::get()
+            'articles' => WebsiteShopArticles::orderBy('position')->with('rank:id,rank_name')->get()
         ]);
     }
 
-    private function giveBadge(User $user, RconService|null $rcon, string $badges): void {
-        if (empty($badges) === true) {
+    private function giveBadges(User $user, string $badges): void {
+        if (!empty($badges)) {
             return;
         }
 
-        if ($rcon !== null) {
+        $rcon = app(RconService::class);
+
+        if ($rcon->isConnected) {
             $rcon->giveBadge($user, $badges);
         } else {
             $badges_array = explode(';', $badges);
@@ -45,6 +46,7 @@ class ShopController extends Controller
 
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
+        $rcon = app(RconService::class);
 
         if ($user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
@@ -52,18 +54,26 @@ class ShopController extends Controller
             );
         }
 
-        if ($user->website_balance < $package->costs) {
+        if ($user->website_balance < $package->price()) {
             return to_route('shop.index')->withErrors(
-                ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->costs - $user->website_balance)])],
+                ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->price() - $user->website_balance)])],
             );
         }
 
-        DB::transaction(function () use ($user, $package, $sendCurrency) {
-            $user->decrement('website_balance', $package->costs);
+        if (!$rcon->isConnected && $user->online === '1') {
+            return to_route('shop.index')->withErrors(
+                ['message' => __('Pleaase logout before purchasing a package')],
+            );
+        }
+
+        DB::transaction(function () use ($user, $rcon, $package, $sendCurrency) {
+            $user->decrement('website_balance', $package->price());
+
+            $sendCurrency->execute($user, 'credits', $package->credits);
+            $sendCurrency->execute($user, 'duckets', $package->duckets);
+            $sendCurrency->execute($user, 'diamonds', $package->diamonds);
 
             if ($package->give_rank) {
-                $rcon = app(RconService::class);
-
                 if ($rcon->isConnected) {
                     $rcon->setRank($user, $package->give_rank);
                     $rcon->disconnectUser($user);
@@ -74,9 +84,9 @@ class ShopController extends Controller
                 }
             }
 
-            $sendCurrency->execute($user, 'credits', $package->credits);
-            $sendCurrency->execute($user, 'duckets', $package->duckets);
-            $sendCurrency->execute($user, 'diamonds', $package->diamonds);
+            if ($package->badges) {
+                $this->giveBadges($user, $package->badges);
+            }
 
             if ($package->furniture) {
                 $this->handleFurniture(json_decode($package->furniture, true));
@@ -91,11 +101,5 @@ class ShopController extends Controller
         $sendFurniture = app(SendFurniture::class);
 
         $sendFurniture->execute(Auth::user(), $furnitureData);
-    }
-
-    private function giveRank () {
-        $rcon = app(RconService::class);
-
-        $rcon->setRank();
     }
 }

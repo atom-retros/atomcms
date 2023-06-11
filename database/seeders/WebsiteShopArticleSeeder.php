@@ -12,27 +12,51 @@ class WebsiteShopArticleSeeder extends Seeder
         $articles = [
             [
                 'name' => 'Bronze Package',
-                'info' => 'Our lowest package',
+                'info' => 'To give your account a slight boost',
                 'icon' => 'bronze',
                 'color' => '#c5630f',
-                'costs' => 5,
+                'costs' => 500,
+                'give_rank' => 2,
                 'credits' => 5000,
                 'duckets' => 5000,
-                'diamonds' => 5000,
-                'badges' => '',
+                'diamonds' => 100,
+                'badges' => 'VipParties2',
                 'furniture' => null,
             ],
             [
                 'name' => 'Silver Package',
-                'info' => 'Our middle package',
+                'info' => 'Our package the fits for most',
                 'icon' => 'silver',
                 'color' => '#dddddd',
-                'costs' => 10,
-                'rank' => 3,
+                'costs' => 1000,
+                'give_rank' => 3,
                 'credits' => 10000,
                 'duckets' => 10000,
-                'diamonds' => 10000,
-                'badges' => 'BAB09;UK574;TFF06',
+                'diamonds' => 300,
+                'badges' => 'VipParties2_Top100',
+                'furniture' => null,
+            ],
+            [
+                'name' => 'Gold VIP',
+                'info' => 'Our most exclusive VIP package',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 1500,
+                'give_rank' => 4,
+                'credits' => 15000,
+                'duckets' => 15000,
+                'diamonds' => 500,
+                'badges' => 'VipParties2_Top10',
+                'furniture' => null,
+            ],
+
+            [
+                'name' => 'Furniture Pack #1',
+                'info' => 'The perfect pack for the casino builder',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 750,
+                'badges' => 'VipParties2_Top100',
                 'furniture' => json_encode([
                     [
                         'item_id' => 202,
@@ -48,6 +72,74 @@ class WebsiteShopArticleSeeder extends Seeder
                     ],
                 ]),
             ],
+            [
+                'name' => 'Badge Pack #1',
+                'info' => 'The perfect pack for the badge collector',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 250,
+                'badges' => 'BADGE_CODE_1;BADGE_CODE_2;BADGE_CODE_3;BADGE_CODE_4;BADGE_CODE_5',
+            ],
+            [
+                'name' => 'Currency Pack #1',
+                'info' => 'The perfect pack to boost your account',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 250,
+                'credits' => 25000,
+                'duckets' => 35000,
+                'diamonds' => 2500,
+            ],
+            // Example for furniture pack
+            /*
+            [
+                'name' => 'Furniture Pack #1',
+                'info' => 'The perfect pack for the casino builder',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 750,
+                'badges' => 'VipParties2_Top100',
+                'furniture' => json_encode([
+                    [
+                        'item_id' => 202,
+                        'amount' => 5,
+                    ],
+                    [
+                        'item_id' => 212,
+                        'amount' => 2,
+                    ],
+                    [
+                        'item_id' => 230,
+                        'amount' => 2,
+                    ],
+                ]),
+            ],
+            */
+            // Example for badge pack
+            /*
+            [
+                'name' => 'Badge Pack #1',
+                'info' => 'The perfect pack for the badge collector',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 250,
+                'badges' => 'BADGE_CODE_1;BADGE_CODE_2;BADGE_CODE_3;BADGE_CODE_4;BADGE_CODE_5',
+            ],
+            */
+
+            // Example for currency pack
+            /*
+            [
+                'name' => 'Currency Pack #1',
+                'info' => 'The perfect pack to boost your account',
+                'icon' => 'gold',
+                'color' => '#E4A317FF',
+                'costs' => 250,
+                'credits' => 25000,
+                'duckets' => 35000,
+                'diamonds' => 2500,
+            ],
+            */
         ];
 
         foreach ($articles as $article) {
@@ -57,12 +149,12 @@ class WebsiteShopArticleSeeder extends Seeder
                 'icon' => $article['icon'],
                 'color' => $article['color'],
                 'costs' => $article['costs'],
-                'give_rank' => $article['give_rank'],
-                'credits' => $article['credits'],
-                'duckets' => $article['duckets'],
-                'diamonds' => $article['diamonds'],
-                'badges' => $article['badges'],
-                'furniture' =>  $article['furniture'],
+                'give_rank' => $article['give_rank'] ?? null,
+                'credits' => $article['credits'] ?? null,
+                'duckets' => $article['duckets'] ?? null,
+                'diamonds' => $article['diamonds'] ?? null,
+                'badges' => $article['badges'] ?? null,
+                'furniture' =>  $article['furniture'] ?? null,
             ]);
         }
     }

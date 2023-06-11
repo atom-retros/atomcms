@@ -22,47 +22,72 @@
                 @if ($article->diamonds)
                     <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
                 @endif
+                @if ($article->rank)
+                   <li class="ml-3">
+                       {{ $article->rank->rank_name }} rank
+                   </li>
+                @endif
+                @if ($article->furniture)
+                    @foreach ($article->furniItems() as $furni)
+                        <li class="ml-3">
+                            {{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}
+                            x {{ $furni->public_name }}
+                        </li>
+                    @endforeach
+                @endif
+                @if (!empty($article->badges))
+                    @foreach (explode(';', $article->badges) as $badge)
+                        <li class="ml-3">
+                            {{  $badge }} badge
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
 
-       <div class="flex flex-col gap-3">
-           @if (empty($article->badges) === false)
-               <div class="flex flex-col items-end">
-                   Badges:
-                   <div class="flex flex-col dark:text-white py-2 px-4 rounded bg-gray-200 dark:bg-gray-700">
-                       <div class="flex gap-2 items-center">
-                           @foreach (explode(';', $article->badges) as $badge)
-                               <img data-tippy-content="1x {{ $badge }}" class="user-badge" src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="30" height="30" style="image-rendering: auto;">
-                           @endforeach
-                       </div>
-                   </div>
-               </div>
-           @endif
+        <div class="flex flex-col gap-3">
+            @if (!empty($article->badges))
+                <div class="flex flex-col items-end">
+                    Badge(s):
+                    <div class="flex flex-col dark:text-white py-1.5 px-2 rounded bg-gray-200 dark:bg-gray-700">
+                        <div class="flex gap-2 items-center">
+                            @foreach (explode(';', $article->badges) as $badge)
+                                <img data-tippy-content="1x {{ $badge }}" class="user-badge"
+                                     src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}"
+                                     style="image-rendering: auto;">
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
 
-           @if ($article->furniture)
-              <div class="flex flex-col items-end">
-                  Furniture:
-                  <div class="flex flex-col dark:text-white py-2 px-4 rounded bg-gray-200 dark:bg-gray-700">
-                      <div class="flex gap-2 items-center">
-                          @foreach ($article->furniItems() as $furni)
-                              <div>
-                                  <img data-tippy-content="{{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}x {{ $furni->public_name }}" class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}">
-                              </div>
-                          @endforeach
-                      </div>
-                  </div>
-              </div>
-           @endif
-       </div>
+            @if ($article->furniture)
+                <div class="flex flex-col items-end">
+                    Furniture:
+                    <div class="flex flex-col dark:text-white py-2 px-4 rounded bg-gray-200 dark:bg-gray-700">
+                        <div class="flex gap-2 items-center">
+                            @foreach ($article->furniItems() as $furni)
+                                <div>
+                                    <img
+                                        data-tippy-content="{{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}x {{ $furni->public_name }}"
+                                        class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
     </div>
 
     <div class="pt-2 mt-auto">
         <form action="{{ route('shop.buy', $article) }}" method="POST">
             @csrf
 
-            <button type="submit" class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
-                {{ __('Buy for $:cost', ['cost' => $article->costs]) }}
-            </button>
-        </form>
-    </div>
+            <button type="submit"
+                    class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
+                {{ __('Buy for $:cost', ['cost' => $article->price()]) }}
+</button>
+</form>
+</div>
 </x-content.content-card>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 
 class WebsiteShopArticles extends Model
@@ -19,5 +20,20 @@ class WebsiteShopArticles extends Model
         $furnitureIds = array_column($furniture, 'item_id');
 
         return ItemBase::whereIn('id', $furnitureIds)->get();
+    }
+
+    public function rank(): HasOne
+    {
+        return $this->hasOne(Permission::class, 'id', 'give_rank');
+    }
+
+    public function price(): float|int
+    {
+        if ($this->costs < 100)
+        {
+            return 1;
+        }
+
+        return $this->costs / 100;
     }
 }

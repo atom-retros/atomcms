@@ -25,8 +25,11 @@ return new class extends Migration
             $table->unsignedInteger('diamonds')->nullable();
             $table->string('badges')->nullable();
             $table->json('furniture')->nullable();
+            $table->unsignedInteger('position')->default(0);
 
             $table->timestamps();
+
+            $table->foreign('give_rank')->references('id')->on('permissions')->nullOnDelete();
         });
     }
 
