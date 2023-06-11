@@ -32,12 +32,12 @@ class ShopVoucherController extends Controller
 
         $voucher->increment('use_count');
 
-        if ($voucher->max_uses && $voucher->use_count === $voucher->max_uses) {
+        if ($voucher->use_count >= $voucher->max_uses) {
             $voucher->update([
                 'expires_at' => now(),
             ]);
         }
 
-        return  redirect()->back()->with('success', __('Your balance has been increased by $:amount', ['amount' => $voucher->amount]));
+        return redirect()->back()->with('success', __('Your balance has been increased by $:amount', ['amount' => $voucher->amount]));
     }
 }

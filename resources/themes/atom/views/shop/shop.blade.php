@@ -1,6 +1,7 @@
 <x-app-layout>
     @push('title', __('Shop'))
-    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
+
+    <div class="col-span-12">
         <x-modals.modal-wrapper>
             <div class="w-full py-2 px-4 text-center bg-[#f68b08] text-white rounded">
                 {{ __('Please make sure to read our shop') }}
@@ -34,9 +35,10 @@
                 </div>
             </x-modals.regular-modal>
         </x-modals.modal-wrapper>
+    </div>
 
-
-        <div class="flex flex-col gap-y-2 dark:text-gray-300 mt-4">
+    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
+        <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
                 <x-shop.packages :article="$article" />
 
