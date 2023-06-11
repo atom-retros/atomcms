@@ -13,20 +13,33 @@
             <p class="font-semibold">{{ __('You will receive:') }}</p>
 
             <ul class="list-disc pl-4">
+                @if($article->features)
+                    @foreach(json_decode($article->features->features, true) as $feature)
+                        <li class="ml-3">
+                            {{ $feature['feature'] }}
+                        </li>
+                    @endforeach
+                @endif
+
+
                 @if ($article->credits)
                     <li class="ml-3">{{ number_format($article->credits, 0, '.', '.') }} credits</li>
                 @endif
+
                 @if ($article->duckets)
                     <li class="ml-3">{{ number_format($article->duckets, 0, '.', '.') }} duckets</li>
                 @endif
+
                 @if ($article->diamonds)
                     <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
                 @endif
+
                 @if ($article->rank)
-                   <li class="ml-3">
-                       {{ $article->rank->rank_name }} rank
-                   </li>
+                    <li class="ml-3">
+                        {{ $article->rank->rank_name }} rank
+                    </li>
                 @endif
+
                 @if ($article->furniture)
                     @foreach ($article->furniItems() as $furni)
                         <li class="ml-3">
@@ -35,6 +48,7 @@
                         </li>
                     @endforeach
                 @endif
+                    
                 @if (!empty($article->badges))
                     @foreach (explode(';', $article->badges) as $badge)
                         <li class="ml-3">
@@ -87,7 +101,7 @@
             <button type="submit"
                     class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
                 {{ __('Buy for $:cost', ['cost' => $article->price()]) }}
-</button>
-</form>
-</div>
+            </button>
+        </form>
+    </div>
 </x-content.content-card>

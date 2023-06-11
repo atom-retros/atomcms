@@ -15,7 +15,7 @@ return new class extends Migration {
 
             $table->timestamps();
 
-            $table->foreign('article_id')->references('id')->on('website_shop_articles');
+            $table->foreign('article_id')->references('id')->on('website_shop_articles')->cascadeOnDelete();
         });
     }
 

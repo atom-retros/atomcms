@@ -16,7 +16,7 @@ class ShopController extends Controller
     public function __invoke()
     {
         return view('shop.shop', [
-            'articles' => WebsiteShopArticles::orderBy('position')->with('rank:id,rank_name')->get()
+            'articles' => WebsiteShopArticles::orderBy('position')->with(['rank:id,rank_name', 'features'])->get(),
         ]);
     }
 
