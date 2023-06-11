@@ -23,6 +23,7 @@ use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\UserReferralController;
+use App\Http\Controllers\ShopVoucherController;
 use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteRareValuesController;
 use App\Http\Controllers\WebsiteRulesController;
@@ -116,8 +117,13 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
 
         // Shop routes
-        Route::get('/shop', ShopController::class)->name('shop.index');
-        Route::get('/shop/buy-{id}', [ShopController::class, 'buyPackage'])->name('shop.buy');
+        Route::prefix('shop')->group(function () {
+            Route::get('/', ShopController::class)->name('shop.index');
+            Route::get('/buy-{id}', [ShopController::class, 'buyPackage'])->name('shop.buy');
+
+            Route::post('/voucher', ShopVoucherController::class)->name('shop.use-voucher');
+        });
+
 
         // Paypal routes
         Route::controller(PayPalController::class)->prefix('paypal')->group(function() {

@@ -161,6 +161,11 @@ class User extends Authenticatable
         return $this->hasMany(WebsitePaypalTransaction::class);
     }
 
+    public function usedShopVouchers(): HasMany
+    {
+        return $this->hasMany(WebsiteUsedShopVoucher::class);
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()

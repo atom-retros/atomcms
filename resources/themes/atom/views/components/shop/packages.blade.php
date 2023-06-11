@@ -37,7 +37,7 @@
     <div class="pt-2 mt-auto">
         <form action="{{ route('shop.buy', $article->id) }}" method="GET">
             <button type="submit" class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
-                {{ __('Buy for :balance', ['balance' => $article->costs]) }}
+                {{ __('Buy for $:cost', ['cost' => $article->costs]) }}
             </button>
         </form>
     </div>
