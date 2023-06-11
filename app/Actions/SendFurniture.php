@@ -11,7 +11,7 @@ class SendFurniture
     {
     }
 
-    public function execute(User $user, array $furnitureData)
+    public function execute(User $user, array $furnitureData): void
     {
         foreach ($furnitureData as $furniture) {
             if ($this->rcon->isConnected) {

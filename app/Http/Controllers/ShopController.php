@@ -46,14 +46,33 @@ class ShopController extends Controller
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
 
+        if ($user->rank >= $package->give_rank) {
+            return to_route('shop.index')->withErrors(
+                ['message' => __('You are already this or a higher rank')],
+            );
+        }
+
         if ($user->website_balance < $package->costs) {
             return to_route('shop.index')->withErrors(
-                ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->costs - $user->website_balance)])]
+                ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->costs - $user->website_balance)])],
             );
         }
 
         DB::transaction(function () use ($user, $package, $sendCurrency) {
             $user->decrement('website_balance', $package->costs);
+
+            if ($package->give_rank) {
+                $rcon = app(RconService::class);
+
+                if ($rcon->isConnected) {
+                    $rcon->setRank($user, $package->give_rank);
+                    $rcon->disconnectUser($user);
+                } else {
+                    $user->update([
+                        'rank' => $package->give_rank,
+                    ]);
+                }
+            }
 
             $sendCurrency->execute($user, 'credits', $package->credits);
             $sendCurrency->execute($user, 'duckets', $package->duckets);
@@ -72,5 +91,11 @@ class ShopController extends Controller
         $sendFurniture = app(SendFurniture::class);
 
         $sendFurniture->execute(Auth::user(), $furnitureData);
+    }
+
+    private function giveRank () {
+        $rcon = app(RconService::class);
+
+        $rcon->setRank();
     }
 }

@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('info');
             $table->string('icon');
             $table->string('color');
-            $table->integer('costs');
-            $table->integer('credits')->nullable();
-            $table->integer('duckets')->nullable();
-            $table->integer('diamonds')->nullable();
+            $table->unsignedInteger('costs');
+            $table->unsignedInteger('give_rank')->nullable();
+            $table->unsignedInteger('credits')->nullable();
+            $table->unsignedInteger('duckets')->nullable();
+            $table->unsignedInteger('diamonds')->nullable();
             $table->string('badges')->nullable();
             $table->json('furniture')->nullable();
 

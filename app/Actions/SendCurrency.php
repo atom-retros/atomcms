@@ -11,7 +11,7 @@ class SendCurrency
     {
     }
 
-    public function execute(User $user, string $type, ?int $amount): bool
+    public function execute(User $user, string $type, ?int $amount)
     {
         if (!$amount && $amount <= 0) {
             return false;
@@ -32,7 +32,5 @@ class SendCurrency
                 default => false,
             };
         }
-
-        return true;
     }
 }
