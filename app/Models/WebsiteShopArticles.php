@@ -19,7 +19,7 @@ class WebsiteShopArticles extends Model
         $furni_items = [];
         
         foreach ($furnis as $furni) {
-            $furni_result = ItemsBase::where('item_name', $furni)->select(['id', 'public_name', 'item_name'])->first();
+            $furni_result = ItemsBase::where('id', (int)$furni)->select(['id', 'public_name', 'item_name'])->first();
             if ($furni_result === null) {
                 continue;
             }
