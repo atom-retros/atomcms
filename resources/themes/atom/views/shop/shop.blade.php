@@ -32,6 +32,15 @@
 
                         <p>{{ __('Once a donation has been made and received by us, it is non-refundable under any circumstances. The donated amount which is converted into website balance cannot be converted back into cash or other forms of money. By making a donation, you acknowledge and accept these terms and agree not to initiate a chargeback or dispute with your bank or card issuer.') }}</p>
                     </div>
+
+                    <div class="flex flex-col gap-y-2 !mt-6">
+                        <p class="font-semibold">{{ __('Notice') }}</p>
+
+                        <p>{{ __('It is important to consider the consequences of our spending habits, especially when it comes to financial decisions. If you find yourself tempted to spend money you do not have, take a moment to reflect.') }}</p>
+                        <p>{{ __('Remember, your financial well-being is crucial, and making responsible choices is key. If you are facing difficulties in controlling your spending habits, do not hesitate to seek friendly and professional guidance. There are resources available that can provide valuable advice and support.') }}</p>
+                        <p>{{ __('Reaching out for help is a sign of strength and a positive step towards improving your financial situation. You are not alone in this journey, and there are people who genuinely want to assist you in managing your finances effectively.') }}</p>
+                        <p>{{ __('You deserve financial stability and peace of mind. By seeking guidance, you are taking control and empowering yourself to make better choices. Start today and pave the way for a brighter financial future.') }}</p>
+                    </div>
                 </div>
             </x-modals.regular-modal>
         </x-modals.modal-wrapper>
