@@ -49,47 +49,6 @@ class WebsiteShopArticleSeeder extends Seeder
                 'badges' => 'VipParties2_Top10',
                 'furniture' => null,
             ],
-
-            [
-                'name' => 'Furniture Pack #1',
-                'info' => 'The perfect pack for the casino builder',
-                'icon' => 'gold',
-                'color' => '#E4A317FF',
-                'costs' => 750,
-                'badges' => 'VipParties2_Top100',
-                'furniture' => json_encode([
-                    [
-                        'item_id' => 202,
-                        'amount' => 5,
-                    ],
-                    [
-                        'item_id' => 212,
-                        'amount' => 2,
-                    ],
-                    [
-                        'item_id' => 230,
-                        'amount' => 2,
-                    ],
-                ]),
-            ],
-            [
-                'name' => 'Badge Pack #1',
-                'info' => 'The perfect pack for the badge collector',
-                'icon' => 'gold',
-                'color' => '#E4A317FF',
-                'costs' => 250,
-                'badges' => 'BADGE_CODE_1;BADGE_CODE_2;BADGE_CODE_3;BADGE_CODE_4;BADGE_CODE_5',
-            ],
-            [
-                'name' => 'Currency Pack #1',
-                'info' => 'The perfect pack to boost your account',
-                'icon' => 'gold',
-                'color' => '#E4A317FF',
-                'costs' => 250,
-                'credits' => 25000,
-                'duckets' => 35000,
-                'diamonds' => 2500,
-            ],
             // Example for furniture pack
             /*
             [

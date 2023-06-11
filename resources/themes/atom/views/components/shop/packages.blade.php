@@ -48,7 +48,7 @@
                         </li>
                     @endforeach
                 @endif
-                    
+
                 @if (!empty($article->badges))
                     @foreach (explode(';', $article->badges) as $badge)
                         <li class="ml-3">
