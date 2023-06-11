@@ -6,6 +6,7 @@ use App\Http\Requests\AccountTopupFormRequest;
 use App\Models\WebsitePaypalTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\RedirectResponse;
@@ -48,6 +49,7 @@ class PaypalController extends Controller
         $response = $this->provider->createOrder($orderData);
 
         if (isset($response['id']) === false) {
+            Log::error('Error creating order', ['response' => $response]);
             return to_route('shop.index')->withErrors(
                 ['message' => $response['message'] ?? __('Something went wrong')]
             );
@@ -86,6 +88,7 @@ class PaypalController extends Controller
         $paymentDetails = $response['purchase_units'][0]['payments']['captures'][0];
 
         if (!isset($response['status'], $paymentDetails)) {
+            Log::error('Invalid response from PayPal', ['response' => $response]);
             return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please try again later')]);
         }
 
