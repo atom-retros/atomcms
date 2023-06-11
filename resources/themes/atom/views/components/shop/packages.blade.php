@@ -28,7 +28,7 @@
             <p class="font-semibdol">Badges:</p>
             <div class="flex gap-2">
                 @foreach (explode(';', $article->badges) as $badge)
-                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="https://beta.habbo.sx/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
+                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
                 @endforeach
             </div>
         </div>
@@ -39,7 +39,7 @@
             <p class="font-semibdol">Furnis:</p>
             <div class="flex gap-2">
                 @foreach ($article->furniItems() as $furni)
-                    <img data-tippy-content="{{ $furni->public_name }}" class="user-badge" src="https://beta.habbo.sx/client/flash/dcr/hof_furni/{{$furni->icon()}}" alt="{{ $furni->public_name }}" width="36" height="36">
+                    <img data-tippy-content="{{ $furni->public_name }}" class="user-badge" src="/client/flash/dcr/hof_furni/{{$furni->icon()}}" alt="{{ $furni->public_name }}" width="36" height="36">
                 @endforeach
             </div>
         </div>
