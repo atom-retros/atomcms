@@ -34,7 +34,7 @@
         </div>
     @endif
 
-    @if (!empty($article->furnis))
+    @if ($article->furniture)
         <div class="flex flex-col dark:text-white">
             <p class="font-semibdol">Furnis:</p>
             <div class="flex gap-2">

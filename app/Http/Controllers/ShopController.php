@@ -8,14 +8,15 @@ use App\Models\User;
 use App\Models\WebsiteShopArticles;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
 class ShopController extends Controller
 {
-    public function __invoke(): View
+    public function __invoke()
     {
-        return view('shop.shop', ['articles' => WebsiteShopArticles::get()]);
+        return view('shop.shop', [
+            'articles' => WebsiteShopArticles::get()
+        ]);
     }
 
     private function giveBadge(User $user, RconService|null $rcon, string $badges): void {

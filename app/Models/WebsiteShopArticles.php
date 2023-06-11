@@ -4,29 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 class WebsiteShopArticles extends Model
 {
     protected $guarded = ['id'];
 
-    public function furniItems(): Array {
-        if (empty($this->furnis) === true) {
-            return [];
+    public function furniItems(): Collection {
+        if (!$this->furniture) {
+            return collect();
         }
 
-        $furnis = explode(';', $this->furnis);
+        $furniture = json_decode($this->furniture, true);
+        $furnitureIds = array_column($furniture, 'item_id');
 
-        $furni_items = [];
-        
-        foreach ($furnis as $furni) {
-            $furni_result = ItemsBase::where('id', (int)$furni)->select(['id', 'public_name', 'item_name'])->first();
-            if ($furni_result === null) {
-                continue;
-            }
-            
-            array_push($furni_items, $furni_result);
-        }
-
-        return $furni_items;
+        return ItemBase::whereIn('id', $furnitureIds)->get();
     }
 }

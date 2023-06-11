@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('website_shop_articles', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('info');
             $table->string('icon');
             $table->string('color');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('duckets')->nullable();
             $table->integer('diamonds')->nullable();
             $table->string('badges')->nullable();
-            $table->string('furnis')->nullable();
+            $table->json('furniture')->nullable();
 
             $table->timestamps();
         });
