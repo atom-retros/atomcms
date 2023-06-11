@@ -7,6 +7,7 @@ use App\Services\RconService;
 use App\Models\User;
 use App\Models\WebsiteShopArticles;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -56,11 +57,13 @@ class ShopController extends Controller
             );
         }
 
-        $user->decrement('website_balance', $package->costs);
+        DB::transaction(function () use ($user, $package, $sendCurrency) {
+            $user->decrement('website_balance', $package->costs);
 
-       $sendCurrency->execute($user, 'credits', $package->credits);
-       $sendCurrency->execute($user, 'duckets', $package->duckets);
-       $sendCurrency->execute($user, 'diamonds', $package->diamonds);
+            $sendCurrency->execute($user, 'credits', $package->credits);
+            $sendCurrency->execute($user, 'duckets', $package->duckets);
+            $sendCurrency->execute($user, 'diamonds', $package->diamonds);
+        });
 
         return to_route('shop.index')->with('success', __('Successful!'));
     }
