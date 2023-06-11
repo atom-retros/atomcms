@@ -51,9 +51,7 @@ class ShopController extends Controller
                 ['message' => __('You need to top-up your account with another $:amount to purchase this package', ['amount' => ($package->costs - $user->website_balance)])]
             );
         }
-        if ($package->furniture) {
-            $this->handleFurniture(json_decode($package->furniture, true));
-        }
+
         DB::transaction(function () use ($user, $package, $sendCurrency) {
             $user->decrement('website_balance', $package->costs);
 

@@ -15,16 +15,20 @@ class SendFurniture
     {
         if ($this->rcon->isConnected()) {
             foreach ($furnitureData as $furniture) {
-                $this->rcon->sendGift($user, $furniture['item_id'], 'Thank you for supporting ' . setting('hotel_name'));
+                for ($i = 0; $i < $furniture['amount']; $i++) {
+                    $this->rcon->sendGift($user, $furniture['item_id'], 'Thank you for supporting ' . setting('hotel_name'));
+                }
             }
 
             return;
         }
 
         foreach ($furnitureData as $furniture) {
-           $user->items()->create([
-                'item_id' => $furniture['item_id'],
-           ]);
+            for ($i = 0; $i < $furniture['amount']; $i++) {
+                $user->items()->create([
+                    'item_id' => $furniture['item_id'],
+                ]);
+            }
         }
     }
 }
