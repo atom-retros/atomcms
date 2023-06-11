@@ -38,7 +38,15 @@ class ShopController extends Controller
         }
     }
 
-    private function buy(RconService $rcon, int $price, int|null $credits, int|null $duckets, int|null $diamonds, string|null $badges): Response {
+    private function giveFurnis(User $user, RconService|null $rcon, string $furnis): void {
+        if (empty($furnis) === true) {
+            return;
+        }
+
+        // TODO
+    }
+
+    private function buy(RconService $rcon, int $price, int|null $credits, int|null $duckets, int|null $diamonds, string|null $badges, string|null $furnis): Response {
         $user = Auth::user();
 
         if ($user->website_balance < $price) {
@@ -60,6 +68,9 @@ class ShopController extends Controller
             if ($badges != null) {
                 $this->giveBadge($user, $rcon, $badges);
             }
+            if ($furnis != null) {
+                $this->giveFurnis($user, $rcon, $furnis);
+            }
         } else {
             if ($credits != null) {
                 $user->increment('credits', $credits);
@@ -72,6 +83,9 @@ class ShopController extends Controller
             }
             if ($badges != null) {
                 $this->giveBadge($user, null, $badges);
+            }
+            if ($furnis != null) {
+                $this->giveFurnis($user, null, $furnis);
             }
         }
 
@@ -88,6 +102,6 @@ class ShopController extends Controller
             );
         }
 
-        return $this->buy($rcon, $article->costs, $article->credits, $article->duckets, $article->diamonds, $article->badges);
+        return $this->buy($rcon, $article->costs, $article->credits, $article->duckets, $article->diamonds, $article->badges, $article->furnis);
     }
 }

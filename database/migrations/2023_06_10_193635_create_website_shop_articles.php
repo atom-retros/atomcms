@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('duckets')->nullable();
             $table->integer('diamonds')->nullable();
             $table->string('badges')->nullable();
+            $table->string('furnis')->nullable();
 
             $table->timestamps();
         });
