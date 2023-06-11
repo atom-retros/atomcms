@@ -7,43 +7,54 @@
         {{ $article->info }}
     </x-slot:under-title>
 
-    <div class="flex flex-col dark:text-white">
-        <p class="font-semibold">{{ __('You will receive:') }}</p>
+    <div class="flex justify-between dark:text-white">
 
-        <ul class="list-disc pl-4">
-            @if ($article->credits)
-                <li class="ml-3">{{ number_format($article->credits, 0, '.', '.') }} credits</li>
-            @endif
-            @if ($article->duckets)
-                <li class="ml-3">{{ number_format($article->duckets, 0, '.', '.') }} duckets</li>
-            @endif
-            @if ($article->diamonds)
-                <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
-            @endif
-        </ul>
+        <div class="flex flex-col">
+            <p class="font-semibold">{{ __('You will receive:') }}</p>
+
+            <ul class="list-disc pl-4">
+                @if ($article->credits)
+                    <li class="ml-3">{{ number_format($article->credits, 0, '.', '.') }} credits</li>
+                @endif
+                @if ($article->duckets)
+                    <li class="ml-3">{{ number_format($article->duckets, 0, '.', '.') }} duckets</li>
+                @endif
+                @if ($article->diamonds)
+                    <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
+                @endif
+            </ul>
+        </div>
+
+       <div class="flex flex-col gap-3">
+           @if (empty($article->badges) === false)
+               <div class="flex flex-col items-end">
+                   Badges:
+                   <div class="flex flex-col dark:text-white py-2 px-4 rounded bg-gray-200 dark:bg-gray-700">
+                       <div class="flex gap-2 items-center">
+                           @foreach (explode(';', $article->badges) as $badge)
+                               <img data-tippy-content="1x {{ $badge }}" class="user-badge" src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="30" height="30" style="image-rendering: auto;">
+                           @endforeach
+                       </div>
+                   </div>
+               </div>
+           @endif
+
+           @if ($article->furniture)
+              <div class="flex flex-col items-end">
+                  Furniture:
+                  <div class="flex flex-col dark:text-white py-2 px-4 rounded bg-gray-200 dark:bg-gray-700">
+                      <div class="flex gap-2 items-center">
+                          @foreach ($article->furniItems() as $furni)
+                              <div>
+                                  <img data-tippy-content="{{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}x {{ $furni->public_name }}" class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}">
+                              </div>
+                          @endforeach
+                      </div>
+                  </div>
+              </div>
+           @endif
+       </div>
     </div>
-
-    @if (empty($article->badges) === false)
-        <div class="flex flex-col dark:text-white">
-            <p class="font-semibdol">Badges:</p>
-            <div class="flex gap-2">
-                @foreach (explode(';', $article->badges) as $badge)
-                    <img data-tippy-content="{{ $badge }}" class="user-badge" src="/client/flash/c_images/album1584/{{$badge}}.png" alt="{{ $badge }}" width="40" height="40">
-                @endforeach
-            </div>
-        </div>
-    @endif
-
-    @if ($article->furniture)
-        <div class="flex flex-col dark:text-white">
-            <p class="font-semibdol">Furnis:</p>
-            <div class="flex gap-2">
-                @foreach ($article->furniItems() as $furni)
-                    <img data-tippy-content="{{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}x {{ $furni->public_name }}" class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}" width="36" height="36">
-                @endforeach
-            </div>
-        </div>
-    @endif
 
     <div class="pt-2 mt-auto">
         <form action="{{ route('shop.buy', $article) }}" method="POST">
