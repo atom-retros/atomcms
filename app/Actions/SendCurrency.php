@@ -13,17 +13,21 @@ class SendCurrency
 
     public function execute(User $user, string $type, ?int $amount)
     {
+        $this->rcon->disconnectUser($user);
+
         if (!$amount && $amount <= 0) {
             return false;
         }
 
-        if ($this->rcon->isConnected()) {
-            return match ($type) {
+        if ($this->rcon->isConnected) {
+            match ($type) {
                 'credits' => $this->rcon->giveCredits($user, $amount),
                 'duckets' => $this->rcon->giveDuckets($user, $amount),
                 'diamonds' => $this->rcon->giveDiamonds($user, $amount),
                 default => false,
             };
+
+            return;
         }
 
         return match ($type) {

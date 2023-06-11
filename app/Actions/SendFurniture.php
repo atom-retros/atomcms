@@ -13,7 +13,8 @@ class SendFurniture
 
     public function execute(User $user, array $furnitureData)
     {
-        if ($this->rcon->isConnected()) {
+
+        if ($this->rcon->isConnected) {
             foreach ($furnitureData as $furniture) {
                 for ($i = 0; $i < $furniture['amount']; $i++) {
                     $this->rcon->sendGift($user, $furniture['item_id'], 'Thank you for supporting ' . setting('hotel_name'));

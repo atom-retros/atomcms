@@ -43,7 +43,7 @@ class ShopController extends Controller
         }
     }
 
-    public function purchase(WebsiteShopArticles $package, RconService $rcon, SendCurrency $sendCurrency): Response {
+    public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
 
         if ($user->website_balance < $package->costs) {

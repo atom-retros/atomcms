@@ -56,7 +56,7 @@ class AccountSettingsController extends Controller
         $user = Auth::user();
         $canChangeName = $user->settings?->allow_name_change && $user->username !== $request->input('username');
 
-        if ($user->online && $canChangeName && $rcon->isConnected()) {
+        if ($user->online && $canChangeName && $rcon->isConnected) {
             $rcon->disconnectUser($user);
             sleep(1);
         }
@@ -72,7 +72,7 @@ class AccountSettingsController extends Controller
             'motto' => $request->string('motto', '')
         ]);
 
-        if ($user->motto !== $request->string('motto') && $rcon->isConnected()) {
+        if ($user->motto !== $request->string('motto') && $rcon->isConnected) {
             $rcon->setMotto($user, $request->string('motto', ''));
         }
 
