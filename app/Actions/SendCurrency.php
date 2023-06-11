@@ -11,10 +11,8 @@ class SendCurrency
     {
     }
 
-    public function execute(User $user, string $type, ?int $amount)
+    public function execute(User $user, string $type, ?int $amount): bool
     {
-        $this->rcon->disconnectUser($user);
-
         if (!$amount && $amount <= 0) {
             return false;
         }
@@ -26,15 +24,15 @@ class SendCurrency
                 'diamonds' => $this->rcon->giveDiamonds($user, $amount),
                 default => false,
             };
-
-            return;
+        } else {
+            match ($type) {
+                'credits' => $user->increment('credits', $amount),
+                'duckets' => $user->currencies()->where('type', 0)->increment('amount', $amount),
+                'diamonds' => $user->currencies()->where('type', 5)->increment('amount', $amount),
+                default => false,
+            };
         }
 
-        return match ($type) {
-            'credits' => $user->increment('credits', $amount),
-            'duckets' => $user->currencies()->where('type', 0)->increment('amount', $amount),
-            'diamonds' => $user->currencies()->where('type', 5)->increment('amount', $amount),
-            default => false,
-        };
+        return true;
     }
 }
