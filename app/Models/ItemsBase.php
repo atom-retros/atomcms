@@ -10,6 +10,6 @@ class ItemsBase extends Model
     protected $guarded = ['id'];
     
     public function icon(): string {
-        return $this->item_name . '_icon.png';
+        return '/client/flash/dcr/hof_furni/' . $this->item_name . '_icon.png';
     }
 }

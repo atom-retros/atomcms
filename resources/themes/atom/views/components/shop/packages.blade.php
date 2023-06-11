@@ -39,7 +39,7 @@
             <p class="font-semibdol">Furnis:</p>
             <div class="flex gap-2">
                 @foreach ($article->furniItems() as $furni)
-                    <img data-tippy-content="{{ $furni->public_name }}" class="user-badge" src="/client/flash/dcr/hof_furni/{{$furni->icon()}}" alt="{{ $furni->public_name }}" width="36" height="36">
+                    <img data-tippy-content="{{ $furni->public_name }}" class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}" width="36" height="36">
                 @endforeach
             </div>
         </div>
