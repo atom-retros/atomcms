@@ -9,7 +9,6 @@ class ShopVoucherController extends Controller
 {
     public function __invoke(ShopVoucherFormRequest $request)
     {
-        //dd(now());
         $user = $request->user();
         $voucher = WebsiteShopVoucher::where('code', $request->string('code'))->first();
 
