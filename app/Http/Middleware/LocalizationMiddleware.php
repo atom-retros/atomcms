@@ -28,8 +28,10 @@ class LocalizationMiddleware
 
         // If the language does not exist in the database
         if (WebsiteLanguage::where('country_code', '=', $countryCode)->doesntExist()) {
-            App::setLocale($countryCode);
-            Session::put('locale', $countryCode);
+            $defaultCountry = env('APP_LOCALE', 'en');
+            
+            App::setLocale($defaultCountry);
+            Session::put('locale', $defaultCountry);
             
             return $next($request);
         }
