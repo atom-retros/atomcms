@@ -156,6 +156,21 @@ class User extends Authenticatable
         return $this->hasMany(WebsiteArticleComment::class);
     }
 
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(WebsitePaypalTransaction::class);
+    }
+
+    public function usedShopVouchers(): HasMany
+    {
+        return $this->hasMany(WebsiteUsedShopVoucher::class);
+    }
+
+    public function items(): HasMany
+    {
+    return $this->hasMany(Item::class, 'user_id');
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()

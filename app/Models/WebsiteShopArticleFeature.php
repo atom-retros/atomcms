@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Item extends Model
+class WebsiteShopArticleFeature extends Model
 {
     protected $guarded = ['id'];
 
-    public $timestamps = false;
-
-    public function user(): BelongsTo
+    public function article(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(WebsiteShopArticles::class, 'article_id', 'id');
     }
+
 }

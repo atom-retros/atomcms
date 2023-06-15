@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.8",
         "opcodesio/log-viewer": "^1.9",
         "qirolab/laravel-themer": "^2.0",
-        "spatie/laravel-activitylog": "^4.7"
+        "spatie/laravel-activitylog": "^4.7",
+        "srmklive/paypal": "~3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "dev-master",

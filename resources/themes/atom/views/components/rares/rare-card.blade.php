@@ -3,7 +3,7 @@
 <div class="p-3 rounded bg-gray-200 dark:bg-gray-700 flex gap-x-6 gap-4 items-center overflow-hidden">
     <div class="w-8 h-8">
         <div class="w-10 h-10 overflow-hidden rounded-full flex items-center justify-center bg-gray-300 dark:bg-gray-800">
-            <img src="{{ sprintf('%s/%s', setting('rare_values_icons_path'), $rare->furniture_icon) }}" alt="">
+            <img src="{{ sprintf('%s/%s', setting('furniture_icons_path'), $rare->furniture_icon) }}" alt="">
         </div>
     </div>
     <div class="flex flex-col w-full">
