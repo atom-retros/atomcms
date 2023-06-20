@@ -10,7 +10,7 @@
                     </x-slot:title>
 
                     <x-slot:under-title>
-                        All the {{ $category->name }} rares
+                        {{ __('All the :category rares', ['category' => $category->name]) }}
                     </x-slot:under-title>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -22,11 +22,11 @@
             @empty
                 <x-content.content-card icon="hotel-icon">
                     <x-slot:title>
-                        Rare values
+                        {{ __('Rare values') }}
                     </x-slot:title>
 
                     <x-slot:under-title>
-                        Get an overview of all of the rares on {{ setting('hotel_name') }}
+                       {{ __('Get an overview of all of the rares on :hotel', ['hotel' => setting('hotel_name')]) }}
                     </x-slot:under-title>
 
                    <p class="text-center">
@@ -70,7 +70,7 @@
             <div class="px-2 text-sm dark:text-gray-200 space-y-2">
                 <div class="rounded bg-gray-200 dark:bg-gray-700 py-2 px-4 transition duration-200 ease-in-out hover:scale-[102%]">
                     <a href="{{ route('values.index') }}" class="block text">
-                        All values
+                        {{ __('All values') }}
                     </a>
                 </div>
 

@@ -8,7 +8,10 @@
 
         <div class="flex flex-col">
             <p class="font-semibold text-black dark:text-gray-200">{{ $title }}</p>
-            <p class="dark:text-gray-400">{{ $underTitle }}</p>
+
+            @if(isset($underTitle))
+                <p class="dark:text-gray-500">{{ $underTitle }}</p>
+            @endif
         </div>
     </div>
 

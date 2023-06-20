@@ -9,7 +9,10 @@
 
          <div class="flex flex-col justify-center text-sm">
              <p class="font-semibold text-black">{{ $title }}</p>
-             <p>{{ $underTitle }}</p>
+
+             @if(isset($underTitle))
+                 <p>{{ $underTitle }}</p>
+             @endif
          </div>
      </div>
 

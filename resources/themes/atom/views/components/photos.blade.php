@@ -14,7 +14,7 @@
                     </div>
 
                     <p class="dark:text-white">
-                        {{ $photo->user->username ?? 'Unknown' }}
+                        {{ $photo->user->username ?? __('Unknown') }}
                     </p>
                 </div>
             </div>

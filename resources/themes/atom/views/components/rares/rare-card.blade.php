@@ -20,6 +20,7 @@
                 <img class="w-4 h-4" src="{{ asset('/assets/images/icons/ltd.png') }}" alt="">
             @endif
         </div>
+
         <div class="w-full bg-yellow-400 rounded h-[35px] flex items-center mt-2">
             <div class="bg-yellow-500 rounded-l w-1/3 px-4 h-full flex items-center justify-center">
                 <img src="{{ asset('assets/images/icons/currency/credits.png') }}" alt="">
@@ -28,10 +29,12 @@
                 {{ $rare->credit_value ?? 0 }} {{ __('credits') }}
             </p>
         </div>
+
         <div class="w-full bg-gray-500 rounded h-[35px] flex items-center mt-1">
             <div class="bg-gray-600 rounded-l w-1/3 px-4 h-full flex items-center justify-center">
                 <img src="{{ asset('/assets/images/icons/navigation/shop.png') }}" alt="">
             </div>
+
             <p class="w-full text-center truncate">
                 {{ $rare->currency_value ?? 0 }} {{ $rare->currency_type }}
             </p>

@@ -16,7 +16,7 @@
 
                 <div>
                     <x-form.label for="username" disabled>
-                        Username
+                        {{ __('Username') }}
                     </x-form.label>
 
                     <x-form.input classes="bg-red-200" name="username" value="{{ auth()->user()->username }}"
@@ -25,7 +25,7 @@
 
                 <div>
                     <x-form.label for="username" disabled>
-                        About you
+                        {{ __('About you') }}
                     </x-form.label>
 
                     <textarea name="content"

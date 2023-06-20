@@ -7,7 +7,7 @@
             <div class="flex items-center gap-x-4">
                 <a href="{{ route('me.show') }}" class="ml-7">
                     <img class="drop-shadow transition duration-300 ease-in-out hover:scale-105"
-                        src={{ setting('cms_logo') }} alt="Hotel logo">
+                        src="{{ setting('cms_logo') }}" alt="Hotel logo">
                 </a>
 
                 <div
@@ -45,7 +45,7 @@
             <div class="flex justify-center">
                 <div class="text-white font-semibold flex-col md:w-[600px]">
                     <p class="hidden text-center text-xl md:block">
-                        {{ __('A online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
+                        {{ __('An online virtual world where you can create your own avatar, make friends, chat, create rooms and much more!') }}
                     </p>
 
                     <div class="flex flex-col items-center justify-center gap-x-6 gap-y-4 md:mt-6 md:flex-row md:gap-y-0">
@@ -59,7 +59,7 @@
                         <a href="{{ route('register') }}">
                             <button
                                 class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
-                                {{ __('Create account') }}
+                                {{ __('Create an account') }}
                             </button>
                         </a>
                     </div>
