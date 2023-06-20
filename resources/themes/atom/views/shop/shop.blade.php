@@ -74,16 +74,23 @@
                 {{ __('Current balance: $:balance', ['balance' => auth()->user()->website_balance]) }}
             </div>
 
-            <form action="{{ route('paypal.process-transaction') }}" method="GET" class="mt-3">
-                @csrf
+            @if(config('paypal.live.client_id') && config('paypal.live.client_secret'))
+                <form action="{{ route('paypal.process-transaction') }}" method="GET" class="mt-3">
+                    @csrf
 
-                <x-form.input name="amount" type="number" value="0" placeholder="amount" />
+                    <x-form.input name="amount" type="number" value="0" placeholder="amount" />
 
-                <button type="submit" class="mt-2 w-full rounded bg-blue-600 hover:bg-blue-700 text-white p-2 border-2 border-blue-500 transition ease-in-out duration-150 font-semibold">
-                    {{ __('Donate') }}
-                </button>
-            </form>
+                    <button type="submit" class="mt-2 w-full rounded bg-blue-600 hover:bg-blue-700 text-white p-2 border-2 border-blue-500 transition ease-in-out duration-150 font-semibold">
+                        {{ __('Donate') }}
+                    </button>
+                </form>
+            @else
+                <p class="dark:text-gray-100  mt-4 text-xs">
+                    {{ __('Please setup the paypal credentials to allow for top ups') }}
+                </p>
+            @endif
         </x-content.content-card>
+
 
         <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>

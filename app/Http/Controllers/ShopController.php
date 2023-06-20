@@ -17,37 +17,38 @@ class ShopController extends Controller
     {
         return view('shop.shop', [
             'articles' => WebsiteShopArticles::orderBy('position')->with(['rank:id,rank_name', 'features'])->get(),
+            'rconConnected' => app(RconService::class)->isConnected
         ]);
     }
 
-    private function giveBadges(User $user, string $badges): void {
-        if (!empty($badges)) {
+    private function giveBadges(User $user, string $badges)
+    {
+        $badgeList = explode(';', $badges);
+        if (empty($badgeList)) {
             return;
         }
 
         $rcon = app(RconService::class);
+        if (!$rcon->isConnected) {
+            foreach ($badgeList as $badge) {
+                $user->badges()->updateOrCreate([
+                    'user_id' => $user->id,
+                    'badge_code' => $badge,
+                ]);
+            }
 
-        if ($rcon->isConnected) {
-            $rcon->giveBadge($user, $badges);
-        } else {
-            $badges_array = explode(';', $badges);
-            $badgesCount = count($badges_array);
-            for ($i = 0; $i < $badgesCount; $i++) {
-                $user->badges()->updateOrInsert(
-                    [
-                        'user_id' => $user->id,
-                        'badge_code' => $badges_array[$i]
-                    ],
-                    []
-                );
+            return;
+        }
+
+        foreach ($badgeList as $badge) {
+            if ($rcon->isConnected) {
+                $rcon->giveBadge($user, $badge);
             }
         }
     }
 
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
-        $rcon = app(RconService::class);
-
         if ($user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
                 ['message' => __('You are already this or a higher rank')],
@@ -60,6 +61,7 @@ class ShopController extends Controller
             );
         }
 
+        $rcon = app(RconService::class);
         if (!$rcon->isConnected && $user->online === '1') {
             return to_route('shop.index')->withErrors(
                 ['message' => __('Pleaase logout before purchasing a package')],
@@ -96,10 +98,10 @@ class ShopController extends Controller
         return to_route('shop.index')->with('success', __('Successful!'));
     }
 
-    public function handleFurniture(array $furnitureData)
+    public function handleFurniture(array $furniture)
     {
         $sendFurniture = app(SendFurniture::class);
 
-        $sendFurniture->execute(Auth::user(), $furnitureData);
+        $sendFurniture->execute(Auth::user(), $furniture);
     }
 }

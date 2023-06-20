@@ -11,17 +11,17 @@ class SendFurniture
     {
     }
 
-    public function execute(User $user, array $furnitureData): void
+    public function execute(User $user, array $furniture): void
     {
-        foreach ($furnitureData as $furniture) {
+        foreach ($furniture as $furni) {
             if ($this->rcon->isConnected) {
-                for ($i = 0; $i < $furniture['amount']; $i++) {
-                    $this->rcon->sendGift($user, $furniture['item_id'], 'Thank you for supporting ' . setting('hotel_name'));
+                for ($i = 0; $i < $furni['amount']; $i++) {
+                    $this->rcon->sendGift($user, $furni['item_id'], 'Thank you for supporting ' . setting('hotel_name'));
                 }
             } else {
-                for ($i = 0; $i < $furniture['amount']; $i++) {
+                for ($i = 0; $i < $furni['amount']; $i++) {
                     $user->items()->create([
-                        'item_id' => $furniture['item_id'],
+                        'item_id' => $furni['item_id'],
                     ]);
                 }
             }
