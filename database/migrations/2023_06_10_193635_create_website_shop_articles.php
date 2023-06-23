@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('icon');
             $table->string('color');
             $table->unsignedInteger('costs');
-            $table->unsignedInteger('give_rank')->nullable();
+            $table->integer('give_rank')->nullable();
             $table->unsignedInteger('credits')->nullable();
             $table->unsignedInteger('duckets')->nullable();
             $table->unsignedInteger('diamonds')->nullable();
