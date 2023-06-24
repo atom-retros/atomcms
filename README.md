@@ -24,6 +24,9 @@
 - [Feature Add-ons](#feature-add-ons)
 - [Credits](#credits)
 
+
+<a href="https://www.buymeacoffee.com/dennisobject" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 ### 📢 Disclaimer
 
 Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
