@@ -15,6 +15,14 @@ class InstallationController extends Controller
 {
     public function index()
     {
+        try {
+            Artisan::call('migrate --seed');
+        } catch (MigrationFailedException $e) {
+            Log::error('Migration or seeding failed: ' . $e->getMessage());
+
+            abort(500);
+        }
+
         return view('installation.index');
     }
 
@@ -23,14 +31,6 @@ class InstallationController extends Controller
         $request->validate([
            'installation_key' => ['required', 'string', 'max:255', new ValidateInstallationKeyRule],
         ]);
-
-        try {
-            Artisan::call('migrate --seed');
-        } catch (MigrationFailedException $e) {
-            Log::error('Migration or seeding failed: ' . $e->getMessage());
-
-            abort(500);
-        }
 
         WebsiteInstallation::first()->update([
             'step' => 1,

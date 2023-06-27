@@ -9,6 +9,8 @@ return [
         'force_https' => env('FORCE_HTTPS', false),
         'date_format' => env('DATE_FORMAT', 'Y-m-d - h:m:s'),
         'default_language' => env('APP_LOCALE', 'en'),
+        'debug_mode_enabled' => env('APP_DEBUG', false),
+        'site_environment' => env('APP_ENV'),
     ],
 
     'reactions' => [
