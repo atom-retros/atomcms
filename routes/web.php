@@ -22,6 +22,7 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\UserReferralController;
 use App\Http\Controllers\ShopVoucherController;
@@ -123,10 +124,15 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::post('/voucher', ShopVoucherController::class)->name('shop.use-voucher');
         });
 
-
         // Help center
         Route::prefix('help-center')->as('help-center.')->withoutMiddleware('check.ban')->group(function () {
             Route::get('/', HelpCenterController::class)->name('index');
+
+            Route::get('/create/ticket', [TicketController::class, 'create'])->name('ticket.create');
+            Route::post('/create/ticket', [TicketController::class, 'store'])->name('ticket.store');
+
+            Route::get('/edit/ticket/{ticket}', [TicketController::class, 'create'])->name('index');
+            Route::get('/open-tickets', [TicketController::class, 'create'])->name('index');
 
             // Rules
             Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');

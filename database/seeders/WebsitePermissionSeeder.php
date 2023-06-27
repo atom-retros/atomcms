@@ -30,6 +30,11 @@ class WebsitePermissionSeeder extends Seeder
                 'min_rank' => '7',
                 'description' => 'Minimum required rank to delete article comments without being the author',
             ],
+            [
+                'permission' => 'read_tickets',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to help tickets',
+            ],
         ];
 
         foreach ($permissions as $permission) {

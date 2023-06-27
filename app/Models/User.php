@@ -171,6 +171,11 @@ class User extends Authenticatable
     return $this->hasMany(Item::class, 'user_id');
     }
 
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(WebsiteHelpCenterTicket::class, 'user_id');
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()

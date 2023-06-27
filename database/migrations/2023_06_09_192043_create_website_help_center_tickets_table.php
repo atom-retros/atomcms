@@ -11,12 +11,12 @@ return new class extends Migration {
             $table->id();
             $table->integer('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('status_id')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable()->default(1);
             $table->text('content');
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('category_id')->references('id')->on('website_help_center_ticket_categories')->nullOnDelete();
-            $table->foreign('status_id')->references('id')->on('website_help_center_ticket_statuses')->nullOnDelete();
+            $table->foreign('category_id')->references('id')->on('website_help_center_ticket_categories')->cascadeOnDelete();
+            $table->foreign('status_id')->references('id')->on('website_help_center_ticket_statuses')->cascadeOnDelete();
         });
     }
 
