@@ -179,9 +179,9 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 -   **DamienJolly** - Bugfixes
 -   **Danbo** - Bugfixes
 -   **Diddy/Josh** - Code readability improvements
--   **Damue** - German translations
+-   **Damue & EntenKoeniq#0001** - German translations
 -   **Talion** - Turkish translations
--   **CentralCee & Rille** - Swedish translations
+-   **CentralCee, Rille & Tuborgs** - Swedish translations
 -   **Yannick** - Netherland translations
 -   **Gedomi** - Spanish translations
 -   **Lorenzune** - Italian translations

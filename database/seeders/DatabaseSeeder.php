@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
             WebsiteTeamSeeder::class,
             WebsiteRuleCategorySeeder::class,
             WebsiteRuleSeeder::class,
-            WebsiteHelperCenterCategorySeeder::class
+            WebsiteHelperCenterCategorySeeder::class,
+            WebsiteShopArticleSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

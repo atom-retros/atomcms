@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="hidden md:block relative w-full">
-                        <img  class="opacity-50 absolute -right-3 -bottom-3" src="https://habstar.net/assets/images/hotel.png" alt="">
+                        <img  class="opacity-50 absolute -right-3 -bottom-3" src="{{ asset('/assets/images/hotel.png') }}" alt="">
                     </div>
                 </div>
             </x-content.content-card>

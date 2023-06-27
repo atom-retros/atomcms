@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="overflow-y-auto px-3 py-2" style="max-height: 200px">
-                            <b class="mr-1 font-bold">{{ __('Mission') }}:</b>{{ $friend->motto }}<br>
+                            <b class="mr-1 font-bold">{{ __('Motto') }}:</b>{{ $friend->motto }}<br>
                             <b
                                 class="mr-1 font-bold">{{ __('Online Since') }}
                                 :</b>{{ date(config('habbo.site.date_format'), $friend->last_online) }}

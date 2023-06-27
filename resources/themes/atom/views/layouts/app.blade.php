@@ -24,6 +24,12 @@
 </head>
 
 <body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">
+    @if(config('habbo.site.debug_mode_enabled') && config('habbo.site.site_environment') === 'production')
+        <div class="w-full py-2 px-4 text-center rounded text-white bg-red-500">
+            {{ __('It seems like debug mode is enabled while being in production. It is heavily recommended too set APP_DEBUG in the .env file to false in production mode') }}
+        </div>
+    @endif
+
     <!-- Validation Errors -->
     <x-messages.flash-messages />
 
@@ -55,6 +61,8 @@
         {{-- Content --}}
         <main class="overflow-hidden site-bg">
             <div class="mx-auto mt-10 grid max-w-7xl grid-cols-12 gap-x-3 gap-y-8 p-6 md:mt-0">
+
+
                 {{ $slot }}
             </div>
         </main>

@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+if(! defined('STDIN')) define('STDIN', fopen("php://stdin","r"));
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance

@@ -216,7 +216,7 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'Specifies the amount of times a user can comment per article',
             ],
             [
-                'key' => 'rare_values_icons_path',
+                'key' => 'furniture_icons_path',
                 'value' => '/ms-swf/dcr/icons',
                 'comment' => 'The path to the rare values icons',
             ],
@@ -259,5 +259,10 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => $setting['comment'],
             ]);
         }
+
+        // This is done to update the rare values key for existing applications
+        WebsiteSetting::where('key', 'rare_values_icons_path')->update([
+            'key' => 'furniture_icons_path',
+        ]);
     }
 }

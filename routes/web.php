@@ -13,6 +13,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\UserReferralController;
+use App\Http\Controllers\ShopVoucherController;
 use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteRareValuesController;
 use App\Http\Controllers\WebsiteRulesController;
@@ -38,6 +40,7 @@ Route::get('/language/{locale}', LocaleController::class)->name('language.select
 Route::prefix('installation')->group(function () {
     Route::get('/', [InstallationController::class, 'index'])->name('installation.index');
     Route::get('/step/{step}', [InstallationController::class, 'showStep'])->name('installation.show-step');
+
     Route::post('/start-installation', [InstallationController::class, 'storeInstallationKey'])->name('installation.start-installation');
     Route::post('/save-step', [InstallationController::class, 'saveStepSettings'])->name('installation.save-step');
     Route::post('/previous-step', [InstallationController::class, 'previousStep'])->name('installation.previous-step');
@@ -113,7 +116,13 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
         // Shop routes
-        Route::get('/shop', ShopController::class)->name('shop.index');
+        Route::prefix('shop')->group(function () {
+            Route::get('/', ShopController::class)->name('shop.index');
+
+            Route::post('/purchase/{package}', [ShopController::class, 'purchase'])->name('shop.buy');
+            Route::post('/voucher', ShopVoucherController::class)->name('shop.use-voucher');
+        });
+
 
         // Help center
         Route::prefix('help-center')->as('help-center.')->withoutMiddleware('check.ban')->group(function () {
@@ -124,6 +133,11 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         });
 
         // Paypal routes
+        Route::controller(PayPalController::class)->prefix('paypal')->group(function() {
+            Route::get('/process-transaction', 'process')->name('paypal.process-transaction');
+            Route::get('/successful-transaction', 'successful')->name('paypal.successful-transaction');
+            Route::get('/cancelled-transaction', 'cancelled')->name('paypal.cancelled-transaction');
+        });
 
         // Rare values routes
         Route::get('/values', [WebsiteRareValuesController::class, 'index'])->name('values.index');

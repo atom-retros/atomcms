@@ -32,10 +32,10 @@
                     <h5 class="text-xl font-bold">{{ $room->name }}</h5>
                     <a class="flex items-center" href="/profile/{{ $room->owner->username }}">
                         <img class="h-12" src="{{ setting('avatar_imager') }}{{ $room->owner->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ $room->owner->username }}">
-                        <p>{{ $room->owner->username }}</p>
+                        <p>{{ $room->owner?->username ?? 'Unknown' }}</p>
                     </a>
                     <p class="leading-5">
-                        <span class="font-semibold">Description: </span>
+                        <span class="font-semibold">{{ __('Description:') }} </span>
                         {{ $room->description }}
                     </p>
                 </div>
@@ -45,12 +45,14 @@
                 <div class="grid grid-cols-1 gap-y-2">
                     <div class="shadow border dark:border-gray-900">
                         <div class="flex gap-x-2 rounded-t border-b bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-900">
-                            <p class="font-semibold text-black dark:text-white">Room details</p>
+                            <p class="font-semibold text-black dark:text-white">
+                                {{ __('Room details') }}
+                            </p>
                         </div>
 
                         <section class="rounded-b bg-white p-3 dark:bg-gray-800 dark:text-white">
                             <p>
-                                <span class="font-semibold">Max users: </span>
+                                <span class="font-semibold">{{ __('Max users:') }} </span>
                                 {{ $room->users_max }}
                             </p>
                             @if (strlen($room->tags) > 0)
@@ -68,7 +70,7 @@
                     @if ($room->guild !== null)
                         <x-content.content-card icon="{{ $room->guild->badge }}-icon" classes="border dark:border-gray-900">
                             <x-slot:title>
-                                The room guild
+                                {{ __('The room guild') }}
                             </x-slot:title>
 
                             <x-slot:under-title>

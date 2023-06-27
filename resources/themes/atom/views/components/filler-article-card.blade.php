@@ -4,7 +4,7 @@
 
     <div class="mt-4 px-4">
         <p class="font-semibold text-lg truncate dark:text-gray-200">
-            No published articles
+            {{ __('No published articles') }}
         </p>
 
         <div class="flex items-center gap-x-2">

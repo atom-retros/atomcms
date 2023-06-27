@@ -20,7 +20,7 @@
             <p>{{ __('Atom CMS sole purpose is to empower hotel owners like you. We want you to be able to run your hotel with ease. Our user-friendly interface, robust features, and helpful community are here to ensure that your experience with Atom CMS is nothing short of exceptional!') }}</p>
 
             <p>
-                {{ __(' As you dive into Atom CMS, we encourage you to explore the extensive range of features we have curated to help you bring your vision to life. From customizable templates to seamless integrations with clients like Nitro, we will have you set up in no time.') }}
+                {{ __('As you dive into Atom CMS, we encourage you to explore the extensive range of features we have curated to help you bring your vision to life. From customizable templates to seamless integrations with clients like Nitro, we will have you set up in no time.') }}
             </p>
 
             <p>

@@ -20,13 +20,13 @@
                     <thead class="bg-gray-100 dark:bg-gray-800">
                         <tr>
                             <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900 dark:text-white">
-                                IP
+                                {{ __('IP') }}
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900 dark:text-white">
-                                IP Current Device
+                                {{ __('IP Current Device') }}
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900 dark:text-white">
-                                Is Desktop
+                                {{ __('Is Desktop') }}
                             </th>
                             <th class="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900 dark:text-white">
                                 {{ __('Platform') }}

@@ -1,3 +1,4 @@
+
 @props(['icon' => '', 'classes' => ''])
 
 <div class="w-full flex flex-col gap-y-4 rounded overflow-hidden bg-white pb-3 dark:bg-gray-800 shadow {{ $classes }}">
@@ -7,6 +8,7 @@
         @endif
         <div class="flex flex-col justify-center text-sm">
             <p class="font-semibold text-black dark:text-gray-300">{{ $title }}</p>
+
             @if(isset($underTitle))
                 <p class="dark:text-gray-500">{{ $underTitle }}</p>
             @endif

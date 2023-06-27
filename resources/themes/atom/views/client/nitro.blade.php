@@ -50,11 +50,19 @@
                 {{ __('Whoops! It seems like you have been disconnected...') }}
             </h2>
 
-            <button
-                class="py-2 px-4 text-white rounded bg-[#eeb425] hover:bg-[#e3aa1e] border-2 border-[#cf9d15] transition ease-in-out"
-                onclick="reloadClient()">
-                {{ __('Reload client') }}
-            </button>
+            <div class="flex gap-x-4">
+                <button
+                    class="py-2 px-4 text-white rounded bg-[#eeb425] hover:bg-[#e3aa1e] border-2 border-[#cf9d15] transition ease-in-out"
+                    onclick="reloadClient()">
+                    {{ __('Reload client') }}
+                </button>
+
+                <a href="{{ route('me.show') }}">
+                    <x-form.secondary-button>
+                        {{ __('Back to website') }}
+                    </x-form.secondary-button>
+                </a>
+            </div>
         </div>
     </div>
 

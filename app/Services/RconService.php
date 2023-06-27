@@ -3,57 +3,63 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+use Socket;
 
 class RconService
 {
-    protected $socket;
-    protected bool $connected = false;
+    public Socket|bool $socket = false;
+    public bool $isConnected = false;
 
-    protected function connect(): bool
+    public function __construct()
     {
-
-        if (!function_exists('socket_create')) {
-            return false;
-        }
-
-        if (!($this->socket = @socket_create(config('habbo.rcon.domain'), config('habbo.rcon.type'), config('habbo.rcon.protocol')))) {
-            return false;
-        }
-
-        if (!@socket_connect($this->socket, setting('rcon_ip'), setting('rcon_port'))) {
-            return false;
-        }
-
-        return $this->connected = true;
+        $this->initialization();
     }
 
-    public function isConnected(): bool
+    private function initialization(): void
     {
-        $this->connect();
+        if (! $this->socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP)) {
+            Log::error("socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n");
+            $this->closeConnection();
 
-        return $this->connected;
+            return;
+        }
+
+        if (! @socket_connect($this->socket, setting('rcon_ip'), (int)setting('rcon_port'))) {
+            Log::error("socket_connect() failed: reason: " . socket_strerror(socket_last_error()) . "\n");
+            $this->closeConnection();
+
+            return;
+        }
+
+        $this->isConnected = true;
     }
 
-    public function sendPacket(string $key, $data = null)
+    private function closeConnection(): void
     {
-        if (!$this->isConnected()) {
-            return false;
+        $this->socket = false;
+        $this->isConnected = false;
+    }
+
+    public function sendCommand(string $command, array|null $data = null)
+    {
+        if (! $this->socket) {
+            return;
         }
 
-        $data = json_encode(['key' => $key, 'data' => $data]);
+        $data = json_encode(['key' => $command, 'data' => $data]);
 
-        if (!@socket_write($this->socket, $data, strlen($data))) {
-            abort(500, sprintf(socket_strerror(socket_last_error($this->socket))));
+        if (! @socket_write($this->socket, $data, strlen($data))) {
+            Log::error(socket_strerror(socket_last_error($this->socket)));
         }
 
-        $response = socket_read($this->socket, 2048);
-
-        return json_decode($response);
+        $this->closeConnection();
+        $this->initialization();
     }
 
     public function sendGift(User $user, int $item_id, string $message = 'Here is a gift.')
     {
-        return $this->sendPacket('sendgift', [
+        $this->sendCommand('sendgift', [
             'user_id' => $user->id,
             'itemid' => $item_id,
             'message' => $message,
@@ -62,7 +68,7 @@ class RconService
 
     public function giveCredits(User $user, int $credits)
     {
-        return $this->sendPacket('givecredits', [
+        $this->sendCommand('givecredits', [
             'user_id' => $user->id,
             'credits' => $credits,
         ]);
@@ -70,7 +76,7 @@ class RconService
 
     public function giveBadge(User $user, string $badge)
     {
-        return $this->sendPacket('givebadge', [
+        $this->sendCommand('givebadge', [
             'user_id' => $user->id,
             'badge' => $badge,
         ]);
@@ -78,7 +84,7 @@ class RconService
 
     public function setMotto(User $user, string $motto)
     {
-        return $this->sendPacket('setmotto', [
+        $this->sendCommand('setmotto', [
             'user_id' => $user->id,
             'motto' => $motto,
         ]);
@@ -86,12 +92,12 @@ class RconService
 
     public function updateWordFilter()
     {
-        return $this->sendPacket('updatewordfilter');
+        $this->sendCommand('updatewordfilter');
     }
 
     public function disconnectUser(User $user)
     {
-        return $this->sendPacket('disconnect', [
+        $this->sendCommand('disconnect', [
             'user_id' => $user->id,
             'username' => $user->username,
         ]);
@@ -99,7 +105,7 @@ class RconService
 
     public function givePoints(User $user, int $type, int $amount)
     {
-        return $this->sendPacket('givepoints', [
+        $this->sendCommand('givepoints', [
             'user_id' => $user->id,
             'points' => $amount,
             'type' => $type,
@@ -123,7 +129,7 @@ class RconService
 
     public function setRank(User $user, int $rank)
     {
-        return $this->sendPacket('setrank', [
+        $this->sendCommand('setrank', [
             'user_id' => $user->id,
             'rank' => $rank,
         ]);
@@ -131,12 +137,12 @@ class RconService
 
     public function updateCatalog()
     {
-        return $this->sendPacket('updatecatalog');
+        $this->sendCommand('updatecatalog');
     }
 
     public function alertUser(User $user, string $message)
     {
-        return $this->sendPacket('alertuser', [
+        $this->sendCommand('alertuser', [
             'user_id' => $user->id,
             'message' => $message,
         ]);
@@ -144,7 +150,7 @@ class RconService
 
     public function forwardUser(User $user, int $roomId)
     {
-        return $this->sendPacket('forwarduser', [
+        $this->sendCommand('forwarduser', [
             'user_id' => $user->id,
             'room_id' => $roomId,
         ]);
@@ -152,7 +158,7 @@ class RconService
 
     public function updateConfig(User $user, string $command)
     {
-        return $this->sendPacket('executecommand', [
+        $this->sendCommand('executecommand', [
             'user_id' => $user->id,
             'command' => $command,
         ]);

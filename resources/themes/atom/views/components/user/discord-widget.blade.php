@@ -110,7 +110,7 @@
                             document.getElementById('guildInvite').remove()
                             document.getElementById('guildUsers').style.height = "176px"
                         } else {
-                            //Gives the "Join server" button an href to the default selected chennel in the server
+                            //Gives the "Join server" button a href to the default selected channel in the server
                             //link is recived from widget json
                             document.getElementById('guildInvite').setAttribute('href', data.instant_invite)
                         }
