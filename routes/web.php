@@ -131,8 +131,8 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::get('/create/ticket', [TicketController::class, 'create'])->name('ticket.create');
             Route::post('/create/ticket', [TicketController::class, 'store'])->name('ticket.store');
 
-            Route::get('/edit/ticket/{ticket}', [TicketController::class, 'create'])->name('index');
-            Route::get('/open-tickets', [TicketController::class, 'create'])->name('index');
+            Route::get('/edit/ticket/{ticket}', [TicketController::class, 'create'])->name('edit.ticket');
+            Route::get('/open-tickets', [TicketController::class, 'create'])->name('open-tickets.index');
 
             // Rules
             Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');

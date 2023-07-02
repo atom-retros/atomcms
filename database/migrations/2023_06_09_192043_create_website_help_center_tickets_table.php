@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->text('content');
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('category_id')->references('id')->on('website_help_center_ticket_categories')->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('website_help_center_categories')->cascadeOnDelete();
             $table->foreign('status_id')->references('id')->on('website_help_center_ticket_statuses')->cascadeOnDelete();
         });
     }

@@ -23,14 +23,11 @@ class TicketController extends Controller
 
     public function store(WebsiteTicketFormRequest $request)
     {
-        // TODO: fix this
-        // Auth::user()->tickets()->create($request->validated());
-
-        WebsiteHelpCenterTicket::create([
-            'user_id' => $request->user()->id,
-            'category_id' => $request->get('category_id'),
+        $data = $request->validated();
+        Auth::user()->tickets()->create([
+            'category_id' => $data['category_id'],
             'status_id' => 1,
-            'content' => $request->get('content'),
+            'content' => $data['content']
         ]);
 
         return redirect()->back()->with('success', __('Ticket submitted!'));
