@@ -1,7 +1,7 @@
 <x-app-layout>
     @push('title', 'Create a ticket')
 
-    <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900 col-span-12">
+    <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900 col-span-12 lg:col-span-8">
         <x-slot:title>
             {{ __('Create a ticket') }}
         </x-slot:title>
@@ -27,5 +27,18 @@
                 {{ __('Submit ticket') }}
             </x-form.secondary-button>
         </form>
+    </x-content.content-card>
+
+    <x-content.content-card icon="duo-chat-icon" classes="border dark:border-gray-900 col-span-12 lg:col-span-4">
+        <x-slot:title>
+            {{ __('Open tickets') }}
+        </x-slot:title>
+
+        <x-slot:under-title>
+            {{ __('Below you can find your current open tickets') }}
+        </x-slot:under-title>
+
+
+        Some tickets
     </x-content.content-card>
 </x-app-layout>
