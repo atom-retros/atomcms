@@ -1,4 +1,4 @@
-<x-navigation.dropdown classes="!border-none" childClasses="min-w-[50px]">
+<x-navigation.dropdown classes="!border-none" childClasses="min-w-[50px] -ml-4">
     {{ $slot }}
 
     <x-slot:children>
