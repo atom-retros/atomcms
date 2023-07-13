@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="friends-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>

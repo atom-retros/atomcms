@@ -65,7 +65,7 @@
             {{ __('Shop') }}
     </a>
 
-        <x-navigation.dropdown icon="rules" route-group="help-center*">
+        <x-navigation.dropdown icon="rules" route-group="help-center*" :uppercase="true">
             {{ __('Assistance') }}
 
             <x-slot:children>

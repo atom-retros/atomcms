@@ -123,6 +123,16 @@ html.dark .camera-icon {
     center;
 }
 
+.duo-chat-icon {
+    background: #eec980 url("/public/assets/images/icons/due-chat.png") no-repeat
+    center;
+}
+
+.friends-icon {
+    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat
+    center;
+}
+
 .nav-credit-icon {
     background: #e9b124 url("/public/assets/images/icons/currency/credits.png")
         no-repeat center;
