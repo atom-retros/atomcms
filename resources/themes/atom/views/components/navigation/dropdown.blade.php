@@ -1,7 +1,7 @@
-@props(['icon' => '', 'routeGroup' => '', 'classes' => '', 'childClasses' => 'min-w-[150px]'])
+@props(['icon', 'routeGroup' => '', 'classes' => '', 'childClasses' => 'min-w-[150px]', 'uppercase' => false])
 
 <div
-        x-data="{
+    x-data="{
         open: false,
         toggle() {
             if (this.open) {
@@ -31,14 +31,19 @@
 >
     <!-- Button -->
     <button
-            x-ref="button"
-            x-on:click="toggle()"
-            :aria-expanded="open"
-            :aria-controls="$id('dropdown-button')"
-            type="button"
-            class="flex items-center md:gap-2 uppercase h-full"
+        x-ref="button"
+        x-on:click="toggle()"
+        :aria-expanded="open"
+        :aria-controls="$id('dropdown-button')"
+        type="button"
+        @class([
+            'flex items-center md:gap-2 h-full',
+            'uppercase' => $uppercase,
+        ])"
     >
-        <i class="hidden navigation-icon {{ $icon }} lg:inline-flex"></i>
+        @if(isset($icon))
+            <i class="hidden navigation-icon {{ $icon }} lg:inline-flex"></i>
+        @endif
         {{ $slot }}
 
         <!-- Heroicon: chevron-down -->
@@ -52,13 +57,13 @@
 
     <!-- Panel -->
     <div
-            x-ref="panel"
-            x-show="open"
-            x-transition.origin.top.left
-            x-on:click.outside="close($refs.button)"
-            :id="$id('dropdown-button')"
-            style="display: none;"
-             @class(['absolute left-0 mt-2 rounded bg-white dark:bg-gray-800 shadow whitespace-nowrap overflow-hidden z-10', $childClasses])
+        x-ref="panel"
+        x-show="open"
+        x-transition.origin.top.left
+        x-on:click.outside="close($refs.button)"
+        :id="$id('dropdown-button')"
+        style="display: none;"
+         @class(['absolute left-0 mt-2 rounded bg-white dark:bg-gray-800 shadow whitespace-nowrap overflow-hidden z-10', $childClasses])
     >
         {{ $children }}
     </div>

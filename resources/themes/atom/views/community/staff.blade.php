@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __(':hotel staff', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -50,7 +50,7 @@
             </div>
         </x-content.content-card>
 
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Apply for staff') }}
             </x-slot:title>

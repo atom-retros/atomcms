@@ -20,7 +20,7 @@
                     </div>
                 </x-content.content-card>
             @empty
-                <x-content.content-card icon="hotel-icon">
+                <x-content.content-card icon="currency-icon">
                     <x-slot:title>
                         {{ __('Rare values') }}
                     </x-slot:title>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="catalog-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Search') }}
             </x-slot:title>
@@ -58,7 +58,7 @@
             </form>
         </x-content.content-card>
 
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="inventory-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Rare categories') }}
             </x-slot:title>

@@ -47,12 +47,14 @@
             <div class="max-w-7xl min-h-[60px] px-4 md:flex md:items-center md:justify-between md:mx-auto">
                 <x-navigation.navigation-menu />
 
-                <x-navigation.theme-mode-switcher />
+                <div class="hidden lg:flex items-center">
+                    <x-navigation.theme-mode-switcher />
 
-                <x-navigation.language-selector>
-                    <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
-                        alt="">
-                </x-navigation.language-selector>
+                    <x-navigation.language-selector>
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
+                             alt="">
+                    </x-navigation.language-selector>
+                </div>
 
                 <x-navigation.mobile-menu />
             </div>

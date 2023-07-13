@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <x-content.content-card icon="hotel-icon" classes="border dark:bg-gray-800 dark:border-gray-900">
+        <x-content.content-card icon="article-icon" classes="border dark:bg-gray-800 dark:border-gray-900">
             <x-slot:title>
                 {{ __('Other articles') }}
             </x-slot:title>
