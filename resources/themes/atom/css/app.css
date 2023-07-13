@@ -90,7 +90,37 @@ html.dark .camera-icon {
 
 .hotel-icon {
     background: #f68b08 url("/public/assets/images/icons/feeds.png") no-repeat
-        center;
+    center;
+}
+
+.chat-icon {
+    background: #375571 url("/public/assets/images/icons/chat.png") no-repeat
+    center;
+}
+
+.article-icon {
+    background: #03a77c url("/public/assets/images/icons/article.gif") no-repeat
+    center;
+}
+
+.lighthouse-icon {
+    background: #8554a6 url("/public/assets/images/icons/lighthouse.png") no-repeat
+    center;
+}
+
+.currency-icon {
+    background: #e3ad06 url("/public/assets/images/icons/currency.png") no-repeat
+    center;
+}
+
+.catalog-icon {
+    background: rgba(141, 74, 183, 0.51) url("/public/assets/images/icons/catalog.png") no-repeat
+    center;
+}
+
+.inventory-icon {
+    background: #232121 url("/public/assets/images/icons/inventory.png") no-repeat
+    center;
 }
 
 .nav-credit-icon {

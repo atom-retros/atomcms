@@ -1,4 +1,4 @@
-<div class="relative flex hidden h-full w-full flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
+<div class="relative hidden flex h-full w-full flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
     @auth
         <x-navigation.dropdown icon="home" route-group="user*">
             {{ auth()->user()->username }}
@@ -21,7 +21,7 @@
         </a>
     @endauth
 
-    <x-navigation.dropdown icon="community" route-group="community*">
+    <x-navigation.dropdown icon="community" route-group="community*" :uppercase="true">
         {{ __('Community') }}
 
         <x-slot:children>
@@ -88,4 +88,13 @@
     <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item dark:text-gray-200">
         {{ __('Discord') }}
     </a>
+
+    <div class="w-full flex md:hidden gap-x-1 justify-center">
+        <x-navigation.theme-mode-switcher />
+
+        <x-navigation.language-selector>
+            <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
+                 alt="">
+        </x-navigation.language-selector>
+    </div>
 </div>

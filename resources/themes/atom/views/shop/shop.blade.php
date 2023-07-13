@@ -59,7 +59,7 @@
     </div>
 
     <div class="row-start-2 md:row-auto col-span-12 flex flex-col gap-y-3 md:col-span-5 lg:col-span-4 xl:col-span-3">
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="currency-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Top up account') }}
             </x-slot:title>
@@ -90,7 +90,7 @@
         </x-content.content-card>
 
 
-        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="catalog-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Voucher') }}
             </x-slot:title>
