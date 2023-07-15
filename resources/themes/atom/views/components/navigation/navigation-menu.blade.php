@@ -76,8 +76,6 @@
     </a>
 
     <div class="w-full flex md:hidden gap-x-1 justify-center">
-        <x-navigation.theme-mode-switcher />
-
         <x-navigation.language-selector>
             <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
                  alt="">
