@@ -45,6 +45,8 @@
         {{-- Navigation --}}
         <nav class="relative bg-white shadow dark:bg-gray-900">
             <div class="max-w-7xl min-h-[60px] px-4 md:flex md:items-center md:justify-between md:mx-auto">
+
+
                 <x-navigation.navigation-menu />
 
                 <div class="hidden lg:flex items-center">
