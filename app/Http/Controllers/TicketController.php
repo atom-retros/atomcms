@@ -11,25 +11,31 @@ class TicketController extends Controller
 {
     public function index()
     {
-        return view('help-center.tickets.create');
+        return view('help-center.tickets.create', [
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
+        ]);
     }
 
     public function create()
     {
         return view('help-center.tickets.create', [
             'categories' => WebsiteHelpCenterCategory::get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
         ]);
     }
 
     public function store(WebsiteTicketFormRequest $request)
     {
-        $data = $request->validated();
-        Auth::user()->tickets()->create([
-            'category_id' => $data['category_id'],
-            'status_id' => 1,
-            'content' => $data['content']
-        ]);
+        Auth::user()->tickets()->create($request->validated());
 
         return redirect()->back()->with('success', __('Ticket submitted!'));
+    }
+
+    public function show(WebsiteHelpCenterTicket $ticket)
+    {
+        return view('help-center.tickets.show', [
+            'ticket' => $ticket->load(['user:id,username,look', 'category']),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
+        ]);
     }
 }

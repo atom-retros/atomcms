@@ -42,6 +42,7 @@
     color: #626565;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
@@ -251,4 +252,24 @@ html.dark .swiper-pagination-bullet-active {
 
 html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
     background: white !important;
+}
+
+.prose-xl p:is([style*="text-align: center;"]) img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prose-xl p:is([style*="text-align: left;"]) img {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.prose-xl p:is([style*="text-align: right;"]) img {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.prose-xl p {
+    font-size: 16px;
 }

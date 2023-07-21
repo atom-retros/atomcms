@@ -17,6 +17,11 @@ class WebsiteHelpCenterTicket extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(WebsiteHelpCenterCategory::class);
+    }
+
     public function getContentAttribute($value)
     {
         return Purify::clean($value);
