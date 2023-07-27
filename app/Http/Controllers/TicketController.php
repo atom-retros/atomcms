@@ -33,9 +33,47 @@ class TicketController extends Controller
 
     public function show(WebsiteHelpCenterTicket $ticket)
     {
-        return view('help-center.tickets.show', [
-            'ticket' => $ticket->load(['user:id,username,look', 'category']),
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
+        if (!$ticket->canManageTicket()) {
+            return redirect()->back()->with([
+                'message' => __('You cannot view others tickets.')
+            ]);
+        }
+
+        $ticket->load([
+            'user:id,username,look',
+            'category',
+            'replies.user:id,username,look',
         ]);
+
+        return view('help-center.tickets.show', [
+            'ticket' => $ticket,
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->get(),
+        ]);
+    }
+
+    public function destroy(WebsiteHelpCenterTicket $ticket)
+    {
+        if (!$ticket->canDeleteTicket()) {
+            return redirect()->back()->with([
+                'message' => __('You cannot delete others tickets.')
+            ]);
+        }
+
+        $ticket->delete();
+
+        return to_route('me.show')->with('success', __('The ticket has been deleted!'));
+    }
+
+    public function toggleTicketStatus(WebsiteHelpCenterTicket $ticket)
+    {
+        if (!$ticket->canManageTicket()) {
+            return redirect()->back()->with([
+                'message' => __('You manage others tickets.')
+            ]);
+        }
+
+        $ticket->open ? $ticket->update(['open' => false]) : $ticket->update(['open' => true]);
+
+        return  redirect()->back()->with('success', __('The ticket status has been changed!'));
     }
 }

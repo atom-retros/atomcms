@@ -39,37 +39,40 @@
         </form>
     </x-content.content-card>
 
-    <x-content.content-card icon="duo-chat-icon"
-                            classes="border dark:border-gray-900 dark:text-gray-100 col-span-12 lg:col-span-3">
-        <x-slot:title>
-            {{ __('Open tickets') }}
-        </x-slot:title>
+    <div class="col-span-12 lg:col-span-3">
+        <x-content.content-card icon="duo-chat-icon"
+                                classes="border dark:border-gray-900 dark:text-gray-100">
+            <x-slot:title>
+                {{ __('Open tickets') }}
+            </x-slot:title>
 
-        <x-slot:under-title>
-            {{ __('Your current open tickets') }}
-        </x-slot:under-title>
+            <x-slot:under-title>
+                {{ __('Your current open tickets') }}
+            </x-slot:under-title>
 
 
-        <div class="flex flex-col gap-2">
-            @forelse($openTickets as $ticket)
-                <div class="w-full rounded bg-gray-200 p-2 dark:bg-gray-700">
-                    <div class="flex items-center gap-x-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"/>
-                        </svg>
+            <div class="flex flex-col gap-2">
+                @forelse($openTickets as $ticket)
+                    <div class="w-full rounded bg-gray-200 p-2 dark:bg-gray-700">
+                        <div class="flex items-center gap-x-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                 stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"/>
+                            </svg>
 
-                        <a href="{{ route('help-center.ticket.show', $ticket) }}" class="hover:text-[#eeb425]">
-                            {{ $ticket->title }}
-                        </a>
+                            <a href="{{ route('help-center.ticket.show', $ticket) }}" class="hover:text-[#eeb425]">
+                                {{ $ticket->title }}
+                            </a>
+                        </div>
                     </div>
-                </div>
-            @empty
-                <p>
-                    You currently have no open tickets.
-                </p>
-            @endforelse
-        </div>
-    </x-content.content-card>
+                @empty
+                    <p>
+                        You currently have no open tickets.
+                    </p>
+
+                @endforelse
+            </div>
+        </x-content.content-card>
+    </div>
 </x-app-layout>

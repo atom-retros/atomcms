@@ -1,6 +1,4 @@
-@props(['name','content' => null])
-
-
+@props(['name', 'content' => null])
 
 <div class="mt-3">
     <textarea name="content" id="editor">
