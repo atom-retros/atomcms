@@ -144,7 +144,7 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
                 Route::delete('/reply/{reply}/delete', [TicketController::class, 'destroy'])->name('reply.destroy');
 
                 // All open tickets
-                Route::get('/open-tickets', [TicketController::class, 'create'])->name('open-tickets.index');
+                Route::get('/open-tickets', [TicketController::class, 'index'])->name('index');
             });
 
             // Rules

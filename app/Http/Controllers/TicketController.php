@@ -11,8 +11,8 @@ class TicketController extends Controller
 {
     public function index()
     {
-        return view('help-center.tickets.create', [
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
+        return view('help-center.tickets.index', [
+            'tickets' => WebsiteHelpCenterTicket::orderBy('open')->with('user:id,username')->paginate(15),
         ]);
     }
 

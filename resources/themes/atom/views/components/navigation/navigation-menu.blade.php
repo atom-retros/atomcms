@@ -73,8 +73,8 @@
                     {{ __('Help center') }}
                 </x-navigation.dropdown-child>
 
-                @if(hasPermission('read_tickets'))
-                    <x-navigation.dropdown-child :route="route('help-center.index')">
+                @if(hasPermission('manage_website_tickets'))
+                    <x-navigation.dropdown-child :route="route('help-center.ticket.index')">
                         {{ __('Open tickets') }}
                     </x-navigation.dropdown-child>
                 @endif
