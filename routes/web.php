@@ -129,18 +129,19 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::prefix('help-center')->as('help-center.')->withoutMiddleware('check.ban')->group(function () {
             Route::get('/', HelpCenterController::class)->name('index');
 
-            Route::prefix('tickets')->group(function () {
-                Route::get('/create', [TicketController::class, 'create'])->name('ticket.create');
-                Route::post('/store', [TicketController::class, 'store'])->name('ticket.store');
+            Route::prefix('tickets')->as('ticket.')->group(function () {
+                Route::get('/create', [TicketController::class, 'create'])->name('create');
+                Route::post('/store', [TicketController::class, 'store'])->name('store');
 
-                Route::get('/show/{ticket}', [TicketController::class, 'show'])->name('ticket.show');
-                Route::get('/edit/{ticket}', [TicketController::class, 'create'])->name('edit.ticket');
-                Route::delete('/delete/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
+                Route::get('/show/{ticket}', [TicketController::class, 'show'])->name('show');
+                Route::get('/edit/{ticket}', [TicketController::class, 'edit'])->name('edit');
+                Route::put('/edit/{ticket}', [TicketController::class, 'update'])->name('update');
+                Route::delete('/delete/{ticket}', [TicketController::class, 'destroy'])->name('destroy');
 
-                Route::put('/toggle-status/{ticket}', [TicketController::class, 'toggleTicketStatus'])->name('ticket.toggle-status');
+                Route::put('/toggle-status/{ticket}', [TicketController::class, 'toggleTicketStatus'])->name('toggle-status');
 
-                Route::post('/reply/{ticket}/store', [TicketReplyController::class, 'store'])->name('ticket.reply.store');
-                Route::delete('/reply/{reply}/delete', [TicketController::class, 'destroy'])->name('ticket.reply.destroy');
+                Route::post('/reply/{ticket}/store', [TicketReplyController::class, 'store'])->name('reply.store');
+                Route::delete('/reply/{reply}/delete', [TicketController::class, 'destroy'])->name('reply.destroy');
 
                 // All open tickets
                 Route::get('/open-tickets', [TicketController::class, 'create'])->name('open-tickets.index');

@@ -31,6 +31,40 @@ class TicketController extends Controller
         return redirect()->back()->with('success', __('Ticket submitted!'));
     }
 
+    public function edit(WebsiteHelpCenterTicket $ticket)
+    {
+        if (!$ticket->canManageTicket()) {
+            return redirect()->back()->with([
+                'message' => __('You cannot manage others tickets.')
+            ]);
+        }
+
+        $ticket->load([
+            'user:id,username,look',
+            'category',
+            'replies.user:id,username,look',
+        ]);
+
+        return view('help-center.tickets.edit', [
+            'ticket' => $ticket,
+            'categories' => WebsiteHelpCenterCategory::get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->get(),
+        ]);
+    }
+
+    public function update(WebsiteHelpCenterTicket $ticket, WebsiteTicketFormRequest $request)
+    {
+        if (!$ticket->canManageTicket()) {
+            return redirect()->back()->with([
+                'message' => __('You cannot manage others tickets.')
+            ]);
+        }
+
+        $ticket->update($request->validated());
+
+        return to_route('help-center.ticket.show', $ticket)->with('success', __('Ticket updated!'));
+    }
+
     public function show(WebsiteHelpCenterTicket $ticket)
     {
         if (!$ticket->canManageTicket()) {
