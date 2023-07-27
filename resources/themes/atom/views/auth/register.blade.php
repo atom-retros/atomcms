@@ -98,7 +98,7 @@
                                 <input id="terms" type="checkbox" name="terms"
                                        class="mt-1 rounded ring-0 focus:ring-0">
 
-                                <a href="{{ route('rules.index') }}" target="_blank"
+                                <a href="{{ route('help-center.rules.index') }}" target="_blank"
                                    class="mt-1 text-sm font-semibold text-gray-700 hover:text-gray-900 hover:underline dark:hover:text-gray-300 dark:text-gray-500">
                                     {{ __('I accept the :hotel terms & rules.', ['hotel' => setting('hotel_name')]) }}
                                 </a>

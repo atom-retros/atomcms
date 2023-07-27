@@ -65,11 +65,25 @@
             {{ __('Shop') }}
     </a>
 
-    <a href="{{ route('rules.index') }}"
-        class="nav-item dark:text-gray-200 {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-        <i class="mr-1 hidden navigation-icon rules lg:inline-flex"></i>
-        {{ __('Rules') }}
-    </a>
+        <x-navigation.dropdown icon="rules" route-group="help-center*" :uppercase="true">
+            {{ __('Assistance') }}
+
+            <x-slot:children>
+                <x-navigation.dropdown-child :route="route('help-center.index')">
+                    {{ __('Help center') }}
+                </x-navigation.dropdown-child>
+
+                @if(hasPermission('manage_website_tickets'))
+                    <x-navigation.dropdown-child :route="route('help-center.ticket.index')">
+                        {{ __('Open tickets') }}
+                    </x-navigation.dropdown-child>
+                @endif
+
+                <x-navigation.dropdown-child :route="route('help-center.rules.index')">
+                    {{ __('Rules') }}
+                </x-navigation.dropdown-child>
+            </x-slot:children>
+        </x-navigation.dropdown>
 
     <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item dark:text-gray-200">
         {{ __('Discord') }}

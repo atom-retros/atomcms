@@ -30,6 +30,21 @@ class WebsitePermissionSeeder extends Seeder
                 'min_rank' => '7',
                 'description' => 'Minimum required rank to delete article comments without being the author',
             ],
+            [
+                'permission' => 'manage_website_tickets',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to view and reply to others tickets',
+            ],
+            [
+                'permission' => 'delete_website_tickets',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to delete others tickets',
+            ],
+            [
+                'permission' => 'delete_website_ticket_replies',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to delete replies on a ticket',
+            ],
         ];
 
         foreach ($permissions as $permission) {

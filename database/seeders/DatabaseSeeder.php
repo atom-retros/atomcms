@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             WebsiteTeamSeeder::class,
             WebsiteRuleCategorySeeder::class,
             WebsiteRuleSeeder::class,
+            WebsiteHelperCenterCategorySeeder::class,
             WebsiteShopArticleSeeder::class,
         ]);
 

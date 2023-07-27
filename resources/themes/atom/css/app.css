@@ -42,6 +42,7 @@
     color: #626565;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
@@ -99,7 +100,7 @@ html.dark .camera-icon {
 }
 
 .article-icon {
-    background: #03a77c url("/public/assets/images/icons/article.gif") no-repeat
+    background: #536e5e url("/public/assets/images/icons/article.gif") no-repeat
     center;
 }
 
@@ -120,6 +121,16 @@ html.dark .camera-icon {
 
 .inventory-icon {
     background: #232121 url("/public/assets/images/icons/inventory.png") no-repeat
+    center;
+}
+
+.duo-chat-icon {
+    background: #eec980 url("/public/assets/images/icons/due-chat.png") no-repeat
+    center;
+}
+
+.friends-icon {
+    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat
     center;
 }
 
@@ -241,4 +252,24 @@ html.dark .swiper-pagination-bullet-active {
 
 html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
     background: white !important;
+}
+
+.prose-xl p:is([style*="text-align: center;"]) img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prose-xl p:is([style*="text-align: left;"]) img {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.prose-xl p:is([style*="text-align: right;"]) img {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.prose-xl p {
+    font-size: 16px;
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
+use App\Http\Controllers\HelpCenterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstallationController;
 use App\Http\Controllers\LeaderboardController;
@@ -21,6 +22,8 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StaffApplicationsController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketReplyController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Http\Controllers\UserReferralController;
 use App\Http\Controllers\ShopVoucherController;
@@ -114,9 +117,6 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         // Leaderboard routes
         Route::get('/leaderboard', LeaderboardController::class)->name('leaderboard.index');
 
-        // Rules routes
-        Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
-
         // Shop routes
         Route::prefix('shop')->group(function () {
             Route::get('/', ShopController::class)->name('shop.index');
@@ -125,6 +125,31 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::post('/voucher', ShopVoucherController::class)->name('shop.use-voucher');
         });
 
+        // Help center
+        Route::prefix('help-center')->as('help-center.')->withoutMiddleware('check.ban')->group(function () {
+            Route::get('/', HelpCenterController::class)->name('index');
+
+            Route::prefix('tickets')->as('ticket.')->group(function () {
+                Route::get('/create', [TicketController::class, 'create'])->name('create');
+                Route::post('/store', [TicketController::class, 'store'])->name('store');
+
+                Route::get('/show/{ticket}', [TicketController::class, 'show'])->name('show');
+                Route::get('/edit/{ticket}', [TicketController::class, 'edit'])->name('edit');
+                Route::put('/edit/{ticket}', [TicketController::class, 'update'])->name('update');
+                Route::delete('/delete/{ticket}', [TicketController::class, 'destroy'])->name('destroy');
+
+                Route::put('/toggle-status/{ticket}', [TicketController::class, 'toggleTicketStatus'])->name('toggle-status');
+
+                Route::post('/reply/{ticket}/store', [TicketReplyController::class, 'store'])->name('reply.store');
+                Route::delete('/reply/{reply}/delete', [TicketController::class, 'destroy'])->name('reply.destroy');
+
+                // All open tickets
+                Route::get('/all', [TicketController::class, 'index'])->name('index');
+            });
+
+            // Rules
+            Route::get('/rules', WebsiteRulesController::class)->name('rules.index')->withoutMiddleware('auth');
+        });
 
         // Paypal routes
         Route::controller(PayPalController::class)->prefix('paypal')->group(function() {
