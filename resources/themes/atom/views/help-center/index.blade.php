@@ -14,7 +14,7 @@
                         {!! $category->content !!}
                    </div>
 
-                   <a href="{{ $category->button_url ?? '#' }}" class="mt-4 ml-2">
+                   <a data-turbolinks="false" href="{{ $category->button_url ?? '#' }}" class="mt-4 ml-2">
                        <button style="background-color: {{ $category->button_color }}; border: {{ $category->button_border_color }} solid 2px;" class="px-2 py-1 text-white font-semibold rounded transition hover:scale-105">
                            {{ $category->button_text }}
                        </button>
