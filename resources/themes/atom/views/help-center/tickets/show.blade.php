@@ -1,5 +1,5 @@
 <x-app-layout>
-    @push('title', 'Create a ticket')
+    @push('title', 'Ticket')
 
     <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900 dark:text-gray-100 col-span-12 lg:col-span-9">
         <x-slot:title>
@@ -23,7 +23,7 @@
                     @csrf
 
                     <x-form.secondary-button>
-                        Close
+                        {{ __('Close') }}
                     </x-form.secondary-button>
                 </form>
             @else
@@ -32,7 +32,7 @@
                     @csrf
 
                     <x-form.primary-button>
-                        Re-open
+                        {{ __('Re-open') }}
                     </x-form.primary-button>
                 </form>
             @endif
@@ -42,7 +42,7 @@
                 @csrf
 
                 <x-form.danger-button>
-                    Delete
+                    {{ __('Delete') }}
                 </x-form.danger-button>
             </form>
         </div>
@@ -80,7 +80,7 @@
                    </div>
                @empty
                    <p>
-                       You currently have no open tickets.
+                        {{ __('You currently have no open tickets.') }}
                    </p>
                @endforelse
            </div>

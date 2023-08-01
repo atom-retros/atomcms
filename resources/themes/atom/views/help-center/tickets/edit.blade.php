@@ -1,5 +1,5 @@
 <x-app-layout>
-    @push('title', 'Create a ticket')
+    @push('title', 'Edit your ticket')
 
     <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900 col-span-12 lg:col-span-9">
         <x-slot:title>
@@ -73,7 +73,7 @@
                     </div>
                 @empty
                     <p>
-                        You currently have no open tickets.
+                        {{ __('You currently have no open tickets.') }}
                     </p>
 
                 @endforelse
