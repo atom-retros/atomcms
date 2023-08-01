@@ -27,9 +27,9 @@ class WebsiteShopArticles extends Model
         return $this->hasOne(Permission::class, 'id', 'give_rank');
     }
 
-    public function features(): HasOne
+    public function features(): HasMany
     {
-        return $this->hasOne(WebsiteShopArticleFeature::class, 'article_id', 'id');
+        return $this->HasMany(WebsiteShopArticleFeature::class, 'article_id', 'id');
     }
 
     public function price(): float|int

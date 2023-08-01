@@ -14,9 +14,9 @@
 
             <ul class="list-disc pl-4">
                 @if($article->features)
-                    @foreach(json_decode($article->features->features, true) as $feature)
+                    @foreach($article->features as $feature)
                         <li class="ml-3">
-                            {{ $feature['feature'] }}
+                            {{ $feature->content }}
                         </li>
                     @endforeach
                 @endif
