@@ -19,7 +19,7 @@ class MaintenanceMiddleware
             return $next($request);
         }
 
-        if (Auth::check() && Auth::user()->rank >= setting('min_maintenance_login_rank')) {
+        if (Auth::check() && Auth::user()->currentUser->rank >= setting('min_maintenance_login_rank')) {
             if ($isMaintenanceRequest) {
                 return to_route('me.show');
             }
@@ -27,7 +27,7 @@ class MaintenanceMiddleware
             return $next($request);
         }
 
-        if (Auth::check() && Auth::user()->rank >= setting('min_maintenance_login_rank') && $isMaintenanceRequest) {
+        if (Auth::check() && Auth::user()->currentUser->rank >= setting('min_maintenance_login_rank') && $isMaintenanceRequest) {
             return to_route('me.show');
         }
 
@@ -39,7 +39,7 @@ class MaintenanceMiddleware
             return to_route('welcome');
         }
 
-        if ($maintenanceEnabled && !$isMaintenanceRequest && Auth::check() && Auth::user()->rank < setting('min_maintenance_login_rank')) {
+        if ($maintenanceEnabled && !$isMaintenanceRequest && Auth::check() && Auth::user()->currentUser->rank < setting('min_maintenance_login_rank')) {
             return to_route('maintenance.show');
         }
 

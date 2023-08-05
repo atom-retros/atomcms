@@ -26,7 +26,7 @@ class TicketController extends Controller
 
     public function store(WebsiteTicketFormRequest $request)
     {
-        Auth::user()->tickets()->create($request->validated());
+        Auth::user()->currentUser->tickets()->create($request->validated());
 
         return redirect()->back()->with('success', __('Ticket submitted!'));
     }

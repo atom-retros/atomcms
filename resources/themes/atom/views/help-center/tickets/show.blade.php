@@ -111,7 +111,7 @@
 
         <div class="flex flex-col gap-y-4 mt-4">
             @forelse($ticket->replies->sortByDesc('created_at') as $reply)
-                @if($reply->user_id === auth()->user()->id)
+                @if($reply->user_id === auth()->user()->currentUser->id)
                     <div class="w-full rounded bg-gray-200 dark:bg-gray-700">
                         <div class="h-[50px] px-4 flex items-center justify-between border-b border-gray-300 dark:border-gray-800 relative overflow-hidden">
                             <div class="flex">

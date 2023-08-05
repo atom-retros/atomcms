@@ -16,7 +16,7 @@ class BannedController extends Controller
             ->first();
 
         return view('banned', [
-            'ban' => $ipBan ?? Auth::user()->ban,
+            'ban' => $ipBan ?? Auth::user()->currentUser->ban,
         ]);
     }
 }

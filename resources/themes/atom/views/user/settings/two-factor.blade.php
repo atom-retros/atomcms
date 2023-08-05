@@ -16,7 +16,7 @@
             </x-slot:under-title>
 
             <!-- 2FA enabled, we display the QR code : -->
-            @if (auth()->user()->two_factor_confirmed)
+            @if (auth()->user()->currentUser->two_factor_confirmed)
                 <form action="/user/two-factor-authentication" method="post">
                     @csrf
                     @method('delete')
@@ -27,14 +27,14 @@
                 </form>
 
                 {{-- 2FA enabled but not yet confirmed, we show the QRcode and ask for confirmation --}}
-            @elseif(auth()->user()->two_factor_secret)
+            @elseif(auth()->user()->currentUser->two_factor_secret)
                 <p>{{ __('Validate your two-factor enabling by scanning the following QR-code and enter your auto-generated 2-factor code from your phone.') }}
                 </p>
 
                 <div class="mt-4 flex flex-col items-center md:flex-row md:items-start md:justify-center">
                     <div class="flex gap-x-8 rounded bg-gray-100 px-4 py-2">
                         <span class="flex items-center">
-                            {!! auth()->user()->twoFactorQrCodeSvg() !!}
+                            {!! auth()->user()->currentUser->twoFactorQrCodeSvg() !!}
                         </span>
 
                         <div>
@@ -43,7 +43,7 @@
                             </strong>
 
                             <ul>
-                                @foreach (auth()->user()->recoveryCodes() as $code)
+                                @foreach (auth()->user()->currentUser->recoveryCodes() as $code)
                                     <li>{{ $code }}</li>
                                 @endforeach
                             </ul>

@@ -173,7 +173,7 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 -   **Dominic** - Performance improvements & User sessions
 -   **Oliver** - Profile page & Finnish translations
 -   **Beny** - Findretros API fixes & CF Fixes
--   **Live** - French translations, bugfixes & tweaks
+-   **Live** - Bugfixes & tweaks
 -   **MisterDeen** - Custom Discord widget, bugfixes & tweaks
 -   **EntenKoeniq#0001** - Automatic language registration, auto color scheme selection, rooms page & profile page fixes,
 -   **DamienJolly** - Bugfixes
@@ -186,6 +186,7 @@ You can find the documentation, addons, and tips & tricks on **[https://retros.g
 -   **Gedomi** - Spanish translations
 -   **Lorenzune** - Italian translations
 -   **Twana** - Norwegian translations
+-   **Persephone & Live** - French translations
 -   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus

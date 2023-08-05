@@ -39,21 +39,6 @@ class User extends Authenticatable
         return $this->hasMany(Session::class);
     }
 
-    public function currency(string $currency)
-    {
-        if (! $this->relationLoaded('currencies')) {
-            $this->load('currencies');
-        }
-
-        $type = match ($currency) {
-            'duckets' => 0,
-            'diamonds' => 5,
-            'points' => 101,
-        };
-
-        return $this->currencies->where('type', $type)->first()->amount ?? 0;
-    }
-
     public function permission(): HasOne
     {
         return $this->hasOne(Permission::class, 'id', 'rank');
@@ -92,17 +77,6 @@ class User extends Authenticatable
     public function friends(): HasMany
     {
         return $this->hasMany(MessengerFriendship::class, 'user_one_id');
-    }
-
-    public function referralsNeeded()
-    {
-        $referrals = 0;
-
-        if (! is_null($this->referrals)) {
-            $referrals = $this->referrals->referrals_total;
-        }
-
-        return setting('referrals_needed') - $referrals;
     }
 
     public function ban(): HasOne
@@ -174,6 +148,26 @@ class User extends Authenticatable
     public function tickets(): HasMany
     {
         return $this->hasMany(WebsiteHelpCenterTicket::class);
+    }
+
+    public function account(): BelongsTo
+    {
+        return $this->belongsTo(WebsiteAccount::class, 'account_id');
+    }
+
+    public function currency(string $currency)
+    {
+        if (! $this->relationLoaded('currencies')) {
+            $this->load('currencies');
+        }
+
+        $type = match ($currency) {
+            'duckets' => 0,
+            'diamonds' => 5,
+            'points' => 101,
+        };
+
+        return $this->currencies->where('type', $type)->first()->amount ?? 0;
     }
 
     public function getOnlineFriends(int $total = 10)

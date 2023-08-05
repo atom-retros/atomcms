@@ -1,5 +1,5 @@
 <x-app-layout>
-    @push('title', auth()->user()->username)
+    @push('title', auth()->user()->currentUser->username)
 
     <div class="col-span-12 space-y-3 md:col-span-9">
         <x-user.me-backdrop :user="$user" />
@@ -44,7 +44,7 @@
 
         <x-content.content-card icon="friends-icon" classes="border dark:border-gray-900">
             <x-slot:title>
-                {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
+                {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->currentUser->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>
 
             <x-slot:under-title>
@@ -61,7 +61,7 @@
 
                 <div class="grid grid-cols-12 gap-2">
                     <x-form.input classes="col-span-12 md:col-span-10 text-sm" name="referral"
-                                  value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->username, auth()->user()->referral_code) }}"
+                                  value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->currentUser->username, auth()->user()->currentUser->referral_code) }}"
                                   :autofocus="false" :readonly="true" />
 
                     <div class="col-span-12 flex md:col-span-2" onclick="copyCode()">
@@ -72,7 +72,7 @@
 
                 </div>
 
-                @if (auth()->user()->referrals?->referrals_total >= (int) setting('referrals_needed'))
+                @if (auth()->user()->currentUser->referrals?->referrals_total >= (int) setting('referrals_needed'))
                     <a href="{{ route('claim.referral-reward') }}" class="text-decoration-none">
                         <x-form.secondary-button classes="mt-2">
                             {{ __('Claim your referrals reward!') }}
@@ -80,7 +80,7 @@
                     </a>
                 @else
                     <button disabled class="mt-2 w-full rounded bg-gray-400 p-2 text-white dark:bg-gray-900">
-                        {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' =>auth()->user()->referralsNeeded() ?? 0]),auth()->user()->referrals->referrals_total ?? 0) }}
+                        {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' =>auth()->user()->referralsNeeded() ?? 0]),auth()->user()->currentUser->referrals->referrals_total ?? 0) }}
                     </button>
                 @endif
             </div>

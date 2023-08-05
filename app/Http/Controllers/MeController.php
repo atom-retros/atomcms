@@ -10,7 +10,7 @@ class MeController extends Controller
 {
     public function __invoke(): View
     {
-        $user = Auth::user();
+        $user = Auth::user()->currentUser;
 
         return view('user.me', [
             'onlineFriends' => $user->getOnlineFriends(),

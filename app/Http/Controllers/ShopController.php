@@ -48,7 +48,7 @@ class ShopController extends Controller
     }
 
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
-        $user = Auth::user();
+        $user = Auth::user()->currentUser;
         if ($user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
                 ['message' => __('You are already this or a higher rank')],
@@ -102,6 +102,6 @@ class ShopController extends Controller
     {
         $sendFurniture = app(SendFurniture::class);
 
-        $sendFurniture->execute(Auth::user(), $furniture);
+        $sendFurniture->execute(Auth::user()->currentUser, $furniture);
     }
 }

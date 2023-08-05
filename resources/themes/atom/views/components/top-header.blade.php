@@ -2,7 +2,7 @@
     <div class="flex gap-x-6">
         <x-top-header-currency icon="nav-credit-icon">
             <x-slot:currency>
-                {{ auth()->user()->credits }}
+                {{ auth()->user()->currentUser->credits }}
             </x-slot:currency>
 
             {{ __('Credits') }}
@@ -10,7 +10,7 @@
 
         <x-top-header-currency icon="nav-ducket-icon">
             <x-slot:currency>
-                {{ auth()->user()->currency('duckets') }}
+                {{ auth()->user()->currentUser->currency('duckets') }}
             </x-slot:currency>
 
             {{ __('Duckets') }}
@@ -18,7 +18,7 @@
 
         <x-top-header-currency icon="nav-diamond-icon">
             <x-slot:currency>
-                {{ auth()->user()->currency('diamonds') }}
+                {{ auth()->user()->currentUser->currency('diamonds') }}
             </x-slot:currency>
 
             {{ __('Diamonds') }}
@@ -47,9 +47,9 @@
         @endif
 
         <x-navigation.dropdown classes="!border-none">
-            <img class="h-12" src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ auth()->user()->username }}">
+            <img class="h-12" src="{{ setting('avatar_imager') }}{{ auth()->user()->currentUser->look }}&direction=2&headonly=1&head_direction=2&gesture=sml" alt="{{ auth()->user()->currentUser->username }}">
 
-            <span class="-ml-2">{{ auth()->user()->username }}</span>
+            <span class="-ml-2">{{ auth()->user()->currentUser->username }}</span>
 
             <x-slot:children>
                 <x-navigation.dropdown-child :route="route('settings.account.show')">

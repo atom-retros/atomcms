@@ -13,7 +13,7 @@ class PasswordSettingsController extends Controller
     public function edit(): View
     {
         return view('user.settings.password', [
-            'user' => Auth::user(),
+            'user' => Auth::user()->currentUser,
         ]);
     }
 
@@ -21,7 +21,7 @@ class PasswordSettingsController extends Controller
     {
         $request->validated();
 
-        Auth::user()->update([
+        Auth::user()->currentUser->update([
             'password' => Hash::make($request->input('password')),
         ]);
 

@@ -15,6 +15,8 @@ use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -77,6 +79,18 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::twoFactorChallengeView(function () {
             return view('auth.two-factor-challenge');
+        });
+
+        Fortify::authenticateUsing(function ($request) {
+            $user = User::where(Fortify::username(), $request->{Fortify::username()})->first();
+
+            if ($user && Hash::check($request->password, $user->account->password)) {
+                $user->account()->update([
+                    'current_user_id' => $user->id,
+                ]);
+
+                return $user;
+            }
         });
 
         $this->authenticate();

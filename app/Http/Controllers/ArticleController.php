@@ -58,7 +58,7 @@ class ArticleController extends Controller
         return response()->json([
             'success' => true,
             'added' => $existingReaction?->active ?? true,
-            'username' => Auth::user()->username,
+            'username' => Auth::user()->currentUser->username,
         ]);
     }
 }

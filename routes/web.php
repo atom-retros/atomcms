@@ -78,6 +78,9 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
 
                 Route::get('/session-logs', [AccountSettingsController::class, 'sessionLogs'])->name('settings.session-logs');
 
+                Route::get('/users', [AccountSettingsController::class, 'users'])->name('settings.users');
+                Route::put('/{user}/users', [AccountSettingsController::class, 'selectUser'])->name('settings.users-select');
+
                 Route::get('/two-factor', [TwoFactorAuthenticationController::class, 'index'])->name('settings.two-factor');
                 Route::post('/2fa-verify', [TwoFactorAuthenticationController::class, 'verify'])->name('two-factor.verify');
             });
