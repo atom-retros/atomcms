@@ -32,6 +32,6 @@ class WebsiteArticle extends Model
 
     public function userHasReachedArticleCommentLimit(): bool
     {
-        return $this->comments()->where('user_id', '=', Auth::id())->count() >= (int) setting('max_comment_per_article');
+        return $this->comments()->where('user_id', '=', Auth::user()->current_user_id)->count() >= (int) setting('max_comment_per_article');
     }
 }

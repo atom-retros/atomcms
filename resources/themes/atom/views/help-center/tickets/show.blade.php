@@ -124,7 +124,7 @@
                             <div class="flex gap-x-2">
                                 <small class="text-gray-400">{{ $reply->created_at->diffForHumans() }}</small>
 
-                                @if($reply->user_id === Auth::id() || hasPermission('delete_website_ticket_replies'))
+                                @if($reply->user_id === Auth::user()->current_user_id || hasPermission('delete_website_ticket_replies'))
                                     <form action="{{ route('help-center.ticket.reply.destroy', $reply) }}" method="POST">
                                         @method('DELETE')
                                         @csrf

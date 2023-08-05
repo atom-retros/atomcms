@@ -25,7 +25,7 @@ class TicketReplyController extends Controller
 
         $data = $request->validated();
         $ticket->replies()->create([
-            'user_id' => $request->user()->id,
+            'user_id' => $request->user()->current_user_id,
             'content' => $data['content'],
         ]);
 

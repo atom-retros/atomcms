@@ -25,7 +25,7 @@ class StaffApplicationsController extends Controller
 
     public function store(WebsiteOpenPosition $position, StaffApplicationFormRequest $request): RedirectResponse
     {
-        if ($request->user()->applications()->where('rank_id', $position->permission->id)->exists()) {
+        if ($request->user()->currentUser->applications()->where('rank_id', $position->permission->id)->exists()) {
             return redirect()->back()->withErrors([
                 'message' => __('You have already applied for this position.'),
             ]);
@@ -37,7 +37,7 @@ class StaffApplicationsController extends Controller
             ]);
         }
 
-        $request->user()->applications()->create([
+        $request->user()->currentUser->applications()->create([
             'rank_id' => $position->permission->id,
             'content' => $request->input('content'),
         ]);

@@ -22,6 +22,6 @@ class WebsiteArticleComment extends Model
 
     public function userCanDeleteComment(): bool
     {
-        return $this->user_id === Auth::id() || hasPermission('delete_article_comments');
+        return $this->user_id === Auth::user()->current_user_id || hasPermission('delete_article_comments');
     }
 }

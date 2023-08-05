@@ -69,7 +69,7 @@
             </x-slot:under-title>
 
             <div class="text-sm text-center py-2 px-4 rounded bg-gray-100 text-black dark:text-gray-100 dark:bg-gray-700">
-                {{ __('Current balance: $:balance', ['balance' => auth()->user()->currentUser->website_balance]) }}
+                {{ __('Current balance: $:balance', ['balance' => auth()->user()->website_balance]) }}
             </div>
 
             @if(config('paypal.live.client_id') && config('paypal.live.client_secret'))
