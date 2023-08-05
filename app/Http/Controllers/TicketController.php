@@ -20,7 +20,7 @@ class TicketController extends Controller
     {
         return view('help-center.tickets.create', [
             'categories' => WebsiteHelpCenterCategory::get(),
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('user_id', Auth::id())->get(),
         ]);
     }
 
