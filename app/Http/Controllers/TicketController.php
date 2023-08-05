@@ -11,6 +11,12 @@ class TicketController extends Controller
 {
     public function index()
     {
+        if (!hasPermission('manage_website_tickets')) {
+            return redirect()->back()->with([
+                'message' => __('You cannot access this page')
+            ]);
+        }
+
         return view('help-center.tickets.index', [
             'tickets' => WebsiteHelpCenterTicket::orderBy('open')->with('user:id,username')->paginate(15),
         ]);
