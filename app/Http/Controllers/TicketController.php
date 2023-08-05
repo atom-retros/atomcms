@@ -20,7 +20,7 @@ class TicketController extends Controller
     {
         return view('help-center.tickets.create', [
             'categories' => WebsiteHelpCenterCategory::get(),
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('user_id', Auth::id())->get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('user_id', Auth::user()->current_user_id)->get(),
         ]);
     }
 
@@ -48,7 +48,7 @@ class TicketController extends Controller
         return view('help-center.tickets.edit', [
             'ticket' => $ticket,
             'categories' => WebsiteHelpCenterCategory::get(),
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->where('user_id', Auth::id())->get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->where('user_id', Auth::user()->current_user_id)->get(),
         ]);
     }
 
@@ -81,7 +81,7 @@ class TicketController extends Controller
 
         return view('help-center.tickets.show', [
             'ticket' => $ticket,
-            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->where('user_id', Auth::id())->get(),
+            'openTickets' => WebsiteHelpCenterTicket::where('open', true)->where('id', '!=', $ticket->id)->where('user_id', Auth::user()->current_user_id)->get(),
         ]);
     }
 
