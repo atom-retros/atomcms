@@ -25,7 +25,6 @@ class LogoGeneratorController extends Controller
         $filename = $file->getClientOriginalName();
         $path = '/assets/images/generated-logos';
 
-        // Move the file
         $file->move(public_path($path), $filename);
 
         $setting = WebsiteSetting::where('key', 'cms_logo')->first();
