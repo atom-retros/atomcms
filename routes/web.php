@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstallationController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\LogoGeneratorController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\WebsiteTeamsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
@@ -169,6 +171,10 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::get('/nitro', NitroController::class)->name('nitro-client');
             Route::get('/flash', FlashController::class)->name('flash-client');
         });
+
+        // Logo generator
+        Route::get('/logo-generator', [LogoGeneratorController::class, 'index'])->name('logo-generator.index');
+        Route::post('/logo-generator', [LogoGeneratorController::class, 'store'])->name('store.generated-logo');
     });
 });
 
