@@ -2,7 +2,7 @@
     @push('title', __('Generator'))
 
     <div class="col-span-12">
-        <x-content.content-card icon="friends-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 Logo generator
             </x-slot:title>

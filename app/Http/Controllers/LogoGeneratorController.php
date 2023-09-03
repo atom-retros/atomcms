@@ -8,7 +8,17 @@ use Illuminate\Http\Request;
 
 class LogoGeneratorController extends Controller
 {
-    public function __invoke(Request $request)
+    public function index()
+    {
+        if (!hasPermission('generate_logo')) {
+            return to_route('me.show')->with([
+                'message' => __('You do not have permission to do this.')
+            ]);
+        }
+
+        return view('logo-generator');
+    }
+    public function store(Request $request)
     {
         $request->validate(['logo' => 'required|image']);
         $file = $request->file('logo');

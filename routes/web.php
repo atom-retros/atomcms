@@ -37,8 +37,6 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 
-Route::view('/logo-generator', 'logo-generator');
-Route::post('/logo-generator', LogoGeneratorController::class)->name('store.generated-logo');
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
@@ -173,6 +171,10 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::get('/nitro', NitroController::class)->name('nitro-client');
             Route::get('/flash', FlashController::class)->name('flash-client');
         });
+
+        // Logo generator
+        Route::get('/logo-generator', [LogoGeneratorController::class, 'index'])->name('logo-generator.index');
+        Route::post('/logo-generator', [LogoGeneratorController::class, 'store'])->name('store.generated-logo');
     });
 });
 
