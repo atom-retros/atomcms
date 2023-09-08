@@ -26,11 +26,17 @@
     </div>
 
     <div class="flex gap-x-3">
-        @if(hasPermission('view_server_logs') || hasPermission('housekeeping_access'))
+        @if(hasPermission('view_server_logs') || hasPermission('housekeeping_access') || hasPermission('generate_logo'))
             <x-navigation.dropdown classes="!text-red-700 !border-none">
                 {{ __('Administration') }}
 
                 <x-slot:children>
+                    @if (hasPermission('generate_logo'))
+                        <x-navigation.dropdown-child route="{{ route('logo-generator.index') }}" :turbolink="false" target="_blank">
+                            {{ __('Logo generator') }}
+                        </x-navigation.dropdown-child>
+                    @endif
+
                     @if (hasPermission('view_server_logs'))
                         <x-navigation.dropdown-child route="/log-viewer" :turbolink="false" target="_blank">
                             {{ __('Error logs') }}
