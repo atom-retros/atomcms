@@ -6,7 +6,7 @@
 
     <div class="col-span-12">
         <div class="lg:px-[250px]">
-            <x-content.content-section icon="hotel-icon" classes="flex flex-col">
+            <x-content.content-card icon="hotel-icon" classes="flex flex-col">
                 <x-slot:title>
                     {{ __('Login to :hotel', ['hotel' => setting('hotel_name')]) }}
                 </x-slot:title>
@@ -25,7 +25,8 @@
                             </x-form.label>
                         </div>
 
-                        <x-form.input error-bag="register" name="username" type="text" value="{{ old('username') }}" placeholder="{{ __('Username') }}" :autofocus="true"/>
+                        <x-form.input error-bag="register" name="username" type="text" value="{{ old('username') }}"
+                            placeholder="{{ __('Username') }}" :autofocus="true" />
                     </div>
 
                     <div class="mt-4">
@@ -33,11 +34,13 @@
                             {{ __('Password') }}
                         </x-form.label>
 
-                        <x-form.input error-bag="register" name="password" type="password" placeholder="{{ __('Password') }}" />
+                        <x-form.input error-bag="register" name="password" type="password"
+                            placeholder="{{ __('Password') }}" />
                     </div>
 
-                    @if(setting('google_recaptcha_enabled'))
-                        <div class="g-recaptcha mt-4" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                    @if (setting('google_recaptcha_enabled'))
+                        <div class="mt-4 g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}">
+                        </div>
                     @endif
 
                     <div class="mt-4">
@@ -46,11 +49,11 @@
                         </x-form.primary-button>
                     </div>
                 </form>
-            </x-content.content-section>
+            </x-content.content-card>
         </div>
     </div>
 
-    @if(setting('google_recaptcha_enabled'))
+    @if (setting('google_recaptcha_enabled'))
         @push('javascript')
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         @endpush

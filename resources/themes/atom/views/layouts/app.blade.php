@@ -1,78 +1,91 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="turbolinks-cache-control" content="no-cache">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html class="app" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <title>{{ setting('hotel_name') }} - @stack('title')</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" type="image/gif" sizes="18x17" href="{{ asset('assets/images/home_icon.gif') }}">
+    <title>{{ setting('hotel_name') }} - @stack('title')</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link rel="icon" type="image/gif" sizes="18x17" href="{{ asset('assets/images/home_icon.gif') }}">
 
-        <link rel="stylesheet" href="{{ asset('assets/css/flowbite.min.css') }}" />
-        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-        <script src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ asset('assets/css/scale.min.css') }}"/>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
-        @stack('scripts')
-    </head>
+    <link rel="stylesheet" href="{{ asset('assets/css/flowbite.min.css') }}" />
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/scale.min.css') }}"/>
 
-    <body class="flex flex-col min-h-screen site-bg dark:bg-gray-800">
-        <x-messages.flash-messages />
+    @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
+    @stack('scripts')
+</head>
 
-        <div id="app" class="bg-gray-100 dark:bg-gray-900">
-            {{-- Top header --}}
-            @auth
-                <x-top-header />
-            @endauth
+<body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">
+    @if(config('habbo.site.debug_mode_enabled') && config('habbo.site.site_environment') === 'production')
+        <div class="w-full py-2 px-4 text-center rounded text-white bg-red-500">
+            {{ __('It seems like debug mode is enabled while being in production. It is heavily recommended too set APP_DEBUG in the .env file to false in production mode') }}
+        </div>
+    @endif
 
-            {{-- Site Header --}}
-            <x-site-header />
+    <!-- Validation Errors -->
+    <x-messages.flash-messages />
 
-            {{-- Navigation --}}
-            <nav class="relative bg-white shadow dark:bg-gray-900">
-                {{-- relative w-full flex flex-col items-center md:flex-row md:items- md:justify-between gap-x-8 uppercase font-semibold text-[14px] mt-5 --}}
-                <div class="px-4 mx-auto max-w-7xl h-auto md:h-[60px] flex md:items-center md:justify-between">
-                    <div class="h-full w-full">
-                        <x-navigation.mobile-menu />
+    <div id="app" class="bg-gray-100 dark:bg-gray-900">
+        {{-- Top header --}}
+        @auth
+            <x-top-header />
+        @endauth
 
-                        <x-navigation.navigation-menu />
-                    </div>
+        {{-- Site Header --}}
+        <x-site-header />
 
+        {{-- Navigation --}}
+        <nav class="relative bg-white shadow dark:bg-gray-900">
+            <div class="max-w-7xl min-h-[60px] px-4 md:flex md:items-center md:justify-between md:mx-auto">
+
+
+                <x-navigation.navigation-menu />
+
+                <div class="hidden lg:flex items-center">
                     <x-navigation.theme-mode-switcher />
+
                     <x-navigation.language-selector>
-                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png" alt="">
+                        <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
+                             alt="">
                     </x-navigation.language-selector>
                 </div>
-            </nav>
 
-            {{-- Content --}}
-            <main class="overflow-hidden site-bg">
-                <div class="max-w-7xl mx-auto p-6 grid grid grid-cols-12 gap-x-3 gap-y-8 mt-10 md:mt-0">
-                    {{ $slot }}
-                </div>
-            </main>
-        </div>
+                <x-navigation.mobile-menu />
+            </div>
+        </nav>
 
-        <x-footer />
+        {{-- Content --}}
+        <main class="overflow-hidden site-bg">
+            <div class="mx-auto mt-10 grid max-w-7xl grid-cols-12 gap-x-3 gap-y-8 p-6 md:mt-0">
 
-        @if(setting('cms_color_mode') === 'dark')
-            <script>
-                if(localStorage.getItem("theme") === null) {
-                    document.documentElement.classList.add("dark");
-                    localStorage.setItem("theme", 'dark');
-                }
-            </script>
-        @endif
 
-        <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>
-        <script defer src="{{ asset('assets/js/alpine-focus.js') }}"></script>
+                {{ $slot }}
+            </div>
+        </main>
+    </div>
 
-        @stack('javascript')
+    <x-footer />
+
+    @if (setting('cms_color_mode') === 'dark')
+        <script>
+            if (localStorage.getItem("theme") === null) {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("theme", 'dark');
+            }
+        </script>
+    @endif
+
+    <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>
+    <script defer src="{{ asset('assets/js/alpine-focus.js') }}"></script>
+
+    @stack('javascript')
     </body>
 </html>

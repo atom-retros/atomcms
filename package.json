@@ -6,10 +6,15 @@
         "dev:atom": "vite --config resources/themes/atom/vite.config.js",
         "build:atom": "vite build --config resources/themes/atom/vite.config.js",
         "dev:atom-bs": "vite --config resources/themes/atom-bs/vite.config.js",
-        "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js"
+        "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js",
+        "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
+        "@alpinejs/focus": "^3.10.3",
+        "@prettier/plugin-php": "^0.19.3",
+        "@shufo/prettier-plugin-blade": "^1.8.6",
         "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.9",
         "alpinejs": "^3.10.3",
         "autoprefixer": "^10.4.7",
         "axios": "^0.27",
@@ -27,6 +32,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "-": "^0.0.1",
         "swiper": "^8.4.2"
     }
 }

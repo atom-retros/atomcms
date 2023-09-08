@@ -1,4 +1,4 @@
-<x-content.content-section icon="discord-icon" classes="border dark:border-gray-900">
+<x-content.content-card icon="discord-icon" classes="border dark:border-gray-900">
     <x-slot:title>
         {{ __('Discord') }}
     </x-slot:title>
@@ -7,7 +7,7 @@
         <span id="guildName"></span>
     </x-slot:under-title>
 
-    <div class=" text-sm dark:text-gray-200">
+    <div class="text-sm dark:text-gray-200">
         <div id="guildUsers" class="h-[129px] overflow-auto"> </div>
         <a id="guildInvite" target="blank">
             <x-form.secondary-button classes="mt-3">
@@ -15,7 +15,7 @@
             </x-form.secondary-button>
         </a>
     </div>
-</x-content.content-section>
+</x-content.content-card>
 
 @push('javascript')
     <script>
@@ -110,7 +110,7 @@
                             document.getElementById('guildInvite').remove()
                             document.getElementById('guildUsers').style.height = "176px"
                         } else {
-                            //Gives the "Join server" button an href to the default selected chennel in the server
+                            //Gives the "Join server" button a href to the default selected channel in the server
                             //link is recived from widget json
                             document.getElementById('guildInvite').setAttribute('href', data.instant_invite)
                         }

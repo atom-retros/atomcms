@@ -5,16 +5,13 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class ForceStaffTwoFactorMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check()) {
-            return $next($request);
-        }
-
-        if (setting('force_staff_2fa') === '0') {
+        if (!Auth::check() || !setting('force_staff_2fa')) {
             return $next($request);
         }
 

@@ -3,24 +3,30 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\WebsiteRareValue;
+use App\Models\WebsiteRareValueCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call([
             WebsiteSettingsSeeder::class,
-            WebsiteArticleSeeder::class,
             WebsiteLanguageSeeder::class,
+            WebsiteArticleSeeder::class,
             WebsitePermissionSeeder::class,
             WebsiteWordfilterSeeder::class,
             WebsiteTeamSeeder::class,
+            WebsiteRuleCategorySeeder::class,
+            WebsiteRuleSeeder::class,
+            WebsiteHelperCenterCategorySeeder::class,
+            WebsiteShopArticleSeeder::class,
+            WebsiteHelperCenterCategorySeeder::class,
+            WebsiteRareValuesCategorySeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

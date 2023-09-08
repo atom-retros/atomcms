@@ -1,18 +1,20 @@
+
 @props(['user'])
 
-
-<div class="rounded me-backdrop relative overflow-hidden flex justify-between px-10 items-center" style="background: rgba(0, 0, 0, 0.3) url({{ setting('cms_me_backdrop') }});">
+<div class="relative flex items-center justify-between overflow-hidden rounded px-10 me-backdrop"
+    style="background: rgba(0, 0, 0, 0.3) url({{ setting('cms_me_backdrop') }});">
     <div>
         <a href="{{ route('profile.show', $user) }}"
-           class="absolute left-0 drop-shadow -bottom-12 transition ease-in-out duration-300 hover:scale-105">
+            class="absolute -bottom-12 left-0 drop-shadow transition duration-300 ease-in-out hover:scale-105">
             <img style="image-rendering: pixelated;"
-                 src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
-                 alt="">
+                src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
+                alt="">
         </a>
     </div>
 
     <a data-turbolinks="false" href="{{ route('nitro-client') }}">
-        <button class="text-lg relative rounded-full py-2 dark:bg-gray-900 dark:text-white px-6 bg-white bg-opacity-90 transition duration-300 ease-in-out hover:bg-opacity-100 text-black font-semibold">
+        <button
+            class="relative rounded-full bg-white bg-opacity-90 px-6 py-2 text-lg font-semibold text-black transition duration-300 ease-in-out hover:bg-opacity-100 dark:bg-gray-900 dark:text-white">
             {{ __('Go to :hotel', ['hotel' => setting('hotel_name')]) }}
         </button>
     </a>

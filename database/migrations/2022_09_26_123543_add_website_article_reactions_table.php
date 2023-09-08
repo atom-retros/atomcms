@@ -8,11 +8,15 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
+        dropForeignKeyIfExists('website_article_reactions', 'article_id');
+
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_article_reactions')) {
+            Schema::rename('website_article_reactions', sprintf('website_article_reactions_%s', time()));
+        }
+
         Schema::create('website_article_reactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
@@ -25,10 +29,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('website_article_reactions');
     }

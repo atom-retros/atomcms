@@ -5,26 +5,42 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class MaintenanceMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        // If not authenticated, always redirect to maintenance if enabled
-        if ((!$request->is('maintenance') && $request->method() !== 'POST') && (!Auth::check() && setting('maintenance_enabled') === '1')) {
-            return to_route('maintenance.show');
-        }
+        $isPostRequest = $request->method() === 'POST';
+        $isMaintenanceRequest = $request->is('maintenance');
+        $maintenanceEnabled = setting('maintenance_enabled');
 
-        // If authenticated user is below the minimum maintenance rank
-        if ((setting('maintenance_enabled') === '1' && !$request->is('maintenance')) && (Auth::check() && setting('min_maintenance_login_rank') > Auth::user()->rank)) {
-            Auth::logout(); // Logout the authenticated user
-
-            return to_route('maintenance.show');
-        }
-
-        // If authenticated user is above or equal the minimum maintenance rank
-        if ((setting('maintenance_enabled') === '1' && !$request->is('maintenance')) && (Auth::check() && Auth::user()->rank >= setting('min_maintenance_login_rank'))) {
+        if ($maintenanceEnabled && $isPostRequest && !Auth::check()) {
             return $next($request);
+        }
+
+        if (Auth::check() && Auth::user()->rank >= setting('min_maintenance_login_rank')) {
+            if ($isMaintenanceRequest) {
+                return to_route('me.show');
+            }
+
+            return $next($request);
+        }
+
+        if (Auth::check() && Auth::user()->rank >= setting('min_maintenance_login_rank') && $isMaintenanceRequest) {
+            return to_route('me.show');
+        }
+
+        if ($maintenanceEnabled && !$isMaintenanceRequest && !$isPostRequest) {
+            return to_route('maintenance.show');
+        }
+
+        if (!$maintenanceEnabled && $isMaintenanceRequest && !$isPostRequest) {
+            return to_route('welcome');
+        }
+
+        if ($maintenanceEnabled && !$isMaintenanceRequest && Auth::check() && Auth::user()->rank < setting('min_maintenance_login_rank')) {
+            return to_route('maintenance.show');
         }
 
         return $next($request);

@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\BannedMiddleware;
 use App\Http\Middleware\FindRetrosMiddleware;
 use App\Http\Middleware\ForceStaffTwoFactorMiddleware;
+use App\Http\Middleware\InstallationMiddleware;
 use App\Http\Middleware\LocalizationMiddleware;
 use App\Http\Middleware\LogViewerMiddleware;
 use App\Http\Middleware\MaintenanceMiddleware;
@@ -30,6 +31,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         SetThemeMiddleware::class,
+        InstallationMiddleware::class,
     ];
 
     /**
@@ -50,19 +52,19 @@ class Kernel extends HttpKernel
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            'throttle:api',
+            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
 
     /**
-     * The application's route middleware.
+     * The application's middleware aliases.
      *
-     * These middleware may be assigned to groups or used individually.
+     * Aliases may be used to conveniently assign middleware to routes and groups.
      *
      * @var array<string, class-string|string>
      */
-    protected $routeMiddleware = [
+    protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -74,7 +76,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'maintenance' => MaintenanceMiddleware::class,
-        'check-ban' => BannedMiddleware::class,
+        'check.ban' => BannedMiddleware::class,
         'findretros.redirect' => FindRetrosMiddleware::class,
         'vpn.checker' => VPNCheckerMiddleware::class,
         'log.viewer' => LogViewerMiddleware::class,

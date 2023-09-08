@@ -1,31 +1,31 @@
 const ThemeSwitcher = {
-    currentTheme: 'light',
+    currentTheme: "light",
 
     init() {
-        if (localStorage.theme === "dark") {
-            this.toggleTheme()
+        if (localStorage.theme === "dark" || typeof window.matchMedia != "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            this.toggleTheme();
         }
 
-        document.addEventListener('turbolinks:load', () => this.initButton())
+        document.addEventListener("turbolinks:load", () => this.initButton());
     },
 
     initButton() {
-        let themeSwitcher = document.getElementById("theme-switcher")
+        let themeSwitcher = document.getElementById("theme-switcher");
 
-        themeSwitcher?.addEventListener("click", () => this.toggleTheme())
+        themeSwitcher?.addEventListener("click", () => this.toggleTheme());
     },
 
     toggleTheme() {
-        if(this.currentTheme === 'light') {
-            this.currentTheme = 'dark'
-            document.documentElement.classList.add("dark")
+        if (this.currentTheme === "light") {
+            this.currentTheme = "dark";
+            document.documentElement.classList.add("dark");
         } else {
-            this.currentTheme = 'light'
-            document.documentElement.classList.remove("dark")
+            this.currentTheme = "light";
+            document.documentElement.classList.remove("dark");
         }
 
-        localStorage.setItem("theme", this.currentTheme)
-    }
-}
+        localStorage.setItem("theme", this.currentTheme);
+    },
+};
 
-export { ThemeSwitcher as default }
+export { ThemeSwitcher as default };

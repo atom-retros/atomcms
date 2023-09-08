@@ -1,3 +1,5 @@
-<div id="theme-switcher" class="p-1 mr-3 hidden md:flex cursor-pointer rounded-lg bg-gray-200 shadow-inner dark:bg-gray-800 justify-center items-center">
-    <x-icons.moon class="w-5 h-5 text-gray-600 dark:text-white" />
-</div>
+<button id="theme-switcher"
+    type="button"
+    class="mr-3 cursor-pointer items-center justify-center rounded-lg bg-gray-200 p-1 shadow-inner dark:bg-gray-800 hidden md:flex">
+    <x-icons.moon class="h-5 w-5 text-gray-600 dark:text-white" />
+</button>

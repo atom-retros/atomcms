@@ -1,85 +1,98 @@
-<div class="hidden relative w-full h-full flex flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
-        @if (auth()->check())
-        <button
-            id="homeDropdown"
-            data-dropdown-toggle="home-dropdown"
-            class="dark:text-gray-200 {{ request()->is('user*') || request()->is('profile*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
-            <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
+<div class="relative hidden flex h-full w-full flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
+    @auth
+        <x-navigation.dropdown icon="home" route-group="user*">
             {{ auth()->user()->username }}
 
-                <x-icons.chevron-down />
-        </button>
+            <x-slot:children>
+                <x-navigation.dropdown-child :route="route('me.show')">
+                    {{ __('Home') }}
+                </x-navigation.dropdown-child>
 
-        <div id="home-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
-            <a href="{{ auth()->check() ? route('me.show') : route('welcome') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
-                {{ __('Home') }}
-            </a>
-
-            @auth
-            <a href="{{ route('profile.show', auth()->user()->username) }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
-                {{ __('My Profile') }}
-            </a>
-            @endauth
-        </div>
-        @else
+                <x-navigation.dropdown-child :route="route('profile.show', auth()->user()->username)">
+                    {{ __('My Profile') }}
+                </x-navigation.dropdown-child>
+            </x-slot:children>
+        </x-navigation.dropdown>
+    @else
         <a href="{{ route('welcome') }}"
            class="nav-item dark:text-gray-200 {{ request()->routeIs('welcome') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-           <i class="navigation-icon home mr-1 hidden lg:inline-flex"></i>
+            <i class="mr-1 hidden navigation-icon home lg:inline-flex"></i>
             {{ __('Home') }}
         </a>
-        @endif
+    @endauth
 
-        <button
-                id="communityDropdown"
-                data-dropdown-toggle="community-dropdown"
-                class="dark:text-gray-200 {{ request()->is('community*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }} nav-item gap-x-1 ml-5 md:ml-0">
-                <i class="navigation-icon community mr-1 hidden lg:inline-flex"></i>
-                {{ __('Community') }}
+    <x-navigation.dropdown icon="community" route-group="community*" :uppercase="true">
+        {{ __('Community') }}
 
-                <x-icons.chevron-down />
-        </button>
-
-        <div id="community-dropdown" class="py-2 hidden z-10 w-44 text-sm bg-white dark:bg-gray-800 shadow block">
-            <a href="{{ route('article.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+        <x-slot:children>
+            <x-navigation.dropdown-child :route="route('article.index')">
                 {{ __('Articles') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('staff.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('staff.index') ">
                 {{ __('Staff') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('teams.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('teams.index')">
                 {{ __('Teams') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('staff-applications.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('staff-applications.index')">
                 {{ __('Staff applications') }}
-            </a>
+            </x-navigation.dropdown-child>
 
-            <a href="{{ route('photos.index') }}" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
+            <x-navigation.dropdown-child :route="route('photos.index')">
                 {{ __('Photos') }}
-            </a>
-        </div>
+            </x-navigation.dropdown-child>
+        </x-slot:children>
+    </x-navigation.dropdown>
 
-        <a href="{{ route('leaderboard.index') }}"
-           class="nav-item dark:text-gray-200 {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-           <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
-            {{ __('Leaderboards') }}
-        </a>
+    <a href="{{ route('leaderboard.index') }}"
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('leaderboard.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+        <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
+        {{ __('Leaderboards') }}
+    </a>
 
-        <a href="{{ route('shop.index') }}"
-           class="nav-item dark:text-gray-200 {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-                <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
-                {{ __('Shop') }}
-        </a>
+    <a href="{{ route('values.index') }}"
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('values.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+        <i class="navigation-icon leaderboards mr-1 hidden lg:inline-flex"></i>
+        {{ __('Rare values') }}
+    </a>
 
-        <a href="{{ route('rules.index') }}"
-           class="nav-item dark:text-gray-200 {{ request()->routeIs('rules.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
-            <i class="navigation-icon rules mr-1 hidden lg:inline-flex"></i>
-                {{ __('Rules') }}
-        </a>
+    <a href="{{ route('shop.index') }}"
+       class="nav-item dark:text-gray-200 {{ request()->routeIs('shop.*') ? 'md:border-b-4 md:border-b-[#eeb425]' : '' }}">
+            <i class="navigation-icon mr-1 hidden lg:inline-flex shop"></i>
+            {{ __('Shop') }}
+    </a>
 
-        <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item dark:text-gray-200">
-            {{ __('Discord') }}
-        </a>
+        <x-navigation.dropdown icon="rules" route-group="help-center*" :uppercase="true">
+            {{ __('Assistance') }}
+
+            <x-slot:children>
+                <x-navigation.dropdown-child :route="route('help-center.index')">
+                    {{ __('Help center') }}
+                </x-navigation.dropdown-child>
+
+                @if(hasPermission('manage_website_tickets'))
+                    <x-navigation.dropdown-child :route="route('help-center.ticket.index')">
+                        {{ __('Open tickets') }}
+                    </x-navigation.dropdown-child>
+                @endif
+
+                <x-navigation.dropdown-child :route="route('help-center.rules.index')">
+                    {{ __('Rules') }}
+                </x-navigation.dropdown-child>
+            </x-slot:children>
+        </x-navigation.dropdown>
+
+    <a href="{{ setting('discord_invitation_link') }}" target="_blank" class="nav-item dark:text-gray-200">
+        {{ __('Discord') }}
+    </a>
+
+    <div class="w-full flex md:hidden gap-x-1 justify-center">
+        <x-navigation.language-selector>
+            <img src="/assets/images/icons/flags/{{ session()->has('locale') ? session()->get('locale') : config('habbo.site.default_language') }}.png"
+                 alt="">
+        </x-navigation.language-selector>
+    </div>
 </div>

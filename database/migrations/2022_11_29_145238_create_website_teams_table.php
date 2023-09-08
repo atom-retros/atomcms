@@ -4,9 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-    public function up()
+return new class extends Migration
+{
+    public function up(): void
     {
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_teams')) {
+            Schema::rename('website_teams', sprintf('website_teams_%s', time()));
+        }
+
         Schema::create('website_teams', function (Blueprint $table) {
             $table->id();
             $table->string('rank_name')->unique();
@@ -19,7 +24,7 @@ return new class extends Migration {
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('website_teams');
     }

@@ -8,8 +8,6 @@ module.exports = {
         "./resources/**/*.js",
     ],
 
-    darkMode: 'class',
-
     theme: {
         extend: {
             fontFamily: {
@@ -24,5 +22,8 @@ module.exports = {
         },
     },
 
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/forms"),
+        require("@tailwindcss/typography")
+    ],
 };

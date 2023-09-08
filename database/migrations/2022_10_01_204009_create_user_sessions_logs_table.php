@@ -8,11 +8,13 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
+        if (config('habbo.migrations.rename_tables') && Schema::hasTable('users_session_logs')) {
+            Schema::rename('users_session_logs', sprintf('users_session_logs_%s', time()));
+        }
+
         Schema::create('users_session_logs', function (Blueprint $table) {
             $table->id();
 
@@ -26,10 +28,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('users_session_logs');
     }

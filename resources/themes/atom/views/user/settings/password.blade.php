@@ -1,12 +1,12 @@
 <x-app-layout>
     @push('title', __('Password settings'))
 
-    <div class="col-span-12 md:col-span-3 flex flex-col gap-y-3">
+    <div class="col-span-12 flex flex-col gap-y-3 md:col-span-3">
         <x-user.settings.settings-navigation />
     </div>
 
-    <div class="col-span-12 md:col-span-9 flex flex-col gap-y-3">
-        <x-content.content-section icon="hotel-icon" classes="border dark:border-gray-900">
+    <div class="col-span-12 flex flex-col gap-y-3 md:col-span-9">
+        <x-content.content-card icon="hotel-icon" classes="border dark:border-gray-900">
             <x-slot:title>
                 {{ __('Password settings') }}
             </x-slot:title>
@@ -28,7 +28,7 @@
                         </x-slot:info>
                     </x-form.label>
 
-                    <x-form.input name="current_password" type="password" :autofocus="true"/>
+                    <x-form.input name="current_password" type="password" :autofocus="true" />
                 </div>
 
                 <div class="flex flex-col gap-y-1">
@@ -40,7 +40,7 @@
                         </x-slot:info>
                     </x-form.label>
 
-                    <x-form.input name="password" type="password"/>
+                    <x-form.input name="password" type="password" />
                 </div>
 
                 <div class="flex flex-col gap-y-1">
@@ -52,15 +52,15 @@
                         </x-slot:info>
                     </x-form.label>
 
-                    <x-form.input name="password_confirmation" type="password"/>
+                    <x-form.input name="password_confirmation" type="password" />
                 </div>
 
-                <div class="w-full flex justify-start md:justify-end">
+                <div class="flex w-full justify-start md:justify-end">
                     <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update password') }}
                     </x-form.secondary-button>
                 </div>
             </form>
-        </x-content.content-section>
+        </x-content.content-card>
     </div>
 </x-app-layout>

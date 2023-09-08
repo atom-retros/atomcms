@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\WebsiteSetting;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
 
 class SettingsService
 {
@@ -11,11 +12,11 @@ class SettingsService
 
     public function __construct()
     {
-        $this->settings = WebsiteSetting::all()->pluck('value', 'key');
+        $this->settings = Schema::hasTable('website_settings') ? WebsiteSetting::all()->pluck('value', 'key') : collect();
     }
 
     public function getOrDefault(string $settingName, ?string $default = null): string
     {
-        return (string)$this->settings->get($settingName, $default);
+        return (string) $this->settings->get($settingName, $default);
     }
 }

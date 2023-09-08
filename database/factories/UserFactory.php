@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
-    public function definition()
+    public function definition(): array
     {
         return [
-            'username' => fake()->userName(),
-            'mail' => fake()->safeEmail(),
+            'username' => 'NewRetro',
+            'mail' => 'NewRetro@example.com',
             'password' => Hash::make('password'),
             'account_created' => time(),
             'last_login' => time(),

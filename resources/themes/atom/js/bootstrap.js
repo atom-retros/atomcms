@@ -5,11 +5,12 @@
  */
 
 import axios from "axios";
-window.axios = axios;
 import Turbolinks from "turbolinks";
 
-Turbolinks.start();
+window.axios = axios;
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+
+Turbolinks.start();
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

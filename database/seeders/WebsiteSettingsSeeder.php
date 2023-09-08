@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class WebsiteSettingsSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $settings = [
             [
@@ -63,7 +63,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'start_look',
                 'value' => 'fa-201407-1324.hr-828-1035.ch-3001-1261-1408.sh-3068-92-1408.cp-9032-1308.lg-270-1281.hd-209-3',
-                'comment' => 'Specifies the amount of start outfit upon registration',
+                'comment' => 'Specifies the of start outfit upon registration',
             ],
             [
                 'key' => 'referrals_needed',
@@ -112,7 +112,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'maintenance_message',
-                'value' => 'Atom is currently undergoing maintenance. We will be back shortly!',
+                'value' => sprintf('%s is currently undergoing maintenance. We will be back shortly!', setting('hotel_name')),
                 'comment' => 'The maintenance message displayed to users while maintenance is activated',
             ],
             [
@@ -148,7 +148,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'ipdata_api_key',
                 'value' => 'ADD-API-KEY-HERE',
-                'comment' => 'The API key needed from ipdata.co to block VPNs',
+                'comment' => 'The API key needed from ipdata.co to block VPNs (Only necessary if vpn block is enabled)',
             ],
             [
                 'key' => 'cms_logo',
@@ -193,17 +193,17 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'requires_beta_code',
                 'value' => '0',
-                'comment' => 'Determines whether users need a beta code to register or not',
+                'comment' => 'Determines whether users need a beta code to register or not (0 for no & 1 for yes)',
             ],
             [
                 'key' => 'disable_registration',
                 'value' => '0',
-                'comment' => 'Determines whether registration is enabled or not',
+                'comment' => 'Determines whether registration is enabled or not (0 for no & 1 for yes)',
             ],
             [
                 'key' => 'give_hc_on_register',
                 'value' => '0',
-                'comment' => 'Determines whether the registered user will receive a HC on registration',
+                'comment' => 'Determines whether the registered user will receive HC upon registration',
             ],
             [
                 'key' => 'hc_on_register_duration',
@@ -215,6 +215,41 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '2',
                 'comment' => 'Specifies the amount of times a user can comment per article',
             ],
+            [
+                'key' => 'furniture_icons_path',
+                'value' => '/ms-swf/dcr/icons',
+                'comment' => 'The path to the rare values icons',
+            ],
+            [
+                'key' => 'enable_caching',
+                'value' => '0',
+                'comment' => 'Determines whether the cache is enabled or not',
+            ],
+            [
+                'key' => 'cache_timer',
+                'value' => '30',
+                'comment' => 'Determines how long a cache will last before being refreshed',
+            ],
+            [
+                'key' => 'installation_finished',
+                'value' => '0',
+                'comment' => 'Determines whether the installation has been completed or not. 1 for completed 0 for not completed',
+            ],
+            [
+                'key' => 'nitro_path',
+                'value' => '/client/nitro/nitro-react',
+                'comment' => 'The path in which your index.html for nitro is located',
+            ],
+            [
+                'key' => 'enable_discord_webhook',
+                'value' => '0',
+                'comment' => 'Specify whether Discord webhooks will be sent or not (0 for disabled, 1 for enabled)',
+            ],
+            [
+                'key' => 'discord_webhook_url',
+                'value' => '',
+                'comment' => 'The URL provided by discord to send a webhook request',
+            ],
         ];
 
         foreach ($settings as $setting) {
@@ -224,5 +259,10 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => $setting['comment'],
             ]);
         }
+
+        // This is done to update the rare values key for existing applications
+        WebsiteSetting::where('key', 'rare_values_icons_path')->update([
+            'key' => 'furniture_icons_path',
+        ]);
     }
 }
