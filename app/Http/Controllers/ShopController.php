@@ -49,7 +49,7 @@ class ShopController extends Controller
 
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
-        if ($user->rank >= $package->give_rank) {
+        if ($package->give_rank && $user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
                 ['message' => __('You are already this or a higher rank')],
             );
