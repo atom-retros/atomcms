@@ -32,24 +32,22 @@ use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteRareValuesController;
 use App\Http\Controllers\WebsiteRulesController;
 use App\Http\Controllers\WebsiteTeamsController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
-
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
 // Installation routes
-Route::prefix('installation')->group(function () {
-    Route::get('/', [InstallationController::class, 'index'])->name('installation.index');
-    Route::get('/step/{step}', [InstallationController::class, 'showStep'])->name('installation.show-step');
+Route::prefix('installation')->controller(InstallationController::class)->group(function () {
+    Route::get('/', 'index')->name('installation.index');
+    Route::get('/step/{step}', 'showStep')->name('installation.show-step');
 
-    Route::post('/start-installation', [InstallationController::class, 'storeInstallationKey'])->name('installation.start-installation');
-    Route::post('/save-step', [InstallationController::class, 'saveStepSettings'])->name('installation.save-step');
-    Route::post('/previous-step', [InstallationController::class, 'previousStep'])->name('installation.previous-step');
-    Route::post('/restart-installation', [InstallationController::class, 'restartInstallation'])->name('installation.restart');
-    Route::post('/complete', [InstallationController::class, 'completeInstallation'])->name('installation.complete');
+    Route::post('/start-installation', 'storeInstallationKey')->name('installation.start-installation');
+    Route::post('/save-step', 'saveStepSettings')->name('installation.save-step');
+    Route::post('/previous-step', 'previousStep')->name('installation.previous-step');
+    Route::post('/restart-installation', 'restartInstallation')->name('installation.restart');
+    Route::post('/complete', 'completeInstallation')->name('installation.complete');
 });
 
 

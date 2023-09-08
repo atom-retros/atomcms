@@ -20,7 +20,7 @@ class InstallationController extends Controller
         } catch (MigrationFailedException $e) {
             Log::error('Migration or seeding failed: ' . $e->getMessage());
 
-            abort(500);
+            abort(500, 'An error occurred while trying to migrate');
         }
 
         return view('installation.index');

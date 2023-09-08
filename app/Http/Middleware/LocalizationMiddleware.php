@@ -6,6 +6,7 @@ use App\Models\WebsiteLanguage;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,7 @@ class LocalizationMiddleware
         }
 
         // If the language does not exist in the database
-        if (WebsiteLanguage::where('country_code', '=', $countryCode)->doesntExist()) {
+        if (Schema::hasTable('website_languages') && WebsiteLanguage::where('country_code', '=', $countryCode)->doesntExist()) {
             $defaultCountry = config('habbo.site.default_language');
 
             App::setLocale($defaultCountry);
