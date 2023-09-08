@@ -14,7 +14,7 @@ Atom CMS is a Habbo Retro CMS, aiming to provide the best experience possible fo
 
 **What technologies is Atom CMS built with?**
 
--   PHP (Laravel 9.x)
+-   PHP (Laravel 10.x)
     [Laravel docs](https://laravel.com/docs/9.x).
 -   Vite [Vite docs](https://vitejs.dev/).
 -   TailwindCSS
@@ -85,10 +85,8 @@ extension=sockets
 cd atomcms
 copy .env.example .env (Don't forget to edit the database credentials inside the .env)
 composer install
-npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 php artisan key:generate
-php artisan migrate
-php artisan atom:setup (Or php artisan atom:setup --auto if you don't want to manually fill in settings)
+npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 ```
 
 _Don't forget to link your IIS site to the "public" folder inside for "atomcms"_
@@ -125,9 +123,8 @@ Have you always wanted to set up your own hotel from scratch, but are unsure how
 cd atomcms
 cp .env.example .env (Don't forget to edit the database credentials inside the .env)
 composer install
+php artisan key:generate
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] (eg. npm run dev:atom))
-php artisan migrate
-php artisan atom:setup (Or php artisan atom:setup --auto if you don't want to manually fill in settings)
 ```
 
 **Grant necessary permissions to used folders. Within your atomcms directory, enter the 4 commands below:**
