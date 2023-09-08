@@ -48,12 +48,6 @@
         <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
                 <x-shop.packages :article="$article" />
-
-                <style>
-                    .{{ $article->icon }} {
-                        background: {{ $article->color }};
-                    }
-                </style>
             @endforeach
         </div>
     </div>
