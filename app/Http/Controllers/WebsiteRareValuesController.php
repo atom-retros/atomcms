@@ -15,7 +15,7 @@ class WebsiteRareValuesController extends Controller
     public function index(): View
     {
         return view('rare-values', [
-            'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture')->get(),
+            'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture.item')->get(),
             'categoriesNav' => WebsiteRareValueCategory::all(),
         ]);
     }
