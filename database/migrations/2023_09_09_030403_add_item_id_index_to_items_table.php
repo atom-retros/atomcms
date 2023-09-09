@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->index(['item_id']);
+            $table->index(['item_id'], 'items_item_id_index');
         });
     }
 
@@ -21,14 +21,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            $indexName = sprintf('%s%s_%s_%s',
-                $table->getPrefix(),
-                $table->getTable(),
-                'item_id',
-                'index'
-            );
-
-            $table->dropIndex($indexName);
+            $table->dropIndex('items_item_id_index');
         });
     }
 };
