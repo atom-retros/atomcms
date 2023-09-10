@@ -17,11 +17,11 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        // Delete old tokens every 15 minutes
+        // Delete all tokens older than 15 minutes every minute
         $schedule->call(function() {
             $date = Carbon::now()->subMinutes(15);
-            DB::table('password_reset_tokens')->where('created_at', '<=', $date)->delete();
-        })->everyFifteenMinutes();
+            DB::table('password_reset_tokens')->whereDate('created_at', '<=', $date)->delete();
+        })->everyMinute();
     }
 
     /**
