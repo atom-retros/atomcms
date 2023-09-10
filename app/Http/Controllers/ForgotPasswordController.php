@@ -38,12 +38,12 @@ class ForgotPasswordController extends Controller
             });
         }
 
-        return back()->with('success', 'We have e-mailed your password reset link!');
+        return back()->with('success', __('We have e-mailed your password reset link!'));
     }
 
     public function showResetPassword(Request $request, string $token) {
         if (!DB::table('password_reset_tokens')->where('token', $token)->exists()) {
-            return to_route('forgot.password.get')->withErrors('message', 'This token is expired!');
+            return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
         return view('auth.passwords.reset', [
@@ -59,7 +59,7 @@ class ForgotPasswordController extends Controller
 
         $passwordReset = DB::table('password_reset_tokens')->where('token', $token)->first();
         if ($passwordReset === null) {
-            return to_route('forgot.password.get')->withErrors('message', 'This token is expired!');
+            return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
         $hashed = Hash::make($request->password);
@@ -69,6 +69,6 @@ class ForgotPasswordController extends Controller
 
         DB::table('password_reset_tokens')->where('token', $token)->delete();
 
-        return to_route('login')->with('success', 'Your password has been successfully reset!');
+        return to_route('login')->with('success', __('Your password has been successfully reset!'));
     }
 }
