@@ -38,10 +38,4 @@
             </form>
         </x-content.content-card>
     </div>
-
-    @if (setting('google_recaptcha_enabled'))
-        @push('javascript')
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        @endpush
-    @endif
 </x-app-layout>

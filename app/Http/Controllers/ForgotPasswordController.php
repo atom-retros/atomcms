@@ -52,7 +52,7 @@ class ForgotPasswordController extends Controller
 
     public function submitResetPassword(Request $request, string $token) {
         $request->validate([
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required',
         ]);
 
@@ -61,9 +61,8 @@ class ForgotPasswordController extends Controller
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
-        $hashed = Hash::make($request->password);
         $user = User::where('mail', $passwordReset->email)->first();
-        $user->password = $hashed;
+        $user->password = Hash::make($request->password);
         $user->save();
 
         DB::table('password_reset_tokens')->where('token', $token)->delete();
