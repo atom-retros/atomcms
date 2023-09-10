@@ -207,4 +207,9 @@ class User extends Authenticatable
     {
         return $this->applications()->where('rank_id', '=', $rankId)->exists();
     }
+
+    public function changePassword(string $newPassword) {
+        $this->password = \Illuminate\Support\Facades\Hash::make($newPassword);
+        $this->save();
+    }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use DB;
 use Mail;
@@ -56,14 +55,12 @@ class ForgotPasswordController extends Controller
             'password_confirmation' => 'required',
         ]);
 
-        $passwordReset = DB::table('password_reset_tokens')->where('token', $token)->first();
+        $passwordReset = DB::table('password_reset_tokens')->select('email')->where('token', $token)->first();
         if ($passwordReset === null) {
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
-        $user = User::where('mail', $passwordReset->email)->first();
-        $user->password = Hash::make($request->password);
-        $user->save();
+        User::where('mail', $passwordReset->email)->first()?->changePassword($request->password);
 
         DB::table('password_reset_tokens')->where('token', $token)->delete();
 
