@@ -4,7 +4,7 @@
     <div class="col-span-12">
         <x-content.content-card icon="hotel-icon" classes="max-w-[640px] mx-auto">
             <x-slot:title>
-                Forgot your password?
+                {{ __('Did you forget your password?') }}
             </x-slot:title>
 
             <x-slot:under-title>

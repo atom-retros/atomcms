@@ -24,8 +24,7 @@ class ForgotPasswordController extends Controller
 
         // Do not tell the user that this email does not exist to prevent possible attacks
         if (User::where('mail', $request->mail)->exists()) {
-            // Is an random string enough?
-            $token = Str::random(64);
+            $token = Str::uuid();
             DB::table('password_reset_tokens')->insert([
                 'email' => $request->mail,
                 'token' => $token,
