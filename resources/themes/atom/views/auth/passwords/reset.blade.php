@@ -1,75 +1,52 @@
-<x-guest-layout>
-    <div class="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
-        <div>
-            <a href="/">
-                <x-application-logo class="h-20 w-20 fill-current text-gray-500" />
-            </a>
-        </div>
+<x-app-layout>
+    @push('title', __('Reset password'))
 
-        <div class="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
-            <!-- Session Status -->
-            <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="col-span-12">
+        <x-content.content-card icon="hotel-icon" classes="max-w-[640px] mx-auto">
+            <x-slot:title>
+                Reset password
+            </x-slot:title>
 
-            <!-- Validation Errors -->
-            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+            <x-slot:under-title>
+                {{ __('Choose a new password for your Account.') }}
+            </x-slot:under-title>
 
-            <form method="POST" action="{{ route('password.update') }}">
+            <form method="POST" action="{{ route('reset.password.post', $token) }}">
                 @csrf
 
-                <!-- Password Reset Token -->
-                <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-                <!-- Email Address -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Email') }}
-                    </label>
-
-                    <input id="email" type="email"
-                        class="form-input w-full @error('email') border-red-500 @enderror" name="email"
-                        value="{{ old('email', $request->email) }}" required autocomplete="email">
-
-                    @error('email')
-                        <p class="mt-1 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                </div>
-
                 <!-- Password -->
-                <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Password') }}
-                    </label>
+                <div class="bg-[#efefef] rounded-md p-3 flex flex-col gap-y-6 dark:bg-gray-900">
+                    <div>
+                        <x-form.label for="password">
+                            {{ __('Password') }}
 
-                    <input id="password" type="password"
-                        class="form-input w-full @error('password') border-red-500 @enderror" name="password" required
-                        autocomplete="new-password">
+                            <x-slot:info>
+                                {{ __('Your password must contain atleast 8 characters. Make sure to use a unique & secure password.') }}
+                            </x-slot:info>
+                        </x-form.label>
 
-                    @error('password')
-                        <p class="mt-1 text-xs italic text-red-500">
-                            {{ $message }}
-                        </p>
-                    @enderror
+                        <x-form.input error-bag="register" name="password" type="password"
+                                      placeholder="{{ __('Choose a secure password') }}"/>
+                    </div>
+                    <hr class="dark:border-gray-700">
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <x-form.label for="password_confirmation">
+                            {{ __('Repeat Password') }}
+                        </x-form.label>
+
+                        <x-form.input error-bag="register" name="password_confirmation" type="password"
+                                      placeholder="{{ __('Repeat your chosen password') }}"/>
+                    </div>
                 </div>
 
-                <!-- Confirm Password -->
                 <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Confirm Password') }}
-                    </label>
-
-                    <input id="password-confirm" type="password" class="w-full form-input" name="password_confirmation"
-                        required autocomplete="new-password">
-                </div>
-
-                <div class="mt-4 flex items-center justify-end">
-                    <button type="submit"
-                        class="ml-4 inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white ring-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 focus:border-gray-900 focus:outline-none focus:ring active:bg-gray-900 disabled:opacity-25">
+                    <x-form.primary-button>
                         {{ __('Reset Password') }}
-                    </button>
+                    </x-form.primary-button>
                 </div>
             </form>
-        </div>
+        </x-content.content-card>
     </div>
-</x-guest-layout>
+</x-app-layout>

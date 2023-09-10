@@ -15,6 +15,7 @@ use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
@@ -62,6 +63,12 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::get('/', HomeController::class)->name('welcome');
 
         Route::get('/register/{referral_code}', UserReferralController::class)->name('register.referral');
+
+        // Password
+        Route::get('forgot-password', ForgotPasswordController::class)->name('forgot.password.get');
+        Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPassword'])->name('forgot.password.post');
+        Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword'])->name('reset.password.get');
+        Route::post('reset-password/{token}', [ForgotPasswordController::class, 'submitResetPassword'])->name('reset.password.post');
     });
 
     Route::middleware('auth')->group(function () {
