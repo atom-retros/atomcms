@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 use DB;
+use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
 {
