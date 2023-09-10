@@ -26,8 +26,7 @@
                         </x-form.label>
                     </div>
 
-                    <x-form.input error-bag="register" name="mail" type="email"
-                                  value="{{ old('mail') }}" placeholder="{{ __('Enter your email') }}"/>
+                    <x-form.input name="mail" type="email" placeholder="{{ __('Enter your email') }}"/>
                 </div>
 
                 <div class="mt-4">

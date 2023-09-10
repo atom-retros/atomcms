@@ -1,10 +1,10 @@
 <x-app-layout>
-    @push('title', __('Reset password'))
+    @push('title', __('Reset Password'))
 
     <div class="col-span-12">
         <x-content.content-card icon="hotel-icon" classes="max-w-[640px] mx-auto">
             <x-slot:title>
-                Reset password
+                {{ __('Reset Password') }}
             </x-slot:title>
 
             <x-slot:under-title>
@@ -25,8 +25,7 @@
                             </x-slot:info>
                         </x-form.label>
 
-                        <x-form.input error-bag="register" name="password" type="password"
-                                      placeholder="{{ __('Choose a secure password') }}"/>
+                        <x-form.input name="password" type="password" placeholder="{{ __('Choose a secure password') }}"/>
                     </div>
                     <hr class="dark:border-gray-700">
 
@@ -36,8 +35,7 @@
                             {{ __('Repeat Password') }}
                         </x-form.label>
 
-                        <x-form.input error-bag="register" name="password_confirmation" type="password"
-                                      placeholder="{{ __('Repeat your chosen password') }}"/>
+                        <x-form.input name="password_confirmation" type="password" placeholder="{{ __('Repeat your chosen password') }}"/>
                     </div>
                 </div>
 
