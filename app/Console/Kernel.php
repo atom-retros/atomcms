@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use DB;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -13,6 +15,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+
+        // Delete every 15 minutes old tokens
+        $schedule->call(function() {
+            $date = Carbon::now()->subMinutes(15);
+            DB::table('password_reset_tokens')->where('created_at', '<=', $date)->delete();
+        })->everyFifteenMinutes();
     }
 
     /**
