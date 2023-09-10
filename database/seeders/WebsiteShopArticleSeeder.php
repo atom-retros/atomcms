@@ -105,7 +105,7 @@ class WebsiteShopArticleSeeder extends Seeder
             WebsiteShopArticles::firstOrCreate(['name' => $article['name']], [
                 'name' => $article['name'],
                 'info' => $article['info'],
-                'icon' => $article['icon'],
+                'icon_url' => $article['icon_url'],
                 'color' => $article['color'],
                 'costs' => $article['costs'],
                 'give_rank' => $article['give_rank'] ?? null,
