@@ -9,11 +9,6 @@
                 {{ __('Community') }}
 
                 <x-slot:children>
-                    <x-navigation.dropdown-child :route="route('article.index')">
-                        {{ __('Articles') }}
-                    </x-navigation.dropdown-child>
-
-
                     <x-navigation.dropdown-child :route="route('staff.index')">
                         {{ __('Staff') }}
                     </x-navigation.dropdown-child>
@@ -32,22 +27,22 @@
                 </x-slot:children>
             </x-navigation.dropdown>
 
-            <a href="" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
+            <a href="{{ route('leaderboard.index') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/leaderboard_icon.png') }}" alt="community icon">
                 Leaderboards
             </a>
 
-            <a href="" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
+            <a href="{{ route('article.index') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/news_icon.png') }}" alt="community icon">
                 News
             </a>
 
-            <a href="" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
+            <a href="#" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/events_icon.png') }}" alt="community icon">
                 Events
             </a>
 
-            <a href="" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
+            <a href="{{ route('shop.index') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/store_icon.png') }}" alt="community icon">
                 Store
             </a>

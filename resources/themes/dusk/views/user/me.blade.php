@@ -86,30 +86,9 @@
             <div class="swiper-button-next"></div>
 
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper article-image" style="z-index: 14;">
+            <div class="swiper-wrapper" style="z-index: 14;">
                 @foreach($articles as $article)
-                    <div class="swiper-slide relative" style="background-image: url({{ $article->image }})">
-                        <div class="absolute h-[90px] w-full left-0 bottom-0 bg-[#171a23] bg-opacity-[95%] text-white py-2 px-4">
-                            <h2 class="text-3xl font-bold">
-                                {{ $article->title }}
-                            </h2>
-
-                            <div class="flex justify-between items-center">
-                                <div class="py-1 px-2 rounded-md bg-black/60 text-sm mt-2 flex gap-1 items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                    </svg>
-
-                                    {{ $article->user->username }}
-                                </div>
-
-                                <a href="{{ route('article.show', $article->slug) }}" class="text-sm read-more-link hover:underline">
-                                    Read more
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
+                    <x-article-card :article="$article" />
                 @endforeach
             </div>
         </div>
@@ -119,7 +98,7 @@
        <div
            class="flex flex-col justify-between gap-3 rounded bg-[#2b303c] p-1 shadow-md lg:flex-row">
            <div
-               class="py-2 px-2 relative flex justify-center items-center rounded text-sm font-semibold dark:text-gray-300 bg-[#e9b124] dark:border-gray-700">
+               class="py-2 px-2 relative flex justify-center items-center rounded text-sm font-semibold bg-[#e9b124]">
                <div class="absolute bg-[#e9b124] w-6 h-6 -right-1 rotate-45 invisible lg:visible"></div>
                <img src="{{ asset('/assets/images/icons/online-friends.png') }}" alt="{{ __('Online Friends') }}"
                     class="mr-2 mb-1 inline-flex" style="max-width: 24px; max-height: 24px">
@@ -130,15 +109,15 @@
                @foreach ($onlineFriends as $friend)
                    <div data-popover-target="friend-{{ $friend->username }}"
                         style="image-rendering: pixelated; background-image: url({{ setting('avatar_imager') }}{{ $friend->look }}&direction=2&head_direction=3&gesture=sml&action=wav&headonly=1&size=s)"
-                        class="inline-block h-10 w-10 rounded-full border-2 border-gray-300 bg-center bg-no-repeat dark:border-gray-900">
+                        class="inline-block h-10 w-10 rounded-full border-2 border-gray-300 bg-center bg-no-repeat">
                    </div>
 
                    <div data-popover id="friend-{{ $friend->username }}" role="tooltip"
-                        class="invisible absolute z-10 inline-block w-64 rounded-lg border border-gray-200 bg-white text-sm font-light text-gray-500 opacity-0 shadow-sm transition-opacity duration-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400">
+                        class="invisible absolute z-10 inline-block w-64 rounded-lg border border-gray-200 bg-white text-sm font-light text-gray-500 opacity-0 shadow-sm transition-opacity duration-300">
                        <div
-                           class="rounded-t-lg border-b border-gray-200 bg-gray-100 px-3 py-2 dark:border-gray-600 dark:bg-gray-700">
+                           class="rounded-t-lg border-b border-gray-200 bg-gray-100 px-3 py-2">
                            <div
-                               class="flex w-full items-center justify-center font-semibold text-gray-900 dark:text-white">
+                               class="flex w-full items-center justify-center font-semibold text-gray-900">
                                {{ $friend->username }}
                            </div>
                        </div>
@@ -156,7 +135,7 @@
    </div>
 
     <div class="col-span-12 md:col-span-8">
-        <x-content.content-card icon="hotel-icon" classes="text-white">
+        <x-content.content-card icon="hotel-icon">
             <x-slot:title>
                 {{ sprintf(__('User Referrals (%s/%s)'), auth()->user()->referrals->referrals_total ?? 0, setting('referrals_needed')) }}
             </x-slot:title>
@@ -165,16 +144,16 @@
                 {{ __('Referral new users and be rewarded by in-game goods') }}
             </x-slot:under-title>
 
-            <div class="px-2 text-sm dark:text-gray-200">
+            <div class="text-sm">
                 {{ __('Here at :hotel we have added a referral system, allowing you to obtain a bonus for every :needed users that registers through your referral link will allow you to claim a reward of :amount diamonds!', ['hotel' => setting('hotel_name'), 'needed' => setting('referrals_needed'), 'amount' => setting('referral_reward_amount')]) }}
                 <br>
 
-                <small class="text-gray-400">
+                <small class="text-gray-300">
                     {{ __('Boosting referrals by making own accounts will lead to removal of all progress, currency, inventory and a potential ban') }}
                 </small>
 
-                <div class="grid grid-cols-12 gap-2">
-                    <x-form.input classes="col-span-12 md:col-span-10 text-black" name="referral"
+                <div class="grid grid-cols-12 gap-2 mt-2">
+                    <x-form.input classes="col-span-12 md:col-span-10" name="referral"
                                   value="{{ sprintf('%s/register/%s', config('habbo.site.site_url'), auth()->user()->referral_code) }}"
                                   :autofocus="false" :readonly="true" />
 
@@ -193,7 +172,7 @@
                         </x-form.secondary-button>
                     </a>
                 @else
-                    <button disabled class="mt-2 w-full rounded bg-[#171a23] p-2 text-white dark:bg-gray-900">
+                    <button disabled class="mt-2 w-full rounded bg-[#171a23] p-2 text-white">
                         {{ sprintf(__('You need to refer :needed more users, before being able to claim your reward', ['needed' =>auth()->user()->referralsNeeded() ?? 0]),auth()->user()->referrals->referrals_total ?? 0) }}
                     </button>
                 @endif

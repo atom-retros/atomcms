@@ -15,7 +15,7 @@
 
         <script src="{{ asset('/assets/js/dusk.js') }}"></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased select-none">
         <div id="app" class="min-h-screen bg-[#262a35] relative">
             <x-messages.flash-messages />
 
@@ -57,7 +57,7 @@
 
             <!-- Page Content -->
             <main class="main-content">
-                <div class="max-w-7xl w-full grid grid-cols-12 gap-4 relative py-4 lg:py-[120px] px-4 xl:px-0">
+                <div class="max-w-7xl w-full grid grid-cols-12 gap-4 relative py-4 lg:py-20 px-4 xl:px-0">
                     {{ $slot }}
                 </div>
 
