@@ -86,7 +86,7 @@
             <div class="swiper-button-next"></div>
 
             <!-- Additional required wrapper -->
-            <div class="swiper-wrapper" style="z-index: 14;">
+            <div class="swiper-wrapper article-image" style="z-index: 14;">
                 @foreach($articles as $article)
                     <div class="swiper-slide relative" style="background-image: url({{ $article->image }})">
                         <div class="absolute h-[90px] w-full left-0 bottom-0 bg-[#171a23] bg-opacity-[95%] text-white py-2 px-4">

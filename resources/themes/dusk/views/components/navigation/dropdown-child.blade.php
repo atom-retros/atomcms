@@ -1,5 +1,6 @@
 @props(['route' => '', 'classes' => '', 'target' => '_self'])
 
-<a href="{{ $route }}" target="{{ $target }}" @class(['dropdown-item', $classes])>
+<a href="{{ $route }}" target="{{ $target }}" @class(['
+', $classes])>
     {{ $slot }}
 </a>

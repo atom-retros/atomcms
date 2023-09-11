@@ -2,7 +2,7 @@
     @push('title', __('Welcome to the best hotel on the web!'))
 
 
-    <div class="col-span-12 col-span-6 h-[250px] bg-gray-900/50 rounded-xl flex flex-col py-6 px-8 text-white">
+    <div class="col-span-12 md:col-span-6 h-[250px] bg-gray-900/50 rounded-xl flex flex-col py-6 px-8 text-white">
         <h2 class="text-2xl">Login</h2>
 
         <form action="{{ route('login') }}" method="POST">
@@ -27,7 +27,7 @@
     </div>
 
     {{-- Articles --}}
-    <div class="col-span-12 col-span-6 h-[250px]">
+    <div class="col-span-12 md:col-span-6 h-[250px]">
         <!-- Slider main container -->
         <div class="swiper h-[250px] rounded-md">
 
@@ -41,7 +41,7 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper" style="z-index: 14;">
                 @foreach($articles as $article)
-                    <div class="swiper-slide relative" style="background: url({{ $article->image }});">
+                    <div class="swiper-slide relative article-image" style="background-image: url({{ $article->image }})">
                         <div class="absolute h-[90px] w-full left-0 bottom-0 bg-[#171a23] bg-opacity-[95%] text-white py-2 px-4">
                             <h2 class="text-3xl font-bold">
                                 {{ $article->title }}
@@ -69,7 +69,7 @@
 
     </div>
 
-    <div class="col-span-12 grid grid-cols-4 gap-4">
+    <div class="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         @foreach($photos as $photo)
             <a href="{{ $photo->url }}" data-fancybox="gallery" class="cursor-pointer relative transition duration-300 ease-in-out hover:scale-[102%]">
                 <div class="photo-overlay"></div>

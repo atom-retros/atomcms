@@ -20,13 +20,18 @@
             <x-messages.flash-messages />
 
             {{-- Desktop navigation --}}
-            <x-navigation.navigation-menu />
+            <div class="hidden lg:block">
+                <x-navigation.navigation-menu />
+            </div>
 
 
             {{-- Mobile navigation --}}
+            <div class="block lg:hidden">
+                <x-navigation.mobile-navigation-menu />
+            </div>
 
             {{-- Sub header --}}
-            <div class="sub-header">
+            <div class="sub-header px-5 xl:px-0">
                 <div class="max-w-7xl w-full h-[40px] flex items-center justify-between">
                     <div class="flex gap-4 items-center z-20 relative">
                         <div>
@@ -52,7 +57,7 @@
 
             <!-- Page Content -->
             <main class="main-content">
-                <div class="max-w-7xl w-full grid grid-cols-12 gap-4 relative py-4 lg:py-[120px] px-4 lg:px-0">
+                <div class="max-w-7xl w-full grid grid-cols-12 gap-4 relative py-4 lg:py-[120px] px-4 xl:px-0">
                     {{ $slot }}
                 </div>
 

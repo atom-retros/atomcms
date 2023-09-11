@@ -28,11 +28,11 @@
     x-on:mouseleave="isTouchDevice ? false : toggle()"
     x-on:click="isTouchDevice ? toggle() : false"
     @class([
-        'relative h-auto font-semibold transition duration-300 ease-in-out z-[50]',
+        'relative h-auto font-semibold transition duration-300 ease-in-out z-5',
         'active' => request()->is($routeGroup),
         $classes,
     ])
-    >
+>
     <!-- Button -->
     <button
         x-ref="button"
@@ -68,7 +68,7 @@
         x-on:click.outside="close($refs.button)"
         :id="$id('dropdown-button')"
         style="display: none;"
-        @class(['absolute left-0 rounded bg-[#ac93da] shadow whitespace-nowrap overflow-hidden z-10 flex flex-col py-2 items-center gap-2 dropdown-children mt-1', $childClasses])
+        @class(['absolute left-0 rounded bg-[#ac93da] shadow whitespace-nowrap overflow-hidden z-[100] flex flex-col py-2 items-center gap-2 dropdown-children mt-1', $childClasses])
     >
         {{ $children }}
     </div>
