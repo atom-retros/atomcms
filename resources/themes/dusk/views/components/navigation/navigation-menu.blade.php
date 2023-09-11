@@ -66,7 +66,7 @@
                             {{ __('Account settings') }}
                         </x-navigation.dropdown-child>
 
-                        <button class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700 w-full text-left" @click.stop.prevent="document.getElementById('logout-form').submit();">
+                        <button class="dropdown-item" @click.stop.prevent="document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </button>
 

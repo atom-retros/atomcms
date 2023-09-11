@@ -6,7 +6,7 @@
 
 @layer components {
     .dropdown-item {
-        @apply w-full px-2 py-1 transition duration-200 ease-in-out text-sm hover:bg-[#957cc3];
+        @apply w-full text-left px-2 py-1 transition duration-200 ease-in-out text-sm hover:bg-[#8770b2];
     }
 }
 
