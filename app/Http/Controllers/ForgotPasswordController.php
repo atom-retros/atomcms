@@ -65,7 +65,7 @@ class ForgotPasswordController extends Controller
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
-        $prt->user?->changePassword($request->password);
+        $prt->user->changePassword($request->password);
         $prt->delete();
 
         return to_route('login')->with('success', __('Your password has been successfully reset!'));
