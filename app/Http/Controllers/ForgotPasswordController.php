@@ -43,8 +43,8 @@ class ForgotPasswordController extends Controller
         if ($prt === null) {
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
-        $date = Carbon::now()->subMinutes(config('habbo.password_reset_token_time'));
-        if ($prt->created_at->gte($date)) { // gte = greater than or equals
+        $tokenExpiration = Carbon::now()->subMinutes(config('habbo.password_reset_token_time'));
+        if ($prt->created_at->gte($tokenExpiration)) { // gte = greater than or equals
             $prt->delete();
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
