@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use DB;
 use Mail;
-use Carbon\Carbon;
 
 use App\Models\User;
+use App\Models\PasswordResetToken;
 
 class ForgotPasswordController extends Controller
 {
@@ -24,7 +24,7 @@ class ForgotPasswordController extends Controller
         // Do not tell the user that this email does not exist to prevent possible attacks
         if (User::where('mail', $request->mail)->exists()) {
             $token = Str::uuid();
-            DB::table('password_reset_tokens')->insert([
+            PasswordResetToken::create([
                 'email' => $request->mail,
                 'token' => $token,
                 'created_at' => Carbon::now(),
@@ -40,7 +40,13 @@ class ForgotPasswordController extends Controller
     }
 
     public function showResetPassword(Request $request, string $token) {
-        if (!DB::table('password_reset_tokens')->where('token', $token)->exists()) {
+        $prt = PasswordResetToken::select('token', 'created_at')->where('token', $token)->first();
+        if ($prt === null) {
+            return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
+        }
+        $date = Carbon::now()->subMinutes(config('habbo.password_reset_token_time'));
+        if ($prt->created_at->gte($date)) { // gte = greater than or equals
+            $prt->delete();
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
@@ -55,14 +61,13 @@ class ForgotPasswordController extends Controller
             'password_confirmation' => 'required',
         ]);
 
-        $passwordReset = DB::table('password_reset_tokens')->select('email')->where('token', $token)->first();
-        if ($passwordReset === null) {
+        $prt = PasswordResetToken::select('email', 'token')->where('token', $token)->first();
+        if ($prt === null) {
             return to_route('forgot.password.get')->withErrors('message', __('This token has expired!'));
         }
 
-        User::where('mail', $passwordReset->email)->first()?->changePassword($request->password);
-
-        DB::table('password_reset_tokens')->where('token', $token)->delete();
+        $prt->user?->changePassword($request->password);
+        $prt->delete();
 
         return to_route('login')->with('success', __('Your password has been successfully reset!'));
     }
