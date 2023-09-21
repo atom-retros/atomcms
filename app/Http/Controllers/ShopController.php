@@ -49,11 +49,12 @@ class ShopController extends Controller
 
     public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
-        if ($package->give_rank && $user->rank >= $package->give_rank) {
+
+        if ($package->give_rank !== 0 && $user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
                 ['message' => __('You are already this or a higher rank')],
             );
-        }
+        }        
 
         if ($user->website_balance < $package->price()) {
             return to_route('shop.index')->withErrors(
@@ -70,12 +71,12 @@ class ShopController extends Controller
 
         DB::transaction(function () use ($user, $rcon, $package, $sendCurrency) {
             $user->decrement('website_balance', $package->price());
-
+        
             $sendCurrency->execute($user, 'credits', $package->credits);
             $sendCurrency->execute($user, 'duckets', $package->duckets);
             $sendCurrency->execute($user, 'diamonds', $package->diamonds);
-
-            if ($package->give_rank) {
+        
+            if ($package->give_rank !== 0) { // Check if give_rank is not zero
                 if ($rcon->isConnected) {
                     $rcon->setRank($user, $package->give_rank);
                     $rcon->disconnectUser($user);
@@ -85,15 +86,15 @@ class ShopController extends Controller
                     ]);
                 }
             }
-
+        
             if ($package->badges) {
                 $this->giveBadges($user, $package->badges);
             }
-
+        
             if ($package->furniture) {
                 $this->handleFurniture(json_decode($package->furniture, true));
             }
-        });
+        });        
 
         return to_route('shop.index')->with('success', __('Successful!'));
     }
