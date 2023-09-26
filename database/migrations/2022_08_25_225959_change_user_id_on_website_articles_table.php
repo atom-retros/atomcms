@@ -15,7 +15,7 @@ return new class extends Migration
         }
 
         Schema::table('website_articles', function (Blueprint $table) {
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->nullable()->change();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }
