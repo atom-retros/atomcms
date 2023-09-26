@@ -24,6 +24,6 @@ class WebsiteLanguageSeeder extends Seeder
             ['country_code' => 'no', 'language' => 'Norwegian'],
         ];
 
-        WebsiteLanguage::upsert($languages, ['country_code', 'language']);
+        WebsiteLanguage::query()->upsert($languages, ['country_code']);
     }
 }
