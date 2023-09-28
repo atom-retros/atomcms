@@ -1,9 +1,10 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\{assertAuthenticated, get, post};
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+uses(RefreshDatabase::class,);
 
 test('registration screen can be rendered', function () {
     $response = get('/register');
@@ -13,10 +14,11 @@ test('registration screen can be rendered', function () {
 
 test('new users can register', function () {
     $response = post('/register', [
-        'name' => 'Test User',
-        'email' => 'test@example.com',
+        'username' => 'Test_User',
+        'mail' => 'test@example.com',
         'password' => 'password',
         'password_confirmation' => 'password',
+        'terms' => true,
     ]);
 
     assertAuthenticated();

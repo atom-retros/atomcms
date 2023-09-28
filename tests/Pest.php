@@ -11,6 +11,9 @@
 |
 */
 
+use App\Models\WebsiteInstallation;
+use App\Models\WebsiteSetting;
+
 uses(Tests\TestCase::class)->in('Feature');
 
 /*
@@ -39,7 +42,13 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function installHotel(): void
 {
-    // ..
+    WebsiteInstallation::query()->insert(['completed' => true, 'installation_key' => 'key']);
+
+    WebsiteSetting::query()->insert([
+        'key' => 'max_accounts_per_ip',
+        'value' => 10,
+        'comment' => '',
+    ]);
 }
