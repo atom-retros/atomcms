@@ -80,7 +80,7 @@ class CreateNewUser implements CreatesNewUsers
         }
 
         // Referral
-        if ($input['referral_code']) {
+        if (isset($input['referral_code'])) {
             $referralUser = User::query()
                 ->where('referral_code', '=', $input['referral_code'])
                 ->first();
