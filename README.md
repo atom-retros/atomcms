@@ -149,6 +149,11 @@ APP_ENV=local to APP_ENV=production
 APP_DEBUG=true to APP_DEBUG=false
 ```
 
+### Testing
+AtomCMS contains a small, but growing set of tests. To get started with tests, you have to have a file called `testing.sqlite` in the `database` directory. You can simply create an empty file with that name, and you will be all set!
+
+To run all tests, run `vendor/bin/pest`. You can also use `php artisan test`
+
 ### 🔒️ Using HTTPS
 In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, you should set `FORCE_HTTPS=` within your `.env` file to `true` this it to make sure everything is properly using HTTPs. This is necessary for some features in Atom CMS to work properly when you're letting cloudflare handle the HTTPs redirects without a dedicated SSL certificate.
 
