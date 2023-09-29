@@ -1,10 +1,7 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use function Pest\Laravel\{assertAuthenticated, get, post};
-
-uses(RefreshDatabase::class,);
 
 test('registration screen can be rendered', function () {
     $response = get('/register');

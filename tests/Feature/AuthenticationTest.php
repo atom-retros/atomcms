@@ -4,8 +4,6 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use function Pest\Laravel\{get, post, assertGuest, assertAuthenticated};
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
-
 test('login screen can be rendered', function () {
     $response = get('/login');
 

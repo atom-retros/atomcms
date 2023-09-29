@@ -13,8 +13,10 @@
 
 use App\Models\WebsiteInstallation;
 use App\Models\WebsiteSetting;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-uses(Tests\TestCase::class)->in('Feature');
+uses(TestCase::class, RefreshDatabase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
