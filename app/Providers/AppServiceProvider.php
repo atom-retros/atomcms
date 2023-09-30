@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
+use Srmklive\PayPal\Services\PayPal as PaypalClient;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,14 @@ class AppServiceProvider extends ServiceProvider
             RconService::class,
             fn () => new RconService()
         );
+
+        $this->app->bind(PaypalClient::class, function () {
+            $client = new PaypalClient();
+            $client->setApiCredentials(config('habbo.paypal'));
+            $client->getAccessToken();
+
+            return $client;
+        });
     }
 
     /**
