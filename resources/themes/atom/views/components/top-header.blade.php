@@ -43,10 +43,10 @@
                         </x-navigation.dropdown-child>
                     @endif
 
-                    @if (hasPermission('housekeeping_access'))
-                        <x-navigation.dropdown-child :route="setting('housekeeping_url')" :turbolink="false" target="_blank">
+                    @if(hasPermission('housekeeping_access'))
+                        <a data-turbolinks="false" href="{{ setting('housekeeping_url') }}" target="_blank" class="dropdown-item dark:text-gray-200 dark:hover:bg-gray-700">
                             {{ __('Housekeeping') }}
-                        </x-navigation.dropdown-child>
+                        </a>
                     @endif
                 </x-slot:children>
             </x-navigation.dropdown>
