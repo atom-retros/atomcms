@@ -8,14 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        dropForeignKeyIfExists('website_articles', 'user_id');
-
-        if (Schema::hasColumn('website_articles', 'user_id')) {
-            Schema::dropColumns('website_articles', 'user_id');
-        }
-
         Schema::table('website_articles', function (Blueprint $table) {
-            $table->integer('user_id')->nullable();
+            $table->integer('user_id')->nullable()->change();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
     }

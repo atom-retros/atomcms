@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        dropForeignKeyIfExists('users', 'team_id');
 
         if (Schema::hasColumn('users', 'team_id')) {
+            dropForeignKeyIfExists('users', 'team_id');
             Schema::dropColumns('users', 'team_id');
         }
 

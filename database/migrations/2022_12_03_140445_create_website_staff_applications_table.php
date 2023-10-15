@@ -8,10 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        dropForeignKeyIfExists('website_staff_applications', 'user_id');
-        dropForeignKeyIfExists('website_staff_applications', 'rank_id');
-
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_staff_applications')) {
+            dropForeignKeyIfExists('website_staff_applications', 'user_id');
+            dropForeignKeyIfExists('website_staff_applications', 'rank_id');
             Schema::rename('website_staff_applications', sprintf('website_staff_applications_%s', time()));
         }
 

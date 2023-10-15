@@ -8,20 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
+        DB::table('website_permissions')->truncate();
         Schema::table('website_permissions', function (Blueprint $table) {
-            DB::table('website_permissions')->truncate();
+            $table->renameColumn('key', 'permission');
+        });
 
-            if (Schema::hasColumn('website_permissions', 'key')) {
-                $table->renameColumn('key', 'permission');
-            }
+        Schema::table('website_permissions', function (Blueprint $table) {
+            $table->renameColumn('value', 'min_rank');
+        });
 
-            if (Schema::hasColumn('website_permissions', 'value')) {
-                $table->renameColumn('value', 'min_rank');
-            }
-
-            if (Schema::hasColumn('website_permissions', 'comment')) {
-                $table->renameColumn('comment', 'description');
-            }
+        Schema::table('website_permissions', function (Blueprint $table) {
+            $table->renameColumn('comment', 'description');
         });
     }
 };

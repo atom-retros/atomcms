@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        dropForeignKeyIfExists('website_article_reactions', 'article_id');
-
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('website_article_reactions')) {
+            dropForeignKeyIfExists('website_article_reactions', 'article_id');
             Schema::rename('website_article_reactions', sprintf('website_article_reactions_%s', time()));
         }
 

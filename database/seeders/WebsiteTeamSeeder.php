@@ -15,6 +15,6 @@ class WebsiteTeamSeeder extends Seeder
             ['rank_name' => 'Event planner'],
         ];
 
-        WebsiteTeam::query()->upsert($teams, ['name']);
+        WebsiteTeam::query()->upsert($teams, ['rank_name']);
     }
 }

@@ -8,9 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        dropForeignKeyIfExists('user_referrals', 'user_id');
-
         if (config('habbo.migrations.rename_tables') && Schema::hasTable('user_referrals')) {
+            dropForeignKeyIfExists('user_referrals', 'user_id');
             Schema::rename('user_referrals', sprintf('user_referrals_%s', time()));
         }
 
