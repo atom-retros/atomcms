@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
@@ -176,6 +177,11 @@ class User extends Authenticatable
         return $this->hasMany(WebsiteHelpCenterTicket::class);
     }
 
+    public function noobGifts(): HasMany
+    {
+        return $this->hasMany(CmsNoobGift::class);
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
@@ -206,5 +212,10 @@ class User extends Authenticatable
     public function hasAppliedForPosition(int $rankId)
     {
         return $this->applications()->where('rank_id', '=', $rankId)->exists();
+    }
+
+    public function changePassword(string $newPassword) {
+        $this->password = Hash::make($newPassword);
+        $this->save();
     }
 }

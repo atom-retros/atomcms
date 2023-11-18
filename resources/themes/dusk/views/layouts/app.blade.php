@@ -64,10 +64,10 @@
             </main>
         </div>
 
-        {{-- Footer --}}
-        <footer class="w-full h-14 flex items-center justify-center bg-gray-900 text-gray-400 font-bold">
-            &copy {{ date('Y') }} Atom CMS
-        </footer>
+        <x-footer />
+
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 
         @stack('javascript')
     </body>

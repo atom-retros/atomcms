@@ -8,21 +8,11 @@
     </a>
 </div>
 
-## Table of Contents
-- [Disclaimer](#disclaimer)
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [Learning Laravel](#learning-laravel)
-- [Why Atom CMS?](#why-atom-cms)
-- [Migrating from Another CMS](#migrating-from-another-cms)
-- [Setup Guide](#setup-guide)
-    - [Requirements](#requirements)
-    - [Windows Setup](#windows-setup)
-    - [Linux Setup](#linux-setup)
-- [Using HTTPS](#using-https)
-- [Disable Rocket Loader](#disable-rocket-loader)
-- [Feature Add-ons](#feature-add-ons)
-- [Credits](#credits)
+### 📢 Disclaimer
+Please note that Atom CMS is created as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any use outside the stated or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
+
+### 💙 A Community-Driven Retro CMS
+The creation of Atom CMS was driven by the desire to widen the options available for people when choosing what CMS to use for their new journey. By valuing community input and collaboration, Atom aims to offer a modern and user-friendly system that is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system allowing you the flexibility to use any CSS framework you prefer or even opt for a fully customized vanilla approach. This enables you to tailor the CMS to your specific needs and preferences, ensuring a truly unique user experience.
 
 ### 🚀 The cool tech behind Atom CMS
 
@@ -37,33 +27,8 @@ If you wish to support my work, you can click the button below to "buy me a coff
 
 <a href="https://www.buymeacoffee.com/dennisobject" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-### 📢 Disclaimer
-
-Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
-
-### 💙 A Community-Driven Retro CMS
-The creation of Atom CMS was driven by the desire to widen the options available for people when choosing a CMS for their new journey. By valuing community input and collaboration, Atom aims to offer a modern and user-friendly system that is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system allowing you the flexibility to use any CSS framework you prefer or even opt for a fully customized vanilla approach. This enables you to tailor the platform to your specific needs and preferences, ensuring a truly unique user experience.
-
-
-Check out the fantastic trio that brings it all together:
-- **PHP (Laravel 10.x)**: At the core of Atom CMS lies Laravel 10.x, a modern and elegant PHP framework that simplifies the development process. Laravel's extensive documentation can be found [here](https://laravel.com/docs/9.x).
-- **Vite**: As a next-generation frontend build tool, Vite empowers Atom CMS with lightning-fast development and production speeds. Dive into the Vite documentation [here](https://vitejs.dev/) to explore its full potential.
-- **TailwindCSS**: To ensure a visually stunning and responsive design, Atom CMS incorporates TailwindCSS, a utility-first CSS framework. Learn more about TailwindCSS and its installation process from the official [docs](https://tailwindcss.com/docs/installation)
-
-
-### 🧙‍♂️ Learning Laravel
-
-If you are new to Laravel and want to build your own features, we highly recommend the following free resources:
-
-- Laravel Bootcamp: [https://bootcamp.laravel.com/](https://bootcamp.laravel.com/)
-- Laravel 8 from Scratch: [https://laracasts.com/series/laravel-8-from-scratch](https://laracasts.com/series/laravel-8-from-scratch)
-- What's New in Laravel 9: [https://laracasts.com/series/whats-new-in-laravel-9](https://laracasts.com/series/whats-new-in-laravel-9)
-
-Laracasts is an official learning platform for Laravel, so you can trust the quality of the content and learn best practices from some of the best and most experienced teacher within the field.
-
 ### 🤝 Migrating from Another CMS
-
-If you're migrating from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
+If you're migrating from another CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
 
 Even tho we **highly recommend** to do a proper cleanup yourself, Atom CMS has a built-in option to rename colliding table names and drop matching foreign keys.
 
@@ -74,7 +39,7 @@ All you have to do is to change `RENAME_COLLIDING_TABLES=false` to `RENAME_COLLI
 - MySQL >= 8.x or  MariaDB >= 10.x
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
-- An Arcturus Morningstar database [Database repository](https://git.krews.org/morningstar/arcturus-morningstar-base-database)
+- An Arcturus Morningstar database [Database repository](https://github.com/ObjectRetros/2023-hotel-files)
 
 Please verify the following extensions are enabled inside your php.ini file. If they have a ";" in front of them it means that they're commented out and not enabled. Simply remove the ";" to enable them.
 ```ini
@@ -164,27 +129,44 @@ As Atom CMS comes packed with **tons** of features, to improve the CMS experienc
 
 You can find the documentation, addons, and tips & tricks on **[https://retros.guide/docs/category/atom-cms](https://retros.guide/docs/category/atom-cms)**
 
+### Testing
+AtomCMS contains a small, but growing set of tests. To get started with tests, you have to have a file called `testing.sqlite` in the `database` directory. You can simply create an empty file with that name, and you will be all set!
+
+To run all tests, run `vendor/bin/pest`. You can also use `php artisan test`
+
+### 🧙‍♂️ Learning Laravel
+If you are new to Laravel and want to build your own features, we highly recommend digging into the depths of Laravel. Below we have listed three **free** learning resources:
+
+- Laravel Bootcamp: [https://bootcamp.laravel.com/](https://bootcamp.laravel.com/)
+- Laravel 8 from Scratch: [https://laracasts.com/series/laravel-8-from-scratch](https://laracasts.com/series/laravel-8-from-scratch)
+- What's New in Laravel 9: [https://laracasts.com/series/whats-new-in-laravel-9](https://laracasts.com/series/whats-new-in-laravel-9)
+- What's New in Laravel 10: [https://laracasts.com/series/whats-new-in-laravel-10](https://laracasts.com/series/whats-new-in-laravel-10)
+
+Laracasts is an official learning platform for Laravel, so you can trust the quality of the content and learn best practices from some of the best and most experienced teacher within the field.
+
 ### 🔥 Credits
 Atom CMS is made possible by the contributions of numerous developers, designers, and community members.
-
--   **Kasja** - Helping with design, ideas & GFX
+-   **Kasja** - Designing Dusk theme, helping with general design, Fonts for the logo generator, ideas & GFX
 -   **Nicollas** - Dark mode, Turbolinks, Performance improvements, Article reactions, User sessions, Layout improvements & PT-BR translations
--   **Dominic** - Performance improvements & User sessions
--   **Oliver** - Profile page & Finnish translations
+-   **Dominic/Mikkel** - Performance improvements & User sessions
+-   **EntenKoeniq** - Automatic language registration, rooms page, profile page fixes & Paypal shop contributions,
+-   **Kani** - Rcon System & Findretros API
 -   **Beny** - Findretros API fixes & CF Fixes
 -   **Live** - French translations, bugfixes & tweaks
 -   **MisterDeen** - Custom Discord widget, bugfixes & tweaks
--   **EntenKoeniq#0001** - Automatic language registration, auto color scheme selection, rooms page & profile page fixes,
+-   **Assholic** - Fonts for the logo generator
 -   **DamienJolly** - Bugfixes
 -   **Danbo** - Bugfixes
 -   **Diddy/Josh** - Code readability improvements
--   **Damue & EntenKoeniq#0001** - German translations
+-   **Oliver** - Finnish translations
+-   **Damue & EntenKoeniq** - German translations
 -   **Talion** - Turkish translations
 -   **CentralCee, Rille & Tuborgs** - Swedish translations
 -   **Yannick** - Netherland translations
 -   **Gedomi** - Spanish translations
 -   **Lorenzune** - Italian translations
 -   **Twana** - Norwegian translations
--   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus
+
+*In-case you're missing from the credits list, please reach out to me through the Atom Discord, so we can have you added.*

@@ -14,16 +14,28 @@
             <div class="px-2 text-sm dark:text-gray-200">
                 <div x-data="logoGenerator()" class="mt-4">
                     <div class="grid grid-cols-6 gap-3">
-                        <div x-bind:class="{'bg-gray-200 ring-2 ring-emerald-700 ring-offset-2': fontType === 'atom'}" class="h-24 rounded border border-gray-300 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 cursor-pointer" x-on:click="selectFont('atom')">
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'atom'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('atom')">
                             <img src="{{ asset('/assets/images/logo-generator/atom/a.png') }}" alt="Letter a">
                             <img src="{{ asset('/assets/images/logo-generator/atom/b.png') }}" alt="Letter b">
                             <img src="{{ asset('/assets/images/logo-generator/atom/c.png') }}" alt="Letter c">
                         </div>
 
-                        <div x-bind:class="{'bg-gray-200 ring-2 ring-emerald-700 ring-offset-2': fontType === 'sunrise'}" class="h-24 rounded border border-gray-300 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 cursor-pointer" x-on:click="selectFont('sunrise')">
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'sunrise'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('sunrise')">
                             <img src="{{ asset('/assets/images/logo-generator/sunrise/a.png') }}" alt="Letter a">
                             <img src="{{ asset('/assets/images/logo-generator/sunrise/b.png') }}" alt="Letter b">
                             <img src="{{ asset('/assets/images/logo-generator/sunrise/c.png') }}" alt="Letter c">
+                        </div>
+
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'marine'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('marine')">
+                            <img src="{{ asset('/assets/images/logo-generator/marine/a.png') }}" alt="Letter a">
+                            <img src="{{ asset('/assets/images/logo-generator/marine/b.png') }}" alt="Letter b">
+                            <img src="{{ asset('/assets/images/logo-generator/marine/c.png') }}" alt="Letter c">
+                        </div>
+
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'danlie'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('danlie')">
+                            <img src="{{ asset('/assets/images/logo-generator/danlie/a.png') }}" alt="Letter a">
+                            <img src="{{ asset('/assets/images/logo-generator/danlie/b.png') }}" alt="Letter b">
+                            <img src="{{ asset('/assets/images/logo-generator/danlie/c.png') }}" alt="Letter c">
                         </div>
                     </div>
 

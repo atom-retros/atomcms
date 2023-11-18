@@ -14,6 +14,10 @@
     outline: none;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 #app {
     min-height: calc(100vh - 3.5rem);
 }
@@ -214,4 +218,26 @@ img {
     background-position: right;
     margin: 0 0 20px;
     transition: .3s;
+}
+
+.leaderboard-position {
+    color: transparent;
+    height: 25px;
+    width: 25px;
+
+    &.first {
+        background-image: url("/public/assets/images/leaderboards/trophy-gold.png");
+    }
+
+    &.second {
+        background-image: url("/public/assets/images/leaderboards/trophy-silver.png");
+    }
+
+    &.third {
+        background-image: url("/public/assets/images/leaderboards/trophy-bronze.png");
+    }
+}
+
+.leaderboard-background {
+    background-image: url("/public/assets/images/dusk/leaderboard_circle_image.png");
 }

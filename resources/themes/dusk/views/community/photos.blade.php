@@ -1,25 +1,19 @@
 <x-app-layout>
     @push('title', __('Photos'))
 
-    <div class="col-span-12">
-        <x-content.content-card icon="camera-icon">
-            <x-slot:title>
-                {{ __('Latest Photos') }}
-            </x-slot:title>
+    <div class="col-span-12 space-y-6">
+        <x-page-header>
+            <x-slot:icon>
+                <img src="{{ asset('/assets/images/dusk/camera_icon.png') }}" alt="">
+            </x-slot:icon>
 
-            <x-slot:under-title>
-                {{ __('Have a look at some of the great moments captured by users around the hotel.') }}
-            </x-slot:under-title>
+            Photos
+        </x-page-header>
 
-            <x-photos :photos="$photos" />
-        </x-content.content-card>
-
-        {{ $photos->links() }}
+        <div class="col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            @foreach ($photos as $photo)
+               <x-photo :photo="$photo" />
+            @endforeach
+        </div>
     </div>
-
-    @push('javascript')
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-    @endpush
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 </x-app-layout>
