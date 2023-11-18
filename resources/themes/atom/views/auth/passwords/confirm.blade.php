@@ -19,7 +19,7 @@
                 @csrf
 
                 <!-- Password -->
-                <div class="flex flex-col gap-y-2">
+                <div class="flex flex-col gap-y-2 mb-3">
                     <div>
                         <x-form.label for="password">
                             {{ __('Password') }}
@@ -36,6 +36,14 @@
 
                 @if (setting('google_recaptcha_enabled'))
                     <div class="mt-4 g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                @endif
+
+                @if (setting('cloudflare_turnstile_enabled'))
+                    <x-turnstile-widget
+                        language="en-US"
+                        size="normal"
+                        callback="callbackFunction"
+                        errorCallback="errorCallbackFunction"/>
                 @endif
 
                 <div class="mt-4">
