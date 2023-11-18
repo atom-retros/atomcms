@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "coderflex/laravel-turnstile": "^1.0",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^10.0",

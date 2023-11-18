@@ -250,6 +250,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '',
                 'comment' => 'The URL provided by discord to send a webhook request',
             ],
+            [
+                'key' => 'cloudflare_turnstile_enabled',
+                'value' => '1',
+                'comment' => 'Determines whether cloudflare turnstile is enabled or not',
+            ],
         ];
 
         foreach ($settings as $setting) {
@@ -260,9 +265,17 @@ class WebsiteSettingsSeeder extends Seeder
             ]);
         }
 
+        $recaptchaEnabled = WebsiteSetting::where('key', 'google_recaptcha_enabled')->first();
+
         // This is done to update the rare values key for existing applications
         WebsiteSetting::where('key', 'rare_values_icons_path')->update([
             'key' => 'furniture_icons_path',
         ]);
+
+        if ($recaptchaEnabled->value === '1') {
+            WebsiteSetting::where('key', 'cloudflare_turnstile_enabled')->update([
+                'value' => '0',
+            ]);
+        }
     }
 }

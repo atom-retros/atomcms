@@ -65,14 +65,26 @@
         {{-- Content --}}
         <main class="overflow-hidden site-bg">
             <div class="mx-auto mt-10 grid max-w-7xl grid-cols-12 gap-x-3 gap-y-8 p-6 md:mt-0">
-
-
                 {{ $slot }}
             </div>
         </main>
     </div>
 
     <x-footer />
+
+    @if (setting('cloudflare_turnstile_enabled'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const turnstileWidget = document.querySelector('#cf-turnstile-widget');
+                const theme = localStorage.getItem('theme');
+
+                if (turnstileWidget && theme) {
+                    turnstileWidget.setAttribute('data-theme', theme);
+                }
+            });
+        </script>
+    @endif
+
 
     @if (setting('cms_color_mode') === 'dark')
         <script>
@@ -81,6 +93,12 @@
                 localStorage.setItem("theme", 'dark');
             }
         </script>
+    @endif
+
+    @if (setting('google_recaptcha_enabled'))
+        @push('javascript')
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        @endpush
     @endif
 
     <script defer src="{{ asset('assets/js/alpine-ui.js') }}"></script>

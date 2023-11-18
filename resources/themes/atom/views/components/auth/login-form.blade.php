@@ -29,6 +29,16 @@
         <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
     @endif
 
+    @if (setting('cloudflare_turnstile_enabled'))
+        <x-turnstile-widget
+            language="en-US"
+            size="normal"
+            callback="callbackFunction"
+            errorCallback="errorCallbackFunction"
+            ck
+        />
+    @endif
+
     <x-form.primary-button>
         {{ __('Login') }}
     </x-form.primary-button>

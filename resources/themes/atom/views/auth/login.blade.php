@@ -43,6 +43,15 @@
                         </div>
                     @endif
 
+                    @if (setting('cloudflare_turnstile_enabled'))
+                        <x-turnstile-widget
+                            language="en-US"
+                            size="normal"
+                            callback="callbackFunction"
+                            errorCallback="errorCallbackFunction"
+                        />
+                    @endif
+
                     <div class="mt-4">
                         <x-form.primary-button>
                             {{ __('Login') }}
@@ -52,10 +61,4 @@
             </x-content.content-card>
         </div>
     </div>
-
-    @if (setting('google_recaptcha_enabled'))
-        @push('javascript')
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        @endpush
-    @endif
 </x-app-layout>

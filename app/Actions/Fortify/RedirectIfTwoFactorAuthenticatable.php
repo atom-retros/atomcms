@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\User;
 use App\Rules\GoogleRecaptchaRule;
+use App\Rules\TurnstileCheck;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -172,13 +173,20 @@ class RedirectIfTwoFactorAuthenticatable
 
     private function validate(Request $request): array
     {
-        $rules = [
-            'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
-        ];
+        $rules = [];
+
+        if (setting('google_recaptcha_enabled')) {
+            $rules['g-recaptcha-response'] = ['sometimes', 'string', new GoogleRecaptchaRule()];
+        }
+
+        if (setting('cloudflare_turnstile_enabled')) {
+            $rules['cf-turnstile-response'] = [new TurnstileCheck()];
+        }
 
         $messages = [
-            'g-recaptcha-response.required' => __('The Google recaptcha must be completed'),
-            'g-recaptcha-response.string' => __('The google recaptcha was submitted with an invalid type'),
+            'g-recaptcha-response.required' => __('The Google reCAPTCHA must be completed'),
+            'g-recaptcha-response.string' => __('The Google reCAPTCHA was submitted with an invalid type'),
+            'cf-turnstile-response.required' => __('The Cloudflare Turnstile response is required'),
         ];
 
         return Validator::make($request->all(), $rules, $messages)->validate();
