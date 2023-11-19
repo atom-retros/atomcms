@@ -56,7 +56,7 @@
 
                         <p class="text-sm uppercase text-opacity-80">{{ __('Or') }}</p>
 
-                        <a href="{{ route('register') }}">
+                        <a data-turbolinks="false" href="{{ route('register') }}">
                             <button
                                 class="uppercase bg-green-600 bg-opacity-80 px-8 py-2.5 rounded-full transition ease-in-out duration-200 hover:bg-opacity-100">
                                 {{ __('Create an account') }}
