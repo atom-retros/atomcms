@@ -8,6 +8,7 @@ use App\Models\WebsiteBetaCode;
 use App\Providers\RouteServiceProvider;
 use App\Rules\BetaCodeRule;
 use App\Rules\GoogleRecaptchaRule;
+use App\Rules\TurnstileCheck;
 use App\Rules\WebsiteWordfilterRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -120,6 +121,7 @@ class CreateNewUser implements CreatesNewUsers
             'beta_code' => ['sometimes', 'string', new BetaCodeRule],
             'terms' => ['required', 'accepted'],
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
+            'cf-turnstile-response' => [new TurnstileCheck()],
         ];
 
         $messages = [
