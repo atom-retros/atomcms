@@ -16,7 +16,7 @@
         "jenssegers/agent": "^2.6",
         "laravel/fortify": "^1.16",
         "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
+        "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "opcodesio/log-viewer": "^1.9",
         "qirolab/laravel-themer": "^2.0",
