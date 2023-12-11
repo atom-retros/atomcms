@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => env('FORTIFY_PREFIX', ''),
 
     'domain' => null,
 
