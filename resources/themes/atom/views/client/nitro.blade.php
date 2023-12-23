@@ -38,7 +38,7 @@
             <span id="online-count"></span>
         </x-client.client-button>
     </div>
-    <iframe id="nitro" src="{{ sprintf('%s/index.html?sso=%s', config('habbo.client.nitro_path'), $sso) }}"
+    <iframe id="nitro" src="{{ sprintf('%s/index.html?sso=%s', setting('nitro_path'), $sso) }}"
         class="absolute top-0 left-0 m-0 h-full w-full overflow-hidden border-none p-0"></iframe>
 
     {{-- Show disconnected message on client if the user has been disconnected --}}
