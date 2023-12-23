@@ -3,7 +3,7 @@
 return [
     'site' => [
         'site_url' => env('APP_URL', 'http://localhost'),
-        'default_name' => env('APP_NAME', 'New-Hotel'),
+        'default_name' => env('APP_NAME', 'Atom'),
         'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
         'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
         'convert_passwords' => env('CONVERT_PASSWORDS'),
