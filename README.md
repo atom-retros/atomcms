@@ -124,7 +124,11 @@ To run all tests, run `vendor/bin/pest`. You can also use `php artisan test`
 In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, you should set `FORCE_HTTPS=` within your `.env` file to `true` this it to make sure everything is properly using HTTPs. This is necessary for some features in Atom CMS to work properly when you're letting cloudflare handle the HTTPs redirects without a dedicated SSL certificate.
 
 ### 🔒️ Settings up Cloudflare turnstile captcha
+<<<<<<< HEAD
 To set up the cloudflare turnstile captcha, to avoid potential bots from mass spamming your hotel, you'll first have to go to [https://www.cloudflare.com/products/turnstile/](https://www.cloudflare.com/products/turnstile/), sign-in or sign-up, next select your cloudflare site & copy the site & secret key to your .env file.
+=======
+To set up the cloudflare turnstile captcha, to avoid potential bots from mass spamming your hotel, you'll first have to go to [https://www.cloudflare.com/products/turnstile/](https://www.cloudflare.com/products/turnstile/), sign-in or sign-up, next select your cloudflare site & copy the site & secret key to your .env file. 
+>>>>>>> 15c86cb (Update readme)
 
 ### 🚨 Disable rocket loader
 Atom CMS uses Javascript in certain areas, which unfortunately conflicts with Cloudflares Rocket Loader feature. So in-case you have Rocket Loader enabled on Cloudflare, you will have to disable it, otherwise you **will** run into various annoying issues when using Atom CMS.
