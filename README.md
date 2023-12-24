@@ -8,51 +8,18 @@
     </a>
 </div>
 
-## Table of Contents
-- [Disclaimer](#disclaimer)
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [Learning Laravel](#learning-laravel)
-- [Why Atom CMS?](#why-atom-cms)
-- [Migrating from Another CMS](#migrating-from-another-cms)
-- [Setup Guide](#setup-guide)
-    - [Requirements](#requirements)
-    - [Windows Setup](#windows-setup)
-    - [Linux Setup](#linux-setup)
-- [Using HTTPS](#using-https)
-- [Disable Rocket Loader](#disable-rocket-loader)
-- [Feature Add-ons](#feature-add-ons)
-- [Credits](#credits)
-
-### 🚀 The cool tech behind Atom CMS
-
--   PHP (Laravel 10.x)
-    [Laravel docs](https://laravel.com/docs/9.x).
--   Vite [Vite docs](https://vitejs.dev/).
--   TailwindCSS
-    [Tailwind docs](https://tailwindcss.com/docs/installation).
-
-### 🙏 Donations
-If you wish to support my work, you can click the button below to "buy me a coffee" it's also possible to create a "subscription" where you'd support me with a coffee every month
-
-<a href="https://www.buymeacoffee.com/dennisobject" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
 ### 📢 Disclaimer
-
 Please note that Atom CMS is provided as an educational resource for learning purposes only. The creators and contributors to Atom CMS are not responsible for any misuse or unintended consequences arising from the use of Atom CMS. By using Atom CMS, you agree to take full responsibility for your actions and any consequences resulting from your use of Atom CMS. It is your responsibility to ensure that you are using Atom CMS in compliance with all applicable laws and regulations.
 
 ### 💙 A Community-Driven Retro CMS
 The creation of Atom CMS was driven by the desire to widen the options available for people when choosing a CMS for their new journey. By valuing community input and collaboration, Atom aims to offer a modern and user-friendly system that is easy to understand and work with. Additionally, Atom CMS includes a built-in theme system allowing you the flexibility to use any CSS framework you prefer or even opt for a fully customized vanilla approach. This enables you to tailor the platform to your specific needs and preferences, ensuring a truly unique user experience.
-
 
 Check out the fantastic trio that brings it all together:
 - **PHP (Laravel 10.x)**: At the core of Atom CMS lies Laravel 10.x, a modern and elegant PHP framework that simplifies the development process. Laravel's extensive documentation can be found [here](https://laravel.com/docs/9.x).
 - **Vite**: As a next-generation frontend build tool, Vite empowers Atom CMS with lightning-fast development and production speeds. Dive into the Vite documentation [here](https://vitejs.dev/) to explore its full potential.
 - **TailwindCSS**: To ensure a visually stunning and responsive design, Atom CMS incorporates TailwindCSS, a utility-first CSS framework. Learn more about TailwindCSS and its installation process from the official [docs](https://tailwindcss.com/docs/installation)
 
-
 ### 🧙‍♂️ Learning Laravel
-
 If you are new to Laravel and want to build your own features, we highly recommend the following free resources:
 
 - Laravel Bootcamp: [https://bootcamp.laravel.com/](https://bootcamp.laravel.com/)
@@ -62,7 +29,6 @@ If you are new to Laravel and want to build your own features, we highly recomme
 Laracasts is an official learning platform for Laravel, so you can trust the quality of the content and learn best practices from some of the best and most experienced teacher within the field.
 
 ### 🤝 Migrating from Another CMS
-
 If you're migrating from another CMS like Cosmic CMS and is unsure what tables to remove or worry about colliding tables names, then fear no more!
 
 Even tho we **highly recommend** to do a proper cleanup yourself, Atom CMS has a built-in option to rename colliding table names and drop matching foreign keys.
@@ -158,7 +124,7 @@ To run all tests, run `vendor/bin/pest`. You can also use `php artisan test`
 In case you're using HTTPs through Cloudflares "Always redirect to HTTPs" feature, you should set `FORCE_HTTPS=` within your `.env` file to `true` this it to make sure everything is properly using HTTPs. This is necessary for some features in Atom CMS to work properly when you're letting cloudflare handle the HTTPs redirects without a dedicated SSL certificate.
 
 ### 🔒️ Settings up Cloudflare turnstile captcha
-To set up the cloudflare turnstile captcha, to avoid potential bots from mass spamming your hotel, you'll first have to go to [https://www.cloudflare.com/products/turnstile/](https://www.cloudflare.com/products/turnstile/), sign-in or sign-up, next select your cloudflare site & copy the site & secret key to your .env file. 
+To set up the cloudflare turnstile captcha, to avoid potential bots from mass spamming your hotel, you'll first have to go to [https://www.cloudflare.com/products/turnstile/](https://www.cloudflare.com/products/turnstile/), sign-in or sign-up, next select your cloudflare site & copy the site & secret key to your .env file.
 
 ### 🚨 Disable rocket loader
 Atom CMS uses Javascript in certain areas, which unfortunately conflicts with Cloudflares Rocket Loader feature. So in-case you have Rocket Loader enabled on Cloudflare, you will have to disable it, otherwise you **will** run into various annoying issues when using Atom CMS.
@@ -196,3 +162,9 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 -   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus
+
+### 🙏 Donations
+If you wish to support my work, you can click the button below to "buy me a coffee" it's also possible to create a "subscription" where you'd support me with a coffee every month
+
+<a href="https://www.buymeacoffee.com/dennisobject" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
