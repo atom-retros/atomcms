@@ -26,7 +26,7 @@
     x-id="['dropdown-button']"
     x-on:mouseenter="isTouchDevice ? false : toggle()"
     x-on:mouseleave="isTouchDevice ? false : toggle()"
-    x-on:click="isTouchDevice ? toggle() : false"
+    x-on:click.stop="isTouchDevice ? false : () => {}"
     @class([
         'relative h-auto font-semibold transition duration-300 ease-in-out z-5',
         'active' => request()->is($routeGroup),
