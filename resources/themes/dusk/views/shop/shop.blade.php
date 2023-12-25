@@ -44,7 +44,7 @@
         </x-modals.modal-wrapper>
     </div>
 
-    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
+    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 space-y-3">
         <x-page-header>
             Shop packs
         </x-page-header>

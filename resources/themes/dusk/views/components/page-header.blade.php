@@ -1,9 +1,17 @@
-@props(['icon' => '', 'classes' => ''])
+@props(['icon' => '', 'classes' => '', 'subHeader'])
 
-<div class="w-full bg-[#21242e] py-3 px-6 rounded-lg text-3xl font-bold text-gray-100 flex items-center gap-3 mb-6 {{ $classes }}">
+<div class="w-full bg-[#21242e] p-3 rounded-lg flex gap-2 {{ $classes }}">
     @if (!empty($icon))
         {{ $icon }}
     @endif
 
-    {{ $slot }}
+   <div class="flex-col">
+       <div class="text-lg font-bold text-gray-100 flex items-center">
+           {{ $slot }}
+       </div>
+
+       @if(isset($subHeader))
+           <p class="text-gray-500">{{ $subHeader }}</p>
+       @endif
+   </div>
 </div>

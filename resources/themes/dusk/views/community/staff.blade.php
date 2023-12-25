@@ -1,36 +1,37 @@
 <x-app-layout>
     @push('title', __('Staff'))
 
-    <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
-        <div class="flex flex-col gap-y-4">
-            @foreach ($employees as $employee)
-                <x-content.staff-content-section :badge="$employee->badge" :color="$employee->staff_color">
-                    <x-slot:title>
-                        {{ $employee->rank_name }}
-                    </x-slot:title>
+    <div class="col-span-12 lg:col-span-9 space-y-4">
+        @foreach ($employees as $employee)
+            <x-page-header sub-header="{{ $employee->job_description }}">
+                <x-slot:icon>
+                    <img src="{{ setting('badges_path') }}/{{ $employee->badge }}" alt="" onerror="this.onerror=null;this.src='{{ asset('/assets/images/dusk/ADM.gif') }}';">
+                </x-slot:icon>
 
-                    <x-slot:under-title>
-                        {{ $employee->job_description }}
-                    </x-slot:under-title>
+                {{ $employee->rank_name }}
+            </x-page-header>
+            @if (count($employee->users) > 0)
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                @foreach ($employee->users as $staff)
+                    <x-community.staff-card :user="$staff" />
+                    <x-community.staff-card :user="$staff" />
+                    <x-community.staff-card :user="$staff" />
+                    <x-community.staff-card :user="$staff" />
+                @endforeach
+            </div>
 
-                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        @foreach ($employee->users as $staff)
-                            <x-community.staff-card :user="$staff" />
-                        @endforeach
-                    </div>
+            @else
 
-                    @if (count($employee->users) === 0)
-                        <div class="text-center dark:text-gray-400">
-                            {{ __('We currently have no staff in this position') }}
-                        </div>
-                    @endif
-                </x-content.staff-content-section>
-            @endforeach
-        </div>
+                <div class="bg-gray-700/60 w-full py-3 text-center rounded-lg text-gray-400">
+                    {{ __('We currently have no staff in this position') }}
+                </div>
+            @endif
+        @endforeach
     </div>
 
-    <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
-        <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900">
+
+    <div class="col-span-12 lg:col-span-3 space-y-6">
+        <x-content.content-card icon="chat-icon">
             <x-slot:title>
                 {{ __(':hotel staff', ['hotel' => setting('hotel_name')]) }}
             </x-slot:title>
@@ -50,7 +51,7 @@
             </div>
         </x-content.content-card>
 
-        <x-content.content-card icon="chat-icon" classes="border dark:border-gray-900">
+        <x-content.content-card icon="chat-icon">
             <x-slot:title>
                 {{ __('Apply for staff') }}
             </x-slot:title>
