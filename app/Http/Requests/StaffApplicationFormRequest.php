@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\GoogleRecaptchaRule;
+use App\Rules\TurnstileCheck;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StaffApplicationFormRequest extends FormRequest
@@ -10,6 +12,8 @@ class StaffApplicationFormRequest extends FormRequest
     {
         return [
             'content' => ['required', 'string'],
+            'g-recaptcha-response' => [new GoogleRecaptchaRule()],
+            'cf-turnstile-response' => [new TurnstileCheck()],
         ];
     }
 }

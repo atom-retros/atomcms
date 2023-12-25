@@ -55,6 +55,18 @@
                     <x-form.input name="password_confirmation" type="password" />
                 </div>
 
+                @if (setting('google_recaptcha_enabled'))
+                    <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                @endif
+
+                @if (setting('cloudflare_turnstile_enabled'))
+                    <x-turnstile-widget
+                        language="en-US"
+                        size="normal"
+                        callback="callbackFunction"
+                        errorCallback="errorCallbackFunction"/>
+                @endif
+
                 <div class="flex w-full justify-start md:justify-end">
                     <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update password') }}

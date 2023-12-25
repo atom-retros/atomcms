@@ -129,7 +129,7 @@ class InstallationMiddleware
             return to_route('installation.index');
         }
 
-        return $this->redirectToStep($installation->step ?? 0);
+        return $this->redirectToStep($installation->step ?: 0);
     }
 
     private function redirectToWelcomeIfInstalled(Request $request, Closure $next)

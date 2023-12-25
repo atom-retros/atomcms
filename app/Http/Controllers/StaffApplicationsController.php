@@ -9,14 +9,14 @@ use Illuminate\View\View;
 
 class StaffApplicationsController extends Controller
 {
-    public function index(): View
+    public function index()
     {
         return view('community.staff-applications', [
             'positions' => WebsiteOpenPosition::canApply()->with('permission')->get(),
         ]);
     }
 
-    public function show(WebsiteOpenPosition $position): View
+    public function show(WebsiteOpenPosition $position)
     {
         return view('community.staff-applications-apply', [
             'position' => $position->load('permission'),

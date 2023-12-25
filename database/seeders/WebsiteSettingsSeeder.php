@@ -13,11 +13,11 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'theme',
                 'value' => 'atom',
-                'comment' => 'Specifies the theme of the CMS',
+                'comment' => 'Specifies the active CMS theme',
             ],
             [
                 'key' => 'hotel_name',
-                'value' => 'Habbo',
+                'value' => 'Atom',
                 'comment' => 'Specifies the name of the hotel',
             ],
             [
@@ -32,28 +32,28 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'start_motto',
-                'value' => sprintf('I love %s hotel', setting('hotel_name')),
+                'value' => sprintf('I love %s hotel', setting('hotel_name') ?? config('habbo.site.default_name')),
                 'comment' => 'Specifies the start motto the user gets assigned upon registration',
             ],
             [
                 'key' => 'start_credits',
                 'value' => '5000',
-                'comment' => 'Specifies the amount of start credits upon registration',
+                'comment' => 'Specifies the amount of credits a user receives upon registration',
             ],
             [
                 'key' => 'start_duckets',
                 'value' => '5000',
-                'comment' => 'Specifies the amount of start duckets upon registration',
+                'comment' => 'Specifies the amount of duckets a user receives upon registration',
             ],
             [
                 'key' => 'start_diamonds',
                 'value' => '100',
-                'comment' => 'Specifies the amount of start diamonds upon registration',
+                'comment' => 'Specifies the amount of diamonds a user receives upon registration',
             ],
             [
                 'key' => 'start_points',
                 'value' => '0',
-                'comment' => 'Specifies the amount of start points upon registration',
+                'comment' => 'Specifies the amount of points a user receives upon registration',
             ],
             [
                 'key' => 'avatar_imager',
@@ -63,17 +63,27 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'start_look',
                 'value' => 'fa-201407-1324.hr-828-1035.ch-3001-1261-1408.sh-3068-92-1408.cp-9032-1308.lg-270-1281.hd-209-3',
-                'comment' => 'Specifies the of start outfit upon registration',
+                'comment' => 'Sets the starting outfit for any new user registering',
             ],
             [
                 'key' => 'referrals_needed',
                 'value' => '5',
-                'comment' => 'Specifies the amount of referrals needed before being able to claim the reward',
+                'comment' => 'Specifies the amount of referrals needed before being able to claim the referral reward',
             ],
             [
                 'key' => 'referral_reward_amount',
                 'value' => '30',
                 'comment' => 'Specifies the reward amount when a user claims a reward',
+            ],
+            [
+                'key' => 'referral_reward_currency_type',
+                'value' => 'diamonds',
+                'comment' => 'Specify what type of currency that are given upon referral reward claim (credits, duckets, diamonds, points)',
+            ],
+            [
+                'key' => 'point_currency_number',
+                'value' => '101',
+                'comment' => 'Determines what number the points currency type is',
             ],
             [
                 'key' => 'discord_invitation_link',
@@ -92,23 +102,23 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'badges_path',
-                'value' => '/client/flash/swfs/c_images/album1584',
+                'value' => '/client/flash/c_images/album1584',
                 'comment' => 'The path to the badges folder',
             ],
             [
                 'key' => 'group_badge_path',
-                'value' => '/ms-swf/c_images/Badgeparts/generated',
+                'value' => '/client/flash/c_images/Badgeparts/generated',
                 'comment' => 'The path that contains all the generated group badges',
             ],
             [
                 'key' => 'maintenance_enabled',
                 'value' => '0',
-                'comment' => 'Determines if maintenance is enabled or not',
+                'comment' => 'Determines whether maintenance is enabled or not',
             ],
             [
                 'key' => 'min_maintenance_login_rank',
                 'value' => '5',
-                'comment' => 'Determines the minimum rank before being able to login while maintenance is activated',
+                'comment' => 'The minimum rank required to login to the hotel during maintenance',
             ],
             [
                 'key' => 'maintenance_message',
@@ -138,7 +148,12 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'google_recaptcha_enabled',
                 'value' => '0',
-                'comment' => 'Toggles whether google recaptcha is enabled or not',
+                'comment' => 'Toggles whether google recaptcha is enabled or not - Do not enable if turnstile is enabled',
+            ],
+            [
+                'key' => 'cloudflare_turnstile_enabled',
+                'value' => '1',
+                'comment' => 'Determines whether cloudflare turnstile is enabled or not - Do not enable if google recaptche is enabled',
             ],
             [
                 'key' => 'vpn_block_enabled',
@@ -167,13 +182,13 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'room_thumbnail_path',
-                'value' => '/ms-swf/c_images/rooms',
+                'value' => '/client/flash/c_images/rooms',
                 'comment' => 'Path to room thumbnails',
             ],
             [
                 'key' => 'hotel_home_room',
                 'value' => '0',
-                'comment' => 'The homeroom every new users will be assigned to',
+                'comment' => 'The homeroom every new users will be assigned to, leave as 0 if you do not wish to assign any home room',
             ],
             [
                 'key' => 'cms_color_mode',
@@ -188,7 +203,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'website_wordfilter_enabled',
                 'value' => '1',
-                'comment' => 'Determines whether the wordfilter for CMS will be enabled or not',
+                'comment' => 'Determines whether the wordfilter on the CMS will be enabled or not',
             ],
             [
                 'key' => 'requires_beta_code',
@@ -217,8 +232,8 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'furniture_icons_path',
-                'value' => '/ms-swf/dcr/icons',
-                'comment' => 'The path to the rare values icons',
+                'value' => '/client/flash/dcr/hof_furni/icons',
+                'comment' => 'The path used to display furniture icons - eg. on rare values',
             ],
             [
                 'key' => 'enable_caching',
@@ -228,12 +243,7 @@ class WebsiteSettingsSeeder extends Seeder
             [
                 'key' => 'cache_timer',
                 'value' => '30',
-                'comment' => 'Determines how long a cache will last before being refreshed',
-            ],
-            [
-                'key' => 'installation_finished',
-                'value' => '0',
-                'comment' => 'Determines whether the installation has been completed or not. 1 for completed 0 for not completed',
+                'comment' => 'Determines how many minutes the cache will last before being refreshed ',
             ],
             [
                 'key' => 'nitro_path',
@@ -260,9 +270,18 @@ class WebsiteSettingsSeeder extends Seeder
             ]);
         }
 
+        $recaptchaEnabled = WebsiteSetting::where('key', 'google_recaptcha_enabled')->first();
+
         // This is done to update the rare values key for existing applications
         WebsiteSetting::where('key', 'rare_values_icons_path')->update([
             'key' => 'furniture_icons_path',
         ]);
+
+        // Disables cloudflare turnstile if the seeder is run while having google recaptcha enabled.
+        if ($recaptchaEnabled->value === '1') {
+            WebsiteSetting::where('key', 'cloudflare_turnstile_enabled')->update([
+                'value' => '0',
+            ]);
+        }
     }
 }
