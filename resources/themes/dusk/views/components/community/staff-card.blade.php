@@ -1,25 +1,30 @@
 @props(['user'])
 
-<div class="relative h-24 w-full overflow-hidden rounded-lg bg-gray-900/80 md:mt-0">
-    <div class="absolute top-1 right-1 rounded bg-white px-2 text-sm font-semibold dark:bg-gray-900 dark:text-gray-300">
-        {{ $user->permission->rank_name }}
-    </div>
-
+<div class="relative h-24 w-full overflow-hidden rounded-lg bg-[#171a23] md:mt-0">
     <div class="h-[65%] w-full staff-bg"
         style="background: rgba(0, 0, 0, 0.6) url({{ asset(sprintf('assets/images/%s', $user->permission->staff_background)) }});">
     </div>
 
-    <div class="absolute top-4 left-1 drop-shadow">
-        <a href="{{ route('profile.show', $user->username) }}">
-            <img style="image-rendering: pixelated;" class="transition duration-300 ease-in-out hover:scale-105"
-                src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav"
-                alt="">
-        </a>
+    <div class="absolute left-3 top-3">
+        <div class="w-[65px] h-[65px] rounded-full relative overflow-hidden" style="background-size: contain; background-image: url('/assets/images/dusk/me_circle_image.png')">
+            <div>
+                <a href="{{ route('profile.show', $user) }}"
+                   class="absolute -bottom-8 drop-shadow transition duration-300 ease-in-out hover:scale-105">
+                    <img style="image-rendering: pixelated; scale: 0.70"
+                         src="{{ setting('avatar_imager') }}{{ $user->look }}&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
+                         alt="">
+                </a>
+            </div>
+        </div>
     </div>
 
-    <p class="text-2xl font-semibold ml-[70px] text-white -mt-[35px]">
-        {{ $user->username }}
-    </p>
+    <div class="flex flex-col  ml-[90px] -mt-[55px]">
+        <p class="text-2xl font-semibold text-white">
+            {{ $user->username }}
+        </p>
+
+        <small class="text-gray-200 italic font-semibold">{{ $user->motto ?: 'No motto' }}</small>
+    </div>
 
     <div class="flex w-full items-center justify-between px-4 mt-3">
         <p class="ml-[57px] text-sm font-semibold text-gray-500 truncate">

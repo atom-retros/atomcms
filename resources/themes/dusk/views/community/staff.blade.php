@@ -14,9 +14,6 @@
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($employee->users as $staff)
                     <x-community.staff-card :user="$staff" />
-                    <x-community.staff-card :user="$staff" />
-                    <x-community.staff-card :user="$staff" />
-                    <x-community.staff-card :user="$staff" />
                 @endforeach
             </div>
 
