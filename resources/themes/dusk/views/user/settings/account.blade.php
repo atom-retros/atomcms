@@ -57,6 +57,8 @@
                     <x-form.input name="motto" value="{{ $user->motto }}" />
                 </div>
 
+                <x-site-captchas />
+
                 <div class="flex w-full justify-start md:justify-end">
                     <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update settings') }}

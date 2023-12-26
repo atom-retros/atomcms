@@ -102,6 +102,8 @@
 
                 <x-form.input name="code" type="text" placeholder="Voucher" />
 
+                <x-site-captchas />
+
                 <x-form.secondary-button classes="mt-2">
                     {{ __('Use voucher') }}
                 </x-form.secondary-button>

@@ -55,6 +55,8 @@
                     <x-form.input name="password_confirmation" type="password" />
                 </div>
 
+                <x-site-captchas />
+
                 <div class="flex w-full justify-start md:justify-end">
                     <x-form.secondary-button classes="lg:w-1/4">
                         {{ __('Update password') }}

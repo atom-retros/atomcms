@@ -2,7 +2,7 @@
     @push('title', __('Welcome to the best hotel on the web!'))
 
 
-    <div class="col-span-12 md:col-span-6 h-[250px] bg-gray-900/50 rounded-xl flex flex-col py-6 px-8 text-white">
+    <div class="col-span-12 md:col-span-6 min-h-[250px] bg-gray-900/50 rounded-xl flex flex-col py-6 px-8 text-white">
         <h2 class="text-2xl">Login</h2>
 
         <form action="{{ route('login') }}" method="POST">
@@ -15,6 +15,8 @@
             </div>
 
             <input type="password" placeholder="Enter your password" name="password" class="relative py-2 rounded-md mt-3 text-black w-full">
+
+            <x-site-captchas />
 
             <div class="mt-4 flex gap-4">
                 <button type="submit" class="py-2 px-4 text-white bg-yellow-500 border-2 border-yellow-300 w-full rounded-md transition duration-300 ease-in-out hover:scale-[102%]">Login</button>

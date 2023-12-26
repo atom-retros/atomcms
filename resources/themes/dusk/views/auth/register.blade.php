@@ -36,6 +36,11 @@
                 </a>
             </div>
 
+            {{-- Used to determine the refer --}}
+            <input type="hidden" name="referral_code" value="{{ $referral_code }}">
+
+           <x-site-captchas />
+
             <div class="mt-4 grid grid-cols-2 gap-3">
                 <button type="submit" class="py-2 px-4 text-white bg-yellow-500 border-2 border-yellow-300 w-full rounded-md transition duration-300 ease-in-out hover:scale-[102%]">Register</button>
 
