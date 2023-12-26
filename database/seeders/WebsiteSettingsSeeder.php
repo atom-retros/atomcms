@@ -247,7 +247,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'nitro_path',
-                'value' => '/client/nitro/nitro-react',
+                'value' => '/client/nitro/nitro-react/dist',
                 'comment' => 'The path in which your index.html for nitro is located',
             ],
             [
