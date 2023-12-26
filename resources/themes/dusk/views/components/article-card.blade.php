@@ -2,7 +2,7 @@
 
 <div class="swiper-slide relative article-image rounded-lg overflow-hidden" style="background-image: url({{ $article->image }})">
     <div class="absolute h-[90px] w-full left-0 bottom-0 bg-[#171a23] bg-opacity-[95%] text-white py-2 px-4">
-        <h2 class="text-3xl font-bold">
+        <h2 class="text-2xl font-bold">
             {{ $article->title }}
         </h2>
 
