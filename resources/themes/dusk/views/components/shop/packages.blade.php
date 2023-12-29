@@ -66,7 +66,7 @@
                     <div class="flex gap-2 items-center">
                         @foreach (explode(';', $article->badges) as $badge)
                             <img data-tippy-content="1x {{ $badge }}" class="user-badge"
-                                 src="/client/flash/c_images/album1584/{{$badge}}.gif" alt="{{ $badge }}"
+                                 src="{{ setting('badges_path') }}/{{$badge}}.gif" alt="{{ $badge }}"
                                  style="image-rendering: auto;">
                         @endforeach
                     </div>
