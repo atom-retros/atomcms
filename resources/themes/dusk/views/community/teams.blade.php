@@ -4,7 +4,11 @@
     <div class="col-span-12">
         <div class="flex flex-col gap-y-4">
             @foreach ($employees as $employee)
-                <x-content.staff-content-section :badge="$employee->badge" :color="$employee->staff_color">
+				<x-page-header sub-header="{{ $employee->job_description }}">
+					<x-slot:icon>
+						<img src="{{ setting('badges_path') }}/{{ $employee->badge }}.gif" alt="" onerror="this.onerror=null;this.src='{{ asset('/assets/images/dusk/ADM.gif') }}';">
+					</x-slot:icon>
+				</x-page-header>
                     <x-slot:title>
                         {{ $employee->rank_name }}
                     </x-slot:title>
@@ -24,7 +28,6 @@
                             {{ __('We currently have no staff in this position') }}
                         </div>
                     @endif
-                </x-content.staff-content-section>
             @endforeach
         </div>
     </div>
