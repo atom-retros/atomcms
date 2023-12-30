@@ -14,7 +14,7 @@
                </div>
 
                <div class="relative w-full overflow-hidden text-black col-span-12">
-                   <input id="username-input" type="email" placeholder="Enter your e-mail" name="email" class="relative py-2 rounded-md w-full" required>
+                   <input id="email-input" type="email" placeholder="Enter your e-mail" name="mail" class="relative py-2 rounded-md w-full" required>
                </div>
 
                <div class="col-span-12">
