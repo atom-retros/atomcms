@@ -36,7 +36,7 @@ Even tho we **highly recommend** to do a proper cleanup yourself, Atom CMS has a
 All you have to do is to change `RENAME_COLLIDING_TABLES=false` to `RENAME_COLLIDING_TABLES=true` within your `.env`file (You'll get to the .env file in the next step). Once the feature is enabled, Atom CMS will **attempt** to solve any conflicts that might happen due to the use of another CMS.
 
 ### 🚧 Requirements
-- PHP 8.1 or above [PHP Downloads](https://www.php.net/downloads.php)
+- PHP 8.2 or above [PHP Downloads](https://www.php.net/downloads.php)
 - MySQL >= 8.x or  MariaDB >= 10.x
 - Composer v2 [Composer Download](https://getcomposer.org/download/)
 - NPM (LTS) [Node Download](https://nodejs.org/en/download/)
