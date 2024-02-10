@@ -10,7 +10,7 @@
             News
         </x-page-header>
 
-        <div class=" grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class=" grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4">
             @forelse($articles as $article)
                 <div class="h-[250px]">
                     <x-article-card :article="$article" />

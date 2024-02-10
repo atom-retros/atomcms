@@ -10,7 +10,7 @@
             {{ __('Leaderboards') }}
         </x-page-header>
 
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3 mt-4">
             <x-leaderboard-card title="{{ __('Top credits') }}" icon="credits.png" :data="$credits" valueKey="credits" valueType="Credits" />
             <x-leaderboard-card title="{{ __('Top duckets') }}" icon="duckets.png" :data="$duckets" relationship="user" valueKey="amount" valueType="Duckets" />
             <x-leaderboard-card title="{{ __('Top diamonds') }}" icon="diamond.png" :data="$diamonds" relationship="user" valueKey="amount" valueType="Diamonds" />

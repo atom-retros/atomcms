@@ -66,7 +66,7 @@
                 {{ __('Donate to :hotel', ['hotel' => setting('hotel_name')]) }}
             </x-slot:under-title>
 
-            <div class="text-sm text-center py-2 px-4 rounded bg-gray-100 text-black dark:text-gray-100 dark:bg-gray-700">
+            <div class="text-sm text-center py-2 px-4 rounded text-black text-gray-100 bg-gray-700">
                 {{ __('Current balance: $:balance', ['balance' => auth()->user()->website_balance]) }}
             </div>
 

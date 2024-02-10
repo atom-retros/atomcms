@@ -1,5 +1,5 @@
 <a href="{{ route('settings.account.show') }}"
-    class="{{ request()->routeIs('settings.account.show') ? 'bg-[#eeb425] text-white' : 'bg-gray-100 dark:bg-gray-900' }} dark:text-gray-100 flex gap-x-2 justify-center items-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
+    class="{{ request()->routeIs('settings.account.show') ? 'bg-[#eeb425] text-white' : 'bg-[#21242e]' }} text-gray-100 flex gap-x-2 justify-center items-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
         stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -11,7 +11,7 @@
 </a>
 
 <a href="{{ route('settings.password.show') }}"
-    class="{{ request()->routeIs('settings.password.show') ? 'bg-[#eeb425] text-white' : 'bg-gray-100 dark:bg-gray-900' }} dark:text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
+    class="{{ request()->routeIs('settings.password.show') ? 'bg-[#eeb425] text-white' : 'bg-[#21242e]' }} text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
         stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -22,7 +22,7 @@
 </a>
 
 <a href="{{ route('settings.two-factor') }}"
-    class="{{ request()->routeIs('settings.two-factor') ? 'bg-[#eeb425] text-white' : 'bg-gray-100 dark:bg-gray-900' }} dark:text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
+    class="{{ request()->routeIs('settings.two-factor') ? 'bg-[#eeb425] text-white' : 'bg-[#21242e]' }} text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="h-6 w-6">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -33,7 +33,7 @@
 </a>
 
 <a href="{{ route('settings.session-logs') }}"
-    class="{{ request()->routeIs('settings.session-logs') ? 'bg-[#eeb425] text-white' : 'bg-gray-100 dark:bg-gray-900' }} dark:text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
+    class="{{ request()->routeIs('settings.session-logs') ? 'bg-[#eeb425] text-white' : 'bg-[#21242e]' }} text-gray-100 flex gap-x-2 justify-center rounded p-2 md:p-6 text-center md:text-xl font-semibold transition duration-200 ease-in-out hover:bg-[#eeb425] hover:text-white">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />

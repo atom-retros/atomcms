@@ -1,7 +1,7 @@
 <x-modals.modal-wrapper>
     <div class="select-none"
         x-data='reactions(@json($myReactions), @json($articleReactions), "{{ route('article.toggle-reaction', $article->slug) }}")'>
-        <div class="mt-4 flex w-full flex-wrap gap-2 rounded-lg bg-gray-100 p-2 dark:bg-gray-900">
+        <div class="mt-4 flex w-full flex-wrap gap-2 rounded-lg p-2 bg-gray-900">
             <div x-show="isAuthenticated"
                 class="px-2 hover:scale-110 transition-all font-semibold h-8 flex items-center justify-center border-2 text-xs border-yellow-400 cursor-pointer bg-[#eeb425] text-white rounded-lg"
                 x-on:click="open = true">
