@@ -7,6 +7,8 @@
         "build:atom": "vite build --config resources/themes/atom/vite.config.js",
         "dev:atom-bs": "vite --config resources/themes/atom-bs/vite.config.js",
         "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js",
+        "dev:dusk": "vite --config resources/themes/dusk/vite.config.js",
+        "build:dusk": "vite build --config resources/themes/dusk/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
@@ -33,6 +35,6 @@
     },
     "dependencies": {
         "-": "^0.0.1",
-        "swiper": "^8.4.2"
+        "swiper": "^8.4.7"
     }
 }

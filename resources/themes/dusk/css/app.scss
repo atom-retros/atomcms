@@ -1,0 +1,247 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+@layer components {
+    .dropdown-item {
+        @apply w-full text-left px-2 py-1 transition duration-200 ease-in-out text-sm hover:bg-[#8770b2];
+    }
+}
+
+:focus {
+    outline: none;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#app {
+    min-height: calc(100vh - 3.5rem);
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+.site-bg {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    background: url("/public/assets/images/dusk/background_image.png") no-repeat;
+    background-size: cover;
+    -webkit-mask-image: linear-gradient(to top, transparent, black);
+    mask-image: linear-gradient(to top, transparent, black);
+    background-color: #957cc3;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(46, 45, 45, 0.7); /* Black overlay with 60% opacity */
+    }
+}
+
+.nav-header {
+    background-color: #171a23;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+        height: 40px;
+        width: 40px;
+        filter: grayscale(1);
+        transition: filter 300ms ease-in-out;
+
+    }
+
+    a:hover .icon {
+        filter: grayscale(0);
+    }
+
+    .dropdown-parent:hover .icon {
+        filter: grayscale(0);
+    }
+
+    .dropdown-parent:active .icon {
+        filter: grayscale(0);
+    }
+
+    a.active, div.active{
+        color: #ac93da;
+
+        .dropdown-children {
+            color: #FFFFFF;
+        }
+
+        .icon {
+            filter: grayscale(0);
+        }
+    }
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.sub-header {
+    color: #FFF;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-shadow {
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.swiper-pagination {
+    top: 3px;
+    z-index: 15 !important;
+    height: 10px;
+}
+
+.read-more-link {
+    z-index: 99999; /* Adjust as needed */
+    position: relative;
+}
+
+.swiper-button-prev {
+    z-index: 15 !important;
+}
+.swiper-button-next {
+    z-index: 15 !important;
+}
+
+
+.hotel-icon {
+    background: url("/public/assets/images/icons/feeds.png") no-repeat
+    center;
+}
+
+.chat-icon {
+    background: url("/public/assets/images/icons/chat.png") no-repeat
+    center;
+}
+
+.article-icon {
+    background: url("/public/assets/images/icons/article.gif") no-repeat
+    center;
+}
+
+.lighthouse-icon {
+    background: url("/public/assets/images/icons/lighthouse.png") no-repeat
+    center;
+}
+
+.currency-icon {
+    background: url("/public/assets/images/dusk/store_icon.png") no-repeat
+    center;
+}
+
+.catalog-icon {
+    background: url("/public/assets/images/icons/catalog.png") no-repeat
+    center;
+}
+
+.inventory-icon {
+    background: url("/public/assets/images/icons/inventory.png") no-repeat
+    center;
+}
+
+.duo-chat-icon {
+    background: url("/public/assets/images/icons/due-chat.png") no-repeat
+    center;
+}
+
+
+.friends-icon {
+    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat
+    center;
+}
+
+.nav-credit-icon {
+    background: #e9b124 url("/public/assets/images/icons/currency/credits.png")
+    no-repeat center;
+    outline: 1px solid #b26d18;
+}
+
+.nav-ducket-icon {
+    background: #c44aac url("/public/assets/images/icons/currency/duckets.png")
+    no-repeat center;
+    outline: 1px solid #812378;
+}
+
+.nav-diamond-icon {
+    background: #caf1f3 url("/public/assets/images/icons/currency/diamonds.png")
+    no-repeat center;
+    outline: 1px solid #6caff4;
+}
+
+.swal2-toast {
+    background-color: #333 !important;
+    color: #fff;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    background-position: right;
+    margin: 0 0 20px;
+    transition: .3s;
+}
+
+.leaderboard-position {
+    color: transparent;
+    height: 25px;
+    width: 25px;
+
+    &.first {
+        background-image: url("/public/assets/images/leaderboards/trophy-gold.png");
+    }
+
+    &.second {
+        background-image: url("/public/assets/images/leaderboards/trophy-silver.png");
+    }
+
+    &.third {
+        background-image: url("/public/assets/images/leaderboards/trophy-bronze.png");
+    }
+}
+
+.leaderboard-background {
+    background-image: url("/public/assets/images/dusk/leaderboard_circle_image.png");
+}
+
+.staff-bg {
+    background-blend-mode: multiply;
+}
