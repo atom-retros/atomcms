@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\GuildMember;
 use App\Models\MessengerFriendship;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function __invoke(User $user): View
+    public function __invoke(User $user)
     {
         $user = $this->loadUserRelations($user);
 
@@ -20,6 +21,8 @@ class ProfileController extends Controller
             'user' => $user,
             'friends' => $friends,
             'groups' => $groups,
+            'guestbook' => $user->profileGuestbook()->with('user')->latest()->limit(5)->get(),
+            'photos' => $user->photos()->limit(3)->get()
         ]);
     }
 
@@ -34,8 +37,7 @@ class ProfileController extends Controller
             'rooms' => function ($rooms) {
                 $rooms->select('id', 'owner_id', 'name', 'users')
                     ->orderByDesc('users')
-                    ->orderBy('id')
-                    ->take(4);
+                    ->orderBy('id');
             },
         ]);
     }

@@ -177,9 +177,19 @@ class User extends Authenticatable
         return $this->hasMany(WebsiteHelpCenterTicket::class);
     }
 
-    public function noobGifts(): HasMany
+    public function photos(): HasMany
     {
-        return $this->hasMany(CmsNoobGift::class);
+        return $this->hasMany(CameraWeb::class);
+    }
+
+    public function profileGuestbook(): HasMany
+    {
+        return $this->hasMany(WebsiteUserGuestbook::class, 'profile_id');
+    }
+
+    public function guestbook(): HasMany
+    {
+        return $this->hasMany(WebsiteUserGuestbook::class, 'user_id');
     }
 
     public function getOnlineFriends(int $total = 10)

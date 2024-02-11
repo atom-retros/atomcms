@@ -37,10 +37,13 @@
                 News
             </a>
 
+            {{--
             <a href="#" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/events_icon.png') }}" alt="community icon">
                 Events
             </a>
+            --}}
+
 
             <a href="{{ route('shop.index') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
                 <img class="icon" src="{{ asset('/assets/images/dusk/store_icon.png') }}" alt="community icon">

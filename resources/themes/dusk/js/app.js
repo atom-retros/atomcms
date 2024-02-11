@@ -5,23 +5,25 @@
  */
 
 import "./bootstrap";
+
+import "swiper/css";
+import "swiper/css/pagination";
+
 import Alpine from "alpinejs";
 import Focus from '@alpinejs/focus';
 
-Alpine.plugin(Focus);
-Alpine.start();
+import ArticleReactions from "./components/ArticleReactions.js";
 
-// Swiper CSS
+import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// Swiper JS
-import Swiper, { Navigation, Pagination } from 'swiper';
-Swiper.use([Navigation, Pagination]);
+ArticleReactions.init();
+Alpine.plugin(Focus);
+Alpine.start();
 
-// Your existing code
-console.log("Your existing logs...");
+Swiper.use([Navigation, Pagination]);
 
 // Swiper Initialization
 document.addEventListener("DOMContentLoaded", function() {

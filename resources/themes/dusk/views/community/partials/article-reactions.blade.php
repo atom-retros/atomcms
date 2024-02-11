@@ -10,11 +10,11 @@
 
             <template x-for="articleReaction in articleReactions">
                 <div>
-                    <div class="flex h-8 w-12 items-center justify-center gap-2 rounded-lg border-2 border-gray-300 text-sm font-bold dark:border-gray-800"
+                    <div class="flex h-8 w-12 items-center justify-center gap-2 rounded-lg border-2 text-sm font-bold border-gray-800 hover:bg-gray-700 cursor-pointer"
                         :class="{
-                            'bg-gray-300 dark:bg-gray-800 dark:border-gray-700': userHasReaction(
+                            bg-gray-800 border-gray-700': userHasReaction(
                                 articleReaction),
-                            'cursor-pointer hover:bg-gray-200 hover:scale-110 transition-all dark:hover:bg-gray-700': isAuthenticated
+                            'cursor-pointer hover:scale-110 transition-all hover:bg-gray-700': isAuthenticated
                         }"
                         @click="toggleReaction(articleReaction.name)" :data-popover-target="articleReaction.id">
                         <img :src="'/assets/images/icons/reactions/' + articleReaction.name + '.png'"
@@ -54,7 +54,7 @@
 
                 <div class="flex w-full flex-wrap justify-center gap-3 p-2">
                     <template x-for="defaultReaction in allReactions">
-                        <div class="cursor-pointer rounded-lg border-2 border-gray-300 px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:border-g dark:border-gray-800"
+                        <div class="cursor-pointer rounded-lg border-2 px-3 py-2 hover:bg-gray-700 hover:border-g border-gray-800"
                             x-show="canAddReactionFromModal(defaultReaction)" @click="toggleReaction(defaultReaction)">
                             <img :src="'/assets/images/icons/reactions/' + defaultReaction + '.png'"
                                 :alt="defaultReaction">

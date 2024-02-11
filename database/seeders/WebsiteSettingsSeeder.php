@@ -260,6 +260,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '',
                 'comment' => 'The URL provided by discord to send a webhook request',
             ],
+            [
+                'key' => 'max_guestbook_posts_per_profile',
+                'value' => '3',
+                'comment' => 'The amount of guestbook posts a user can post on each user profile',
+            ],
         ];
 
         foreach ($settings as $setting) {

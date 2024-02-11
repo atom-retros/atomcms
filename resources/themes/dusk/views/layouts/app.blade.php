@@ -12,7 +12,6 @@
 
         @vite(['resources/themes/dusk/css/app.scss', 'resources/themes/dusk/js/app.js'], 'build')
 
-
         <script src="{{ asset('/assets/js/dusk.js') }}"></script>
     </head>
     <body class="font-sans antialiased select-none">
@@ -70,5 +69,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 
         @stack('javascript')
+
+        @stack('scripts')
     </body>
 </html>
