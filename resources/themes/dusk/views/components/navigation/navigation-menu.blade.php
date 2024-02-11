@@ -50,7 +50,7 @@
                 Store
             </a>
 
-            <x-navigation.dropdown icon="home_icon.png" route-group="help-center*" :uppercase="true">
+            <x-navigation.dropdown icon="home_icon.png" route-group="user*" :uppercase="true">
                 {{ __('Home') }}
 
                 <x-slot:children>
