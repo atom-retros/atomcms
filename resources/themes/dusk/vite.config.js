@@ -2,18 +2,14 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import path from "path";
 
-
-
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 "resources/themes/dusk/css/app.scss",
-                "resources/themes/dusk/js/app.js"
+                "resources/themes/dusk/js/app.js",
             ],
-            buildDirectory: "build",
         }),
-
 
         {
             name: "blade",
@@ -29,9 +25,8 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/themes/dusk/js',
-
-        }
+            "@": "/resources/themes/dusk/js",
+        },
     },
     css: {
         postcss: {
