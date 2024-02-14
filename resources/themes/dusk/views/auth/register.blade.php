@@ -3,7 +3,7 @@
 
 
     <div class="col-span-12 md:col-span-6 bg-gray-900/50 rounded-xl flex flex-col py-6 px-8 text-white self-start">
-        <h2 class="text-2xl">Create a new accocunt</h2>
+        <h2 class="text-2xl">{{ __('Create a new accocunt') }}</h2>
 
         <form action="{{ route('register') }}" method="POST">
             @csrf
@@ -14,7 +14,7 @@
                </div>
 
                <div class="relative w-full overflow-hidden text-black col-span-12">
-                   <input id="username-input" type="email" placeholder="Enter your e-mail" name="email" class="relative py-2 rounded-md w-full" required>
+                   <input id="username-input" type="email" placeholder="Enter your e-mail" name="mail" class="relative py-2 rounded-md w-full" required>
                </div>
 
                <div class="col-span-12">
