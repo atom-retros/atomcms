@@ -5,7 +5,7 @@
         @foreach ($employees as $employee)
             <x-page-header sub-header="{{ $employee->job_description }}">
                 <x-slot:icon>
-                    <img src="{{ setting('badges_path') }}/{{ $employee->badge }}" alt="" onerror="this.onerror=null;this.src='{{ asset('/assets/images/dusk/ADM.gif') }}';">
+                    <img src="{{ setting('badges_path') }}/{{ $employee->badge }}.gif" alt="" onerror="this.onerror=null;this.src='{{ asset('/assets/images/dusk/ADM.gif') }}';">
                 </x-slot:icon>
 
                 {{ $employee->rank_name }}
