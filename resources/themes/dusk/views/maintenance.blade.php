@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
-    @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
+    @vite(['resources/themes/dusk/css/app.scss', 'resources/themes/dusk/js/app.js'])
 </head>
 
 <body class="h-screen overflow-hidden" style="background: url({{ asset('assets/images/maintenance/background.png') }})">
