@@ -15,15 +15,16 @@ class BannedMiddleware
         $authenticated = Auth::check();
         $ipBan = Ban::where('ip', '=', $request->ip())
             ->where('ban_expire', '>', time())
+            ->whereIn('type', ['ip', 'machine'])
             ->orderByDesc('id')
             ->exists();
 
-        if (!$authenticated && !$ipBan && $request->is('banned')) {
-            return to_route('login');
+        if ($request->is('logout')) {
+            return $next($request);
         }
 
-        if ($authenticated && !$ipBan && $request->is('banned')) {
-            return to_route('me.show');
+        if (!$authenticated && !$ipBan && $request->is('banned')) {
+            return to_route('login');
         }
 
         if ($ipBan && !$request->is('banned')) {
@@ -35,6 +36,10 @@ class BannedMiddleware
 
             if ($accountBan && !$request->is('banned')) {
                 return to_route('banned.show');
+            }
+
+            if (!$ipBan && !$accountBan && $request->is('banned')) {
+                return to_route('me.show');
             }
         }
 

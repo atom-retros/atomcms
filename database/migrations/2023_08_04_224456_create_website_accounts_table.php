@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('website_accounts', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('current_user_id')->unique();
+            $table->integer('current_user_id')->nullable()->unique();
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

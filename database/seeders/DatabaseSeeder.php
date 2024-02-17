@@ -14,11 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if (app()->environment('local') && false) {
-            WebsiteRareValueCategory::factory(4)->create();
-            WebsiteRareValue::factory(20)->create();
-        }
-
         $this->call([
             WebsiteSettingsSeeder::class,
             WebsiteLanguageSeeder::class,
@@ -30,6 +25,8 @@ class DatabaseSeeder extends Seeder
             WebsiteRuleSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
             WebsiteShopArticleSeeder::class,
+            WebsiteHelperCenterCategorySeeder::class,
+            WebsiteRareValuesCategorySeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

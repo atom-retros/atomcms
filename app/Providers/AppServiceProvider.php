@@ -46,39 +46,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->initBaseTables();
 
         if (config('habbo.site.force_https')) {
             URL::forceScheme('https');
-        }
-    }
-
-    private function initBaseTables(): void
-    {
-        if (!Schema::hasTable('website_settings') && !Cache::get('website_settings_installed')) {
-            try {
-                Artisan::call('migrate --path=/database/migrations/2022_08_01_204744_create_table_website_settings.php');
-                Artisan::call('db:seed --class=WebsiteSettingsSeeder');
-            } catch (MigrationFailedException $e) {
-                Log::error('Migration or seeding failed: ' . $e->getMessage());
-
-                abort(500);
-            }
-
-            Cache::forever('website_settings_installed', true);
-        }
-
-        if (!Schema::hasTable('website_languages') && !Cache::get('website_languages_installed')) {
-            try {
-                Artisan::call('migrate --path=/database/migrations/2022_08_04_171615_create_website_languages_table.php');
-                Artisan::call('db:seed --class=WebsiteLanguageSeeder');
-            } catch (MigrationFailedException $e) {
-                Log::error('Migration or seeding failed: ' . $e->getMessage());
-
-                abort(500);
-            }
-
-            Cache::forever('website_languages_installed', true);
         }
     }
 }

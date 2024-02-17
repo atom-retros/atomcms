@@ -29,10 +29,25 @@
         <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
     @endif
 
+    @if (setting('cloudflare_turnstile_enabled'))
+        <x-turnstile-widget
+            language="en-US"
+            size="normal"
+            callback="callbackFunction"
+            errorCallback="errorCallbackFunction"
+            ck
+        />
+    @endif
+
     <x-form.primary-button>
         {{ __('Login') }}
     </x-form.primary-button>
 
+    <div class="text-center text-sm font-semibold text-gray-700 dark:text-gray-400">
+        <a href="{{ route('forgot.password.get') }}" class="hover:underline" x-on:click="open = false">
+            {{ __('Did you forget your password?') }}
+        </a>
+    </div>
     <div class="text-center text-sm font-semibold text-gray-700 dark:text-gray-400">
         <a href="{{ route('register') }}" class="hover:underline" x-on:click="open = false">
             {{ __('Dont have an account? Join now!') }}

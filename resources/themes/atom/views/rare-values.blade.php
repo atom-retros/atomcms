@@ -50,7 +50,19 @@
             <form action="{{ route('values.search') }}" method="POST" class="space-y-3">
                 @csrf
 
-                <x-form.input name="search" placeholder="Search for a rare"/>
+                <x-form.input classes="mb-3" name="search" placeholder="Search for a rare"/>
+
+                @if (setting('google_recaptcha_enabled'))
+                    <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                @endif
+
+                @if (setting('cloudflare_turnstile_enabled'))
+                    <x-turnstile-widget
+                        language="en-US"
+                        size="Compact"
+                        callback="callbackFunction"
+                        errorCallback="errorCallbackFunction"/>
+                @endif
 
                 <x-form.secondary-button>
                     {{ __('Search') }}

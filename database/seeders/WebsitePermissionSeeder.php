@@ -45,6 +45,11 @@ class WebsitePermissionSeeder extends Seeder
                 'min_rank' => '7',
                 'description' => 'Minimum required rank to delete replies on a ticket',
             ],
+            [
+                'permission' => 'generate_logo',
+                'min_rank' => '7',
+                'description' => 'Minimum required rank to use the logo generator',
+            ],
         ];
 
         foreach ($permissions as $permission) {

@@ -54,8 +54,7 @@ class FortifyServiceProvider extends ServiceProvider
                     ->with('user:id,username,look')
                     ->get(),
                 'photos' => CameraWeb::latest('id')
-                    ->take(8)
-                    ->has('user')
+                    ->take(4)
                     ->with('user:id,username,look')
                     ->get(),
             ]);
@@ -70,6 +69,15 @@ class FortifyServiceProvider extends ServiceProvider
 
             return view('auth.register', [
                 'referral_code' => $request->route('referral_code'),
+                'articles' => WebsiteArticle::latest('id')
+                    ->take(4)
+                    ->has('user')
+                    ->with('user:id,username,look')
+                    ->get(),
+                'photos' => CameraWeb::latest('id')
+                    ->take(2)
+                    ->with('user:id,username,look')
+                    ->get(),
             ]);
         });
 

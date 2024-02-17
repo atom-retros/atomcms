@@ -318,5 +318,6 @@
     "All values": "All values",
     "Go back to values": "Go back to values",
     "Here is a list of all the owned :value`s": "Here is a list of all the owned :value`s",
-    "owned": "owned"
+    "owned": "owned",
+    "The captcha failed, please try again.": "Capthaen fejlede, prøv venligst igen."
 }

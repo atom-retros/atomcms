@@ -27,21 +27,4 @@ class IpLookupService
 
         return $response->json();
     }
-
-    public function fieldsLookup(string $ip, array $fields)
-    {
-        $searchFields = implode(',', $fields);
-        $response = Http::acceptJson()->get(sprintf('%s/%s?api-key=%s&fields=%s', $this->baseUrl, $ip, $this->apiKey, $searchFields));
-
-        if (! $response->ok()) {
-            $message = array_key_exists('message', $response->json()) ? $response->json()['message'] : 'Unknown error';
-
-            return [
-                'message' => $message,
-                'status' => $response->status(),
-            ];
-        }
-
-        return $response->json();
-    }
 }

@@ -48,12 +48,6 @@
         <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
                 <x-shop.packages :article="$article" />
-
-                <style>
-                    .{{ $article->icon }} {
-                        background: {{ $article->color }};
-                    }
-                </style>
             @endforeach
         </div>
     </div>
@@ -102,7 +96,19 @@
             <form action="{{ route('shop.use-voucher') }}" method="POST">
                 @csrf
 
-                <x-form.input name="code" type="text" placeholder="Voucher" />
+                <x-form.input classes="mb-3" name="code" type="text" placeholder="Voucher" />
+
+                @if (setting('google_recaptcha_enabled'))
+                    <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                @endif
+
+                @if (setting('cloudflare_turnstile_enabled'))
+                    <x-turnstile-widget
+                        language="en-US"
+                        size="Compact"
+                        callback="callbackFunction"
+                        errorCallback="errorCallbackFunction"/>
+                @endif
 
                 <x-form.secondary-button classes="mt-2">
                     {{ __('Use voucher') }}

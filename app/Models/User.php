@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
@@ -81,7 +82,7 @@ class User extends Authenticatable
 
     public function ban(): HasOne
     {
-        return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time());
+        return $this->hasOne(Ban::class, 'user_id')->where('ban_expire', '>', time())->whereIn('type', ['account', 'super']);
     }
 
     public function settings(): HasOne
@@ -157,7 +158,7 @@ class User extends Authenticatable
 
     public function currency(string $currency)
     {
-        if (! $this->relationLoaded('currencies')) {
+        if (!$this->relationLoaded('currencies')) {
             $this->load('currencies');
         }
 
@@ -168,6 +169,21 @@ class User extends Authenticatable
         };
 
         return $this->currencies->where('type', $type)->first()->amount ?? 0;
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(CameraWeb::class);
+    }
+
+    public function profileGuestbook(): HasMany
+    {
+        return $this->hasMany(WebsiteUserGuestbook::class, 'profile_id');
+    }
+
+    public function guestbook(): HasMany
+    {
+        return $this->hasMany(WebsiteUserGuestbook::class, 'user_id');
     }
 
     public function getOnlineFriends(int $total = 10)
@@ -200,5 +216,10 @@ class User extends Authenticatable
     public function hasAppliedForPosition(int $rankId)
     {
         return $this->applications()->where('rank_id', '=', $rankId)->exists();
+    }
+
+    public function changePassword(string $newPassword) {
+        $this->password = Hash::make($newPassword);
+        $this->save();
     }
 }

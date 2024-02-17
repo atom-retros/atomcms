@@ -3,7 +3,7 @@
 return [
     'site' => [
         'site_url' => env('APP_URL', 'http://localhost'),
-        'default_name' => env('APP_NAME', 'New-Hotel'),
+        'default_name' => env('APP_NAME', 'Atom'),
         'recaptcha_site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
         'recaptcha_secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
         'convert_passwords' => env('CONVERT_PASSWORDS'),
@@ -57,6 +57,8 @@ return [
         'name' => env('FINDRETROS_NAME', 'Example'),
         'api' => 'https://findretros.com',
     ],
+
+    'password_reset_token_time' => env('PASSWORD_RESET_TOKEN_TIME', 15),
 
     'paypal' => [
         'mode'    => env('PAYPAL_MODE', 'sandbox'), // Can only be 'sandbox' Or 'live'. If empty or invalid, 'live' will be used.

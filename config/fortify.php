@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => env('FORTIFY_PREFIX', ''),
 
     'domain' => null,
 
@@ -89,7 +89,7 @@ return [
     |
     */
 
-    'middleware' => ['web', 'maintenance'],
+    'middleware' => ['web', 'maintenance', 'check.ban'],
 
     /*
     |--------------------------------------------------------------------------

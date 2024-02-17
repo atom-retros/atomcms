@@ -61,7 +61,7 @@
 
                 <div class="grid grid-cols-12 gap-2">
                     <x-form.input classes="col-span-12 md:col-span-10 text-sm" name="referral"
-                                  value="{{ sprintf('%s/register/%s/%s', env('APP_URL'), auth()->user()->currentUser->username, auth()->user()->currentUser->referral_code) }}"
+                                  value="{{ sprintf('%s/register/%s', config('habbo.site.site_url'), auth()->user()->currentUser->username) }}"
                                   :autofocus="false" :readonly="true" />
 
                     <div class="col-span-12 flex md:col-span-2" onclick="copyCode()">

@@ -1,4 +1,4 @@
-<x-content.content-card icon="{{$article->icon}}" classes="border dark:border-gray-900">
+<x-content.shop-card icon-url="{{ $article->icon_url }}" color="{{ $article->color }}" classes="border dark:border-gray-900">
     <x-slot:title>
         {{ $article->name }}
     </x-slot:title>
@@ -104,4 +104,4 @@
             </button>
         </form>
     </div>
-</x-content.content-card>
+</x-content.shop-card>

@@ -5,15 +5,18 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
+use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\HelpCenterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstallationController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\LogoGeneratorController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MeController;
 use App\Http\Controllers\NitroController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PasswordSettingsController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\ProfileController;
@@ -31,7 +34,6 @@ use App\Http\Controllers\WebsiteArticleCommentsController;
 use App\Http\Controllers\WebsiteRareValuesController;
 use App\Http\Controllers\WebsiteRulesController;
 use App\Http\Controllers\WebsiteTeamsController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
@@ -39,15 +41,15 @@ use Laravel\Fortify\Features;
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
 
 // Installation routes
-Route::prefix('installation')->group(function () {
-    Route::get('/', [InstallationController::class, 'index'])->name('installation.index');
-    Route::get('/step/{step}', [InstallationController::class, 'showStep'])->name('installation.show-step');
+Route::prefix('installation')->controller(InstallationController::class)->group(function () {
+    Route::get('/', 'index')->name('installation.index');
+    Route::get('/step/{step}', 'showStep')->name('installation.show-step');
 
-    Route::post('/start-installation', [InstallationController::class, 'storeInstallationKey'])->name('installation.start-installation');
-    Route::post('/save-step', [InstallationController::class, 'saveStepSettings'])->name('installation.save-step');
-    Route::post('/previous-step', [InstallationController::class, 'previousStep'])->name('installation.previous-step');
-    Route::post('/restart-installation', [InstallationController::class, 'restartInstallation'])->name('installation.restart');
-    Route::post('/complete', [InstallationController::class, 'completeInstallation'])->name('installation.complete');
+    Route::post('/start-installation', 'storeInstallationKey')->name('installation.start-installation');
+    Route::post('/save-step', 'saveStepSettings')->name('installation.save-step');
+    Route::post('/previous-step', 'previousStep')->name('installation.previous-step');
+    Route::post('/restart-installation', 'restartInstallation')->name('installation.restart');
+    Route::post('/complete', 'completeInstallation')->name('installation.complete');
 });
 
 
@@ -62,6 +64,12 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::get('/', HomeController::class)->name('welcome');
 
         Route::get('/register/{referral_code}', UserReferralController::class)->name('register.referral');
+
+        // Password
+        Route::get('forgot-password', ForgotPasswordController::class)->name('forgot.password.get');
+        Route::post('forgot-password', [ForgotPasswordController::class, 'submitForgetPassword'])->name('forgot.password.post');
+        Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPassword'])->name('reset.password.get');
+        Route::post('reset-password/{token}', [ForgotPasswordController::class, 'submitResetPassword'])->name('reset.password.post');
     });
 
     Route::middleware('auth')->group(function () {
@@ -88,6 +96,8 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
 
         // Profiles
         Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
+        Route::post('/profile/{user}/guestbook', [GuestbookController::class, 'store'])->name('guestbook.store');
+        Route::delete('/profile/{user}/{guestbook}/delete', [GuestbookController::class, 'destroy'])->name('guestbook.destroy');
 
         // Rooms
         Route::get('/room/{room:id}', RoomController::class)->name('room.show');
@@ -172,6 +182,10 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
             Route::get('/nitro', NitroController::class)->name('nitro-client');
             Route::get('/flash', FlashController::class)->name('flash-client');
         });
+
+        // Logo generator
+        Route::get('/logo-generator', [LogoGeneratorController::class, 'index'])->name('logo-generator.index');
+        Route::post('/logo-generator', [LogoGeneratorController::class, 'store'])->name('store.generated-logo');
     });
 });
 

@@ -13,7 +13,7 @@ class WebsiteShopArticleSeeder extends Seeder
             [
                 'name' => 'Bronze Package',
                 'info' => 'To give your account a slight boost',
-                'icon' => 'bronze',
+                'icon_url' => 'https://i.imgur.com/1VGFYSL.gif',
                 'color' => '#c5630f',
                 'costs' => 500,
                 'give_rank' => 2,
@@ -26,7 +26,7 @@ class WebsiteShopArticleSeeder extends Seeder
             [
                 'name' => 'Silver Package',
                 'info' => 'Our package the fits for most',
-                'icon' => 'silver',
+                'icon_url' => 'https://i.imgur.com/5NBdR0z.gif',
                 'color' => '#dddddd',
                 'costs' => 1000,
                 'give_rank' => 3,
@@ -39,7 +39,7 @@ class WebsiteShopArticleSeeder extends Seeder
             [
                 'name' => 'Gold VIP',
                 'info' => 'Our most exclusive VIP package',
-                'icon' => 'gold',
+                'icon_url' => 'https://i.imgur.com/NiVvRrs.gif',
                 'color' => '#E4A317FF',
                 'costs' => 1500,
                 'give_rank' => 4,
@@ -105,7 +105,7 @@ class WebsiteShopArticleSeeder extends Seeder
             WebsiteShopArticles::firstOrCreate(['name' => $article['name']], [
                 'name' => $article['name'],
                 'info' => $article['info'],
-                'icon' => $article['icon'],
+                'icon_url' => $article['icon_url'],
                 'color' => $article['color'],
                 'costs' => $article['costs'],
                 'give_rank' => $article['give_rank'] ?? null,

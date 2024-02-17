@@ -1,0 +1,48 @@
+    name: Laravel
+
+    on:
+      push:
+        branches: [ "main", "develop" ]
+      pull_request:
+        branches: [ "main", "develop" ]
+    
+    jobs:
+      tests:
+        runs-on: ubuntu-latest
+    
+        steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 1
+    
+        - name: Cache composer dependencies
+          uses: actions/cache@v2
+          with:
+            path: vendor
+            key: composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+              composer-
+    
+        - name: Install PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.2
+    
+        - name: Install composer dependencies
+          run: |
+            composer install --no-scripts
+    
+        - name: Install NPM dependencies
+          run: npm install
+    
+        - name: Compile assets
+          run: npm run build:atom
+          
+        - name: Prepare Laravel Application
+          run: |
+            cp .env.example .env
+            touch database/testing.sqlite
+            php artisan key:generate
+    
+        - name: Run Test suite
+          run: php artisan test    

@@ -68,7 +68,20 @@
                         </x-slot:info>
                     </x-form.label>
 
-                    <x-form.input name="code" placeholder="{{ __('Code') }}" />
+                    <x-form.input classes="mb-3" name="code" placeholder="{{ __('Code') }}" />
+
+                    @if (setting('google_recaptcha_enabled'))
+                        <div class="g-recaptcha" data-sitekey="{{ config('habbo.site.recaptcha_site_key') }}"></div>
+                    @endif
+
+                    @if (setting('cloudflare_turnstile_enabled'))
+                        <x-turnstile-widget
+                            language="en-US"
+                            size="normal"
+                            callback="callbackFunction"
+                            errorCallback="errorCallbackFunction"
+                        />
+                    @endif
 
                     <x-form.secondary-button classes="mt-4">
                         {{ __('Verify 2FA') }}
