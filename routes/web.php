@@ -5,6 +5,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BannedController;
 use App\Http\Controllers\FlashController;
+use App\Http\Controllers\GuestbookController;
 use App\Http\Controllers\HelpCenterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstallationController;
@@ -92,6 +93,8 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
 
         // Profiles
         Route::get('/profile/{user:username}', ProfileController::class)->name('profile.show');
+        Route::post('/profile/{user}/guestbook', [GuestbookController::class, 'store'])->name('guestbook.store');
+        Route::delete('/profile/{user}/{guestbook}/delete', [GuestbookController::class, 'destroy'])->name('guestbook.destroy');
 
         // Rooms
         Route::get('/room/{room:id}', RoomController::class)->name('room.show');
