@@ -13,7 +13,7 @@ class WebsiteTeamsController extends Controller
             'employees' => WebsiteTeam::select(['id', 'rank_name', 'badge', 'staff_color', 'staff_background', 'job_description'])
                 ->where('hidden_rank', false)
                 ->orderByDesc('id')
-                ->with('users:id,username,look,motto,rank,team_id')
+                ->with('users:id,username,look,motto,rank,team_id,online')
                 ->get(),
         ]);
     }
