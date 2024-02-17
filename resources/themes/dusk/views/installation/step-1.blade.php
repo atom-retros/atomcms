@@ -1,5 +1,5 @@
 <x-installation-layout>
-    <x-content.installation-content-section icon="hotel-icon" classes="border">
+    <x-content.installation-content-section icon="hotel-icon">
         <x-slot:title>
             {{ __('Welcome to Atom CMS') }}
         </x-slot:title>
@@ -13,12 +13,12 @@
 
             @foreach($settings as $setting)
                <div>
-                   <label class="block font-semibold text-gray-700" for="{{ $setting->key }}">
+                   <label class="block font-semibold" for="{{ $setting->key }}">
                        {{ Str::replace('_', ' ', Str::ucfirst($setting->key)) }}
                    </label>
 
                    <input
-                       class="focus:ring-0 border-4 border-gray-200 rounded focus:border-[#eeb425] w-full @error($setting->key)border-red-600 ring-red-500 @enderror"
+                       class="focus:ring-0 border-2 border-gray-700 rounded bg-[#21242e] focus:border-[#eeb425] w-full text-gray-200 @error($setting->key)border-red-600 ring-red-500 @enderror"
                        id="{{ $setting->key }}" type="text" name="{{ $setting->key }}" value="{{ $setting->value }}" placeholder="{{ $setting->key }}" required>
 
                    @error($setting->key)

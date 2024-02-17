@@ -1,5 +1,5 @@
 <x-installation-layout>
-    <x-content.installation-content-section icon="hotel-icon" classes="border">
+    <x-content.installation-content-section icon="hotel-icon">
         <x-slot:title>
             {{ __('Welcome to Atom CMS') }}
         </x-slot:title>
@@ -47,13 +47,12 @@
             <form action="{{ route('installation.start-installation') }}" method="POST">
                 @csrf
 
-                <label class="block font-semibold text-gray-700" for="installation_key">
+                <label class="block font-semibold" for="installation_key">
                     {{ __('Installation key') }}
                 </label>
 
-                <input
-                    class="focus:ring-0 border-4 border-gray-200 rounded focus:border-[#eeb425] w-full @error('installation_key')border-red-600 ring-red-500 @enderror"
-                    id="installation_key" type="text" name="installation_key" placeholder="{{ __('Enter your installation key') }}" autofocus required autocomplete="false">
+                <x-form.input name="installation_key" placeholder="{{ __('Enter your installation key') }}"
+                              autofocus required autocomplete="false" />
 
                 @error('installation_key')
                     <p class="mt-1 text-xs italic text-red-500">
