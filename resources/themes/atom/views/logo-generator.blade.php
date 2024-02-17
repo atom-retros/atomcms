@@ -37,6 +37,25 @@
                             <img src="{{ asset('/assets/images/logo-generator/danlie/b.png') }}" alt="Letter b">
                             <img src="{{ asset('/assets/images/logo-generator/danlie/c.png') }}" alt="Letter c">
                         </div>
+
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'habton'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('habton')">
+                            <img src="{{ asset('/assets/images/logo-generator/habton/a.png') }}" alt="Letter a">
+                            <img src="{{ asset('/assets/images/logo-generator/habton/b.png') }}" alt="Letter b">
+                            <img src="{{ asset('/assets/images/logo-generator/habton/c.png') }}" alt="Letter c">
+                        </div>
+
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'habton_capitalized'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('habton_capitalized')">
+                            <img src="{{ asset('/assets/images/logo-generator/habton_capitalized/a.png') }}" alt="Letter a">
+                            <img src="{{ asset('/assets/images/logo-generator/habton_capitalized/b.png') }}" alt="Letter b">
+                            <img src="{{ asset('/assets/images/logo-generator/habton_capitalized/c.png') }}" alt="Letter c">
+                        </div>
+
+                        <div x-bind:class="{'bg-gray-200 dark:bg-gray-900 ring-2 ring-emerald-700': fontType === 'habbo_modern'}" class="h-24 rounded border border-gray-300 dark:border-gray-700 p-2 flex gap-2 justify-center items-center transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-gray-900 cursor-pointer" x-on:click="selectFont('habbo_modern')">
+                            <img src="{{ asset('/assets/images/logo-generator/habbo_modern/a.png') }}" alt="Letter a">
+                            <img src="{{ asset('/assets/images/logo-generator/habbo_modern/b.png') }}" alt="Letter b">
+                            <img src="{{ asset('/assets/images/logo-generator/habbo_modern/c.png') }}" alt="Letter c">
+                        </div>
+
                     </div>
 
                    <div class="mt-4">
