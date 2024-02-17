@@ -1,5 +1,5 @@
 <x-installation-layout>
-    <x-content.installation-content-section icon="hotel-icon" classes="border">
+    <x-content.installation-content-section icon="hotel-icon">
         <x-slot:title>
             {{ __('Welcome to Atom CMS') }}
         </x-slot:title>
