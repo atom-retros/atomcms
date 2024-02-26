@@ -1,5 +1,5 @@
 <x-app-layout>
-    @push('title', auth()->user()->username)
+    @push('title', auth()->user()->currentUser->username)
 
     <div class="col-span-12 flex flex-col lg:flex-row gap-4">
         <div class="flex flex-col gap-4 w-full lg:w-3/5">

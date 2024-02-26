@@ -10,7 +10,7 @@ class ReferralController extends Controller
 {
     public function __invoke(RconService $rcon): RedirectResponse
     {
-        $user = Auth::user();
+        $user = Auth::user()->currentUser;
         if (! $user->referrals || $user->referrals->referrals_total < setting('referrals_needed')) {
             return redirect()->back()->withErrors([
                 'message' => __('You do not have enough referrals to claim your reward'),

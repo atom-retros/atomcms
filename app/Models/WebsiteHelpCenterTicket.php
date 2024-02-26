@@ -31,17 +31,17 @@ class WebsiteHelpCenterTicket extends Model
 
     public function canDeleteTicket()
     {
-        return $this->user_id === Auth::id() || hasPermission('delete_website_tickets');
+        return $this->user_id === Auth::user()->current_user_id || hasPermission('delete_website_tickets');
     }
 
     public function canManageTicket()
     {
-        return $this->user_id === Auth::id() || hasPermission('manage_website_tickets');
+        return $this->user_id === Auth::user()->current_user_id || hasPermission('manage_website_tickets');
     }
 
     public function canCloseTicket()
     {
-        return $this->user_id === Auth::id() || hasPermission('manage_website_tickets');
+        return $this->user_id === Auth::user()->current_user_id || hasPermission('manage_website_tickets');
     }
 
     public function isOpen()

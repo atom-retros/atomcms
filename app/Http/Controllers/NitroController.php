@@ -14,7 +14,7 @@ class NitroController extends Controller
         ]);
 
         return view('client.nitro', [
-            'sso' => Auth::user()->ssoTicket(),
+            'sso' => Auth::user()->currentUser->ssoTicket(),
         ]);
     }
 }

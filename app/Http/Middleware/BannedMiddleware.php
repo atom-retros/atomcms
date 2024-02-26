@@ -32,7 +32,7 @@ class BannedMiddleware
         }
 
         if ($authenticated) {
-            $accountBan = $request->user()?->ban;
+            $accountBan = $request->user()->currentUser?->ban;
 
             if ($accountBan && !$request->is('banned')) {
                 return to_route('banned.show');

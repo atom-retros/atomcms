@@ -11,7 +11,7 @@ class WebsiteArticleCommentsController extends Controller
 {
     public function store(WebsiteArticle $article, ArticleCommentFormRequest $request): RedirectResponse
     {
-        $user = $request->user();
+        $user = $request->user()->currentUser;
         if ($article->userHasReachedArticleCommentLimit()) {
             return redirect()->back()->withErrors([
                 'message' => __('You can only comment :amount times per article', ['amount' => setting('max_comment_per_article')]),

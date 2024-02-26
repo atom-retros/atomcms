@@ -2,11 +2,11 @@
     class="ml-4 flex items-center dark:text-gray-200">
     <div class="h-10">
         <img class="w-10"
-            src="{{ setting('avatar_imager') }}{{ auth()->user()->look }}&direction=2&headonly=1&head_direction=2&gesture=sml"
+            src="{{ setting('avatar_imager') }}{{ auth()->user()->currentUser->look }}&direction=2&headonly=1&head_direction=2&gesture=sml"
             alt="">
     </div>
 
-    <span>{{ auth()->user()->username }}</span>
+    <span>{{ auth()->user()->currentUser->username }}</span>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
         stroke-width="2">

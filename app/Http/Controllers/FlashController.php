@@ -14,7 +14,7 @@ class FlashController extends Controller
         ]);
 
         return view('client.flash', [
-            'sso' => Auth::user()->ssoTicket(),
+            'sso' => Auth::user()->currentUser->ssoTicket(),
         ]);
     }
 }

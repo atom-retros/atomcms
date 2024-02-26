@@ -146,7 +146,7 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 -   **Dominic** - Performance improvements & User sessions
 -   **Oliver** - Profile page & Finnish translations
 -   **Beny** - Findretros API fixes & CF Fixes
--   **Live** - French translations, bugfixes & tweaks
+-   **Live** - Bugfixes & tweaks
 -   **MisterDeen** - Custom Discord widget, bugfixes & tweaks
 -   **EntenKoeniq#0001** - Automatic language registration, auto color scheme selection, rooms page & profile page fixes,
 -   **DamienJolly** - Bugfixes
@@ -159,6 +159,7 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 -   **Gedomi** - Spanish translations
 -   **Lorenzune** - Italian translations
 -   **Twana** - Norwegian translations
+-   **Persephone & Live** - French translations
 -   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus

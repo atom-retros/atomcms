@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="flex justify-between">
-                        @if (auth()->user()->hasAppliedForPosition($position->permission->id))
+                        @if (auth()->user()->currentUser->hasAppliedForPosition($position->permission->id))
                             <x-form.danger-button>
                                 {{ __('You have already applied for :position', ['position' => $position->permission->rank_name]) }}
                             </x-form.danger-button>

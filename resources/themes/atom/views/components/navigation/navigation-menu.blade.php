@@ -1,14 +1,14 @@
 <div class="relative hidden flex h-full w-full flex-col items-center gap-y-2 py-3 md:flex md:flex-row md:gap-x-8 md:gap-y-0 md:py-0" id="mobile-menu">
     @auth
         <x-navigation.dropdown icon="home" route-group="user*">
-            {{ auth()->user()->username }}
+            {{ auth()->user()->currentUser->username }}
 
             <x-slot:children>
                 <x-navigation.dropdown-child :route="route('me.show')">
                     {{ __('Home') }}
                 </x-navigation.dropdown-child>
 
-                <x-navigation.dropdown-child :route="route('profile.show', auth()->user()->username)">
+                <x-navigation.dropdown-child :route="route('profile.show', auth()->user()->currentUser->username)">
                     {{ __('My Profile') }}
                 </x-navigation.dropdown-child>
             </x-slot:children>

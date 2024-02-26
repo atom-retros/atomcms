@@ -19,7 +19,7 @@
                         {{ __('Username') }}
                     </x-form.label>
 
-                    <x-form.input classes="bg-red-200" name="username" value="{{ auth()->user()->username }}"
+                    <x-form.input classes="bg-red-200" name="username" value="{{ auth()->user()->currentUser->username }}"
                         :readonly="true" />
                 </div>
 

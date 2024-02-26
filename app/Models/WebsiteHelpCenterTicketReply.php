@@ -23,7 +23,7 @@ class WebsiteHelpCenterTicketReply extends Model
 
     public function canDeleteReply()
     {
-        return $this->user_id === Auth::id() || hasPermission('delete_website_ticket_replies');
+        return $this->user_id === Auth::user()->current_user_id || hasPermission('delete_website_ticket_replies');
     }
 
     public function getContentAttribute($value)

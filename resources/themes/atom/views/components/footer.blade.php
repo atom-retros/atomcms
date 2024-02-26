@@ -27,7 +27,7 @@
             '<strong>Kani</strong> RCON base & Findretros API <br/>',
             '<strong>Beny</strong> Findretros API Fixes & CF Fixes <br/>',
             '<strong>Oliver</strong> Profile page additions & Finnish translations <br/>',
-            '<strong>Live</strong> French translations, bugfixes & tweaks <br/>',
+            '<strong>Live</strong> Bugfixes & tweaks <br/>',
             '<strong>DamienJolly</strong> Bugfixes <br/>',
             '<strong>Danbo</strong> Bugfixes <br/>',
             '<strong>Diddy/Josh</strong> Code readability improvements <br/>',
@@ -37,6 +37,7 @@
             '<strong>Yannick</strong> Netherlands translations <br/>',
             '<strong>Gedomi</strong> Spanish translations <br/>',
             '<strong>Lorenzune</strong> Italian translations <br/>',
+            '<strong>Persephone & Live</strong> Italian translations <br/>',
             '<strong>Twana & Zaruzet</strong> Norwegian translations <br/>'
         ];
         const content =

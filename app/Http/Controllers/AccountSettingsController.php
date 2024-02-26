@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountSettingsFormRequest;
+use App\Models\WebsiteAccount;
 use App\Services\RconService;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -10,20 +11,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Jenssegers\Agent\Agent;
+use App\Models\User;
 
 class AccountSettingsController extends Controller
 {
     public function edit(): View
     {
         return view('user.settings.account', [
-            'user' => Auth::user()->load('settings:allow_name_change'),
+            'user' => Auth::user()->currentUser->load('settings:allow_name_change'),
         ]);
     }
 
     public function sessionLogs(Request $request): View
     {
         $sessions = collect(
-            auth()->user()->sessions
+            auth()->user()->currentUser->sessions
         )->map(function ($session) use ($request) {
             $agent = $this->createAgent($session);
 
@@ -53,7 +55,7 @@ class AccountSettingsController extends Controller
 
     public function update(RconService $rcon, AccountSettingsFormRequest $request): RedirectResponse
     {
-        $user = Auth::user();
+        $user = Auth::user()->currentUser;
         $canChangeName = $user->settings?->allow_name_change && $user->username !== $request->input('username');
 
         if ($user->online && $canChangeName && $rcon->isConnected) {
@@ -63,12 +65,12 @@ class AccountSettingsController extends Controller
 
         if ($canChangeName) {
             $user->update([
-                'username' => $request->string('username', Auth::user()->username),
+                'username' => $request->string('username', Auth::user()->currentUser->username),
             ]);
         }
 
         $user->update([
-            'mail' => $request->string('mail', Auth::user()->email),
+            'mail' => $request->string('mail', Auth::user()->currentUser->email),
             'motto' => $request->string('motto', '')
         ]);
 
@@ -82,5 +84,19 @@ class AccountSettingsController extends Controller
     public function twoFactor(): View
     {
         return view('user.settings.two-factor');
+    }
+
+    public function users(): View
+    {
+        return view('user.settings.users');
+    }
+
+    public function selectUser(User $user)
+    {
+        Auth::user()->update([
+            'current_user_id' => $user->id,
+        ]);
+
+        return redirect()->back()->with('success', __('Your user has been selected'));
     }
 }
