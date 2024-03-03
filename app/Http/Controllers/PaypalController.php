@@ -14,14 +14,7 @@ class PaypalController extends Controller
     private const STATUS_CANCELLED = 'CANCELLED';
     private const STATUS_COMPLETED = 'COMPLETED';
 
-    public function __construct(private PayPalClient $provider)
-    {
-        $this->provider = new PayPalClient;
-        $this->provider->setApiCredentials(config('habbo.paypal'));
-        $this->provider->getAccessToken();
-    }
-
-    public function process(AccountTopupFormRequest $request): Response|RedirectResponse
+    public function process(AccountTopupFormRequest $request, PayPalClient $payPalClient): Response|RedirectResponse
     {
         $amount = $request->integer('amount');
         $orderData = [
@@ -44,7 +37,7 @@ class PaypalController extends Controller
             ],
         ];
 
-        $response = $this->provider->createOrder($orderData);
+        $response = $payPalClient->createOrder($orderData);
 
         if (isset($response['id']) === false) {
             Log::error('Error creating order', ['response' => $response]);
@@ -69,7 +62,7 @@ class PaypalController extends Controller
         );
     }
 
-    public function successful(Request $request): Response
+    public function successful(Request $request, PayPalClient $payPalClient): Response
     {
         $request->validate([
             'token' => 'required',
@@ -82,7 +75,7 @@ class PaypalController extends Controller
             return to_route('shop.index')->withErrors(['message' => __('Something went wrong, please try again later')]);
         }
 
-        $response = $this->provider->capturePaymentOrder($request['token']);
+        $response = $payPalClient->capturePaymentOrder($request['token']);
         $paymentDetails = $response['purchase_units'][0]['payments']['captures'][0];
 
         if (!isset($response['status'], $paymentDetails)) {
