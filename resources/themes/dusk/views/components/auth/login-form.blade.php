@@ -30,13 +30,7 @@
     @endif
 
     @if (setting('cloudflare_turnstile_enabled'))
-        <x-turnstile-widget
-            language="en-US"
-            size="normal"
-            callback="callbackFunction"
-            errorCallback="errorCallbackFunction"
-            ck
-        />
+        <x-turnstile />
     @endif
 
     <x-form.primary-button>

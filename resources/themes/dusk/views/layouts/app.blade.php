@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         @vite(['resources/themes/dusk/css/app.scss', 'resources/themes/dusk/js/app.js'], 'build')
+        @turnstileScripts()
 
         <script src="{{ asset('/assets/js/dusk.js') }}"></script>
     </head>

@@ -21,6 +21,7 @@
 
     @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
     @stack('scripts')
+    @turnstileScripts()
 </head>
 
 <body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">
