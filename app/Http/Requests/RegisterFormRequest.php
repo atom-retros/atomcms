@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Rules\GoogleRecaptchaRule;
-use App\Rules\TurnstileCheck;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,7 +18,7 @@ class RegisterFormRequest extends FormRequest
             'password' => ['required', 'string', 'confirmed', 'min:8'],
             'terms' => ['required', 'accepted'],
             'g-recaptcha-response' => [new GoogleRecaptchaRule()],
-            'cf-turnstile-response' => [new TurnstileCheck()],
+            'cf-turnstile-response' => [Rule::turnstile()],
         ];
     }
 

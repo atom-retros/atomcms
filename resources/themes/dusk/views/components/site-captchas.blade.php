@@ -15,11 +15,6 @@
     @endif
 
     @if (setting('cloudflare_turnstile_enabled') === '1')
-        <x-turnstile-widget
-            language="en-US"
-            size="normal"
-            callback="callbackFunction"
-            errorCallback="errorCallbackFunction"
-        />
+            <x-turnstile />
     @endif
 </div>

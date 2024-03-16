@@ -103,11 +103,7 @@
                 @endif
 
                 @if (setting('cloudflare_turnstile_enabled'))
-                    <x-turnstile-widget
-                        language="en-US"
-                        size="Compact"
-                        callback="callbackFunction"
-                        errorCallback="errorCallbackFunction"/>
+                    <x-turnstile />
                 @endif
 
                 <x-form.secondary-button classes="mt-2">

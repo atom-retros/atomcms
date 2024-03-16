@@ -4,7 +4,6 @@ namespace App\Actions\Fortify;
 
 use App\Models\User;
 use App\Rules\GoogleRecaptchaRule;
-use App\Rules\TurnstileCheck;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\StatefulGuard;
@@ -17,6 +16,7 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\LoginRateLimiter;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Validation\Rule;
 
 class RedirectIfTwoFactorAuthenticatable
 {
@@ -180,7 +180,7 @@ class RedirectIfTwoFactorAuthenticatable
         }
 
         if (setting('cloudflare_turnstile_enabled')) {
-            $rules['cf-turnstile-response'] = [new TurnstileCheck()];
+            $rules['cf-turnstile-response'] = [Rule::turnstile()];
         }
 
         $messages = [
