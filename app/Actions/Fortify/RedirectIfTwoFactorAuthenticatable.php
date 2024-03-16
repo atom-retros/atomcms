@@ -16,7 +16,7 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\LoginRateLimiter;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Validation\Rule;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 class RedirectIfTwoFactorAuthenticatable
 {
@@ -180,7 +180,7 @@ class RedirectIfTwoFactorAuthenticatable
         }
 
         if (setting('cloudflare_turnstile_enabled')) {
-            $rules['cf-turnstile-response'] = [Rule::turnstile()];
+            $rules['cf-turnstile-response'] = [app(Turnstile::class)];
         }
 
         $messages = [

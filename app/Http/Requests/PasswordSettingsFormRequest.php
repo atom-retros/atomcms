@@ -6,7 +6,7 @@ use App\Actions\Fortify\Rules\PasswordValidationRules;
 use App\Rules\CurrentPasswordRule;
 use App\Rules\GoogleRecaptchaRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 class PasswordSettingsFormRequest extends FormRequest
 {
@@ -18,7 +18,7 @@ class PasswordSettingsFormRequest extends FormRequest
             'current_password' => ['required', 'string', new CurrentPasswordRule],
             'password' => $this->passwordRules(),
             'g-recaptcha-response' => [new GoogleRecaptchaRule()],
-            'cf-turnstile-response' => [Rule::turnstile()],
+            'cf-turnstile-response' => [app(Turnstile::class)],
         ];
     }
 }

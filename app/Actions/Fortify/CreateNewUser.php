@@ -17,6 +17,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -120,7 +121,7 @@ class CreateNewUser implements CreatesNewUsers
             'beta_code' => ['sometimes', 'string', new BetaCodeRule],
             'terms' => ['required', 'accepted'],
             'g-recaptcha-response' => ['sometimes', 'string', new GoogleRecaptchaRule()],
-            'cf-turnstile-response' => [Rule::turnstile()],
+            'cf-turnstile-response' => [app(Turnstile::class)],
         ];
 
         $messages = [
