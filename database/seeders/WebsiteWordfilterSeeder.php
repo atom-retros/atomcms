@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteWordfilter;
+use App\Models\Miscellaneous\WebsiteWordfilter;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 

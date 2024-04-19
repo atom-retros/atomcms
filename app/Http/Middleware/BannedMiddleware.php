@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Ban;
+use App\Models\User\Ban;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

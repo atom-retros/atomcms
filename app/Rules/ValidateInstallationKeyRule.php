@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Models\WebsiteInstallation;
+use App\Models\Miscellaneous\WebsiteInstallation;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 

@@ -2,7 +2,7 @@
 
 namespace App\Services\Community;
 
-use App\Models\WebsiteTeam;
+use App\Models\Community\Staff\WebsiteTeam;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 

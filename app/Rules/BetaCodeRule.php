@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Models\WebsiteBetaCode;
+use App\Models\Miscellaneous\WebsiteBetaCode;
 use Closure;
 use Illuminate\Contracts\Validation\InvokableRule;
 

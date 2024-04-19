@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteRule;
-use App\Models\WebsiteRuleCategory;
+use App\Models\Help\WebsiteRule;
+use App\Models\Help\WebsiteRuleCategory;
 use Illuminate\Database\Seeder;
 
 class WebsiteRuleSeeder extends Seeder

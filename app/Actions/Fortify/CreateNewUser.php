@@ -3,8 +3,8 @@
 namespace App\Actions\Fortify;
 
 use App\Actions\Fortify\Rules\PasswordValidationRules;
+use App\Models\Miscellaneous\WebsiteBetaCode;
 use App\Models\User;
-use App\Models\WebsiteBetaCode;
 use App\Providers\RouteServiceProvider;
 use App\Rules\BetaCodeRule;
 use App\Rules\GoogleRecaptchaRule;

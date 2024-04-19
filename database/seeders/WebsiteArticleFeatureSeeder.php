@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteShopArticleFeature;
-use App\Models\WebsiteShopArticles;
+use App\Models\Shop\WebsiteShopArticleFeature;
+use App\Models\Shop\WebsiteShopArticles;
 use Illuminate\Database\Seeder;
 
 class WebsiteArticleFeatureSeeder extends Seeder

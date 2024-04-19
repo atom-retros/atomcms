@@ -2,7 +2,7 @@
 
 namespace App\Services\Community;
 
-use App\Models\WebsiteOpenPosition;
+use App\Models\Community\Staff\WebsiteOpenPosition;
 use Illuminate\Database\Eloquent\Collection;
 
 class StaffApplicationService

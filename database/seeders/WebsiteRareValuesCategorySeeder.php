@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteRareValueCategory;
+use App\Models\Community\RareValue\WebsiteRareValueCategory;
 use Illuminate\Database\Seeder;
 
 class WebsiteRareValuesCategorySeeder extends Seeder

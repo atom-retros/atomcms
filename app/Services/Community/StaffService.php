@@ -2,7 +2,7 @@
 
 namespace App\Services\Community;
 
-use App\Models\Permission;
+use App\Models\Game\Permission;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
