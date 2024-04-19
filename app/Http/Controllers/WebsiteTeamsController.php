@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\WebsiteTeam;
+use App\Services\Community\TeamService;
 use Illuminate\View\View;
 
 class WebsiteTeamsController extends Controller
 {
+    public function __construct(private readonly TeamService $teamService)
+    {
+    }
+
     public function __invoke(): View
     {
+        $employees = $this->teamService->fetchTeams();
         return view('community.teams', [
-            'employees' => WebsiteTeam::select(['id', 'rank_name', 'badge', 'staff_color', 'staff_background', 'job_description'])
-                ->where('hidden_rank', false)
-                ->orderByDesc('id')
-                ->with('users:id,username,look,motto,rank,team_id,online')
-                ->get(),
+            'employees' => $employees,
         ]);
     }
 }

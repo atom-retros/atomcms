@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StaffApplicationFormRequest;
 use App\Models\WebsiteOpenPosition;
+use App\Services\Community\StaffApplicationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class StaffApplicationsController extends Controller
 {
+    public function __construct(private readonly StaffApplicationService $staffApplicationService)
+    {
+    }
+
     public function index()
     {
         return view('community.staff-applications', [
-            'positions' => WebsiteOpenPosition::canApply()->with('permission')->get(),
+            'positions' => $this->staffApplicationService->fetchOpenPositions(),
         ]);
     }
 
@@ -25,13 +30,13 @@ class StaffApplicationsController extends Controller
 
     public function store(WebsiteOpenPosition $position, StaffApplicationFormRequest $request): RedirectResponse
     {
-        if ($request->user()->applications()->where('rank_id', $position->permission->id)->exists()) {
+        if ($this->staffApplicationService->hasUserAppliedForPosition($request->user(), $position->permission->id)) {
             return redirect()->back()->withErrors([
                 'message' => __('You have already applied for this position.'),
             ]);
         }
 
-        if ($position->apply_from > now() || $position->apply_to < now()) {
+        if (!$this->staffApplicationService->isPositionOpenForApplication($position)) {
             return redirect()->back()->withErrors([
                 'message' => __('You cannot apply for this position.'),
             ]);
