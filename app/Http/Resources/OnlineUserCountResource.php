@@ -12,10 +12,10 @@ class OnlineUserCountResource extends JsonResource
      *
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray(Request $request): array
+    public function toArray($request): array
     {
         return [
-            'onlineCount' => $this->count(),
+            'onlineCount' => $this->resource,
         ];
     }
 }

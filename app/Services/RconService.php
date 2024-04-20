@@ -2,34 +2,48 @@
 
 namespace App\Services;
 
+use Socket;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Socket;
+use App\Exceptions\RconConnectionException;
 
 class RconService
 {
-    public Socket|bool $socket = false;
-    public bool $isConnected = false;
+    protected Socket|bool $socket = false;
+    protected bool $isConnected = false;
+    protected array $config = [];
 
     public function __construct()
     {
-        $this->initialization();
+        $this->config = [
+            'ip'   => setting('rcon_ip'),
+            'port' => setting('rcon_port'),
+        ];
+
+        $this->initialize();
     }
 
-    private function initialization(): void
+    /**
+     * @throws RconConnectionException
+     */
+    private function initialize(): void
     {
-        if (! $this->socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP)) {
-            Log::error("socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n");
-            $this->closeConnection();
+        $this->socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
-            return;
+        if (!$this->socket) {
+            $error = socket_strerror(socket_last_error());
+            Log::error("RCON initialization failed: $error");
+
+            throw new RconConnectionException("Failed to create socket: $error");
         }
 
-        if (! @socket_connect($this->socket, setting('rcon_ip'), (int)setting('rcon_port'))) {
-            Log::error("socket_connect() failed: reason: " . socket_strerror(socket_last_error()) . "\n");
+        if (!@socket_connect($this->socket, $this->config['ip'], $this->config['port'])) {
+            $error = socket_strerror(socket_last_error());
+            Log::error("RCON connection failed: $error");
+
             $this->closeConnection();
 
-            return;
+            throw new RconConnectionException("Failed to connect to RCON: $error");
         }
 
         $this->isConnected = true;
@@ -37,24 +51,38 @@ class RconService
 
     private function closeConnection(): void
     {
+        if ($this->socket) {
+            socket_close($this->socket);
+        }
+
         $this->socket = false;
         $this->isConnected = false;
     }
 
-    public function sendCommand(string $command, array|null $data = null)
+    /**
+     * @throws RconConnectionException
+     */
+    public function sendCommand(string $command, ?array $data = null)
     {
-        if (! $this->socket) {
-            return;
+        if (!$this->isConnected) {
+            $error = "RCON command failed: Not connected";
+            Log::error($error);
+
+            throw new RconConnectionException($error);
         }
 
-        $data = json_encode(['key' => $command, 'data' => $data]);
+        $payload = json_encode(['key' => $command, 'data' => $data]);
 
-        if (! @socket_write($this->socket, $data, strlen($data))) {
-            Log::error(socket_strerror(socket_last_error($this->socket)));
+        if (!@socket_write($this->socket, $payload, strlen($payload))) {
+            $error = socket_strerror(socket_last_error($this->socket));
+            Log::error("RCON command ($command) failed: $error");
+
+            $this->closeConnection();
+
+            throw new RconConnectionException("Failed to send RCON command ($command): $error");
         }
 
-        $this->closeConnection();
-        $this->initialization();
+        return true;
     }
 
     public function sendGift(User $user, int $item_id, string $message = 'Here is a gift.')

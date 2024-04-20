@@ -7,23 +7,26 @@ use App\Http\Resources\OnlineUserCountResource;
 use App\Http\Resources\OnlineUsersResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\User\UserApiService;
 
 class HotelApiController extends Controller
 {
-    public function fetchUser($username, $columns = ['username', 'motto', 'look']): UserResource
+    public function __construct(private readonly UserApiService $userApiService)
     {
-        return new UserResource(User::select($columns)->where('username', '=', $username));
     }
 
-    public function onlineUsers($columns = ['username', 'motto', 'look']): OnlineUsersResource
+    public function fetchUser(string $username, array $columns = ['username', 'motto', 'look']): UserResource
     {
-        return new OnlineUsersResource(User::select($columns)
-            ->where('online', '=', '1')
-            ->inRandomOrder());
+        return new UserResource($this->userApiService->fetchUser($username, $columns));
     }
 
-    public function onlineUserCount($columns = ['username', 'motto', 'look']): OnlineUserCountResource
+    public function onlineUsers($columns = ['username', 'motto', 'look'], bool $randomOrder = true): OnlineUsersResource
     {
-        return new OnlineUserCountResource(User::select($columns)->where('online', '=', '1'));
+        return new OnlineUsersResource($this->userApiService->onlineUsers($columns, $randomOrder));
+    }
+
+    public function onlineUserCount(): OnlineUserCountResource
+    {
+        return new OnlineUserCountResource($this->userApiService->onlineUserCount());
     }
 }

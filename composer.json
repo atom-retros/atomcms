@@ -22,7 +22,8 @@
         "ryangjchandler/laravel-cloudflare-turnstile": "*",
         "spatie/laravel-activitylog": "^4.8",
         "srmklive/paypal": "~3.0",
-        "stevebauman/purify": "^6.0"
+        "stevebauman/purify": "^6.0",
+        "ext-sockets": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",

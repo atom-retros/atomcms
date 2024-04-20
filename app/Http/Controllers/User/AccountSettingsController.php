@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountSettingsFormRequest;
 use App\Services\RconService;
+use App\Services\User\SessionService;
+use App\Services\User\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +16,10 @@ use Jenssegers\Agent\Agent;
 
 class AccountSettingsController extends Controller
 {
+    public function __construct(private readonly SessionService $sessionService, private readonly UserService $userService, private readonly RconService $rconService)
+    {
+    }
+
     public function edit(): View
     {
         return view('user.settings.account', [
@@ -23,71 +29,39 @@ class AccountSettingsController extends Controller
 
     public function sessionLogs(Request $request): View
     {
-        $sessions = collect(
-            Auth::user()->sessions
-        )->map(function ($session) use ($request) {
-            $agent = $this->createAgent($session);
-
-            return (object) [
-                'agent' => [
-                    'is_desktop' => $agent->isDesktop(),
-                    'platform' => $agent->platform(),
-                    'browser' => $agent->browser(),
-                ],
-                'ip_address' => $session->ip_address,
-                'is_current_device' => $session->id === $request->session()->getId(),
-                'last_active' => Carbon::createFromTimestamp($session->last_activity)->diffForHumans(),
-            ];
-        });
+        $sessions = $this->sessionService->fetchSessionLogs($request);
 
         return view('user.settings.session-logs', [
             'logs' => $sessions,
         ]);
     }
 
-    protected function createAgent($session): Agent
+    public function update(AccountSettingsFormRequest $request): RedirectResponse
     {
-        return tap(new Agent, function ($agent) use ($session) {
-            $agent->setUserAgent($session->user_agent);
-        });
-    }
+        $user = $this->userService->getUser();
 
-    public function update(RconService $rcon, AccountSettingsFormRequest $request): RedirectResponse
-    {
-        $user = Auth::user();
+        if ($user === null) {
+            return redirect()->back()->withErrors('User not found');
+        }
+
         $allowedNameChange = $user->settings?->allow_name_change && $user->username !== $request->input('username');
 
         if ($allowedNameChange) {
-            // Disconnect the user and wait 1 second, to ensure the name change will proceed
-            if ($rcon->isConnected && $user->online) {
-                $rcon->disconnectUser($user);
-                sleep(1);
-            }
-
-            $user->update([
-                'username' => $request->input('username'),
-            ]);
+            $this->rconService->disconnectUser($user);
+            $this->userService->updateField($user, 'username', $request->input('username'));
         }
 
         if ($user->mail !== $request->input('mail')) {
-            $user->update([
-                'mail' => $request->input('mail'),
-            ]);
+            $this->userService->updateField($user, 'mail', $request->input('mail'));
         }
 
         if ($user->motto !== $request->input('motto')) {
-            if ($rcon->isConnected) {
-                $rcon->setMotto($user, $request->input('motto'));
-            } else {
-                $user->update([
-                    'motto' => $request->input('motto'),
-                ]);
-            }
+            $this->rconService->setMotto($user, $request->input('motto'));
+            $this->userService->updateField($user, 'motto', $request->input('motto'));
         }
 
         return redirect()->back()->with('success', __('Your account settings has been updated'));
     }
-
     public function twoFactor(): View
     {
         return view('user.settings.two-factor');
