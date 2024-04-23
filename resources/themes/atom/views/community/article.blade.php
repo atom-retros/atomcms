@@ -143,7 +143,7 @@
                                         {{ $comment->created_at->diffForHumans() }}
                                     </p>
 
-                                    @if ($comment->userCanDeleteComment())
+                                    @if ($comment->canBeDeleted())
                                         <form action="{{ route('article.comment.destroy', $comment) }}" method="POST"
                                             class="cursor-pointer transition duration-200 ease-in-out hover:scale-105">
                                             @method('DELETE')

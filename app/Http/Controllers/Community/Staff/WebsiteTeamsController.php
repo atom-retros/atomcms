@@ -15,6 +15,7 @@ class WebsiteTeamsController extends Controller
     public function __invoke(): View
     {
         $employees = $this->teamService->fetchTeams();
+
         return view('community.teams', [
             'employees' => $employees,
         ]);

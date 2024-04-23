@@ -42,10 +42,7 @@ class StaffApplicationsController extends Controller
             ]);
         }
 
-        $request->user()->applications()->create([
-            'rank_id' => $position->permission->id,
-            'content' => $request->input('content'),
-        ]);
+        $this->staffApplicationService->storeApplication($request->user(), $position->permission->id, $request->input('content'));
 
         return to_route('staff-applications.index')->with('success', __('Your application has been submitted!'));
     }
