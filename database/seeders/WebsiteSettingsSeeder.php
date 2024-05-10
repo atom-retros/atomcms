@@ -101,6 +101,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'The minimum rank before being considered a staff member',
             ],
             [
+                'key' => 'min_rank_to_see_hidden_staff',
+                'value' => '6',
+                'comment' => 'The minimum rank to enable seeing hidden staff ranks & members',
+            ],
+            [
                 'key' => 'badges_path',
                 'value' => '/client/flash/c_images/album1584',
                 'comment' => 'The path to the badges folder',

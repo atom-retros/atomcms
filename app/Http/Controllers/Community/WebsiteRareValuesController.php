@@ -4,34 +4,53 @@ namespace App\Http\Controllers\Community;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RareSearchFormRequest;
+<<<<<<< Updated upstream:app/Http/Controllers/Community/WebsiteRareValuesController.php
 use App\Models\Community\RareValue\WebsiteRareValue;
 use App\Models\Community\RareValue\WebsiteRareValueCategory;
 use App\Models\Game\Furniture\Item;
+=======
+<<<<<<< Updated upstream:app/Http/Controllers/WebsiteRareValuesController.php
+use App\Models\Item;
+use App\Models\WebsiteRareValue;
+use App\Models\WebsiteRareValueCategory;
+=======
+use App\Models\Community\RareValue\WebsiteRareValue;
+use App\Models\Community\RareValue\WebsiteRareValueCategory;
+use App\Models\Game\Furniture\Item;
+use App\Services\Community\RareValues\RareValueCategoriesService;
+>>>>>>> Stashed changes:app/Http/Controllers/Community/WebsiteRareValuesController.php
+>>>>>>> Stashed changes:app/Http/Controllers/WebsiteRareValuesController.php
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class WebsiteRareValuesController extends Controller
 {
+    public function __construct(private readonly RareValueCategoriesService $valueCategoriesService)
+    {
+    }
+
     public function index(): View
     {
         return view('rare-values', [
-            'categories' => WebsiteRareValueCategory::orderBy('priority')->with('furniture')->get(),
-            'categoriesNav' => WebsiteRareValueCategory::all(),
+            'categories' => $this->valueCategoriesService->fetchCategoriesByPriority(),
+            'categoriesNav' => $this->valueCategoriesService->fetchAllCategories(),
         ]);
     }
 
     public function category(int $id): View|RedirectResponse
     {
-        if (WebsiteRareValueCategory::where('id', '=', $id)->doesntExist()) {
+        $category = $this->valueCategoriesService->fetchCategoryById($id);
+
+        if (! $category) {
             return redirect()->back()->withErrors([
                 'message' => __('The entered category does not exist'),
             ]);
         }
 
         return view('rare-values', [
-            'categories' => WebsiteRareValueCategory::orderBy('priority')->whereId($id)->with('furniture')->get(),
-            'categoriesNav' => WebsiteRareValueCategory::all(),
+            'categories' => $category,
+            'categoriesNav' =>  $this->valueCategoriesService->fetchAllCategories(),
         ]);
     }
 
@@ -39,13 +58,7 @@ class WebsiteRareValuesController extends Controller
     {
         $searchTerm = $request->input('search');
 
-        $categories = WebsiteRareValueCategory::orderBy('priority')->whereHas('furniture', function ($query) use ($searchTerm) {
-            $query->where('name', 'like', '%'.$searchTerm.'%');
-        })
-            ->with(['furniture' => function ($query) use ($searchTerm) {
-                $query->where('name', 'like', '%'.$searchTerm.'%');
-            }])
-            ->get();
+        $categories = $this->valueCategoriesService->searchCategories($searchTerm);
 
         if ($categories->isEmpty()) {
             return redirect()->back()->withErrors([

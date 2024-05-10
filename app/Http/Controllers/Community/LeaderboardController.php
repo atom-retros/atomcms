@@ -6,19 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Game\Player\UserCurrency;
 use App\Models\Game\Player\UserSetting;
 use App\Models\User;
+use App\Services\Community\StaffService;
 use Illuminate\View\View;
 
 class LeaderboardController extends Controller
 {
     protected array $staffIds = [];
 
-    public function __construct()
+    public function __construct(private readonly StaffService $staffService)
     {
-        $this->staffIds = User::select('id')
-            ->where('rank', '>=', setting('min_staff_rank'))
-            ->get()
-            ->pluck('id')
-            ->toArray();
+        $this->staffIds = $this->staffService->fetchEmployeeIds();
     }
 
     public function __invoke(): View

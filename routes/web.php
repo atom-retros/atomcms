@@ -99,9 +99,6 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
         Route::post('/profile/{user}/guestbook', [GuestbookController::class, 'store'])->name('guestbook.store');
         Route::delete('/profile/{user}/{guestbook}/delete', [GuestbookController::class, 'destroy'])->name('guestbook.destroy');
 
-        // Rooms
-        Route::get('/room/{room:id}', RoomController::class)->name('room.show');
-
         // Community routes
         Route::prefix('community')->group(function () {
             Route::get('/photos', PhotosController::class)->name('photos.index')->withoutMiddleware('auth');

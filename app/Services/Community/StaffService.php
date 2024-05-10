@@ -4,6 +4,8 @@ namespace App\Services\Community;
 
 use App\Models\Game\Permission;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
 class StaffService
@@ -18,11 +20,16 @@ class StaffService
 
         $employees = Permission::query()
             ->select('id', 'rank_name', 'badge', 'staff_color', 'job_description')
-            ->where('hidden_rank', false)
+            ->when(Auth::user()->rank < (int)setting('min_rank_to_see_hidden_staff'), function ($query) {
+                return $query->where('hidden_rank', false);
+            })
             ->where('id', '>=', setting('min_staff_rank'))
             ->orderByDesc('id')
             ->with(['users' => function ($query) {
-                $query->select('id', 'username', 'rank', 'look', 'hidden_staff')->where('hidden_staff', false);
+                    $query->select('id', 'username', 'rank', 'look', 'hidden_staff')
+                        ->when(Auth::user()->rank < (int)setting('min_rank_to_see_hidden_staff'), function ($query) {
+                            return $query->where('hidden_staff', false);
+                        });
             }])
             ->get();
 
@@ -32,5 +39,26 @@ class StaffService
         }
 
         return $employees;
+    }
+
+    public function fetchEmployeeIds(): array
+    {
+        $cacheEnabled = setting('enable_caching') === '1';
+
+        if (Cache::has('staff_ids') && $cacheEnabled) {
+            return Cache::get('staff_ids');
+        }
+
+        $staffIds = User::select('id')
+            ->where('rank', '>=', setting('min_staff_rank'))
+            ->get()
+            ->pluck('id')->toArray();
+
+        if ($cacheEnabled) {
+            $cacheTimer = (int)setting('cache_timer');
+            Cache::put('staff_ids', $staffIds, now()->addMinutes($cacheTimer));
+        }
+
+        return $staffIds;
     }
 }
