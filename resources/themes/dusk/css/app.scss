@@ -79,7 +79,7 @@ img {
         filter: grayscale(0);
     }
 
-    a.active, div.active{
+    a.active, div.active {
         color: #ac93da;
 
         .dropdown-children {
@@ -136,72 +136,61 @@ img {
 .swiper-button-prev {
     z-index: 15 !important;
 }
+
 .swiper-button-next {
     z-index: 15 !important;
 }
 
 
 .hotel-icon {
-    background: url("/public/assets/images/icons/feeds.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/feeds.png") no-repeat center;
 }
 
 .chat-icon {
-    background: url("/public/assets/images/icons/chat.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/chat.png") no-repeat center;
 }
 
 .article-icon {
-    background: url("/public/assets/images/icons/article.gif") no-repeat
-    center;
+    background: url("/public/assets/images/icons/article.gif") no-repeat center;
 }
 
 .lighthouse-icon {
-    background: url("/public/assets/images/icons/lighthouse.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/lighthouse.png") no-repeat center;
 }
 
 .currency-icon {
-    background: url("/public/assets/images/dusk/store_icon.png") no-repeat
-    center;
+    background: url("/public/assets/images/dusk/store_icon.png") no-repeat center;
 }
 
 .catalog-icon {
-    background: url("/public/assets/images/icons/catalog.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/catalog.png") no-repeat center;
 }
 
 .inventory-icon {
-    background: url("/public/assets/images/icons/inventory.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/inventory.png") no-repeat center;
 }
 
 .duo-chat-icon {
-    background: url("/public/assets/images/icons/due-chat.png") no-repeat
-    center;
+    background: url("/public/assets/images/icons/due-chat.png") no-repeat center;
 }
 
 
 .friends-icon {
-    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat
-    center;
+    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat center;
 }
 
 .nav-credit-icon {
-    background: #e9b124 url("/public/assets/images/icons/currency/credits.png")
-    no-repeat center;
+    background: #e9b124 url("/public/assets/images/icons/currency/credits.png") no-repeat center;
     outline: 1px solid #b26d18;
 }
 
 .nav-ducket-icon {
-    background: #c44aac url("/public/assets/images/icons/currency/duckets.png")
-    no-repeat center;
+    background: #c44aac url("/public/assets/images/icons/currency/duckets.png") no-repeat center;
     outline: 1px solid #812378;
 }
 
 .nav-diamond-icon {
-    background: #caf1f3 url("/public/assets/images/icons/currency/diamonds.png")
-    no-repeat center;
+    background: #caf1f3 url("/public/assets/images/icons/currency/diamonds.png") no-repeat center;
     outline: 1px solid #6caff4;
 }
 
@@ -249,4 +238,24 @@ img {
 /* Nitro disconnect overlay */
 #disconnected {
     display: none;
+}
+
+.atom-align-left {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.atom-align-right {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.atom-align-center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.atom-align-center > * {
+    text-align: center;
 }
