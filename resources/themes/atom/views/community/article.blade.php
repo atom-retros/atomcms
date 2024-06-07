@@ -72,7 +72,7 @@
                 <p class="relative w-full truncate text-center">{{ $article->short_story }}</p>
             </div>
 
-            <div class="px-2">
+            <div class="px-2" id="article-content">
                 {!! $article->full_story !!}
             </div>
 

@@ -267,3 +267,7 @@ html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
 .atom-align-center > * {
     text-align: center;
 }
+
+#article-content a {
+    color: #53b2f8;
+}
