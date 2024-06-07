@@ -1,0 +1,171 @@
+@import './../css/app.css';
+
+:root {
+    --blue: #069;
+    --blue-light: #006699;
+    --blue-lighter: #0d73ad;
+    --blue-lightest: #2685bc;
+    --blue-dark: #0c3a65;
+    --blue-darker: #0e3955;
+    --blue-darkest: #001726;
+
+    --avatar: #02353c;
+    --avatar-border: #267b91;
+
+    --btn-success: #00813e;
+    --btn-success-border: #8eda55;
+    --btn-success-hover: #00ab54;
+    --btn-success-border-hover: #b9f373;
+    --btn-success-active: #006743;
+    --btn-success-active-border: #5abb37;
+
+    --btn-info: #0f7dbc;
+    --btn-info-border: #2a9cde;
+    --btn-info-hover: #2a9cde;
+    --btn-info-border-hover: #53bdf9;
+    --btn-info-active: #084d74;
+    --btn-info-active-border: #1e7b9e;
+
+    --btn-warning: #ffb900;
+    --btn-warning-border: #ffea00;
+    --btn-warning-hover: #ffd400;
+    --btn-warning-border-hover: #fffd70;
+    --btn-warning-active: #f89400;
+    --btn-warning-active-border: #ffce37;
+
+    --btn-error: #a0001d;
+    --btn-error-border: #f10000;
+    --btn-error-hover: #bb0022;
+    --btn-error-border-hover: #ff0000;
+    --btn-error-active: #850018;
+    --btn-error-active-border: #c70000;
+}
+
+body,
+html {
+    background-color: var(--blue-dark);
+    background: linear-gradient(135deg, #15507c, #0c3a65) no-repeat;
+    color: #fff;
+}
+
+header {
+    background-color: var(--blue-light);
+}
+
+.content {
+    background-image: url(../images/bg.png);
+    animation: body-slide 10s linear 0s infinite;
+
+    @keyframes body-slide {
+        0% {
+            background-position-x: 0px
+        }
+
+        to {
+            background-position-x: 150px
+        }
+    }
+
+    &-body {
+        section {
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+.anim {
+    &\:up-down {
+        animation: up-down 2s linear 0s infinite;
+
+        @keyframes up-down {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+.login {
+    background-image: url(https://habbo.pm/assets/hotel-CTzjsQ3I.png);
+    background-size: cover;
+    background-position: top;
+}
+
+nav {
+    li {
+        a {
+            color: #036;
+
+            &:hover {
+                color: #999;
+            }
+
+            &:active {
+                color: #09c;
+            }
+
+            &::before {
+                content: '';
+                display: inline-block;
+                background-image: url(../images/sprite.png);
+                width: 22px;
+                height: 22px;
+                margin: 0 6px 3px;
+                vertical-align: middle;
+            }
+
+            &.home {
+                &::before {
+                    background-position: -48px -1px;
+                }
+
+                &:hover::before {
+                    background-position: -24px -1px;
+                }
+
+                &:active::before {
+                    background-position: 0px -1px;
+                }
+            }
+
+            &.community {
+                &::before {
+                    background-position: -120px -2px;
+                }
+
+                &:hover::before {
+                    background-position: -96px -2px;
+                }
+
+                &:active::before {
+                    background-position: -72px -2px;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    .links {
+        li {
+            display: contents;
+            color: #a1b5c8;
+
+            &:not(:last-child) {
+                &::after {
+                    content: '\2044';
+                    display: inline-block;
+                    margin: 0 6px;
+                }
+            }
+        }
+    }
+}

@@ -9,6 +9,8 @@
         "build:atom-bs": "vite build --config resources/themes/atom-bs/vite.config.js",
         "dev:dusk": "vite --config resources/themes/dusk/vite.config.js",
         "build:dusk": "vite build --config resources/themes/dusk/vite.config.js",
+        "dev:habbo": "vite --config resources/themes/habbo/vite.config.js",
+        "build:habbo": "vite build --config resources/themes/habbo/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
