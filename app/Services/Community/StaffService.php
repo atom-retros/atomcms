@@ -14,7 +14,7 @@ class StaffService
     {
         $cacheEnabled = setting('enable_caching') === '1';
 
-        if (Cache::has('staff_positions') && $cacheEnabled) {
+        if ($cacheEnabled && Cache::has('staff_positions')) {
             return Cache::get('staff_positions');
         }
 
@@ -45,7 +45,7 @@ class StaffService
     {
         $cacheEnabled = setting('enable_caching') === '1';
 
-        if (Cache::has('staff_ids') && $cacheEnabled) {
+        if ($cacheEnabled && Cache::has('staff_ids')) {
             return Cache::get('staff_ids');
         }
 

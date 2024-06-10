@@ -48,13 +48,11 @@ html {
 }
 
 .drop-shadow {
-    -webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff)
-        drop-shadow(0 -2px 0 #fff);
+    -webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff) drop-shadow(0 -2px 0 #fff);
 }
 
 .drop-shadow-thin {
-    -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 1px 0 #fff)
-        drop-shadow(0 -1px 0 #fff);
+    -webkit-filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px 1px 0 #fff) drop-shadow(0 -1px 0 #fff);
 }
 
 .article-image {
@@ -75,80 +73,65 @@ html {
 }
 
 .camera-icon {
-    background: #242c31 url("/public/assets/images/icons/camera.png") no-repeat
-        center;
+    background: #242c31 url("/public/assets/images/icons/camera.png") no-repeat center;
 }
 
 .discord-icon {
-    background: #25658d url("/public/assets/images/icons/discord.png") no-repeat
-        center;
+    background: #25658d url("/public/assets/images/icons/discord.png") no-repeat center;
 }
 
 html.dark .camera-icon {
-    background: #25658d url("/public/assets/images/icons/camera.png") no-repeat
-        center;
+    background: #25658d url("/public/assets/images/icons/camera.png") no-repeat center;
 }
 
 .hotel-icon {
-    background: #f68b08 url("/public/assets/images/icons/feeds.png") no-repeat
-    center;
+    background: #f68b08 url("/public/assets/images/icons/feeds.png") no-repeat center;
 }
 
 .chat-icon {
-    background: #375571 url("/public/assets/images/icons/chat.png") no-repeat
-    center;
+    background: #375571 url("/public/assets/images/icons/chat.png") no-repeat center;
 }
 
 .article-icon {
-    background: #536e5e url("/public/assets/images/icons/article.gif") no-repeat
-    center;
+    background: #536e5e url("/public/assets/images/icons/article.gif") no-repeat center;
 }
 
 .lighthouse-icon {
-    background: #8554a6 url("/public/assets/images/icons/lighthouse.png") no-repeat
-    center;
+    background: #8554a6 url("/public/assets/images/icons/lighthouse.png") no-repeat center;
 }
 
 .currency-icon {
-    background: #e3ad06 url("/public/assets/images/icons/currency.png") no-repeat
-    center;
+    background: #e3ad06 url("/public/assets/images/icons/currency.png") no-repeat center;
 }
 
 .catalog-icon {
-    background: rgba(141, 74, 183, 0.51) url("/public/assets/images/icons/catalog.png") no-repeat
-    center;
+    background: rgba(141, 74, 183, 0.51) url("/public/assets/images/icons/catalog.png") no-repeat center;
 }
 
 .inventory-icon {
-    background: #232121 url("/public/assets/images/icons/inventory.png") no-repeat
-    center;
+    background: #232121 url("/public/assets/images/icons/inventory.png") no-repeat center;
 }
 
 .duo-chat-icon {
-    background: #eec980 url("/public/assets/images/icons/due-chat.png") no-repeat
-    center;
+    background: #eec980 url("/public/assets/images/icons/due-chat.png") no-repeat center;
 }
 
 .friends-icon {
-    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat
-    center;
+    background: #b17f85 url("/public/assets/images/icons/friends.png") no-repeat center;
 }
 
 .nav-credit-icon {
-    background: #e9b124 url("/public/assets/images/icons/currency/credits.png")
-        no-repeat center;
+    background: #e9b124 url("/public/assets/images/icons/currency/credits.png") no-repeat center;
     outline: 1px solid #b26d18;
 }
 
 .nav-ducket-icon {
-    background: #c44aac url("/public/assets/images/icons/currency/duckets.png")
-        no-repeat center;
+    background: #c44aac url("/public/assets/images/icons/currency/duckets.png") no-repeat center;
     outline: 1px solid #812378;
 }
 
 .nav-diamond-icon {
-    background: #caf1f3 url("/public/assets/images/icons/currency/diamonds.png")
-        no-repeat center;
+    background: #caf1f3 url("/public/assets/images/icons/currency/diamonds.png") no-repeat center;
     outline: 1px solid #6caff4;
 }
 
@@ -167,40 +150,31 @@ html.dark .camera-icon {
 }
 
 .profile-bg {
-    background: rgba(0, 0, 0, 0.5)
-        url("/public/assets/images/profile/profile-bg.png");
+    background: rgba(0, 0, 0, 0.5) url("/public/assets/images/profile/profile-bg.png");
     background-blend-mode: multiply;
 }
 
 .leaderboard-first {
-    background: #f9d83e
-        url("/public/assets/images/leaderboards/trophy-gold.png") no-repeat
-        center;
+    background: #f9d83e url("/public/assets/images/leaderboards/trophy-gold.png") no-repeat center;
     color: transparent;
 }
 
 .leaderboard-second {
-    background: #b8c4d4
-        url("/public/assets/images/leaderboards/trophy-silver.png") no-repeat
-        center;
+    background: #b8c4d4 url("/public/assets/images/leaderboards/trophy-silver.png") no-repeat center;
     color: transparent;
 }
 
 .leaderboard-third {
-    background: #f1851b
-        url("/public/assets/images/leaderboards/trophy-bronze.png") no-repeat
-        center;
+    background: #f1851b url("/public/assets/images/leaderboards/trophy-bronze.png") no-repeat center;
     color: transparent;
 }
 
 .site-bg {
-    background: url("/public/assets/images/background-light.jpg") no-repeat
-    fixed right bottom;
+    background: url("/public/assets/images/background-light.jpg") no-repeat fixed right bottom;
 }
 
 .app.dark .site-bg {
-    background: url("/public/assets/images/background-dark.jpg") no-repeat
-    fixed right bottom;
+    background: url("/public/assets/images/background-dark.jpg") no-repeat fixed right bottom;
 }
 
 .app.dark .swal2-popup {
@@ -272,4 +246,28 @@ html.dark .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
 
 .prose-xl p {
     font-size: 16px;
+}
+
+.atom-align-left {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.atom-align-right {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.atom-align-center {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.atom-align-center > * {
+    text-align: center;
+}
+
+#article-content a {
+    color: #53b2f8;
 }
