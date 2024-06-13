@@ -58,6 +58,11 @@ class RconService
         $this->isConnected = false;
     }
 
+    public function isConnected(): bool
+    {
+        return $this->isConnected;
+    }
+
     /**
      * @throws RconConnectionException
      * @throws JsonException
@@ -68,7 +73,9 @@ class RconService
             $error = "RCON command failed: Not connected";
             Log::error($error);
 
-            throw new RconConnectionException($error);
+            $this->closeConnection();
+
+            return $this->isConnected;
         }
 
         $payload = json_encode(['key' => $command, 'data' => $data], JSON_THROW_ON_ERROR);
@@ -79,10 +86,10 @@ class RconService
 
             $this->closeConnection();
 
-            throw new RconConnectionException("Failed to send RCON command ($command): $error");
+            return $this->isConnected;
         }
 
-        return true;
+        return $this->isConnected;
     }
 
     /**

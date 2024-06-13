@@ -38,13 +38,17 @@ class AccountSettingsController extends Controller
 
     public function update(AccountSettingsFormRequest $request): RedirectResponse
     {
-        $user = $this->userService->getUser();
+        $user = Auth::user();
 
         if ($user === null) {
             return redirect()->back()->withErrors('User not found');
         }
 
         $allowedNameChange = $user->settings?->allow_name_change && $user->username !== $request->input('username');
+
+        if (!$this->rconService->isConnected() && Auth::user()->online === '1') {
+            return back()->withErrors('You must be offline to change your account settings');
+        }
 
         if ($allowedNameChange) {
             $this->rconService->disconnectUser($user);
