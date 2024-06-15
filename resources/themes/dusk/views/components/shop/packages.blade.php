@@ -1,6 +1,14 @@
 <x-content.shop-card color="{{ $article->color }}">
     <x-slot:title>
-        {{ $article->name }}
+        <div class="flex justify-between w-full">
+            <p>
+                {{ $article->name }}
+            </p>
+
+            <span class="font-bold">
+                ${{ $article->price() }}
+            </span>
+        </div>
     </x-slot:title>
 
     <div class="flex justify-between dark:text-white">
@@ -19,24 +27,35 @@
     </div>
 
     <div class="pt-4 mt-auto flex gap-4">
-        <x-modals.modal-wrapper>
-            <div x-on:click="open = true">
-                <x-form.primary-button classes="px-6">
-                    {{ __('View') }}
-                </x-form.primary-button>
-            </div>
+        <div class="w-full flex gap-2">
+            <x-modals.modal-wrapper>
+                <div x-on:click="open = true">
+                    <x-form.primary-button classes="px-4 w-full !text-yellow-100">
+                        <x-icons.eye />
+                    </x-form.primary-button>
+                </div>
 
 
-            <x-shop.package-content :package="$article"/>
-        </x-modals.modal-wrapper>
+                <x-shop.package-content :package="$article"/>
+            </x-modals.modal-wrapper>
 
-        <form action="{{ route('shop.buy', $article) }}" method="POST" class="w-full">
+            <x-modals.modal-wrapper>
+                <div x-on:click="open = true">
+                    <x-form.primary-button classes="!text-blue-100 px-4 w-full !bg-[#0b80b3] border-[#0e91c9] hover:!bg-[#096891] transition-all">
+                        <x-icons.gift />
+                    </x-form.primary-button>
+                </div>
+
+                <x-shop.package-content :package="$article"/>
+            </x-modals.modal-wrapper>
+        </div>
+
+        <form action="{{ route('shop.buy', $article) }}" method="POST">
             @csrf
 
-            <button type="submit"
-                    class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
-                {{ __('Buy for $:cost', ['cost' => $article->price()]) }}
-            </button>
+            <x-form.secondary-button type="submit" classes="text-green-100 px-4">
+                Buy
+            </x-form.secondary-button>
         </form>
     </div>
 </x-content.shop-card>
