@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Shop\WebsiteShopArticles;
+use App\Models\Shop\WebsiteShopArticle;
 use Illuminate\Database\Seeder;
 
 class WebsiteShopArticleSeeder extends Seeder
@@ -12,7 +12,7 @@ class WebsiteShopArticleSeeder extends Seeder
         $articles = [
             [
                 'name' => 'Bronze Package',
-                'info' => 'To give your account a slight boost',
+                'info' => 'Embark on your Habbo adventure with the Bronze Package – your essential starter kit for the virtual world. Start building your dream rooms, customize your avatar, and get access to basic perks that will make your stay more enjoyable.',
                 'icon_url' => 'https://i.imgur.com/1VGFYSL.gif',
                 'color' => '#c5630f',
                 'costs' => 500,
@@ -25,7 +25,7 @@ class WebsiteShopArticleSeeder extends Seeder
             ],
             [
                 'name' => 'Silver Package',
-                'info' => 'Our package the fits for most',
+                'info' => 'The Silver Package is designed for Habbos who are ready to take their experience up a notch. Enjoy a substantial boost of in-game currency and exclusive access to items that will set you apart from the crowd.',
                 'icon_url' => 'https://i.imgur.com/5NBdR0z.gif',
                 'color' => '#dddddd',
                 'costs' => 1000,
@@ -38,7 +38,7 @@ class WebsiteShopArticleSeeder extends Seeder
             ],
             [
                 'name' => 'Gold VIP',
-                'info' => 'Our most exclusive VIP package',
+                'info' => 'The Gold VIP package is the epitome of Habbo luxury, reserved for those who crave the ultimate in virtual prestige. Enjoy unparalleled access to exclusive items, premium features, and a status symbol that will make heads turn wherever you go in the Hotel.',
                 'icon_url' => 'https://i.imgur.com/NiVvRrs.gif',
                 'color' => '#E4A317FF',
                 'costs' => 1500,
@@ -102,7 +102,7 @@ class WebsiteShopArticleSeeder extends Seeder
         ];
 
         foreach ($articles as $article) {
-            WebsiteShopArticles::firstOrCreate(['name' => $article['name']], [
+            WebsiteShopArticle::updateOrCreate(['name' => $article['name']], [
                 'name' => $article['name'],
                 'info' => $article['info'],
                 'icon_url' => $article['icon_url'],

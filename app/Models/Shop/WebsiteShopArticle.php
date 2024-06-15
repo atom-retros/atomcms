@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 
-class WebsiteShopArticles extends Model
+class WebsiteShopArticle extends Model
 {
     protected $guarded = ['id'];
 

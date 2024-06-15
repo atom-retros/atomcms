@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             WebsiteRuleSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
             WebsiteShopArticleSeeder::class,
+            WebsiteShopCategoriesSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
             WebsiteRareValuesCategorySeeder::class,
         ]);

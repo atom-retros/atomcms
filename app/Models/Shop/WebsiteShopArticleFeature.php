@@ -11,7 +11,7 @@ class WebsiteShopArticleFeature extends Model
 
     public function article(): BelongsTo
     {
-        return $this->belongsTo(WebsiteShopArticles::class, 'article_id', 'id');
+        return $this->belongsTo(WebsiteShopArticle::class, 'article_id', 'id');
     }
 
 }

@@ -1,12 +1,13 @@
 <div x-show="open" style="display: none" x-on:keydown.escape.prevent.stop="open = false" role="dialog" aria-modal="true"
     x-id="['modal-title']" :aria-labelledby="$id('modal-title')" class="fixed inset-0 z-50 overflow-y-auto">
-    {{-- Overlay --}}
+
     <div x-show="open" x-transition x-on:click="open = false"
         class="relative flex min-h-screen items-center justify-center overflow-hidden p-4">
+        {{-- Overlay --}}
         <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black bg-opacity-50"></div>
 
         <div x-on:click.stop x-trap.noscroll.inert="open"
-            class="relative w-full rounded px-6 py-6 shadow-md bg-gray-900 text-gray-200 md:w-1/2 lg:w-1/3 lg:px-8 xl:w-1/4/2 xl:w-1/4">
+            class="relative w-full rounded px-6 py-6 shadow-md bg-[#21242e] text-gray-200 md:w-1/2 lg:w-1/3 lg:px-8 xl:w-1/4/2 xl:w-1/4">
             <button type="button" x-on:click="open = false"
                 class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white">
                 <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
@@ -18,12 +19,10 @@
                 <span class="sr-only">{{ __('Close modal') }}</span>
             </button>
 
-            {{-- Title --}}
-            <div class="mb-2 flex flex-col items-center" :id="$id('modal-title')">
+            <div class="my-4 flex flex-col items-center" :id="$id('modal-title')">
                 {{ $title }}
             </div>
 
-            {{-- Content --}}
             {{ $slot }}
         </div>
     </div>

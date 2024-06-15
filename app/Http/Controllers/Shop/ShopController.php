@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Shop;
 use App\Actions\SendCurrency;
 use App\Actions\SendFurniture;
 use App\Http\Controllers\Controller;
-use App\Models\Shop\WebsiteShopArticles;
+use App\Models\Shop\WebsiteShopArticle;
+use App\Models\Shop\WebsiteShopCategory;
 use App\Models\User;
 use App\Services\RconService;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +21,17 @@ class ShopController extends Controller
         $this->rconService = $rconService;
     }
 
-    public function __invoke()
+    public function __invoke(WebsiteShopCategory|null $category)
     {
+        $packages = WebsiteShopArticle::orderBy('position');
+
+        if ($category && $category->exists) {
+            $packages = $category->articles()->orderBy('position');
+        }
+
         return view('shop.shop', [
-            'articles' => WebsiteShopArticles::orderBy('position')->with(['rank:id,rank_name', 'features'])->get(),
+            'articles' => $packages->with(['rank:id,rank_name', 'features'])->get(),
+            'categories' => WebsiteShopCategory::whereHas('articles')->get(),
         ]);
     }
 
@@ -50,17 +58,17 @@ class ShopController extends Controller
         }
     }
 
-    public function purchase(WebsiteShopArticles $package, SendCurrency $sendCurrency): Response {
-        if (!$this->rconService->isConnected && Auth::user()->online === '1') {
-            return to_route('shop.index')->withErrors(
-                ['message' => __('Please logout before purchasing a package')],
-            );
-        }
-
+    public function purchase(WebsiteShopArticle $package, SendCurrency $sendCurrency): Response {
         $user = Auth::user();
         if ($package->give_rank && $user->rank >= $package->give_rank) {
             return to_route('shop.index')->withErrors(
                 ['message' => __('You are already this or a higher rank')],
+            );
+        }
+
+        if (!$this->rconService->isConnected && Auth::user()->online === '1') {
+            return to_route('shop.index')->withErrors(
+                ['message' => __('Please logout before purchasing a package')],
             );
         }
 

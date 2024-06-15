@@ -12,7 +12,7 @@ use App\Exceptions\RconConnectionException;
 class RconService
 {
     protected Socket|null $socket = null;
-    protected bool $isConnected = false;
+    public bool $isConnected = false;
     protected array $config = [];
 
     public function __construct()
