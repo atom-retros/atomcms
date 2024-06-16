@@ -3,14 +3,21 @@
 namespace Database\Seeders;
 
 use App\Models\Shop\WebsiteShopArticle;
+use App\Models\Shop\WebsiteShopCategory;
 use Illuminate\Database\Seeder;
 
 class WebsiteShopArticleSeeder extends Seeder
 {
     public function run(): void
     {
+        $vipCategory = WebsiteShopCategory::where('name', 'VIP')->firstOrCreate(['slug' => 'vip'], [
+            'name' => 'VIP',
+            'icon_url' => 'https://i.imgur.com/5NBdR0z.gif',
+        ]);
+
         $articles = [
             [
+                'website_shop_category_id' => $vipCategory->id,
                 'name' => 'Bronze Package',
                 'info' => 'Embark on your Habbo adventure with the Bronze Package – your essential starter kit for the virtual world. Start building your dream rooms, customize your avatar, and get access to basic perks that will make your stay more enjoyable.',
                 'icon_url' => 'https://i.imgur.com/1VGFYSL.gif',
@@ -24,6 +31,7 @@ class WebsiteShopArticleSeeder extends Seeder
                 'furniture' => null,
             ],
             [
+                'website_shop_category_id' => $vipCategory->id,
                 'name' => 'Silver Package',
                 'info' => 'The Silver Package is designed for Habbos who are ready to take their experience up a notch. Enjoy a substantial boost of in-game currency and exclusive access to items that will set you apart from the crowd.',
                 'icon_url' => 'https://i.imgur.com/5NBdR0z.gif',
@@ -37,6 +45,7 @@ class WebsiteShopArticleSeeder extends Seeder
                 'furniture' => null,
             ],
             [
+                'website_shop_category_id' => $vipCategory->id,
                 'name' => 'Gold VIP',
                 'info' => 'The Gold VIP package is the epitome of Habbo luxury, reserved for those who crave the ultimate in virtual prestige. Enjoy unparalleled access to exclusive items, premium features, and a status symbol that will make heads turn wherever you go in the Hotel.',
                 'icon_url' => 'https://i.imgur.com/NiVvRrs.gif',
@@ -103,6 +112,7 @@ class WebsiteShopArticleSeeder extends Seeder
 
         foreach ($articles as $article) {
             WebsiteShopArticle::updateOrCreate(['name' => $article['name']], [
+                'website_shop_category_id' => $vipCategory->id,
                 'name' => $article['name'],
                 'info' => $article['info'],
                 'icon_url' => $article['icon_url'],
