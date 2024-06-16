@@ -6,7 +6,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/themes/atom/css/app.css",
+                "resources/themes/atom/css/app.scss",
                 "resources/themes/atom/js/app.js",
             ],
         }),

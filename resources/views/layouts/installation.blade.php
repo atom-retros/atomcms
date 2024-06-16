@@ -14,13 +14,13 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-    @vite(['resources/themes/dusk/css/app.scss', 'resources/themes/dusk/js/app.js'])
+    @vite(['resources/themes/' .  setting('theme') . '/css/app.css', 'resources/themes/' .  setting('theme') . '/js/app.js'], 'build')
     @stack('scripts')
 </head>
 
-<body class="flex justify-center items-center min-h-screen bg-gray-700">
-    <main class="mx-auto w-full lg:w-[40%] p-4 lg:px-0 lg:py-4">
-        {{ $slot }}
-    </main>
+<body class="flex justify-center items-center min-h-screen site-bg">
+<main class="mx-auto w-full lg:w-[40%] p-4 lg:px-0 lg:py-4">
+    {{ $slot }}
+</main>
 </body>
 </html>
