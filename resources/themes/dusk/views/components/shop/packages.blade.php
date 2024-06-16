@@ -42,7 +42,7 @@
             @if($article->is_giftable)
                 <x-modals.modal-wrapper>
                     <div x-on:click="open = true">
-                        <x-form.primary-button classes="!text-blue-100 px-4 w-full !bg-[#0b80b3] border-[#1891c4] hover:!bg-[#096891] transition-all">
+                        <x-form.primary-button classes="!text-blue-100 px-4 w-full !bg-[#0b80b3] !border-[#1891c4] hover:!bg-[#096891] transition-all">
                             <x-icons.gift />
                         </x-form.primary-button>
                     </div>

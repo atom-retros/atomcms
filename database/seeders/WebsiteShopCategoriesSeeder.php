@@ -13,21 +13,25 @@ class WebsiteShopCategoriesSeeder extends Seeder
             [
                 'name' => 'VIP',
                 'slug' => 'vip',
+                'icon' => 'https://i.imgur.com/YiI0I1i.png',
             ],
             [
                 'name' => 'Currency',
                 'slug' => 'currency',
+                'icon' => 'https://i.imgur.com/YiI0I1i.png',
             ],
             [
                 'name' => 'Badges',
                 'slug' => 'badges',
+                'icon' => 'https://i.imgur.com/YiI0I1i.png',
             ],
             [
                 'name' => 'Rares',
                 'slug' => 'rares',
+                'icon' => 'https://i.imgur.com/YiI0I1i.png',
             ],
         ];
 
-        WebsiteShopCategory::upsert($categories, ['slug'], ['name']);
+        WebsiteShopCategory::upsert($categories, ['slug'], ['name', 'icon']);
     }
 }
