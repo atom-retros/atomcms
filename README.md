@@ -159,6 +159,7 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 -   **Gedomi** - Spanish translations
 -   **Lorenzune** - Italian translations
 -   **Twana** - Norwegian translations
+-   **Plow** - French translations
 -   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus
