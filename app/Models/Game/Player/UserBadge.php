@@ -12,6 +12,8 @@ class UserBadge extends Model
 
     protected $primaryKey = 'user_id';
 
+    protected $guarded = [];
+
     public $timestamps = false;
 
     public function user(): BelongsTo

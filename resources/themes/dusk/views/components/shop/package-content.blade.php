@@ -1,4 +1,4 @@
-@props(['package'])
+@props(['package', 'gift' => false])
 
 <x-modals.regular-modal>
     <x-slot name="title">
@@ -81,6 +81,10 @@
     <div class="mt-4">
         <form action="{{ route('shop.buy', $package) }}" method="POST" class="w-full">
             @csrf
+
+            @if($gift)
+                <x-form.input name="receiver" type="text" placeholder="Enter the name of recipient you want to gift" classes="mb-2"/>
+            @endif
 
             <button type="submit"
                     class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">

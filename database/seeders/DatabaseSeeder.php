@@ -13,18 +13,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            // General seeders
             WebsiteSettingsSeeder::class,
             WebsiteLanguageSeeder::class,
-            WebsiteArticleSeeder::class,
             WebsitePermissionSeeder::class,
             WebsiteWordfilterSeeder::class,
+
+            WebsiteArticleSeeder::class,
             WebsiteTeamSeeder::class,
+
+            // Shop
+            WebsiteShopCategoriesSeeder::class,
+            WebsiteShopArticleSeeder::class,
+
+            // Help center
             WebsiteRuleCategorySeeder::class,
             WebsiteRuleSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
-            WebsiteShopArticleSeeder::class,
-            WebsiteShopCategoriesSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
+
+            // Values
             WebsiteRareValuesCategorySeeder::class,
         ]);
 
