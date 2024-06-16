@@ -83,7 +83,7 @@
             @csrf
 
             @if($gift)
-                <x-form.input name="receiver" type="text" placeholder="Enter the name of recipient you want to gift" classes="mb-2"/>
+                <x-form.input name="receiver" type="text" placeholder="Enter the name of the recipient you want to gift" classes="mb-2"/>
             @endif
 
             <button type="submit"
