@@ -37,7 +37,8 @@
             '<strong>Yannick</strong> Netherlands translations <br/>',
             '<strong>Gedomi</strong> Spanish translations <br/>',
             '<strong>Lorenzune</strong> Italian translations <br/>',
-            '<strong>Twana & Zaruzet</strong> Norwegian translations <br/>'
+            '<strong>Twana & Zaruzet</strong> Norwegian translations <br/>',
+            '<strong>Plow</strong> French translations <br/>'
         ];
         const content =
             '{{ __('Thank you for playing :hotel. We have put a lot of effort into making the hotel what it is, and we truly appreciate you being here', ['hotel' => setting('hotel_name')]) }}' + '❤️';

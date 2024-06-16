@@ -96,6 +96,10 @@
                 contributor: 'Twana',
                 contributions: 'Norwegian translations'
             },
+            {
+                contributor: 'Plow',
+                contributions: 'French translations'
+            },
         ];
 
         const formattedCredits = creditList.map(credit =>
