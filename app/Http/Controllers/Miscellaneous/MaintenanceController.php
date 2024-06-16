@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Miscellaneous;
 
 use App\Http\Controllers\Controller;
-use App\Models\WebsiteMaintenanceTask;
+use App\Models\Miscellaneous\WebsiteMaintenanceTask;
 use Illuminate\View\View;
 
 class MaintenanceController extends Controller

@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Game\Permission;
+use App\Models\Miscellaneous\WebsiteMaintenanceTask;
 use App\Models\User;
-use App\Models\WebsiteMaintenanceTask;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

@@ -93,7 +93,7 @@
 <img class="absolute bottom-0 right-0 opacity-60 hidden lg:block z-0" src="https://i.imgur.com/Km5s9pT.png" alt="">
 
 @guest
-    <div class="absolute top-6 right-6">
+    <div class="absolute top-6 right-6 z-50">
         <x-modals.modal-wrapper>
             <button @click="open = !open"
                     class="rounded-full bg-white bg-opacity-70 px-4 py-2 font-semibold text-black transition duration-200 ease-in-out hover:bg-opacity-100">
