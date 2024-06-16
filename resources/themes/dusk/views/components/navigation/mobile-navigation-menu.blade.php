@@ -30,6 +30,10 @@
                         {{ __('Staff applications') }}
                     </x-navigation.dropdown-child>
 
+                    <x-navigation.dropdown-child :route="route('help-center.index')">
+                        {{ __('Help center') }}
+                    </x-navigation.dropdown-child>
+
                     <x-navigation.dropdown-child :route="route('photos.index')">
                         {{ __('Photos') }}
                     </x-navigation.dropdown-child>
