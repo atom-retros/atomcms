@@ -48,14 +48,6 @@
                         </li>
                     @endforeach
                 @endif
-
-                @if (!empty($article->badges))
-                    @foreach (explode(';', $article->badges) as $badge)
-                        <li class="ml-3">
-                            {{  $badge }} badge
-                        </li>
-                    @endforeach
-                @endif
             </ul>
         </div>
 
@@ -94,8 +86,39 @@
         </div>
     </div>
 
-    <div class="pt-2 mt-auto">
-        <form action="{{ route('shop.buy', $article) }}" method="POST">
+    <div class="pt-2 mt-auto flex gap-4">
+        @if($article->is_giftable)
+            <x-modals.modal-wrapper>
+                <div x-on:click="open = true">
+                    <x-form.primary-button type="button" classes="px-10">
+                        <x-icons.gift />
+                    </x-form.primary-button>
+                </div>
+
+                <x-modals.regular-modal>
+                    <x-slot name="title">
+                        <h2 class="text-2xl">
+                            {{ __('Gift :package', ['package' => $article->name]) }}
+                        </h2>
+                    </x-slot>
+
+                    <div class="mt-4">
+                        <form action="{{ route('shop.buy', $article) }}" method="POST" class="w-full">
+                            @csrf
+
+                            <x-form.input name="receiver" type="text" placeholder="Enter the name of the recipient you want to gift" classes="mb-2"/>
+
+                            <button type="submit"
+                                    class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
+                                {{ __('Gift for $:cost', ['cost' => $article->price()]) }}
+                            </button>
+                        </form>
+                    </div>
+                </x-modals.regular-modal>
+            </x-modals.modal-wrapper>
+        @endif
+
+        <form action="{{ route('shop.buy', $article) }}" method="POST" class="w-full">
             @csrf
 
             <button type="submit"
