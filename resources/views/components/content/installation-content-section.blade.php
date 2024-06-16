@@ -16,7 +16,7 @@
          </div>
      </div>
 
-     <section class="px-3">
+     <section class="px-3 text-[14px]">
          {{ $slot }}
      </section>
  </div>

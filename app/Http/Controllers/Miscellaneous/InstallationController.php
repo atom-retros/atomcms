@@ -73,8 +73,8 @@ class InstallationController extends Controller
 
     public function completeInstallation()
     {
-        $installation = WebsiteInstallation::increment('step');
-        $installation->update([
+        WebsiteInstallation::increment('step');
+        WebsiteInstallation::latest()->first()->update([
             'completed' => true,
         ]);
 
