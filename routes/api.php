@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HotelApiController;
+use App\Http\Controllers\Api\HotelApiController;
 use Illuminate\Support\Facades\Route;
 
 /*

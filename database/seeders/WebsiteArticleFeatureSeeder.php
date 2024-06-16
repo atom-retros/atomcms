@@ -2,15 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteShopArticleFeature;
-use App\Models\WebsiteShopArticles;
+use App\Models\Shop\WebsiteShopArticleFeature;
+use App\Models\Shop\WebsiteShopArticle;
 use Illuminate\Database\Seeder;
 
 class WebsiteArticleFeatureSeeder extends Seeder
 {
     public function run(): void
     {
-        $articles = WebsiteShopArticles::all();
+        $articles = WebsiteShopArticle::all();
         $firstArticle = $articles[0];
         $secondArticle = $articles[1];
         $thirdArticle = $articles[2];

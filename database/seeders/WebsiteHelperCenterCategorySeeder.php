@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteHelpCenterCategory;
+use App\Models\Help\WebsiteHelpCenterCategory;
 use Illuminate\Database\Seeder;
 
 class WebsiteHelperCenterCategorySeeder extends Seeder

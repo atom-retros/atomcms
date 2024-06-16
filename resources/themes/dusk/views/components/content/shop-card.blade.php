@@ -7,8 +7,8 @@
             <div style="background-image: url({{ $iconUrl }}); background-color: {{ $color }}; background-repeat: no-repeat; background-position: center;" class="max-w-[50px] max-h-[50px] min-w-[50px] min-h-[50px] rounded-full relative flex items-center justify-center "></div>
         @endif
 
-        <div class="flex flex-col justify-center text-sm">
-            <p class="font-semibold">{{ $title }}</p>
+        <div class="flex flex-col justify-center text-sm w-full">
+            <div class="w-full text-[16px]">{{ $title }}</div>
 
             @if(isset($underTitle))
                 <p class="text-gray-300">{{ $underTitle }}</p>

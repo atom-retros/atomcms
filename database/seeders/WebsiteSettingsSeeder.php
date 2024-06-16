@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteSetting;
+use App\Models\Miscellaneous\WebsiteSetting;
 use Illuminate\Database\Seeder;
 
 class WebsiteSettingsSeeder extends Seeder
@@ -101,6 +101,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'comment' => 'The minimum rank before being considered a staff member',
             ],
             [
+                'key' => 'min_rank_to_see_hidden_staff',
+                'value' => '6',
+                'comment' => 'The minimum rank to enable seeing hidden staff ranks & members',
+            ],
+            [
                 'key' => 'badges_path',
                 'value' => '/client/flash/c_images/album1584',
                 'comment' => 'The path to the badges folder',
@@ -122,7 +127,7 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'maintenance_message',
-                'value' => sprintf('%s is currently undergoing maintenance. We will be back shortly!', setting('hotel_name')),
+                'value' => "We're working very hard on making " . setting('hotel_name') . " the best possible version of itself 💛<br><br> We want to make sure " . setting('hotel_name') . " lives up to the standards you deserve, hence we currently have no ETA for when we can open our doors.<br><br>We promise that once we feel confident that " . setting('hotel_name') . " is ready for launch, we'll let everyone know about it.<br><br>- The " . setting('hotel_name') . " team ⭐",
                 'comment' => 'The maintenance message displayed to users while maintenance is activated',
             ],
             [

@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
+use App\Models\Game\Player\UserCurrency;
 use App\Models\User;
-use App\Models\UserCurrency;
 
 class UserObserver
 {

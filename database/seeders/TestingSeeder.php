@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteInstallation;
+use App\Models\Miscellaneous\WebsiteInstallation;
 use Illuminate\Database\Seeder;
 
 class TestingSeeder extends Seeder

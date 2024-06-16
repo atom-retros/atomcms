@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteTeam;
+use App\Models\Community\Staff\WebsiteTeam;
 use Illuminate\Database\Seeder;
 
 class WebsiteTeamSeeder extends Seeder

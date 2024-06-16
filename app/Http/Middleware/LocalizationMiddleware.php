@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\WebsiteLanguage;
+use App\Models\Miscellaneous\WebsiteLanguage;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;

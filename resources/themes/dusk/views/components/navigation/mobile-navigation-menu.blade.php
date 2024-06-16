@@ -9,7 +9,7 @@
         </button>
 
         <div x-show="open" class="flex flex-col text-white gap-x-14 p-4 space-y-3">
-            <x-navigation.dropdown route-group="help-center*">
+            <x-navigation.dropdown route-group="help-center*" :show-chevron="true" :flex-col="false">
                 {{ __('Community') }}
 
                 <x-slot:children>
@@ -52,7 +52,7 @@
                 Store
             </a>
 
-            <x-navigation.dropdown route-group="help-center*">
+            <x-navigation.dropdown route-group="help-center*"  :show-chevron="true" :flex-col="false">
                 {{ __('Home') }}
 
                 <x-slot:children>
