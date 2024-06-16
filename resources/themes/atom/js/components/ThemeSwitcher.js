@@ -2,7 +2,12 @@ const ThemeSwitcher = {
     currentTheme: "light",
 
     init() {
-        if (localStorage.theme === "dark" || typeof window.matchMedia != "undefined" && (window.matchMedia("(prefers-color-scheme: dark)").matches && localStorage.theme !== 'light')) {
+        if (
+            localStorage.theme === "dark" ||
+            (typeof window.matchMedia != "undefined" &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches &&
+                localStorage.theme !== "light")
+        ) {
             this.toggleTheme();
         }
 

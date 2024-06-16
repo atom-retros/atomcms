@@ -3713,13 +3713,11 @@
                 buttonImage = this._get(inst, "buttonImage");
                 inst.trigger = $(
                     this._get(inst, "buttonImageOnly")
-                        ? $("<img/>")
-                              .addClass(this._triggerClass)
-                              .attr({
-                                  src: buttonImage,
-                                  alt: buttonText,
-                                  title: buttonText,
-                              })
+                        ? $("<img/>").addClass(this._triggerClass).attr({
+                              src: buttonImage,
+                              alt: buttonText,
+                              title: buttonText,
+                          })
                         : $("<button type='button'></button>")
                               .addClass(this._triggerClass)
                               .html(
