@@ -63,6 +63,12 @@ class ShopController extends Controller
         $user = Auth::user();
 
         if ($request->has('receiver')) {
+            if (!$package->is_giftable) {
+                return to_route('shop.index')->withErrors(
+                    ['message' => __('This package is not giftable')],
+                );
+            }
+
             $user = User::where('username', $request->input('receiver'))->first();
 
             if (!$user) {
