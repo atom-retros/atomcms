@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\WebsiteRuleCategory;
+use App\Models\Help\WebsiteRuleCategory;
 use Illuminate\Database\Seeder;
 
 class WebsiteRuleCategorySeeder extends Seeder

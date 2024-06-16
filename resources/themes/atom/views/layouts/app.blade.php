@@ -19,8 +19,9 @@
     <script src="{{ asset('assets/js/tippy-bundle.umd.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/scale.min.css') }}"/>
 
-    @vite(['resources/themes/atom/css/app.css', 'resources/themes/atom/js/app.js'])
+    @vite(['resources/themes/' .  setting('theme') . '/css/app.scss', 'resources/themes/' .  setting('theme') . '/js/app.js'], 'build')
     @stack('scripts')
+    @turnstileScripts()
 </head>
 
 <body class="flex min-h-screen flex-col site-bg dark:bg-gray-800">

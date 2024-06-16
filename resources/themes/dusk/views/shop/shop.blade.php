@@ -1,11 +1,12 @@
 <x-app-layout>
     @push('title', __('Shop'))
 
-    <div class="col-span-12">
+    <div class="col-span-12 ">
         <x-modals.modal-wrapper>
             <div class="w-full py-2 px-4 text-center bg-[#f68b08] text-white rounded">
                 {{ __('Please make sure to read our shop') }}
-                <button class="text-white underline font-bold" x-on:click="open = true">{{ __('Terms & Conditions') }}</button>
+                <button class="text-white underline font-bold"
+                        x-on:click="open = true">{{ __('Terms & Conditions') }}</button>
                 {{ __('before making a purchase') }}
             </div>
 
@@ -44,71 +45,95 @@
         </x-modals.modal-wrapper>
     </div>
 
-    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9 space-y-3">
-        <x-page-header>
-            Shop packs
-        </x-page-header>
+    <div class="col-span-12 grid grid-cols-12 gap-4">
+        <div class="order-last lg:order-1 col-span-12 md:col-span-9 grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-3">
+                <x-page-header>
+                    Categories
+                </x-page-header>
 
-        <div class="grid grid-cols-3 gap-3">
-            @foreach ($articles as $article)
-                <x-shop.packages :article="$article" />
-            @endforeach
-        </div>
-    </div>
+                <div class="mt-3 space-y-2">
+                    <a href="{{ route('shop.index') }}"
+                       class="w-full flex items-center gap-4 rounded-lg overflow-hidden bg-[#2b303c] p-4 shadow text-gray-100 transition-all hover:scale-[101%]">
+                        <img class="max-h-[50px] max-w-[50px]" src="{{ asset('/assets/images/icons/navigation/shop.png') }}" alt="">
 
-    <div class="row-start-2 md:row-auto col-span-12 flex flex-col gap-y-3 md:col-span-5 lg:col-span-4 xl:col-span-3">
-        <x-content.content-card icon="currency-icon">
-            <x-slot:title>
-                {{ __('Top up account') }}
-            </x-slot:title>
+                        {{ __('All') }}
+                    </a>
 
-            <x-slot:under-title>
-                {{ __('Donate to :hotel', ['hotel' => setting('hotel_name')]) }}
-            </x-slot:under-title>
+                    @foreach($categories as $category)
+                        <a href="{{ route('shop.index', $category->slug) }}"
+                           class="w-full flex items-center gap-4 rounded-lg overflow-hidden bg-[#2b303c] p-4 shadow text-gray-100 transition-all hover:scale-[101%]">
+                            <img class="max-h-[50px] max-w-[50px]" src="{{ $category->icon }}" alt="">
 
-            <div class="text-sm text-center py-2 px-4 rounded text-black text-gray-100 bg-gray-700">
-                {{ __('Current balance: $:balance', ['balance' => auth()->user()->website_balance]) }}
+                            {{ $category->name }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
 
-            @if(config('paypal.live.client_id') && config('paypal.live.client_secret'))
-                <form action="{{ route('paypal.process-transaction') }}" method="GET" class="mt-3">
+            <div class="col-span-12 md:col-span-9 space-y-3">
+                <div class="grid grid-cols-1 lg:grid-cols-{{$articles->count() > 1 ? '2' : '1'}} gap-4">
+                    @foreach ($articles as $article)
+                        <x-shop.packages :article="$article"/>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-3 space-y-4 lg:order-last">
+            <x-content.content-card icon="currency-icon">
+                <x-slot:title>
+                    {{ __('Top up account') }}
+                </x-slot:title>
+
+                <x-slot:under-title>
+                    {{ __('Donate to :hotel', ['hotel' => setting('hotel_name')]) }}
+                </x-slot:under-title>
+
+                <div class="text-sm text-center py-2 px-4 rounded text-black text-gray-100 bg-gray-700">
+                    {{ __('Current balance: $:balance', ['balance' => auth()->user()->website_balance]) }}
+                </div>
+
+                @if(config('paypal.live.client_id') && config('paypal.live.client_secret'))
+                    <form action="{{ route('paypal.process-transaction') }}" method="GET" class="mt-3">
+                        @csrf
+
+                        <x-form.input name="amount" type="number" value="0" placeholder="amount"/>
+
+                        <button type="submit"
+                                class="mt-2 w-full rounded bg-blue-600 hover:bg-blue-700 text-white p-2 border-2 border-blue-500 transition ease-in-out duration-150 font-semibold">
+                            {{ __('Donate') }}
+                        </button>
+                    </form>
+                @else
+                    <p class="dark:text-gray-100  mt-4 text-xs">
+                        {{ __('Please setup the paypal credentials to allow for top ups') }}
+                    </p>
+                @endif
+            </x-content.content-card>
+
+            <x-content.content-card icon="catalog-icon">
+                <x-slot:title>
+                    {{ __('Voucher') }}
+                </x-slot:title>
+
+                <x-slot:under-title>
+                    {{ __('Use a voucher for free credit') }}
+                </x-slot:under-title>
+
+                <form action="{{ route('shop.use-voucher') }}" method="POST">
                     @csrf
 
-                    <x-form.input name="amount" type="number" value="0" placeholder="amount" />
+                    <x-form.input name="code" type="text" placeholder="Voucher"/>
 
-                    <button type="submit" class="mt-2 w-full rounded bg-blue-600 hover:bg-blue-700 text-white p-2 border-2 border-blue-500 transition ease-in-out duration-150 font-semibold">
-                        {{ __('Donate') }}
-                    </button>
+                    <x-site-captchas/>
+
+                    <x-form.secondary-button classes="mt-2">
+                        {{ __('Use voucher') }}
+                    </x-form.secondary-button>
                 </form>
-            @else
-                <p class="dark:text-gray-100  mt-4 text-xs">
-                    {{ __('Please setup the paypal credentials to allow for top ups') }}
-                </p>
-            @endif
-        </x-content.content-card>
-
-
-        <x-content.content-card icon="catalog-icon">
-            <x-slot:title>
-                {{ __('Voucher') }}
-            </x-slot:title>
-
-            <x-slot:under-title>
-                {{ __('Use a voucher for free credit') }}
-            </x-slot:under-title>
-
-            <form action="{{ route('shop.use-voucher') }}" method="POST">
-                @csrf
-
-                <x-form.input name="code" type="text" placeholder="Voucher" />
-
-                <x-site-captchas />
-
-                <x-form.secondary-button classes="mt-2">
-                    {{ __('Use voucher') }}
-                </x-form.secondary-button>
-            </form>
-        </x-content.content-card>
+            </x-content.content-card>
+        </div>
     </div>
 
     @push('javascript')

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\WebsiteSetting;
+use App\Models\Miscellaneous\WebsiteSetting;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Schema;
 

@@ -2,14 +2,36 @@
 
 namespace App\Models;
 
+use App\Models\Articles\WebsiteArticle;
+use App\Models\Articles\WebsiteArticleComment;
+use App\Models\Community\Staff\WebsiteStaffApplications;
+use App\Models\Community\Staff\WebsiteTeam;
+use App\Models\Game\Furniture\Item;
+use App\Models\Game\Permission;
+use App\Models\Game\Player\MessengerFriendship;
+use App\Models\Game\Player\UserBadge;
+use App\Models\Game\Player\UserCurrency;
+use App\Models\Game\Player\UserSetting;
+use App\Models\Game\Player\UserSubscription;
+use App\Models\Game\Room;
+use App\Models\Help\WebsiteHelpCenterTicket;
+use App\Models\Miscellaneous\CameraWeb;
+use App\Models\Miscellaneous\WebsiteBetaCode;
+use App\Models\Shop\WebsitePaypalTransaction;
+use App\Models\Shop\WebsiteUsedShopVoucher;
+use App\Models\User\Ban;
+use App\Models\User\ClaimedReferralLog;
+use App\Models\User\Referral;
+use App\Models\User\UserReferral;
+use App\Models\User\WebsiteUserGuestbook;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
@@ -29,6 +51,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'hidden_staff' => 'boolean',
+        ];
+    }
 
     public function currencies(): HasMany
     {

@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\Models\WebsiteWordfilter;
+use App\Models\Miscellaneous\WebsiteWordfilter;
 use Closure;
 use Illuminate\Contracts\Validation\InvokableRule;
 use Illuminate\Support\Str;

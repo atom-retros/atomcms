@@ -11,8 +11,8 @@
 |
 */
 
-use App\Models\WebsiteInstallation;
-use App\Models\WebsiteSetting;
+use App\Models\Miscellaneous\WebsiteInstallation;
+use App\Models\Miscellaneous\WebsiteSetting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

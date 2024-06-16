@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\WebsiteRareValue;
-use App\Models\WebsiteRareValueCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,17 +13,27 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            // General seeders
             WebsiteSettingsSeeder::class,
             WebsiteLanguageSeeder::class,
-            WebsiteArticleSeeder::class,
             WebsitePermissionSeeder::class,
             WebsiteWordfilterSeeder::class,
+            WebsiteMaintenanceTasksSeeder::class,
+
+            WebsiteArticleSeeder::class,
             WebsiteTeamSeeder::class,
+
+            // Shop
+            WebsiteShopCategoriesSeeder::class,
+            WebsiteShopArticleSeeder::class,
+
+            // Help center
             WebsiteRuleCategorySeeder::class,
             WebsiteRuleSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
-            WebsiteShopArticleSeeder::class,
             WebsiteHelperCenterCategorySeeder::class,
+
+            // Values
             WebsiteRareValuesCategorySeeder::class,
         ]);
 

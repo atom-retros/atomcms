@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 
-    @vite(['resources/themes/dusk/css/app.scss', 'resources/themes/dusk/js/app.js'])
+    @vite(['resources/themes/' .  setting('theme') . '/css/app.scss', 'resources/themes/' .  setting('theme') . '/js/app.js'], 'build')
 </head>
 
 <body class="overflow-hidden" id="nitro-client">

@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\WebsiteInstallation;
+use App\Models\Miscellaneous\WebsiteInstallation;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class InstallationMiddleware

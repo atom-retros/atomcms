@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\WebsiteSetting;
+use App\Models\Miscellaneous\WebsiteSetting;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\WebsitePermission;
+use App\Models\Miscellaneous\WebsitePermission;
 use Illuminate\Support\Collection;
 
 class PermissionsService

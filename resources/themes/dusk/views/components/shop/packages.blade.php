@@ -1,105 +1,63 @@
 <x-content.shop-card color="{{ $article->color }}">
     <x-slot:title>
-        {{ $article->name }}
-    </x-slot:title>
+        <div class="flex justify-between w-full">
+            <p>
+                {{ $article->name }}
+            </p>
 
-    <x-slot:under-title>
-        {{ $article->info }}
-    </x-slot:under-title>
+            <span class="font-bold">
+                ${{ $article->price() }}
+            </span>
+        </div>
+    </x-slot:title>
 
     <div class="flex justify-between dark:text-white">
 
         <div class="flex flex-col">
-            <p class="font-semibold">{{ __('You will receive:') }}</p>
+            <div class="flex justify-center w-full">
+                <div class="bg-[#303642] rounded-md p-2">
+                    <img src="{{ $article->icon_url }}" alt="">
+                </div>
+            </div>
 
-            <ul class="list-disc pl-4">
-                @if($article->features)
-                    @foreach($article->features as $feature)
-                        <li class="ml-3">
-                            {{ $feature->content }}
-                        </li>
-                    @endforeach
-                @endif
-
-                @if ($article->credits)
-                    <li class="ml-3">{{ number_format($article->credits, 0, '.', '.') }} credits</li>
-                @endif
-
-                @if ($article->duckets)
-                    <li class="ml-3">{{ number_format($article->duckets, 0, '.', '.') }} duckets</li>
-                @endif
-
-                @if ($article->diamonds)
-                    <li class="ml-3">{{ number_format($article->diamonds, 0, '.', '.') }} diamonds</li>
-                @endif
-
-                @if ($article->rank)
-                    <li class="ml-3">
-                        {{ $article->rank->rank_name }} rank
-                    </li>
-                @endif
-
-                @if ($article->furniture)
-                    @foreach ($article->furniItems() as $furni)
-                        <li class="ml-3">
-                            {{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}
-                            x {{ $furni->public_name }}
-                        </li>
-                    @endforeach
-                @endif
-
-                @if (!empty($article->badges))
-                    @foreach (explode(';', $article->badges) as $badge)
-                        <li class="ml-3">
-                            {{  $badge }} badge
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
+            <div class="text-gray-100 mt-4">
+                {{ $article->info }}
+            </div>
         </div>
     </div>
 
-    <div class="flex flex-col gap-3 text-gray-100 mt-3">
-        @if (!empty($article->badges))
-            <div class="flex flex-col items-end">
-                <div class="flex flex-col dark:text-white py-1.5">
-                    <div class="flex gap-2 items-center">
-                        @foreach (explode(';', $article->badges) as $badge)
-                            <img data-tippy-content="1x {{ $badge }}" class="user-badge"
-                                 src="/client/flash/c_images/album1584/{{$badge}}.gif" alt="{{ $badge }}"
-                                 style="image-rendering: auto;">
-                        @endforeach
-                    </div>
+    <div class="pt-4 mt-auto flex gap-4">
+        <div class="w-full flex gap-2">
+            <x-modals.modal-wrapper>
+                <div x-on:click="open = true">
+                    <x-form.primary-button classes="px-4 w-full !text-yellow-100">
+                        <x-icons.eye />
+                    </x-form.primary-button>
                 </div>
-            </div>
-        @endif
 
-        @if ($article->furniture)
-            <div class="flex flex-col items-end">
-                Furniture:
-                <div class="flex flex-col dark:text-white py-2">
-                    <div class="flex gap-2 items-center">
-                        @foreach ($article->furniItems() as $furni)
-                            <div>
-                                <img
-                                    data-tippy-content="{{ collect(json_decode($article->furniture))->firstWhere('item_id', $furni->id)->amount }}x {{ $furni->public_name }}"
-                                    class="user-badge" src="{{$furni->icon()}}" alt="{{ $furni->public_name }}">
-                            </div>
-                        @endforeach
+
+                <x-shop.package-content :package="$article"/>
+            </x-modals.modal-wrapper>
+
+            @if($article->is_giftable)
+                <x-modals.modal-wrapper>
+                    <div x-on:click="open = true">
+                        <x-form.primary-button classes="!text-blue-100 px-4 w-full !bg-[#0b80b3] !border-[#1891c4] hover:!bg-[#096891] transition-all">
+                            <x-icons.gift />
+                        </x-form.primary-button>
                     </div>
-                </div>
-            </div>
-        @endif
-    </div>
 
-    <div class="pt-2 mt-auto">
+                    <x-shop.package-content :package="$article" :gift="true"/>
+                </x-modals.modal-wrapper>
+            @endif
+        </div>
+
         <form action="{{ route('shop.buy', $article) }}" method="POST">
             @csrf
 
-            <button type="submit"
-                    class="w-full rounded bg-green-600 hover:bg-green-700 text-white p-2 border-2 border-green-500 transition ease-in-out duration-150 font-semibold">
-                {{ __('Buy for $:cost', ['cost' => $article->price()]) }}
-            </button>
+            <x-form.secondary-button type="submit" classes="text-green-100 px-4">
+                Buy
+            </x-form.secondary-button>
         </form>
     </div>
 </x-content.shop-card>

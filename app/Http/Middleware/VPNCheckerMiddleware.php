@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\WebsiteIpBlacklist;
-use App\Models\WebsiteIpWhitelist;
+use App\Models\Miscellaneous\WebsiteIpBlacklist;
+use App\Models\Miscellaneous\WebsiteIpWhitelist;
 use App\Services\IpLookupService;
 use Closure;
 use Illuminate\Http\Request;

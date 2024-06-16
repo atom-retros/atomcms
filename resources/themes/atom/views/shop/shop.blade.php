@@ -44,7 +44,35 @@
         </x-modals.modal-wrapper>
     </div>
 
-    <div class="col-span-12 md:col-span-7 lg:col-span-8 xl:col-span-9">
+    <div class="col-span-12 md:col-span-3">
+        <x-content.content-card icon="catalog-icon" classes="border dark:border-gray-900">
+            <x-slot:title>
+                {{ __('Categories') }}
+            </x-slot:title>
+
+            @foreach($categories as $category)
+                <div class="space-y-2">
+                    <a href="{{ route('shop.index') }}"
+                       class="flex items-center gap-3 py-2 px-4 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 transition ease-in-out duration-150">
+                        <img class="max-h-[50px] max-w-[50px]" src="{{ asset('/assets/images/icons/navigation/shop.png') }}" alt="">
+
+                        {{ __('All') }}
+                    </a>
+
+                    @foreach($categories as $category)
+                        <a href="{{ route('shop.index', $category->slug) }}"
+                           class="flex items-center gap-3 py-2 px-4 rounded bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-100 transition ease-in-out duration-150">
+                            <img class="max-h-[50px] max-w-[50px]" src="{{ $category->icon }}" alt="">
+
+                            {{ $category->name }}
+                        </a>
+                    @endforeach
+                </div>
+            @endforeach
+        </x-content.content-card>
+    </div>
+
+    <div class="col-span-12 md:col-span-6">
         <div class="flex flex-col gap-y-2 dark:text-gray-300">
             @foreach ($articles as $article)
                 <x-shop.packages :article="$article" />
@@ -103,11 +131,7 @@
                 @endif
 
                 @if (setting('cloudflare_turnstile_enabled'))
-                    <x-turnstile-widget
-                        language="en-US"
-                        size="Compact"
-                        callback="callbackFunction"
-                        errorCallback="errorCallbackFunction"/>
+                    <x-turnstile />
                 @endif
 
                 <x-form.secondary-button classes="mt-2">

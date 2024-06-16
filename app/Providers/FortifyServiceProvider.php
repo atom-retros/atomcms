@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\RedirectIfTwoFactorConfirmed;
-use App\Models\CameraWeb;
-use App\Models\WebsiteArticle;
+use App\Models\Articles\WebsiteArticle;
+use App\Models\Miscellaneous\CameraWeb;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;

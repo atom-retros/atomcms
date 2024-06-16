@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Rules\GoogleRecaptchaRule;
-use App\Rules\TurnstileCheck;
 use Illuminate\Foundation\Http\FormRequest;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 class ShopVoucherFormRequest extends FormRequest
 {
@@ -13,7 +13,7 @@ class ShopVoucherFormRequest extends FormRequest
         return [
             'code' => ['required', 'string'],
             'g-recaptcha-response' => [new GoogleRecaptchaRule()],
-            'cf-turnstile-response' => [new TurnstileCheck()],
+            'cf-turnstile-response' => [app(Turnstile::class)],
         ];
     }
 }

@@ -72,7 +72,7 @@
                 <p class="relative w-full truncate text-center">{{ $article->short_story }}</p>
             </div>
 
-            <div class="px-2">
+            <div class="px-2" id="article-content">
                 {!! $article->full_story !!}
             </div>
 
@@ -143,7 +143,7 @@
                                         {{ $comment->created_at->diffForHumans() }}
                                     </p>
 
-                                    @if ($comment->userCanDeleteComment())
+                                    @if ($comment->canBeDeleted())
                                         <form action="{{ route('article.comment.destroy', $comment) }}" method="POST"
                                             class="cursor-pointer transition duration-200 ease-in-out hover:scale-105">
                                             @method('DELETE')
