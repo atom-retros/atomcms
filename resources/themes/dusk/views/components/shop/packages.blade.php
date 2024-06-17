@@ -11,11 +11,10 @@
         </div>
     </x-slot:title>
 
-    <div class="flex justify-between dark:text-white">
-
-        <div class="flex flex-col">
+    <div class="flex justify-between dark:text-white w-full">
+        <div class="flex flex-col items-center w-full">
             <div class="flex justify-center w-full">
-                <div class="bg-[#303642] rounded-md p-2">
+                <div class="p-2 max-w-[65px] max-h-[65px]">
                     <img src="{{ $article->icon_url }}" alt="">
                 </div>
             </div>
