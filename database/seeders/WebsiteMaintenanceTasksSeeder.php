@@ -20,6 +20,9 @@ class WebsiteMaintenanceTasksSeeder extends Seeder
             $user = User::create([
                 'username' => 'Admin',
                 'password' => Hash::make(Str::password()),
+                'account_created' => now()->timestamp,
+                'ip_register' => '127.0.0.1',
+                'ip_current' => '127.0.0.1',
                 'rank' => $permission->id,
             ]);
         }
