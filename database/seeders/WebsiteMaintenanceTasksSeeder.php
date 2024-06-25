@@ -23,13 +23,13 @@ class WebsiteMaintenanceTasksSeeder extends Seeder
                 'password' => Hash::make(Str::password()),
                 'account_created' => time(),
                 'last_login' => time(),
-                'motto' => setting('start_motto'),
-                'look' => setting('start_look'),
-                'credits' => setting('start_credits'),
+                'motto' => 'Atom',
+                'look' => 'fa-201407-1324.hr-828-1035.ch-3001-1261-1408.sh-3068-92-1408.cp-9032-1308.lg-270-1281.hd-209-3',
+                'credits' => 0,
                 'ip_register' => '127.0.0.1',
                 'ip_current' => '127.0.0.1',
                 'auth_ticket' => '',
-                'home_room' => (int) setting('hotel_home_room'),
+                'home_room' => 0,
                 'rank' => $permission?->id ?? 1,
             ]);
         }
