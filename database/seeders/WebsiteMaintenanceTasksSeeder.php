@@ -19,11 +19,18 @@ class WebsiteMaintenanceTasksSeeder extends Seeder
         if ($user === null) {
             $user = User::create([
                 'username' => 'Admin',
+                'mail' => 'admin@example.com',
                 'password' => Hash::make(Str::password()),
-                'account_created' => now()->timestamp,
+                'account_created' => time(),
+                'last_login' => time(),
+                'motto' => setting('start_motto'),
+                'look' => setting('start_look'),
+                'credits' => setting('start_credits'),
                 'ip_register' => '127.0.0.1',
                 'ip_current' => '127.0.0.1',
-                'rank' => $permission->id,
+                'auth_ticket' => '',
+                'home_room' => (int) setting('hotel_home_room'),
+                'rank' => $permission?->id ?? 1,
             ]);
         }
 

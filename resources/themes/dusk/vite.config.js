@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 "resources/themes/dusk/css/app.scss",
+                "resources/app.scss",
                 "resources/themes/dusk/js/app.js",
             ],
         }),
