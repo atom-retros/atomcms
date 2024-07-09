@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev:atom": "vite --config resources/views/atom/vite.config.js",
-        "build:atom": "vite build --config views/themes/atom/vite.config.js",
+        "build:atom": "vite build --config resources/views/atom/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
