@@ -3,6 +3,7 @@
 /public/hot
 /public/client
 /public/storage
+/public/images
 /storage/*.key
 /vendor
 /public/static
@@ -18,3 +19,6 @@ yarn.lock
 /.idea
 /.vscode
 /public/assets/images/generated-logos
+/packages
+/resources/views/**
+!/resources/view/.gitkeep

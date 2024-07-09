@@ -1,10 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "dev:atom": "vite --config resources/themes/atom/vite.config.js",
-        "build:atom": "vite build --config resources/themes/atom/vite.config.js",
-        "dev:dusk": "vite --config resources/themes/dusk/vite.config.js",
-        "build:dusk": "vite build --config resources/themes/dusk/vite.config.js",
+        "dev:atom": "vite --config resources/views/atom/vite.config.js",
+        "build:atom": "vite build --config views/themes/atom/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {

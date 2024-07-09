@@ -8,13 +8,11 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        if (config('habbo.migrations.rename_tables') && Schema::hasTable('personal_access_tokens')) {
-            Schema::rename('personal_access_tokens', sprintf('personal_access_tokens_%s', time()));
-        }
-
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
@@ -28,8 +26,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('personal_access_tokens');
     }

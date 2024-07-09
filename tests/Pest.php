@@ -11,8 +11,6 @@
 |
 */
 
-use App\Models\Miscellaneous\WebsiteInstallation;
-use App\Models\Miscellaneous\WebsiteSetting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -44,13 +42,4 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function installHotel(): void
-{
-    WebsiteInstallation::query()->insert(['completed' => true, 'installation_key' => 'key']);
-
-    WebsiteSetting::query()->insert([
-        'key' => 'max_accounts_per_ip',
-        'value' => 10,
-        'comment' => '',
-    ]);
-}
+//

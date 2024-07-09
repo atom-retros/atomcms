@@ -7,8 +7,29 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": {
+        "atomcms/core": {
+            "type": "path",
+            "url": "./packages/core"
+        },
+        "atomcms/theme": {
+            "type": "path",
+            "url": "./packages/theme"
+        },
+        "atomcms/locale": {
+            "type": "path",
+            "url": "./packages/locale"
+        }
+    },
     "require": {
         "php": "^8.1",
+        "ext-sockets": "*",
+        "atomcms/installation": "^1.0",
+        "atomcms/rcon": "^1.0",
+        "atomcms/voting": "^1.0",
+        "atomcms/core": "dev-main",
+        "atomcms/theme": "dev-main",
+        "atomcms/locale": "dev-main",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^11.0",
@@ -22,8 +43,7 @@
         "ryangjchandler/laravel-cloudflare-turnstile": "*",
         "spatie/laravel-activitylog": "^4.8",
         "srmklive/paypal": "~3.0",
-        "stevebauman/purify": "^6.0",
-        "ext-sockets": "*"
+        "stevebauman/purify": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",
@@ -42,12 +62,9 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-
             "Database\\Seeders\\": "database/seeders/"
         },
-        "files": [
-            "app/Helpers/helper.php"
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {
