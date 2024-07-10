@@ -3,6 +3,8 @@
     "scripts": {
         "dev:atom": "vite --config resources/views/atom/vite.config.js",
         "build:atom": "vite build --config resources/views/atom/vite.config.js",
+        "dev:base": "vite --config resources/views/base/vite.config.js",
+        "build:base": "vite build --config resources/views/base/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {

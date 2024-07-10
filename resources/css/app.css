@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.site-bg {
+    background: url("/public/assets/images/background-light.jpg") no-repeat fixed right bottom;
+}
+
+.hotel-icon {
+    background: #f68b08 url("/public/assets/images/icons/feeds.png") no-repeat center;
+}
+
+.app.dark.site-bg {
+    background: url("/public/assets/images/background-dark.jpg") no-repeat fixed right bottom;
+}

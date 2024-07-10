@@ -8,25 +8,37 @@
     ],
     "license": "MIT",
     "repositories": {
+        "atomcms/installation": {
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/installation.git"
+        },
+        "atomcms/rcon": {
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/rcon.git"
+        },
+        "atomcms/voting": {
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/voting.git"
+        },
         "atomcms/core": {
-            "type": "path",
-            "url": "./packages/core"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/core.git"
         },
         "atomcms/theme": {
-            "type": "path",
-            "url": "./packages/theme"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/theme.git"
         },
         "atomcms/locale": {
-            "type": "path",
-            "url": "./packages/locale"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/locale.git"
         }
     },
     "require": {
         "php": "^8.1",
         "ext-sockets": "*",
-        "atomcms/installation": "^1.0",
-        "atomcms/rcon": "^1.0",
-        "atomcms/voting": "^1.0",
+        "atomcms/installation": "dev-main",
+        "atomcms/rcon": "dev-main",
+        "atomcms/voting": "dev-main",
         "atomcms/core": "dev-main",
         "atomcms/theme": "dev-main",
         "atomcms/locale": "dev-main",
@@ -72,13 +84,6 @@
         }
     },
     "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],

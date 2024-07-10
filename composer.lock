@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16619ca8216a184f54bbbc274534d9ba",
+    "content-hash": "908e211ecde5125e6e31fa930bf6ad53",
     "packages": [
         {
             "name": "atomcms/core",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atom-retros/core.git",
+                "reference": "f8e90a705770cb9b8b99b3c8168bff67e269718b"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/core",
-                "reference": "c7448a7cf543c67af9006785d61977d5f61c0262"
+                "type": "zip",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/f8e90a705770cb9b8b99b3c8168bff67e269718b",
+                "reference": "f8e90a705770cb9b8b99b3c8168bff67e269718b",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
@@ -28,6 +34,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -90,22 +97,30 @@
                 "core",
                 "laravel"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/atom-retros/core/tree/main",
+                "issues": "https://github.com/atom-retros/core/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
+                }
+            ],
+            "time": "2024-07-09T14:39:34+00:00"
         },
         {
             "name": "atomcms/installation",
-            "version": "1.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/installation.git",
-                "reference": "c7448a7cf543c67af9006785d61977d5f61c0262"
+                "reference": "869df7108f78cbc5ca5066b705918291e868e032"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/installation/zipball/c7448a7cf543c67af9006785d61977d5f61c0262",
-                "reference": "c7448a7cf543c67af9006785d61977d5f61c0262",
+                "url": "https://api.github.com/repos/atom-retros/installation/zipball/869df7108f78cbc5ca5066b705918291e868e032",
+                "reference": "869df7108f78cbc5ca5066b705918291e868e032",
                 "shasum": ""
             },
             "require": {
@@ -122,6 +137,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -139,7 +155,41 @@
                     "Atom\\Installation\\Database\\Factories\\": "database/factories/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Atom\\Installation\\Tests\\": "tests/",
+                    "Workbench\\App\\": "workbench/app/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-core --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -151,24 +201,30 @@
                 "laravel"
             ],
             "support": {
-                "issues": "https://github.com/atom-retros/installation/issues",
-                "source": "https://github.com/atom-retros/installation/tree/1.0.0"
+                "source": "https://github.com/atom-retros/installation/tree/main",
+                "issues": "https://github.com/atom-retros/installation/issues"
             },
             "funding": [
                 {
-                    "url": "https://github.com/atomcms",
-                    "type": "github"
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-06T10:26:21+00:00"
+            "time": "2024-07-09T15:10:16+00:00"
         },
         {
             "name": "atomcms/locale",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atom-retros/locale.git",
+                "reference": "fe86e5ee1fd0e083304d0774ba91ad9b089bae64"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/locale",
-                "reference": "c7448a7cf543c67af9006785d61977d5f61c0262"
+                "type": "zip",
+                "url": "https://api.github.com/repos/atom-retros/locale/zipball/fe86e5ee1fd0e083304d0774ba91ad9b089bae64",
+                "reference": "fe86e5ee1fd0e083304d0774ba91ad9b089bae64",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
@@ -185,6 +241,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -247,13 +304,21 @@
                 "laravel",
                 "locale"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/atom-retros/locale/tree/main",
+                "issues": "https://github.com/atom-retros/locale/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
+                }
+            ],
+            "time": "2024-07-09T14:41:44+00:00"
         },
         {
             "name": "atomcms/rcon",
-            "version": "1.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/rcon.git",
@@ -279,6 +344,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -296,7 +362,41 @@
                     "Atom\\Rcon\\Database\\Factories\\": "database/factories/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Atom\\Rcon\\Tests\\": "tests/",
+                    "Workbench\\App\\": "workbench/app/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-core --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -309,13 +409,13 @@
                 "rcon"
             ],
             "support": {
-                "issues": "https://github.com/atom-retros/rcon/issues",
-                "source": "https://github.com/atom-retros/rcon/tree/1.0.0"
+                "source": "https://github.com/atom-retros/rcon/tree/1.0.0",
+                "issues": "https://github.com/atom-retros/rcon/issues"
             },
             "funding": [
                 {
-                    "url": "https://github.com/atomcms",
-                    "type": "github"
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
                 }
             ],
             "time": "2024-07-05T23:44:44+00:00"
@@ -323,10 +423,16 @@
         {
             "name": "atomcms/theme",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atom-retros/theme.git",
+                "reference": "7160edd3ff585e56dd96b7fe18a86e8489ca2e1b"
+            },
             "dist": {
-                "type": "path",
-                "url": "./packages/theme",
-                "reference": "c7448a7cf543c67af9006785d61977d5f61c0262"
+                "type": "zip",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/7160edd3ff585e56dd96b7fe18a86e8489ca2e1b",
+                "reference": "7160edd3ff585e56dd96b7fe18a86e8489ca2e1b",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
@@ -343,6 +449,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -405,13 +512,21 @@
                 "laravel",
                 "theme"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/atom-retros/theme/tree/main",
+                "issues": "https://github.com/atom-retros/theme/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
+                }
+            ],
+            "time": "2024-07-09T14:43:54+00:00"
         },
         {
             "name": "atomcms/voting",
-            "version": "1.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/voting.git",
@@ -437,6 +552,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -454,7 +570,41 @@
                     "Atom\\Voting\\Database\\Factories\\": "database/factories/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Atom\\Voting\\Tests\\": "tests/",
+                    "Workbench\\App\\": "workbench/app/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-core --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -467,13 +617,13 @@
                 "voting"
             ],
             "support": {
-                "issues": "https://github.com/atom-retros/voting/issues",
-                "source": "https://github.com/atom-retros/voting/tree/1.0.0"
+                "source": "https://github.com/atom-retros/voting/tree/1.0.0",
+                "issues": "https://github.com/atom-retros/voting/issues"
             },
             "funding": [
                 {
-                    "url": "https://github.com/atomcms",
-                    "type": "github"
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
                 }
             ],
             "time": "2024-07-05T22:46:26+00:00"
@@ -12161,6 +12311,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "atomcms/installation": 20,
+        "atomcms/rcon": 20,
+        "atomcms/voting": 20,
         "atomcms/core": 20,
         "atomcms/theme": 20,
         "atomcms/locale": 20
