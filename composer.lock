@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "f8e90a705770cb9b8b99b3c8168bff67e269718b"
+                "reference": "52da2d845539dd01d38c7417a695cfac5ebd8298"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/f8e90a705770cb9b8b99b3c8168bff67e269718b",
-                "reference": "f8e90a705770cb9b8b99b3c8168bff67e269718b",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/52da2d845539dd01d38c7417a695cfac5ebd8298",
+                "reference": "52da2d845539dd01d38c7417a695cfac5ebd8298",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-09T14:39:34+00:00"
+            "time": "2024-07-11T22:45:36+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -218,12 +218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/locale.git",
-                "reference": "fe86e5ee1fd0e083304d0774ba91ad9b089bae64"
+                "reference": "e4d1ac0cbc9466f97d5b42d036920bfc50dc1423"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/locale/zipball/fe86e5ee1fd0e083304d0774ba91ad9b089bae64",
-                "reference": "fe86e5ee1fd0e083304d0774ba91ad9b089bae64",
+                "url": "https://api.github.com/repos/atom-retros/locale/zipball/e4d1ac0cbc9466f97d5b42d036920bfc50dc1423",
+                "reference": "e4d1ac0cbc9466f97d5b42d036920bfc50dc1423",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +314,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-09T14:41:44+00:00"
+            "time": "2024-07-10T20:41:10+00:00"
         },
         {
             "name": "atomcms/rcon",
@@ -426,12 +426,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/theme.git",
-                "reference": "7160edd3ff585e56dd96b7fe18a86e8489ca2e1b"
+                "reference": "81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/theme/zipball/7160edd3ff585e56dd96b7fe18a86e8489ca2e1b",
-                "reference": "7160edd3ff585e56dd96b7fe18a86e8489ca2e1b",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd",
+                "reference": "81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd",
                 "shasum": ""
             },
             "require": {
@@ -522,7 +522,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-09T14:43:54+00:00"
+            "time": "2024-07-11T22:46:11+00:00"
         },
         {
             "name": "atomcms/voting",
@@ -2371,16 +2371,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.21.4",
+            "version": "v1.21.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "5c2e9cdf589e439feb1ed2911d4acc7ece0ec49e"
+                "reference": "3eaf01ec826c4f653628202640a4450784f78b15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/5c2e9cdf589e439feb1ed2911d4acc7ece0ec49e",
-                "reference": "5c2e9cdf589e439feb1ed2911d4acc7ece0ec49e",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/3eaf01ec826c4f653628202640a4450784f78b15",
+                "reference": "3eaf01ec826c4f653628202640a4450784f78b15",
                 "shasum": ""
             },
             "require": {
@@ -2432,20 +2432,20 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2024-06-27T07:55:32+00:00"
+            "time": "2024-07-04T14:36:27+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v11.14.0",
+            "version": "v11.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "657e8464e13147d56bc3a399115c8c26f38d4821"
+                "reference": "ba85f1c019bed59b3c736c9c4502805efd0ba84b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/657e8464e13147d56bc3a399115c8c26f38d4821",
-                "reference": "657e8464e13147d56bc3a399115c8c26f38d4821",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ba85f1c019bed59b3c736c9c4502805efd0ba84b",
+                "reference": "ba85f1c019bed59b3c736c9c4502805efd0ba84b",
                 "shasum": ""
             },
             "require": {
@@ -2551,7 +2551,7 @@
                 "nyholm/psr7": "^1.2",
                 "orchestra/testbench-core": "^9.1.5",
                 "pda/pheanstalk": "^5.0",
-                "phpstan/phpstan": "^1.4.7",
+                "phpstan/phpstan": "^1.11.5",
                 "phpunit/phpunit": "^10.5|^11.0",
                 "predis/predis": "^2.0.2",
                 "resend/resend-php": "^0.10.0",
@@ -2638,7 +2638,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-07-02T17:23:58+00:00"
+            "time": "2024-07-09T15:38:12+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -8496,16 +8496,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.16.1",
+            "version": "v1.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "9266a47f1b9231b83e0cfd849009547329d871b1"
+                "reference": "51f1ba679a6afe0315621ad143d788bd7ded0eca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/9266a47f1b9231b83e0cfd849009547329d871b1",
-                "reference": "9266a47f1b9231b83e0cfd849009547329d871b1",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/51f1ba679a6afe0315621ad143d788bd7ded0eca",
+                "reference": "51f1ba679a6afe0315621ad143d788bd7ded0eca",
                 "shasum": ""
             },
             "require": {
@@ -8558,20 +8558,20 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2024-06-18T16:50:05+00:00"
+            "time": "2024-07-09T15:58:08+00:00"
         },
         {
             "name": "laravel/sail",
-            "version": "v1.30.1",
+            "version": "v1.30.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "8ba049b6c06e0330b6aa1fb7af2746fb4da445e4"
+                "reference": "f5a9699a1001e15de1aa5e7cb5c9f50a3f63f887"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/8ba049b6c06e0330b6aa1fb7af2746fb4da445e4",
-                "reference": "8ba049b6c06e0330b6aa1fb7af2746fb4da445e4",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/f5a9699a1001e15de1aa5e7cb5c9f50a3f63f887",
+                "reference": "f5a9699a1001e15de1aa5e7cb5c9f50a3f63f887",
                 "shasum": ""
             },
             "require": {
@@ -8621,7 +8621,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-07-01T20:55:03+00:00"
+            "time": "2024-07-05T16:01:51+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -8931,16 +8931,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v2.34.8",
+            "version": "v2.34.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "e8f122bf47585c06431e0056189ec6bfd6f41f57"
+                "reference": "ef120125e036bf84c9e46a9e62219702f5b92e16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/e8f122bf47585c06431e0056189ec6bfd6f41f57",
-                "reference": "e8f122bf47585c06431e0056189ec6bfd6f41f57",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/ef120125e036bf84c9e46a9e62219702f5b92e16",
+                "reference": "ef120125e036bf84c9e46a9e62219702f5b92e16",
                 "shasum": ""
             },
             "require": {
@@ -8959,7 +8959,7 @@
             },
             "require-dev": {
                 "pestphp/pest-dev-tools": "^2.16.0",
-                "pestphp/pest-plugin-type-coverage": "^2.8.3",
+                "pestphp/pest-plugin-type-coverage": "^2.8.4",
                 "symfony/process": "^6.4.0|^7.1.1"
             },
             "bin": [
@@ -9023,7 +9023,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v2.34.8"
+                "source": "https://github.com/pestphp/pest/tree/v2.34.9"
             },
             "funding": [
                 {
@@ -9035,7 +9035,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-10T22:02:16+00:00"
+            "time": "2024-07-11T08:36:26+00:00"
         },
         {
             "name": "pestphp/pest-plugin",

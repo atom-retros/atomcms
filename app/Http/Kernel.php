@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \Atom\Installation\Http\Middleware\InstallationMiddleware::class,
             \Atom\Locale\Http\Middleware\LocaleMiddleware::class,
             \Atom\Theme\Http\Middleware\ThemeMiddleware::class,
+            \Atom\Core\Http\Middleware\BannedMiddleware::class,
         ],
 
         'api' => [
