@@ -20,5 +20,4 @@ yarn.lock
 /.vscode
 /public/assets/images/generated-logos
 /packages
-/resources/views/**/
 !/resources/view/.gitkeep
