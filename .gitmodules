@@ -1,0 +1,12 @@
+[submodule "nitro/nitro-react"]
+	path = nitro/nitro-react
+	url = https://github.com/billsonnn/nitro-react.git
+[submodule "nitro/nitro-converter"]
+	path = nitro/nitro-converter
+	url = https://github.com/billsonnn/nitro-converter.git
+[submodule "nitro/nitro-swf"]
+	path = nitro/nitro-swf
+	url = https://git.krews.org/morningstar/arcturus-morningstar-default-swf-pack.git
+[submodule "nitro/nitro-assets"]
+	path = nitro/nitro-assets
+	url = https://git.krews.org/nitro/default-assets.git

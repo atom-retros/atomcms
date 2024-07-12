@@ -4,6 +4,13 @@
 /public/client
 /public/storage
 /public/images
+/public/nitro
+/public/dist
+!/public/nitro/.gitkeep
+/nitro/nitro-assets
+/nitro/nitro-converter
+/nitro/nitro-react
+/nitro/nitro-swf
 /storage/*.key
 /vendor
 /public/static
