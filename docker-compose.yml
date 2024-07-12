@@ -100,6 +100,10 @@ services:
     arcturus:
         image: eclipse-temurin:19
         working_dir: /app
+        ports:
+            - 3000:3000
+            - 3001:3001
+            - 2096:2096
         volumes:
             - './arcturus:/app'
         command: >
