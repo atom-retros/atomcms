@@ -21,6 +21,7 @@ cd $(pwd)/nitro/nitro-react; yarn install; yarn build:prod;
 cp dist/assets/index-*.js dist/assets/index.js
 cp dist/assets/nitro-renderer-*.js dist/assets/nitro-renderer.js
 cp dist/assets/vendor-*.js dist/assets/vendor.js
+sed -i.bak 's/\/src\//\/dist\/src\//g' dist/src/assets/index.css
 cd ../../
 
 # Create symbolic link from the nitro build to the public directory
