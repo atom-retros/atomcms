@@ -97,6 +97,18 @@ services:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
+    arcturus:
+        image: eclipse-temurin:19
+        working_dir: /app
+        volumes:
+            - './arcturus:/app'
+        command: >
+            sh -c "java -Dfile.encoding=UTF8 -jar Habbo-3.5.3-jar-with-dependencies.jar"
+        networks:
+            - sail
+        depends_on:
+            - mariadb
+
 networks:
     sail:
         driver: bridge
