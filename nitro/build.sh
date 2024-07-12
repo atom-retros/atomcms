@@ -2,6 +2,9 @@
 git submodule init
 git submodule update
 
+# Create the public/nitro folder if it doesn't exist
+mkdir -p $(pwd)/public/nitro
+
 # Create symbolic links to the assets
 ln -s $(pwd)/nitro/nitro-assets $(pwd)/public/nitro/assets
 ln -s $(pwd)/nitro/nitro-swf $(pwd)/public/nitro/swf

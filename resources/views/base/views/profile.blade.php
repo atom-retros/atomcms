@@ -3,7 +3,7 @@
 
     <x-user.hero  :user="$user" />
 
-    <x-user.currency.list :currencies="$user->currencies" />
+    <x-user.currency.list :user="$user" :currencies="$user->currencies" />
 
     {{-- @todo - Badges --}}
 

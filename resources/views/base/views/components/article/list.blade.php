@@ -1,7 +1,9 @@
 @props(['articles'])
 
 <div class="flex flex-col gap-6">
-    @foreach ($articles as $article)
+    @forelse ($articles as $article)
         <x-article.item :article="$article" />
-    @endforeach
+    @empty
+        <x-article.empty />
+    @endforelse
 </div>

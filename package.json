@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "build": "vite build",
         "dev:atom": "vite --config resources/views/atom/vite.config.js",
         "build:atom": "vite build --config resources/views/atom/vite.config.js",
         "dev:base": "vite --config resources/views/base/vite.config.js",

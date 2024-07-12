@@ -191,6 +191,8 @@ return [
         Atom\Rcon\RconServiceProvider::class,
         Atom\Voting\VotingServiceProvider::class,
         Atom\Locale\LocaleServiceProvider::class,
+        Atom\Theme\ThemeServiceProvider::class,
+        Atom\Core\CoreServiceProvider::class,
 
         /*
          * Application Service Providers...
