@@ -7,13 +7,15 @@
         </figure>
 
         <div class="flex flex-col gap-1 p-3 truncate">
-            <p class="font-semibold text-sm">{{ $article->title }}</p>
-            <a href="{{ route('profiles', $article->user) }}" class="flex gap-3 items-center">
-                <button class="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full">
-                    <x-avatar username="{{ $article->user->username }}" figure="{{ $article->user->look }}" headonly />
-                </button>
-                <p class="font-light text-sm">{{ $article->user->username }}</p>
-            </a>
+            <p class="text-sm font-semibold">{{ $article->title }}</p>
+            <div class="flex items-center gap-3">
+                <a href="{{ route('profiles', $article->user) }}" class="flex items-center gap-3">
+                    <button class="flex items-center justify-center w-8 h-8 bg-blue-500 rounded-full">
+                        <x-avatar username="{{ $article->user->username }}" figure="{{ $article->user->look }}" headonly />
+                    </button>
+                    <p class="text-sm font-light">{{ $article->user->username }}</p>
+                </a>
+            </div>
         </div>
     </x-card>
 </a>
