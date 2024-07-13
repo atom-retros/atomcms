@@ -1,7 +1,7 @@
 @props(['id' => '', 'label' => '', 'value' => '', 'required' => false])
 
-<fieldset class="flex items-center flex-wrap gap-3 w-full text-sm leading-6">
-    <input id="{{ $id }}" name="{{ $id }}" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-blue-500 focus:ring-blue-600">
+<fieldset class="flex flex-wrap items-center w-full gap-3 text-sm leading-6">
+    <input id="{{ $id }}" name="{{ $id }}" type="checkbox" class="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-600">
     <label for="{{ $id }}" class="font-medium text-gray-900 dark:text-white">{{ $label }}</label>
 
     @if ($errors->has($id))

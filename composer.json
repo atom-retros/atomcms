@@ -1,11 +1,8 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "repositories": {
         "atomcms/installation": {
@@ -34,7 +31,7 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-sockets": "*",
         "atomcms/installation": "dev-main",
         "atomcms/rcon": "dev-main",
@@ -49,13 +46,9 @@
         "laravel/fortify": "^1.16",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.8",
-        "opcodesio/log-viewer": "*",
+        "laravel/tinker": "^2.9",
         "qirolab/laravel-themer": "^2.0",
-        "ryangjchandler/laravel-cloudflare-turnstile": "*",
-        "spatie/laravel-activitylog": "^4.8",
-        "srmklive/paypal": "~3.0",
-        "stevebauman/purify": "^6.0"
+        "spatie/laravel-activitylog": "^4.8"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",
@@ -75,8 +68,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": []
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -84,11 +76,20 @@
         }
     },
     "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
         ]
     },
     "extra": {
@@ -101,7 +102,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",

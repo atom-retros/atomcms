@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "908e211ecde5125e6e31fa930bf6ad53",
+    "content-hash": "e58f30606f8db42a8bf68b21a4ccf489",
     "packages": [
         {
             "name": "atomcms/core",
@@ -12,18 +12,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "52da2d845539dd01d38c7417a695cfac5ebd8298"
+                "reference": "2c4876bc1cd83ef661df7fc0ca4bb34f6093d369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/52da2d845539dd01d38c7417a695cfac5ebd8298",
-                "reference": "52da2d845539dd01d38c7417a695cfac5ebd8298",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/2c4876bc1cd83ef661df7fc0ca4bb34f6093d369",
+                "reference": "2c4876bc1cd83ef661df7fc0ca4bb34f6093d369",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.16"
+                "php": "^8.2"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
@@ -107,7 +106,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-11T22:45:36+00:00"
+            "time": "2024-07-13T16:32:37+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -115,18 +114,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/installation.git",
-                "reference": "869df7108f78cbc5ca5066b705918291e868e032"
+                "reference": "b9b2471336cf83f40b7699334d2668ae5daad21d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/installation/zipball/869df7108f78cbc5ca5066b705918291e868e032",
-                "reference": "869df7108f78cbc5ca5066b705918291e868e032",
+                "url": "https://api.github.com/repos/atom-retros/installation/zipball/b9b2471336cf83f40b7699334d2668ae5daad21d",
+                "reference": "b9b2471336cf83f40b7699334d2668ae5daad21d",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.16"
+                "php": "^8.2"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
@@ -210,7 +208,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-09T15:10:16+00:00"
+            "time": "2024-07-13T16:32:56+00:00"
         },
         {
             "name": "atomcms/locale",
@@ -218,18 +216,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/locale.git",
-                "reference": "e4d1ac0cbc9466f97d5b42d036920bfc50dc1423"
+                "reference": "ac6ed5a3d7308ae12db886c7a49f53fb23cbb4c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/locale/zipball/e4d1ac0cbc9466f97d5b42d036920bfc50dc1423",
-                "reference": "e4d1ac0cbc9466f97d5b42d036920bfc50dc1423",
+                "url": "https://api.github.com/repos/atom-retros/locale/zipball/ac6ed5a3d7308ae12db886c7a49f53fb23cbb4c3",
+                "reference": "ac6ed5a3d7308ae12db886c7a49f53fb23cbb4c3",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.16",
+                "php": "^8.2",
                 "symfony/intl": "^7.1"
             },
             "require-dev": {
@@ -314,7 +311,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-10T20:41:10+00:00"
+            "time": "2024-07-13T16:33:39+00:00"
         },
         {
             "name": "atomcms/rcon",
@@ -322,18 +319,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/rcon.git",
-                "reference": "e93aea575deca142d05bbd87547f70df163ad4eb"
+                "reference": "913804f8170b8de9f653cc3b1031f5c0d9d5a248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/rcon/zipball/e93aea575deca142d05bbd87547f70df163ad4eb",
-                "reference": "e93aea575deca142d05bbd87547f70df163ad4eb",
+                "url": "https://api.github.com/repos/atom-retros/rcon/zipball/913804f8170b8de9f653cc3b1031f5c0d9d5a248",
+                "reference": "913804f8170b8de9f653cc3b1031f5c0d9d5a248",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.16"
+                "php": "^8.2"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
@@ -409,7 +405,7 @@
                 "rcon"
             ],
             "support": {
-                "source": "https://github.com/atom-retros/rcon/tree/1.0.0",
+                "source": "https://github.com/atom-retros/rcon/tree/main",
                 "issues": "https://github.com/atom-retros/rcon/issues"
             },
             "funding": [
@@ -418,7 +414,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-05T23:44:44+00:00"
+            "time": "2024-07-13T16:33:38+00:00"
         },
         {
             "name": "atomcms/theme",
@@ -426,19 +422,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/theme.git",
-                "reference": "81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd"
+                "reference": "4053488743bf93a1f16df898cb25d76244fcca53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/theme/zipball/81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd",
-                "reference": "81b3bcd388a1b42e799dde0bdd07d5a1c5d79dbd",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/4053488743bf93a1f16df898cb25d76244fcca53",
+                "reference": "4053488743bf93a1f16df898cb25d76244fcca53",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "qirolab/laravel-themer": "^2.3",
-                "spatie/laravel-package-tools": "^1.16"
+                "php": "^8.2",
+                "qirolab/laravel-themer": "^2.3"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
@@ -522,7 +517,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-11T22:46:11+00:00"
+            "time": "2024-07-13T16:34:17+00:00"
         },
         {
             "name": "atomcms/voting",
@@ -530,18 +525,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/voting.git",
-                "reference": "f7f48b2e527a81f6705eaec8159cd70afcc0b068"
+                "reference": "baae0b874ca37da800d352e049e90f35e4e30bf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/voting/zipball/f7f48b2e527a81f6705eaec8159cd70afcc0b068",
-                "reference": "f7f48b2e527a81f6705eaec8159cd70afcc0b068",
+                "url": "https://api.github.com/repos/atom-retros/voting/zipball/baae0b874ca37da800d352e049e90f35e4e30bf5",
+                "reference": "baae0b874ca37da800d352e049e90f35e4e30bf5",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.16"
+                "php": "^8.2"
             },
             "require-dev": {
                 "laravel/pint": "^1.14",
@@ -617,7 +611,7 @@
                 "voting"
             ],
             "support": {
-                "source": "https://github.com/atom-retros/voting/tree/1.0.0",
+                "source": "https://github.com/atom-retros/voting/tree/main",
                 "issues": "https://github.com/atom-retros/voting/issues"
             },
             "funding": [
@@ -626,7 +620,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-05T22:46:26+00:00"
+            "time": "2024-07-13T16:34:08+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -1575,67 +1569,6 @@
                 }
             ],
             "time": "2023-10-06T06:47:41+00:00"
-        },
-        {
-            "name": "ezyang/htmlpurifier",
-            "version": "v4.17.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/bbc513d79acf6691fa9cf10f192c90dd2957f18c",
-                "reference": "bbc513d79acf6691fa9cf10f192c90dd2957f18c",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
-            },
-            "require-dev": {
-                "cerdic/css-tidy": "^1.7 || ^2.0",
-                "simpletest/simpletest": "dev-master"
-            },
-            "suggest": {
-                "cerdic/css-tidy": "If you want to use the filter 'Filter.ExtractStyleBlocks'.",
-                "ext-bcmath": "Used for unit conversion and imagecrash protection",
-                "ext-iconv": "Converts text to and from non-UTF-8 encodings",
-                "ext-tidy": "Used for pretty-printing HTML"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "library/HTMLPurifier.composer.php"
-                ],
-                "psr-0": {
-                    "HTMLPurifier": "library/"
-                },
-                "exclude-from-classmap": [
-                    "/library/HTMLPurifier/Language/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Edward Z. Yang",
-                    "email": "admin@htmlpurifier.org",
-                    "homepage": "http://ezyang.com"
-                }
-            ],
-            "description": "Standards compliant HTML filter written in PHP",
-            "homepage": "http://htmlpurifier.org/",
-            "keywords": [
-                "html"
-            ],
-            "support": {
-                "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.17.0"
-            },
-            "time": "2023-11-17T15:01:25+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -3828,147 +3761,6 @@
             "time": "2024-03-06T16:17:14+00:00"
         },
         {
-            "name": "opcodesio/log-viewer",
-            "version": "v3.10.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opcodesio/log-viewer.git",
-                "reference": "d0d1e9429a0a3a59ac8d525bfb8415b1041b30ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opcodesio/log-viewer/zipball/d0d1e9429a0a3a59ac8d525bfb8415b1041b30ca",
-                "reference": "d0d1e9429a0a3a59ac8d525bfb8415b1041b30ca",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^8.0|^9.0|^10.0|^11.0",
-                "opcodesio/mail-parser": "^0.1.6",
-                "php": "^8.0"
-            },
-            "conflict": {
-                "arcanedev/log-viewer": "^8.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^7.2",
-                "itsgoingd/clockwork": "^5.1",
-                "laravel/pint": "^1.0",
-                "nunomaduro/collision": "^7.0|^8.0",
-                "orchestra/testbench": "^7.6|^8.0|^9.0",
-                "pestphp/pest": "^2.0",
-                "pestphp/pest-plugin-laravel": "^2.0",
-                "spatie/test-time": "^1.3"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Required for multi-host support. ^7.2"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Opcodes\\LogViewer\\LogViewerServiceProvider"
-                    ],
-                    "aliases": {
-                        "LogViewer": "Opcodes\\LogViewer\\Facades\\LogViewer"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Opcodes\\LogViewer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arunas Skirius",
-                    "email": "arukomp@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Fast and easy-to-use log viewer for your Laravel application",
-            "homepage": "https://github.com/opcodesio/log-viewer",
-            "keywords": [
-                "arukompas",
-                "better-log-viewer",
-                "laravel",
-                "log viewer",
-                "logs",
-                "opcodesio"
-            ],
-            "support": {
-                "issues": "https://github.com/opcodesio/log-viewer/issues",
-                "source": "https://github.com/opcodesio/log-viewer/tree/v3.10.1"
-            },
-            "funding": [
-                {
-                    "url": "https://www.buymeacoffee.com/arunas",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/arukompas",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-05-20T15:11:50+00:00"
-        },
-        {
-            "name": "opcodesio/mail-parser",
-            "version": "v0.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/opcodesio/mail-parser.git",
-                "reference": "639ef31cbd146a63416283e75afce152e13233ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/opcodesio/mail-parser/zipball/639ef31cbd146a63416283e75afce152e13233ea",
-                "reference": "639ef31cbd146a63416283e75afce152e13233ea",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "pestphp/pest": "^2.16",
-                "symfony/var-dumper": "^6.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Opcodes\\MailParser\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arunas Skirius",
-                    "email": "arukomp@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Parse emails without the mailparse extension",
-            "keywords": [
-                "arukompas",
-                "email",
-                "email parser",
-                "mail",
-                "opcodesio",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/opcodesio/mail-parser/issues",
-                "source": "https://github.com/opcodesio/mail-parser/tree/v0.1.6"
-            },
-            "time": "2023-11-19T08:47:43+00:00"
-        },
-        {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.7.0",
             "source": {
@@ -4998,80 +4790,6 @@
             "time": "2024-04-27T21:32:50+00:00"
         },
         {
-            "name": "ryangjchandler/laravel-cloudflare-turnstile",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile.git",
-                "reference": "27a445b9c8f5ef6061cb49ee91d4382aaebdcb30"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ryangjchandler/laravel-cloudflare-turnstile/zipball/27a445b9c8f5ef6061cb49ee91d4382aaebdcb30",
-                "reference": "27a445b9c8f5ef6061cb49ee91d4382aaebdcb30",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^10.0|^11.0",
-                "php": "^8.1",
-                "spatie/laravel-package-tools": "^1.13.0"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.0",
-                "nunomaduro/collision": "^7.0|^8.0",
-                "nunomaduro/larastan": "^2.0.1",
-                "orchestra/testbench": "^8.1|^9.0",
-                "pestphp/pest": "^2.0",
-                "pestphp/pest-plugin-laravel": "^2.0",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^10.0",
-                "spatie/laravel-ray": "^1.26",
-                "spatie/pest-plugin-snapshots": "^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "RyanChandler\\LaravelCloudflareTurnstile\\LaravelCloudflareTurnstileServiceProvider"
-                    ],
-                    "aliases": {
-                        "LaravelCloudflareTurnstile": "RyanChandler\\LaravelCloudflareTurnstile\\Facades\\LaravelCloudflareTurnstile"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "RyanChandler\\LaravelCloudflareTurnstile\\": "src",
-                    "RyanChandler\\LaravelCloudflareTurnstile\\Database\\Factories\\": "database/factories"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ryan Chandler",
-                    "email": "support@ryangjchandler.co.uk",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple package to help integrate Cloudflare Turnstile.",
-            "homepage": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile",
-            "keywords": [
-                "laravel",
-                "laravel-cloudflare-turnstile",
-                "ryangjchandler"
-            ],
-            "support": {
-                "issues": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/issues",
-                "source": "https://github.com/ryangjchandler/laravel-cloudflare-turnstile/tree/v1.1.0"
-            },
-            "time": "2024-03-12T21:17:13+00:00"
-        },
-        {
             "name": "spatie/laravel-activitylog",
             "version": "4.8.0",
             "source": {
@@ -5221,138 +4939,6 @@
                 }
             ],
             "time": "2024-03-20T07:29:11+00:00"
-        },
-        {
-            "name": "srmklive/paypal",
-            "version": "3.0.32",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/srmklive/laravel-paypal.git",
-                "reference": "031d69d7c99f9ef0874a34cb85326ede28cd7aed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/srmklive/laravel-paypal/zipball/031d69d7c99f9ef0874a34cb85326ede28cd7aed",
-                "reference": "031d69d7c99f9ef0874a34cb85326ede28cd7aed",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "guzzlehttp/guzzle": "~7.0",
-                "illuminate/support": "~6.0|~7.0|~8.0|~9.0|^10.0|^11.0",
-                "nesbot/carbon": "~2.0|^3.0",
-                "php": ">=7.2|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^8.0|^9.0|^10.0|^11.0",
-                "symfony/var-dumper": "~5.0|^6.0|^7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Srmklive\\PayPal\\Providers\\PayPalServiceProvider"
-                    ],
-                    "aliases": {
-                        "PayPal": "Srmklive\\PayPal\\Facades\\PayPal"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Srmklive\\PayPal\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Raza Mehdi",
-                    "email": "srmk@outlook.com"
-                }
-            ],
-            "description": "Laravel plugin For Processing Payments Through Paypal Express Checkout. Can Be Used Independently With Other Applications.",
-            "keywords": [
-                "http",
-                "laravel paypal",
-                "paypal",
-                "rest",
-                "web service"
-            ],
-            "support": {
-                "issues": "https://github.com/srmklive/laravel-paypal/issues",
-                "source": "https://github.com/srmklive/laravel-paypal/tree/3.0.32"
-            },
-            "time": "2024-06-24T14:34:51+00:00"
-        },
-        {
-            "name": "stevebauman/purify",
-            "version": "v6.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stevebauman/purify.git",
-                "reference": "303d23e5756a1fd0e9b34f14459ec6aa327a8412"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stevebauman/purify/zipball/303d23e5756a1fd0e9b34f14459ec6aa327a8412",
-                "reference": "303d23e5756a1fd0e9b34f14459ec6aa327a8412",
-                "shasum": ""
-            },
-            "require": {
-                "ezyang/htmlpurifier": "^4.17",
-                "illuminate/contracts": "^7.0|^8.0|^9.0|^10.0|^11.0",
-                "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0",
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0|^9.0",
-                "phpunit/phpunit": "^8.0|^9.0|^10.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Stevebauman\\Purify\\PurifyServiceProvider"
-                    ],
-                    "aliases": {
-                        "Purify": "Stevebauman\\Purify\\Facades\\Purify"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Stevebauman\\Purify\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steve Bauman",
-                    "email": "steven_bauman@outlook.com"
-                }
-            ],
-            "description": "An HTML Purifier / Sanitizer for Laravel",
-            "keywords": [
-                "Purifier",
-                "clean",
-                "cleaner",
-                "html",
-                "laravel",
-                "purification",
-                "purify"
-            ],
-            "support": {
-                "issues": "https://github.com/stevebauman/purify/issues",
-                "source": "https://github.com/stevebauman/purify/tree/v6.2.0"
-            },
-            "time": "2024-03-12T15:22:59+00:00"
         },
         {
             "name": "symfony/clock",
@@ -12321,7 +11907,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-sockets": "*"
     },
     "platform-dev": [],
