@@ -3,28 +3,28 @@
 
     <x-leaderboard.list
         :users="$credits"
-        :value="fn ($user) => __('value.credits', ['value' => $user->currencies->firstWhere('type', 0)->amount])"
+        :value="fn ($user) => __('value.credits', ['value' => $user->credits])"
         title="{{ __('leaderboards.credits') }}"
-        icon="currencies/0.png"
+        icon="currencies/-1.png"
     />
 
     <x-leaderboard.list
         :users="$duckets"
-        :value="fn ($user) => __('value.duckets', ['value' => $user->currencies->firstWhere('type', 5)->amount])"
+        :value="fn ($user) => __('value.duckets', ['value' => $user->currencies->firstWhere('type', 0)->amount])"
         title="{{ __('leaderboards.duckets') }}"
-        icon="currencies/5.png"
+        icon="currencies/0.png"
     />
 
     <x-leaderboard.list
         :users="$diamonds"
-        :value="fn ($user) => __('value.diamonds', ['value' => $user->currencies->firstWhere('type', 101)->amount])"
+        :value="fn ($user) => __('value.diamonds', ['value' => $user->currencies->firstWhere('type', 5)->amount])"
         title="{{ __('leaderboards.diamonds') }}"
-        icon="currencies/101.png"
+        icon="currencies/5.png"
     />
 
     <x-leaderboard.list
         :users="$onlineTimes"
-        :value="fn ($user) => __('value.hours', ['value' => $user->settings->online_time])"
+        :value="fn ($user) => __('value.hours', ['value' => round($user->settings->online_time/3600, 2)])"
         title="{{ __('leaderboards.hours') }}"
         icon="dove.png"
     />
