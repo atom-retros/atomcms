@@ -11,7 +11,7 @@
         </p>
 
         @if (request()->user()->is($user))
-            <a href="{{ route('client') }}" class="flex-shrink-0 ml-auto">
+            <a href="{{ route('game.nitro') }}" class="flex-shrink-0 ml-auto">
                 <x-button.primary>Enter {{ $settings->get('hotel_name') }}</x-button.primary>
             </a>
         @endif
