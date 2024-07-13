@@ -33,13 +33,14 @@
     "require": {
         "php": "^8.2",
         "ext-sockets": "*",
-        "atomcms/installation": "dev-main",
-        "atomcms/rcon": "dev-main",
-        "atomcms/voting": "dev-main",
         "atomcms/core": "dev-main",
-        "atomcms/theme": "dev-main",
+        "atomcms/installation": "dev-main",
         "atomcms/locale": "dev-main",
+        "atomcms/rcon": "dev-main",
+        "atomcms/theme": "dev-main",
+        "atomcms/voting": "dev-main",
         "doctrine/dbal": "^3.5",
+        "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^11.0",
         "jenssegers/agent": "^2.6",
@@ -78,7 +79,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
