@@ -3,7 +3,7 @@
 <a href="{{ route('community.articles.show', $article) }}">
     <x-card class="bg-gray-100 dark:bg-gray-950">
         <figure class="h-20">
-            <img src="{{ $article->image }}" alt="{{ $article->title }}" class="object-none object-right w-auto h-full min-w-full transition-all duration-500 max-w-none">
+            <img src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" class="object-none object-right w-auto h-full min-w-full transition-all duration-500 max-w-none">
         </figure>
 
         <div class="flex flex-col gap-1 p-3 truncate">
