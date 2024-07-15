@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "25d62e045c6963de4c25ffa1d60177f464ccc8af"
+                "reference": "a836c02674677e587dd6c138a3021dc6735a285d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/25d62e045c6963de4c25ffa1d60177f464ccc8af",
-                "reference": "25d62e045c6963de4c25ffa1d60177f464ccc8af",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/a836c02674677e587dd6c138a3021dc6735a285d",
+                "reference": "a836c02674677e587dd6c138a3021dc6735a285d",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-15T17:22:55+00:00"
+            "time": "2024-07-15T21:49:05+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -422,12 +422,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/theme.git",
-                "reference": "08ee7b27b1b53c1ab7256bef84078ebf65810d3f"
+                "reference": "841bc1d857b89af83bf21913fc18c4ce8a89eecf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/theme/zipball/08ee7b27b1b53c1ab7256bef84078ebf65810d3f",
-                "reference": "08ee7b27b1b53c1ab7256bef84078ebf65810d3f",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/841bc1d857b89af83bf21913fc18c4ce8a89eecf",
+                "reference": "841bc1d857b89af83bf21913fc18c4ce8a89eecf",
                 "shasum": ""
             },
             "require": {
@@ -517,7 +517,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-13T17:14:21+00:00"
+            "time": "2024-07-15T17:30:26+00:00"
         },
         {
             "name": "atomcms/voting",
