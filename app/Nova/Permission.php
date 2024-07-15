@@ -1356,7 +1356,7 @@ class Permission extends Resource
 
             Select::make('cmd_brb')
                 ->hideFromIndex()
-                ->options(['0' => 'No', '1' => 'Yes', '2' => 'Room Rights / Room Owner']) // @todo - Fix this when find out what it is for.
+                ->options(['0' => 'No', '1' => 'Yes', '2' => 'Room Rights / Room Owner'])
                 ->rules('required', 'in:0,1,2')
                 ->default(0)
                 ->displayUsingLabels(),

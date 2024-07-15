@@ -32,7 +32,7 @@ class RoomChatlog extends Resource
      */
     public static $search = [
         'sender.username',
-        'reciever.username',
+        'receiver.username',
         'message',
     ];
 

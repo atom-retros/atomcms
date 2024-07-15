@@ -6,6 +6,7 @@ use Nevadskiy\Quill\Quill;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class CatalogTargetOffer extends Resource
@@ -95,16 +96,14 @@ class CatalogTargetOffer extends Resource
             Select::make('Points Type')
                 ->hideFromIndex()
                 ->searchable()
-                ->rules('required', 'in:1,5,101')
+                ->rules('required', 'in:0,5,101')
                 ->options(['0' => 'Duckets', '5' => 'Diamonds', '101' => 'GOTW Points'])
                 ->default('0')
                 ->displayUsingLabels(),	
 
-            // @todo - add catalog item resource
-
-            // BelongsTo::make('Catalog Item', 'catalogItem', CatalogItem::class)
-            //     ->sortable()
-            //     ->searchable(),
+            BelongsTo::make('Catalog Item', 'catalogItem', CatalogItem::class)
+                ->sortable()
+                ->searchable(),
 
             Text::make('Vars')
                 ->hideFromIndex()

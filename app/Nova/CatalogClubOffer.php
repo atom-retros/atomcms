@@ -71,7 +71,7 @@ class CatalogClubOffer extends Resource
             Select::make('Points Type')
                 ->sortable()
                 ->searchable()
-                ->rules('required', 'in:1,5,101')
+                ->rules('required', 'in:0,5,101')
                 ->options(['0' => 'Duckets', '5' => 'Diamonds', '101' => 'GOTW Points'])
                 ->default('0')
                 ->displayUsingLabels(),
