@@ -4,6 +4,7 @@ return [
     # Local Providers
     App\Providers\AppServiceProvider::class,
     App\Providers\FortifyServiceProvider::class,
+    App\Providers\NovaServiceProvider::class,
 
     # Atom Providers
     Atom\Installation\InstallationServiceProvider::class,

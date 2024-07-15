@@ -5,6 +5,10 @@
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "repositories": {
+        "laravel/nova": {
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/housekeeping.git"
+        },
         "atomcms/installation": {
             "type": "vcs",
             "url": "git@github.com:atom-retros/installation.git"
@@ -33,6 +37,7 @@
     "require": {
         "php": "^8.2",
         "ext-sockets": "*",
+        "laravel/nova": "dev-main",
         "atomcms/core": "dev-main",
         "atomcms/installation": "dev-main",
         "atomcms/locale": "dev-main",
@@ -40,7 +45,6 @@
         "atomcms/theme": "dev-main",
         "atomcms/voting": "dev-main",
         "doctrine/dbal": "^3.5",
-        "filament/filament": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^11.0",
         "jenssegers/agent": "^2.6",
@@ -79,8 +83,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

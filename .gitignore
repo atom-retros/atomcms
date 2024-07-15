@@ -6,6 +6,8 @@
 /public/images
 /public/nitro
 /public/dist
+/public/vendor
+/lang/vendor
 !/public/nitro/.gitkeep
 /nitro/nitro-assets
 /nitro/nitro-converter
