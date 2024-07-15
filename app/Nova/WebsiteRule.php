@@ -2,28 +2,25 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class WebsiteRule extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\WebsiteRule>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\WebsiteRule::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'rule';
 
     /**
      * The columns that should be searched.
@@ -31,9 +28,8 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'paragraph',
+        'rule',
     ];
 
     /**
@@ -45,20 +41,20 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
+            BelongsTo::make('Category', 'category', WebsiteRuleCategory::class)
+                ->searchable()
                 ->searchable()
                 ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            
+            Text::make('Paragraph')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:8')
+                ->creationRules('unique:website_rules,paragraph')
+                ->updateRules('unique:website_rules,paragraph,{{resourceId}}'),
+
+            Text::make('Rule')
+                ->sortable()
+                ->rules('required'),		
         ];
     }
 

@@ -2,28 +2,31 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class CatalogFeaturedPage extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\CatalogFeaturedPage>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\CatalogFeaturedPage::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'caption';
 
     /**
      * The columns that should be searched.
@@ -31,9 +34,7 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'caption',
     ];
 
     /**
@@ -45,20 +46,42 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Number::make('Slot', 'slot_id')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'integer')
+                ->creationRules('unique:catalog_featured_pages,slot_id')
+                ->updateRules('unique:catalog_featured_pages,slot_id,{{resourceId}}')
+                ->default(1),
+
+            Text::make('Image')
+                ->hideFromIndex()
+                ->rules('required', 'max:70'),
+
+            Text::make('Caption')
+                ->sortable()
+                ->rules('required', 'max:130'),
+
+            Select::make('Type')
+                ->sortable()
+                ->rules('required')
+                ->options(['page_name' => 'Page Name', 'page_id' => 'Page ID', 'product_name' => 'Product Name'])
+                ->default('page_name')
+                ->displayUsingLabels(),
+
+            Number::make('Expire Timestamp', 'expire_timestamp')
+                ->hideFromIndex()
+                ->rules('required', 'integer')
+                ->default(-1),
+
+            Text::make('Page Name')
+                ->hideFromIndex()
+                ->rules('required', 'max:30'),
+
+            BelongsTo::make('Page', 'page', CatalogPage::class),
+
+            Text::make('Product Name')
+                ->hideFromIndex()
+                ->rules('sometimes', 'nullable', 'max:40'),
         ];
     }
 

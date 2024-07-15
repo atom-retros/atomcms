@@ -3,27 +3,24 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class WebsiteBetaCode extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\WebsiteBetaCode>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\WebsiteBetaCode::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'code';
 
     /**
      * The columns that should be searched.
@@ -31,9 +28,8 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'code',
+        'user.username',
     ];
 
     /**
@@ -45,20 +41,17 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Text::make('Code')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:255')
+                ->creationRules('unique:website_beta_codes,code')
+                ->updateRules('unique:website_beta_codes,code,{{resourceId}}')
+                ->default(str()->uuid()),
+
+            BelongsTo::make('User', 'user', User::class)
+                ->sortable()
+                ->searchable()
+                ->rules('sometimes', 'nullable', 'exists:users,id'),		
         ];
     }
 

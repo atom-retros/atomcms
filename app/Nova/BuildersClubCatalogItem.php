@@ -2,28 +2,32 @@
 
 namespace App\Nova;
 
+use Atom\Core\Models\CatalogPageBuildersClub;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class BuildersClubCatalogItem extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\CatalogItemBuildersClub>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\CatalogItemBuildersClub::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'catalog_name';
 
     /**
      * The columns that should be searched.
@@ -31,9 +35,7 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'catalog_name',
     ];
 
     /**
@@ -45,20 +47,27 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Text::make('Catalog Name')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:128'),
+
+            BelongsTo::make('Page', 'page', BuildersClubCatalogPage::class)
+                ->sortable()
+                ->searchable()
+                ->rules('required', 'exists:catalog_pages_bc,id'),
+
+            Text::make('Item IDs', 'item_ids')
+                ->hideFromIndex()
+                ->rules('required', 'max:255'),
+
+            Number::make('Order Number')
+                ->hideFromIndex()
+                ->rules('required', 'integer')
+                ->default(1),
+
+            Text::make('Extra Data', 'extradata')
+                ->hideFromIndex()
+                ->rules('sometimes', 'nullable', 'max:500'),
         ];
     }
 

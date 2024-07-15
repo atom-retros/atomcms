@@ -2,28 +2,29 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
+use Nevadskiy\Quill\Quill;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Ban extends Resource
+class WebsiteHelpCenter extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Ban>
+     * @var class-string<\App\Models\WebsiteHelpCenterCategory>
      */
-    public static $model = \Atom\Core\Models\Ban::class;
+    public static $model = \Atom\Core\Models\WebsiteHelpCenterCategory::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'user.username';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,12 +32,8 @@ class Ban extends Resource
      * @var array
      */
     public static $search = [
-        'ip',
-        'machine_id',
-        'ban_expire',
-        'ban_reason',
-        'type',
-        'cfh_topic',
+        'name',
+        'content',
     ];
 
     /**
@@ -48,54 +45,47 @@ class Ban extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('User', 'user', User::class)
-                ->sortable()
-                ->searchable()
-                ->rules('required'),
-
-            Text::make('IP Address', 'ip')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required', 'max:50'),
-
-            Text::make('Machine ID', 'machine_id')
-                ->hideFromIndex()
+            Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            BelongsTo::make('Staff', 'staff', User::class)
+            Number::make('Position')
                 ->sortable()
-                ->searchable()
-                ->rules('required'),
+                ->rules('required', 'integer'),
 
-            Text::make('Timestamp')
+            Image::make('Image', 'image_url')
                 ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
+                ->disk('public')
+                ->path('website-articles')
+                ->prunable()
+                ->creationRules('nullable')
+                ->updateRules('nullable'),
 
-            Text::make('Ban Expire', 'ban_expire')
+            Quill::make('Content')
+                ->withFiles()
+                ->theme('snow')
+                ->toolbar([
+                    [['header' => [1, 2, 3, 4, 5, 6, false]]],
+                    ['bold', 'italic', 'underline'],
+                    [['list' => 'ordered'], ['list' => 'bullet']],
+                    ['blockquote', 'code-block', 'link', 'image'],
+                    [['align' => []], 'clean'],
+                    [['color' => []], ['background' => []]],
+                ])
+                ->alwaysShow(),
+
+            Text::make('Button Text', 'button_text')
                 ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
+                ->rules('nullable', 'max:255'),
 
-            Text::make('Ban Reason', 'ban_reason')
-                ->sortable()
-                ->rules('required', 'max:200'),
-
-            Select::make('Type')
+            Text::make('Button URL', 'button_url')
                 ->hideFromIndex()
-                ->sortable()
-                ->searchable()
-                ->rules('required', 'in:account,ip,machine,super')
-                ->options(['account' => 'Account', 'ip' => 'IP', 'machine' => 'Machine', 'super' => 'Super'])
-                ->default('account')
-                ->displayUsingLabels(),
+                ->rules('nullable', 'max:255'),
 
-            Text::make('CFH Topic', 'cfh_topic')
+            Boolean::make('Small Box', 'small_box')
                 ->sortable()
-                ->rules('required', 'max:255'),		
+                ->rules('sometimes', 'nullable')
+                ->default(false),
         ];
     }
 

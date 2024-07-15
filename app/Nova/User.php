@@ -37,7 +37,7 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'username', 'email',
+        'username', 'mail',
     ];
 
     /**
@@ -97,14 +97,17 @@ class User extends Resource
 
             BelongsTo::make('Home Room', 'homeRoom', Room::class)
                 ->sortable()
+                ->searchable()
                 ->nullable(),
 
             BelongsTo::make('Rank', 'permission', Permission::class)
                 ->sortable()
+                ->searchable()
                 ->default(1),
 
             BelongsTo::make('Team')
                 ->sortable()
+                ->searchable()
                 ->nullable(),
 
             Boolean::make('Hidden Staff')

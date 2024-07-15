@@ -37,7 +37,6 @@
     "require": {
         "php": "^8.2",
         "ext-sockets": "*",
-        "laravel/nova": "dev-main",
         "atomcms/core": "dev-main",
         "atomcms/installation": "dev-main",
         "atomcms/locale": "dev-main",
@@ -50,8 +49,10 @@
         "jenssegers/agent": "^2.6",
         "laravel/fortify": "^1.16",
         "laravel/framework": "^11.0",
+        "laravel/nova": "dev-main",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "nevadskiy/nova-quill-field": "^0.1.2",
         "qirolab/laravel-themer": "^2.0",
         "spatie/laravel-activitylog": "^4.8"
     },

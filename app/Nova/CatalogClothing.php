@@ -2,28 +2,31 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class CatalogClothing extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\CatalogClothing>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\CatalogClothing::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,9 +34,8 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'name',
+        'setid',
     ];
 
     /**
@@ -45,20 +47,15 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Text::make('Name')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:75')
+                ->creationRules('unique:catalog_clothing,name')
+                ->updateRules('unique:catalog_clothing,name,{{resourceId}}'),
+
+            Text::make('Set ID', 'setid')
+                ->sortable()
+                ->rules('required', 'max:75'),
         ];
     }
 

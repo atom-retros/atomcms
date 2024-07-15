@@ -43,10 +43,12 @@ class StaffApplication extends Resource
         return [
             BelongsTo::make('User', 'user', User::class)
                 ->sortable()
+                ->searchable()
                 ->rules('required'),
 
             BelongsTo::make('Rank', 'rank', Permission::class)
                 ->sortable()
+                ->searchable()
                 ->rules('required'),
 
             Textarea::make('Content', 'content')

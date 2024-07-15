@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f43162069788ba08e5215d5a0aa927e",
+    "content-hash": "0a02cc197037baac110cba4fd080804e",
     "packages": [
         {
             "name": "atomcms/core",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "4150b9fd3ce35eca95ab9d52f28d47e074a3318a"
+                "reference": "e06988bd3d2525ec09eb495d256b2dab4e934a28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/4150b9fd3ce35eca95ab9d52f28d47e074a3318a",
-                "reference": "4150b9fd3ce35eca95ab9d52f28d47e074a3318a",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/e06988bd3d2525ec09eb495d256b2dab4e934a28",
+                "reference": "e06988bd3d2525ec09eb495d256b2dab4e934a28",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-15T09:27:13+00:00"
+            "time": "2024-07-15T16:16:18+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -3938,6 +3938,51 @@
                 "source": "https://github.com/nette/utils/tree/v4.0.4"
             },
             "time": "2024-01-17T16:50:36+00:00"
+        },
+        {
+            "name": "nevadskiy/nova-quill-field",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nevadskiy/nova-quill-field.git",
+                "reference": "3d138566dfb2f1cbb93f83792c60e4e7d5f2c609"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nevadskiy/nova-quill-field/zipball/3d138566dfb2f1cbb93f83792c60e4e7d5f2c609",
+                "reference": "3d138566dfb2f1cbb93f83792c60e4e7d5f2c609",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Nevadskiy\\Quill\\QuillServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nevadskiy\\Quill\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova WYSIWYG field based on a Quill editor.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/nevadskiy/nova-quill-field/issues",
+                "source": "https://github.com/nevadskiy/nova-quill-field/tree/0.1.2"
+            },
+            "time": "2023-05-20T21:40:29+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -12469,13 +12514,13 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "laravel/nova": 20,
         "atomcms/core": 20,
         "atomcms/installation": 20,
         "atomcms/locale": 20,
         "atomcms/rcon": 20,
         "atomcms/theme": 20,
-        "atomcms/voting": 20
+        "atomcms/voting": 20,
+        "laravel/nova": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

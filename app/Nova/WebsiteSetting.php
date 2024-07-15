@@ -3,27 +3,23 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class WebsiteSetting extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\WebsiteSetting>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\WebsiteSetting::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'key';
 
     /**
      * The columns that should be searched.
@@ -31,9 +27,9 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'key',
+        'value',
+        'comment',
     ];
 
     /**
@@ -45,20 +41,19 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Text::make('Key')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:255')
+                ->creationRules('unique:website_settings,key')
+                ->updateRules('unique:website_settings,key,{{resourceId}}'),
+
+            Text::make('Value')
+                ->sortable()
+                ->rules('required', 'max:255'),
+
+            Text::make('Comment')
+                ->sortable()
+                ->rules('required', 'max:255'),
         ];
     }
 

@@ -2,28 +2,28 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class WebsiteSupportTicketReply extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\WebsiteHelpCenterTicketReply>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\WebsiteHelpCenterTicketReply::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -31,10 +31,17 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'id',
     ];
+
+    /**
+     * The label associated with the resource.
+     *
+     * @return string
+     */
+    public static function label() {
+        return 'Support Ticket Reply';
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -45,20 +52,21 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
+            BelongsTo::make('User', 'user', User::class)
+                ->exceptOnForms()
+                ->readonly()
                 ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->default(fn ($request) => $request->user()->id),	
+
+            BelongsTo::make('Ticket', 'ticket', WebsiteSupportTicket::class)
+                ->searchable()
+                ->sortable()
+                ->rules('required', 'exists:website_help_center_tickets,id'),
+
+            Text::make('Content')
+                ->sortable()
+                ->rules('required'),
         ];
     }
 

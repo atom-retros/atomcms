@@ -46,13 +46,16 @@ class RoomChatlog extends Resource
     {
         return [
             BelongsTo::make('Room', 'room', Room::class)
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             BelongsTo::make('Sender', 'sender', User::class)
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             BelongsTo::make('Receiver', 'receiver', User::class)
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
 
             Text::make('Message')
                 ->sortable(),

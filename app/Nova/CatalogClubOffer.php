@@ -2,28 +2,27 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Ban extends Resource
+class CatalogClubOffer extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Ban>
+     * @var class-string<\App\Models\CatalogClubOffer>
      */
-    public static $model = \Atom\Core\Models\Ban::class;
+    public static $model = \Atom\Core\Models\CatalogClubOffer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'user.username';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -31,12 +30,7 @@ class Ban extends Resource
      * @var array
      */
     public static $search = [
-        'ip',
-        'machine_id',
-        'ban_expire',
-        'ban_reason',
-        'type',
-        'cfh_topic',
+        'name',
     ];
 
     /**
@@ -48,54 +42,60 @@ class Ban extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('User', 'user', User::class)
+            Text::make('Name')
                 ->sortable()
-                ->searchable()
-                ->rules('required'),
-
-            Text::make('IP Address', 'ip')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required', 'max:50'),
-
-            Text::make('Machine ID', 'machine_id')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            BelongsTo::make('Staff', 'staff', User::class)
-                ->sortable()
-                ->searchable()
-                ->rules('required'),
-
-            Text::make('Timestamp')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
-
-            Text::make('Ban Expire', 'ban_expire')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
-
-            Text::make('Ban Reason', 'ban_reason')
-                ->sortable()
-                ->rules('required', 'max:200'),
+                ->rules('required', 'max:35'),
 
             Select::make('Type')
-                ->hideFromIndex()
                 ->sortable()
                 ->searchable()
-                ->rules('required', 'in:account,ip,machine,super')
-                ->options(['account' => 'Account', 'ip' => 'IP', 'machine' => 'Machine', 'super' => 'Super'])
-                ->default('account')
+                ->rules('required', 'in:HC,VIP')
+                ->options(['HC' => 'HC', 'VIP' => 'VIP'])
+                ->default('HC')
                 ->displayUsingLabels(),
 
-            Text::make('CFH Topic', 'cfh_topic')
+            Number::make('Days')
                 ->sortable()
-                ->rules('required', 'max:255'),		
+                ->rules('required', 'integer'),
+
+            Number::make('Credits')
+                ->hideFromIndex()
+                ->rules('required', 'integer')
+                ->default(0),
+
+            Number::make('Points')
+                ->hideFromIndex()
+                ->rules('required', 'integer')
+                ->default(0),
+
+            Select::make('Points Type')
+                ->sortable()
+                ->searchable()
+                ->rules('required', 'in:1,5,101')
+                ->options(['0' => 'Duckets', '5' => 'Diamonds', '101' => 'GOTW Points'])
+                ->default('0')
+                ->displayUsingLabels(),
+
+            Boolean::make('Deal')
+                ->sortable()
+                ->rules('required')
+                ->default(false)
+                ->trueValue('1')
+                ->falseValue('0'),
+
+            Boolean::make('Giftable')
+                ->sortable()
+                ->rules('required')
+                ->default(false)
+                ->trueValue('1')
+                ->falseValue('0'),
+
+            Boolean::make('Enabled')
+                ->sortable()
+                ->rules('required')
+                ->default(true)
+                ->trueValue('1')
+                ->falseValue('0'),	
         ];
     }
 

@@ -44,9 +44,12 @@ class Room extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make('Name'),
+            Text::make('Name')
+                ->sortable(),
 
-            BelongsTo::make('Owner', 'user', User::class),
+            BelongsTo::make('Owner', 'user', User::class)
+                ->sortable()
+                ->searchable(),
         ];
     }
 

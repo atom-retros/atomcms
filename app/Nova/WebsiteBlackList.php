@@ -3,27 +3,24 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class PrivateChatlog extends Resource
+class WebsiteBlackList extends Resource
 {
-    use Traits\DisableCrud;
-
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ChatlogPrivate>
+     * @var class-string<\App\Models\WebsiteIpBlacklist>
      */
-    public static $model = \Atom\Core\Models\ChatlogPrivate::class;
+    public static $model = \Atom\Core\Models\WebsiteIpBlacklist::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'message';
+    public static $title = 'ip_address';
 
     /**
      * The columns that should be searched.
@@ -31,9 +28,9 @@ class PrivateChatlog extends Resource
      * @var array
      */
     public static $search = [
-        'sender.username',
-        'reciever.username',
-        'message',
+        'ip_address',
+        'asn',
+        'blacklist_asn',
     ];
 
     /**
@@ -45,20 +42,20 @@ class PrivateChatlog extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            BelongsTo::make('Sender', 'sender', User::class)
-                ->searchable()
-                ->sortable(),
-
-            BelongsTo::make('Receiver', 'receiver', User::class)
-                ->searchable()
-                ->sortable(),
-
-            Text::make('Message')
-                ->sortable(),
-
-            Number::make('Timestamp')
+            Text::make('IP Address', 'ip_address')
                 ->sortable()
-                ->displayUsing(fn ($timestamp) => date('Y-m-d H:i:s', $timestamp)),
+                ->rules('required', 'max:255')
+                ->creationRules('unique:website_ip_blacklist,ip_address')
+                ->updateRules('unique:website_ip_blacklist,ip_address,{{resourceId}}'),
+
+            Boolean::make('Blacklist ASN', 'blacklist_asn')
+                ->sortable()
+                ->rules('sometimes', 'nullable')
+                ->default(false),
+
+            Text::make('ASN', 'asn')
+                ->sortable()
+                ->rules('sometimes', 'nullable'),
         ];
     }
 
