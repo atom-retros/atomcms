@@ -2,16 +2,16 @@
 
 namespace App\Nova\Metrics;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Metrics\Value;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Nova;
 
 class AnalyticCard extends Value
 {
     /**
      * Create a new metric instance.
      */
-    public function __construct(public readonly string $model, string $title = null, string $icon = null)
+    public function __construct(public readonly string $model, ?string $title = null, ?string $icon = null)
     {
         $parts = explode('\\', $model);
 
@@ -22,7 +22,6 @@ class AnalyticCard extends Value
     /**
      * Calculate the value of the metric.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return mixed
      */
     public function calculate(NovaRequest $request)

@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Nevadskiy\Quill\Quill;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Nevadskiy\Quill\Quill;
 
 class CatalogTargetOffer extends Resource
 {
@@ -39,7 +39,6 @@ class CatalogTargetOffer extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -78,7 +77,7 @@ class CatalogTargetOffer extends Resource
             Text::make('Icon')
                 ->hideFromIndex()
                 ->rules('required', 'max:128'),
-            
+
             Number::make('End Timestamp', 'end_timestamp')
                 ->hideFromIndex()
                 ->rules('required', 'integer'),
@@ -99,7 +98,7 @@ class CatalogTargetOffer extends Resource
                 ->rules('required', 'in:0,5,101')
                 ->options(['0' => 'Duckets', '5' => 'Diamonds', '101' => 'GOTW Points'])
                 ->default('0')
-                ->displayUsingLabels(),	
+                ->displayUsingLabels(),
 
             BelongsTo::make('Catalog Item', 'catalogItem', CatalogItem::class)
                 ->sortable()
@@ -114,7 +113,6 @@ class CatalogTargetOffer extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -125,7 +123,6 @@ class CatalogTargetOffer extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -136,7 +133,6 @@ class CatalogTargetOffer extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -147,7 +143,6 @@ class CatalogTargetOffer extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)

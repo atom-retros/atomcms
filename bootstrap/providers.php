@@ -1,12 +1,12 @@
 <?php
 
 return [
-    # Local Providers
+    // Local Providers
     App\Providers\AppServiceProvider::class,
     App\Providers\FortifyServiceProvider::class,
     App\Providers\NovaServiceProvider::class,
 
-    # Atom Providers
+    // Atom Providers
     Atom\Installation\InstallationServiceProvider::class,
     Atom\Rcon\RconServiceProvider::class,
     Atom\Voting\VotingServiceProvider::class,
@@ -14,5 +14,5 @@ return [
     Atom\Theme\ThemeServiceProvider::class,
     Atom\Core\CoreServiceProvider::class,
 
-    # Third Party Providers
+    // Third Party Providers
 ];

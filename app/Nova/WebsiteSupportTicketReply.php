@@ -4,9 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class WebsiteSupportTicketReply extends Resource
@@ -39,14 +37,14 @@ class WebsiteSupportTicketReply extends Resource
      *
      * @return string
      */
-    public static function label() {
+    public static function label()
+    {
         return 'Support Ticket Reply';
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -57,7 +55,7 @@ class WebsiteSupportTicketReply extends Resource
                 ->readonly()
                 ->searchable()
                 ->sortable()
-                ->default(fn ($request) => $request->user()->id),	
+                ->default(fn ($request) => $request->user()->id),
 
             BelongsTo::make('Ticket', 'ticket', WebsiteSupportTicket::class)
                 ->searchable()
@@ -73,7 +71,6 @@ class WebsiteSupportTicketReply extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -84,7 +81,6 @@ class WebsiteSupportTicketReply extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -95,7 +91,6 @@ class WebsiteSupportTicketReply extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -106,7 +101,6 @@ class WebsiteSupportTicketReply extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)

@@ -2,14 +2,14 @@
 
 namespace App\Providers;
 
-use Laravel\Nova\Nova;
 use App\Nova\Dashboards\Main;
+use Atom\Core\Models\WebsiteSetting;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuSection;
-use Atom\Core\Models\WebsiteSetting;
-use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Illuminate\Support\Facades\DB;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {

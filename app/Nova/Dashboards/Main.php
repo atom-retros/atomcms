@@ -2,7 +2,6 @@
 
 namespace App\Nova\Dashboards;
 
-use Laravel\Nova\Cards\Help;
 use App\Nova\Metrics\AnalyticCard;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 

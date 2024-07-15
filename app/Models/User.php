@@ -6,5 +6,5 @@ use Atom\Core\Models\User as Model;
 
 class User extends Model
 {
-    // 
+    //
 }
