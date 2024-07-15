@@ -131,7 +131,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Gate::define(
             'viewNova',
-            fn ($user) => $user->rank >= WebsiteSetting::firstWhere('key', 'min_staff_rank')->value,
+            fn ($user) => $user->rank >= WebsiteSetting::firstWhere('key', 'min_housekeeping_rank')?->value ?? 6,
         );
     }
 
