@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "e06988bd3d2525ec09eb495d256b2dab4e934a28"
+                "reference": "25d62e045c6963de4c25ffa1d60177f464ccc8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/e06988bd3d2525ec09eb495d256b2dab4e934a28",
-                "reference": "e06988bd3d2525ec09eb495d256b2dab4e934a28",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/25d62e045c6963de4c25ffa1d60177f464ccc8af",
+                "reference": "25d62e045c6963de4c25ffa1d60177f464ccc8af",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-15T16:16:18+00:00"
+            "time": "2024-07-15T17:22:55+00:00"
         },
         {
             "name": "atomcms/installation",
