@@ -10,7 +10,7 @@
         <x-button.primary type="submit">{{ __('buttons.register') }}</x-button.primary>
     </x-form.form>
 
-    <a href="{{ route('login') }}" class="flex flex-col">
+    <a href="{{ route('login.index') }}" class="flex flex-col">
         <x-button.secondary>{{ __('buttons.account_exists') }}</x-button.primary>
     </a>
 </x-app-layout>
