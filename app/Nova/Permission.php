@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
-use Illuminate\Support\Facades\Schema;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Permission extends Resource
@@ -37,8 +37,6 @@ class Permission extends Resource
 
     /**
      * The columns that should be excluded from the permissions fields.
-     *
-     * @var array
      */
     protected array $excludedColumns = [
         'id',
@@ -122,14 +120,11 @@ class Permission extends Resource
 
     /**
      * Get the permissions fields for the resource.
-     *
-     * @param NovaRequest $request
-     * @return array
      */
     public function getPermissionsFields(NovaRequest $request): array
     {
         return collect(Schema::getColumnListing((new self::$model)->getTable()))
-            ->filter(fn (string $column) => !in_array($column, $this->excludedColumns))
+            ->filter(fn (string $column) => ! in_array($column, $this->excludedColumns))
             ->map(fn (string $column) => $this->getPermissionField($request, $column))
             ->toArray();
     }
@@ -137,8 +132,6 @@ class Permission extends Resource
     /**
      * Get the permission field for the resource.
      *
-     * @param NovaRequest $request
-     * @param string $column
      * @return Field
      */
     public function getPermissionField(NovaRequest $request, string $column): Select

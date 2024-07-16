@@ -50,6 +50,7 @@
         "laravel/fortify": "^1.16",
         "laravel/framework": "^11.0",
         "laravel/nova": "dev-main",
+        "laravel/prompts": "^0.1.24",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "nevadskiy/nova-quill-field": "^0.1.2",
