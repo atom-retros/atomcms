@@ -36,12 +36,12 @@
             </x-navigation.dropdown>
 
             <a href="{{ route('leaderboards') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
-                <img class="icon" src="{{ asset('/assets/images/dusk/leaderboard_icon.png') }}" alt="community icon">
+                <img class="icon" src="{{ asset('/images/leaderboard_icon.png') }}" alt="community icon">
                 Leaderboards
             </a>
 
             <a href="{{ route('community.articles.index') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
-                <img class="icon" src="{{ asset('/assets/images/dusk/news_icon.png') }}" alt="community icon">
+                <img class="icon" src="{{ asset('/images/news_icon.png') }}" alt="community icon">
                 News
             </a>
 
@@ -54,7 +54,7 @@
 
 
             <a href="{{ route('shop') }}" class="flex flex-col gap-1 items-center transition ease-in-out hover:text-[#ac93da]">
-                <img class="icon" src="{{ asset('/assets/images/dusk/store_icon.png') }}" alt="community icon">
+                <img class="icon" src="{{ asset('/images/store_icon.png') }}" alt="community icon">
                 Store
             </a>
 
@@ -63,12 +63,12 @@
 
                 <x-slot:children>
                     @auth
-                        <x-navigation.dropdown-child :route="route('profile.show', Auth::user()->username)">
+                        <x-navigation.dropdown-child :route="route('profiles', Auth::user()->username)">
                             {{ __('My profile') }}
                         </x-navigation.dropdown-child>
 
 
-                        <x-navigation.dropdown-child :route="route('settings.account.show')">
+                        <x-navigation.dropdown-child :route="route('users.settings.account.index')">
                             {{ __('Account settings') }}
                         </x-navigation.dropdown-child>
 

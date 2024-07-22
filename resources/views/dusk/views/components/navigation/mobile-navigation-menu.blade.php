@@ -61,12 +61,12 @@
 
                 <x-slot:children>
                     @auth
-                        <x-navigation.dropdown-child :route="route('profile.show', Auth::user()->username)">
+                        <x-navigation.dropdown-child :route="route('profiles', Auth::user()->username)">
                             {{ __('My profile') }}
                         </x-navigation.dropdown-child>
 
 
-                        <x-navigation.dropdown-child :route="route('settings.account.show')">
+                        <x-navigation.dropdown-child :route="route('users.settings.account.index')">
                             {{ __('Account settings') }}
                         </x-navigation.dropdown-child>
 

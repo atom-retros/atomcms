@@ -43,7 +43,7 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper" style="z-index: 14;">
                 @foreach($articles as $article)
-                    <x-article-card :article="$article" />
+                    <x-article.item :article="$article" />
                 @endforeach
             </div>
         </div>
