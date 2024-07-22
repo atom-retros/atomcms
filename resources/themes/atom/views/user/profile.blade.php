@@ -149,7 +149,7 @@
                                     <div class="flex items-center justify-between px-1">
                                         <p class="truncate">{{ Str::limit($room->name, 6) }}</p>
 
-                                        <a href="{{ route('room.show', $room->id ?? 0) }}">
+                                        <a href="#">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="h-5 w-5 text-cyan-300 hover:text-cyan-400"
                                                 viewBox="0 0 20 20" fill="currentColor">
