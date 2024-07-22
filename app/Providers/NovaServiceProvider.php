@@ -83,7 +83,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WebsiteSupportTicket::class)
                     ->withBadge($this->badge('website_help_center_tickets', ['open' => '1']), 'warning'),
-            ])->icon('globe')->collapsable(),
+            ])->icon('globe')->collapsable()->collapsedByDefault(),
 
             MenuSection::make('Furniture', [
                 MenuItem::resource(\App\Nova\Furniture::class)
@@ -106,11 +106,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\CatalogClothing::class)
                     ->withBadge($this->badge('catalog_clothing'), 'info'),
-            ])->icon('briefcase')->collapsable(),
+            ])->icon('briefcase')->collapsable()->collapsedByDefault(),
 
             MenuSection::make('Emulator', [
-                // MenuItem::resource(\App\Nova\Permission::class)
-            ])->icon('server')->collapsable(),
+                MenuItem::resource(\App\Nova\EmulatorSetting::class)
+                    ->withBadge($this->badge('emulator_settings'), 'danger'),
+
+                MenuItem::resource(\App\Nova\EmulatorText::class)
+                    ->withBadge($this->badge('emulator_texts'), 'danger'),
+            ])->icon('server')->collapsable()->collapsedByDefault(),
         ]);
     }
 

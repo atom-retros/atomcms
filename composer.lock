@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "8b69f385cf210bb191ee08c603b1639511e533f8"
+                "reference": "68febbcafcafbb09472a711c42e3bbef5ecd3e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/8b69f385cf210bb191ee08c603b1639511e533f8",
-                "reference": "8b69f385cf210bb191ee08c603b1639511e533f8",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/68febbcafcafbb09472a711c42e3bbef5ecd3e7f",
+                "reference": "68febbcafcafbb09472a711c42e3bbef5ecd3e7f",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-22T13:28:07+00:00"
+            "time": "2024-07-22T22:06:57+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -217,12 +217,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/locale.git",
-                "reference": "e764795a78313143e3722ab89e04f51d207cd388"
+                "reference": "31c496aa143dc021f55a91f49e8de1955c6de741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/locale/zipball/e764795a78313143e3722ab89e04f51d207cd388",
-                "reference": "e764795a78313143e3722ab89e04f51d207cd388",
+                "url": "https://api.github.com/repos/atom-retros/locale/zipball/31c496aa143dc021f55a91f49e8de1955c6de741",
+                "reference": "31c496aa143dc021f55a91f49e8de1955c6de741",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-22T09:45:59+00:00"
+            "time": "2024-07-22T15:30:00+00:00"
         },
         {
             "name": "atomcms/rcon",
@@ -3203,16 +3203,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.4.3",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "b7a7af3a23a818dcc5836e62e93e4b9ce4704481"
+                "reference": "0026475f5c9a104410ae824cb5a4d63fa3bdb1df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/b7a7af3a23a818dcc5836e62e93e4b9ce4704481",
-                "reference": "b7a7af3a23a818dcc5836e62e93e4b9ce4704481",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/0026475f5c9a104410ae824cb5a4d63fa3bdb1df",
+                "reference": "0026475f5c9a104410ae824cb5a4d63fa3bdb1df",
                 "shasum": ""
             },
             "require": {
@@ -3225,8 +3225,8 @@
             },
             "require-dev": {
                 "cebe/markdown": "^1.0",
-                "commonmark/cmark": "0.30.3",
-                "commonmark/commonmark.js": "0.30.0",
+                "commonmark/cmark": "0.31.0",
+                "commonmark/commonmark.js": "0.31.0",
                 "composer/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
                 "erusev/parsedown": "^1.0",
@@ -3248,7 +3248,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "2.6-dev"
                 }
             },
             "autoload": {
@@ -3305,7 +3305,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-22T12:31:21+00:00"
+            "time": "2024-07-22T18:18:14+00:00"
         },
         {
             "name": "league/config",

@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
+import buildImages from '../../js/build/images'
 import path from "path";
-import fs from "fs";
 
 export default defineConfig({
     plugins: [
@@ -13,18 +13,9 @@ export default defineConfig({
         }),
         {
             name: 'sync',
-            configureServer() {
-                const resolvedSourceDir = path.resolve(__dirname, './images');
-                const resolvedTargetDir = path.resolve(__dirname, '../../../public/images');
-
-                fs.unlink(resolvedTargetDir, (err) => {})
-
-                if (!fs.existsSync(resolvedSourceDir)) {
-                    return;
-                }
-
-                fs.symlinkSync(resolvedSourceDir, resolvedTargetDir, 'dir');
-            },
+            apply: 'build',
+            configureServer: () => buildImages(),
+            buildStart: () => buildImages(),
         },
         {
             name: "blade",
