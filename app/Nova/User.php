@@ -130,11 +130,11 @@ class User extends Resource
 
             Number::make('Date of Birth', 'account_day_of_birth')
                 ->onlyOnDetail()
-                ->displayUsing(fn ($value) => Carbon::createFromTimestamp($value)->format('Y-m-d H:i:s')),
+                ->displayUsing(fn ($value) => $value ? Carbon::createFromTimestamp($value)->format('Y-m-d H:i:s') : null),
 
             Number::make('Last Login')
                 ->onlyOnDetail()
-                ->displayUsing(fn ($value) => Carbon::createFromTimestamp($value)->format('Y-m-d H:i:s')),
+                ->displayUsing(fn ($value) => $value ? Carbon::createFromTimestamp($value)->format('Y-m-d H:i:s') : null),
 
             Number::make('Last Online')
                 ->onlyOnDetail()
