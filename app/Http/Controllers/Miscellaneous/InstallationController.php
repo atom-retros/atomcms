@@ -68,12 +68,15 @@ class InstallationController extends Controller
             'user_ip' => null,
         ]);
 
+        WebsiteSetting::where('key', 'theme')->update([
+            'value' => 'atom',
+        ]);
+
         return to_route('installation.index');
     }
 
     public function completeInstallation()
     {
-        WebsiteInstallation::increment('step');
         WebsiteInstallation::latest()->first()->update([
             'completed' => true,
         ]);

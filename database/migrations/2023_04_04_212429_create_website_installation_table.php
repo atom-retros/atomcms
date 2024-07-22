@@ -16,7 +16,7 @@ return new class extends Migration {
 
             $table->unsignedInteger('step')->default(0)->nullable();
             $table->boolean('completed')->default(false);
-            $table->string('installation_key');
+            $table->string('installation_key')->nullable();
             $table->string('user_ip')->nullable();
 
             $table->timestamps();

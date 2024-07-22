@@ -23,21 +23,23 @@ class UserObserver
             ]);
         }
 
+
+
         UserCurrency::insert([
             [
                 'user_id' => $user->id,
                 'type' => 0,
-                'amount' => setting('start_duckets'),
+                'amount' => $user->username === 'Admin' ? 0 : setting('start_duckets'),
             ],
             [
                 'user_id' => $user->id,
                 'type' => 5,
-                'amount' => setting('start_diamonds'),
+                'amount' => $user->username === 'Admin' ? 0 : setting('start_diamonds'),
             ],
             [
                 'user_id' => $user->id,
                 'type' => 101,
-                'amount' => setting('start_points'),
+                'amount' => $user->username === 'Admin' ? 0 : setting('start_points'),
             ],
         ]);
     }

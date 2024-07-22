@@ -6,9 +6,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                "resources/themes/atom/css/app.scss",
-                "resources/css/app.scss",
-                "resources/themes/atom/js/app.js",
+                path.resolve(__dirname, "css/app.scss"),
+                path.resolve(__dirname, "js/app.js"),
+                "resources/js/global.js",
+                "resources/css/global.scss",
             ],
         }),
 
@@ -26,7 +27,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@": "/resources/themes/atom/js",
+            "@": path.resolve(__dirname, "js/app.js"),
         },
     },
     css: {

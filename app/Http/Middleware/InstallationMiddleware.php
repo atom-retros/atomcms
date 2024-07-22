@@ -2,10 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\MigrationFailedException;
 use App\Models\Miscellaneous\WebsiteInstallation;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
@@ -17,8 +19,8 @@ class InstallationMiddleware
 
         $installation = $this->getInstallation();
 
-        if ($installation->completed) {
-            return $this->redirectToWelcomeIfInstalled($request, $next);
+        if ($installation && $installation->completed && $request->is('installation*')) {
+            return to_route('welcome');
         }
 
         $isInstallationStepHandled = $this->handleInstallationSteps($request, $installation);
@@ -34,6 +36,10 @@ class InstallationMiddleware
     {
         if (!Schema::hasTable('website_installation')) {
             Artisan::call("migrate", ['--path' => "database/migrations/" . findMigration('website_installation')]);
+
+            if (!Schema::hasTable('website_installation')) {
+                throw new MigrationFailedException('website_installation');
+            }
         }
 
         if (!Schema::hasTable('sessions')) {
@@ -43,17 +49,31 @@ class InstallationMiddleware
 
     private function getInstallation()
     {
-        if (WebsiteInstallation::doesntExist()) {
-            return WebsiteInstallation::create([
-                'installation_key' => Str::uuid()
-            ]);
-        }
+        try {
+            $installation = WebsiteInstallation::query()->first();
 
-        return WebsiteInstallation::first();
+            if (!$installation) {
+                return WebsiteInstallation::create([
+                    'step' => 0,
+                    'completed' => false,
+                    'installation_key' => Str::uuid(),
+                    'user_ip' => request()?->ip(),
+                ]);
+            }
+
+            return $installation;
+        } catch (\Exception $e) {
+            Log::error('Error fetching or creating WebsiteInstallation: ' . $e->getMessage());
+            abort(500, 'An error occurred while setting up the installation.');
+        }
     }
 
     private function handleInstallationSteps(Request $request, WebsiteInstallation $installation)
     {
+        if ($installation->completed) {
+            return true;
+        }
+
         if ($this->isWelcomeStep($request, $installation)) {
             return true;
         }
@@ -125,19 +145,11 @@ class InstallationMiddleware
 
     protected function redirectIfNotCompleted(WebsiteInstallation $installation)
     {
+
         if ($installation->step === 0) {
             return to_route('installation.index');
         }
 
-        return $this->redirectToStep($installation->step ?: 0);
-    }
-
-    private function redirectToWelcomeIfInstalled(Request $request, Closure $next)
-    {
-        if ($request->is('installation*')) {
-            return to_route('welcome');
-        }
-
-        return $next($request);
+        return $this->redirectToStep($installation->step ?: 1);
     }
 }
