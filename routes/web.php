@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return redirect()->route('login.index');
-    });
+    })->name('login');
 
     Route::get('/login', LoginController::class)
         ->name('login.index');
