@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use App\Nova\Dashboards\Main;
-use Atom\Core\Models\WebsiteSetting;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Menu\MenuItem;
-use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
+use App\Nova\Dashboards\Main;
+use Laravel\Nova\Menu\MenuItem;
+use Illuminate\Support\Facades\DB;
+use Laravel\Nova\Menu\MenuSection;
+use Atom\Core\Models\WebsiteSetting;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -27,6 +27,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->icon('home'),
 
             MenuSection::make('Hotel', [
+                MenuItem::resource(\App\Nova\Badge::class),
+
+                MenuItem::resource(\App\Nova\RoomAds::class),
+
                 MenuItem::resource(\App\Nova\Ban::class)
                     ->withBadge($this->badge('bans'), 'info'),
 

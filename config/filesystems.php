@@ -44,6 +44,22 @@ return [
             'throw' => false,
         ],
 
+        'album1584' => [
+            'driver' => 'local',
+            'root' => base_path('nitro/nitro-swf/c_images/album1584'),
+            'url' => env('APP_URL').'/nitro-swf/c_images/album1584',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'room_backgrounds' => [
+            'driver' => 'local',
+            'root' => base_path('nitro/nitro-swf/c_images/room_backgrounds'),
+            'url' => env('APP_URL').'/nitro-swf/c_images/room_backgrounds',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
