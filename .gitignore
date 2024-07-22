@@ -7,6 +7,7 @@
 /public/nitro
 /public/dist
 /public/vendor
+/public/nitro-*
 /lang/vendor
 !/public/nitro/.gitkeep
 /nitro/nitro-assets
@@ -28,5 +29,4 @@ yarn.lock
 /.idea
 /.vscode
 /public/assets/images/generated-logos
-/packages
 !/resources/view/.gitkeep

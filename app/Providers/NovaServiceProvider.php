@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use App\Nova\Dashboards\Main;
-use Atom\Core\Models\WebsiteSetting;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\Menu\MenuItem;
-use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
+use App\Nova\Dashboards\Main;
+use Laravel\Nova\Menu\MenuItem;
+use Illuminate\Support\Facades\DB;
+use Laravel\Nova\Menu\MenuSection;
+use Atom\Core\Models\WebsiteSetting;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -27,6 +27,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->icon('home'),
 
             MenuSection::make('Hotel', [
+                MenuItem::resource(\App\Nova\Badge::class),
+
+                MenuItem::resource(\App\Nova\RoomAds::class),
+
                 MenuItem::resource(\App\Nova\Ban::class)
                     ->withBadge($this->badge('bans'), 'info'),
 
@@ -79,7 +83,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WebsiteSupportTicket::class)
                     ->withBadge($this->badge('website_help_center_tickets', ['open' => '1']), 'warning'),
-            ])->icon('globe')->collapsable(),
+            ])->icon('globe')->collapsable()->collapsedByDefault(),
 
             MenuSection::make('Furniture', [
                 MenuItem::resource(\App\Nova\Furniture::class)
@@ -102,11 +106,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\CatalogClothing::class)
                     ->withBadge($this->badge('catalog_clothing'), 'info'),
-            ])->icon('briefcase')->collapsable(),
+            ])->icon('briefcase')->collapsable()->collapsedByDefault(),
 
             MenuSection::make('Emulator', [
-                // MenuItem::resource(\App\Nova\Permission::class)
-            ])->icon('server')->collapsable(),
+                MenuItem::resource(\App\Nova\EmulatorSetting::class)
+                    ->withBadge($this->badge('emulator_settings'), 'danger'),
+
+                MenuItem::resource(\App\Nova\EmulatorText::class)
+                    ->withBadge($this->badge('emulator_texts'), 'danger'),
+            ])->icon('server')->collapsable()->collapsedByDefault(),
         ]);
     }
 
