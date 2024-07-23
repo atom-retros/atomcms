@@ -30,7 +30,7 @@ class Main extends Dashboard
             ),
             new AnalyticCard(
                 model: \Atom\Core\Models\WebsiteHelpCenterTicket::class,
-                title: 'Suport Tickets',
+                title: 'Support Tickets',
                 icon: 'ticket',
             ),
             new AnalyticCard(
