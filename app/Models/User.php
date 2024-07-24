@@ -58,6 +58,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'hidden_staff' => 'boolean',
+            'online' => 'boolean',
         ];
     }
 
