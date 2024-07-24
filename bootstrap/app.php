@@ -1,8 +1,11 @@
 <?php
 
+use Atom\Core\Models\WebsiteSetting;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,6 +19,14 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->throttleApi();
 
+        $middleware->preventRequestsDuringMaintenance(except: [
+            'login*',
+        ]);
+
+        $middleware->validateCsrfTokens(except: [
+            'login*',
+        ]);
+
         $middleware->web(append: [
             Atom\Installation\Http\Middleware\InstallationMiddleware::class,
             Atom\Locale\Http\Middleware\LocaleMiddleware::class,
@@ -24,5 +35,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render(function (HttpException $e, Request $request) {
+            if (view()->exists(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()))) {
+                return response()->view(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()), [], $e->getStatusCode());
+            }
+        });
     })->create();
