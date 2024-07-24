@@ -20,11 +20,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->throttleApi();
 
         $middleware->preventRequestsDuringMaintenance(except: [
-            'login*',
+            'auth*',
         ]);
 
         $middleware->validateCsrfTokens(except: [
-            'login*',
+            'auth*',
         ]);
 
         $middleware->web(append: [
