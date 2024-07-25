@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BelongsTo;
+use Jacobfitzp\NovaTinymce\Tinymce;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Nevadskiy\Quill\Quill;
 
 class WebsiteArticle extends Resource
 {
@@ -63,18 +63,8 @@ class WebsiteArticle extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Quill::make('Full Story')
-                ->withFiles()
-                ->theme('snow')
-                ->toolbar([
-                    [['header' => [1, 2, 3, 4, 5, 6, false]]],
-                    ['bold', 'italic', 'underline'],
-                    [['list' => 'ordered'], ['list' => 'bullet']],
-                    ['blockquote', 'code-block', 'link', 'image'],
-                    [['align' => []], 'clean'],
-                    [['color' => []], ['background' => []]],
-                ])
-                ->alwaysShow(),
+            Tinymce::make('Full Story')
+                ->fullWidth(),
 
             BelongsTo::make('User', 'user', User::class)
                 ->sortable()
