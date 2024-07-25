@@ -3,12 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Jacobfitzp\NovaTinymce\Tinymce;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Nevadskiy\Quill\Quill;
 
 class WebsiteHelpCenter extends Resource
 {
@@ -60,18 +60,8 @@ class WebsiteHelpCenter extends Resource
                 ->creationRules('nullable')
                 ->updateRules('nullable'),
 
-            Quill::make('Content')
-                ->withFiles()
-                ->theme('snow')
-                ->toolbar([
-                    [['header' => [1, 2, 3, 4, 5, 6, false]]],
-                    ['bold', 'italic', 'underline'],
-                    [['list' => 'ordered'], ['list' => 'bullet']],
-                    ['blockquote', 'code-block', 'link', 'image'],
-                    [['align' => []], 'clean'],
-                    [['color' => []], ['background' => []]],
-                ])
-                ->alwaysShow(),
+            Tinymce::make('Content')
+                ->fullWidth(),
 
             Text::make('Button Text', 'button_text')
                 ->hideFromIndex()

@@ -2,12 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\BelongsTo;
+use Jacobfitzp\NovaTinymce\Tinymce;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Nevadskiy\Quill\Quill;
 
 class CatalogTargetOffer extends Resource
 {
@@ -59,16 +59,8 @@ class CatalogTargetOffer extends Resource
                 ->rules('required', 'integer')
                 ->default(0),
 
-            Quill::make('Description')
-                ->theme('snow')
-                ->toolbar([
-                    [['header' => [1, 2, 3, 4, 5, 6, false]]],
-                    ['bold', 'italic', 'underline'],
-                    [['list' => 'ordered'], ['list' => 'bullet']],
-                    ['blockquote', 'code-block', 'link', 'image'],
-                    [['align' => []], 'clean'],
-                    [['color' => []], ['background' => []]],
-                ]),
+            Tinymce::make('Description')
+                ->fullWidth(),
 
             Text::make('Image')
                 ->hideFromIndex()
