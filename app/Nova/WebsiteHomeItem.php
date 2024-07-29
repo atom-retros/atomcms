@@ -3,14 +3,12 @@
 namespace App\Nova;
 
 use Illuminate\Support\Str;
-use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Hidden;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class WebsiteHomeItem extends Resource
@@ -70,7 +68,8 @@ class WebsiteHomeItem extends Resource
             Image::make('Image', 'image_url')
                 ->disk('public')
                 ->path(Str::plural($this->type))
-                ->rules('required'),
+                ->creationRules('required')
+                ->updateRules('nullable'),
 
             Number::make('Count')
                 ->hideFromIndex()
@@ -93,8 +92,9 @@ class WebsiteHomeItem extends Resource
                 ->required()
                 ->default(0),
 
-            Hidden::make('Data')
+            Code::make('Data')
                 ->hideFromIndex()
+                ->json()
                 ->default((object) []),
         ];
     }
