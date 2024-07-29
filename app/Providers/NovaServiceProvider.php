@@ -63,6 +63,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(\App\Nova\WebsiteSetting::class)
                     ->withBadge($this->badge('website_settings'), 'danger'),
 
+                MenuItem::resource(\App\Nova\WebsiteHomeCategory::class)
+                    ->withBadge($this->badge('website_home_categories'), 'info'),
+
                 MenuItem::resource(\App\Nova\WebsiteRuleCategory::class)
                     ->withBadge($this->badge('website_rule_categories'), 'info'),
 
