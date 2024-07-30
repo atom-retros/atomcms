@@ -21,10 +21,12 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->preventRequestsDuringMaintenance(except: [
             'auth*',
+            'beta-codes*',
         ]);
 
         $middleware->validateCsrfTokens(except: [
             'auth*',
+            'beta-codes*',
         ]);
 
         $middleware->web(append: [
