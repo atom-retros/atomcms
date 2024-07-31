@@ -22,6 +22,11 @@ return [
     'camera_url' => env('NITRO_CAMERA_URL', config('app.url')),
 
     /**
+     * Imager URL
+     */
+    'imager_url' => env('NITRO_IMAGER_URL', config('app.url')),
+
+    /**
      * Thumbnail Path
      */
     'thumbnail_path' => env('NITRO_THUMBNAIL_PATH', '/thumbnail'),

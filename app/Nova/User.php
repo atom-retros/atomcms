@@ -48,8 +48,8 @@ class User extends Resource
         return [
             Avatar::make(str_repeat(' ', 8), 'look')
                 ->exceptOnForms()
-                ->thumbnail(fn () => sprintf('https://habbo.com/habbo-imaging/avatarimage?figure=%s&head_direction=3&gesture=sml&headonly=1', $this->look))
-                ->preview(fn () => sprintf('https://habbo.com/habbo-imaging/avatarimage?figure=%s&head_direction=3&gesture=sml&headonly=0', $this->look)),
+                ->thumbnail(fn () => sprintf('%s?figure=%s&head_direction=3&gesture=sml&headonly=1', config('nitro.imager_url'), $this->look))
+                ->preview(fn () => sprintf('%s?figure=%s&head_direction=3&gesture=sml&headonly=0', config('nitro.imager_url'), $this->look)),
 
             Text::make('Username')
                 ->sortable()
