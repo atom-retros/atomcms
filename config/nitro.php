@@ -24,7 +24,7 @@ return [
     /**
      * Imager URL
      */
-    'imager_url' => env('NITRO_IMAGER_URL', config('app.url')),
+    'imager_url' => env('NITRO_IMAGER_URL', 'https://www.habbo.com/habbo-imaging/avatarimage'),
 
     /**
      * Thumbnail Path
