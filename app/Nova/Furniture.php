@@ -52,8 +52,7 @@ class Furniture extends Resource
 
             Select::make('Type')
                 ->sortable()
-                ->searchable()
-                ->options(['s' => 'Floor', 'i' => 'Wall', 'b' => 'Badge'])
+                ->options(['s' => 'Floor', 'i' => 'Wall', 'b' => 'Badge', 'S' => 'Floor'])
                 ->rules('required', 'in:s,i,b')
                 ->displayUsingLabels(),
 
@@ -74,8 +73,9 @@ class Furniture extends Resource
 
             Number::make('Stack Height')
                 ->hideFromIndex()
+                ->step(0.1)
                 ->rules('required', 'numeric')
-                ->default(0.0),
+                ->default(0),
 
             Boolean::make('Allow Stack')
                 ->rules('required', 'boolean')
