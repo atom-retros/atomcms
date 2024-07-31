@@ -33,6 +33,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\Ban::class),
 
+                MenuItem::resource(\App\Nova\CameraWeb::class),
+
                 MenuItem::resource(\App\Nova\Permission::class),
 
                 MenuItem::resource(\App\Nova\Room::class),

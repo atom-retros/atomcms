@@ -2,29 +2,27 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Boolean;
-use Jacobfitzp\NovaTinymce\Tinymce;
+use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class WebsiteHelpCenter extends Resource
+class CameraWeb extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\WebsiteHelpCenterCategory>
+     * @var class-string<\App\Models\CameraWeb>
      */
-    public static $model = \Atom\Core\Models\WebsiteHelpCenterCategory::class;
+    public static $model = \Atom\Core\Models\CameraWeb::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -32,54 +30,35 @@ class WebsiteHelpCenter extends Resource
      * @var array
      */
     public static $search = [
-        'name',
-        'content',
+        'user.username',
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make('Name')
-                ->sortable()
-                ->rules('required', 'max:255'),
+            BelongsTo::make('User', 'user', User::class),
 
-            Number::make('Position')
-                ->sortable()
-                ->rules('required', 'integer'),
-
-            Image::make('Image', 'image_url')
+            Text::make('Room', 'room_id')
                 ->hideFromIndex()
-                ->disk('public')
-                ->path('website-articles')
-                ->creationRules('nullable')
-                ->updateRules('nullable'),
+                ->rules('required', 'max:255', 'exists:rooms,id'),
 
-            Tinymce::make('Content')
-                ->fullWidth(),
-
-            Text::make('Button Text', 'button_text')
-                ->hideFromIndex()
-                ->rules('nullable', 'max:255'),
-
-            Text::make('Button URL', 'button_url')
-                ->hideFromIndex()
-                ->rules('nullable', 'max:255'),
-
-            Boolean::make('Small Box', 'small_box')
-                ->sortable()
-                ->rules('sometimes', 'nullable')
-                ->default(false),
+            Avatar::make('Image', 'url')
+                ->exceptOnForms()
+                ->thumbnail(fn () => $this->url)
+                ->preview(fn () => $this->url),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -90,6 +69,7 @@ class WebsiteHelpCenter extends Resource
     /**
      * Get the filters available for the resource.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -100,6 +80,7 @@ class WebsiteHelpCenter extends Resource
     /**
      * Get the lenses available for the resource.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -110,6 +91,7 @@ class WebsiteHelpCenter extends Resource
     /**
      * Get the actions available for the resource.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)
