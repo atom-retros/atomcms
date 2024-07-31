@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca5e24270936fcdb1d6c7aa56656fd5d",
+    "content-hash": "4abe93176b1992ab86ce1c8200058ee6",
     "packages": [
         {
             "name": "atomcms/core",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "2e7e795b33f3c3600f1161275bfb4e2a077df3bf"
+                "reference": "e94fb8e36c808732bd7e2a8144cb2c640cc6e72f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/2e7e795b33f3c3600f1161275bfb4e2a077df3bf",
-                "reference": "2e7e795b33f3c3600f1161275bfb4e2a077df3bf",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/e94fb8e36c808732bd7e2a8144cb2c640cc6e72f",
+                "reference": "e94fb8e36c808732bd7e2a8144cb2c640cc6e72f",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-31T10:55:13+00:00"
+            "time": "2024-07-31T12:49:44+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -2818,13 +2818,13 @@
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "git@github.com:atom-retros/housekeeping.git",
-                "reference": "bc45984bd603f2b959dd01b1e3ae18484ccd0f43"
+                "url": "https://bitbucket.org/atomcms/housekeeping.git",
+                "reference": "8ea36fc47bb651bb5bdd1345e8a01fa0c7d621a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/housekeeping/zipball/bc45984bd603f2b959dd01b1e3ae18484ccd0f43",
-                "reference": "bc45984bd603f2b959dd01b1e3ae18484ccd0f43",
+                "url": "https://bitbucket.org/atomcms/housekeeping/get/8ea36fc47bb651bb5bdd1345e8a01fa0c7d621a2.zip",
+                "reference": "8ea36fc47bb651bb5bdd1345e8a01fa0c7d621a2",
                 "shasum": ""
             },
             "require": {
@@ -2931,15 +2931,15 @@
                 }
             ],
             "description": "A wonderful administration interface for Laravel.",
+            "homepage": "https://bitbucket.org/atomcms/housekeeping",
             "keywords": [
                 "admin",
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/atom-retros/housekeeping/tree/4.0.0",
-                "issues": "https://github.com/atom-retros/housekeeping/issues"
+                "source": "https://bitbucket.org/atomcms/housekeeping/src/8ea36fc47bb651bb5bdd1345e8a01fa0c7d621a2/?at=main"
             },
-            "time": "2024-07-14T18:29:37+00:00"
+            "time": "2024-07-31T13:23:16+00:00"
         },
         {
             "name": "laravel/prompts",

@@ -7,7 +7,7 @@
     "repositories": {
         "laravel/nova": {
             "type": "vcs",
-            "url": "git@github.com:atom-retros/housekeeping.git"
+            "url": "https://bitbucket.org/atomcms/housekeeping.git"
         },
         "atomcms/installation": {
             "type": "vcs",
