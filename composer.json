@@ -55,7 +55,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "qirolab/laravel-themer": "^2.0",
-        "spatie/laravel-activitylog": "^4.8"
+        "spatie/laravel-activitylog": "^4.8",
+        "spatie/laravel-discord-alerts": "^1.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",
