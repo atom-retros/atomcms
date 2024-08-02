@@ -92,19 +92,12 @@ class User extends Resource
                 ->rules('required', 'integer')
                 ->default(50000),
 
-            BelongsTo::make('Home Room', 'homeRoom', Room::class)
-                ->sortable()
-                ->searchable()
-                ->nullable(),
-
             BelongsTo::make('Rank', 'permission', Permission::class)
                 ->sortable()
-                ->searchable()
                 ->default(1),
 
             BelongsTo::make('Team')
                 ->sortable()
-                ->searchable()
                 ->nullable(),
 
             Boolean::make('Hidden Staff')

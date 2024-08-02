@@ -65,6 +65,11 @@ class WebsiteHomeItem extends Resource
                 ->sortable()
                 ->rules('required'),
 
+            BelongsTo::make('Minimum Rank', 'permission', Permission::class)
+                ->sortable()
+                ->required()
+                ->rules('required', 'exists:permissions,id'),
+
             Image::make('Image', 'image_url')
                 ->disk('public')
                 ->path(Str::plural($this->type))

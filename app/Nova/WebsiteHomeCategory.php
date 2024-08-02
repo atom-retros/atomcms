@@ -49,6 +49,11 @@ class WebsiteHomeCategory extends Resource
                 ->sortable()
                 ->nullable(),
 
+            BelongsTo::make('Minimum Rank', 'permission', Permission::class)
+                ->sortable()
+                ->required()
+                ->rules('required', 'exists:permissions,id'),
+
             HasMany::make('Children', 'children', self::class),
 
             HasMany::make('Items', 'items', WebsiteHomeItem::class),
