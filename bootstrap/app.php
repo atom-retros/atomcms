@@ -1,7 +1,8 @@
 <?php
 
-use Atom\Core\Models\WebsiteSetting;
 use Illuminate\Http\Request;
+use Sentry\Laravel\Integration;
+use Atom\Core\Models\WebsiteSetting;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -37,6 +38,8 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        Integration::handles($exceptions);
+
         $exceptions->render(function (HttpException $e, Request $request) {
             if (view()->exists(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()))) {
                 return response()->view(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()), [], $e->getStatusCode());
