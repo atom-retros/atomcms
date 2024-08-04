@@ -31,7 +31,7 @@ class Badge extends Resource
     public static $search = [
         'file',
         'code',
-        'title',
+        'name',
         'description',
     ];
 

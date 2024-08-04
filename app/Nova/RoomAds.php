@@ -2,9 +2,9 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Fields\Image;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class RoomAds extends Resource
@@ -46,6 +46,10 @@ class RoomAds extends Resource
                 ->creationRules('required')
                 ->updateRules('nullable')
                 ->disableDownload(),
+
+            URL::make('URL', 'url', fn () => Storage::disk('room_backgrounds')->url($this->file))
+                ->sortable()
+                ->exceptOnForms(),
         ];
     }
 
