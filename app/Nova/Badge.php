@@ -50,15 +50,19 @@ class Badge extends Resource
                 ->rules('sometimes', 'nullable')
                 ->disableDownload(),
 
-            Text::make('Code', 'code', fn ($value) => (string) $value ?? '')
+            Text::make('Code')
                 ->sortable()
-                ->rules('required', 'string', 'max:255'),
+                ->rules('required', 'string', 'max:255')
+                ->creationRules('unique:badges,code')
+                ->updateRules('unique:badges,code,{{resourceId}}'),
 
-            Text::make('Title', 'title', fn ($value) => (string) $value ?? '')
-                ->rules('required', 'string', 'max:255'),
+            Text::make('Name')
+                ->nullable()
+                ->rules('sometimes', 'nullable', 'string', 'max:255'),
 
-            Text::make('Description', 'description', fn ($value) => (string) $value ?? '')
-                ->rules('required', 'string', 'max:255'),
+            Text::make('Description')
+                ->nullable()
+                ->rules('sometimes', 'nullable', 'string', 'max:255'),
         ];
     }
 
