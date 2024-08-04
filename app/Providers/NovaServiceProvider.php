@@ -50,6 +50,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(\App\Nova\RoomChatlog::class),
             ])->icon('server')->collapsable(),
 
+            MenuSection::make('Config', [
+                MenuItem::resource(\App\Nova\UiText::class),
+
+                MenuItem::resource(\App\Nova\ProductData::class),
+
+                MenuItem::resource(\App\Nova\FurnitureData::class),
+            ])->icon('cog')->collapsable(),
+
             MenuSection::make('Website', [
                 MenuItem::resource(\App\Nova\WebsiteSetting::class),
 
