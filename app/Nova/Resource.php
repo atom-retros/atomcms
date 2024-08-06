@@ -8,6 +8,8 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource
 {
+    use Traits\HasPermissions;
+    
     /**
      * Build an "index" query for the given resource.
      *

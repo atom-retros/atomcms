@@ -2,12 +2,16 @@
 
 namespace App\Nova;
 
-use Illuminate\Support\Facades\Schema;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Nova;
+use Illuminate\Support\Str;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Illuminate\Support\Facades\File;
+use Laravel\Nova\Fields\BooleanGroup;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Permission extends Resource
@@ -51,6 +55,7 @@ class Permission extends Resource
         'log_commands',
         'prefix',
         'prefix_color',
+        'admin_permissions',
     ];
 
     /**
@@ -84,6 +89,8 @@ class Permission extends Resource
                 ->trueValue(1)
                 ->falseValue(0),
 
+            ...$this->getAdminPermissionsFields($request),
+
             Text::make('Badge')
                 ->sortable()
                 ->rules('sometimes', 'nullable', 'max:255'),
@@ -115,6 +122,22 @@ class Permission extends Resource
             ...$this->getPermissionsFields($request),
 
             HasMany::make('Users'),
+        ];
+    }
+
+    public function getAdminPermissionsFields(NovaRequest $request): array
+    {
+        $resources = collect(File::files(app_path('Nova')))
+            ->map(fn ($file) => pathinfo($file, PATHINFO_FILENAME))
+            ->filter(fn (string $resource) => $resource !== 'Resource')
+            ->mapWithKeys(fn (string $resource) => [sprintf('App\Nova\%s', $resource) => Nova::humanize(sprintf('Manage %s', Str::plural($resource)))])
+            ->toArray();
+
+        return [
+            BooleanGroup::make('Admin Permissions')
+                ->nullable()
+                ->onlyOnForms()
+                ->options($resources),
         ];
     }
 
