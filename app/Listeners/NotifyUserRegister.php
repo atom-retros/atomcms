@@ -12,7 +12,7 @@ class NotifyUserRegister
      */
     public function handle(UserRegister $event): void
     {
-        if (!config('discord-alerts.webhook_urls.register') || $event->user->hidden_staff) {
+        if (! config('discord-alerts.webhook_urls.register') || $event->user->hidden_staff) {
             return;
         }
 

@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class FurnitureData extends Resource
@@ -71,7 +71,7 @@ class FurnitureData extends Resource
 
             Select::make('Category')
                 ->hideFromIndex()
-                ->options(['vending_machine' => 'Vending Machine','shelf' => 'Shelf','table' => 'Table','chair' => 'Chair','rug' => 'Rug','bed' => 'Bed','other' => 'Other','lighting' => 'Lighting','fortuna' => 'Fortuna','divider' => 'Divider','unknown' => 'Unknown','floor' => 'Floor','present' => 'Present','teleport' => 'Teleport','food' => 'Food','gate' => 'Gate','games' => 'Games','trophy' => 'Trophy','pets' => 'Pets','roller' => 'Roller','credit' => 'Credit','music' => 'Music','wired' => 'Wired','wall_decoration' => 'Wall Decoration','window' => 'Window','space' => 'Space'])
+                ->options(['vending_machine' => 'Vending Machine', 'shelf' => 'Shelf', 'table' => 'Table', 'chair' => 'Chair', 'rug' => 'Rug', 'bed' => 'Bed', 'other' => 'Other', 'lighting' => 'Lighting', 'fortuna' => 'Fortuna', 'divider' => 'Divider', 'unknown' => 'Unknown', 'floor' => 'Floor', 'present' => 'Present', 'teleport' => 'Teleport', 'food' => 'Food', 'gate' => 'Gate', 'games' => 'Games', 'trophy' => 'Trophy', 'pets' => 'Pets', 'roller' => 'Roller', 'credit' => 'Credit', 'music' => 'Music', 'wired' => 'Wired', 'wall_decoration' => 'Wall Decoration', 'window' => 'Window', 'space' => 'Space'])
                 ->rules('nullable', 'max:255', 'in:vending_machine,shelf,table,chair,rug,bed,other,lighting,fortuna,divider,unknown,floor,present,teleport,food,gate,games,trophy,pets,roller,credit,music,wired,wall_decoration,window,space')
                 ->displayUsingLabels()
                 ->default('other'),
@@ -84,19 +84,19 @@ class FurnitureData extends Resource
             Number::make('Default Direction', 'defaultdir')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'integer', 'min:0')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(0),
 
             Number::make('X Dimension', 'xdim')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'integer', 'min:1')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(1),
 
             Number::make('Y Dimension', 'ydim')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'integer', 'min:1')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(1),
 
             Text::make('Ad URL', 'adurl')
@@ -148,19 +148,19 @@ class FurnitureData extends Resource
             Boolean::make('Can Stand On', 'canstandon')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'boolean')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(false),
 
             Boolean::make('Can Sit On', 'cansiton')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'boolean')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(false),
 
             Boolean::make('Can Lay On', 'canlayon')
                 ->hideFromIndex()
                 ->rules('sometimes', 'nullable', 'boolean')
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(false),
 
             Boolean::make('Rare')
@@ -170,7 +170,7 @@ class FurnitureData extends Resource
 
             Code::make('Part Colors', 'partcolors')
                 ->hideFromIndex()
-                ->dependsOn(['type'], fn ($field, $request, $formData) =>$formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
+                ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->json(),
         ];
     }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Inertia\Middleware;
 use Atom\Core\Models\User;
-use Illuminate\Http\Request;
 use Atom\Core\Models\WebsiteSetting;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {

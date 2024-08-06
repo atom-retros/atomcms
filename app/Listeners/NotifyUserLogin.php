@@ -12,7 +12,7 @@ class NotifyUserLogin
      */
     public function handle(UserLogin $event): void
     {
-        if (!config('discord-alerts.webhook_urls.login') || $event->user->hidden_staff) {
+        if (! config('discord-alerts.webhook_urls.login') || $event->user->hidden_staff) {
             return;
         }
 

@@ -12,7 +12,7 @@ class NotifyUserLogout
      */
     public function handle(UserLogout $event): void
     {
-        if (!config('discord-alerts.webhook_urls.logout') || $event->user->hidden_staff) {
+        if (! config('discord-alerts.webhook_urls.logout') || $event->user->hidden_staff) {
             return;
         }
 
