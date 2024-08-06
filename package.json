@@ -3,15 +3,15 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "link:atom": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/views/atom/images $(pwd)/public/images",
-        "dev:atom": "vite --config resources/views/atom/vite.config.js",
-        "build:atom": "vite build --config resources/views/atom/vite.config.js",
-        "link:dusk": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/views/dusk/images $(pwd)/public/images",
-        "dev:dusk": "vite --config resources/views/dusk/vite.config.js",
-        "build:dusk": "vite build --config resources/views/dusk/vite.config.js",
-        "link:base": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/views/base/images $(pwd)/public/images",
-        "dev:base": "vite --config resources/views/base/vite.config.js",
-        "build:base": "vite build --config resources/views/base/vite.config.js",
+        "link:atom": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/themes/atom/images $(pwd)/public/images",
+        "dev:atom": "vite --config resources/themes/atom/vite.config.js",
+        "build:atom": "vite build --config resources/themes/atom/vite.config.js",
+        "link:dusk": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/themes/dusk/images $(pwd)/public/images",
+        "dev:dusk": "vite --config resources/themes/dusk/vite.config.js",
+        "build:dusk": "vite build --config resources/themes/dusk/vite.config.js",
+        "link:base": "shx rm -rf $(pwd)/public/images && shx ln -s $(pwd)/resources/themes/base/images $(pwd)/public/images",
+        "dev:base": "vite --config resources/themes/base/vite.config.js",
+        "build:base": "vite build --config resources/themes/base/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
@@ -34,6 +34,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
-        "shx": "^0.3.4"
+        "@inertiajs/vue3": "^1.2.0",
+        "@vitejs/plugin-vue": "^5.1.2",
+        "shx": "^0.3.4",
+        "vue": "^3.4.35",
+        "vue-i18n": "9"
     }
 }

@@ -31,6 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->web(append: [
+            \App\Http\Middleware\HandleInertiaRequests::class,
             Atom\Installation\Http\Middleware\InstallationMiddleware::class,
             Atom\Locale\Http\Middleware\LocaleMiddleware::class,
             Atom\Theme\Http\Middleware\ThemeMiddleware::class,
@@ -39,10 +40,4 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         Integration::handles($exceptions);
-
-        $exceptions->render(function (HttpException $e, Request $request) {
-            if (view()->exists(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()))) {
-                return response()->view(sprintf('%s.views.errors.%s', WebsiteSetting::firstWhere('key', 'theme')->value ?? 'atom', $e->getStatusCode()), [], $e->getStatusCode());
-            }
-        });
     })->create();
