@@ -45,17 +45,17 @@ return [
         ],
 
         'album1584' => [
-            'driver' => 'local',
-            'root' => base_path('nitro/nitro-swf/c_images/album1584'),
-            'url' => env('APP_URL').'/nitro-swf/c_images/album1584',
+            'driver' => 'local', 
+            'root' => env('NITRO_BADGE_PATH'),
+            'url' => env('NITRO_BADGE_URL'),
             'visibility' => 'public',
             'throw' => false,
         ],
 
         'room_backgrounds' => [
             'driver' => 'local',
-            'root' => base_path('nitro/nitro-swf/c_images/room_backgrounds'),
-            'url' => env('APP_URL').'/nitro-swf/c_images/room_backgrounds',
+            'root' => env('NITRO_BACKGROUND_PATH'),
+            'url' => env('NITRO_BACKGROUND_URL'),
             'visibility' => 'public',
             'throw' => false,
         ],
