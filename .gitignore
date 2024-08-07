@@ -4,16 +4,8 @@
 /public/client
 /public/storage
 /public/images
-/public/nitro
-/public/dist
 /public/vendor
-/public/nitro-*
 /lang/vendor
-!/public/nitro/.gitkeep
-/nitro/nitro-assets
-/nitro/nitro-converter
-/nitro/nitro-react
-/nitro/nitro-swf
 /storage/*.key
 /vendor
 /public/static
@@ -27,5 +19,4 @@ yarn-error.log
 yarn.lock
 /.idea
 /.vscode
-/public/assets/images/generated-logos
 !/resources/view/.gitkeep
