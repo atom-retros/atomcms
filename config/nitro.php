@@ -3,6 +3,7 @@
 return [
     'imager_url' => env('NITRO_IMAGER_URL', 'https://www.habbo.com/habbo-imaging/avatarimage'),
     'static_url' => env('NITRO_STATIC_URL'),
+    'client_url' => env('NITRO_CLIENT_URL'),
     'static_path' => env('NITRO_STATIC_PATH'),
     'badge_path' => env('NITRO_BADGE_PATH'),
     'badge_url' => env('NITRO_BADGE_URL'),
