@@ -42,6 +42,7 @@ class RoomAds extends Resource
         return [
             Image::make('File')
                 ->disk('room_backgrounds')
+                ->storeAs(fn (NovaRequest $request) => $request->file->getClientOriginalName())
                 ->creationRules('required')
                 ->updateRules('nullable')
                 ->disableDownload(),
