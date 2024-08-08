@@ -53,7 +53,7 @@ class Furniture extends Resource
             Select::make('Type')
                 ->sortable()
                 ->options(['s' => 'Floor', 'i' => 'Wall', 'b' => 'Badge', 'S' => 'Floor'])
-                ->rules('required', 'in:s,i,b')
+                ->rules('required', 'in:s,i,b,S,I,B')
                 ->displayUsingLabels(),
 
             Number::make('Sprite ID', 'sprite_id')
@@ -133,7 +133,7 @@ class Furniture extends Resource
                 ->rules('required', 'max:255')
                 ->default('0'),
 
-            Text::make('Multi Height')
+            Text::make('Multi Height', 'multiheight')
                 ->hideFromIndex()
                 ->rules('nullable', 'max:50')
                 ->default(''),

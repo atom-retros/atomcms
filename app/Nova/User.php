@@ -2,15 +2,16 @@
 
 namespace App\Nova;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Avatar;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Illuminate\Support\Carbon;
+use Laravel\Nova\Fields\Avatar;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
@@ -145,6 +146,9 @@ class User extends Resource
                 ->onlyOnDetail(),
 
             Text::make('Machine ID', 'machine_id')
+                ->onlyOnDetail(),
+
+            HasMany::make('Clones', 'clones', User::class)
                 ->onlyOnDetail(),
         ];
     }
