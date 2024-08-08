@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -51,37 +52,6 @@ class Ban extends Resource
                 ->searchable()
                 ->rules('required'),
 
-            Text::make('IP Address', 'ip')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required', 'max:50'),
-
-            Text::make('Machine ID', 'machine_id')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            BelongsTo::make('Staff', 'staff', User::class)
-                ->sortable()
-                ->searchable()
-                ->rules('required'),
-
-            Text::make('Timestamp')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
-
-            Text::make('Ban Expire', 'ban_expire')
-                ->hideFromIndex()
-                ->sortable()
-                ->rules('required')
-                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
-
-            Text::make('Ban Reason', 'ban_reason')
-                ->sortable()
-                ->rules('required', 'max:200'),
-
             Select::make('Type')
                 ->hideFromIndex()
                 ->sortable()
@@ -91,9 +61,33 @@ class Ban extends Resource
                 ->default('account')
                 ->displayUsingLabels(),
 
-            Text::make('CFH Topic', 'cfh_topic')
+            Text::make('Ban Reason', 'ban_reason')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:200'),
+
+            Text::make('IP Address', 'ip')
+                ->onlyOnDetail(),
+
+            Text::make('Machine ID', 'machine_id')
+                ->onlyOnDetail(),
+
+            BelongsTo::make('Staff', 'staff', User::class)
+                ->exceptOnForms()
+                ->sortable(),
+
+            Date::make('Timestamp')
+                ->onlyOnDetail()
+                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
+
+            Date::make('Ban Expire', 'ban_expire')
+                ->hideFromIndex()
+                ->rules('required')
+                ->displayUsing(fn ($value) => date('Y-m-d H:i:s', $value)),
+
+            Text::make('CFH Topic', 'cfh_topic')
+                ->hideFromIndex()
+                ->rules('required', 'max:255')
+                ->default(fn () => -1),
         ];
     }
 
