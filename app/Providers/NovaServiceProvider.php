@@ -67,7 +67,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WebsiteArticle::class),
 
-                MenuItem::resource(\App\Nova\CameraWeb::class),
+                MenuItem::resource(\App\Nova\CameraWeb::class)
+                    ->withBadge($this->badge('camera_web', ['approved' => 0])),
 
                 MenuItem::resource(\App\Nova\WebsiteBetaCode::class),
 

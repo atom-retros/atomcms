@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -50,6 +51,10 @@ class CameraWeb extends Resource
                 ->exceptOnForms()
                 ->thumbnail(fn () => $this->url)
                 ->preview(fn () => $this->url),
+
+            Boolean::make('Approved', 'approved')
+                ->sortable()
+                ->rules('required'),
         ];
     }
 
@@ -90,6 +95,9 @@ class CameraWeb extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            new Actions\ApproveCameraWeb,
+            new Actions\RejectCameraWeb,
+        ];
     }
 }
