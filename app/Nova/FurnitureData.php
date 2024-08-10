@@ -89,13 +89,13 @@ class FurnitureData extends Resource
 
             Number::make('X Dimension', 'xdim')
                 ->hideFromIndex()
-                ->rules('sometimes', 'nullable', 'integer', 'min:1')
+                ->rules('sometimes', 'nullable', 'integer', 'min:0')
                 ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(1),
 
             Number::make('Y Dimension', 'ydim')
                 ->hideFromIndex()
-                ->rules('sometimes', 'nullable', 'integer', 'min:1')
+                ->rules('sometimes', 'nullable', 'integer', 'min:0')
                 ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
                 ->default(1),
 
