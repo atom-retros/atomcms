@@ -22,12 +22,12 @@
             "url": "git@github.com:atom-retros/voting.git"
         },
         "atomcms/core": {
-            "type": "vcs",
-            "url": "git@github.com:atom-retros/core.git"
+            "type": "path",
+            "url": "./packages/core"
         },
         "atomcms/theme": {
-            "type": "vcs",
-            "url": "git@github.com:atom-retros/theme.git"
+            "type": "path",
+            "url": "./packages/theme"
         },
         "atomcms/locale": {
             "type": "vcs",
@@ -57,6 +57,7 @@
         "qirolab/laravel-themer": "^2.0",
         "ryangjchandler/laravel-cloudflare-turnstile": "^1.1",
         "sentry/sentry-laravel": "^4.7",
+        "spatie/array-to-xml": "^3.3",
         "spatie/laravel-activitylog": "^4.8",
         "spatie/laravel-discord-alerts": "^1.5"
     },
