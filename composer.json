@@ -22,12 +22,12 @@
             "url": "git@github.com:atom-retros/voting.git"
         },
         "atomcms/core": {
-            "type": "path",
-            "url": "./packages/core"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/core.git"
         },
         "atomcms/theme": {
-            "type": "path",
-            "url": "./packages/theme"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/theme.git"
         },
         "atomcms/locale": {
             "type": "vcs",
