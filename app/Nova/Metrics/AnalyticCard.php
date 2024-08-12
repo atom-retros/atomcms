@@ -27,7 +27,7 @@ class AnalyticCard extends Value
     public function calculate(NovaRequest $request)
     {
         return $this->result(app($this->model)->count())
-            ->allowZeroResult();
+            ->format(['thousandSeparated' => true]);
     }
 
     /**
