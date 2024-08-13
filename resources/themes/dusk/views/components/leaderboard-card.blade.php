@@ -9,6 +9,14 @@
 ])
 
 <div class="flex flex-col gap-y-3">
+    <div class="flex gap-2 rounded-md py-2 px-4 bg-[#21242e]/90 text-gray-100 font-bold">
+        <div class="flex items-center">
+            <img src="{{ asset('/assets/images/icons/' . $icon) }}" alt="" class="w-4" style="image-rendering: pixelated;">
+        </div>
+
+        {{ $valueType }}
+    </div>
+
     @foreach ($data as $index => $entry)
         <div class="p-3 rounded-md flex items-center justify-between h-[60px] overflow-hidden bg-[#21242e]/90">
            <div class="flex gap-2 items-center">

@@ -59,7 +59,8 @@ extension=sockets
 git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
 copy .env.example .env (Do not forget to edit the database credentials inside the .env)
-composer install 
+composer install
+php artisan migrate --seed
 php artisan key:generate
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] - eg. npm run dev:atom)
 ```
@@ -95,6 +96,7 @@ git clone https://github.com/ObjectRetros/atomcms.git
 cd atomcms
 cp .env.example .env (Do not forget to edit the database credentials inside the .env)
 composer install
+php artisan migrate --seed
 php artisan key:generate
 npm install && npm run build:atom (For development run: npm run dev:[theme-name] (eg. npm run dev:atom))
 ```
@@ -136,7 +138,7 @@ Atom comes with its own dedicated documentation site - this makes it a lot easie
 
 As Atom CMS comes packed with **tons** of features, to improve the CMS experience for you and your users it only makes sense to have such a site to make the experience the best possible.
 
-You can find the documentation, addons, and tips & tricks on **[https://retros.guide/docs/category/atom-cms](https://retros.guide/docs/category/atom-cms)**
+You can find the documentation, addons, and tips & tricks on **[https://github.com/atom-retros/atomcms/wiki](https://github.com/atom-retros/atomcms/wiki)**
 
 ### 🔥 Credits
 Atom CMS is made possible by the contributions of numerous developers, designers, and community members.
