@@ -36,7 +36,7 @@
             </div>
 
             <p class="w-full text-center truncate">
-                {{ $rare->currency_value ?? 0 }} {{ $rare->currency_type }}
+                {{ $rare->currency_value ?? 0 }} {{ $rare->currency_type === 0 ? 'Duckets' : ($rare->currency_type === 5 ? 'Diamonds' : 'Other') }}
             </p>
         </div>
     </div>
