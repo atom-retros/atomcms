@@ -59,7 +59,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function (Request $request) {
-            if (setting('disable_register')) {
+            if (setting('disable_registration') === '1') {
                 return to_route('welcome')->withErrors([
                     'register' => __('Registration is currently disabled.'),
                 ]);

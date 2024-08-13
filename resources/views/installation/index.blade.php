@@ -24,11 +24,11 @@
             </p>
 
             <p>
-                {!! __('To get started, we recommend checking out our <a href=":documentation_link" target="_blank" class="font-semibold underline">comprehensive documentation</a>, which will guide you through the initial setup and help you make the most of your Atom CMS experience.', ['documentation_link' => 'https://retros.guide']) !!}
+                {!! __('To get started, we recommend checking out our <a href=":documentation_link" target="_blank" class="font-semibold underline">comprehensive documentation</a>, which will guide you through the initial setup and help you make the most of your Atom CMS experience.', ['documentation_link' => 'https://github.com/atom-retros/atomcms/wiki']) !!}
             </p>
 
             <p>
-                {!! __('And remember, please <a href=":discord_link" target="_blank" class="font-semibold underline">join our Discord</a>. If you have any questions or need assistance, please do not hesitate to reach out. We are here to help you every step of the way.', ['discord_link' => 'https://discord.gg/rX3aShUHdg']) !!}
+                {!! __('And remember, please <a href=":discord_link" target="_blank" class="font-semibold underline">join our Discord</a>. If you have any questions or need assistance, please do not hesitate to reach out. We are here to help you every step of the way.', ['discord_link' => 'https://discord.gg/pP6HyZedAj']) !!}
             </p>
 
             <p>

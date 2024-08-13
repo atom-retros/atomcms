@@ -270,6 +270,11 @@ class WebsiteSettingsSeeder extends Seeder
                 'value' => '3',
                 'comment' => 'The amount of guestbook posts a user can post on each user profile',
             ],
+            [
+                'key' => 'tinymce_api_key',
+                'value' => 'API-KEY-HERE',
+                'comment' => 'The API key necessary in order to use TinyMCE',
+            ],
         ];
 
         foreach ($settings as $setting) {

@@ -28,14 +28,13 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        // if registration is disabled, throw an exception
-        if (setting('disable_register')) {
+        if (setting('disable_registration')) {
             throw ValidationException::withMessages([
                 'registration' => __('Registration is disabled.'),
             ]);
         }
 
-        $ip = request()->ip();
+        $ip = request()?->ip();
         if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6)) {
             throw ValidationException::withMessages([
                 'registration' => __('Your IP address seems to be invalid'),
