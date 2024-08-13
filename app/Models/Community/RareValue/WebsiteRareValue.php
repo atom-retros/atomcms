@@ -10,6 +10,13 @@ class WebsiteRareValue extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    protected function casts()
+    {
+        return [
+            'currency_type' => 'integer',
+        ];
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(WebsiteRareValueCategory::class, 'category_id');

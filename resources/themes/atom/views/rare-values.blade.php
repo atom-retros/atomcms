@@ -3,37 +3,57 @@
 
     <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
         <div class="flex flex-col gap-y-4">
-            @forelse($categories as $category)
-                <x-content.content-card :icon="$category->badge">
+            @if(isset($categories->name))
+                <x-content.content-card :icon="$categories->badge">
                     <x-slot:title>
-                        {{ $category->name }}
+                        {{ $categories->name }}
                     </x-slot:title>
 
                     <x-slot:under-title>
-                        {{ __('All the :category rares', ['category' => $category->name]) }}
+                        {{ __('All the :category rares', ['category' => $categories->name]) }}
                     </x-slot:under-title>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @foreach($category->furniture as $rare)
+                        @foreach($categories->furniture as $rare)
                             <x-rares.rare-card :rare="$rare" />
                         @endforeach
                     </div>
                 </x-content.content-card>
-            @empty
-                <x-content.content-card icon="currency-icon">
-                    <x-slot:title>
-                        {{ __('Rare values') }}
-                    </x-slot:title>
+            @else
+                @forelse($categories as $category)
+                    <x-content.content-card :icon="$category->badge">
+                        <x-slot:title>
+                            {{ $category->name }}
+                        </x-slot:title>
 
-                    <x-slot:under-title>
-                       {{ __('Get an overview of all of the rares on :hotel', ['hotel' => setting('hotel_name')]) }}
-                    </x-slot:under-title>
+                        <x-slot:under-title>
+                            {{ __('All the :category rares', ['category' => $category->name]) }}
+                        </x-slot:under-title>
 
-                   <p class="text-center">
-                       {{ __('We currently have no rares listed here') }}
-                   </p>
-                </x-content.content-card>
-            @endforelse
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            @foreach($category->furniture as $rare)
+                                <x-rares.rare-card :rare="$rare" />
+                            @endforeach
+                        </div>
+                    </x-content.content-card>
+                @empty
+                    <x-content.content-card icon="currency-icon">
+                        <x-slot:title>
+                            {{ __('Rare values') }}
+                        </x-slot:title>
+
+                        <x-slot:under-title>
+                            {{ __('Get an overview of all of the rares on :hotel', ['hotel' => setting('hotel_name')]) }}
+                        </x-slot:under-title>
+
+                        <p class="text-center">
+                            {{ __('We currently have no rares listed here') }}
+                        </p>
+                    </x-content.content-card>
+                @endforelse
+            @endif
+
+
         </div>
     </div>
 
