@@ -147,9 +147,6 @@ class User extends Resource
 
             Text::make('Machine ID', 'machine_id')
                 ->onlyOnDetail(),
-
-            HasMany::make('Clones', 'clones', User::class)
-                ->onlyOnDetail(),
         ];
     }
 
@@ -180,7 +177,9 @@ class User extends Resource
      */
     public function lenses(NovaRequest $request)
     {
-        return [];
+        return [
+            new Lenses\ClonedUsers,
+        ];
     }
 
     /**
