@@ -98,7 +98,7 @@ class User extends Resource
                 ->default(1),
 
             BelongsTo::make('Team')
-                ->sortable()
+                ->hideFromIndex()
                 ->nullable(),
 
             Boolean::make('Hidden Staff')
@@ -179,6 +179,8 @@ class User extends Resource
     {
         return [
             new Lenses\ClonedUsers,
+            new Lenses\OnlineUsers,
+            new Lenses\Staff,
         ];
     }
 

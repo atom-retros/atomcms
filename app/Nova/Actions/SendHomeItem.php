@@ -44,7 +44,7 @@ class SendHomeItem extends Action
     {
         $options = WebsiteHomeItem::with('category')
             ->get()
-            ->map(fn ($item) => ['id' => $item->id, 'label' => $item->name ?: '-', 'group' => $item->category->name]);
+            ->map(fn ($item) => ['value' => $item->id, 'label' => $item->name ?: '-', 'group' => $item->category->name]);
 
         return [
             Multiselect::make('Items', 'items')
