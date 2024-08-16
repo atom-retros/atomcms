@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a18984ef4f779377eca8dd93c15a11c",
+    "content-hash": "6bc989f0cb32df32c45dee9442db3b07",
     "packages": [
         {
             "name": "atomcms/core",
@@ -2361,6 +2361,103 @@
                 "source": "https://github.com/Jean85/pretty-package-versions/tree/2.0.6"
             },
             "time": "2024-03-08T09:58:59+00:00"
+        },
+        {
+            "name": "kielabokkie/ipdata",
+            "version": "0.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kielabokkie/ipdata-php.git",
+                "reference": "6fade669cc61e8945736db50041a65c0ac8570ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kielabokkie/ipdata-php/zipball/6fade669cc61e8945736db50041a65c0ac8570ad",
+                "reference": "6fade669cc61e8945736db50041a65c0ac8570ad",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3|^7.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^7.0",
+                "symfony/var-dumper": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kielabokkie\\": "src/Kielabokkie/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wouter Peschier",
+                    "email": "kielabokkie@gmail.com"
+                }
+            ],
+            "description": "Get IP address information the using ipdata.co API",
+            "support": {
+                "issues": "https://github.com/kielabokkie/ipdata-php/issues",
+                "source": "https://github.com/kielabokkie/ipdata-php/tree/0.2.5"
+            },
+            "time": "2020-09-16T09:35:31+00:00"
+        },
+        {
+            "name": "kielabokkie/laravel-ipdata",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kielabokkie/laravel-ipdata.git",
+                "reference": "d3f7f2867590865deee757749b62fdb277892a66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kielabokkie/laravel-ipdata/zipball/d3f7f2867590865deee757749b62fdb277892a66",
+                "reference": "d3f7f2867590865deee757749b62fdb277892a66",
+                "shasum": ""
+            },
+            "require": {
+                "kielabokkie/ipdata": "^0.2",
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kielabokkie\\LaravelIpdata\\IpdataServiceProvider"
+                    ],
+                    "aliases": {
+                        "Ipdata": "Kielabokkie\\LaravelIpdata\\Facades\\Ipdata"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kielabokkie\\LaravelIpdata\\": "src/Kielabokkie/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wouter Peschier",
+                    "email": "kielabokkie@gmail.com"
+                }
+            ],
+            "description": "Laravel wrapper for kielabokkie/ipdata-php",
+            "support": {
+                "issues": "https://github.com/kielabokkie/laravel-ipdata/issues",
+                "source": "https://github.com/kielabokkie/laravel-ipdata/tree/master"
+            },
+            "time": "2018-06-19T00:07:09+00:00"
         },
         {
             "name": "laravel/framework",

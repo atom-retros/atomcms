@@ -33,6 +33,7 @@ return Application::configure(basePath: dirname(__DIR__))
             Atom\Locale\Http\Middleware\LocaleMiddleware::class,
             Atom\Theme\Http\Middleware\ThemeMiddleware::class,
             Atom\Core\Http\Middleware\BannedMiddleware::class,
+            Atom\Core\Http\Middleware\VPNMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

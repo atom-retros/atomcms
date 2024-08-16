@@ -29,7 +29,7 @@ class Staff extends Lens
     public static function query(LensRequest $request, $query)
     {
         return $request->withOrdering($request->withFilters(
-            $query->where('rank', '>=', WebsiteSetting::firstWhere('key', 'min_staff_rank')->value),
+            $query->where('rank', '>=', config('atom.min_staff_rank')),
         ));
     }
 

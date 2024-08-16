@@ -41,4 +41,8 @@ return [
         'secret' => env('TURNSTILE_SECRET_KEY'),
     ],
 
+    'ipdata' => [
+        'enabled' => env('IPDATA_ENABLED', false),
+        'key' => env('IPDATA_API_KEY'),
+    ],
 ];

@@ -48,6 +48,7 @@
         "illuminate/support": "^11.0",
         "inertiajs/inertia-laravel": "^1.3",
         "jacobfitzp/nova-tinymce": "^1.0",
+        "kielabokkie/laravel-ipdata": "^0.2.1",
         "laravel/framework": "^11.0",
         "laravel/nova": "dev-main",
         "laravel/prompts": "^0.1.24",
