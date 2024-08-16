@@ -212,6 +212,8 @@ class FurnitureData extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            Actions\SyncFurnitureData::make()->standalone(),
+        ];
     }
 }

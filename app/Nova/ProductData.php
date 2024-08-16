@@ -93,6 +93,8 @@ class ProductData extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            Actions\SyncProductData::make()->standalone(),
+        ];
     }
 }

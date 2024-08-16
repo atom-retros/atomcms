@@ -88,6 +88,8 @@ class UiText extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            Actions\SyncUiText::make()->standalone(),
+        ];
     }
 }
