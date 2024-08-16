@@ -43,6 +43,10 @@ class FurnitureData extends Resource
     public function fields(NovaRequest $request)
     {
         return [
+            Number::make('ID', 'id')
+                ->sortable()
+                ->rules('required', 'integer', 'min:0'),
+
             Text::make('Classname')
                 ->sortable()
                 ->rules('required', 'max:255')
@@ -171,7 +175,8 @@ class FurnitureData extends Resource
             Code::make('Part Colors', 'partcolors')
                 ->hideFromIndex()
                 ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
-                ->json(),
+                ->json()
+                ->default(json_encode([])),
         ];
     }
 
