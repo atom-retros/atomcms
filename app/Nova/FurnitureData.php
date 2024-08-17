@@ -43,7 +43,7 @@ class FurnitureData extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Number::make('ID', 'id')
+            Number::make('Item ID', 'item_id')
                 ->sortable()
                 ->rules('required', 'integer', 'min:0'),
 
