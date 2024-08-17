@@ -9,6 +9,7 @@ return [
         'login' => env('DISCORD_ALERT_LOGIN_WEBHOOK'),
         'register' => env('DISCORD_ALERT_REGISTER_WEBHOOK'),
         'logout' => env('DISCORD_ALERT_LOGOUT_WEBHOOK'),
+        'client' => env('DISCORD_ALERT_CLIENT_WEBHOOK'),
     ],
 
     /*

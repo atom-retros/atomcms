@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserLogout;
+use Illuminate\Support\Facades\Cache;
 use Spatie\DiscordAlerts\Facades\DiscordAlert;
 
 class NotifyUserLogout
@@ -12,11 +13,15 @@ class NotifyUserLogout
      */
     public function handle(UserLogout $event): void
     {
-        if (! config('discord-alerts.webhook_urls.logout') || $event->user->hidden_staff) {
+        $cacheKey = sprintf('user-logout-notified-%s', $event->user->id);
+
+        if (! config('discord-alerts.webhook_urls.logout') || Cache::has($cacheKey)) {
             return;
         }
 
         DiscordAlert::to('logout')
-            ->message(sprintf('[%s] **%s** has logged out.', now()->format('H:i'), $event->user->username));
+            ->message(sprintf('**%s** has logged out.', $event->user->username));
+
+        Cache::put($cacheKey, true, now()->addHour());
     }
 }

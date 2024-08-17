@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserLogin;
+use Illuminate\Support\Facades\Cache;
 use Spatie\DiscordAlerts\Facades\DiscordAlert;
 
 class NotifyUserLogin
@@ -12,11 +13,15 @@ class NotifyUserLogin
      */
     public function handle(UserLogin $event): void
     {
-        if (! config('discord-alerts.webhook_urls.login') || $event->user->hidden_staff) {
+        $cacheKey = sprintf('user-login-notified-%s', $event->user->id);
+
+        if (! config('discord-alerts.webhook_urls.login') || Cache::has($cacheKey)) {
             return;
         }
 
         DiscordAlert::to('login')
-            ->message(sprintf('[%s] **%s** has logged in.', now()->format('H:i'), $event->user->username));
+            ->message(sprintf('**%s** has logged in.', $event->user->username));
+
+        Cache::put($cacheKey, true, now()->addHour());
     }
 }
