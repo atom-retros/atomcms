@@ -37,6 +37,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\Room::class),
 
+                MenuItem::resource(\App\Nova\Guild::class),
+
                 MenuItem::resource(\App\Nova\Team::class),
 
                 MenuItem::resource(\App\Nova\StaffApplication::class),
