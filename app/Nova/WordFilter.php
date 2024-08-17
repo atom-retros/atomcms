@@ -53,15 +53,21 @@ class WordFilter extends Resource
 
             Boolean::make('Hide')
                 ->sortable()
-                ->rules('required', 'boolean'),
+                ->rules('required')
+                ->trueValue('1')
+                ->falseValue('0'),
 
             Boolean::make('Report')
                 ->sortable()
-                ->rules('required', 'boolean'),
+                ->rules('required')
+                ->trueValue('1')
+                ->falseValue('0'),
 
             Boolean::make('Mute')
                 ->sortable()
-                ->rules('required', 'boolean'),
+                ->rules('required')
+                ->trueValue('1')
+                ->falseValue('0'),
         ];
     }
 
