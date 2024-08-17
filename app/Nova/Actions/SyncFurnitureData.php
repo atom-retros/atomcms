@@ -26,12 +26,12 @@ class SyncFurnitureData extends Action
     {
         $wallItems = FurnitureData::whereType('wallitemtypes')
             ->get()
-            ->map(fn (FurnitureData $item) => $item->only('id', 'classname', 'revision', 'category', 'name', 'description', 'adurl', 'offerid', 'buyout', 'rentofferid', 'rentbuyout', 'bc', 'excludeddynamic', 'customparams', 'specialtype', 'furniline', 'environment', 'rare'))
+            ->map(fn (FurnitureData $item) => ['id' => $item->item_id, 'db_id' => $item->id, ...$item->only('classname', 'revision', 'category', 'name', 'description', 'adurl', 'offerid', 'buyout', 'rentofferid', 'rentbuyout', 'bc', 'excludeddynamic', 'customparams', 'specialtype', 'furniline', 'environment', 'rare')])
             ->toArray();
 
         $roomItems = FurnitureData::whereType('roomitemtypes')
             ->get()
-            ->map(fn (FurnitureData $item) => $item->only('id', 'classname', 'revision', 'category', 'defaultdir', 'xdim', 'ydim', 'partcolors', 'name', 'description', 'adurl', 'offerid', 'buyout', 'rentofferid', 'rentbuyout', 'bc', 'excludeddynamic', 'customparams', 'specialtype', 'canstandon', 'cansiton', 'canlayon', 'furniline', 'environment', 'rare'))
+            ->map(fn (FurnitureData $item) => ['id' => $item->item_id, 'db_id' => $item->id, ...$item->only('classname', 'revision', 'category', 'defaultdir', 'xdim', 'ydim', 'partcolors', 'name', 'description', 'adurl', 'offerid', 'buyout', 'rentofferid', 'rentbuyout', 'bc', 'excludeddynamic', 'customparams', 'specialtype', 'canstandon', 'cansiton', 'canlayon', 'furniline', 'environment', 'rare')])
             ->toArray();
 
             file_put_contents(config('nitro.furniture_data_file'), json_encode([

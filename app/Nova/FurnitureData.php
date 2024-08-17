@@ -175,7 +175,6 @@ class FurnitureData extends Resource
             Code::make('Part Colors', 'partcolors')
                 ->hideFromIndex()
                 ->dependsOn(['type'], fn ($field, $request, $formData) => $formData->type === 'wallitemtypes' ? $field->hide() : $field->show())
-                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) { $model->{$attribute} = json_encode(['color' => []]); })
                 ->json(),
         ];
     }
