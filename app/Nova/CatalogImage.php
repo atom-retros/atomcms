@@ -7,14 +7,14 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class RoomAds extends Resource
+class CatalogImage extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\RoomAds>
+     * @var class-string<\App\Models\CatalogImage>
      */
-    public static $model = \Atom\Core\Models\RoomAds::class;
+    public static $model = \Atom\Core\Models\CatalogImage::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -41,15 +41,11 @@ class RoomAds extends Resource
     {
         return [
             Image::make('File')
-                ->disk('room_backgrounds')
+                ->disk('catalog_images')
                 ->storeAs(fn (NovaRequest $request) => $request->file->getClientOriginalName())
                 ->creationRules('required')
                 ->updateRules('nullable')
                 ->disableDownload(),
-
-            URL::make('URL', 'url', fn () => Storage::disk('room_backgrounds')->url($this->file))
-                ->sortable()
-                ->exceptOnForms(),
         ];
     }
 

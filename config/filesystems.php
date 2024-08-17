@@ -60,6 +60,14 @@ return [
             'throw' => false,
         ],
 
+        'catalog_images' => [
+            'driver' => 'local',
+            'root' => env('NITRO_CATALOG_IMAGE_PATH'),
+            'url' => env('NITRO_CATALOG_IMAGE_URL'),
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

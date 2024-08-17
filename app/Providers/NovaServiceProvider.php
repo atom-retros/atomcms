@@ -31,6 +31,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\RoomAds::class),
 
+                MenuItem::resource(\App\Nova\CatalogImage::class),
+
                 MenuItem::resource(\App\Nova\Ban::class),
 
                 MenuItem::resource(\App\Nova\Permission::class),
