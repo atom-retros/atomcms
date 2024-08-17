@@ -75,6 +75,7 @@ class WebsiteArticle extends Resource
                 ->sortable()
                 ->trueValue(1)
                 ->falseValue(0)
+                ->dependsOn([], fn ($field) => auth()->user()->rank >= 6 ? $field->show() : $field->hide())
                 ->default(0),
 
             Boolean::make('Can Comment')
@@ -112,7 +113,10 @@ class WebsiteArticle extends Resource
      */
     public function lenses(NovaRequest $request)
     {
-        return [];
+        return [
+            new Lenses\PublishedArticles,
+            new Lenses\PendingArticles,
+        ];
     }
 
     /**
