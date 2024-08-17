@@ -98,8 +98,8 @@ class WebsiteHomeItem extends Resource
 
             Code::make('Data')
                 ->hideFromIndex()
-                ->json()
-                ->default((object) []),
+                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) { $model->{$attribute} = json_encode((object) []); })
+                ->json(),
         ];
     }
 
