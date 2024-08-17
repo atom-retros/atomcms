@@ -23,6 +23,10 @@ class PublishArticles extends Action
      */
     public function handle(ActionFields $fields, Collection $models)
     {
+        if (auth()->user()->rank < 6) {
+            return Action::danger('You are not authorized to perform this action.');
+        }
+
         foreach ($models as $model) {
             $model->update(['is_published' => true]);
         }
