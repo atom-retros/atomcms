@@ -56,6 +56,10 @@ class Permission extends Resource
         'prefix',
         'prefix_color',
         'admin_permissions',
+        'auto_credits_amount',
+        'auto_pixels_amount',
+        'auto_gotw_amount',
+        'auto_points_amount',
     ];
 
     /**
