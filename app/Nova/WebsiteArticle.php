@@ -71,6 +71,12 @@ class WebsiteArticle extends Resource
                 ->searchable()
                 ->default($request->user()->id),
 
+            Boolean::make('Is Published')
+                ->sortable()
+                ->trueValue(1)
+                ->falseValue(0)
+                ->default(0),
+
             Boolean::make('Can Comment')
                 ->sortable()
                 ->trueValue(1)
