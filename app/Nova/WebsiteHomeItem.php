@@ -58,6 +58,7 @@ class WebsiteHomeItem extends Resource
                 ->sortable()
                 ->options(['sticker' => 'Sticker', 'background' => 'Background', 'widget' => 'Widget', 'note' => 'Note'])
                 ->rules('required')
+                ->default('sticker')
                 ->displayUsingLabels(),
 
             BelongsTo::make('Category', 'category', WebsiteHomeCategory::class)
@@ -67,6 +68,7 @@ class WebsiteHomeItem extends Resource
             BelongsTo::make('Minimum Rank', 'permission', Permission::class)
                 ->sortable()
                 ->required()
+                ->default(1)
                 ->rules('required', 'exists:permissions,id'),
 
             Image::make('Image', 'image_url')
