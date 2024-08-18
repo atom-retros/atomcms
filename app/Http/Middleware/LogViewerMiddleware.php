@@ -16,7 +16,7 @@ class LogViewerMiddleware
         }
 
         if (! hasPermission('view_server_logs')) {
-            return to_route('me.show');
+            abort(403);
         }
 
         return $next($request);
