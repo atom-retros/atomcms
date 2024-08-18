@@ -43,8 +43,8 @@ class CatalogImage extends Resource
             Image::make('File')
                 ->disk('catalog_images')
                 ->storeAs(fn (NovaRequest $request) => $request->file->getClientOriginalName())
-                ->creationRules('required')
-                ->updateRules('nullable')
+                ->creationRules('required', 'image', 'unique:catalog_images,file')
+                ->updateRules('nullable', 'image', 'unique:catalog_images,file')
                 ->disableDownload(),
         ];
     }
