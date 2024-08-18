@@ -67,7 +67,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-
+        'furniture_icons' => [
+            'driver' => 'local',
+            'root' => env('NITRO_FURNITURE_ICON_PATH'),
+            'url' => env('NITRO_FURNITURE_ICON_URL'),
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
