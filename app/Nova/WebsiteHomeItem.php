@@ -38,6 +38,16 @@ class WebsiteHomeItem extends Resource
     ];
 
     /**
+     * The label associated with the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Home Items';
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @return array

@@ -40,7 +40,7 @@ class WebsiteRuleCategory extends Resource
      */
     public static function label()
     {
-        return 'Website Rules';
+        return 'Rules';
     }
 
     /**

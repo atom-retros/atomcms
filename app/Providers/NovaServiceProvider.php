@@ -46,7 +46,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(\App\Nova\StaffApplication::class),
 
                 MenuItem::resource(\App\Nova\User::class),
-
+                
                 MenuItem::resource(\App\Nova\WordFilter::class),
 
                 MenuItem::resource(\App\Nova\BannedUsername::class),
@@ -72,11 +72,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(\App\Nova\WebsiteHomeItem::class),
 
                 MenuItem::resource(\App\Nova\WebsiteRuleCategory::class),
-
+                
                 MenuItem::resource(\App\Nova\WebsiteArticle::class),
 
                 MenuItem::resource(\App\Nova\WebsiteCollectible::class),
-
+                
                 MenuItem::resource(\App\Nova\CameraWeb::class)
                     ->withBadge($this->badge('camera_web', ['approved' => 0])),
 

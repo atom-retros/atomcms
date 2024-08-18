@@ -38,6 +38,16 @@ class WebsiteArticle extends Resource
     ];
 
     /**
+     * The label associated with the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Articles';
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @return array

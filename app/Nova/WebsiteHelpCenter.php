@@ -37,6 +37,16 @@ class WebsiteHelpCenter extends Resource
     ];
 
     /**
+     * The label associated with the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Help Centers';
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @return array

@@ -34,6 +34,16 @@ class WebsiteCollectible extends Resource
     ];
 
     /**
+     * The label associated with the resource.
+     *
+     * @return string
+     */
+    public static function label()
+    {
+        return 'Collectibles';
+    }
+
+    /**
      * Get the fields displayed by the resource.
      *
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
