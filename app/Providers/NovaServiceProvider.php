@@ -49,6 +49,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WordFilter::class),
 
+                MenuItem::resource(\App\Nova\BannedUsername::class),
+
                 MenuItem::resource(\App\Nova\PrivateChatlog::class),
 
                 MenuItem::resource(\App\Nova\RoomChatlog::class),
