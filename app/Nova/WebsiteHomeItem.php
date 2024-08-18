@@ -54,6 +54,10 @@ class WebsiteHomeItem extends Resource
                 ->nullable()
                 ->rules('sometimes', 'nullable', 'max:255'),
 
+            Number::make('Maximum Purchases')
+                ->hideFromIndex()
+                ->rules('required', 'integer'),
+
             Select::make('Type')
                 ->sortable()
                 ->options(['sticker' => 'Sticker', 'background' => 'Background', 'widget' => 'Widget', 'note' => 'Note'])
