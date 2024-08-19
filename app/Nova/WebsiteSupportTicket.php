@@ -66,7 +66,6 @@ class WebsiteSupportTicket extends Resource
                 ->rules('required', 'exists:users,id'),
 
             BelongsTo::make('Category', 'category', WebsiteRuleCategory::class)
-                ->searchable()
                 ->sortable()
                 ->rules('required', 'exists:website_rule_categories,id'),
 

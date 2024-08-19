@@ -78,7 +78,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuItem::resource(\App\Nova\WebsiteCollectible::class),
                 
                 MenuItem::resource(\App\Nova\CameraWeb::class)
-                    ->withBadge($this->badge('camera_web', ['approved' => 0])),
+                    ->withBadge($this->badge('camera_web', ['approved' => 0]), 'warning'),
 
                 MenuItem::resource(\App\Nova\WebsiteBetaCode::class),
 
@@ -88,7 +88,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WebsiteHelpCenter::class),
 
-                MenuItem::resource(\App\Nova\WebsiteSupportTicket::class),
+                MenuItem::resource(\App\Nova\WebsiteSupportTicket::class)
+                    ->withBadge($this->badge('website_help_center_tickets', ['open' => 1]), 'danger'),
             ])->icon('globe')->collapsable()->collapsedByDefault(),
 
             MenuSection::make('Furniture', [

@@ -100,4 +100,14 @@ class EmulatorSetting extends Resource
     {
         return [];
     }
+
+    /**
+     * Get the key for the resource.
+     *
+     * @return string
+     */
+    public static function getKeyName()
+    {
+        return 'key';
+    }
 }
