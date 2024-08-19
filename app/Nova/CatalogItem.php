@@ -2,11 +2,12 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Panel;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class CatalogItem extends Resource
@@ -75,46 +76,48 @@ class CatalogItem extends Resource
                 ->rules('required', 'integer')
                 ->default(0),
 
-            Number::make('Limited Stack')
-                ->hideFromIndex()
-                ->rules('required', 'integer')
-                ->default(0),
+            (new Panel('Advanced Settings', [
+                Number::make('Limited Stack')
+                    ->hideFromIndex()
+                    ->rules('required', 'integer')
+                    ->default(0),
 
-            Number::make('Limited Sells')
-                ->hideFromIndex()
-                ->rules('required', 'integer')
-                ->default(0),
+                Number::make('Limited Sells')
+                    ->hideFromIndex()
+                    ->rules('required', 'integer')
+                    ->default(0),
 
-            Number::make('Order Number')
-                ->hideFromIndex()
-                ->rules('required', 'integer')
-                ->default(1),
+                Number::make('Order Number')
+                    ->hideFromIndex()
+                    ->rules('required', 'integer')
+                    ->default(1),
 
-            Number::make('Offer ID')
-                ->hideFromIndex()
-                ->rules('required', 'integer')
-                ->default(-1),
+                Number::make('Offer ID')
+                    ->hideFromIndex()
+                    ->rules('required', 'integer')
+                    ->default(-1),
 
-            Number::make('Song ID')
-                ->hideFromIndex()
-                ->rules('required', 'integer')
-                ->default(-1),
+                Number::make('Song ID', 'song_id')
+                    ->hideFromIndex()
+                    ->rules('required', 'integer')
+                    ->default(0),
 
-            Text::make('Extra Data', 'extradata')
-                ->hideFromIndex()
-                ->rules('sometimes', 'nullable', 'max:500'),
+                Text::make('Extra Data', 'extradata')
+                    ->hideFromIndex()
+                    ->rules('sometimes', 'nullable', 'max:500'),
 
-            Boolean::make('Have Offer')
-                ->hideFromIndex()
-                ->trueValue('1')
-                ->falseValue('0')
-                ->default('1'),
+                Boolean::make('Have Offer')
+                    ->hideFromIndex()
+                    ->trueValue('1')
+                    ->falseValue('0')
+                    ->default('1'),
 
-            Boolean::make('Club Only')
-                ->hideFromIndex()
-                ->trueValue('1')
-                ->falseValue('0')
-                ->default('0'),
+                Boolean::make('Club Only')
+                    ->hideFromIndex()
+                    ->trueValue('1')
+                    ->falseValue('0')
+                    ->default('0'),
+            ]))->collapsedByDefault(),
         ];
     }
 

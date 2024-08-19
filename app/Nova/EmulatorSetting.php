@@ -53,7 +53,7 @@ class EmulatorSetting extends Resource
                 ->sortable()
                 ->rules('required', 'max:255')
                 ->creationRules('unique:emulator_settings,key')
-                ->updateRules('unique:emulator_settings,key,{{resourceId}}'),
+                ->updateRules('unique:emulator_settings,key,{{resourceId}},key'),
 
             Text::make('Value')
                 ->sortable()
@@ -99,15 +99,5 @@ class EmulatorSetting extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
-    }
-
-    /**
-     * Get the key for the resource.
-     *
-     * @return string
-     */
-    public static function getKeyName()
-    {
-        return 'key';
     }
 }

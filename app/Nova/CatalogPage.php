@@ -2,13 +2,15 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\MultiSelect;
+use Illuminate\Support\Str;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Hidden;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class CatalogPage extends Resource
@@ -55,20 +57,33 @@ class CatalogPage extends Resource
         return [
             Number::make('Position', 'order_num')
                 ->sortable()
-                ->rules('required', 'integer'),
+                ->rules('required', 'integer')
+                ->default(1),
 
-            BelongsTo::make('Parent', 'parent', self::class)
-                ->hideFromIndex()
+            Select::make('Parent', 'parent_id')
+                ->sortable()
                 ->searchable()
-                ->nullable()
-                ->rules('sometimes', 'nullable'),
-
-            Text::make('Caption Save', 'caption_save')
-                ->hideFromIndex()
-                ->rules('required', 'max:25'),
+                ->options(CatalogPage::all()->push(['id' => -1, 'caption' => 'No Parent'])->pluck('caption', 'id'))
+                ->rules('required')
+                ->default(-1)
+                ->displayUsingLabels(),
 
             Text::make('Caption')
                 ->sortable()
+                ->rules('required', 'max:128'),
+
+            Hidden::make('Caption Save')
+                ->onlyOnForms()
+                ->hideWhenUpdating()
+                ->fillUsing(fn ($request, $model, $attribute, $requestAttribute) => 
+                    $model->{$attribute} = $request->isCreateOrAttachRequest() 
+                        ? Str::snake($request->input('caption')) 
+                        : $request->input($requestAttribute)
+                ),
+
+            Text::make('Caption Save')
+                ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('required', 'max:128'),
 
             Select::make('Page Layout')
@@ -81,59 +96,70 @@ class CatalogPage extends Resource
 
             Number::make('Icon Color')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('required', 'integer')
                 ->default(1),
 
             Number::make('Icon Image')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('required', 'integer')
                 ->default(0),
 
             BelongsTo::make('Minimum Rank', 'permission', Permission::class)
                 ->sortable()
-                ->searchable()
                 ->rules('required', 'exists:permissions,id'),
 
             Text::make('Page Headline')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'max:1024'),
 
             Text::make('Page Teaser')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'max:64'),
 
             Text::make('Page Special')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'nullable', 'max:2048'),
 
             Text::make('Page Text 1', 'page_text1')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'nullable', 'max:2048'),
 
             Text::make('Page Text 2', 'page_text2')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'nullable', 'max:2048'),
 
             Text::make('Page Text Details', 'page_text_details')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'nullable', 'max:2048'),
 
             Text::make('Page Text Teaser', 'page_text_teaser')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('sometimes', 'nullable', 'max:2048'),
 
             BelongsTo::make('Room', 'room', Room::class)
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->searchable()
                 ->nullable(),
 
             MultiSelect::make('Includes')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->options(CatalogPage::all()->pluck('caption', 'id'))
                 ->displayUsingLabels(),
 
             Boolean::make('Visible')
                 ->sortable()
+                ->hideWhenCreating()
                 ->rules('required', 'boolean')
                 ->trueValue(1)
                 ->falseValue(0)
@@ -141,6 +167,7 @@ class CatalogPage extends Resource
 
             Boolean::make('Enabled')
                 ->sortable()
+                ->hideWhenCreating()
                 ->rules('required', 'boolean')
                 ->trueValue(1)
                 ->falseValue(0)
@@ -148,6 +175,7 @@ class CatalogPage extends Resource
 
             Boolean::make('Club Only')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('required', 'boolean')
                 ->trueValue(1)
                 ->falseValue(0)
@@ -155,6 +183,7 @@ class CatalogPage extends Resource
 
             Boolean::make('VIP Only')
                 ->hideFromIndex()
+                ->hideWhenCreating()
                 ->rules('required', 'boolean')
                 ->trueValue(1)
                 ->falseValue(0)

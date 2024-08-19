@@ -53,7 +53,7 @@ class EmulatorText extends Resource
                 ->sortable()
                 ->rules('required', 'max:255')
                 ->creationRules('unique:emulator_texts,key')
-                ->updateRules('unique:emulator_texts,key,{{resourceId}}'),
+                ->updateRules('unique:emulator_texts,key,{{resourceId}},key'),
 
             Text::make('Value')
                 ->sortable()
