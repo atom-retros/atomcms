@@ -55,6 +55,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "livewire/volt": "^1.6",
         "outl1ne/nova-multiselect-field": "^4.4.0",
         "qirolab/laravel-themer": "^2.0",
         "ryangjchandler/laravel-cloudflare-turnstile": "^1.1",
