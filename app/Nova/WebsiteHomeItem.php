@@ -66,7 +66,8 @@ class WebsiteHomeItem extends Resource
 
             Number::make('Maximum Purchases')
                 ->hideFromIndex()
-                ->rules('required', 'integer'),
+                ->rules('required', 'integer')
+                ->default(fn () => -1),
 
             Select::make('Type')
                 ->sortable()
