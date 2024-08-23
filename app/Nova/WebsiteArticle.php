@@ -74,7 +74,11 @@ class WebsiteArticle extends Resource
                 ->rules('required', 'max:255'),
 
             Tinymce::make('Full Story')
-                ->fullWidth(),
+                ->fullWidth()
+                ->resolveUsing(fn (string $value) => str_replace('../../../..', config('app.url'), $value))
+                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
+                    $model->{$attribute} = str_replace('../../../..', config('app.url'), $request->get($requestAttribute));
+                }),
 
             BelongsTo::make('User', 'user', User::class)
                 ->sortable()

@@ -70,7 +70,11 @@ class WebsiteHelpCenter extends Resource
                 ->updateRules('nullable'),
 
             Tinymce::make('Content')
-                ->fullWidth(),
+                ->fullWidth()
+                ->resolveUsing(fn (string $value) => str_replace('../../../..', config('app.url'), $value))
+                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
+                    $model->{$attribute} = str_replace('../../../..', config('app.url'), $request->get($requestAttribute));
+                }),
 
             Text::make('Button Text', 'button_text')
                 ->hideFromIndex()
