@@ -1,18 +1,22 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-import path from "path";
+import { defineConfig } from 'vite'
+import laravel from 'laravel-vite-plugin'
+import tailwindcss from 'tailwindcss'
+import path from 'path'
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                path.resolve(__dirname, './resources/css/app.css'),
+                path.resolve(__dirname, './resources/js/app.js'),
+            ],
             refresh: true,
-        }), 
+        }),
     ],
     css: {
         postcss: {
             plugins: [
-                require("tailwindcss")({
+                tailwindcss({
                     config: path.resolve(__dirname, "tailwind.config.js"),
                 }),
             ],
