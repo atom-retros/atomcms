@@ -36,6 +36,7 @@ use App\Http\Controllers\User\TwoFactorAuthenticationController;
 use App\Http\Controllers\User\UserReferralController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
 // Language route
 Route::get('/language/{locale}', LocaleController::class)->name('language.select');
@@ -61,8 +62,14 @@ Route::middleware(['maintenance', 'check.ban', 'force.staff.2fa'])->group(functi
     Route::get('/banned', BannedController::class)->name('banned.show');
 
     // Exceptions to the 2FA check and must only be visited if not logged in
-    Route::middleware('guest')->withoutMiddleware('force.staff.2fa')->group(function () {
+    Route::middleware(['guest', 'throttle:15,1'])->withoutMiddleware('force.staff.2fa')->group(function () {
+        Route::get('/login', static fn() => to_route('welcome'))->name('login');
         Route::get('/', HomeController::class)->name('welcome');
+
+        Route::get('/register', [RegisteredUserController::class, 'create']);
+
+        Route::post('/register', [RegisteredUserController::class, 'store'])
+            ->name('register');
 
         Route::get('/register/{referral_code}', UserReferralController::class)->name('register.referral');
 

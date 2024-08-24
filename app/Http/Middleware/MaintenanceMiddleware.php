@@ -15,7 +15,17 @@ class MaintenanceMiddleware
         $isMaintenanceRequest = $request->is('maintenance');
         $maintenanceEnabled = setting('maintenance_enabled');
 
+        $fortify2faRoutes = [
+            'two-factor.login',
+            'two-factor.confirm',
+        ];
+
         if ($maintenanceEnabled && $isPostRequest && !Auth::check()) {
+            return $next($request);
+        }
+
+        $isFortify2faRoute = in_array($request->route()?->getName(), $fortify2faRoutes, true);
+        if ($maintenanceEnabled && $isFortify2faRoute) {
             return $next($request);
         }
 
