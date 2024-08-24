@@ -165,9 +165,3 @@ Atom CMS is made possible by the contributions of numerous developers, designers
 -   **Kani** - Rcon System & Findretros API
 -   **Sonay** - Material theme
 -   **Raizer** - Circinus
-
-### 🙏 Donations
-If you wish to support my work, you can click the button below to "buy me a coffee" it's also possible to create a "subscription" where you'd support me with a coffee every month
-
-<a href="https://www.buymeacoffee.com/dennisobject" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
