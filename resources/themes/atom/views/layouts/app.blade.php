@@ -70,5 +70,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//unpkg.com/@popperjs/core@2"></script>
 </body>
 </html>
