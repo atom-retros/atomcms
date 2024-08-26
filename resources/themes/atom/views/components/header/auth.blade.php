@@ -1,7 +1,7 @@
 @auth
     <div class="relative flex items-center justify-center w-full h-full pr-10 max-w-7xl md:justify-between">
         <div class="flex items-center w-full gap-3">
-            <a href="{{ route('index') }}" class="ml-7">
+            <a href="{{ route('index') }}" class="transition-all duration-300 hover:scale-110 ml-7">
                 <img src="{{ asset('images/logo.png') }}" alt="logo" />
             </a>
 

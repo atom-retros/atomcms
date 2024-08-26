@@ -3,13 +3,13 @@
 @push('title', __('Welcome to the best hotel on the web!'))
 
 @section('content')
-    <div class="col-span-12 lg:col-span-9 lg:w-[96%]">
+    <div class="col-span-12 lg:col-span-9">
         <div class="flex flex-col gap-3">
             <x-staff.list :permissions="$permissions" />
         </div>
     </div>
 
-    <div class="col-span-12 lg:col-span-3 lg:w-[110%] space-y-4 lg:-ml-[32px]">
+    <div class="flex flex-col col-span-12 gap-3 lg:col-span-3">
         <x-card.base title="{{ __(':hotel staff', ['hotel' => $settings->get('hotel_name')]) }}" subtitle="{{ __('About the :hotel staff', ['hotel' => $settings->get('hotel_name')]) }}" icon="chat">
             <div class="prose-sm prose dark:prose-invert">
                 <p>{{ __('The :hotel staff team is one big happy family, each staff member has a different role and duties to fulfill.', ['hotel' => $settings->get('hotel_name')]) }}</p>
