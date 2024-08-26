@@ -6,7 +6,7 @@
             </button>
 
             @auth
-                <x-navigation.item href="#" icon="{{ asset('images/icons/navigation/home.png') }}" :active="request()->routeIs('users*') || request()->routeIs('profiles')" dropdown>
+                <x-navigation.item href="#" icon="home" :active="request()->routeIs('users*') || request()->routeIs('profiles')" dropdown>
                     {{ auth()->user()->username }}
 
                     <x-slot:children>
@@ -17,12 +17,12 @@
             @endauth
 
             @guest
-                <x-navigation.item href="{{ route('index') }}" icon="{{ asset('images/icons/navigation/home.png') }}" :active="request()->routeIs('index')">
+                <x-navigation.item href="{{ route('index') }}" icon="home" :active="request()->routeIs('index')">
                     {{ __('Home') }}
                 </x-navigation.item>
             @endguest
 
-            <x-navigation.item href="#" icon="{{ asset('images/icons/navigation/community.png') }}" :active="request()->routeIs('community*')" dropdown>
+            <x-navigation.item href="#" icon="community" :active="request()->routeIs('community*')" dropdown>
                 {{ __('Community') }}
 
                 <x-slot:children>
@@ -34,19 +34,19 @@
                 </x-slot:children>
             </x-navigation.item>
 
-            <x-navigation.item href="{{ route('leaderboards') }}" icon="{{ asset('images/icons/navigation/leaderboards.png') }}" :active="request()->routeIs('leaderboards')">
+            <x-navigation.item href="{{ route('leaderboards') }}" icon="leaderboards" :active="request()->routeIs('leaderboards')">
                 {{ __('Leaderboards') }}
             </x-navigation.item>
 
-            <x-navigation.item href="{{ route('rare-values') }}" icon="{{ asset('images/icons/navigation/leaderboards.png') }}" :active="request()->routeIs('rare-values')">
+            <x-navigation.item href="{{ route('rare-values') }}" icon="leaderboards" :active="request()->routeIs('rare-values')">
                 {{ __('Rare values') }}
             </x-navigation.item>
 
-            <x-navigation.item href="{{ route('shop') }}" icon="{{ asset('images/icons/navigation/shop.png') }}" :active="request()->routeIs('shop')">
+            <x-navigation.item href="{{ route('shop') }}" icon="shop" :active="request()->routeIs('shop')">
                 {{ __('Shop') }}
             </x-navigation.item>
 
-            <x-navigation.item href="#" icon="{{ asset('images/icons/navigation/home.png') }}" :active="request()->routeIs('help-center*')" dropdown>
+            <x-navigation.item href="#" icon="home" :active="request()->routeIs('help-center*')" dropdown>
                 {{ __('Assistance') }}
 
                 <x-slot:children>
@@ -54,23 +54,6 @@
                     <x-dropdown.item href="{{ route('help-center.rules') }}">{{ __('Rules') }}</x-dropdown.item>
                 </x-slot:children>
             </x-navigation.item>
-
-
-            {{-- @auth
-                <x-navigation.dropdown icon="home" route-group="user*">
-                    {{ auth()->user()->username }}
-        
-                    <x-slot:children>
-                        <x-navigation.dropdown-child :route="route('me.show')">
-                            {{ __('Home') }}
-                        </x-navigation.dropdown-child>
-        
-                        <x-navigation.dropdown-child :route="route('profile.show', auth()->user()->username)">
-                            {{ __('My Profile') }}
-                        </x-navigation.dropdown-child>
-                    </x-slot:children>
-                </x-navigation.dropdown>
-            @endauth --}}
         </div>
 
         <div :class="dropdownVisible ? 'flex md:flex' : 'hidden md:flex'" class="justify-end w-full gap-3 py-3 md:justify-center md:w-auto md:py-0">

@@ -6,7 +6,7 @@
         'md:border-b-4 md:border-b-[#eeb425]' => $active,
         $attributes->get('class'),
     ]) @if ($dropdown) x-on:click.prevent="active = !active" @endif>
-        <img src="{{ $icon }}" alt="{{ $icon }}" />
+        <img src="{{ asset('images/icons/navigation/' . $icon . '.png') }}" alt="{{ $icon }}" />
 
         <span class="flex-1 md:flex-0">{{ $slot }}</span>
 
