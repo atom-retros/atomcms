@@ -35,9 +35,11 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     
     <link rel="icon" type="image/png" sizes="18x17" href="{{ asset('images/favicon.png') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
     
     @if (config('services.turnstile.enabled'))@turnstileScripts()@endif
 
@@ -49,9 +51,24 @@
     @vite(sprintf('resources/themes/%s/js/app.js', $settings->get('theme')))
 </head>
 
-<body class="w-screen min-h-screen overflow-x-hidden overflow-y-auto" style="background-image: url('{{ asset('images/bg.png') }}')">
-    <main class="w-screen h-screen">
-        @yield('content')
+<body class="flex flex-col min-h-screen bg-fixed bg-right-bottom bg-no-repeat dark:bg-gray-800 bg-[url('/images/background-light.jpg')] dark:bg-[url('/images/background-dark.jpg')]">
+    <x-messages.debug-message />
+
+    <x-messages.flash-messages />
+
+    <main id="app">
+        <x-header.base />
+
+        <x-navigation.base />
+
+        <x-container>
+            @yield('content')
+        </x-container>
     </main>
+
+    <x-footer />
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
