@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', __('Welcome to the best hotel on the web!'))
+@push('title', __('Account settings'))
 
 @section('content')
     <p>In Progress...</p>

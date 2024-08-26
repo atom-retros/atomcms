@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', __('Welcome to the best hotel on the web!'))
+@push('title', auth()->user()->username)
 
 @section('content')
     <div class="flex flex-col col-span-12 gap-3 md:col-span-9">

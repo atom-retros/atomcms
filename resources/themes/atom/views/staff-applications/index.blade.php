@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', __('Welcome to the best hotel on the web!'))
+@push('title', __('Staff'))
 
 @section('content')
     <div class="col-span-12 lg:col-span-9">

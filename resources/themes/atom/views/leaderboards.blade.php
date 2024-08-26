@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', __('Welcome to the best hotel on the web!'))
+@push('title', __('Leaderboard'))
 
 @section('content')
     <div class="flex flex-col col-span-12 gap-3">

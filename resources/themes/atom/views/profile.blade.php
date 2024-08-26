@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', __('Welcome to the best hotel on the web!'))
+@push('title', $user->username)
 
 @section('content')
     <p>In Progress...</p>
