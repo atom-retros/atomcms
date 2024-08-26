@@ -61,7 +61,7 @@ class CatalogTargetOffer extends Resource
 
             Tinymce::make('Description')
                 ->fullWidth()
-                ->resolveUsing(fn (string $value) => str_replace('../../../..', config('app.url'), $value))
+                ->resolveUsing(fn ($value) => str_replace('../../../..', config('app.url'), $value ?: ''))
                 ->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
                     $model->{$attribute} = str_replace('../../../..', config('app.url'), $request->get($requestAttribute));
                 }),
