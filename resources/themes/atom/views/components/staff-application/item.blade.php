@@ -1,6 +1,6 @@
 @props(['position'])
 
-<x-card.base title="{{ $position->permission->rank_name }}" subtitle="{{ $position->permission->job_description }}" badge="{{ $position->permission->badge }}">
+<x-card.base title="{{ $position->permission->rank_name }}" subtitle="{{ $position->permission->job_description }}">
     <div class="max-w-full prose-sm prose dark:prose-invert">
         <p>{!! $position->description !!}</p>
 

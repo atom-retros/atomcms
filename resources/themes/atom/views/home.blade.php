@@ -16,6 +16,8 @@
             <x-article.item :article="$article" />
         @endif
 
-        {{-- @todo - Discord --}}
+        @if ($settings->get('discord_widget_id'))
+            <x-user.discord />
+        @endif
     </div>
 @endsection

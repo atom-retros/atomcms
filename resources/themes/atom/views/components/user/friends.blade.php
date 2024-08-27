@@ -11,7 +11,7 @@
         @forelse($friends as $friend)
             <x-user.friend-item :friend="$friend" />
         @empty
-            {{-- @todo - Empty Message --}}
+            <p class="block w-full mb-3 text-xs font-medium text-center text-gray-500 dark:text-white md:text-left md:mb-0">{{ __('No friends online') }}</p>
         @endforelse
     </div>
 </div>
