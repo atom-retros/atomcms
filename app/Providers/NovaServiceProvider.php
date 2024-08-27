@@ -78,6 +78,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuItem::resource(\App\Nova\WebsiteOpenPosition::class),
 
+                MenuItem::resource(\App\Nova\WebsiteRareValueCategory::class),
+
+                MenuItem::resource(\App\Nova\WebsiteRareValue::class),
+
+
                 MenuItem::resource(\App\Nova\WebsiteCollectible::class),
                 
                 MenuItem::resource(\App\Nova\CameraWeb::class)
