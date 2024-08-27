@@ -8,34 +8,20 @@
         <div class="flex items-center gap-3">
             <x-form.input id="referral" value="{{ sprintf('%s/register?referral_code=%s', config('app.url'), auth()->user()->referral_code) }}" class="flex-1" readonly />
             <div class="w-36">
-                <x-button variant="secondary">{{ __('Copy code') }}</x-button>
+                <x-button variant="secondary" onclick="copyReferralLink()">{{ __('Copy code') }}</x-button>
             </div>
         </div>
     </div>
 </x-card.base>
 
 <script>
-    // @todo - Fix Swal
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 4000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer)
-            toast.addEventListener("mouseleave", Swal.resumeTimer)
-        }
-    })
-
-    function copy() {
-        const el = document.getElementById("referral")
-        el.select()
-        document.execCommand("copy")
-
-        Toast.fire({
-            icon: "success",
-            title: "{{ __('Your referral code has been copied to your clipbord!') }}",
+    function copyReferralLink() {
+        const referralLink = document.getElementById('referral').value
+        navigator.clipboard.writeText(referralLink)
+        
+        Swal.fire({
+            icon: 'success',
+            text: '{{ __('Your referral code has been copied to your clipbord!') }}',
         })
     }
 </script>
