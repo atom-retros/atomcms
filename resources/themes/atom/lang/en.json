@@ -2,6 +2,7 @@
     "meta.description": "Welcome to :name, the ultimate hotel! Join a vibrant community, explore custom rooms, and enjoy endless fun with friends. Start your adventure now at :name!",
     "meta.keywords": ":name,:url,habbo hotel,virtual,virtual community,online chat,custom rooms,avatar games,multiplayer,pixel art,virtual world,retro gaming,world,social network,free,community,avatar,chat,online,teen,roleplaying,join,social,groups,forums,safe,play,games,online,friends,teens,rares,rare furni,collecting,create,collect,connect,furni,furniture,pets,room design,sharing,expression,badges,hangout,music,celebrity,celebrity visits,celebrities,mmo,mmorpg,massively multiplayer",
     "meta.twitter": "@atom",
+
     "Home": "Home",
     "Community": "Community",
     "Leaderboards": "Leaderboards",
@@ -30,6 +31,9 @@
     "Confirm Password": "Confirm Password",
     "Repeat Password": "Repeat Password",
     "Email": "Email",
+    "Current E-mail": "Current E-mail",
+    "Confirm E-mail": "Confirm E-mail",
+    "Enter your current email address": "Enter your current email address",
     "Remember me": "Remember me",
     "Go to :hotel": "Go to :hotel",
     "User Referrals": "User Referrals",
