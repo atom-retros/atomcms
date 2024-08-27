@@ -3,5 +3,6 @@
 @push('title', $article->title)
 
 @section('content')
-    <p>In Progress...</p>
+    <x-article.sidebar :article="$article" :articles="$articles" />
+    <x-article.base :article="$article" />
 @endsection
