@@ -44,6 +44,14 @@ return [
             'throw' => false,
         ],
 
+        'group_badges' => [
+            'driver' => 'local',
+            'root' => env('NITRO_GROUP_BADGE_PATH'),
+            'url' => env('NITRO_GROUP_BADGE_URL'),
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'album1584' => [
             'driver' => 'local', 
             'root' => env('NITRO_BADGE_PATH'),
