@@ -3,5 +3,6 @@
 @push('title', __('Staff'))
 
 @section('content')
-    <p>In Progress...</p>
+    <x-staff-application.composer :position="$position" :applied="$applied" />
+    <x-staff-application.content :position="$position" />
 @endsection
