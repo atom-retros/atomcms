@@ -3,10 +3,10 @@
 <x-card.base>
     <div class="flex flex-col gap-3">
         <div class="flex items-center justify-center w-full h-24 p-3 bg-gray-100 rounded dark:bg-gray-900">
-            <img src="{{ Storage::url($rare->furniture_icon) }}" class="max-h-full" />
+            <img src="{{ $rare->item->icon }}" class="max-h-full" />
         </div>
 
-        <p class="text-sm dark:text-white">{{ $rare->name }}</p>
+        <p class="text-sm dark:text-white">{{ $rare->item->public_name }}</p>
 
         <div class="flex items-center gap-3 px-3 py-1 bg-yellow-400 rounded">
             <img src="{{ asset('images/icons/currency/credits.png') }}" alt="Credits">
