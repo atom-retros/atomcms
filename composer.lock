@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0688323c49665db8e87ab77ce1a84d56",
+    "content-hash": "47d0c943bde566ac465f907df040d5c5",
     "packages": [
         {
             "name": "atomcms/core",
@@ -112,10 +112,16 @@
         {
             "name": "atomcms/installation",
             "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "./packages/installation",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atom-retros/installation.git",
                 "reference": "eae497733b8ee9a3a26d2d1cd395e1037c08f027"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atom-retros/installation/zipball/eae497733b8ee9a3a26d2d1cd395e1037c08f027",
+                "reference": "eae497733b8ee9a3a26d2d1cd395e1037c08f027",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
@@ -130,6 +136,7 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -192,9 +199,17 @@
                 "installation",
                 "laravel"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/atom-retros/installation/tree/main",
+                "issues": "https://github.com/atom-retros/installation/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/atomcms"
+                }
+            ],
+            "time": "2024-08-23T22:41:26+00:00"
         },
         {
             "name": "atomcms/locale",

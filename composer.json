@@ -10,8 +10,8 @@
             "url": "https://bitbucket.org/atomcms/housekeeping.git"
         },
         "atomcms/installation": {
-            "type": "path",
-            "url": "./packages/installation"
+            "type": "vcs",
+            "url": "git@github.com:atom-retros/installation.git"
         },
         "atomcms/rcon": {
             "type": "vcs",
