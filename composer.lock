@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a97cf2809076461be0fe08fe5fb2e0e5",
+    "content-hash": "0688323c49665db8e87ab77ce1a84d56",
     "packages": [
         {
             "name": "atomcms/core",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "85516174b464a17952a1f66bfd5222d3d00cb772"
+                "reference": "f961bab0820b8e64e48c3245c54ab9282ef078f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/85516174b464a17952a1f66bfd5222d3d00cb772",
-                "reference": "85516174b464a17952a1f66bfd5222d3d00cb772",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/f961bab0820b8e64e48c3245c54ab9282ef078f8",
+                "reference": "f961bab0820b8e64e48c3245c54ab9282ef078f8",
                 "shasum": ""
             },
             "require": {
@@ -107,21 +107,15 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-08-23T21:01:04+00:00"
+            "time": "2024-08-23T22:40:44+00:00"
         },
         {
             "name": "atomcms/installation",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/atom-retros/installation.git",
-                "reference": "b9b2471336cf83f40b7699334d2668ae5daad21d"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/installation/zipball/b9b2471336cf83f40b7699334d2668ae5daad21d",
-                "reference": "b9b2471336cf83f40b7699334d2668ae5daad21d",
-                "shasum": ""
+                "type": "path",
+                "url": "./packages/installation",
+                "reference": "eae497733b8ee9a3a26d2d1cd395e1037c08f027"
             },
             "require": {
                 "illuminate/contracts": "^10.0||^11.0",
@@ -136,7 +130,6 @@
                 "pestphp/pest-plugin-laravel": "^2.3",
                 "spatie/laravel-ray": "^1.35"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -199,17 +192,9 @@
                 "installation",
                 "laravel"
             ],
-            "support": {
-                "source": "https://github.com/atom-retros/installation/tree/main",
-                "issues": "https://github.com/atom-retros/installation/issues"
-            },
-            "funding": [
-                {
-                    "type": "github",
-                    "url": "https://github.com/atomcms"
-                }
-            ],
-            "time": "2024-07-13T16:32:56+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "atomcms/locale",
@@ -423,12 +408,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/theme.git",
-                "reference": "51eb93eb8e48b00c8500b3d37616e0896274fb1e"
+                "reference": "9bba388fcbcb78cbc0095269d9b7e3330b88f6f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/theme/zipball/51eb93eb8e48b00c8500b3d37616e0896274fb1e",
-                "reference": "51eb93eb8e48b00c8500b3d37616e0896274fb1e",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/9bba388fcbcb78cbc0095269d9b7e3330b88f6f6",
+                "reference": "9bba388fcbcb78cbc0095269d9b7e3330b88f6f6",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +503,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-08-23T14:09:29+00:00"
+            "time": "2024-08-27T09:18:17+00:00"
         },
         {
             "name": "atomcms/voting",
@@ -526,12 +511,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/voting.git",
-                "reference": "6791cbebfbd6c25c00455e7b0f16bc9e9aa68aee"
+                "reference": "35d13d5a00e7bda2b2028e53f94537a10d475797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/voting/zipball/6791cbebfbd6c25c00455e7b0f16bc9e9aa68aee",
-                "reference": "6791cbebfbd6c25c00455e7b0f16bc9e9aa68aee",
+                "url": "https://api.github.com/repos/atom-retros/voting/zipball/35d13d5a00e7bda2b2028e53f94537a10d475797",
+                "reference": "35d13d5a00e7bda2b2028e53f94537a10d475797",
                 "shasum": ""
             },
             "require": {
@@ -621,7 +606,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-08-19T10:58:28+00:00"
+            "time": "2024-08-26T03:42:28+00:00"
         },
         {
             "name": "brick/math",
@@ -10454,16 +10439,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.11",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "707c2aed5d8d0075666e673a5e71440c1d01a5a3"
+                "reference": "384af967d35b2162f69526c7276acadce534d0e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/707c2aed5d8d0075666e673a5e71440c1d01a5a3",
-                "reference": "707c2aed5d8d0075666e673a5e71440c1d01a5a3",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/384af967d35b2162f69526c7276acadce534d0e1",
+                "reference": "384af967d35b2162f69526c7276acadce534d0e1",
                 "shasum": ""
             },
             "require": {
@@ -10508,7 +10493,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-19T14:37:29+00:00"
+            "time": "2024-08-27T09:18:05+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

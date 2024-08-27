@@ -10,8 +10,8 @@
             "url": "https://bitbucket.org/atomcms/housekeeping.git"
         },
         "atomcms/installation": {
-            "type": "vcs",
-            "url": "git@github.com:atom-retros/installation.git"
+            "type": "path",
+            "url": "./packages/installation"
         },
         "atomcms/rcon": {
             "type": "vcs",
@@ -23,7 +23,7 @@
         },
         "atomcms/core": {
             "type": "vcs",
-            "url": "git@github.com:atom-retros/core"
+            "url": "git@github.com:atom-retros/core.git"
         },
         "atomcms/theme": {
             "type": "vcs",
@@ -84,7 +84,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/cloudflare.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
