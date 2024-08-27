@@ -2,7 +2,7 @@
 
 <div class="group dark:bg-gray-900 rounded w-full bg-white shadow relative overflow-hidden transition ease-in-out duration-200 hover:scale-[101%]">
     <a href="{{ route('community.articles.show', $article) }}">
-        <div class="w-full h-[108px] overflow-hidden">
+        <div class="w-full h-[110px] overflow-hidden">
             <img src="{{ Storage::exists($article->image) ? Storage::url($article->image) : $article->image }}" alt="{{ $article->title }}" class="object-none object-right min-h-full transition-all duration-300 group-hover:object-center" />
         </div>
 
