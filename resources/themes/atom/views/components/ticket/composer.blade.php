@@ -1,6 +1,6 @@
 @props(['categories'])
 
-<x-card.base title="{{ __('Create a ticket') }}" subtitle="{{ __('Please describe your request below') }}" icon="chat">
+<x-card.base title="{{ __('Create a ticket') }}" subtitle="{{ __('Please describe your request below') }}" icon="chat" icon-color="#375571">
     <x-form.form route="{{ route('help-center.tickets.store') }}" class="flex flex-col gap-3">
         <x-form.select
             id="category_id"

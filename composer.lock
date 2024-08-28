@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47d0c943bde566ac465f907df040d5c5",
+    "content-hash": "695a92969dda0386871a54b1d10749bc",
     "packages": [
         {
             "name": "atomcms/core",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/core.git",
-                "reference": "f961bab0820b8e64e48c3245c54ab9282ef078f8"
+                "reference": "1826df64c6fee24b4835f505bff8bda0fcb9e6c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/core/zipball/f961bab0820b8e64e48c3245c54ab9282ef078f8",
-                "reference": "f961bab0820b8e64e48c3245c54ab9282ef078f8",
+                "url": "https://api.github.com/repos/atom-retros/core/zipball/1826df64c6fee24b4835f505bff8bda0fcb9e6c4",
+                "reference": "1826df64c6fee24b4835f505bff8bda0fcb9e6c4",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-08-23T22:40:44+00:00"
+            "time": "2024-08-28T12:47:55+00:00"
         },
         {
             "name": "atomcms/installation",
@@ -320,12 +320,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/rcon.git",
-                "reference": "913804f8170b8de9f653cc3b1031f5c0d9d5a248"
+                "reference": "17aa4100674e9e6c1263016c34c1f19d6b7c5759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/rcon/zipball/913804f8170b8de9f653cc3b1031f5c0d9d5a248",
-                "reference": "913804f8170b8de9f653cc3b1031f5c0d9d5a248",
+                "url": "https://api.github.com/repos/atom-retros/rcon/zipball/17aa4100674e9e6c1263016c34c1f19d6b7c5759",
+                "reference": "17aa4100674e9e6c1263016c34c1f19d6b7c5759",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +415,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-07-13T16:33:38+00:00"
+            "time": "2024-08-28T12:47:01+00:00"
         },
         {
             "name": "atomcms/theme",
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/atom-retros/theme.git",
-                "reference": "9bba388fcbcb78cbc0095269d9b7e3330b88f6f6"
+                "reference": "689f083e3acf15867606e5824cf03a556ff8ac42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atom-retros/theme/zipball/9bba388fcbcb78cbc0095269d9b7e3330b88f6f6",
-                "reference": "9bba388fcbcb78cbc0095269d9b7e3330b88f6f6",
+                "url": "https://api.github.com/repos/atom-retros/theme/zipball/689f083e3acf15867606e5824cf03a556ff8ac42",
+                "reference": "689f083e3acf15867606e5824cf03a556ff8ac42",
                 "shasum": ""
             },
             "require": {
@@ -518,7 +518,7 @@
                     "url": "https://github.com/atomcms"
                 }
             ],
-            "time": "2024-08-27T09:18:17+00:00"
+            "time": "2024-08-28T12:48:24+00:00"
         },
         {
             "name": "atomcms/voting",
@@ -5853,16 +5853,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.16.4",
+            "version": "1.16.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53"
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
-                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2",
                 "shasum": ""
             },
             "require": {
@@ -5901,7 +5901,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.4"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.5"
             },
             "funding": [
                 {
@@ -5909,7 +5909,73 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-20T07:29:11+00:00"
+            "time": "2024-08-27T18:56:10+00:00"
+        },
+        {
+            "name": "srmklive/paypal",
+            "version": "3.0.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/srmklive/laravel-paypal.git",
+                "reference": "031d69d7c99f9ef0874a34cb85326ede28cd7aed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/srmklive/laravel-paypal/zipball/031d69d7c99f9ef0874a34cb85326ede28cd7aed",
+                "reference": "031d69d7c99f9ef0874a34cb85326ede28cd7aed",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzlehttp/guzzle": "~7.0",
+                "illuminate/support": "~6.0|~7.0|~8.0|~9.0|^10.0|^11.0",
+                "nesbot/carbon": "~2.0|^3.0",
+                "php": ">=7.2|^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.0|^9.0|^10.0|^11.0",
+                "symfony/var-dumper": "~5.0|^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Srmklive\\PayPal\\Providers\\PayPalServiceProvider"
+                    ],
+                    "aliases": {
+                        "PayPal": "Srmklive\\PayPal\\Facades\\PayPal"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Srmklive\\PayPal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raza Mehdi",
+                    "email": "srmk@outlook.com"
+                }
+            ],
+            "description": "Laravel plugin For Processing Payments Through Paypal Express Checkout. Can Be Used Independently With Other Applications.",
+            "keywords": [
+                "http",
+                "laravel paypal",
+                "paypal",
+                "rest",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/srmklive/laravel-paypal/issues",
+                "source": "https://github.com/srmklive/laravel-paypal/tree/3.0.32"
+            },
+            "time": "2024-06-24T14:34:51+00:00"
         },
         {
             "name": "symfony/clock",

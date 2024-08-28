@@ -1,6 +1,6 @@
 @props(['permission'])
 
-<x-card.base badge="{{ $permission->badge }}" title="{{ $permission->rank_name }}" subtitle="{{ $permission->job_description }}">
+<x-card.base badge="{{ $permission->badge }}" title="{{ $permission->rank_name }}" subtitle="{{ $permission->job_description }}" icon-color="#327fa8">
     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         @forelse ($permission->users as $user)
             <x-card.base class="!p-0 dark:bg-gray-900">

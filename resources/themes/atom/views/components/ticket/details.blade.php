@@ -1,6 +1,6 @@
 @props(['ticket'])
 
-<x-card.base title="{{ $ticket->title }}" subtitle="{{ $ticket->user->username }}" icon="chat">
+<x-card.base title="{{ $ticket->title }}" subtitle="{{ $ticket->user->username }}" icon="chat" icon-color="#375571">
     <div class="flex flex-col gap-3">
         <div class="max-w-full prose dark:prose-invert">
             <p>{{ $ticket->content }}</p>

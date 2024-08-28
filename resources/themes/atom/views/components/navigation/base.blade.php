@@ -42,7 +42,7 @@
                 {{ __('Rare values') }}
             </x-navigation.item>
 
-            <x-navigation.item href="{{ route('shop') }}" icon="shop" :active="request()->routeIs('shop')">
+            <x-navigation.item href="{{ route('shop.index') }}" icon="shop" :active="request()->routeIs('shop.index')">
                 {{ __('Shop') }}
             </x-navigation.item>
 

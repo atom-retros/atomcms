@@ -100,6 +100,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     ->withBadge($this->badge('website_help_center_tickets', ['open' => 1]), 'danger'),
             ])->icon('globe')->collapsable()->collapsedByDefault(),
 
+            MenuSection::make('Shop', [
+                MenuItem::resource(\App\Nova\WebsiteShopCategory::class),
+
+                MenuItem::resource(\App\Nova\WebsiteShopArticle::class),
+                
+                MenuItem::resource(\App\Nova\WebsiteShopVoucher::class),
+            ])->icon('credit-card')->collapsable()->collapsedByDefault(),
+
             MenuSection::make('Furniture', [
                 MenuItem::resource(\App\Nova\Furniture::class),
 

@@ -8,7 +8,7 @@
     </div>
 
     <div class="flex flex-col col-span-12 gap-3 lg:col-span-3">
-        <x-card.base title="{{ __('Search') }}" subtitle="{{ __('Search for rares') }}" icon="catalog">
+        <x-card.base title="{{ __('Search') }}" subtitle="{{ __('Search for rares') }}" icon="catalog" icon-color="rgba(141, 74, 183, .51)">
             <x-form.form route="{{ route('rare-values', request()->query()) }}" method="GET" class="flex flex-col gap-3">
                 <x-form.input id="search" value="{{ request()->query('search') }}"
                     placeholder="{{ __('Search for rares') }}" />
@@ -16,7 +16,7 @@
             </x-form.form>
         </x-card.base>
 
-        <x-card.base title="{{ __('Rare categories') }}" subtitle="{{ __('Select a category below') }}" icon="furni">
+        <x-card.base title="{{ __('Rare categories') }}" subtitle="{{ __('Select a category below') }}" icon="furni" icon-color="#232138">
             <div class="flex flex-col gap-3">
                 <a href="{{ route('rare-values') }}">
                     <x-button variant="secondary">{{ __('All values') }}</x-button>
