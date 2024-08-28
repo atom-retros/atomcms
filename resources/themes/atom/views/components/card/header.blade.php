@@ -1,7 +1,8 @@
-@props(['icon' => null, 'badge' => null, 'title' => null, 'subtitle' => null])
+@props(['icon' => null, 'badge' => null, 'title' => null, 'subtitle' => null, 'guest' => false])
 
 <div @class([
     'flex gap-3 p-3 -mx-3 -mt-3 border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-900',
+    '!bg-transparent !border-0' => $guest,
     $attributes->get('class'),
 ])>
     @if ($icon || $badge || $iconSrc)

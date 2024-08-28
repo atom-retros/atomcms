@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('title', auth()->user()->username)
+@push('title', __('Help Center'))
 
 @section('content')
     <div class="flex flex-col col-span-12 gap-4 lg:flex-row">
