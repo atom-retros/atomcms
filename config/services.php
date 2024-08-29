@@ -40,4 +40,9 @@ return [
         'key' => env('TURNSTILE_SITE_KEY'),
         'secret' => env('TURNSTILE_SECRET_KEY'),
     ],
+
+    'ip-api' => [
+        'enabled' => env('IP_API_ENABLED', false),
+    ],
+
 ];
