@@ -53,6 +53,7 @@
         "laravel/prompts": "^0.1.24",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
         "outl1ne/nova-multiselect-field": "^4.4.0",
