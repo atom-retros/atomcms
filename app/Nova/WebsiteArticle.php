@@ -63,7 +63,7 @@ class WebsiteArticle extends Resource
 
             Image::make('Image')
                 ->hideFromIndex()
-                ->disk('public')
+                ->disk(config('filesystems.default', 'public'))
                 ->path('website-articles')
                 ->prunable()
                 ->creationRules('required')

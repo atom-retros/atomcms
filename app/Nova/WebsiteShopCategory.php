@@ -56,7 +56,7 @@ class WebsiteShopCategory extends Resource
                 ->updateRules('unique:website_shop_categories,name,{{resourceId}}'),
 
             Image::make('Icon')
-                ->disk('public')
+                ->disk(config('filesystems.default', 'public'))
                 ->creationRules('required')
                 ->updateRules('sometimes'),
         ];

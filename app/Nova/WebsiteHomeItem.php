@@ -87,7 +87,7 @@ class WebsiteHomeItem extends Resource
                 ->rules('required', 'exists:permissions,id'),
 
             Image::make('Image', 'image_url')
-                ->disk('public')
+                ->disk(config('filesystems.default', 'public'))
                 ->path(Str::plural($this->type))
                 ->creationRules('required')
                 ->updateRules('nullable'),

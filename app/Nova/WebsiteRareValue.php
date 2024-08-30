@@ -87,7 +87,7 @@ class WebsiteRareValue extends Resource
 
             Image::make('Image', 'furniture_icon')
                 ->hideFromIndex()
-                ->disk('public')
+                ->disk(config('filesystems.default', 'public'))
                 ->creationRules('required')
                 ->updateRules('nullable'),
         ];

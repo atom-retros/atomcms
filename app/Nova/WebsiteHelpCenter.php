@@ -64,7 +64,7 @@ class WebsiteHelpCenter extends Resource
 
             Image::make('Image', 'image_url')
                 ->hideFromIndex()
-                ->disk('public')
+                ->disk(config('filesystems.default', 'public'))
                 ->path('website-articles')
                 ->creationRules('nullable')
                 ->updateRules('nullable'),

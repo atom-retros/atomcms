@@ -71,7 +71,7 @@ class WebsiteShopArticle extends Resource
 
             Image::make('Icon', 'icon_url')
                 ->rules('sometimes', 'nullable')
-                ->disk('public'),
+                ->disk(config('filesystems.default', 'public')),
 
             Color::make('Color')
                 ->hideFromIndex()
