@@ -9,6 +9,8 @@ export default defineConfig({
             input: [
                 path.resolve(__dirname, './css/app.css'),
                 path.resolve(__dirname, './js/app.js'),
+                path.resolve(__dirname, './js/src/flash.js'),
+
             ],
             refresh: true,
         }),
