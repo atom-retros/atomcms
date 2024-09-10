@@ -50,6 +50,7 @@ class CatalogItem extends Resource
             BelongsTo::make('Page', 'page', CatalogPage::class)
                 ->sortable()
                 ->searchable()
+                ->displayUsing(fn ($page) => sprintf('%s (%s)', $page->caption, $page->caption_save))
                 ->rules('required', 'exists:catalog_pages,id'),
 
             Text::make('Item IDs', 'item_ids')
