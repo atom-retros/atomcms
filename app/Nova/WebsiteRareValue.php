@@ -33,8 +33,6 @@ class WebsiteRareValue extends Resource
      */
     public static $search = [
         'name',
-        'badge',
-        'priority',
     ];
 
     /**

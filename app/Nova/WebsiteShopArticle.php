@@ -37,7 +37,7 @@ class WebsiteShopArticle extends Resource
      * @var array
      */
     public static $search = [
-        'code',
+        'name',
     ];
 
     /**
