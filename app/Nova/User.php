@@ -147,6 +147,10 @@ class User extends Resource
 
             Text::make('Machine ID', 'machine_id')
                 ->onlyOnDetail(),
+
+            Text::make('Clones', 'clones', fn () => $this->clones->map(fn ($clone) => sprintf('<a href="%s" class="link-default">%s</a>', route('nova.pages.detail', ['resource' => 'users', 'resourceId' => $clone->id]), $clone->username))->join(', '))
+                ->onlyOnDetail()
+                ->asHtml(),
         ];
     }
 
