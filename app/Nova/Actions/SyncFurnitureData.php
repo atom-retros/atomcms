@@ -2,13 +2,14 @@
 
 namespace App\Nova\Actions;
 
-use Atom\Core\Models\FurnitureData;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
+use Illuminate\Support\Collection;
+use Atom\Core\Models\FurnitureData;
 use Laravel\Nova\Fields\ActionFields;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SyncFurnitureData extends Action
@@ -34,7 +35,8 @@ class SyncFurnitureData extends Action
             ->map(fn (FurnitureData $item) => ['id' => $item->item_id, 'db_id' => $item->id, ...$item->only('classname', 'revision', 'category', 'defaultdir', 'xdim', 'ydim', 'partcolors', 'name', 'description', 'adurl', 'offerid', 'buyout', 'rentofferid', 'rentbuyout', 'bc', 'excludeddynamic', 'customparams', 'specialtype', 'canstandon', 'cansiton', 'canlayon', 'furniline', 'environment', 'rare')])
             ->toArray();
 
-            file_put_contents(config('nitro.furniture_data_file'), json_encode([
+        Storage::disk('static')
+            ->put(config('nitro.furniture_data_file'), json_encode([
                 'roomitemtypes' => ['furnitype' => $roomItems],
                 'wallitemtypes' => ['furnitype' => $wallItems],
             ]));

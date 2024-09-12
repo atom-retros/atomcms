@@ -2,13 +2,14 @@
 
 namespace App\Nova\Actions;
 
-use Atom\Core\Models\ProductData;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
+use Atom\Core\Models\ProductData;
+use Illuminate\Support\Collection;
 use Laravel\Nova\Fields\ActionFields;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class SyncProductData extends Action
@@ -26,9 +27,10 @@ class SyncProductData extends Action
     {
         $productData = ProductData::all();
 
-        file_put_contents(config('nitro.product_data_file'), json_encode([
-            'productdata' => ['product' => $productData->toArray()]
-        ]));
+        Storage::disk('static')
+            ->put(config('nitro.product_data_file'), json_encode([
+                'productdata' => ['product' => $productData->toArray()]
+            ]));
     }
 
     /**

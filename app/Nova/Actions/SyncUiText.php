@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Laravel\Nova\Actions\Action;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Fields\ActionFields;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -28,7 +29,8 @@ class SyncUiText extends Action
             ->mapWithKeys(fn (UiText $item) => [$item->key => $item->value])
             ->toArray();
 
-        file_put_contents(config('nitro.ui_texts_file'), json_encode($uiTexts));
+        Storage::disk('static')
+            ->put(config('nitro.ui_texts_file'), json_encode($uiTexts));
     }
 
     /**
