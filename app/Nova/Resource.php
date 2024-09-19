@@ -9,6 +9,13 @@ use Laravel\Nova\Resource as NovaResource;
 abstract class Resource extends NovaResource
 {
     use Traits\HasPermissions;
+
+    /**
+     * The number of resources to show per page via relationships.
+     *
+     * @var int
+     */
+    public static $perPageViaRelationship = 75;
     
     /**
      * Build an "index" query for the given resource.
