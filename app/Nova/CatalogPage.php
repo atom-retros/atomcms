@@ -63,7 +63,7 @@ class CatalogPage extends Resource
             Select::make('Parent', 'parent_id')
                 ->sortable()
                 ->searchable()
-                ->options(CatalogPage::all()->push(['id' => -1, 'caption' => 'No Parent'])->pluck('caption', 'id'))
+                ->options(CatalogPage::all()->map(fn ($page) => ['id' => $page->id, 'caption' => sprintf('%s (%s)', $page->caption, $page->caption_save)])->push(['id' => -1, 'caption' => 'No Parent'])->pluck('caption', 'id'))
                 ->rules('required')
                 ->default(-1)
                 ->displayUsingLabels(),
