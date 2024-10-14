@@ -81,6 +81,7 @@ class WebsiteShopArticle extends Resource
 
             Number::make('Price', 'costs')
                 ->rules('required')
+                ->step('0.01')
                 ->default(1),
 
             BelongsTo::make('Give Rank', 'rank', Permission::class)
