@@ -9,6 +9,9 @@
         "link:base": "rimraf public/images && symlink-dir resources/themes/base/images public/images",
         "dev:base": "vite --config resources/themes/base/vite.config.js",
         "build:base": "vite build --config resources/themes/base/vite.config.js",
+        "link:habhub": "rimraf public/images && symlink-dir resources/themes/habhub/images public/images",
+        "dev:habhub": "vite --config resources/themes/habhub/vite.config.js",
+        "build:habhub": "vite build --config resources/themes/habhub/vite.config.js",
         "format": "prettier \"resources/**/*.{js,ts,vue,blade}\" --write"
     },
     "devDependencies": {
