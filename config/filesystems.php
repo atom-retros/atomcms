@@ -57,7 +57,8 @@ return [
         ],
 
         'static' => [
-            'driver' => env('NITRO_FILESYSTEM_DISK', 'local'), 
+            'driver' => env('NITRO_FILESYSTEM_DISK', 'local'),
+			'root' => storage_path('app/static'),
             'url' => env('NITRO_STATIC_URL'),
             'bucket' => env('NITRO_BUCKET'),
             'key' => env('AWS_ACCESS_KEY_ID'),
