@@ -2,14 +2,14 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ext-sockets": "*",
         "doctrine/dbal": "^3.5",
+        "filament/filament": "^3.2",
+        "filipfonal/filament-log-manager": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^11.0",
         "jenssegers/agent": "^2.6",
@@ -22,8 +22,7 @@
         "ryangjchandler/laravel-cloudflare-turnstile": "*",
         "spatie/laravel-activitylog": "^4.8",
         "srmklive/paypal": "~3.0",
-        "stevebauman/purify": "^6.0",
-        "ext-sockets": "*"
+        "stevebauman/purify": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",
@@ -42,7 +41,6 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
@@ -57,7 +55,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
