@@ -8,7 +8,6 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use App\Forms\Components\CKEditor;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;

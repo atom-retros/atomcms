@@ -32,20 +32,23 @@ class ChatlogRoomResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('room.name')
+                TextInput::make('room')
                     ->label(__('filament::resources.inputs.room'))
+                    ->formatStateUsing(fn ($record) => $record->room?->name)
                     ->columnSpanFull()
                     ->disabled(),
 
-                    TextInput::make('sender.username')
+                TextInput::make('sender')
                     ->label(__('filament::resources.inputs.sender'))
+                    ->formatStateUsing(fn ($record) => $record->sender?->username)
                     ->disabled(),
 
-                    TextInput::make('receiver.username')
+                TextInput::make('receiver')
                     ->label(__('filament::resources.inputs.receiver'))
+                    ->formatStateUsing(fn ($record) => $record->receiver?->username)
                     ->disabled(),
 
-                    Textarea::make('message')
+                Textarea::make('message')
                     ->label(__('filament::resources.inputs.message'))
                     ->columnSpanFull()
                     ->disabled(),
