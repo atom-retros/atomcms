@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Permission extends Model
 {
+    protected $guarded = [];
+
     public $timestamps = false;
 
     public function users(): HasMany

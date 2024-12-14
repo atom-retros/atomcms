@@ -24,6 +24,9 @@ use App\Models\User\ClaimedReferralLog;
 use App\Models\User\Referral;
 use App\Models\User\UserReferral;
 use App\Models\User\WebsiteUserGuestbook;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -36,7 +39,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Fortify\TwoFactorAuthenticationProvider;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, HasName
 {
     use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable;
 
@@ -224,6 +227,16 @@ class User extends Authenticatable
         return $this->hasMany(WebsiteUserGuestbook::class, 'user_id');
     }
 
+    public function chatLogs()
+    {
+        return $this->hasMany(ChatlogRoom::class, 'user_from_id');
+    }
+
+    public function chatLogsPrivate()
+    {
+        return $this->hasMany(ChatlogPrivate::class, 'user_from_id');
+    }
+
     public function getOnlineFriends(int $total = 10)
     {
         return $this->friends()
@@ -259,5 +272,15 @@ class User extends Authenticatable
     public function changePassword(string $newPassword) {
         $this->password = Hash::make($newPassword);
         $this->save();
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->username ?? 'Guest';
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return hasPermission('housekeeping_access');
     }
 }
