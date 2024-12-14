@@ -276,12 +276,11 @@ class User extends Authenticatable implements FilamentUser, HasName
 
     public function getFilamentName(): string
     {
-        // Always return a string, never null
         return $this->username ?? 'Guest';
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return hasPermission('housekeeping_access');
     }
 }

@@ -142,8 +142,8 @@ class WebsiteSettingsSeeder extends Seeder
             ],
             [
                 'key' => 'housekeeping_url',
-                'value' => 'https://hk.example.com',
-                'comment' => 'The subdomain which the HK is hosted on',
+                'value' => '/housekeeping',
+                'comment' => 'The url to the housekeeping page',
             ],
             [
                 'key' => 'max_accounts_per_ip',

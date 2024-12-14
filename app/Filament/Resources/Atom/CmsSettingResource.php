@@ -23,6 +23,8 @@ class CmsSettingResource extends Resource
 
     protected static ?string $navigationGroup = 'Website';
 
+    protected static ?string $slug = 'website/cms-settings';
+
     public static string $translateIdentifier = 'cms-settings';
 
     public static function form(Form $form): Form
