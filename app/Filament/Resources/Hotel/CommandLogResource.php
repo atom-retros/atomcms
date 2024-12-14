@@ -39,7 +39,7 @@ class CommandLogResource extends Resource
                     ->label(__('filament::resources.columns.username'))
                     ->searchable(),
 
-                TextColumn::make('params')
+                TextColumn::make('command')
                     ->label(__('filament::resources.columns.command'))
                     ->searchable(),
 
