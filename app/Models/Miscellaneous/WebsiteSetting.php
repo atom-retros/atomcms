@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class WebsiteSetting extends Model
 {
-    protected $fillable = ['value'];
+    protected $guarded = [];
+
+
     public $timestamps = false;
 }

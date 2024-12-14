@@ -18,15 +18,11 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ToggleColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\ToggleButtons;
 use App\Filament\Traits\TranslatableResource;
 use App\Filament\Tables\Columns\HabboBadgeColumn;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\Atom\PermissionResource\Pages;
-use App\Filament\Resources\Atom\PermissionResource\RelationManagers;
 use Filament\Pages\Page;
 use Filament\Pages\SubNavigationPosition;
 use Illuminate\Support\Facades\Schema;
@@ -158,13 +154,7 @@ class PermissionResource extends Resource
                                         ColorPicker::make('prefix_color')
                                             ->label(__('filament::resources.inputs.prefix_color')),
 
-                                        TextInput::make('description')
-                                            ->columnSpanFull()
-                                            ->maxLength(255)
-                                            ->label(__('filament::resources.inputs.description'))
-                                            ->nullable(),
-
-                                        Toggle::make('is_hidden')
+                                        Toggle::make('hidden_rank')
                                             ->label(__('filament::resources.inputs.is_hidden'))
                                             ->columnSpanFull(),
 
@@ -230,7 +220,7 @@ class PermissionResource extends Resource
                     ->description(fn (Model $record) => $record->prefix_color)
                     ->searchable(),
 
-                ToggleColumn::make('is_hidden')
+                ToggleColumn::make('hidden_rank')
                     ->label(__('filament::resources.columns.is_hidden')),
             ])
             ->filters([
@@ -258,19 +248,6 @@ class PermissionResource extends Resource
             'create' => Pages\CreatePermission::route('/create'),
             'view' => Pages\ViewPermission::route('/{record}'),
             'edit' => Pages\EditPermission::route('/{record}/edit'),
-            'roles' => Pages\EditPermissionRoles::route('/{record}/roles'),
         ];
-    }
-
-    public static function getRecordSubNavigation(Page $page): array
-    {
-        $action = \Str::after($page->getName(), 'permission-resource.pages.');
-
-        if(str_starts_with($action, 'view')) return [];
-
-        return $page->generateNavigationItems([
-            Pages\EditPermission::class,
-            Pages\EditPermissionRoles::class
-        ]);
     }
 }

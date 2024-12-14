@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Atom;
 
+use App\Models\Miscellaneous\WebsiteSetting;
 use Filament\Tables;
 use Filament\Forms\Form;
-use App\Models\CmsSetting;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Section;
@@ -17,13 +17,11 @@ class CmsSettingResource extends Resource
 {
     use TranslatableResource;
 
-    protected static ?string $model = CmsSetting::class;
+    protected static ?string $model = WebsiteSetting::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cpu-chip';
 
     protected static ?string $navigationGroup = 'Website';
-
-    protected static ?string $slug = 'website/cms-settings';
 
     public static string $translateIdentifier = 'cms-settings';
 
@@ -90,7 +88,6 @@ class CmsSettingResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
