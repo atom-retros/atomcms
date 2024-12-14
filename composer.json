@@ -9,12 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "ext-sockets": "*",
         "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/support": "^11.0",
         "jenssegers/agent": "^2.6",
         "laravel/fortify": "^1.16",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^11.3",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "opcodesio/log-viewer": "*",
@@ -22,8 +23,7 @@
         "ryangjchandler/laravel-cloudflare-turnstile": "*",
         "spatie/laravel-activitylog": "^4.8",
         "srmklive/paypal": "~3.0",
-        "stevebauman/purify": "^6.0",
-        "ext-sockets": "*"
+        "stevebauman/purify": "^6.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.12",
