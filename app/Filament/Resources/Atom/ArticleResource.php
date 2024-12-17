@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
@@ -18,6 +19,7 @@ use App\Filament\Traits\TranslatableResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\Atom\ArticleResource\Pages;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleResource extends Resource
 {
@@ -61,11 +63,10 @@ class ArticleResource extends Resource
                                 ->autocomplete()
                                 ->columnSpan('full'),
 
-                            TextInput::make('image')
+                            FileUpload::make('image')
                                 ->label(__('filament::resources.inputs.image'))
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpan('full'),
+                                ->directory('website_news_images')
+                                ->visibility('public'),
 
                             RichEditor::make('full_story')
                                 ->label(__('filament::resources.inputs.content'))
@@ -76,7 +77,6 @@ class ArticleResource extends Resource
                     Tabs\Tab::make(__('filament::resources.tabs.Configurations'))
                         ->icon('heroicon-o-cog')
                         ->schema([
-                            // Inside the Configurations tab schema:
                             Toggle::make('is_visible')
                                 ->label(__('filament::resources.inputs.visible'))
                                 ->onIcon('heroicon-s-check')
@@ -84,7 +84,6 @@ class ArticleResource extends Resource
                                 ->default(true)
                                 ->live()
                                 ->afterStateUpdated(function (string $operation, $state, $record) {
-                                    // Only run on edit operation
                                     if ($operation !== 'edit' || !$record) return;
 
                                     if ($state) {

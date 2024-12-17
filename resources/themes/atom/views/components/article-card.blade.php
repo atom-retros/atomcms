@@ -8,7 +8,7 @@
     onmouseover="slideImage({{ $article->id }})" onmouseleave="unslideImage({{ $article->id }})"
     @endif>
     <a href="{{ route('article.show', $article->slug) }}">
-        <div id="article-{{ $article->id }}" style="background: url('{{ $article->image }}');" class="article-image">
+        <div id="article-{{ $article->id }}" style="background: url('/storage/{{ $article->image }}');" class="article-image">
         </div>
 
         <div class="mt-4 px-4">

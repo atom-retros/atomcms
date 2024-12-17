@@ -64,7 +64,7 @@
         <div
             class="relative flex flex-col gap-y-8 overflow-hidden rounded bg-white p-3 shadow dark:bg-gray-800 dark:text-gray-300">
             <div class="relative flex h-24 flex-col items-center justify-center gap-y-1 overflow-hidden rounded px-2 text-white"
-                style="background: url({{ $article->image }}) center; background-size: cover;">
+                style="background: url(/storage/{{ $article->image }}) center; background-size: cover;">
                 <div class="absolute h-full w-full bg-black bg-opacity-50"></div>
 
                 <p class="relative w-full truncate text-center text-xl font-semibold lg:text-2xl xl:text-3xl">
