@@ -8,12 +8,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class WebsiteArticle extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSlug;
 
     protected $guarded = ['id'];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->usingSeparator('-')
+            ->allowDuplicateSlugs(false);
+    }
 
     public function user(): BelongsTo
     {
