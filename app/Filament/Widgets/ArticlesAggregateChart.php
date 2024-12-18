@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\DashboardResource\Widgets;
+namespace App\Filament\Widgets;
 
 use App\Models\Article;
 use Flowframe\Trend\Trend;
