@@ -20,7 +20,6 @@ use App\Filament\Traits\TranslatableResource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\Atom\ArticleResource\Pages;
-use Illuminate\Support\Facades\Storage;
 
 class ArticleResource extends Resource
 {
@@ -73,9 +72,9 @@ class ArticleResource extends Resource
                                 ->label(__('filament::resources.inputs.content'))
                                 ->required()
                                 ->columnSpan('full'),
-							
-							Hidden::make('user_id')
-								->default(fn () => auth()->user()?->id),
+
+                            Hidden::make('user_id')
+                                ->default(fn () => auth()->check() ? auth()->user()->id : null),
                         ]),
 
                     Tabs\Tab::make(__('filament::resources.tabs.Configurations'))
@@ -88,18 +87,26 @@ class ArticleResource extends Resource
                                 ->default(true)
                                 ->live()
                                 ->afterStateUpdated(function (string $operation, $state, $record) {
-                                    if ($operation !== 'edit' || !$record) return;
+                                    if ($operation !== 'edit' || is_null($record)) {
+										return;
+									}
 
-                                    if ($state) {
-                                        $record->restore();
-                                    } else {
-                                        $record->delete();
+                                    try {
+                                        if ($state) {
+                                            $record->restore();
+                                        } else {
+                                            $record->delete();
+                                        }
+                                    } catch (\Exception $e) {
+                                        report($e);
                                     }
                                 })
                                 ->formatStateUsing(function ($record) {
-                                    if (!$record) return true;
-                                    return is_null($record->deleted_at);
-                                }),
+									if (is_null($record)) {
+										return true;
+									}								
+									return is_null($record->deleted_at);
+								}),
 
                             Toggle::make('can_comment')
                                 ->onIcon('heroicon-s-check')
