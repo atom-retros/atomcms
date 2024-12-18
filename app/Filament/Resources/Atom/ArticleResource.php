@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Toggle;
@@ -72,6 +73,9 @@ class ArticleResource extends Resource
                                 ->label(__('filament::resources.inputs.content'))
                                 ->required()
                                 ->columnSpan('full'),
+							
+							Hidden::make('user_id')
+								->default(fn () => auth()->user()?->id),
                         ]),
 
                     Tabs\Tab::make(__('filament::resources.tabs.Configurations'))
