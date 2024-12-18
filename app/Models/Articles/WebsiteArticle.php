@@ -46,4 +46,15 @@ class WebsiteArticle extends Model
     {
         return $this->comments()->where('user_id', '=', Auth::id())->count() >= (int) setting('max_comment_per_article');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if (empty($model->image)) {
+                $model->image = '';
+            }
+        });
+    }
 }
