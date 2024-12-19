@@ -13,6 +13,8 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
 class TopDashboardOverview extends BaseWidget
 {
+	protected static ?int $sort = 1;
+	
     protected function getStats(): array
     {
         return [
