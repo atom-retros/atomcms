@@ -44,18 +44,14 @@ class TeamResource extends Resource
                             ->required()
                             ->label(__('filament::resources.inputs.name')),
 
-                        TextInput::make('description')
+                        TextInput::make('job_description')
                             ->maxLength(255)
                             ->label(__('filament::resources.inputs.description')),
 
                         TextInput::make('badge')
                             ->maxLength(255)
-                            ->label(__('filament::resources.inputs.badge_code')),
-
-                        TextInput::make('order')
-                            ->default(0)
-                            ->numeric()
-                            ->label(__('filament::resources.inputs.order')),
+                            ->label(__('filament::resources.inputs.badge_code'))
+							->required(),
 
                         Toggle::make('hidden_rank')
                             ->label(__('filament::resources.inputs.is_hidden')),
@@ -76,6 +72,9 @@ class TeamResource extends Resource
 
                 TextColumn::make('rank_name')
                     ->label(__('filament::resources.columns.name')),
+					
+				TextColumn::make('job_description')
+                    ->label(__('filament::resources.inputs.description')),
 
                 IconColumn::make('hidden_rank')
                     ->label(__('filament::resources.columns.is_hidden'))

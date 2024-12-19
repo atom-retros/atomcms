@@ -11,7 +11,7 @@ class Permission extends Model implements HasBadge
 {
 	public $timestamps = false;
 	
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function users(): HasMany
     {
