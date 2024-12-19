@@ -5,7 +5,7 @@ namespace App\Filament\Resources\Hotel;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use App\Enums\CurrencyType;
+use App\Enums\CurrencyTypes;
 use App\Models\Achievement;
 use Filament\Resources\Resource;
 use App\Enums\AchievementCategory;
@@ -76,7 +76,7 @@ class AchievementResource extends Resource
                                 Select::make('reward_type')
                                     ->native(false)
                                     ->label(__('filament::resources.inputs.reward_type'))
-                                    ->options(CurrencyType::toInput()),
+                                    ->options(CurrencyTypes::toInput()),
 
                                 TextInput::make('reward_amount')
                                     ->label(__('filament::resources.inputs.reward_amount'))

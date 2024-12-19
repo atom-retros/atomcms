@@ -8,6 +8,8 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\TextColumn;
@@ -61,22 +63,23 @@ class ArticleResource extends Resource
                                 ->autocomplete()
                                 ->columnSpan('full'),
 
-                            TextInput::make('image')
+                            FileUpload::make('image')
                                 ->label(__('filament::resources.inputs.image'))
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpan('full'),
+                                ->directory('website_news_images')
+                                ->visibility('public'),
 
                             RichEditor::make('full_story')
                                 ->label(__('filament::resources.inputs.content'))
                                 ->required()
                                 ->columnSpan('full'),
+
+                            Hidden::make('user_id')
+                                ->default(fn () => auth()->check() ? auth()->user()->id : null),
                         ]),
 
                     Tabs\Tab::make(__('filament::resources.tabs.Configurations'))
                         ->icon('heroicon-o-cog')
                         ->schema([
-                            // Inside the Configurations tab schema:
                             Toggle::make('is_visible')
                                 ->label(__('filament::resources.inputs.visible'))
                                 ->onIcon('heroicon-s-check')
@@ -84,19 +87,26 @@ class ArticleResource extends Resource
                                 ->default(true)
                                 ->live()
                                 ->afterStateUpdated(function (string $operation, $state, $record) {
-                                    // Only run on edit operation
-                                    if ($operation !== 'edit' || !$record) return;
+                                    if ($operation !== 'edit' || is_null($record)) {
+										return;
+									}
 
-                                    if ($state) {
-                                        $record->restore();
-                                    } else {
-                                        $record->delete();
+                                    try {
+                                        if ($state) {
+                                            $record->restore();
+                                        } else {
+                                            $record->delete();
+                                        }
+                                    } catch (\Exception $e) {
+                                        report($e);
                                     }
                                 })
                                 ->formatStateUsing(function ($record) {
-                                    if (!$record) return true;
-                                    return is_null($record->deleted_at);
-                                }),
+									if (is_null($record)) {
+										return true;
+									}								
+									return is_null($record->deleted_at);
+								}),
 
                             Toggle::make('can_comment')
                                 ->onIcon('heroicon-s-check')

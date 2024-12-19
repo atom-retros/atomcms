@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\DashboardResource\Widgets;
+namespace App\Filament\Widgets;
 
 use App\Models\Room;
 use App\Models\User;
@@ -13,6 +13,8 @@ use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 
 class TopDashboardOverview extends BaseWidget
 {
+	protected static ?int $sort = 1;
+	
     protected function getStats(): array
     {
         return [

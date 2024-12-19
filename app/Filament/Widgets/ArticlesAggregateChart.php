@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\DashboardResource\Widgets;
+namespace App\Filament\Widgets;
 
 use App\Models\Article;
 use Flowframe\Trend\Trend;
@@ -10,6 +10,8 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class ArticlesAggregateChart extends ChartWidget
 {
+	protected static ?int $sort = 2;
+	
     protected static ?string $maxHeight = '300px';
 
     protected static string $color = 'primary';

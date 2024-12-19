@@ -13,7 +13,8 @@ class ArticlesRelationManager extends RelationManager
 {
     use TranslatableResource;
 
-    protected static string $relationship = 'articles';
+    // Use camelCase to match the method in the Tag model
+    protected static string $relationship = 'websiteArticles';
 
     protected static ?string $recordTitleAttribute = 'title';
 

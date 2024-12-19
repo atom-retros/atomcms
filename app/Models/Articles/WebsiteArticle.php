@@ -8,12 +8,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class WebsiteArticle extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasSlug;
 
     protected $guarded = ['id'];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->usingSeparator('-')
+            ->allowDuplicateSlugs(false);
+    }
 
     public function user(): BelongsTo
     {
@@ -34,5 +45,21 @@ class WebsiteArticle extends Model
     public function userHasReachedArticleCommentLimit(): bool
     {
         return $this->comments()->where('user_id', '=', Auth::id())->count() >= (int) setting('max_comment_per_article');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            if (empty($model->image)) {
+                $model->image = '';
+            }
+        });
+    }
+	
+	public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 }
